@@ -160,6 +160,14 @@ strong {
     font-size: 1.2rem;
     margin: 20px 0;
     color: #2d3436;
+    overflow-x: auto;
+}
+
+/* KaTeX数式のスクロール対応 */
+.katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 5px 0;
 }
 
 /* =========================================
@@ -346,35 +354,140 @@ strong {
 }
 
 /* =========================================
-   レスポンシブ対応 (Mobile)
+   レスポンシブ対応 (Responsive)
    ========================================= */
-@media (max-width: 600px) {
+
+/* タブレット (768px以下) */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
     .container {
-        padding: 20px;
-        width: 100%;
-        box-sizing: border-box;
+        padding: 30px;
+        border-radius: 15px;
     }
-    
+
     h1 {
-        font-size: 1.6rem;
+        font-size: 1.9rem;
     }
-    
+
     h2 {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+        padding: 10px 20px;
+    }
+
+    .rule-box,
+    .tip-box,
+    .example-box,
+    .caution-box {
+        padding: 15px;
+    }
+
+    .summary {
+        padding: 25px 20px;
+        font-size: 1.2rem;
+    }
+}
+
+/* スマートフォン (480px以下) */
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+    }
+
+    .container {
+        padding: 20px 15px;
+        border-radius: 12px;
+    }
+
+    .container::before {
+        height: 5px;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+        letter-spacing: 0;
+    }
+
+    h2 {
+        font-size: 1rem;
         width: 100%;
         box-sizing: border-box;
         text-align: center;
         transform: none;
+        padding: 10px 15px;
+        border-radius: 10px;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+
+    .subtitle {
+        font-size: 0.85rem;
+        padding: 4px 15px;
     }
 
     .svg-container {
         padding: 10px;
+        border-radius: 10px;
     }
-    
+
+    .formula {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    .rule-box {
+        padding: 12px;
+        border-radius: 0 10px 10px 0;
+        border-left-width: 5px;
+    }
+
+    .tip-box,
+    .caution-box {
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    .example-box {
+        padding: 15px;
+        border-radius: 15px;
+    }
+
     .example-title {
         flex-direction: column;
         align-items: flex-start;
         gap: 5px;
+        font-size: 1rem;
+    }
+
+    .step-item {
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    .summary {
+        padding: 20px 15px;
+        font-size: 1.1rem;
+        border-radius: 12px;
+    }
+
+    .important-rule {
+        font-size: 1rem;
+        padding: 15px;
+        border-radius: 12px;
+    }
+
+    .checklist {
+        padding: 15px;
+        border-radius: 12px;
+    }
+
+    .data-example {
+        font-size: 1rem;
+        padding: 12px;
     }
 }
 

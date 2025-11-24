@@ -186,6 +186,116 @@
             border-color: #ddd;
             color: #aaa;
         }
+
+        /* =========================================
+           トップページ レスポンシブ対応
+           ========================================= */
+
+        /* タブレット (768px以下) */
+        @media (max-width: 768px) {
+            .hero-area {
+                margin-bottom: 35px;
+                border-radius: 15px;
+                border-width: 3px;
+            }
+
+            .guide-area {
+                padding: 25px 20px;
+                margin-bottom: 35px;
+                border-radius: 15px;
+            }
+
+            .category-section {
+                margin-bottom: 45px;
+            }
+
+            .material-grid {
+                gap: 20px;
+            }
+
+            .quest-card {
+                padding: 20px;
+            }
+        }
+
+        /* スマートフォン (480px以下) */
+        @media (max-width: 480px) {
+            .hero-area {
+                margin-bottom: 25px;
+                border-radius: 12px;
+                border-width: 2px;
+                box-shadow: 0 8px 20px rgba(0, 163, 255, 0.2);
+            }
+
+            .guide-area {
+                padding: 20px 15px;
+                margin-bottom: 30px;
+                border-radius: 12px;
+                border-width: 2px;
+                box-shadow: 0 4px 0 #dfe6e9;
+            }
+
+            .guide-text {
+                font-size: 0.95em;
+                line-height: 1.7;
+            }
+
+            .category-section {
+                margin-bottom: 35px;
+            }
+
+            .category-section h2 {
+                font-size: 1.1rem;
+                margin-left: 0;
+            }
+
+            .material-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 5px;
+            }
+
+            .quest-card {
+                padding: 18px;
+                border-radius: 15px;
+                border-width: 2px;
+                box-shadow: 0 4px 0 #dfe6e9;
+            }
+
+            .quest-card:hover {
+                box-shadow: 0 6px 0 #f1c40f;
+            }
+
+            .quest-icon {
+                font-size: 32px;
+                width: 55px;
+                height: 55px;
+                border-radius: 14px;
+            }
+
+            .quest-title {
+                font-size: 1.1em;
+            }
+
+            .quest-desc {
+                font-size: 0.85em;
+                margin-bottom: 15px;
+            }
+
+            .quest-meta {
+                padding-top: 12px;
+            }
+
+            .level-badge {
+                font-size: 0.7em;
+            }
+
+            .play-btn {
+                width: 28px;
+                height: 28px;
+                font-size: 10px;
+            }
+        }
     </style>
 </head>
 <body>
