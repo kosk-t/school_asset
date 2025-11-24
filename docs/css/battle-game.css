@@ -1,0 +1,290 @@
+@charset "UTF-8";
+
+/* =========================================
+   RPGバトルゲーム (Battle Game)
+   ========================================= */
+.battle-game {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 18px;
+    padding: 25px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.battle-game::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+}
+
+/* バトルエリア */
+.battle-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* キャラクター共通 */
+.character {
+    text-align: center;
+    flex: 1;
+    min-width: 120px;
+}
+
+.character-name {
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.character-sprite {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    transition: transform 0.3s;
+}
+
+.character-sprite.shake {
+    animation: shake 0.5s;
+}
+
+.character-sprite.attack {
+    animation: attack 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-10px); }
+    40%, 80% { transform: translateX(10px); }
+}
+
+@keyframes attack {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(30px) scale(1.2); }
+    100% { transform: translateX(0); }
+}
+
+/* HPバー */
+.hp-bar-container {
+    background: #2d3436;
+    border-radius: 10px;
+    padding: 3px;
+    margin-bottom: 5px;
+}
+
+.hp-bar {
+    height: 18px;
+    border-radius: 8px;
+    transition: width 0.5s ease;
+    position: relative;
+}
+
+.hp-bar.enemy {
+    background: linear-gradient(90deg, #ff6b6b, #ee5a5a);
+}
+
+.hp-bar.player {
+    background: linear-gradient(90deg, #4ECDC4, #44a8a0);
+}
+
+.hp-text {
+    font-size: 0.85rem;
+    color: #b2bec3;
+}
+
+/* VSマーク */
+.vs-mark {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #feca57;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    flex-shrink: 0;
+}
+
+/* 問題エリア */
+.question-area {
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.question-label {
+    font-size: 0.9rem;
+    color: #feca57;
+    margin-bottom: 10px;
+}
+
+.question-text {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* 選択肢 */
+.choices {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.choice-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 12px;
+    padding: 15px 20px;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.choice-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.choice-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.choice-btn.correct {
+    background: linear-gradient(135deg, #4ECDC4 0%, #44a8a0 100%);
+    animation: pulse 0.5s;
+}
+
+.choice-btn.wrong {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+    animation: shake 0.5s;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* メッセージ */
+.battle-message {
+    text-align: center;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.battle-message.damage {
+    color: #ff6b6b;
+}
+
+.battle-message.success {
+    color: #4ECDC4;
+}
+
+/* コンボ表示 */
+.combo-display {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #feca57 0%, #ff9f43 100%);
+    color: #1a1a2e;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.combo-display.show {
+    opacity: 1;
+}
+
+/* 結果画面 */
+.battle-result {
+    text-align: center;
+    padding: 30px;
+}
+
+.result-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.result-title.win {
+    color: #feca57;
+}
+
+.result-title.lose {
+    color: #ff6b6b;
+}
+
+.result-stats {
+    margin-bottom: 20px;
+    color: #b2bec3;
+}
+
+.restart-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 12px;
+    padding: 15px 40px;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.restart-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* レスポンシブ */
+@media (max-width: 480px) {
+    .battle-game {
+        padding: 15px;
+    }
+
+    .character-sprite {
+        font-size: 2.5rem;
+    }
+
+    .vs-mark {
+        font-size: 1.4rem;
+    }
+
+    .question-text {
+        font-size: 1.2rem;
+    }
+
+    .choices {
+        grid-template-columns: 1fr;
+    }
+
+    .choice-btn {
+        padding: 12px 15px;
+        font-size: 1rem;
+    }
+
+    .combo-display {
+        top: 10px;
+        right: 10px;
+        font-size: 0.8rem;
+    }
+}
