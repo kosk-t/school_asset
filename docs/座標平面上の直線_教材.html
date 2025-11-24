@@ -46,8 +46,23 @@
             <img src="covers/noimage.jpg" alt="座標平面上の直線">
         </div>
 
+        <!-- ========== 目次 ========== -->
+        <nav class="toc">
+            <div class="toc-title">📚 目次</div>
+            <ol class="toc-list">
+                <li><a href="#section1">テーマの定義／最重要の考え方</a></li>
+                <li><a href="#section2">覚えるルール</a></li>
+                <li><a href="#section3">簡単にするコツ</a></li>
+                <li><a href="#section4">代表的な計算例</a></li>
+                <li><a href="#section5">基本的な計算手順</a></li>
+                <li><a href="#section6">よくあるつまづき</a></li>
+                <li><a href="#section7">仕上げチェックリスト</a></li>
+                <li><a href="#story">おまけ：実践ストーリー「謎解き宝探しゲーム」</a></li>
+            </ol>
+        </nav>
+
         <!-- 1. テーマの定義／最重要の考え方 -->
-        <section>
+        <section id="section1">
             <h2>1. テーマの定義／最重要の考え方</h2>
             <div class="section">
                 <p><strong>座標平面上の直線</strong>では、点や直線を座標で表し、計算で性質を調べます。主に以下の3つを扱います：</p>
@@ -119,7 +134,7 @@
         </section>
 
         <!-- 2. 覚えるルール -->
-        <section>
+        <section id="section2">
             <h2>2. 覚えるルール</h2>
             <div class="section">
                 <div class="important-rule">
@@ -277,7 +292,7 @@
         </section>
 
         <!-- 3. 簡単にするコツ -->
-        <section>
+        <section id="section3">
             <h2>3. 簡単にするコツ</h2>
             <div class="section">
                 <div class="tip-box">
@@ -303,7 +318,7 @@
         </section>
 
         <!-- 4. 代表的な計算例 -->
-        <section>
+        <section id="section4">
             <h2>4. 代表的な計算例</h2>
             <div class="section">
                 <div class="data-example">
@@ -397,7 +412,7 @@
         </section>
 
         <!-- 5. 基本手順 -->
-        <section>
+        <section id="section5">
             <h2>5. 基本的な計算手順</h2>
             <div class="section">
                 <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 中点を求める手順</h3>
@@ -473,7 +488,7 @@
         </section>
 
         <!-- 6. よくあるつまづき -->
-        <section>
+        <section id="section6">
             <h2>6. よくあるつまづき</h2>
             <div class="section">
                 <div class="caution-box">
@@ -509,7 +524,7 @@
         </section>
 
         <!-- 7. 仕上げチェックリスト -->
-        <section>
+        <section id="section7">
             <h2>7. 仕上げチェックリスト</h2>
             <div class="section">
                 <div class="checklist">
@@ -526,6 +541,52 @@
         <div class="summary">
             📌 まとめ：中点は「足して半分」、傾きは「yの変化÷xの変化」、平行は「傾き同じ」！
         </div>
+
+        <!-- おまけ：実践ストーリー -->
+        <section id="story">
+            <h2>おまけ：実践ストーリー「謎解き宝探しゲーム」</h2>
+            <div class="section">
+                <div class="story-box">
+                    <div class="story-title">📖 謎解き宝探しゲーム</div>
+
+                    <p>リクとサキは公園で謎解き宝探しイベントに参加中。公園の地図には座標が書かれていて、次のヒントが与えられた：</p>
+                    <p style="text-align: center; font-style: italic; color: #666;">
+                        「2本の平行な道の交差点を結べ。その中点に宝あり。」
+                    </p>
+
+                    <p><strong>ヒント1：</strong>道Aは点(2, 1)を通り、傾きが2の直線。道Bは点(6, 5)を通り、道Aに平行。</p>
+
+                    <p><strong>まず道Aと道Bの方程式を求める：</strong></p>
+                    <p>道Aは傾き2、点(2, 1)を通る。y切片を求めると：</p>
+                    <div class="formula">
+                        \[ 1 = 2 \times 2 + c \quad \Rightarrow \quad c = 1 - 4 = -3 \]
+                    </div>
+                    <p>よって <strong>道A：y = 2x − 3</strong></p>
+
+                    <p>道Bは道Aに平行なので傾きは同じ2。点(6, 5)を通るから：</p>
+                    <div class="formula">
+                        \[ 5 = 2 \times 6 + c \quad \Rightarrow \quad c = 5 - 12 = -7 \]
+                    </div>
+                    <p>よって <strong>道B：y = 2x − 7</strong></p>
+
+                    <p><strong>ヒント2：</strong>道Aとx軸の交点P、道Bとx軸の交点Qを求める（y = 0を代入）</p>
+                    <div class="formula">
+                        \[ \text{点P}：0 = 2x - 3 \quad \Rightarrow \quad x = 1.5 \quad \Rightarrow \quad P(1.5, 0) \]
+                    </div>
+                    <div class="formula">
+                        \[ \text{点Q}：0 = 2x - 7 \quad \Rightarrow \quad x = 3.5 \quad \Rightarrow \quad Q(3.5, 0) \]
+                    </div>
+
+                    <p><strong>中点の公式で宝の位置を計算！</strong></p>
+                    <div class="formula">
+                        \[ M = \left(\frac{1.5 + 3.5}{2},\ \frac{0 + 0}{2}\right) = \left(\frac{5}{2},\ 0\right) = (2.5, 0) \]
+                    </div>
+
+                    <p>「座標(2.5, 0)...つまりx軸上の2.5の位置だ！」とリクが叫んだ。二人が走っていくと、ベンチの下に宝箱が！</p>
+                    <p>中身は...公園の売店で使える500円クーポンだった。「数学って役に立つじゃん！」とサキは笑い、二人はソフトクリームを買いに行くのであった。</p>
+                </div>
+            </div>
+        </section>
 
         <nav class="breadcrumb breadcrumb-footer">
             <a href="index.html">トップページに戻る</a>

@@ -46,8 +46,23 @@
             <img src="covers/noimage.jpg" alt="累乗と平方根">
         </div>
 
+        <!-- ========== 目次 ========== -->
+        <nav class="toc">
+            <div class="toc-title">📚 目次</div>
+            <ol class="toc-list">
+                <li><a href="#section1">テーマの定義／最重要の考え方</a></li>
+                <li><a href="#section2">覚えるルール</a></li>
+                <li><a href="#section3">簡単にするコツ</a></li>
+                <li><a href="#section4">代表的な計算例</a></li>
+                <li><a href="#section5">基本的な計算手順</a></li>
+                <li><a href="#section6">よくあるつまづき</a></li>
+                <li><a href="#section7">仕上げチェックリスト</a></li>
+                <li><a href="#story">おまけ：実践ストーリー「海賊キャプテン・ルートの宝の地図」</a></li>
+            </ol>
+        </nav>
+
         <!-- 1. テーマの定義／最重要の考え方 -->
-        <section>
+        <section id="section1">
             <h2>1. テーマの定義／最重要の考え方</h2>
             <div class="section">
                 <p><strong>累乗（るいじょう）</strong>と<strong>平方根（へいほうこん）</strong>は、実は「逆向きの操作」です：</p>
@@ -112,7 +127,7 @@
         </section>
 
         <!-- 2. 覚えるルール -->
-        <section>
+        <section id="section2">
             <h2>2. 覚えるルール</h2>
             <div class="section">
                 <div class="important-rule">
@@ -239,7 +254,7 @@
         </section>
 
         <!-- 3. 簡単にするコツ -->
-        <section>
+        <section id="section3">
             <h2>3. 簡単にするコツ</h2>
             <div class="section">
                 <div class="tip-box">
@@ -315,7 +330,7 @@
         </section>
 
         <!-- 4. 代表的な計算例 -->
-        <section>
+        <section id="section4">
             <h2>4. 代表的な計算例</h2>
             <div class="section">
                 <div class="example-box" id="ex-exponent">
@@ -372,7 +387,7 @@
         </section>
 
         <!-- 5. 基本手順 -->
-        <section>
+        <section id="section5">
             <h2>5. 基本的な計算手順</h2>
             <div class="section">
                 <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 累乗の計算手順</h3>
@@ -440,7 +455,7 @@
         </section>
 
         <!-- 6. よくあるつまづき -->
-        <section>
+        <section id="section6">
             <h2>6. よくあるつまづき</h2>
             <div class="section">
                 <div class="caution-box">
@@ -476,7 +491,7 @@
         </section>
 
         <!-- 7. 仕上げチェックリスト -->
-        <section>
+        <section id="section7">
             <h2>7. 仕上げチェックリスト</h2>
             <div class="section">
                 <div class="checklist">
@@ -493,6 +508,53 @@
         <div class="summary">
             📌 まとめ：累乗は「何個かける」、平方根は「何を2乗したらその数になるか」！
         </div>
+
+        <!-- おまけ：実践ストーリー -->
+        <section id="story">
+            <h2>おまけ：実践ストーリー「海賊キャプテン・ルートの宝の地図」</h2>
+            <div class="section">
+                <div class="story-box">
+                    <div class="story-title">📖 海賊キャプテン・ルートの宝の地図</div>
+                    <p>むかしむかし、伝説の海賊キャプテン・ルートが宝を隠したという。残されたのは暗号だらけの地図だった。</p>
+                    <p>冒険者タケシは、ついにその地図を手に入れた。地図にはこう書かれていた：</p>
+                    <p style="background: #fff9c4; padding: 10px; border-radius: 8px; margin: 15px 0;">
+                        「大きな岩から <strong>\( 2^3 \times 2^4 \)</strong> 歩、東へ進め。<br>
+                        そこから <strong>\( \sqrt{144} \)</strong> 歩、北へ進め。<br>
+                        最後に <strong>\( \sqrt{72} \)</strong> を簡単にした数だけ、西へ進め。<br>
+                        そこに宝がある。」
+                    </p>
+                    <p>「なんだこれ...数学の問題じゃないか！」とタケシは頭を抱えた。でも大丈夫、学校で習ったことを思い出そう。</p>
+
+                    <p><strong>【第1の暗号】</strong> \( 2^3 \times 2^4 \) を解く</p>
+                    <p>同じ底のかけ算だから、指数を足せばいい！</p>
+                    <div class="formula">
+                        \[ 2^3 \times 2^4 = 2^{3+4} = 2^7 = 128 \]
+                    </div>
+                    <p>「よし、東へ<strong>128歩</strong>だな！」</p>
+
+                    <p><strong>【第2の暗号】</strong> \( \sqrt{144} \) を解く</p>
+                    <p>144の平方根...何を2乗したら144になる？</p>
+                    <div class="formula">
+                        \[ 12^2 = 144 \quad \text{だから} \quad \sqrt{144} = 12 \]
+                    </div>
+                    <p>「北へ<strong>12歩</strong>か！」</p>
+
+                    <p><strong>【第3の暗号】</strong> \( \sqrt{72} \) を簡単にする</p>
+                    <p>72を素因数分解して、完全平方数を見つける！</p>
+                    <div class="formula">
+                        \[ \sqrt{72} = \sqrt{36 \times 2} = \sqrt{36} \times \sqrt{2} = 6\sqrt{2} \]
+                    </div>
+                    <p>「簡単にした数...ルートの外に出た<strong>6</strong>のことだな！西へ<strong>6歩</strong>！」</p>
+
+                    <p>タケシは暗号通りに進み、ついに宝箱を発見した。中には金貨と、キャプテン・ルートからの手紙が入っていた。</p>
+                    <p style="background: #e8f5e9; padding: 10px; border-radius: 8px; margin: 15px 0;">
+                        「よくぞ解いた！累乗と平方根は<strong>逆の操作</strong>。それを理解した者だけが、この宝にたどり着ける。<br>
+                        ——キャプテン・ルート」
+                    </p>
+                    <p>「海賊なのに数学の先生みたいなこと言うな...」とタケシはツッコみながら、金貨を持ち帰ったのであった。</p>
+                </div>
+            </div>
+        </section>
 
         <nav class="breadcrumb breadcrumb-footer">
             <a href="index.html">トップページに戻る</a>

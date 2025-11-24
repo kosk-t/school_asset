@@ -46,8 +46,23 @@
             <img src="covers/データの分析と確率_教材.jpg" alt="データの分析と確率">
         </div>
 
+        <!-- ========== 目次 ========== -->
+        <nav class="toc">
+            <div class="toc-title">📚 目次</div>
+            <ol class="toc-list">
+                <li><a href="#section1">テーマの定義／最重要の考え方</a></li>
+                <li><a href="#section2">覚えるルール</a></li>
+                <li><a href="#section3">簡単にするコツ</a></li>
+                <li><a href="#section4">代表的な計算例</a></li>
+                <li><a href="#section5">基本的な計算手順</a></li>
+                <li><a href="#section6">よくあるつまづき</a></li>
+                <li><a href="#section7">仕上げチェックリスト</a></li>
+                <li><a href="#story">おまけ：実践ストーリー「ゲーム大会で自分の実力を知れ！」</a></li>
+            </ol>
+        </nav>
+
         <!-- 1. テーマの定義／最重要の考え方 -->
-        <section>
+        <section id="section1">
             <h2>1. テーマの定義／最重要の考え方</h2>
             <div class="section">
                 <p><strong>データの代表値</strong>とは、たくさんのデータを1つの数値で特徴づけるものです。主に以下の3つがあります：</p>
@@ -140,7 +155,7 @@
         </section>
 
         <!-- 2. 覚えるルール -->
-        <section>
+        <section id="section2">
             <h2>2. 覚えるルール</h2>
             <div class="section">
                 <div class="important-rule">
@@ -391,7 +406,7 @@
         </section>
         
         <!-- 3. 簡単にするコツ -->
-        <section>
+        <section id="section3">
             <h2>3. 簡単にするコツ</h2>
             <div class="section">
                 <div class="tip-box">
@@ -417,7 +432,7 @@
         </section>
         
         <!-- 4. 形の変換の代表例 -->
-        <section>
+        <section id="section4">
             <h2>4. 代表的な計算例</h2>
             <div class="section">
                 <div class="data-example">
@@ -560,7 +575,7 @@
         </section>
         
         <!-- 5. 基本手順 -->
-        <section>
+        <section id="section5">
             <h2>5. 基本的な計算手順</h2>
             <div class="section">
                 <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 代表値を求める手順</h3>
@@ -616,7 +631,7 @@
         </section>
         
         <!-- 6. よくあるつまづき -->
-        <section>
+        <section id="section6">
             <h2>6. よくあるつまづき</h2>
             <div class="section">
                 <div class="caution-box">
@@ -652,7 +667,7 @@
         </section>
         
         <!-- 7. 仕上げチェックリスト -->
-        <section>
+        <section id="section7">
             <h2>7. 仕上げチェックリスト</h2>
             <div class="section">
                 <div class="checklist">
@@ -669,6 +684,55 @@
         <div class="summary">
             📌 まとめ：データは並べて、個数を数えて、位置を計算！
         </div>
+
+        <!-- おまけ：実践ストーリー -->
+        <section id="story">
+            <h2>おまけ：実践ストーリー「ゲーム大会で自分の実力を知れ！」</h2>
+            <div class="section">
+                <div class="story-box">
+                    <div class="story-title">📖 ゲーム大会で自分の実力を知れ！</div>
+
+                    <p>ユウキは友達8人とスマホゲームの腕前を競っていた。大会の結果、みんなのスコアは次の通り：</p>
+                    <p style="text-align: center; font-weight: bold; color: #1976d2;">
+                        85, 72, 91, 78, 85, 69, 95, 82（点）
+                    </p>
+                    <p>ユウキのスコアは<strong>85点</strong>。「俺って上位何人に入ってるの？あと、みんなの真ん中くらいの実力ってどのくらい？」と気になった。</p>
+
+                    <p><strong>まずはデータを並べ替える！</strong>（これが最重要）</p>
+                    <div class="formula">
+                        \[ 69, 72, 78, 82, 85, 85, 91, 95 \]
+                    </div>
+
+                    <p><strong>中央値を求める：</strong>8個（偶数）なので、4番目と5番目の平均</p>
+                    <div class="formula">
+                        \[ \text{中央値} = \frac{82 + 85}{2} = 83.5 \text{点} \]
+                    </div>
+
+                    <p><strong>第3四分位数（Q₃）を求める：</strong>後半データ 85, 85, 91, 95 の中央値</p>
+                    <div class="formula">
+                        \[ Q_3 = \frac{85 + 91}{2} = 88 \text{点} \]
+                    </div>
+
+                    <p><strong>最頻値を確認：</strong>85点が2回で最も多い → <strong>最頻値 = 85点</strong></p>
+
+                    <p><strong>85点以上になる確率：</strong>85点以上は 85, 85, 91, 95 の4人</p>
+                    <div class="formula">
+                        \[ P = \frac{4}{8} = \frac{1}{2} \]
+                    </div>
+
+                    <p>つまり、ユウキの85点は...</p>
+                    <ul>
+                        <li>中央値（83.5点）より上 → 平均以上の実力！</li>
+                        <li>Q₃（88点）より下 → 上位25%には惜しくも届かず</li>
+                        <li>最頻値と同じ → みんなが目指す「あるある」なスコア</li>
+                        <li>上位50%に入っている！</li>
+                    </ul>
+
+                    <p>「よし、次はQ₃の88点を超えて上位25%に入るぞ！」とユウキは燃えた。<br>
+                    ...しかし翌日、69点だった友達が猛練習して98点を叩き出し、「データが変わると四分位数も変わるんだよなぁ...」と遠い目をするのであった。</p>
+                </div>
+            </div>
+        </section>
 
         <nav class="breadcrumb breadcrumb-footer">
             <a href="index.html">トップページに戻る</a>

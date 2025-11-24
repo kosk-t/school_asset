@@ -96,6 +96,50 @@ section {
     text-align: center;
 }
 
+/* 目次 */
+.toc {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 2px solid #dee2e6;
+    border-radius: 15px;
+    padding: 20px 25px;
+    margin-bottom: 30px;
+}
+
+.toc-title {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px dashed #ced4da;
+}
+
+.toc-list {
+    margin: 0;
+    padding-left: 25px;
+    counter-reset: toc-counter;
+}
+
+.toc-list li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.toc-list li a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+.toc-list li a:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
 /* =========================================
    タイポグラフィ (Typography)
    ========================================= */
@@ -589,6 +633,26 @@ strong {
     .data-example {
         font-size: 1rem;
         padding: 12px;
+    }
+
+    .toc {
+        padding: 15px 18px;
+        border-radius: 12px;
+    }
+
+    .toc-title {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+    }
+
+    .toc-list {
+        padding-left: 20px;
+    }
+
+    .toc-list li {
+        margin-bottom: 6px;
+        font-size: 0.95rem;
     }
 }
 

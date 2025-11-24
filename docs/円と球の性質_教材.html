@@ -46,8 +46,23 @@
             <img src="covers/noimage.jpg" alt="円と球の性質">
         </div>
 
+        <!-- ========== 目次 ========== -->
+        <nav class="toc">
+            <div class="toc-title">📚 目次</div>
+            <ol class="toc-list">
+                <li><a href="#section1">テーマの定義／最重要の考え方</a></li>
+                <li><a href="#section2">覚えるルール</a></li>
+                <li><a href="#section3">簡単にするコツ</a></li>
+                <li><a href="#section4">代表的な計算例</a></li>
+                <li><a href="#section5">基本的な計算手順</a></li>
+                <li><a href="#section6">よくあるつまづき</a></li>
+                <li><a href="#section7">仕上げチェックリスト</a></li>
+                <li><a href="#story">おまけ：実践ストーリー「ピザ屋店長の悩み」</a></li>
+            </ol>
+        </nav>
+
         <!-- 1. テーマの定義／最重要の考え方 -->
-        <section>
+        <section id="section1">
             <h2>1. テーマの定義／最重要の考え方</h2>
             <div class="section">
                 <p><strong>円</strong>とは、ある点（中心）から等しい距離にある点の集まりです。<strong>球</strong>は、円を3次元に拡張したもので、中心からすべての表面の点までの距離が等しい立体です。</p>
@@ -107,7 +122,7 @@
         </section>
 
         <!-- 2. 覚えるルール -->
-        <section>
+        <section id="section2">
             <h2>2. 覚えるルール</h2>
             <div class="section">
                 <div class="important-rule">
@@ -205,7 +220,7 @@
         </section>
 
         <!-- 3. 簡単にするコツ -->
-        <section>
+        <section id="section3">
             <h2>3. 簡単にするコツ</h2>
             <div class="section">
                 <div class="tip-box">
@@ -236,7 +251,7 @@
         </section>
 
         <!-- 4. 代表的な計算例 -->
-        <section>
+        <section id="section4">
             <h2>4. 代表的な計算例</h2>
             <div class="section">
 
@@ -345,7 +360,7 @@
         </section>
 
         <!-- 5. 基本手順 -->
-        <section>
+        <section id="section5">
             <h2>5. 基本的な計算手順</h2>
             <div class="section">
                 <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 円周・円の面積を求める手順</h3>
@@ -405,7 +420,7 @@
         </section>
 
         <!-- 6. よくあるつまづき -->
-        <section>
+        <section id="section6">
             <h2>6. よくあるつまづき</h2>
             <div class="section">
                 <div class="caution-box">
@@ -441,7 +456,7 @@
         </section>
 
         <!-- 7. 仕上げチェックリスト -->
-        <section>
+        <section id="section7">
             <h2>7. 仕上げチェックリスト</h2>
             <div class="section">
                 <div class="checklist">
@@ -458,6 +473,52 @@
         <div class="summary">
             📌 まとめ：半径 \(r\) をつかんで、円は \(\pi r^2\)、球は \(4\pi r^2\) で攻略！
         </div>
+
+        <!-- おまけ：実践ストーリー -->
+        <section id="story">
+            <h2>おまけ：実践ストーリー「ピザ屋店長の悩み」</h2>
+            <div class="section">
+                <div class="story-box">
+                    <div class="story-title">📖 ピザ屋店長の悩み</div>
+
+                    <p>ピザ屋の店長ミキは、新メニュー「メガサイズピザ」を開発中。直径40cmのピザを作りたいが、材料がどれだけ必要か計算したい。</p>
+                    <p>「通常サイズ（直径25cm）と比べて、どのくらい生地が必要なんだろう？あと、8等分したら1ピースはどのくらいの大きさ？」</p>
+
+                    <p><strong>まず半径を求める！</strong>（公式は半径を使う）</p>
+                    <ul>
+                        <li>メガサイズ：直径40cm → 半径 \(r = 20\) cm</li>
+                        <li>通常サイズ：直径25cm → 半径 \(r = 12.5\) cm</li>
+                    </ul>
+
+                    <p><strong>円の面積を計算：</strong></p>
+                    <div class="formula">
+                        \[ \text{メガサイズ} = \pi \times 20^2 = 400\pi \text{ cm}^2 \]
+                    </div>
+                    <div class="formula">
+                        \[ \text{通常サイズ} = \pi \times 12.5^2 = 156.25\pi \text{ cm}^2 \]
+                    </div>
+
+                    <p><strong>面積の比を計算：</strong></p>
+                    <div class="formula">
+                        \[ \frac{400\pi}{156.25\pi} = \frac{400}{156.25} = 2.56 \]
+                    </div>
+                    <p>つまり、メガサイズは通常サイズの<strong>約2.56倍</strong>の生地が必要！</p>
+
+                    <p><strong>8等分したときの1ピースの面積：</strong></p>
+                    <div class="formula">
+                        \[ \text{1ピース} = \frac{400\pi}{8} = 50\pi \approx 50 \times 3.14 = 157 \text{ cm}^2 \]
+                    </div>
+
+                    <p><strong>おまけで円周（クラスト）の長さも：</strong></p>
+                    <div class="formula">
+                        \[ C = 2\pi r = 2 \times 3.14 \times 20 = 125.6 \text{ cm} \]
+                    </div>
+
+                    <p>「なるほど！直径が1.6倍なのに、面積は2.56倍も必要なのか...」とミキは驚いた。<br>
+                    ちなみに、メガサイズの値段を通常の1.6倍にしたら大赤字。2.5倍以上にしないと採算が合わないことに気づき、「数学って商売にも使えるんだなぁ」としみじみ思うのであった。</p>
+                </div>
+            </div>
+        </section>
 
         <nav class="breadcrumb breadcrumb-footer">
             <a href="index.html">トップページに戻る</a>
