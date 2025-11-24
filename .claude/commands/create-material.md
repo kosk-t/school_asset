@@ -209,3 +209,40 @@
 - `level-basic`: 基礎
 - `level-standard`: 基礎〜標準
 - `level-advanced`: 標準〜発展
+
+### カリキュラムマップへの追加
+教材作成後、`assets/curriculum.json` の `materials` セクションに教材情報を追加してください。
+
+**追加するJSON形式**:
+```json
+"<テーマ名>": {
+  "file": "<テーマ名>_教材.html",
+  "category": "方程式",
+  "level": "standard",
+  "description": "簡潔な説明文",
+  "covers": [
+    "中1/方程式/一次方程式/等式の性質",
+    "中1/方程式/一次方程式/一次方程式の解き方",
+    "中1/方程式/一次方程式/一次方程式の利用"
+  ]
+}
+```
+
+**各フィールドの説明**:
+- `file`: HTMLファイル名
+- `category`: 数と式 / 方程式 / 関数 / 図形 / データの活用
+- `level`: basic / standard / advanced
+- `description`: 教材の簡潔な説明
+- `covers`: カバーする学習項目のパス（`学年/領域/単元/小項目` 形式）
+
+**covers の決め方**:
+1. `assets/curriculum.json` の `curriculum` セクションを参照
+2. 教材の内容（ルール・例題）から該当する項目を選ぶ
+3. パス形式で記載（例: `中3/数と式/平方根/分母の有理化`）
+4. 主要な項目を5〜10個程度選ぶ（完璧でなくてOK、後で調整可能）
+
+**網羅性チェック**:
+```bash
+node scripts/check-coverage.js
+```
+で現在のカバレッジを確認できます。
