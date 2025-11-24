@@ -59,6 +59,42 @@ section {
     padding: 10px 10px 0 10px;
 }
 
+/* パンくずリスト */
+.breadcrumb {
+    margin-bottom: 25px;
+    padding-top: 10px;
+}
+
+.breadcrumb a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: #f0f4f8;
+    border-radius: 20px;
+    transition: all 0.2s;
+}
+
+.breadcrumb a:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.breadcrumb a::before {
+    content: '←';
+    font-size: 0.85rem;
+}
+
+.breadcrumb-footer {
+    margin-top: 40px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
 /* =========================================
    タイポグラフィ (Typography)
    ========================================= */
@@ -403,6 +439,16 @@ strong {
 
     .container::before {
         height: 5px;
+    }
+
+    .breadcrumb {
+        margin-bottom: 20px;
+        padding-top: 5px;
+    }
+
+    .breadcrumb a {
+        font-size: 0.8rem;
+        padding: 5px 12px;
     }
 
     h1 {
