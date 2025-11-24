@@ -11,6 +11,9 @@
     <!-- 共通CSS -->
     <link rel="stylesheet" href="css/education-template.css">
 
+    <!-- バトルゲーム用CSS -->
+    <link rel="stylesheet" href="css/battle-game.css">
+
     <!-- KaTeX JS -->
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
@@ -57,7 +60,8 @@
                 <li><a href="#section5">よくあるつまづき</a></li>
                 <li><a href="#section6">仕上げチェックリスト</a></li>
                 <li><a href="#section7">練習問題</a></li>
-                <li><a href="#story">おまけ：実践ストーリー「海賊キャプテン・ルートの宝の地図」</a></li>
+                <li><a href="#story">おまけ：歴史ストーリー「ピタゴラス学派の悲劇」</a></li>
+                <li><a href="#game">🎮 バトルゲーム「ルートスライムを倒せ！」</a></li>
             </ol>
         </nav>
 
@@ -512,52 +516,293 @@
             📌 まとめ：累乗は「何個かける」、平方根は「何を2乗したらその数になるか」！
         </div>
 
-        <!-- おまけ：実践ストーリー -->
+        <!-- おまけ：歴史ストーリー -->
         <section id="story">
-            <h2>おまけ：実践ストーリー「海賊キャプテン・ルートの宝の地図」</h2>
+            <h2>おまけ：歴史ストーリー「ピタゴラス学派の悲劇」</h2>
             <div class="section">
                 <div class="story-box">
-                    <div class="story-title">📖 海賊キャプテン・ルートの宝の地図</div>
-                    <p>むかしむかし、伝説の海賊キャプテン・ルートが宝を隠したという。残されたのは暗号だらけの地図だった。</p>
-                    <p>冒険者タケシは、ついにその地図を手に入れた。地図にはこう書かれていた：</p>
+                    <div class="story-title">📖 ピタゴラス学派の悲劇（紀元前5世紀・古代ギリシャ）</div>
+                    <p>古代ギリシャに、数学の天才集団「ピタゴラス学派」がいた。リーダーのピタゴラスは「<strong>この世のすべては整数で表せる！</strong>」と主張していた。</p>
+                    <p>長さも重さも、ぜんぶ整数か分数で書ける。それが彼らの誇りであり、信仰だった。</p>
+
+                    <p><strong>【問題発生】</strong></p>
+                    <p>ある日、弟子のヒッパソスが正方形の対角線を調べていた。</p>
+                    <p>1辺が1の正方形。その対角線の長さは \( \sqrt{2} \)。ここまでは問題ない。</p>
+                    <div class="formula">
+                        \[ \sqrt{2} = 1.41421356237... \]
+                    </div>
+                    <p>「あれ...この数、どこまで計算しても終わらない。\( \frac{7}{5} \) でも \( \frac{99}{70} \) でもぴったりにならないぞ...？」</p>
+
+                    <p><strong>【大発見、そして...】</strong></p>
+                    <p>ヒッパソスは気づいてしまった。<strong>\( \sqrt{2} \) はどんな分数でも表せない</strong>。</p>
+                    <p>これは後に「無理数」と呼ばれる数の、人類初の発見だった。</p>
+
                     <p style="background: #fff9c4; padding: 10px; border-radius: 8px; margin: 15px 0;">
-                        「大きな岩から <strong>\( 2^3 \times 2^4 \)</strong> 歩、東へ進め。<br>
-                        そこから <strong>\( \sqrt{144} \)</strong> 歩、北へ進め。<br>
-                        最後に <strong>\( \sqrt{72} \)</strong> を簡単にした数だけ、西へ進め。<br>
-                        そこに宝がある。」
+                        <strong>ピタゴラス師匠の反応（想像）：</strong><br>
+                        「は？整数で表せない数がある？そんなわけないだろ！」<br>
+                        「...いや師匠、何度計算してもダメなんすよ」<br>
+                        「うそだろ...俺の40年なんだったんだ...」
                     </p>
-                    <p>「なんだこれ...数学の問題じゃないか！」とタケシは頭を抱えた。でも大丈夫、学校で習ったことを思い出そう。</p>
 
-                    <p><strong>【第1の暗号】</strong> \( 2^3 \times 2^4 \) を解く</p>
-                    <p>同じ底のかけ算だから、指数を足せばいい！</p>
-                    <div class="formula">
-                        \[ 2^3 \times 2^4 = 2^{3+4} = 2^7 = 128 \]
-                    </div>
-                    <p>「よし、東へ<strong>128歩</strong>だな！」</p>
+                    <p>学派の「すべては整数で表せる」という信仰が、たった1本の対角線で崩壊した。</p>
 
-                    <p><strong>【第2の暗号】</strong> \( \sqrt{144} \) を解く</p>
-                    <p>144の平方根...何を2乗したら144になる？</p>
-                    <div class="formula">
-                        \[ 12^2 = 144 \quad \text{だから} \quad \sqrt{144} = 12 \]
-                    </div>
-                    <p>「北へ<strong>12歩</strong>か！」</p>
-
-                    <p><strong>【第3の暗号】</strong> \( \sqrt{72} \) を簡単にする</p>
-                    <p>72を素因数分解して、完全平方数を見つける！</p>
-                    <div class="formula">
-                        \[ \sqrt{72} = \sqrt{36 \times 2} = \sqrt{36} \times \sqrt{2} = 6\sqrt{2} \]
-                    </div>
-                    <p>「簡単にした数...ルートの外に出た<strong>6</strong>のことだな！西へ<strong>6歩</strong>！」</p>
-
-                    <p>タケシは暗号通りに進み、ついに宝箱を発見した。中には金貨と、キャプテン・ルートからの手紙が入っていた。</p>
-                    <p style="background: #e8f5e9; padding: 10px; border-radius: 8px; margin: 15px 0;">
-                        「よくぞ解いた！累乗と平方根は<strong>逆の操作</strong>。それを理解した者だけが、この宝にたどり着ける。<br>
-                        ——キャプテン・ルート」
+                    <p style="background: #ffebee; padding: 10px; border-radius: 8px; margin: 15px 0;">
+                        そしてここからが怖い話。<br>
+                        伝説によると、この発見を外部に漏らしたヒッパソスは...<br>
+                        <strong>仲間に船から海へ投げ落とされた</strong>という。
                     </p>
-                    <p>「海賊なのに数学の先生みたいなこと言うな...」とタケシはツッコみながら、金貨を持ち帰ったのであった。</p>
+
+                    <p>今なら「すごい発見だね！論文書こう！」で済む話が、古代ギリシャでは命がけ。<strong>数学の新発見も楽じゃない</strong>。</p>
+                    <p>ちなみに \( \sqrt{2} \approx 1.41421356 \) は「<strong>ひとよひとよにひとみごろ</strong>（一夜一夜に人見頃）」で覚えられる。ヒッパソスもこの語呂合わせを発明していれば、もう少し平和に広められたかもしれない。</p>
                 </div>
             </div>
         </section>
+
+        <!-- ========== バトルゲーム ========== -->
+        <section id="game">
+            <h2>🎮 バトルゲーム「ルートスライムを倒せ！」</h2>
+            <div class="section">
+                <p>累乗と平方根の問題に答えて、モンスターを倒そう！正解すると攻撃、間違えると反撃を受けるぞ！</p>
+
+                <div class="battle-game" id="battleGame">
+                    <!-- コンボ表示 -->
+                    <div class="combo-display" id="comboDisplay">🔥 2 COMBO!</div>
+
+                    <!-- バトルエリア -->
+                    <div class="battle-area">
+                        <div class="character player-char">
+                            <div class="character-name">あなた</div>
+                            <div class="character-sprite" id="playerSprite">🧙</div>
+                            <div class="hp-bar-container">
+                                <div class="hp-bar player" id="playerHpBar" style="width: 100%;"></div>
+                            </div>
+                            <div class="hp-text"><span id="playerHp">100</span> / 100</div>
+                        </div>
+
+                        <div class="vs-mark">⚔️ VS</div>
+
+                        <div class="character enemy-char">
+                            <div class="character-name">ルートスライム</div>
+                            <div class="character-sprite" id="enemySprite">👾</div>
+                            <div class="hp-bar-container">
+                                <div class="hp-bar enemy" id="enemyHpBar" style="width: 100%;"></div>
+                            </div>
+                            <div class="hp-text"><span id="enemyHp">100</span> / 100</div>
+                        </div>
+                    </div>
+
+                    <!-- 問題エリア -->
+                    <div class="question-area" id="questionArea">
+                        <div class="question-label">問題 <span id="questionNum">1</span> / 5</div>
+                        <div class="question-text" id="questionText">2³ = ?</div>
+                    </div>
+
+                    <!-- 選択肢 -->
+                    <div class="choices" id="choices">
+                        <button class="choice-btn" onclick="checkAnswer(0)">6</button>
+                        <button class="choice-btn" onclick="checkAnswer(1)">8</button>
+                        <button class="choice-btn" onclick="checkAnswer(2)">9</button>
+                        <button class="choice-btn" onclick="checkAnswer(3)">16</button>
+                    </div>
+
+                    <!-- メッセージ -->
+                    <div class="battle-message" id="battleMessage">
+                        問題に答えて攻撃しよう！
+                    </div>
+
+                    <!-- 結果画面（非表示） -->
+                    <div class="battle-result" id="battleResult" style="display: none;">
+                        <div class="result-title" id="resultTitle">勝利！</div>
+                        <div class="result-stats" id="resultStats"></div>
+                        <button class="restart-btn" onclick="startGame()">もう一度挑戦</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+        // ゲーム状態
+        let playerHp = 100;
+        let enemyHp = 100;
+        let currentQuestion = 0;
+        let combo = 0;
+        let correctCount = 0;
+        let questions = [];
+
+        // 問題データ
+        const questionBank = [
+            // 累乗の基本
+            { q: "2³ = ?", choices: ["6", "8", "9", "16"], answer: 1 },
+            { q: "3² = ?", choices: ["6", "8", "9", "27"], answer: 2 },
+            { q: "5² = ?", choices: ["10", "15", "25", "50"], answer: 2 },
+            { q: "2⁴ = ?", choices: ["8", "12", "16", "32"], answer: 2 },
+            { q: "4² = ?", choices: ["8", "12", "16", "24"], answer: 2 },
+            { q: "10² = ?", choices: ["20", "100", "1000", "10"], answer: 1 },
+            // 平方根の基本
+            { q: "√9 = ?", choices: ["2", "3", "4", "81"], answer: 1 },
+            { q: "√16 = ?", choices: ["2", "4", "8", "256"], answer: 1 },
+            { q: "√25 = ?", choices: ["4", "5", "6", "125"], answer: 1 },
+            { q: "√36 = ?", choices: ["4", "6", "9", "18"], answer: 1 },
+            { q: "√49 = ?", choices: ["6", "7", "8", "14"], answer: 1 },
+            { q: "√64 = ?", choices: ["6", "7", "8", "32"], answer: 2 },
+            { q: "√81 = ?", choices: ["7", "8", "9", "27"], answer: 2 },
+            { q: "√100 = ?", choices: ["10", "20", "50", "1000"], answer: 0 },
+            { q: "√144 = ?", choices: ["11", "12", "13", "14"], answer: 1 },
+            // 指数法則
+            { q: "2² × 2³ = ?", choices: ["2⁵", "2⁶", "4⁵", "4⁶"], answer: 0 },
+            { q: "3² × 3² = ?", choices: ["3²", "3⁴", "6⁴", "9⁴"], answer: 1 },
+            { q: "5³ ÷ 5² = ?", choices: ["5", "25", "5⁵", "1"], answer: 0 },
+            // 平方根の簡略化（ルートの外に出る数）
+            { q: "√12 を簡単にすると？", choices: ["2√3", "3√2", "4√3", "6"], answer: 0 },
+            { q: "√18 を簡単にすると？", choices: ["2√9", "3√2", "6√3", "9√2"], answer: 1 },
+            { q: "√50 を簡単にすると？", choices: ["5√2", "2√5", "10√5", "25√2"], answer: 0 },
+        ];
+
+        // シャッフル関数
+        function shuffle(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        // ゲーム開始
+        function startGame() {
+            playerHp = 100;
+            enemyHp = 100;
+            currentQuestion = 0;
+            combo = 0;
+            correctCount = 0;
+            questions = shuffle(questionBank).slice(0, 5);
+
+            document.getElementById('playerHp').textContent = playerHp;
+            document.getElementById('enemyHp').textContent = enemyHp;
+            document.getElementById('playerHpBar').style.width = '100%';
+            document.getElementById('enemyHpBar').style.width = '100%';
+            document.getElementById('battleResult').style.display = 'none';
+            document.getElementById('questionArea').style.display = 'block';
+            document.getElementById('choices').style.display = 'grid';
+            document.getElementById('battleMessage').textContent = '問題に答えて攻撃しよう！';
+            document.getElementById('battleMessage').className = 'battle-message';
+            document.getElementById('comboDisplay').classList.remove('show');
+
+            showQuestion();
+        }
+
+        // 問題表示
+        function showQuestion() {
+            const q = questions[currentQuestion];
+            document.getElementById('questionNum').textContent = currentQuestion + 1;
+            document.getElementById('questionText').textContent = q.q;
+
+            const buttons = document.querySelectorAll('.choice-btn');
+            buttons.forEach((btn, i) => {
+                btn.textContent = q.choices[i];
+                btn.disabled = false;
+                btn.className = 'choice-btn';
+            });
+        }
+
+        // 回答チェック
+        function checkAnswer(selected) {
+            const q = questions[currentQuestion];
+            const buttons = document.querySelectorAll('.choice-btn');
+            buttons.forEach(btn => btn.disabled = true);
+
+            if (selected === q.answer) {
+                // 正解
+                combo++;
+                correctCount++;
+                const damage = 20 + (combo > 1 ? combo * 5 : 0); // コンボボーナス
+                enemyHp = Math.max(0, enemyHp - damage);
+
+                buttons[selected].classList.add('correct');
+                document.getElementById('playerSprite').classList.add('attack');
+                document.getElementById('enemySprite').classList.add('shake');
+
+                document.getElementById('enemyHp').textContent = enemyHp;
+                document.getElementById('enemyHpBar').style.width = enemyHp + '%';
+
+                let msg = `正解！ ${damage} ダメージ！`;
+                if (combo > 1) {
+                    msg += ` (${combo} COMBO!)`;
+                    document.getElementById('comboDisplay').textContent = `🔥 ${combo} COMBO!`;
+                    document.getElementById('comboDisplay').classList.add('show');
+                }
+                document.getElementById('battleMessage').textContent = msg;
+                document.getElementById('battleMessage').className = 'battle-message success';
+
+            } else {
+                // 不正解
+                combo = 0;
+                const damage = 25;
+                playerHp = Math.max(0, playerHp - damage);
+
+                buttons[selected].classList.add('wrong');
+                buttons[q.answer].classList.add('correct');
+                document.getElementById('enemySprite').classList.add('attack');
+                document.getElementById('playerSprite').classList.add('shake');
+
+                document.getElementById('playerHp').textContent = playerHp;
+                document.getElementById('playerHpBar').style.width = playerHp + '%';
+
+                document.getElementById('battleMessage').textContent = `不正解... ${damage} ダメージを受けた！`;
+                document.getElementById('battleMessage').className = 'battle-message damage';
+                document.getElementById('comboDisplay').classList.remove('show');
+            }
+
+            // アニメーションリセット
+            setTimeout(() => {
+                document.getElementById('playerSprite').classList.remove('attack', 'shake');
+                document.getElementById('enemySprite').classList.remove('attack', 'shake');
+            }, 500);
+
+            // 次へ
+            setTimeout(() => {
+                if (enemyHp <= 0) {
+                    showResult(true);
+                } else if (playerHp <= 0) {
+                    showResult(false);
+                } else {
+                    currentQuestion++;
+                    if (currentQuestion >= questions.length) {
+                        // 問題終了時の判定
+                        showResult(enemyHp < playerHp);
+                    } else {
+                        showQuestion();
+                    }
+                }
+            }, 1200);
+        }
+
+        // 結果表示
+        function showResult(won) {
+            document.getElementById('questionArea').style.display = 'none';
+            document.getElementById('choices').style.display = 'none';
+            document.getElementById('comboDisplay').classList.remove('show');
+
+            const resultTitle = document.getElementById('resultTitle');
+            if (won) {
+                resultTitle.textContent = '🎉 勝利！';
+                resultTitle.className = 'result-title win';
+            } else {
+                resultTitle.textContent = '💀 敗北...';
+                resultTitle.className = 'result-title lose';
+            }
+
+            document.getElementById('resultStats').innerHTML =
+                `正解数: ${correctCount} / 5<br>残りHP: あなた ${playerHp} / 敵 ${enemyHp}`;
+
+            document.getElementById('battleResult').style.display = 'block';
+            document.getElementById('battleMessage').textContent =
+                won ? 'おめでとう！累乗と平方根をマスターした！' : 'もう一度復習して再挑戦しよう！';
+        }
+
+        // ページ読み込み時にゲーム開始
+        document.addEventListener('DOMContentLoaded', startGame);
+        </script>
 
         <nav class="breadcrumb breadcrumb-footer">
             <a href="index.html">トップページに戻る</a>

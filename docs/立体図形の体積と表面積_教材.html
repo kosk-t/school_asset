@@ -57,7 +57,7 @@
                 <li><a href="#section5">よくあるつまづき</a></li>
                 <li><a href="#section6">仕上げチェックリスト</a></li>
                 <li><a href="#section7">練習問題</a></li>
-                <li><a href="#story">おまけ：実践ストーリー「アイスクリーム屋の悩み」</a></li>
+                <li><a href="#story">おまけ：歴史ストーリー「アルキメデスと王冠の謎」</a></li>
             </ol>
         </nav>
 
@@ -553,50 +553,79 @@
         <div class="related-materials">
             <h3>📎 関連教材</h3>
             <ul>
-                <li><a href="平面図形の面積公式_教材.html" class="tag-prerequisite">平面図形の面積公式</a></li>
-                <li><a href="円と球の性質_教材.html" class="tag-prerequisite">円と球の性質</a></li>
-                <li><a href="おうぎ形の弧と面積_教材.html" class="tag-related">おうぎ形の弧と面積</a></li>
+                <li>
+                    <a href="平面図形の面積公式_教材.html" class="tag-prerequisite">
+                        <span class="material-name">平面図形の面積公式</span>
+                        <span class="relation-note">底面積の計算に必要</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="円と球の性質_教材.html" class="tag-prerequisite">
+                        <span class="material-name">円と球の性質</span>
+                        <span class="relation-note">円柱・円錐・球の計算に使う</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="おうぎ形の弧と面積_教材.html" class="tag-related">
+                        <span class="material-name">おうぎ形の弧と面積</span>
+                        <span class="relation-note">円錐の展開図に必要</span>
+                    </a>
+                </li>
             </ul>
         </div>
 
         <!-- ========== おまけ：実践ストーリー ========== -->
         <section id="story">
-            <h2>おまけ：実践ストーリー「アイスクリーム屋の悩み」</h2>
+            <h2>おまけ：歴史ストーリー「アルキメデスと王冠の謎」</h2>
             <div class="section">
                 <div class="story-box">
-                    <div class="story-title">📖 アイスクリーム屋の悩み</div>
+                    <div class="story-title">📖 アルキメデスと王冠の謎（紀元前3世紀・古代ギリシャ）</div>
 
-                    <p>アイスクリーム屋のマスター・タカシは新商品「メガコーン」を開発中。「普通のコーンより何倍のアイスが入るか計算しないと、値段が決められない...」と悩んでいた。</p>
+                    <p>紀元前3世紀、シラクサ（現在のイタリア・シチリア島）の王ヒエロン2世は、神殿に捧げる王冠を金細工師に作らせた。しかし「あの職人、金の一部を銀にすり替えて、残りを懐に入れたのでは...？」と疑いを持った。</p>
 
-                    <p><strong>普通のコーン（円錐）</strong></p>
-                    <p>半径 3 cm、高さ 10 cm</p>
-                    <div class="formula">
-                        \[ V_1 = \frac{1}{3}\pi r^2 h = \frac{1}{3} \times \pi \times 3^2 \times 10 = \frac{1}{3} \times 9\pi \times 10 = 30\pi \text{ cm}^3 \]
+                    <p>王は天才数学者アルキメデスに命じた。「<strong>王冠を傷つけずに、純金かどうか調べよ</strong>」</p>
+
+                    <p>アルキメデスは困った。重さを測るだけでは分からない。金と銀を混ぜても、同じ重さにすることはできる。形を変えずに中身を調べる方法は...？</p>
+
+                    <p style="text-align: center; font-size: 1.2em; color: #ff9800; margin: 20px 0;">💡 ある日、風呂に入った瞬間、ひらめいた！</p>
+
+                    <p>湯船に体を沈めると水があふれる。これは<strong>体が水を押しのけた分だけ水が溢れる</strong>ということ。つまり、<strong>物体を水に沈めれば体積が測れる</strong>！</p>
+
+                    <p>「ユーレカ！ユーレカ！（分かった！分かった！）」と叫びながら、<strong>裸のまま街を走った</strong>という伝説が残っている。シラクサ市民はさぞ驚いたことだろう。「天才と変人は紙一重」とはこのことか。</p>
+
+                    <div class="important-rule" style="margin: 20px 0;">
+                        【アルキメデスの発見】物体を水に沈めると、溢れた水の体積 ＝ 物体の体積
                     </div>
 
-                    <p><strong>メガコーン（円錐）</strong></p>
-                    <p>半径 4 cm、高さ 15 cm</p>
+                    <p><strong>🔬 実際に王冠を調べてみよう（数値は例）</strong></p>
+
+                    <p>王冠の重さ：1000 g</p>
+                    <p>王冠を水に沈めて溢れた水の量から測った体積：<strong>60 cm³</strong></p>
+
+                    <p><strong>もし純金なら？</strong></p>
+                    <p>金の密度は 19.3 g/cm³ なので、1000g の純金の体積は：</p>
                     <div class="formula">
-                        \[ V_2 = \frac{1}{3}\pi r^2 h = \frac{1}{3} \times \pi \times 4^2 \times 15 = \frac{1}{3} \times 16\pi \times 15 = 80\pi \text{ cm}^3 \]
+                        \[ V_{\text{純金}} = \frac{1000}{19.3} \approx 51.8 \text{ cm}^3 \]
                     </div>
 
-                    <p><strong>何倍入る？</strong></p>
+                    <p><strong>もし純銀なら？</strong></p>
+                    <p>銀の密度は 10.5 g/cm³ なので、1000g の純銀の体積は：</p>
                     <div class="formula">
-                        \[ \frac{V_2}{V_1} = \frac{80\pi}{30\pi} = \frac{80}{30} = \frac{8}{3} \approx 2.67 \text{倍} \]
+                        \[ V_{\text{純銀}} = \frac{1000}{10.5} \approx 95.2 \text{ cm}^3 \]
                     </div>
 
-                    <p><strong>おまけでコーンの表面積も計算</strong>（どれだけコーンの材料が必要か）</p>
-                    <p>メガコーンの母線を三平方の定理で求める：</p>
-                    <div class="formula">
-                        \[ \ell = \sqrt{4^2 + 15^2} = \sqrt{16 + 225} = \sqrt{241} \approx 15.5 \text{ cm} \]
-                    </div>
-                    <div class="formula">
-                        \[ S = \pi r\ell = \pi \times 4 \times 15.5 = 62\pi \approx 195 \text{ cm}^2 \]
-                    </div>
+                    <p><strong>結果</strong></p>
+                    <p>王冠の体積 60 cm³ は、純金（51.8 cm³）より大きく、純銀（95.2 cm³）より小さい。</p>
+                    <p>→ <strong style="color: #e53935;">銀が混ざっている！</strong></p>
 
-                    <p>「なるほど、アイスは約2.7倍入るけど、コーンの材料も増えるな...」</p>
-                    <p>結局、普通の300円の2.7倍で810円...は高すぎるので、「メガコーン 650円」に決定。</p>
-                    <p>「利益は減るけど、お客さんが喜べばいいか！」とタカシは笑った。...が、原価計算を間違えていることに後から気づくのであった。</p>
+                    <p>こうして金細工師の不正が暴かれた。体積を測ることで、物の「密度」が分かり、中身の正体を見破ることができたのだ。金細工師がその後どうなったかは...想像にお任せする。（古代ギリシャの王様を怒らせると、だいたいロクなことにならない）</p>
+
+                    <div class="tip-box" style="margin-top: 20px;">
+                        <strong>💡 この話のポイント</strong><br>
+                        ・同じ重さでも、材質が違えば体積が違う（密度の違い）<br>
+                        ・複雑な形の物体でも、水に沈めれば体積が測れる<br>
+                        ・体積の測定は、2200年以上前から実用的に使われていた！
+                    </div>
                 </div>
             </div>
         </section>

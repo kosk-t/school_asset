@@ -770,34 +770,50 @@ strong {
 }
 
 .related-materials a {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 16px;
     background: #fff;
     border: 2px solid #dee2e6;
-    border-radius: 25px;
+    border-radius: 12px;
     color: var(--primary-color);
     text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
     transition: all 0.2s;
+    min-width: 180px;
 }
 
 .related-materials a:hover {
-    background: var(--primary-color);
     border-color: var(--primary-color);
-    color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 163, 255, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 163, 255, 0.15);
 }
 
-.related-materials .tag-prerequisite::before {
+.related-materials a:hover .material-name {
+    color: var(--primary-color);
+}
+
+.related-materials .material-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.related-materials .tag-prerequisite .material-name::before {
     content: '📚';
 }
 
-.related-materials .tag-related::before {
+.related-materials .tag-related .material-name::before {
     content: '🔗';
+}
+
+.related-materials .relation-note {
+    font-size: 0.8rem;
+    color: #636e72;
+    font-weight: normal;
+    padding-left: 22px;
 }
 
 @media (max-width: 480px) {
@@ -811,6 +827,5 @@ strong {
 
     .related-materials a {
         width: 100%;
-        justify-content: center;
     }
 }

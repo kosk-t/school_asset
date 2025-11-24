@@ -57,7 +57,7 @@
                 <li><a href="#section5">よくあるつまづき</a></li>
                 <li><a href="#section6">仕上げチェックリスト</a></li>
                 <li><a href="#section7">練習問題</a></li>
-                <li><a href="#story">おまけ：実践ストーリー「畑の面積を測れ！」</a></li>
+                <li><a href="#story">おまけ：歴史と数学「幾何学はナイル川から生まれた」</a></li>
             </ol>
         </nav>
 
@@ -147,6 +147,9 @@
 
                             <text x="70" y="110" font-size="14" fill="#e53935" text-anchor="middle">切取</text>
 
+                            <!-- 平行四辺形の底辺ラベル -->
+                            <text x="115" y="155" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">底辺 b</text>
+
                             <!-- 矢印 -->
                             <path d="M 250 100 L 320 100" stroke="#ff9800" stroke-width="3" marker-end="url(#arrow-transform)"/>
                             <text x="285" y="85" font-size="14" fill="#ff9800" text-anchor="middle">移動</text>
@@ -154,8 +157,8 @@
                             <!-- 変形後の長方形 -->
                             <rect x="360" y="60" width="130" height="80" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
 
-                            <!-- 移動した三角形 -->
-                            <polygon points="490,140 530,60 530,140" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" stroke-dasharray="4,2"/>
+                            <!-- 移動した三角形（長方形の内側、右端に配置） -->
+                            <polygon points="450,140 490,60 490,140" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" stroke-dasharray="4,2"/>
 
                             <!-- 寸法 -->
                             <text x="425" y="155" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">底辺 b</text>
@@ -163,7 +166,7 @@
                             <text x="540" y="105" font-size="14" font-weight="bold" fill="#4caf50">高さ h</text>
 
                             <!-- 面積が等しい -->
-                            <text x="570" y="100" font-size="16" font-weight="bold" fill="#333">=</text>
+                            <text x="570" y="100" font-size="16" font-weight="bold" fill="#333">　=</text>
                             <text x="620" y="100" font-size="14" font-weight="bold" fill="#1976d2">b × h</text>
                         </svg>
                         <div class="svg-caption">端を切り取って移動すると長方形になる → 面積 = 底辺 × 高さ</div>
@@ -519,47 +522,42 @@
         <div class="related-materials">
             <h3>📎 関連教材</h3>
             <ul>
-                <li><a href="円と球の性質_教材.html" class="tag-related">円と球の性質</a></li>
-                <li><a href="立体図形の体積と表面積_教材.html" class="tag-related">立体図形の体積と表面積</a></li>
+                <li>
+                    <a href="円と球の性質_教材.html" class="tag-related">
+                        <span class="material-name">円と球の性質</span>
+                        <span class="relation-note">円の面積公式へ発展</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="立体図形の体積と表面積_教材.html" class="tag-related">
+                        <span class="material-name">立体図形の体積と表面積</span>
+                        <span class="relation-note">底面積の計算に使う</span>
+                    </a>
+                </li>
             </ul>
         </div>
 
-        <!-- ========== おまけ：実践ストーリー ========== -->
+        <!-- ========== おまけ：歴史と数学 ========== -->
         <section id="story">
-            <h2>おまけ：実践ストーリー「畑の面積を測れ！」</h2>
+            <h2>おまけ：歴史と数学「幾何学はナイル川から生まれた」</h2>
             <div class="section">
                 <div class="story-box">
-                    <div class="story-title">📖 畑の面積を測れ！</div>
+                    <div class="story-title">📖 幾何学はナイル川から生まれた（古代エジプト）</div>
 
-                    <p>農家のタケシおじさんは、畑を3つの区画に分けて野菜を育てている。「そろそろ肥料を買わなきゃ。でも、それぞれの区画にどれだけ必要かな？」と悩んでいた。</p>
-                    <p>甥っ子のケンタが「僕、面積計算できるよ！」と手を挙げた。</p>
+                    <p>紀元前3000年頃の古代エジプト。毎年夏になるとナイル川が氾濫し、肥沃な土を運んでくる。農業には最高...だが、一つ大問題があった。</p>
+                    <p><strong>「洪水で農地の境界線が全部消える」</strong></p>
 
-                    <p><strong>区画A：平行四辺形の畑</strong></p>
-                    <p>底辺 15 m、高さ 8 m（メジャーで測定）</p>
-                    <div class="formula">
-                        \[ A_A = bh = 15 \times 8 = 120 \text{ m}^2 \]
-                    </div>
+                    <p>「おい、ここは俺の畑だぞ！」「何言ってんだ、うちの土地だ！」...毎年こんな争いが絶えなかった。</p>
 
-                    <p><strong>区画B：三角形の畑</strong></p>
-                    <p>底辺 12 m、高さ 10 m</p>
-                    <div class="formula">
-                        \[ A_B = \frac{1}{2}bh = \frac{1}{2} \times 12 \times 10 = 60 \text{ m}^2 \]
-                    </div>
+                    <p>そこで登場したのが<strong>「縄張り師（ロープストレッチャー）」</strong>という専門職。彼らは縄を使って土地を測り直し、面積を計算して公平に再分配した。</p>
 
-                    <p><strong>区画C：台形の畑</strong></p>
-                    <p>上底 6 m、下底 14 m、高さ 9 m</p>
-                    <div class="formula">
-                        \[ A_C = \frac{1}{2}(a+b)h = \frac{1}{2}(6+14) \times 9 = \frac{1}{2} \times 20 \times 9 = 90 \text{ m}^2 \]
-                    </div>
+                    <p>三角形の畑なら「底辺×高さ÷2」、台形なら「(上底+下底)×高さ÷2」...そう、今みんなが学んでいる公式は、4000年以上前のエジプト人が発明したものなのだ。</p>
 
-                    <p><strong>合計面積：</strong></p>
-                    <div class="formula">
-                        \[ 120 + 60 + 90 = 270 \text{ m}^2 \]
-                    </div>
+                    <p>ちなみに「幾何学」の英語 <strong>geometry</strong> は、ギリシャ語の <strong>geo（土地）+ metry（測量）</strong> が語源。文字通り「土地を測る学問」という意味だ。</p>
 
-                    <p>「なるほど、全部で 270 m² か。肥料は10 m²あたり1袋必要だから...27袋だな！」とタケシおじさん。</p>
-                    <p>「ケンタ、助かったよ。お礼にトマトたくさん持っていきな！」</p>
-                    <p>...しかし帰り道、ケンタは「もしかして畑仕事も手伝わされる流れ？」と不安になるのであった。</p>
+                    <p>面積公式のおかげでエジプトは平和に...かと思いきや、面積が大きいほど税金も高くなる仕組みだったので、農民たちは「うちの畑、もうちょっと小さく測ってくれない？」と縄張り師に賄賂を渡そうとしたとか。</p>
+
+                    <p><strong>人間、4000年経っても変わらない。</strong></p>
                 </div>
             </div>
         </section>
