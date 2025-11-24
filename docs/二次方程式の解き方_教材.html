@@ -50,35 +50,43 @@
         <nav class="toc">
             <div class="toc-title">📚 目次</div>
             <ol class="toc-list">
-                <li><a href="#section1">テーマの定義／最重要の考え方</a></li>
+                <li><a href="#section1">テーマの定義</a></li>
                 <li><a href="#section2">覚えるルール</a></li>
-                <li><a href="#section3">簡単にするコツ</a></li>
-                <li><a href="#section4">代表的な計算例</a></li>
-                <li><a href="#section5">基本的な計算手順</a></li>
-                <li><a href="#section6">よくあるつまづき</a></li>
-                <li><a href="#section7">仕上げチェックリスト</a></li>
+                <li><a href="#section3">例題と解き方</a></li>
+                <li><a href="#section4">簡単にするコツ</a></li>
+                <li><a href="#section5">よくあるつまづき</a></li>
+                <li><a href="#section6">仕上げチェックリスト</a></li>
+                <li><a href="#section7">練習問題</a></li>
                 <li><a href="#story">おまけ：実践ストーリー「りんご売りの商人」</a></li>
             </ol>
         </nav>
 
-        <!-- 1. テーマの定義／最重要の考え方 -->
+        <!-- 1. テーマの定義 -->
         <section id="section1">
-            <h2>1. テーマの定義／最重要の考え方</h2>
+            <h2>1. テーマの定義</h2>
+            <div class="section">
+                <p>「面積が12㎡の長方形の花壇を作りたい」「ボールを投げ上げたとき何秒後に地面に落ちるか」——こうした問題を解くには、2乗を含む方程式を解く必要があります。</p>
+
+                <p>このページでは、<strong>二次方程式の解き方</strong>を学びます：</p>
+                <ul>
+                    <li><strong>二次方程式とは何か</strong>：\(ax^2 + bx + c = 0\) の形の方程式</li>
+                    <li><strong>3つの解法</strong>：因数分解・平方完成・解の公式</li>
+                    <li><strong>使い分けの基準</strong>：どの方法をいつ使うか</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2. 覚えるルール -->
+        <section id="section2">
+            <h2>2. 覚えるルール</h2>
             <div class="section">
                 <p><strong>二次方程式</strong>とは、\(x\) の2乗を含む方程式です：</p>
                 <div class="formula">
                     \[ ax^2 + bx + c = 0 \quad (a \neq 0) \]
                 </div>
 
-                <p>この方程式を解く方法は主に<strong>3つ</strong>あります：</p>
-                <ul>
-                    <li><strong>因数分解</strong>：左辺を積の形に変形して解く</li>
-                    <li><strong>平方完成</strong>：\((x+p)^2 = q\) の形に変形して解く</li>
-                    <li><strong>解の公式</strong>：公式に代入して機械的に解く</li>
-                </ul>
-
                 <div class="important-rule">
-                    🎯 最重要の考え方：どの方法でも「=0」の形にして左辺を変形する！
+                    🎯 最重要：どの方法でも「=0」の形にして左辺を変形する！
                 </div>
 
                 <!-- 3つの方法の概要図 -->
@@ -113,13 +121,7 @@
                     </svg>
                     <div class="svg-caption">状況に応じて使い分けよう</div>
                 </div>
-            </div>
-        </section>
 
-        <!-- 2. 覚えるルール -->
-        <section id="section2">
-            <h2>2. 覚えるルール</h2>
-            <div class="section">
                 <div class="rule-box">
                     <strong>📌 零積の法則（因数分解の基本）</strong>
                     <div class="formula">
@@ -212,7 +214,7 @@
 
                 <!-- たすき掛け（a ≠ 1） -->
                 <div class="rule-box">
-                    <strong>📌 たすき掛けで因数分解（a ≠ 1 のとき）</strong> <a href="#ex-cross" class="example-link">→ 例5</a>
+                    <strong>📌 たすき掛けで因数分解（a ≠ 1 のとき）</strong> <a href="#ex-cross" class="example-link">→ 例4</a>
                     <p>\(ax^2 + bx + c\) で \(a \neq 1\) なら、<strong>たすき掛け</strong>で組み合わせを探す</p>
                     <div class="formula">
                         \[ ax^2 + bx + c = (px + q)(rx + s) \quad \text{のとき} \quad pr = a,\ qs = c,\ ps + qr = b \]
@@ -347,7 +349,7 @@
                 </div>
 
                 <div class="rule-box">
-                    <strong>📌 平方完成の公式</strong> <a href="#ex-completing" class="example-link">→ 例4</a>
+                    <strong>📌 平方完成の公式</strong> <a href="#ex-completing" class="example-link">→ 例5</a>
                     <div class="formula">
                         \[ x^2 + ax = \left(x + \frac{a}{2}\right)^2 - \left(\frac{a}{2}\right)^2 \]
                     </div>
@@ -465,50 +467,28 @@
             </div>
         </section>
 
-        <!-- 3. 簡単にするコツ -->
+        <!-- 3. 例題と解き方 -->
         <section id="section3">
-            <h2>3. 簡単にするコツ</h2>
+            <h2>3. 例題と解き方</h2>
             <div class="section">
-                <div class="tip-box">
-                    <strong>✏️ コツ1：まず共通因数をくくる</strong><br>
-                    \(2x^2 + 6x = 0\) → \(2x(x + 3) = 0\) のように、最初に共通因数を出す。
-                </div>
+                <p>ルールを使って実際に解いてみましょう。</p>
 
-                <div class="tip-box">
-                    <strong>✏️ コツ2：係数が小さいときは因数分解を試す</strong><br>
-                    係数が小さい整数なら、因数分解が一番早い。「足して・かけて」で2数を探す。
-                </div>
-
-                <div class="tip-box">
-                    <strong>✏️ コツ3：因数分解できないときは解の公式</strong><br>
-                    無理に因数分解しようとせず、解の公式を使う。どんな問題でも解ける万能ツール。
-                </div>
-
-                <div class="tip-box">
-                    <strong>✏️ コツ4：右辺を0にしてから解く</strong><br>
-                    \(x^2 = 5x + 6\) → \(x^2 - 5x - 6 = 0\) のように、まず右辺を0にする。
-                </div>
-
-                <div class="tip-box">
-                    <strong>✏️ コツ5：平方完成は頂点も分かる一石二鳥</strong><br>
-                    グラフの頂点座標も求めたいときは平方完成。\(y = a(x-p)^2 + q\) の頂点は \((p, q)\)。
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. 代表的な計算例 -->
-        <section id="section4">
-            <h2>4. 代表的な計算例</h2>
-            <div class="section">
+                <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 因数分解で解く</h3>
 
                 <div class="example-box" id="ex-basic">
                     <div class="example-title">
                         <span class="number-badge">例1</span>因数分解で解く（基本パターン）
                     </div>
                     <p>\(x^2 - 5x + 6 = 0\) を解く</p>
-                    <p><strong>手順：</strong>足して -5、かけて 6 → -2 と -3</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>すでに \(=0\) の形なので、左辺を因数分解する</li>
+                        <li>「足して -5、かけて 6」になる2数を探す → <strong>-2 と -3</strong></li>
+                        <li>因数分解して零積の法則を使う</li>
+                    </ol>
                     <div class="formula">
-                        \[ (x - 2)(x - 3) = 0 \]
+                        \[ x^2 - 5x + 6 = (x - 2)(x - 3) = 0 \]
+                        \[ x - 2 = 0 \ \text{または} \ x - 3 = 0 \]
                         \[ x = 2, \ 3 \]
                     </div>
                 </div>
@@ -518,12 +498,17 @@
                         <span class="number-badge">例2</span>因数分解で解く（共通因数あり）
                     </div>
                     <p>\(x^2 + 4x = 0\) を解く</p>
-                    <p><strong>手順：</strong>共通因数 \(x\) でくくる</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>定数項がない → 共通因数 \(x\) があるのでくくり出す</li>
+                        <li>零積の法則で、各因数 = 0 とする</li>
+                    </ol>
                     <div class="formula">
-                        \[ x(x + 4) = 0 \]
+                        \[ x^2 + 4x = x(x + 4) = 0 \]
+                        \[ x = 0 \ \text{または} \ x + 4 = 0 \]
                         \[ x = 0, \ -4 \]
                     </div>
-                    <p style="color: #e65100;"><strong>注意：</strong> \(x = 0\) を忘れやすい！</p>
+                    <p style="color: #e65100;"><strong>注意：</strong> \(x = 0\) を忘れやすい！両辺を \(x\) で割ると \(x = 0\) が消えてしまうので、必ず因数分解で解くこと。</p>
                 </div>
 
                 <div class="example-box" id="ex-difference">
@@ -531,34 +516,31 @@
                         <span class="number-badge">例3</span>因数分解で解く（和と差の積）
                     </div>
                     <p>\(x^2 - 16 = 0\) を解く</p>
-                    <p><strong>手順：</strong>\(x^2 - 16 = x^2 - 4^2\) なので和と差の積を使う</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>\(x\) の1次の項がない → \(a^2 - b^2\) の形を探す</li>
+                        <li>\(x^2 - 16 = x^2 - 4^2\) なので「和と差の積」\((a+b)(a-b)\) を使う</li>
+                        <li>零積の法則を適用</li>
+                    </ol>
                     <div class="formula">
-                        \[ (x + 4)(x - 4) = 0 \]
+                        \[ x^2 - 16 = (x + 4)(x - 4) = 0 \]
+                        \[ x + 4 = 0 \ \text{または} \ x - 4 = 0 \]
                         \[ x = \pm 4 \]
-                    </div>
-                </div>
-
-                <div class="example-box" id="ex-completing">
-                    <div class="example-title">
-                        <span class="number-badge">例4</span>平方完成で解く
-                    </div>
-                    <p>\(x^2 + 4x - 5 = 0\) を解く</p>
-                    <p><strong>手順：</strong></p>
-                    <div class="formula">
-                        \[ x^2 + 4x = 5 \quad \text{（定数項を右辺へ）} \]
-                        \[ (x + 2)^2 - 4 = 5 \quad \text{（平方完成）} \]
-                        \[ (x + 2)^2 = 9 \]
-                        \[ x + 2 = \pm 3 \]
-                        \[ x = 1, \ -5 \]
                     </div>
                 </div>
 
                 <div class="example-box" id="ex-cross">
                     <div class="example-title">
-                        <span class="number-badge">例5</span>たすき掛けで因数分解して解く
+                        <span class="number-badge">例4</span>たすき掛けで因数分解して解く
                     </div>
                     <p>\(2x^2 + 5x + 3 = 0\) を解く</p>
-                    <p><strong>手順：</strong>たすき掛けで因数分解</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>\(x^2\) の係数が1でない → たすき掛けで因数分解</li>
+                        <li>\(x^2\) の係数 2 を「2×1」、定数項 3 を「3×1」に分解</li>
+                        <li>斜めに掛けて足した結果が \(x\) の係数（5）になる組み合わせを探す</li>
+                        <li>零積の法則を適用</li>
+                    </ol>
                     <!-- たすき掛けの計算図 -->
                     <div class="svg-container">
                         <svg width="400" height="120" viewBox="0 0 400 120">
@@ -588,17 +570,52 @@
                     </div>
                     <div class="formula">
                         \[ (2x + 3)(x + 1) = 0 \]
+                        \[ 2x + 3 = 0 \ \text{または} \ x + 1 = 0 \]
                         \[ x = -\frac{3}{2}, \ -1 \]
                     </div>
                 </div>
+
+                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 平方完成で解く</h3>
+
+                <div class="example-box" id="ex-completing">
+                    <div class="example-title">
+                        <span class="number-badge">例5</span>平方完成で解く
+                    </div>
+                    <p>\(x^2 + 4x - 5 = 0\) を解く</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>定数項を右辺に移動</li>
+                        <li>\(x\) の係数（4）を半分にして2乗 → \(2^2 = 4\) を両辺に足す</li>
+                        <li>左辺を \((x + 2)^2\) の形にまとめる</li>
+                        <li>両辺の平方根をとる（±を忘れずに）</li>
+                        <li>\(x\) について解く</li>
+                    </ol>
+                    <div class="formula">
+                        \[ x^2 + 4x = 5 \quad \text{（定数項を右辺へ）} \]
+                        \[ x^2 + 4x + 4 = 5 + 4 \quad \text{（両辺に } 2^2 = 4 \text{ を足す）} \]
+                        \[ (x + 2)^2 = 9 \]
+                        \[ x + 2 = \pm 3 \quad \text{（平方根をとる）} \]
+                        \[ x = -2 + 3 = 1, \quad x = -2 - 3 = -5 \]
+                    </div>
+                </div>
+
+                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 解の公式で解く</h3>
 
                 <div class="example-box" id="ex-formula">
                     <div class="example-title">
                         <span class="number-badge">例6</span>解の公式で解く
                     </div>
-                    <p>\(2x^2 + 3x - 2 = 0\) を解く（\(a=2, b=3, c=-2\)）</p>
+                    <p>\(2x^2 + 3x - 2 = 0\) を解く</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>係数を読み取る：\(a = 2, b = 3, c = -2\)</li>
+                        <li>判別式 \(D = b^2 - 4ac\) を計算</li>
+                        <li>解の公式 \(x = \frac{-b \pm \sqrt{D}}{2a}\) に代入</li>
+                        <li>計算して約分</li>
+                    </ol>
                     <div class="formula">
-                        \[ x = \frac{-3 \pm \sqrt{9 - 4 \cdot 2 \cdot (-2)}}{2 \cdot 2} = \frac{-3 \pm \sqrt{9 + 16}}{4} = \frac{-3 \pm 5}{4} \]
+                        \[ D = 3^2 - 4 \cdot 2 \cdot (-2) = 9 + 16 = 25 \]
+                        \[ x = \frac{-3 \pm \sqrt{25}}{2 \cdot 2} = \frac{-3 \pm 5}{4} \]
                         \[ x = \frac{-3 + 5}{4} = \frac{1}{2}, \quad x = \frac{-3 - 5}{4} = -2 \]
                     </div>
                 </div>
@@ -607,98 +624,60 @@
                     <div class="example-title">
                         <span class="number-badge">例7</span>判別式で解の個数を判定
                     </div>
-                    <p>\(x^2 - 4x + 4 = 0\) の解の個数を調べる（\(a=1, b=-4, c=4\)）</p>
+                    <p>\(x^2 - 4x + 4 = 0\) の解の個数を調べ、解を求める</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>係数を読み取る：\(a = 1, b = -4, c = 4\)</li>
+                        <li>判別式 \(D = b^2 - 4ac\) を計算して解の個数を判定</li>
+                        <li>\(D = 0\) なら重解、解の公式で求める</li>
+                    </ol>
                     <div class="formula">
                         \[ D = (-4)^2 - 4 \cdot 1 \cdot 4 = 16 - 16 = 0 \]
                     </div>
-                    <p>\(D = 0\) なので、<strong>解は1つ（重解）</strong>：\(x = 2\)</p>
+                    <p>\(D = 0\) なので<strong>解は1つ（重解）</strong></p>
+                    <div class="formula">
+                        \[ x = \frac{-(-4)}{2 \cdot 1} = \frac{4}{2} = 2 \]
+                    </div>
+                    <p>（検算：\((x-2)^2 = x^2 - 4x + 4 = 0\) ✓）</p>
                 </div>
+
             </div>
         </section>
 
-        <!-- 5. 基本手順 -->
-        <section id="section5">
-            <h2>5. 基本的な計算手順</h2>
+        <!-- 4. 簡単にするコツ -->
+        <section id="section4">
+            <h2>4. 簡単にするコツ</h2>
             <div class="section">
-                <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 因数分解で解く手順</h3>
-                <div class="step-list">
-                    <div class="step-item">
-                        <span class="number-badge">1</span>
-                        <div>右辺を0にして \(ax^2 + bx + c = 0\) の形にする</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">2</span>
-                        <div>共通因数があればくくり出す</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">3</span>
-                        <div>「足して b、かけて c」となる2数を見つける</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">4</span>
-                        <div>\((x + p)(x + q) = 0\) の形に因数分解する</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">5</span>
-                        <div>零積の法則で \(x = -p, -q\) を求める</div>
-                    </div>
+                <div class="tip-box">
+                    <strong>✏️ コツ1：まず共通因数をくくる</strong><br>
+                    \(2x^2 + 6x = 0\) → \(2x(x + 3) = 0\) のように、最初に共通因数を出す。
                 </div>
 
-                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 平方完成で解く手順</h3>
-                <div class="step-list">
-                    <div class="step-item">
-                        <span class="number-badge">1</span>
-                        <div>定数項を右辺に移動：\(x^2 + bx = -c\)</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">2</span>
-                        <div>左辺を \((x + \frac{b}{2})^2\) に変形し、両辺に \((\frac{b}{2})^2\) を足す</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">3</span>
-                        <div>\((x + p)^2 = q\) の形にする</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">4</span>
-                        <div>両辺の平方根をとる：\(x + p = \pm\sqrt{q}\)</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">5</span>
-                        <div>\(x = -p \pm \sqrt{q}\) を計算する</div>
-                    </div>
+                <div class="tip-box">
+                    <strong>✏️ コツ2：係数が小さいときは因数分解を試す</strong><br>
+                    係数が小さい整数なら、因数分解が一番早い。「足して・かけて」で2数を探す。
                 </div>
 
-                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 解の公式で解く手順</h3>
-                <div class="step-list">
-                    <div class="step-item">
-                        <span class="number-badge">1</span>
-                        <div>\(ax^2 + bx + c = 0\) から係数 \(a, b, c\) を読み取る</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">2</span>
-                        <div>判別式 \(D = b^2 - 4ac\) を計算する</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">3</span>
-                        <div>公式 \(x = \frac{-b \pm \sqrt{D}}{2a}\) に代入する</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">4</span>
-                        <div>計算して答えを出す（約分を忘れずに）</div>
-                    </div>
+                <div class="tip-box">
+                    <strong>✏️ コツ3：因数分解できないときは解の公式</strong><br>
+                    無理に因数分解しようとせず、解の公式を使う。どんな問題でも解ける万能ツール。
                 </div>
 
-                <div class="example-box" style="margin-top: 20px;">
-                    <strong>短い例：</strong> \(x^2 - 6x + 8 = 0\) を因数分解で解く
-                    <p>→ 足して -6、かけて 8 → -2 と -4</p>
-                    <p>→ \((x-2)(x-4) = 0\) → <strong>答え：\(x = 2, 4\)</strong></p>
+                <div class="tip-box">
+                    <strong>✏️ コツ4：右辺を0にしてから解く</strong><br>
+                    \(x^2 = 5x + 6\) → \(x^2 - 5x - 6 = 0\) のように、まず右辺を0にする。
+                </div>
+
+                <div class="tip-box">
+                    <strong>✏️ コツ5：平方完成は頂点も分かる一石二鳥</strong><br>
+                    グラフの頂点座標も求めたいときは平方完成。\(y = a(x-p)^2 + q\) の頂点は \((p, q)\)。
                 </div>
             </div>
         </section>
 
-        <!-- 6. よくあるつまづき -->
-        <section id="section6">
-            <h2>6. よくあるつまづき</h2>
+        <!-- 5. よくあるつまづき -->
+        <section id="section5">
+            <h2>5. よくあるつまづき</h2>
             <div class="section">
                 <div class="caution-box">
                     <div class="caution-title">⚠️ つまづき1：共通因数の \(x = 0\) を忘れる</div>
@@ -732,9 +711,9 @@
             </div>
         </section>
 
-        <!-- 7. 仕上げチェックリスト -->
-        <section id="section7">
-            <h2>7. 仕上げチェックリスト</h2>
+        <!-- 6. 仕上げチェックリスト -->
+        <section id="section6">
+            <h2>6. 仕上げチェックリスト</h2>
             <div class="section">
                 <div class="checklist">
                     <div class="checklist-item">右辺を0にしてから解いたか</div>
@@ -742,6 +721,41 @@
                     <div class="checklist-item">符号（＋と−）は正しいか</div>
                     <div class="checklist-item">解の公式で分母 \(2a\) を忘れていないか</div>
                     <div class="checklist-item">答えを元の方程式に代入して検算したか</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 練習問題 -->
+        <section id="section7">
+            <h2>7. 練習問題</h2>
+            <div class="section">
+                <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+                <div class="rule-box" style="background: #f5f5f5;">
+                    <strong>練習1</strong>
+                    <p>次の二次方程式を因数分解で解きなさい：\(x^2 - 7x + 12 = 0\)</p>
+                    <details style="margin-top: 15px;">
+                        <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                        <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                            <p>足して -7、かけて 12 → -3 と -4</p>
+                            <p>\((x - 3)(x - 4) = 0\)</p>
+                            <p><strong>答え：\(x = 3, 4\)</strong></p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+                    <strong>練習2</strong>
+                    <p>次の二次方程式を解の公式で解きなさい：\(x^2 + 2x - 5 = 0\)</p>
+                    <details style="margin-top: 15px;">
+                        <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                        <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                            <p>\(a = 1, b = 2, c = -5\)</p>
+                            <p>\(D = 4 - 4 \cdot 1 \cdot (-5) = 4 + 20 = 24\)</p>
+                            <p>\(x = \frac{-2 \pm \sqrt{24}}{2} = \frac{-2 \pm 2\sqrt{6}}{2} = -1 \pm \sqrt{6}\)</p>
+                            <p><strong>答え：\(x = -1 + \sqrt{6}, -1 - \sqrt{6}\)</strong></p>
+                        </div>
+                    </details>
                 </div>
             </div>
         </section>

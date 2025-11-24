@@ -413,8 +413,14 @@
                     <div class="example-title">
                         <span class="number-badge">例1</span>中央値を求める
                     </div>
-                    <p><strong>手順：</strong>小さい順に並べる → 2, 3, 4, 4, 5, 6, 7, 9</p>
-                    <p>データは8個（偶数）なので、4番目と5番目の平均：</p>
+                    <p>元のデータ 3, 5, 6, 2, 4, 7, 4, 9 の中央値を求める</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>データを小さい順に並べ替える → 2, 3, 4, 4, 5, 6, 7, 9</li>
+                        <li>データの個数を数える → <strong>8個（偶数）</strong></li>
+                        <li>偶数個なので、真ん中2つ（4番目と5番目）を見つける → 4 と 5</li>
+                        <li>2つの平均を計算する</li>
+                    </ol>
                     <div class="formula">
                         \[ \text{中央値} = \frac{4 + 5}{2} = 4.5 \]
                     </div>
@@ -424,8 +430,13 @@
                     <div class="example-title">
                         <span class="number-badge">例2</span>最頻値を求める
                     </div>
-                    <p>並べたデータ：2, 3, <strong style="color: #ff6f00;">4, 4</strong>, 5, 6, 7, 9</p>
-                    <p>4が2回現れて最も多い → <strong>最頻値は4</strong></p>
+                    <p>同じデータ 2, 3, 4, 4, 5, 6, 7, 9 の最頻値を求める</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>各値の出現回数を数える</li>
+                        <li>最も多く現れる値を探す → <strong style="color: #ff6f00;">4 が2回</strong>で最多</li>
+                    </ol>
+                    <p><strong>最頻値 = 4</strong></p>
                     
                     <!-- 最頻値の図 -->
                     <div class="svg-container">
@@ -479,8 +490,13 @@
                     <div class="example-title">
                         <span class="number-badge">例3</span>第3四分位数（Q₃）を求める
                     </div>
-                    <p>中央値（4.5）より大きいデータの後半：<strong>5, 6, 7, 9</strong></p>
-                    <p>この4個の中央値は2番目と3番目の平均：</p>
+                    <p>同じデータ 2, 3, 4, 4, 5, 6, 7, 9 の Q₃ を求める</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>中央値（4.5）でデータを前半・後半に分ける</li>
+                        <li>後半のデータ（中央値より大きい方）を取り出す → <strong>5, 6, 7, 9</strong></li>
+                        <li>後半データの中央値を求める → 4個なので2番目と3番目の平均</li>
+                    </ol>
                     <div class="formula">
                         \[ Q_3 = \frac{6 + 7}{2} = 6.5 \]
                     </div>
@@ -492,8 +508,13 @@
                     <div class="example-title">
                         <span class="number-badge">例4</span>5以下になる確率
                     </div>
-                    <p>5以下のデータ：2, 3, 4, 4, 5 → 5個</p>
-                    <p>全データ：8個</p>
+                    <p>データ 2, 3, 4, 4, 5, 6, 7, 9 から無作為に1つ選ぶとき、5以下になる確率を求める</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>条件を満たすデータ（5以下）を数える → 2, 3, 4, 4, 5 の <strong>5個</strong></li>
+                        <li>全データの個数を確認 → <strong>8個</strong></li>
+                        <li>経験的確率 = 条件を満たす個数 ÷ 全体の個数</li>
+                    </ol>
                     <div class="formula">
                         \[ P = \frac{5}{8} \]
                     </div>

@@ -120,17 +120,20 @@
             <div class="section">
                 <p>【解き方の流れを1文で概要。例：「ルールを使って実際に解いてみましょう。」】</p>
 
-                <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 【カテゴリ名】</h3>
-
-                <div class="data-example">
-                    【例題のデータや問題文】
-                </div>
+                <!-- カテゴリごとにh3で分類（複数カテゴリがある場合） -->
+                <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 【カテゴリ名1】</h3>
 
                 <div class="example-box" id="ex-1">
                     <div class="example-title">
                         <span class="number-badge">例1</span>【例題タイトル】
                     </div>
-                    <p><strong>解き方：</strong>【解き方の説明】</p>
+                    <p>【問題文】</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>【手順1】</li>
+                        <li>【手順2】</li>
+                        <li>【手順3】</li>
+                    </ol>
                     <div class="formula">
                         \[ 【計算式】 \]
                     </div>
@@ -140,11 +143,25 @@
                     <div class="example-title">
                         <span class="number-badge">例2</span>【例題タイトル】
                     </div>
-                    <p>【解説】</p>
+                    <p>【問題文】</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>【手順1】</li>
+                        <li>【手順2】</li>
+                    </ol>
                     <div class="formula">
                         \[ 【計算式】 \]
                     </div>
                 </div>
+
+                <!-- 別カテゴリがある場合 -->
+                <!--
+                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 【カテゴリ名2】</h3>
+
+                <div class="example-box" id="ex-3">
+                    ...
+                </div>
+                -->
             </div>
         </section>
 
