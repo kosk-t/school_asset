@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>数学クエスト - 中学数学教材ライブラリ</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&family=Varela+Round&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="css/education-template.css">
     
     <style>
@@ -30,51 +26,38 @@
         /* ヒーローエリア（冒険の始まり） */
         .hero-area {
             text-align: center;
-            padding: 60px 20px;
-            /* ワクワクするグラデーション */
-            background: linear-gradient(135deg, var(--success-color) 0%, var(--primary-color) 100%);
-            border-radius: var(--border-radius);
             margin-bottom: 50px;
-            color: #fff;
-            position: relative;
+            border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: 0 15px 30px rgba(0, 163, 255, 0.25);
-            border: 4px solid rgba(255,255,255,0.2);
-        }
-        
-        .hero-title {
-            font-family: 'M PLUS Rounded 1c', sans-serif;
-            font-size: 2.5em;
-            font-weight: 800;
-            margin-bottom: 15px;
-            text-shadow: 3px 3px 0px rgba(0,0,0,0.1);
-            letter-spacing: 0.05em;
+            border: 4px solid #fff;
         }
 
-        .hero-subtitle {
-            font-size: 1.1em;
-            font-weight: 700;
-            opacity: 0.95;
-            background: rgba(255,255,255,0.25);
-            display: inline-block;
-            padding: 8px 25px;
-            border-radius: 50px;
-            backdrop-filter: blur(5px);
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
-        .hero-icon {
-            font-size: 80px;
-            margin-bottom: 20px;
-            display: inline-block;
-            animation: float 3s ease-in-out infinite;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+        /* 案内エリア */
+        .guide-area {
+            background: #fff;
+            border-radius: var(--border-radius);
+            padding: 30px 35px;
+            margin-bottom: 50px;
+            border: 3px solid #edf2f7;
+            box-shadow: 0 6px 0 #dfe6e9;
+            text-align: center;
         }
 
-        /* 浮遊アニメーション */
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-12px) rotate(5deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
+        .guide-text {
+            font-size: 1.05em;
+            line-height: 1.9;
+            color: var(--text-color);
+        }
+
+        .guide-text strong {
+            color: var(--primary-color);
         }
 
         /* グリッドレイアウト */
@@ -209,9 +192,14 @@
     <div class="container">
         
         <div class="hero-area">
-            <div class="hero-icon">🚀</div>
-            <h1 class="hero-title">数学クエスト ライブラリ</h1>
-            <div class="hero-subtitle">学びたいテーマを選んで、数学の冒険を始めよう！✨</div>
+            <img src="covers/cover.jpg" alt="中学数学クエスト - さあ、数学の冒険へ！" class="hero-image">
+        </div>
+
+        <div class="guide-area">
+            <p class="guide-text">
+                ここは<strong>中学数学</strong>の学習教材を集めたライブラリです。<br>
+                下のカードから学びたいテーマを選んで、学習を始めましょう。
+            </p>
         </div>
 
         <div class="category-section">
