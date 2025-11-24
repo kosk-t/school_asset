@@ -184,6 +184,13 @@ strong {
     color: #636e72;
 }
 
+/* SVGテキストの白縁取り（線と重なっても読みやすく） */
+.svg-container svg text {
+    stroke: #fff;
+    stroke-width: 3;
+    paint-order: stroke;
+}
+
 /* =========================================
    数式 (Formula)
    ========================================= */
