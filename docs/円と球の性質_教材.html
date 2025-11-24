@@ -50,31 +50,39 @@
         <nav class="toc">
             <div class="toc-title">📚 目次</div>
             <ol class="toc-list">
-                <li><a href="#section1">テーマの定義／最重要の考え方</a></li>
+                <li><a href="#section1">テーマの定義</a></li>
                 <li><a href="#section2">覚えるルール</a></li>
-                <li><a href="#section3">簡単にするコツ</a></li>
-                <li><a href="#section4">代表的な計算例</a></li>
-                <li><a href="#section5">基本的な計算手順</a></li>
-                <li><a href="#section6">よくあるつまづき</a></li>
-                <li><a href="#section7">仕上げチェックリスト</a></li>
+                <li><a href="#section3">例題と解き方</a></li>
+                <li><a href="#section4">簡単にするコツ</a></li>
+                <li><a href="#section5">よくあるつまづき</a></li>
+                <li><a href="#section6">仕上げチェックリスト</a></li>
+                <li><a href="#section7">練習問題</a></li>
                 <li><a href="#story">おまけ：実践ストーリー「ピザ屋店長の悩み」</a></li>
             </ol>
         </nav>
 
-        <!-- 1. テーマの定義／最重要の考え方 -->
+        <!-- ========== 1. テーマの定義 ========== -->
         <section id="section1">
-            <h2>1. テーマの定義／最重要の考え方</h2>
+            <h2>1. テーマの定義</h2>
             <div class="section">
-                <p><strong>円</strong>とは、ある点（中心）から等しい距離にある点の集まりです。<strong>球</strong>は、円を3次元に拡張したもので、中心からすべての表面の点までの距離が等しい立体です。</p>
-
+                <p>円や球は、建物のドーム、ボール、ピザなど身近なところにたくさんあります。これらの大きさや周囲の長さを計算できると、材料の量や必要なスペースがわかります。</p>
+                <p>このページでは、円と球に関する以下の内容を学びます：</p>
                 <ul>
-                    <li><strong>半径 \(r\)</strong>：中心から円周（球の表面）までの距離</li>
-                    <li><strong>直径 \(d\)</strong>：円（球）を横切る最長の線分（\(d = 2r\)）</li>
-                    <li><strong>円周率 \(\pi\)</strong>：円周÷直径＝約3.14159...（無限に続く）</li>
+                    <li><strong>円の基本要素</strong>：半径・直径・円周率の関係</li>
+                    <li><strong>円の計算</strong>：円周の長さと面積の求め方</li>
+                    <li><strong>球の計算</strong>：表面積と体積の求め方</li>
+                    <li><strong>等分の考え方</strong>：球を分けたときの1部分の面積</li>
                 </ul>
+            </div>
+        </section>
 
+        <!-- ========== 2. 覚えるルール ========== -->
+        <section id="section2">
+            <h2>2. 覚えるルール</h2>
+            <div class="section">
                 <div class="important-rule">
-                    🎯 最重要：半径と直径の関係 \(d = 2r\)（直径は半径の2倍）を常に意識！
+                    【最重要】半径と直径の関係 \(d = 2r\)（直径は半径の2倍）を常に意識！<br>
+                    円周：\(C = 2\pi r = \pi d\)　　円の面積：\(S = \pi r^2\)
                 </div>
 
                 <!-- 円の基本要素の図 -->
@@ -117,17 +125,6 @@
                         </defs>
                     </svg>
                     <div class="svg-caption">中心O、半径r、直径d、円周Cの関係</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 2. 覚えるルール -->
-        <section id="section2">
-            <h2>2. 覚えるルール</h2>
-            <div class="section">
-                <div class="important-rule">
-                    【最重要】円周と面積の公式<br>
-                    円周：\(C = 2\pi r = \pi d\)　　円の面積：\(S = \pi r^2\)
                 </div>
 
                 <div class="rule-box">
@@ -225,57 +222,40 @@
             </div>
         </section>
 
-        <!-- 3. 簡単にするコツ -->
+        <!-- ========== 3. 例題と解き方 ========== -->
         <section id="section3">
-            <h2>3. 簡単にするコツ</h2>
+            <h2>3. 例題と解き方</h2>
             <div class="section">
-                <div class="tip-box">
-                    <strong>✏️ コツ1：直径が与えられたら、まず半径を求める</strong><br>
-                    公式は半径 \(r\) を使うものが多い。直径 \(d\) が与えられたら \(r = \dfrac{d}{2}\) で半径に変換してから計算。
-                </div>
+                <p>ルールを使って実際に解いてみましょう。</p>
 
-                <div class="tip-box">
-                    <strong>✏️ コツ2：球の表面積 = 円の面積 × 4</strong><br>
-                    同じ半径なら、球の表面積は円の面積のちょうど4倍。覚えやすい！
-                </div>
-
-                <div class="tip-box">
-                    <strong>✏️ コツ3：「高さ」は直径と同じ</strong><br>
-                    地面に置いた球の「高さ」は直径 \(d = 2r\)。問題文の「高さ」から半径を求めるときは2で割る。
-                </div>
-
-                <div class="tip-box">
-                    <strong>✏️ コツ4：\(\pi\) は最後にまとめる</strong><br>
-                    計算の途中は \(\pi\) をそのまま文字として扱い、最後に数値を代入すると計算ミスが減る。
-                </div>
-
-                <div class="tip-box">
-                    <strong>✏️ コツ5：単位の換算に注意</strong><br>
-                    面積は \(\text{cm}^2\)、\(\text{m}^2\) など、長さの単位の2乗になる。体積は3乗。
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. 代表的な計算例 -->
-        <section id="section4">
-            <h2>4. 代表的な計算例</h2>
-            <div class="section">
+                <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 円の計算</h3>
 
                 <div class="example-box" id="ex-circumference">
                     <div class="example-title">
                         <span class="number-badge">例1</span>円周を求める（半径から）
                     </div>
-                    <p><strong>問題：</strong>半径 \(r = 5\) cm の円の円周を求めよ。（\(\pi = 3.14\)）</p>
+                    <p>半径 \(r = 5\) cm の円の円周を求めよ。（\(\pi = 3.14\)）</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>半径がそのまま与えられているので、公式に代入する</li>
+                        <li>円周の公式 \(C = 2\pi r\) を使う</li>
+                        <li>\(\pi = 3.14\) を代入して計算する</li>
+                    </ol>
                     <div class="formula">
                         \[ C = 2\pi r = 2 \times 3.14 \times 5 = 31.4 \text{ cm} \]
                     </div>
                 </div>
 
-                <div class="example-box">
+                <div class="example-box" id="ex-circumference-diameter">
                     <div class="example-title">
                         <span class="number-badge">例2</span>円周を求める（直径から）
                     </div>
-                    <p><strong>問題：</strong>直径 \(d = 14\) cm の円の円周を求めよ。（\(\pi\) のまま）</p>
+                    <p>直径 \(d = 14\) cm の円の円周を求めよ。（\(\pi\) のまま）</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>直径が与えられているので、公式 \(C = \pi d\) を使う</li>
+                        <li>\(\pi\) のまま答えるので、数値だけ計算する</li>
+                    </ol>
                     <div class="formula">
                         \[ C = \pi d = 14\pi \text{ cm} \]
                     </div>
@@ -285,36 +265,52 @@
                     <div class="example-title">
                         <span class="number-badge">例3</span>円の面積を求める
                     </div>
-                    <p><strong>問題：</strong>半径 \(r = 6\) cm の円の面積を求めよ。（\(\pi = 3.14\)）</p>
+                    <p>半径 \(r = 6\) cm の円の面積を求めよ。（\(\pi = 3.14\)）</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>円の面積の公式 \(S = \pi r^2\) を使う</li>
+                        <li>半径を2乗する → \(6^2 = 36\)</li>
+                        <li>\(\pi = 3.14\) を掛ける</li>
+                    </ol>
                     <div class="formula">
                         \[ S = \pi r^2 = 3.14 \times 6^2 = 3.14 \times 36 = 113.04 \text{ cm}^2 \]
                     </div>
                 </div>
 
+                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 球の計算</h3>
+
                 <div class="example-box" id="ex-sphere-surface">
                     <div class="example-title">
                         <span class="number-badge">例4</span>球の表面積を求める
                     </div>
-                    <p><strong>問題：</strong>半径 \(r = 3\) cm の球の表面積を求めよ。（\(\pi\) のまま）</p>
+                    <p>半径 \(r = 3\) cm の球の表面積を求めよ。（\(\pi\) のまま）</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>球の表面積の公式 \(S = 4\pi r^2\) を使う</li>
+                        <li>半径を2乗する → \(3^2 = 9\)</li>
+                        <li>4を掛けて、\(\pi\) をつける</li>
+                    </ol>
                     <div class="formula">
                         \[ S = 4\pi r^2 = 4\pi \times 3^2 = 4\pi \times 9 = 36\pi \text{ cm}^2 \]
                     </div>
                 </div>
 
-                <div class="example-box">
+                <div class="example-box" id="ex-sphere-height">
                     <div class="example-title">
                         <span class="number-badge">例5</span>球の高さから表面積を求める
                     </div>
-                    <p><strong>問題：</strong>地面に置いた球の高さが 74 mm。この球の表面積を求めよ。（小数第1位まで、\(\pi = 3.14\)）</p>
-                    <p><strong>手順：</strong></p>
-                    <ul>
+                    <p>地面に置いた球の高さが 74 mm。この球の表面積を求めよ。（小数第1位まで、\(\pi = 3.14\)）</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
                         <li>高さ = 直径なので \(d = 74\) mm</li>
-                        <li>半径 \(r = \dfrac{74}{2} = 37\) mm</li>
-                    </ul>
+                        <li>半径を求める → \(r = \dfrac{74}{2} = 37\) mm</li>
+                        <li>球の表面積の公式に代入する</li>
+                        <li>小数第1位まで四捨五入する</li>
+                    </ol>
                     <div class="formula">
                         \[ S = 4\pi r^2 = 4 \times 3.14 \times 37^2 = 4 \times 3.14 \times 1369 = 17194.64 \text{ mm}^2 \]
                     </div>
-                    <p><strong>答え：</strong>17194.6 mm²（小数第1位まで）</p>
+                    <p><strong>答え：</strong>17194.6 mm²</p>
 
                     <!-- 高さから半径を求める図 -->
                     <div class="svg-container">
@@ -352,12 +348,13 @@
                     <div class="example-title">
                         <span class="number-badge">例6</span>球の表面を等分したときの1部分の面積
                     </div>
-                    <p><strong>問題：</strong>半径 \(r = 37\) mm の球（野球ボール）の表面を2枚の皮で覆う。1枚あたりの面積は？（\(\pi\) のまま）</p>
-                    <p><strong>手順：</strong></p>
-                    <ul>
-                        <li>球の表面積 \(S = 4\pi \times 37^2 = 5476\pi\) mm²</li>
-                        <li>2等分するので：\(\dfrac{5476\pi}{2} = 2738\pi\) mm²</li>
-                    </ul>
+                    <p>半径 \(r = 37\) mm の球（野球ボール）の表面を2枚の皮で覆う。1枚あたりの面積は？（\(\pi\) のまま）</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>まず球の表面積を求める → \(S = 4\pi \times 37^2 = 5476\pi\) mm²</li>
+                        <li>2等分するので、全体を2で割る</li>
+                        <li>\(\pi\) のまま答える</li>
+                    </ol>
                     <div class="formula">
                         \[ \text{1枚の面積} = \frac{4\pi r^2}{2} = 2\pi r^2 = 2\pi \times 37^2 = 2738\pi \text{ mm}^2 \]
                     </div>
@@ -365,69 +362,40 @@
             </div>
         </section>
 
-        <!-- 5. 基本手順 -->
-        <section id="section5">
-            <h2>5. 基本的な計算手順</h2>
+        <!-- ========== 4. 簡単にするコツ ========== -->
+        <section id="section4">
+            <h2>4. 簡単にするコツ</h2>
             <div class="section">
-                <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 円周・円の面積を求める手順</h3>
-                <div class="step-list">
-                    <div class="step-item">
-                        <span class="number-badge">1</span>
-                        <div>問題文から半径 \(r\) または直径 \(d\) を読み取る</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">2</span>
-                        <div>直径が与えられた場合は \(r = \dfrac{d}{2}\) で半径を求める</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">3</span>
-                        <div>公式に代入（円周 \(C = 2\pi r\)、面積 \(S = \pi r^2\)）</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">4</span>
-                        <div>指示に従って \(\pi\) に数値を代入、または \(\pi\) のまま答える</div>
-                    </div>
+                <div class="tip-box">
+                    <strong>✏️ コツ1：直径が与えられたら、まず半径を求める</strong><br>
+                    公式は半径 \(r\) を使うものが多い。直径 \(d\) が与えられたら \(r = \dfrac{d}{2}\) で半径に変換してから計算。
                 </div>
 
-                <div class="example-box" style="margin-top: 20px;">
-                    <strong>短い例：</strong> 直径 10 cm の円の面積（\(\pi\) のまま）
-                    <p>→ \(r = 5\) cm → \(S = \pi \times 5^2 = 25\pi\) cm²</p>
+                <div class="tip-box">
+                    <strong>✏️ コツ2：球の表面積 = 円の面積 × 4</strong><br>
+                    同じ半径なら、球の表面積は円の面積のちょうど4倍。覚えやすい！
                 </div>
 
-                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 球の表面積・体積を求める手順</h3>
-                <div class="step-list">
-                    <div class="step-item">
-                        <span class="number-badge">1</span>
-                        <div>問題文から半径 \(r\)（または高さ・直径）を読み取る</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">2</span>
-                        <div>高さが与えられた場合：高さ = 直径なので \(r = \dfrac{\text{高さ}}{2}\)</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">3</span>
-                        <div>公式に代入（表面積 \(S = 4\pi r^2\)、体積 \(V = \dfrac{4}{3}\pi r^3\)）</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">4</span>
-                        <div>等分する場合は全体を \(n\) で割る</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">5</span>
-                        <div>指示に従って答えを書く（有効数字、小数点以下の桁数など）</div>
-                    </div>
+                <div class="tip-box">
+                    <strong>✏️ コツ3：「高さ」は直径と同じ</strong><br>
+                    地面に置いた球の「高さ」は直径 \(d = 2r\)。問題文の「高さ」から半径を求めるときは2で割る。
                 </div>
 
-                <div class="example-box" style="margin-top: 20px;">
-                    <strong>短い例：</strong> 高さ 8 cm の球の体積（\(\pi\) のまま）
-                    <p>→ \(r = 4\) cm → \(V = \dfrac{4}{3}\pi \times 4^3 = \dfrac{256}{3}\pi\) cm³</p>
+                <div class="tip-box">
+                    <strong>✏️ コツ4：\(\pi\) は最後にまとめる</strong><br>
+                    計算の途中は \(\pi\) をそのまま文字として扱い、最後に数値を代入すると計算ミスが減る。
+                </div>
+
+                <div class="tip-box">
+                    <strong>✏️ コツ5：単位の換算に注意</strong><br>
+                    面積は \(\text{cm}^2\)、\(\text{m}^2\) など、長さの単位の2乗になる。体積は3乗。
                 </div>
             </div>
         </section>
 
-        <!-- 6. よくあるつまづき -->
-        <section id="section6">
-            <h2>6. よくあるつまづき</h2>
+        <!-- ========== 5. よくあるつまづき ========== -->
+        <section id="section5">
+            <h2>5. よくあるつまづき</h2>
             <div class="section">
                 <div class="caution-box">
                     <div class="caution-title">⚠️ つまづき1：直径と半径を混同</div>
@@ -461,9 +429,9 @@
             </div>
         </section>
 
-        <!-- 7. 仕上げチェックリスト -->
-        <section id="section7">
-            <h2>7. 仕上げチェックリスト</h2>
+        <!-- ========== 6. 仕上げチェックリスト ========== -->
+        <section id="section6">
+            <h2>6. 仕上げチェックリスト</h2>
             <div class="section">
                 <div class="checklist">
                     <div class="checklist-item">直径が与えられた場合、半径に変換したか（\(r = d \div 2\)）</div>
@@ -475,12 +443,46 @@
             </div>
         </section>
 
-        <!-- まとめ -->
+        <!-- ========== 7. 練習問題 ========== -->
+        <section id="section7">
+            <h2>7. 練習問題</h2>
+            <div class="section">
+                <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+                <div class="rule-box" style="background: #f5f5f5;">
+                    <strong>練習1</strong>
+                    <p>直径 20 cm の円の面積を求めよ。（\(\pi\) のまま）</p>
+                    <details style="margin-top: 15px;">
+                        <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                        <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                            <p>半径 \(r = \dfrac{20}{2} = 10\) cm</p>
+                            <p>\(S = \pi r^2 = \pi \times 10^2 = 100\pi\) cm²</p>
+                            <p><strong>答え：\(100\pi\) cm²</strong></p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+                    <strong>練習2</strong>
+                    <p>地面に置いた球の高さが 12 cm のとき、この球の表面積を求めよ。（\(\pi = 3.14\)）</p>
+                    <details style="margin-top: 15px;">
+                        <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                        <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                            <p>高さ = 直径なので、半径 \(r = \dfrac{12}{2} = 6\) cm</p>
+                            <p>\(S = 4\pi r^2 = 4 \times 3.14 \times 6^2 = 4 \times 3.14 \times 36 = 452.16\) cm²</p>
+                            <p><strong>答え：452.16 cm²</strong></p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== まとめ ========== -->
         <div class="summary">
             📌 まとめ：半径 \(r\) をつかんで、円は \(\pi r^2\)、球は \(4\pi r^2\) で攻略！
         </div>
 
-        <!-- おまけ：実践ストーリー -->
+        <!-- ========== おまけ：実践ストーリー ========== -->
         <section id="story">
             <h2>おまけ：実践ストーリー「ピザ屋店長の悩み」</h2>
             <div class="section">

@@ -50,27 +50,34 @@
         <nav class="toc">
             <div class="toc-title">📚 目次</div>
             <ol class="toc-list">
-                <li><a href="#section1">テーマの定義／最重要の考え方</a></li>
+                <li><a href="#section1">テーマの定義</a></li>
                 <li><a href="#section2">覚えるルール</a></li>
-                <li><a href="#section3">簡単にするコツ</a></li>
-                <li><a href="#section4">代表的な計算例</a></li>
-                <li><a href="#section5">基本的な計算手順</a></li>
-                <li><a href="#section6">よくあるつまづき</a></li>
-                <li><a href="#section7">仕上げチェックリスト</a></li>
+                <li><a href="#section3">例題と解き方</a></li>
+                <li><a href="#section4">簡単にするコツ</a></li>
+                <li><a href="#section5">よくあるつまづき</a></li>
+                <li><a href="#section6">仕上げチェックリスト</a></li>
+                <li><a href="#section7">練習問題</a></li>
                 <li><a href="#story">おまけ：実践ストーリー「海賊キャプテン・ルートの宝の地図」</a></li>
             </ol>
         </nav>
 
-        <!-- 1. テーマの定義／最重要の考え方 -->
+        <!-- ========== 1. テーマの定義 ========== -->
         <section id="section1">
-            <h2>1. テーマの定義／最重要の考え方</h2>
+            <h2>1. テーマの定義</h2>
             <div class="section">
-                <p><strong>累乗（るいじょう）</strong>と<strong>平方根（へいほうこん）</strong>は、実は「逆向きの操作」です：</p>
+                <p>累乗と平方根は、数学のいろいろな場面で使う基本的な計算です。このページでは、以下のことを学びます：</p>
                 <ul>
-                    <li><strong>累乗</strong>：同じ数を何回もかける操作</li>
-                    <li><strong>平方根</strong>：「何を2乗したらその数になるか」を求める操作</li>
+                    <li><strong>累乗（るいじょう）</strong>：同じ数を何回もかける操作</li>
+                    <li><strong>平方根（へいほうこん）</strong>：「何を2乗したらその数になるか」を求める操作</li>
+                    <li><strong>用語</strong>：底、指数、ルートなどの読み方と意味</li>
                 </ul>
+            </div>
+        </section>
 
+        <!-- ========== 2. 覚えるルール ========== -->
+        <section id="section2">
+            <h2>2. 覚えるルール</h2>
+            <div class="section">
                 <div class="important-rule">
                     🎯 最重要の考え方：累乗と平方根は「逆向きの操作」！
                 </div>
@@ -115,23 +122,6 @@
                         </defs>
                     </svg>
                     <div class="svg-caption">2乗と平方根は打ち消し合う逆の操作</div>
-                </div>
-
-                <p style="margin-top: 15px;"><strong>用語を覚えよう：</strong></p>
-                <ul>
-                    <li>\( a^n \)（aのn乗）：\( a \) を<strong>底（てい）</strong>、\( n \) を<strong>指数（しすう）</strong>という</li>
-                    <li>\( a^2 \)：aの<strong>二乗（平方）</strong>、\( a^3 \)：aの<strong>三乗（立方）</strong></li>
-                    <li>\( \sqrt{a} \)：aの<strong>正の平方根</strong>（ルートaと読む）</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- 2. 覚えるルール -->
-        <section id="section2">
-            <h2>2. 覚えるルール</h2>
-            <div class="section">
-                <div class="important-rule">
-                    【最重要】指数法則と平方根の性質を「意味」から理解する！
                 </div>
 
                 <div class="rule-box">
@@ -263,9 +253,105 @@
             </div>
         </section>
 
-        <!-- 3. 簡単にするコツ -->
+        <!-- ========== 3. 例題と解き方 ========== -->
         <section id="section3">
-            <h2>3. 簡単にするコツ</h2>
+            <h2>3. 例題と解き方</h2>
+            <div class="section">
+                <p>ルールを使って実際に解いてみましょう。</p>
+
+                <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 累乗の計算</h3>
+
+                <div class="example-box" id="ex-exponent">
+                    <div class="example-title">
+                        <span class="number-badge">例1</span>指数法則（かけ算）
+                    </div>
+                    <p>\( 2^3 \times 2^4 \) を計算する</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>底が同じ（どちらも2）かどうか確認する → <strong>同じ</strong></li>
+                        <li>かけ算なので指数を足す → \( 3 + 4 = 7 \)</li>
+                        <li>実際の値を計算する → \( 2^7 = 128 \)</li>
+                    </ol>
+                    <div class="formula">
+                        \[ 2^3 \times 2^4 = 2^{3+4} = 2^7 = 128 \]
+                    </div>
+                </div>
+
+                <div class="example-box" id="ex-power">
+                    <div class="example-title">
+                        <span class="number-badge">例2</span>べき乗のべき乗
+                    </div>
+                    <p>\( (3^2)^3 \) を計算する</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>べき乗のべき乗なので指数を<strong>かける</strong>（足すのではない！）</li>
+                        <li>指数をかける → \( 2 \times 3 = 6 \)</li>
+                        <li>実際の値を計算する → \( 3^6 = 729 \)</li>
+                    </ol>
+                    <div class="formula">
+                        \[ (3^2)^3 = 3^{2 \times 3} = 3^6 = 729 \]
+                    </div>
+                </div>
+
+                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ ルートの簡単化</h3>
+
+                <div class="example-box" id="ex-simplify">
+                    <div class="example-title">
+                        <span class="number-badge">例3</span>ルートの簡単化
+                    </div>
+                    <p>\( \sqrt{48} \) を簡単にする</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>ルートの中身を素因数分解する → \( 48 = 16 \times 3 = 4^2 \times 3 \)</li>
+                        <li>2乗の部分（完全平方数）を見つける → <strong>16</strong></li>
+                        <li>完全平方数をルートの外に出す → \( \sqrt{16} = 4 \)</li>
+                        <li>残りはルートの中に残す → \( \sqrt{3} \)</li>
+                    </ol>
+                    <div class="formula">
+                        \[ \sqrt{48} = \sqrt{16 \times 3} = \sqrt{16} \times \sqrt{3} = 4\sqrt{3} \]
+                    </div>
+                </div>
+
+                <div class="example-box" id="ex-add">
+                    <div class="example-title">
+                        <span class="number-badge">例4</span>ルートの足し算
+                    </div>
+                    <p>\( 2\sqrt{3} + 5\sqrt{3} \) を計算する</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>ルートの中身が同じかどうか確認する → <strong>どちらも \( \sqrt{3} \)</strong></li>
+                        <li>ルートの中身が同じなので、係数を足す → \( 2 + 5 = 7 \)</li>
+                    </ol>
+                    <div class="formula">
+                        \[ 2\sqrt{3} + 5\sqrt{3} = (2+5)\sqrt{3} = 7\sqrt{3} \]
+                    </div>
+                    <p>※ルートの中身が同じなら、係数を足し引きできる（同類項）</p>
+                </div>
+
+                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 分母の有理化</h3>
+
+                <div class="example-box" id="ex-rationalize">
+                    <div class="example-title">
+                        <span class="number-badge">例5</span>分母の有理化
+                    </div>
+                    <p>\( \frac{6}{\sqrt{3}} \) を有理化する</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>分母にあるルートと同じルート \( \sqrt{3} \) を分母・分子両方にかける</li>
+                        <li>分母は \( \sqrt{3} \times \sqrt{3} = 3 \) になる</li>
+                        <li>分子は \( 6 \times \sqrt{3} = 6\sqrt{3} \) になる</li>
+                        <li>約分する → \( \frac{6\sqrt{3}}{3} = 2\sqrt{3} \)</li>
+                    </ol>
+                    <div class="formula">
+                        \[ \frac{6}{\sqrt{3}} = \frac{6 \times \sqrt{3}}{\sqrt{3} \times \sqrt{3}} = \frac{6\sqrt{3}}{3} = 2\sqrt{3} \]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 4. 簡単にするコツ ========== -->
+        <section id="section4">
+            <h2>4. 簡単にするコツ</h2>
             <div class="section">
                 <div class="tip-box">
                     <strong>✏️ コツ1：累乗は「何個かけるか」で考える</strong><br>
@@ -339,134 +425,9 @@
             </div>
         </section>
 
-        <!-- 4. 代表的な計算例 -->
-        <section id="section4">
-            <h2>4. 代表的な計算例</h2>
-            <div class="section">
-                <div class="example-box" id="ex-exponent">
-                    <div class="example-title">
-                        <span class="number-badge">例1</span>累乗の計算
-                    </div>
-                    <p>\( 2^3 \times 2^4 \) を計算する</p>
-                    <div class="formula">
-                        \[ 2^3 \times 2^4 = 2^{3+4} = 2^7 = 128 \]
-                    </div>
-                </div>
-
-                <div class="example-box" id="ex-power">
-                    <div class="example-title">
-                        <span class="number-badge">例2</span>べき乗のべき乗
-                    </div>
-                    <p>\( (3^2)^3 \) を計算する</p>
-                    <div class="formula">
-                        \[ (3^2)^3 = 3^{2 \times 3} = 3^6 = 729 \]
-                    </div>
-                </div>
-
-                <div class="example-box" id="ex-simplify">
-                    <div class="example-title">
-                        <span class="number-badge">例3</span>ルートの簡単化
-                    </div>
-                    <p>\( \sqrt{48} \) を簡単にする</p>
-                    <div class="formula">
-                        \[ \sqrt{48} = \sqrt{16 \times 3} = \sqrt{16} \times \sqrt{3} = 4\sqrt{3} \]
-                    </div>
-                </div>
-
-                <div class="example-box">
-                    <div class="example-title">
-                        <span class="number-badge">例4</span>ルートの足し算
-                    </div>
-                    <p>\( 2\sqrt{3} + 5\sqrt{3} \) を計算する</p>
-                    <div class="formula">
-                        \[ 2\sqrt{3} + 5\sqrt{3} = (2+5)\sqrt{3} = 7\sqrt{3} \]
-                    </div>
-                    <p>※ルートの中身が同じなら、係数を足し引きできる（同類項）</p>
-                </div>
-
-                <div class="example-box">
-                    <div class="example-title">
-                        <span class="number-badge">例5</span>分母の有理化
-                    </div>
-                    <p>\( \frac{6}{\sqrt{3}} \) を有理化する</p>
-                    <div class="formula">
-                        \[ \frac{6}{\sqrt{3}} = \frac{6 \times \sqrt{3}}{\sqrt{3} \times \sqrt{3}} = \frac{6\sqrt{3}}{3} = 2\sqrt{3} \]
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. 基本手順 -->
+        <!-- ========== 5. よくあるつまづき ========== -->
         <section id="section5">
-            <h2>5. 基本的な計算手順</h2>
-            <div class="section">
-                <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 累乗の計算手順</h3>
-                <div class="step-list">
-                    <div class="step-item">
-                        <span class="number-badge">1</span>
-                        <div>底が同じかどうか確認する</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">2</span>
-                        <div>かけ算なら指数を足す、わり算なら指数を引く</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">3</span>
-                        <div>必要なら実際の値を計算する</div>
-                    </div>
-                </div>
-
-                <div class="example-box" style="margin-top: 20px;">
-                    <strong>短い例：</strong> \( 5^3 \div 5^1 \)
-                    <p>→ 底が同じ5、わり算なので \( 5^{3-1} = 5^2 = 25 \)</p>
-                </div>
-
-                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ ルートの簡単化手順</h3>
-                <div class="step-list">
-                    <div class="step-item">
-                        <span class="number-badge">1</span>
-                        <div>ルートの中身を素因数分解する</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">2</span>
-                        <div>2個ずつのペアを作る（2乗を見つける）</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">3</span>
-                        <div>ペアになったものをルートの外に出す</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">4</span>
-                        <div>残ったものはルートの中に残す</div>
-                    </div>
-                </div>
-
-                <div class="example-box" style="margin-top: 20px;">
-                    <strong>短い例：</strong> \( \sqrt{50} \)
-                    <p>→ \( 50 = 25 \times 2 = 5^2 \times 2 \) → \( \sqrt{50} = 5\sqrt{2} \)</p>
-                </div>
-
-                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 分母の有理化手順</h3>
-                <div class="step-list">
-                    <div class="step-item">
-                        <span class="number-badge">1</span>
-                        <div>分母にあるルートと同じルートを分母・分子両方にかける</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">2</span>
-                        <div>分母は \( \sqrt{a} \times \sqrt{a} = a \) になる</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">3</span>
-                        <div>約分できるなら約分する</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. よくあるつまづき -->
-        <section id="section6">
-            <h2>6. よくあるつまづき</h2>
+            <h2>5. よくあるつまづき</h2>
             <div class="section">
                 <div class="caution-box">
                     <div class="caution-title">⚠️ つまづき1：底が違うのに指数法則を使う</div>
@@ -500,9 +461,9 @@
             </div>
         </section>
 
-        <!-- 7. 仕上げチェックリスト -->
-        <section id="section7">
-            <h2>7. 仕上げチェックリスト</h2>
+        <!-- ========== 6. 仕上げチェックリスト ========== -->
+        <section id="section6">
+            <h2>6. 仕上げチェックリスト</h2>
             <div class="section">
                 <div class="checklist">
                     <div class="checklist-item">指数法則を使うとき、底が同じかどうか確認したか</div>
@@ -510,6 +471,38 @@
                     <div class="checklist-item">分母にルートが残っていないか（有理化したか）</div>
                     <div class="checklist-item">\( \sqrt{a} \) と「aの平方根」の違いを区別できているか</div>
                     <div class="checklist-item">約分や計算ミスがないか確認したか</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 7. 練習問題 ========== -->
+        <section id="section7">
+            <h2>7. 練習問題</h2>
+            <div class="section">
+                <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+                <div class="rule-box" style="background: #f5f5f5;">
+                    <strong>練習1</strong>
+                    <p>\( 3^2 \times 3^3 \) を計算しなさい。</p>
+                    <details style="margin-top: 15px;">
+                        <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                        <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                            <p>底が同じ3なので、指数を足す：</p>
+                            <p>\( 3^2 \times 3^3 = 3^{2+3} = 3^5 = 243 \)</p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+                    <strong>練習2</strong>
+                    <p>\( \sqrt{98} \) を簡単にしなさい。</p>
+                    <details style="margin-top: 15px;">
+                        <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                        <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                            <p>\( 98 = 49 \times 2 = 7^2 \times 2 \) なので：</p>
+                            <p>\( \sqrt{98} = \sqrt{49 \times 2} = \sqrt{49} \times \sqrt{2} = 7\sqrt{2} \)</p>
+                        </div>
+                    </details>
                 </div>
             </div>
         </section>
