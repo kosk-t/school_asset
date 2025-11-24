@@ -3,6 +3,19 @@
  * 中学生向け数学教材用スタイル
  */
 
+/* ========== 表紙画像 ========== */
+.cover-image {
+    margin: 20px -40px 30px -40px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.cover-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* ========== 基本リセット ========== */
 * {
     margin: 0;

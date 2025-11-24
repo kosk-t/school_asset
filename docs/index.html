@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数学教材ライブラリ</title>
+    <link rel="stylesheet" href="css/education-template.css">
+    <style>
+        .category {
+            margin: 30px 0;
+        }
+        .category-title {
+            color: #1976d2;
+            font-size: 20px;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            background: linear-gradient(90deg, #e3f2fd 0%, transparent 100%);
+            border-left: 5px solid #1976d2;
+            border-radius: 5px;
+        }
+        .material-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            padding: 0;
+            list-style: none;
+        }
+        .material-item {
+            position: relative;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            transition: box-shadow 0.2s, transform 0.2s;
+            cursor: pointer;
+        }
+        .material-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        .material-item a {
+            text-decoration: none;
+            color: #1976d2;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .material-item a::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        .material-item:hover a {
+            text-decoration: underline;
+        }
+        .material-desc {
+            color: #666;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+        .level-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            margin-top: 8px;
+        }
+        .level-basic {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        .level-standard {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+        .level-advanced {
+            background: #fff3e0;
+            color: #e65100;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 数学教材ライブラリ</h1>
+        <div class="subtitle">中学生向け学習教材</div>
+
+        <!-- ========== 数と式 ========== -->
+        <div class="category">
+            <h2 class="category-title">数と式</h2>
+            <ul class="material-list">
+                <!-- 教材はここに追加 -->
+            </ul>
+        </div>
+
+        <!-- ========== 方程式 ========== -->
+        <div class="category">
+            <h2 class="category-title">方程式</h2>
+            <ul class="material-list">
+                <!-- 教材はここに追加 -->
+            </ul>
+        </div>
+
+        <!-- ========== 関数 ========== -->
+        <div class="category">
+            <h2 class="category-title">関数</h2>
+            <ul class="material-list">
+                <!-- 教材はここに追加 -->
+            </ul>
+        </div>
+
+        <!-- ========== 図形 ========== -->
+        <div class="category">
+            <h2 class="category-title">図形</h2>
+            <ul class="material-list">
+                <!-- 教材はここに追加 -->
+            </ul>
+        </div>
+
+        <!-- ========== データの活用 ========== -->
+        <div class="category">
+            <h2 class="category-title">データの活用</h2>
+            <ul class="material-list">
+                <li class="material-item">
+                    <a href="データの分析と確率_教材.html">データの分析と確率</a>
+                    <div class="material-desc">代表値・四分位数・経験的確率</div>
+                    <span class="level-badge level-standard">基礎〜標準</span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>
