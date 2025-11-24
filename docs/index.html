@@ -3,171 +3,288 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数学教材ライブラリ</title>
+    <title>数学クエスト - 中学数学教材ライブラリ</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&family=Varela+Round&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="css/education-template.css">
+    
     <style>
-        .category {
-            margin: 30px 0;
+        /* トップページ専用スタイル */
+        
+        /* セクション周り */
+        .category-section {
+            margin-bottom: 60px;
         }
-        .category-title {
-            color: #1976d2;
-            font-size: 20px;
+
+        .category-section h2 {
+            /* 共通CSSのh2を上書きして調整 */
+            margin-left: 5px;
+            font-size: 1.5rem;
+            transform: rotate(-1deg);
+            display: inline-block;
+        }
+        
+        /* ヒーローエリア（冒険の始まり） */
+        .hero-area {
+            text-align: center;
+            padding: 60px 20px;
+            /* ワクワクするグラデーション */
+            background: linear-gradient(135deg, var(--success-color) 0%, var(--primary-color) 100%);
+            border-radius: var(--border-radius);
+            margin-bottom: 50px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 163, 255, 0.25);
+            border: 4px solid rgba(255,255,255,0.2);
+        }
+        
+        .hero-title {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            font-size: 2.5em;
+            font-weight: 800;
             margin-bottom: 15px;
-            padding: 10px 15px;
-            background: linear-gradient(90deg, #e3f2fd 0%, transparent 100%);
-            border-left: 5px solid #1976d2;
-            border-radius: 5px;
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.1);
+            letter-spacing: 0.05em;
         }
-        .material-list {
+
+        .hero-subtitle {
+            font-size: 1.1em;
+            font-weight: 700;
+            opacity: 0.95;
+            background: rgba(255,255,255,0.25);
+            display: inline-block;
+            padding: 8px 25px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+        }
+
+        /* 浮遊アニメーション */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        /* グリッドレイアウト */
+        .material-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 15px;
-            padding: 0;
-            list-style: none;
+            gap: 25px;
+            padding: 10px;
         }
-        .material-item {
+
+        /* クエストカード（教材リンク） */
+        .quest-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 25px;
             position: relative;
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 15px;
-            transition: box-shadow 0.2s, transform 0.2s;
-            cursor: pointer;
-        }
-        .material-item:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transform: translateY(-2px);
-        }
-        .material-item a {
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none;
-            color: #1976d2;
-            font-weight: bold;
-            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+            border: 3px solid #edf2f7;
+            box-shadow: 0 6px 0 #dfe6e9; 
         }
-        .material-item a::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+
+        .quest-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--warning-color);
+            box-shadow: 0 10px 0 #f1c40f; 
         }
-        .material-item:hover a {
-            text-decoration: underline;
+
+        .quest-card:active {
+            transform: translateY(0px);
+            box-shadow: 0 2px 0 #f1c40f;
         }
-        .material-desc {
-            color: #666;
-            font-size: 13px;
-            margin-top: 8px;
-        }
-        .level-badge {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 11px;
-            margin-top: 8px;
-        }
-        .level-basic {
-            background: #e8f5e9;
-            color: #2e7d32;
-        }
-        .level-standard {
-            background: #e3f2fd;
-            color: #1565c0;
-        }
-        .level-advanced {
-            background: #fff3e0;
-            color: #e65100;
-        }
-        .hero-image {
-            margin: -40px -40px 30px -40px;
-            border-radius: 20px 20px 0 0;
-            overflow: hidden;
-        }
-        .hero-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .intro {
-            text-align: center;
-            padding: 25px 20px;
+
+        /* アイコン */
+        .quest-icon {
+            font-size: 40px;
             margin-bottom: 15px;
-            background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 50%, #fff3e0 100%);
-            border-radius: 16px;
-            border: 2px dashed #90caf9;
+            background: #f8f9fa;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            border: 2px dashed #b2bec3;
+            transition: 0.3s;
         }
-        .intro-main {
-            font-size: 20px;
+        
+        .quest-card:hover .quest-icon {
+            background: #fff9c4;
+            border-color: var(--warning-color);
+            transform: scale(1.1) rotate(-8deg);
+        }
+
+        .quest-title {
+            color: var(--text-color);
+            font-weight: 800;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .quest-desc {
+            color: #636e72;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex-grow: 1; /* 下揃えのため */
+        }
+
+        /* カード下部（レベル・ボタン） */
+        .quest-meta {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 2px dashed #f0f0f0;
+            padding-top: 15px;
+        }
+
+        .level-badge {
+            font-size: 0.75em;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.05em;
+        }
+        
+        .lvl-basic { background: #e0f2f1; color: #009688; }
+        .lvl-standard { background: #e3f2fd; color: #1976d2; }
+        .lvl-advanced { background: #fff3e0; color: #e65100; }
+
+        .play-btn {
+            background: var(--accent-color);
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
             font-weight: bold;
-            color: #1976d2;
-            margin: 0;
+            box-shadow: 0 3px 0 #c0392b;
+            transition: 0.2s;
         }
-        .intro-sub {
-            font-size: 14px;
-            color: #666;
-            margin-top: 10px;
+        
+        .quest-card:hover .play-btn {
+            transform: scale(1.1);
         }
-        .intro-icons {
-            font-size: 24px;
-            margin-bottom: 10px;
+
+        /* 準備中（Locked）カードのスタイル */
+        .quest-card.locked {
+            opacity: 0.6;
+            pointer-events: none;
+            border-style: dashed;
+            box-shadow: none;
+            background: #fdfdfd;
+        }
+        .quest-card.locked .quest-icon {
+            background: #eee;
+            border-color: #ddd;
+            color: #aaa;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="hero-image">
-            <img src="covers/cover.jpg" alt="中学数学クエスト - さあ、数学の冒険へ！">
+        
+        <div class="hero-area">
+            <div class="hero-icon">🚀</div>
+            <h1 class="hero-title">数学クエスト ライブラリ</h1>
+            <div class="hero-subtitle">学びたいテーマを選んで、数学の冒険を始めよう！✨</div>
         </div>
 
-        <div class="intro">
-            <div class="intro-icons">✨📖✏️🎯✨</div>
-            <p class="intro-main">学びたいテーマを選んで、数学の冒険を始めよう！</p>
-            <p class="intro-sub">楽しく学べる解説と練習問題がキミを待っているよ 🚀</p>
+        <div class="category-section">
+            <h2>🧮 数と式</h2>
+            <div class="material-grid">
+                <div class="quest-card locked">
+                    <div class="quest-icon">🔒</div>
+                    <div class="quest-title">正負の数・文字式</div>
+                    <div class="quest-desc">マイナスの世界と文字の魔法を使いこなそう。（準備中）</div>
+                    <div class="quest-meta">
+                        <span class="level-badge" style="background:#eee; color:#999;">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- ========== 数と式 ========== -->
-        <div class="category">
-            <h2 class="category-title">数と式</h2>
-            <ul class="material-list">
-                <!-- 教材はここに追加 -->
-            </ul>
+        <div class="category-section">
+            <h2>⚖️ 方程式</h2>
+            <div class="material-grid">
+                <div class="quest-card locked">
+                    <div class="quest-icon">🔒</div>
+                    <div class="quest-title">1次方程式・連立方程式</div>
+                    <div class="quest-desc">天秤のバランスをとって、未知の数Xを見つけ出せ！（準備中）</div>
+                    <div class="quest-meta">
+                        <span class="level-badge" style="background:#eee; color:#999;">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- ========== 方程式 ========== -->
-        <div class="category">
-            <h2 class="category-title">方程式</h2>
-            <ul class="material-list">
-                <!-- 教材はここに追加 -->
-            </ul>
+        <div class="category-section">
+            <h2>📈 関数</h2>
+            <div class="material-grid">
+                <div class="quest-card locked">
+                    <div class="quest-icon">🔒</div>
+                    <div class="quest-title">比例・反比例・1次関数</div>
+                    <div class="quest-desc">変化のルールを見抜いて、グラフを描き出そう。（準備中）</div>
+                    <div class="quest-meta">
+                        <span class="level-badge" style="background:#eee; color:#999;">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- ========== 関数 ========== -->
-        <div class="category">
-            <h2 class="category-title">関数</h2>
-            <ul class="material-list">
-                <!-- 教材はここに追加 -->
-            </ul>
+        <div class="category-section">
+            <h2>📐 図形</h2>
+            <div class="material-grid">
+                <div class="quest-card locked">
+                    <div class="quest-icon">🔒</div>
+                    <div class="quest-title">平面図形・空間図形</div>
+                    <div class="quest-desc">図形の性質を証明し、空間を把握する力を手に入れろ。（準備中）</div>
+                    <div class="quest-meta">
+                        <span class="level-badge" style="background:#eee; color:#999;">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- ========== 図形 ========== -->
-        <div class="category">
-            <h2 class="category-title">図形</h2>
-            <ul class="material-list">
-                <!-- 教材はここに追加 -->
-            </ul>
-        </div>
+        <div class="category-section">
+            <h2>📊 データの活用</h2>
+            <div class="material-grid">
+                
+                <a href="データの分析と確率_教材.html" class="quest-card">
+                    <div class="quest-icon">🎲</div>
+                    <div class="quest-title">データの分析と確率</div>
+                    <div class="quest-desc">代表値・四分位数・経験的確率をマスターして宝箱を開けよう！</div>
+                    <div class="quest-meta">
+                        <span class="level-badge lvl-standard">Lv.2 標準</span>
+                        <div class="play-btn">▶</div>
+                    </div>
+                </a>
 
-        <!-- ========== データの活用 ========== -->
-        <div class="category">
-            <h2 class="category-title">データの活用</h2>
-            <ul class="material-list">
-                <li class="material-item">
-                    <a href="データの分析と確率_教材.html">データの分析と確率</a>
-                    <div class="material-desc">代表値・四分位数・経験的確率</div>
-                    <span class="level-badge level-standard">基礎〜標準</span>
-                </li>
-            </ul>
+            </div>
         </div>
 
     </div>
