@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>円と球の性質（表面積・円周） - 中学数学教材</title>
+
+    <!-- KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- 共通CSS -->
+    <link rel="stylesheet" href="css/education-template.css">
+
+    <!-- KaTeX JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+            onload="renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '\\[', right: '\\]', display: true},
+                    {left: '\\(', right: '\\)', display: false}
+                ],
+                throwOnError: false
+            });"></script>
+</head>
+<body>
+    <!--
+    ========== 教材メタ情報（画像生成用） ==========
+    テーマ: 円と球の性質（表面積・円周）
+    対象: 中学生・基礎〜標準レベル
+    概要: 円の半径・直径・円周・面積と、球の表面積・体積を学ぶ。円周率πを使った計算と、球を等分したときの1部分の面積の求め方を身につける。
+    キーワード: 円周, 直径, 半径, 円周率, 円の面積, 球の表面積, 球の体積, 等分
+    イメージ: 円とその半径・直径、球の断面図、野球ボール、円周率πの記号
+    ================================================
+    -->
+
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="index.html">トップページに戻る</a>
+        </nav>
+
+        <h1>⚪ 円と球の性質（表面積・円周）</h1>
+        <div class="subtitle">中学生・基礎〜標準レベル</div>
+
+        <!-- ========== 表紙（任意） ========== -->
+        <div class="cover-image">
+            <img src="covers/noimage.jpg" alt="円と球の性質">
+        </div>
+
+        <!-- 1. テーマの定義／最重要の考え方 -->
+        <section>
+            <h2>1. テーマの定義／最重要の考え方</h2>
+            <div class="section">
+                <p><strong>円</strong>とは、ある点（中心）から等しい距離にある点の集まりです。<strong>球</strong>は、円を3次元に拡張したもので、中心からすべての表面の点までの距離が等しい立体です。</p>
+
+                <ul>
+                    <li><strong>半径 \(r\)</strong>：中心から円周（球の表面）までの距離</li>
+                    <li><strong>直径 \(d\)</strong>：円（球）を横切る最長の線分（\(d = 2r\)）</li>
+                    <li><strong>円周率 \(\pi\)</strong>：円周÷直径＝約3.14159...（無限に続く）</li>
+                </ul>
+
+                <div class="important-rule">
+                    🎯 最重要：半径と直径の関係 \(d = 2r\)（直径は半径の2倍）を常に意識！
+                </div>
+
+                <!-- 円の基本要素の図 -->
+                <div class="svg-container">
+                    <svg width="700" height="280" viewBox="0 0 700 280">
+                        <!-- タイトル -->
+                        <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">円の基本要素</text>
+
+                        <!-- 円 -->
+                        <circle cx="200" cy="155" r="100" fill="none" stroke="#1976d2" stroke-width="3"/>
+
+                        <!-- 直径（水平線・破線） -->
+                        <line x1="100" y1="155" x2="300" y2="155" stroke="#ff9800" stroke-width="2" stroke-dasharray="8,4"/>
+                        <text x="200" y="180" font-size="14" font-weight="bold" fill="#ff9800">d = 2r（直径）</text>
+
+                        <!-- 半径（右上45度方向・実線） -->
+                        <line x1="200" y1="155" x2="271" y2="84" stroke="#4caf50" stroke-width="3"/>
+                        <text x="255" y="105" font-size="14" font-weight="bold" fill="#4caf50">r（半径）</text>
+
+                        <!-- 中心点 -->
+                        <circle cx="200" cy="155" r="5" fill="#e65100"/>
+                        <text x="175" y="145" font-size="14" font-weight="bold" fill="#e65100">O（中心）</text>
+
+                        <!-- 円周のラベル -->
+                        <path d="M 295 200 Q 350 230, 320 180" stroke="#9c27b0" stroke-width="2" fill="none" marker-end="url(#arrowPurple)"/>
+                        <text x="340" y="235" font-size="14" font-weight="bold" fill="#9c27b0">円周 C</text>
+
+                        <!-- 右側の説明ボックス -->
+                        <rect x="420" y="60" width="250" height="180" fill="#fff9f0" stroke="#ff9800" stroke-width="2" rx="10"/>
+                        <text x="545" y="90" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">公式まとめ</text>
+                        <text x="440" y="120" font-size="14" fill="#333">・直径 d = 2r</text>
+                        <text x="440" y="150" font-size="14" fill="#333">・円周 C = 2πr = πd</text>
+                        <text x="440" y="180" font-size="14" fill="#333">・円の面積 S = πr²</text>
+                        <text x="440" y="210" font-size="14" fill="#333">・π ≒ 3.14（近似値）</text>
+
+                        <defs>
+                            <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                <polygon points="0 0, 10 3, 0 6" fill="#9c27b0"/>
+                            </marker>
+                        </defs>
+                    </svg>
+                    <div class="svg-caption">中心O、半径r、直径d、円周Cの関係</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 覚えるルール -->
+        <section>
+            <h2>2. 覚えるルール</h2>
+            <div class="section">
+                <div class="important-rule">
+                    【最重要】円周と面積の公式<br>
+                    円周：\(C = 2\pi r = \pi d\)　　円の面積：\(S = \pi r^2\)
+                </div>
+
+                <div class="rule-box">
+                    <strong>📌 円の公式</strong> <a href="#ex-circumference" class="example-link">→ 例1</a> <a href="#ex-circle-area" class="example-link">→ 例3</a>
+                    <ul>
+                        <li><strong>直径と半径の関係</strong>：\(d = 2r\) または \(r = \dfrac{d}{2}\)</li>
+                        <li><strong>円周の長さ</strong>：\(C = 2\pi r = \pi d\)</li>
+                        <li><strong>円の面積</strong>：\(S = \pi r^2\)</li>
+                    </ul>
+                    <div class="formula">
+                        \[ \text{円周} = 2\pi r, \quad \text{円の面積} = \pi r^2 \]
+                    </div>
+                </div>
+
+                <div class="rule-box">
+                    <strong>📌 球の公式</strong> <a href="#ex-sphere-surface" class="example-link">→ 例4</a>
+                    <ul>
+                        <li><strong>球の表面積</strong>：\(S = 4\pi r^2\)（円の面積の4倍！）</li>
+                        <li><strong>球の体積</strong>：\(V = \dfrac{4}{3}\pi r^3\)</li>
+                        <li><strong>大円の円周</strong>：球の中心を通る断面の円周 = \(2\pi r\)</li>
+                    </ul>
+                    <div class="formula">
+                        \[ \text{球の表面積} = 4\pi r^2, \quad \text{球の体積} = \frac{4}{3}\pi r^3 \]
+                    </div>
+
+                    <!-- 球の図 -->
+                    <div class="svg-container">
+                        <svg width="700" height="280" viewBox="0 0 700 280">
+                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">球の構造</text>
+
+                            <!-- 球の外形（楕円で表現） -->
+                            <ellipse cx="200" cy="150" rx="100" ry="100" fill="#e3f2fd" stroke="#1976d2" stroke-width="3"/>
+
+                            <!-- 大円（赤道線） -->
+                            <ellipse cx="200" cy="150" rx="100" ry="30" fill="none" stroke="#ff9800" stroke-width="2" stroke-dasharray="8,4"/>
+
+                            <!-- 縦の大円 -->
+                            <ellipse cx="200" cy="150" rx="30" ry="100" fill="none" stroke="#4caf50" stroke-width="2" stroke-dasharray="5,5"/>
+
+                            <!-- 中心点 -->
+                            <circle cx="200" cy="150" r="5" fill="#e65100"/>
+                            <text x="215" y="145" font-size="14" font-weight="bold" fill="#e65100">O</text>
+
+                            <!-- 半径 -->
+                            <line x1="200" y1="150" x2="300" y2="150" stroke="#e65100" stroke-width="2"/>
+                            <text x="250" y="140" font-size="14" font-weight="bold" fill="#e65100">r</text>
+
+                            <!-- 直径（高さ）を示す縦線と矢印 -->
+                            <line x1="70" y1="50" x2="70" y2="250" stroke="#9c27b0" stroke-width="2"/>
+                            <line x1="65" y1="50" x2="75" y2="50" stroke="#9c27b0" stroke-width="2"/>
+                            <line x1="65" y1="250" x2="75" y2="250" stroke="#9c27b0" stroke-width="2"/>
+                            <text x="30" y="150" font-size="14" font-weight="bold" fill="#9c27b0" text-anchor="middle" transform="rotate(-90, 30, 150)">高さ = d = 2r</text>
+
+                            <!-- 右側の説明 -->
+                            <rect x="380" y="50" width="280" height="200" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="10"/>
+                            <text x="520" y="80" font-size="15" font-weight="bold" fill="#2e7d32" text-anchor="middle">球の公式</text>
+
+                            <text x="400" y="115" font-size="14" fill="#333">・表面積 S = 4πr²</text>
+                            <text x="420" y="135" font-size="14" fill="#666">（円の面積の4倍）</text>
+
+                            <text x="400" y="165" font-size="14" fill="#333">・体積 V = (4/3)πr³</text>
+
+                            <text x="400" y="200" font-size="14" fill="#333">・地面に置いた球の高さ</text>
+                            <text x="420" y="220" font-size="14" fill="#e65100">→ 高さ = 直径 = 2r</text>
+                            <text x="420" y="240" font-size="14" fill="#e65100">→ 半径 r = 高さ ÷ 2</text>
+                        </svg>
+                        <div class="svg-caption">球は中心から表面までの距離がすべて等しい立体</div>
+                    </div>
+                </div>
+
+                <div class="rule-box">
+                    <strong>📌 等分の考え方</strong> <a href="#ex-division" class="example-link">→ 例6</a>
+                    <p>球の表面を \(n\) 等分するとき、1部分の面積：</p>
+                    <div class="formula">
+                        \[ \text{1部分の面積} = \frac{4\pi r^2}{n} \]
+                    </div>
+                    <p>例：野球ボールの皮が2枚 → 1枚の面積 = \(\dfrac{4\pi r^2}{2} = 2\pi r^2\)</p>
+                </div>
+
+                <div class="rule-box">
+                    <strong>📌 円周率 \(\pi\) の扱い</strong>
+                    <ul>
+                        <li>厳密には無限に続く小数（\(\pi = 3.14159265...\)）</li>
+                        <li>計算では \(\pi \approx 3.14\) または \(\pi = 3.1416\) を使うことが多い</li>
+                        <li>「\(\pi\) のままで答えよ」と指示があれば \(\pi\) を残す</li>
+                        <li>「小数第○位まで」の指示があれば四捨五入する</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 簡単にするコツ -->
+        <section>
+            <h2>3. 簡単にするコツ</h2>
+            <div class="section">
+                <div class="tip-box">
+                    <strong>✏️ コツ1：直径が与えられたら、まず半径を求める</strong><br>
+                    公式は半径 \(r\) を使うものが多い。直径 \(d\) が与えられたら \(r = \dfrac{d}{2}\) で半径に変換してから計算。
+                </div>
+
+                <div class="tip-box">
+                    <strong>✏️ コツ2：球の表面積 = 円の面積 × 4</strong><br>
+                    同じ半径なら、球の表面積は円の面積のちょうど4倍。覚えやすい！
+                </div>
+
+                <div class="tip-box">
+                    <strong>✏️ コツ3：「高さ」は直径と同じ</strong><br>
+                    地面に置いた球の「高さ」は直径 \(d = 2r\)。問題文の「高さ」から半径を求めるときは2で割る。
+                </div>
+
+                <div class="tip-box">
+                    <strong>✏️ コツ4：\(\pi\) は最後にまとめる</strong><br>
+                    計算の途中は \(\pi\) をそのまま文字として扱い、最後に数値を代入すると計算ミスが減る。
+                </div>
+
+                <div class="tip-box">
+                    <strong>✏️ コツ5：単位の換算に注意</strong><br>
+                    面積は \(\text{cm}^2\)、\(\text{m}^2\) など、長さの単位の2乗になる。体積は3乗。
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 代表的な計算例 -->
+        <section>
+            <h2>4. 代表的な計算例</h2>
+            <div class="section">
+
+                <div class="example-box" id="ex-circumference">
+                    <div class="example-title">
+                        <span class="number-badge">例1</span>円周を求める（半径から）
+                    </div>
+                    <p><strong>問題：</strong>半径 \(r = 5\) cm の円の円周を求めよ。（\(\pi = 3.14\)）</p>
+                    <div class="formula">
+                        \[ C = 2\pi r = 2 \times 3.14 \times 5 = 31.4 \text{ cm} \]
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <div class="example-title">
+                        <span class="number-badge">例2</span>円周を求める（直径から）
+                    </div>
+                    <p><strong>問題：</strong>直径 \(d = 14\) cm の円の円周を求めよ。（\(\pi\) のまま）</p>
+                    <div class="formula">
+                        \[ C = \pi d = 14\pi \text{ cm} \]
+                    </div>
+                </div>
+
+                <div class="example-box" id="ex-circle-area">
+                    <div class="example-title">
+                        <span class="number-badge">例3</span>円の面積を求める
+                    </div>
+                    <p><strong>問題：</strong>半径 \(r = 6\) cm の円の面積を求めよ。（\(\pi = 3.14\)）</p>
+                    <div class="formula">
+                        \[ S = \pi r^2 = 3.14 \times 6^2 = 3.14 \times 36 = 113.04 \text{ cm}^2 \]
+                    </div>
+                </div>
+
+                <div class="example-box" id="ex-sphere-surface">
+                    <div class="example-title">
+                        <span class="number-badge">例4</span>球の表面積を求める
+                    </div>
+                    <p><strong>問題：</strong>半径 \(r = 3\) cm の球の表面積を求めよ。（\(\pi\) のまま）</p>
+                    <div class="formula">
+                        \[ S = 4\pi r^2 = 4\pi \times 3^2 = 4\pi \times 9 = 36\pi \text{ cm}^2 \]
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <div class="example-title">
+                        <span class="number-badge">例5</span>球の高さから表面積を求める
+                    </div>
+                    <p><strong>問題：</strong>地面に置いた球の高さが 74 mm。この球の表面積を求めよ。（小数第1位まで、\(\pi = 3.14\)）</p>
+                    <p><strong>手順：</strong></p>
+                    <ul>
+                        <li>高さ = 直径なので \(d = 74\) mm</li>
+                        <li>半径 \(r = \dfrac{74}{2} = 37\) mm</li>
+                    </ul>
+                    <div class="formula">
+                        \[ S = 4\pi r^2 = 4 \times 3.14 \times 37^2 = 4 \times 3.14 \times 1369 = 17194.64 \text{ mm}^2 \]
+                    </div>
+                    <p><strong>答え：</strong>17194.6 mm²（小数第1位まで）</p>
+
+                    <!-- 高さから半径を求める図 -->
+                    <div class="svg-container">
+                        <svg width="500" height="200" viewBox="0 0 500 200">
+                            <text x="250" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">高さから半径を求める</text>
+
+                            <!-- 地面 -->
+                            <line x1="50" y1="170" x2="250" y2="170" stroke="#666" stroke-width="2"/>
+                            <text x="150" y="190" font-size="14" fill="#666" text-anchor="middle">地面</text>
+
+                            <!-- 球 -->
+                            <circle cx="150" cy="100" r="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+
+                            <!-- 高さの矢印 -->
+                            <line x1="240" y1="30" x2="240" y2="170" stroke="#e65100" stroke-width="2"/>
+                            <line x1="235" y1="30" x2="245" y2="30" stroke="#e65100" stroke-width="2"/>
+                            <line x1="235" y1="170" x2="245" y2="170" stroke="#e65100" stroke-width="2"/>
+
+                            <!-- 半径 -->
+                            <line x1="150" y1="100" x2="220" y2="100" stroke="#4caf50" stroke-width="2"/>
+                            <circle cx="150" cy="100" r="4" fill="#4caf50"/>
+                            <text x="180" y="90" font-size="14" font-weight="bold" fill="#4caf50">r</text>
+
+                            <!-- 説明 -->
+                            <rect x="300" y="50" width="180" height="100" fill="#fff9f0" stroke="#ff9800" stroke-width="2" rx="8"/>
+                            <text x="390" y="80" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">ポイント</text>
+                            <text x="310" y="105" font-size="14" fill="#333">高さ = 直径 = 2r</text>
+                            <text x="310" y="130" font-size="14" fill="#e65100">半径 r = 高さ ÷ 2</text>
+                        </svg>
+                        <div class="svg-caption">地面に置いた球の高さから半径を求める</div>
+                    </div>
+                </div>
+
+                <div class="example-box" id="ex-division">
+                    <div class="example-title">
+                        <span class="number-badge">例6</span>球の表面を等分したときの1部分の面積
+                    </div>
+                    <p><strong>問題：</strong>半径 \(r = 37\) mm の球（野球ボール）の表面を2枚の皮で覆う。1枚あたりの面積は？（\(\pi\) のまま）</p>
+                    <p><strong>手順：</strong></p>
+                    <ul>
+                        <li>球の表面積 \(S = 4\pi \times 37^2 = 5476\pi\) mm²</li>
+                        <li>2等分するので：\(\dfrac{5476\pi}{2} = 2738\pi\) mm²</li>
+                    </ul>
+                    <div class="formula">
+                        \[ \text{1枚の面積} = \frac{4\pi r^2}{2} = 2\pi r^2 = 2\pi \times 37^2 = 2738\pi \text{ mm}^2 \]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 基本手順 -->
+        <section>
+            <h2>5. 基本的な計算手順</h2>
+            <div class="section">
+                <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 円周・円の面積を求める手順</h3>
+                <div class="step-list">
+                    <div class="step-item">
+                        <span class="number-badge">1</span>
+                        <div>問題文から半径 \(r\) または直径 \(d\) を読み取る</div>
+                    </div>
+                    <div class="step-item">
+                        <span class="number-badge">2</span>
+                        <div>直径が与えられた場合は \(r = \dfrac{d}{2}\) で半径を求める</div>
+                    </div>
+                    <div class="step-item">
+                        <span class="number-badge">3</span>
+                        <div>公式に代入（円周 \(C = 2\pi r\)、面積 \(S = \pi r^2\)）</div>
+                    </div>
+                    <div class="step-item">
+                        <span class="number-badge">4</span>
+                        <div>指示に従って \(\pi\) に数値を代入、または \(\pi\) のまま答える</div>
+                    </div>
+                </div>
+
+                <div class="example-box" style="margin-top: 20px;">
+                    <strong>短い例：</strong> 直径 10 cm の円の面積（\(\pi\) のまま）
+                    <p>→ \(r = 5\) cm → \(S = \pi \times 5^2 = 25\pi\) cm²</p>
+                </div>
+
+                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 球の表面積・体積を求める手順</h3>
+                <div class="step-list">
+                    <div class="step-item">
+                        <span class="number-badge">1</span>
+                        <div>問題文から半径 \(r\)（または高さ・直径）を読み取る</div>
+                    </div>
+                    <div class="step-item">
+                        <span class="number-badge">2</span>
+                        <div>高さが与えられた場合：高さ = 直径なので \(r = \dfrac{\text{高さ}}{2}\)</div>
+                    </div>
+                    <div class="step-item">
+                        <span class="number-badge">3</span>
+                        <div>公式に代入（表面積 \(S = 4\pi r^2\)、体積 \(V = \dfrac{4}{3}\pi r^3\)）</div>
+                    </div>
+                    <div class="step-item">
+                        <span class="number-badge">4</span>
+                        <div>等分する場合は全体を \(n\) で割る</div>
+                    </div>
+                    <div class="step-item">
+                        <span class="number-badge">5</span>
+                        <div>指示に従って答えを書く（有効数字、小数点以下の桁数など）</div>
+                    </div>
+                </div>
+
+                <div class="example-box" style="margin-top: 20px;">
+                    <strong>短い例：</strong> 高さ 8 cm の球の体積（\(\pi\) のまま）
+                    <p>→ \(r = 4\) cm → \(V = \dfrac{4}{3}\pi \times 4^3 = \dfrac{256}{3}\pi\) cm³</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. よくあるつまづき -->
+        <section>
+            <h2>6. よくあるつまづき</h2>
+            <div class="section">
+                <div class="caution-box">
+                    <div class="caution-title">⚠️ つまづき1：直径と半径を混同</div>
+                    <p><strong>ダメな例：</strong> 直径 10 cm を公式にそのまま代入して \(\pi \times 10^2\)</p>
+                    <p><strong>対策：</strong> 公式は基本的に半径 \(r\) を使う。直径なら必ず2で割って半径にしてから代入。</p>
+                </div>
+
+                <div class="caution-box">
+                    <div class="caution-title">⚠️ つまづき2：球の表面積で「4」を忘れる</div>
+                    <p><strong>ダメな例：</strong> 球の表面積を \(\pi r^2\) で計算（これは円の面積）</p>
+                    <p><strong>対策：</strong> 球の表面積は \(4\pi r^2\)。円の面積の4倍と覚える。</p>
+                </div>
+
+                <div class="caution-box">
+                    <div class="caution-title">⚠️ つまづき3：「高さ」の意味を間違える</div>
+                    <p><strong>ダメな例：</strong> 球の「高さ」を半径だと思って計算</p>
+                    <p><strong>対策：</strong> 地面に置いた球の高さ = 直径 = 2r。半径はその半分。</p>
+                </div>
+
+                <div class="caution-box">
+                    <div class="caution-title">⚠️ つまづき4：単位の2乗・3乗を忘れる</div>
+                    <p><strong>ダメな例：</strong> 面積を「cm」で答える</p>
+                    <p><strong>対策：</strong> 面積は cm²、m² など（長さの2乗）。体積は cm³、m³（3乗）。</p>
+                </div>
+
+                <div class="caution-box">
+                    <div class="caution-title">⚠️ つまづき5：四捨五入のタイミングを間違える</div>
+                    <p><strong>ダメな例：</strong> 計算途中で四捨五入してしまい、最終答えがずれる</p>
+                    <p><strong>対策：</strong> 四捨五入は最後の1回だけ。途中は \(\pi\) のまま、または多めの桁数で計算。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 仕上げチェックリスト -->
+        <section>
+            <h2>7. 仕上げチェックリスト</h2>
+            <div class="section">
+                <div class="checklist">
+                    <div class="checklist-item">直径が与えられた場合、半径に変換したか（\(r = d \div 2\)）</div>
+                    <div class="checklist-item">円と球の公式を正しく使い分けたか（円の面積 \(\pi r^2\)、球の表面積 \(4\pi r^2\)）</div>
+                    <div class="checklist-item">単位は面積なら²、体積なら³をつけたか</div>
+                    <div class="checklist-item">\(\pi\) の扱いは問題の指示通りか（そのまま or 3.14など）</div>
+                    <div class="checklist-item">小数点以下・有効数字の指示に従って正しく丸めたか</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- まとめ -->
+        <div class="summary">
+            📌 まとめ：半径 \(r\) をつかんで、円は \(\pi r^2\)、球は \(4\pi r^2\) で攻略！
+        </div>
+
+        <nav class="breadcrumb breadcrumb-footer">
+            <a href="index.html">トップページに戻る</a>
+        </nav>
+    </div>
+</body>
+</html>
