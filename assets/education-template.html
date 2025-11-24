@@ -34,6 +34,10 @@
     -->
 
     <div class="container">
+        <nav class="breadcrumb">
+            <a href="index.html">トップページに戻る</a>
+        </nav>
+
         <!-- ========== タイトル ========== -->
         <h1>【絵文字】 【テーマ名】</h1>
         <div class="subtitle">中学生・基礎〜標準レベル</div>
@@ -48,41 +52,28 @@
         <nav class="toc">
             <div class="toc-title">📚 目次</div>
             <ol class="toc-list">
-                <li><a href="#section1">テーマの定義／最重要の考え方</a></li>
+                <li><a href="#section1">テーマの定義</a></li>
                 <li><a href="#section2">覚えるルール</a></li>
-                <li><a href="#section3">簡単にするコツ</a></li>
-                <li><a href="#section4">代表的な計算例</a></li>
-                <li><a href="#section5">基本的な計算手順</a></li>
-                <li><a href="#section6">よくあるつまづき</a></li>
-                <li><a href="#section7">仕上げチェックリスト</a></li>
+                <li><a href="#section3">例題と解き方</a></li>
+                <li><a href="#section4">簡単にするコツ</a></li>
+                <li><a href="#section5">よくあるつまづき</a></li>
+                <li><a href="#section6">仕上げチェックリスト</a></li>
+                <li><a href="#section7">練習問題</a></li>
                 <li><a href="#story">おまけ：実践ストーリー「【ストーリータイトル】」</a></li>
             </ol>
         </nav>
 
-        <!-- ========== 1. テーマの定義／最重要の考え方 ========== -->
+        <!-- ========== 1. テーマの定義 ========== -->
         <section id="section1">
-            <h2>1. テーマの定義／最重要の考え方</h2>
+            <h2>1. テーマの定義</h2>
             <div class="section">
-                <p><strong>【用語】</strong>とは、【定義の説明】です。</p>
+                <p>【なぜ学ぶか：身近な例で動機づけ（1〜2文）】</p>
+                <p>このページでは、【何を学ぶか】を学びます：</p>
                 <ul>
                     <li><strong>【項目1】</strong>：【説明1】</li>
                     <li><strong>【項目2】</strong>：【説明2】</li>
                     <li><strong>【項目3】</strong>：【説明3】</li>
                 </ul>
-
-                <div class="important-rule">
-                    【絵文字】 最重要の考え方：【ここに最重要ポイント】
-                </div>
-
-                <!-- SVG図解（必要に応じて追加） -->
-                <!--
-                <div class="svg-container">
-                    <svg width="700" height="200" viewBox="0 0 700 200">
-                        ここにSVG
-                    </svg>
-                    <div class="svg-caption">図の説明</div>
-                </div>
-                -->
             </div>
         </section>
 
@@ -94,8 +85,18 @@
                     【最重要】【ここに最重要ルール】
                 </div>
 
+                <!-- 最重要ルールの図解（SVG） -->
+                <!--
+                <div class="svg-container">
+                    <svg width="700" height="200" viewBox="0 0 700 200">
+                        ここにSVG
+                    </svg>
+                    <div class="svg-caption">図の説明</div>
+                </div>
+                -->
+
                 <div class="rule-box">
-                    <strong>【絵文字】 ルール1のタイトル</strong>
+                    <strong>📌 ルール1のタイトル</strong> <a href="#ex-1" class="example-link">→ 例1</a>
                     <ul>
                         <li><strong>【条件1】</strong>：【説明】</li>
                         <li><strong>【条件2】</strong>：【説明】</li>
@@ -103,55 +104,39 @@
                     <div class="formula">
                         \[ 【数式】 \]
                     </div>
+                    <p><strong>💡 なぜ〇〇？</strong> 【理由の説明】</p>
                 </div>
 
                 <div class="rule-box">
-                    <strong>【絵文字】 ルール2のタイトル</strong>
+                    <strong>📌 ルール2のタイトル</strong> <a href="#ex-2" class="example-link">→ 例2</a>
                     <p>【ルールの説明】</p>
                 </div>
             </div>
         </section>
 
-        <!-- ========== 3. 簡単にするコツ ========== -->
+        <!-- ========== 3. 例題と解き方 ========== -->
         <section id="section3">
-            <h2>3. 簡単にするコツ</h2>
+            <h2>3. 例題と解き方</h2>
             <div class="section">
-                <div class="tip-box">
-                    <strong>【絵文字】 コツ1：【タイトル】</strong><br>
-                    【コツの説明】
-                </div>
+                <p>【解き方の流れを1文で概要。例：「ルールを使って実際に解いてみましょう。」】</p>
 
-                <div class="tip-box">
-                    <strong>【絵文字】 コツ2：【タイトル】</strong><br>
-                    【コツの説明】
-                </div>
+                <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 【カテゴリ名】</h3>
 
-                <div class="tip-box">
-                    <strong>【絵文字】 コツ3：【タイトル】</strong><br>
-                    【コツの説明】
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== 4. 代表的な計算例 ========== -->
-        <section id="section4">
-            <h2>4. 代表的な計算例</h2>
-            <div class="section">
                 <div class="data-example">
                     【例題のデータや問題文】
                 </div>
 
-                <div class="example-box">
+                <div class="example-box" id="ex-1">
                     <div class="example-title">
                         <span class="number-badge">例1</span>【例題タイトル】
                     </div>
-                    <p><strong>手順：</strong>【手順の説明】</p>
+                    <p><strong>解き方：</strong>【解き方の説明】</p>
                     <div class="formula">
                         \[ 【計算式】 \]
                     </div>
                 </div>
 
-                <div class="example-box">
+                <div class="example-box" id="ex-2">
                     <div class="example-title">
                         <span class="number-badge">例2</span>【例題タイトル】
                     </div>
@@ -163,40 +148,30 @@
             </div>
         </section>
 
-        <!-- ========== 5. 基本的な計算手順 ========== -->
-        <section id="section5">
-            <h2>5. 基本的な計算手順</h2>
+        <!-- ========== 4. 簡単にするコツ ========== -->
+        <section id="section4">
+            <h2>4. 簡単にするコツ</h2>
             <div class="section">
-                <h3>▶ 【手順名】</h3>
-                <div class="step-list">
-                    <div class="step-item">
-                        <span class="number-badge">1</span>
-                        <div>【ステップ1の説明】</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">2</span>
-                        <div>【ステップ2の説明】</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">3</span>
-                        <div>【ステップ3の説明】</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">4</span>
-                        <div>【ステップ4の説明】</div>
-                    </div>
+                <div class="tip-box">
+                    <strong>✏️ コツ1：【タイトル】</strong><br>
+                    【コツの説明】
                 </div>
 
-                <div class="example-box" style="margin-top: 20px;">
-                    <strong>短い例：</strong> 【簡単な例題】
-                    <p>→ 【解答】</p>
+                <div class="tip-box">
+                    <strong>✏️ コツ2：【タイトル】</strong><br>
+                    【コツの説明】
+                </div>
+
+                <div class="tip-box">
+                    <strong>✏️ コツ3：【タイトル】</strong><br>
+                    【コツの説明】
                 </div>
             </div>
         </section>
 
-        <!-- ========== 6. よくあるつまづき ========== -->
-        <section id="section6">
-            <h2>6. よくあるつまづき</h2>
+        <!-- ========== 5. よくあるつまづき ========== -->
+        <section id="section5">
+            <h2>5. よくあるつまづき</h2>
             <div class="section">
                 <div class="caution-box">
                     <div class="caution-title">⚠️ つまづき1：【タイトル】</div>
@@ -218,9 +193,9 @@
             </div>
         </section>
 
-        <!-- ========== 7. 仕上げチェックリスト ========== -->
-        <section id="section7">
-            <h2>7. 仕上げチェックリスト</h2>
+        <!-- ========== 6. 仕上げチェックリスト ========== -->
+        <section id="section6">
+            <h2>6. 仕上げチェックリスト</h2>
             <div class="section">
                 <div class="checklist">
                     <div class="checklist-item">【チェック項目1】</div>
@@ -232,9 +207,39 @@
             </div>
         </section>
 
+        <!-- ========== 7. 練習問題 ========== -->
+        <section id="section7">
+            <h2>7. 練習問題</h2>
+            <div class="section">
+                <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+                <div class="rule-box" style="background: #f5f5f5;">
+                    <strong>練習1</strong>
+                    <p>【問題文】</p>
+                    <details style="margin-top: 15px;">
+                        <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                        <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                            <p>【解答】</p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+                    <strong>練習2</strong>
+                    <p>【問題文】</p>
+                    <details style="margin-top: 15px;">
+                        <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                        <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                            <p>【解答】</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
         <!-- ========== まとめ ========== -->
         <div class="summary">
-            【絵文字】 まとめ：【ここに一言まとめ】
+            📌 まとめ：【ここに一言まとめ】
         </div>
 
         <!-- ========== おまけ：実践ストーリー ========== -->
@@ -248,8 +253,6 @@
 
                     <p>【問題の提示】</p>
 
-                    <hr>
-
                     <p>【数式で表現】</p>
 
                     <div class="formula">
@@ -262,19 +265,14 @@
                         \[ 【計算】 \]
                     </div>
 
-                    <hr>
-
                     <p>【結論・オチ】</p>
-
-                    <ul>
-                        <li>【検算や確認1】</li>
-                        <li>【検算や確認2】</li>
-                    </ul>
-
-                    <p>「【締めのセリフ】」</p>
                 </div>
             </div>
         </section>
+
+        <nav class="breadcrumb breadcrumb-footer">
+            <a href="index.html">トップページに戻る</a>
+        </nav>
     </div>
 </body>
 </html>

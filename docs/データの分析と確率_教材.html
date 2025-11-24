@@ -50,30 +50,37 @@
         <nav class="toc">
             <div class="toc-title">📚 目次</div>
             <ol class="toc-list">
-                <li><a href="#section1">テーマの定義／最重要の考え方</a></li>
+                <li><a href="#section1">テーマの定義</a></li>
                 <li><a href="#section2">覚えるルール</a></li>
-                <li><a href="#section3">簡単にするコツ</a></li>
-                <li><a href="#section4">代表的な計算例</a></li>
-                <li><a href="#section5">基本的な計算手順</a></li>
-                <li><a href="#section6">よくあるつまづき</a></li>
-                <li><a href="#section7">仕上げチェックリスト</a></li>
+                <li><a href="#section3">例題と解き方</a></li>
+                <li><a href="#section4">簡単にするコツ</a></li>
+                <li><a href="#section5">よくあるつまづき</a></li>
+                <li><a href="#section6">仕上げチェックリスト</a></li>
+                <li><a href="#section7">練習問題</a></li>
                 <li><a href="#story">おまけ：実践ストーリー「ゲーム大会で自分の実力を知れ！」</a></li>
             </ol>
         </nav>
 
-        <!-- 1. テーマの定義／最重要の考え方 -->
+        <!-- 1. テーマの定義 -->
         <section id="section1">
-            <h2>1. テーマの定義／最重要の考え方</h2>
+            <h2>1. テーマの定義</h2>
             <div class="section">
-                <p><strong>データの代表値</strong>とは、たくさんのデータを1つの数値で特徴づけるものです。主に以下の3つがあります：</p>
+                <p>テストの点数やゲームのスコアなど、たくさんの数字があるとき「みんなの実力ってどのくらい？」「自分は上位？下位？」を知りたくなりますよね。</p>
+                <p>このページでは、データを整理して特徴をつかむ方法を学びます：</p>
                 <ul>
-                    <li><strong>中央値（メジアン）</strong>：データを小さい順に並べたとき、ちょうど真ん中にくる値</li>
-                    <li><strong>最頻値（モード）</strong>：データの中で最も多く現れる値</li>
-                    <li><strong>四分位数</strong>：データを4等分する区切りの値（第1四分位数Q₁、第2四分位数Q₂、第3四分位数Q₃）</li>
+                    <li><strong>代表値</strong>：データを1つの数値で特徴づける（中央値・最頻値）</li>
+                    <li><strong>四分位数</strong>：データを4等分する区切りの値</li>
+                    <li><strong>経験的確率</strong>：実際のデータから確率を求める</li>
                 </ul>
+            </div>
+        </section>
 
+        <!-- 2. 覚えるルール -->
+        <section id="section2">
+            <h2>2. 覚えるルール</h2>
+            <div class="section">
                 <div class="important-rule">
-                    🎯 最重要の考え方：データは必ず小さい順に並べる！
+                    【最重要】データを必ず小さい順に並べ替えてから計算する
                 </div>
 
                 <!-- 並べ替えの図 -->
@@ -147,21 +154,6 @@
                     <div class="svg-caption">必ず並べ替えてから計算する！</div>
                 </div>
 
-                <p style="margin-top: 15px;"><strong>経験的確率</strong>は、実際のデータから求める確率です：</p>
-                <div class="formula">
-                    \[ \text{確率} = \frac{\text{条件を満たすデータの個数}}{\text{全データの個数}} \]
-                </div>
-            </div>
-        </section>
-
-        <!-- 2. 覚えるルール -->
-        <section id="section2">
-            <h2>2. 覚えるルール</h2>
-            <div class="section">
-                <div class="important-rule">
-                    【最重要】データを必ず小さい順に並べ替えてから計算する
-                </div>
-                
                 <div class="rule-box">
                     <strong>📌 中央値の求め方</strong> <a href="#ex-median" class="example-link">→ 例1</a>
                     <ul>
@@ -405,40 +397,18 @@
             </div>
         </section>
         
-        <!-- 3. 簡単にするコツ -->
+        <!-- 3. 例題と解き方 -->
         <section id="section3">
-            <h2>3. 簡単にするコツ</h2>
+            <h2>3. 例題と解き方</h2>
             <div class="section">
-                <div class="tip-box">
-                    <strong>✏️ コツ1：並べ替えを最初に</strong><br>
-                    バラバラのデータを見ても何も分からない。まず小さい順に並べ替える。
-                </div>
-                
-                <div class="tip-box">
-                    <strong>✏️ コツ2：個数を数えて位置を計算</strong><br>
-                    データが何個あるか数え、中央値や四分位数の位置を式で計算する。
-                </div>
-                
-                <div class="tip-box">
-                    <strong>✏️ コツ3：前半・後半に分けて考える</strong><br>
-                    四分位数は、中央値で分けた前半と後半それぞれの中央値を求めるだけ。
-                </div>
-                
-                <div class="tip-box">
-                    <strong>✏️ コツ4：確率は約分を忘れずに</strong><br>
-                    \(\frac{6}{8} = \frac{3}{4}\) のように、必ず最も簡単な分数にする。
-                </div>
-            </div>
-        </section>
-        
-        <!-- 4. 形の変換の代表例 -->
-        <section id="section4">
-            <h2>4. 代表的な計算例</h2>
-            <div class="section">
+                <p>ルールを使って実際に解いてみましょう。どの例題も「並べ替え → 位置を確認 → 値を求める」の流れです。</p>
+
+                <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 代表値を求める</h3>
+
                 <div class="data-example">
                     元のデータ：3, 5, 6, 2, 4, 7, 4, 9
                 </div>
-                
+
                 <div class="example-box" id="ex-median">
                     <div class="example-title">
                         <span class="number-badge">例1</span>中央値を求める
@@ -516,6 +486,8 @@
                     </div>
                 </div>
                 
+                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 経験的確率を求める</h3>
+
                 <div class="example-box" id="ex-probability">
                     <div class="example-title">
                         <span class="number-badge">例4</span>5以下になる確率
@@ -573,66 +545,36 @@
                 </div>
             </div>
         </section>
-        
-        <!-- 5. 基本手順 -->
-        <section id="section5">
-            <h2>5. 基本的な計算手順</h2>
+
+        <!-- 4. 簡単にするコツ -->
+        <section id="section4">
+            <h2>4. 簡単にするコツ</h2>
             <div class="section">
-                <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 代表値を求める手順</h3>
-                <div class="step-list">
-                    <div class="step-item">
-                        <span class="number-badge">1</span>
-                        <div>データを小さい順に並べ替える</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">2</span>
-                        <div>データの個数 \(n\) を数える</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">3</span>
-                        <div>求めたいもの（中央値、四分位数など）の位置を計算する</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">4</span>
-                        <div>その位置の値を読み取る（偶数個なら平均を計算）</div>
-                    </div>
+                <div class="tip-box">
+                    <strong>✏️ コツ1：並べ替えを最初に</strong><br>
+                    バラバラのデータを見ても何も分からない。まず小さい順に並べ替える。
                 </div>
-                
-                <div class="example-box" style="margin-top: 20px;">
-                    <strong>短い例：</strong> データ 5, 8, 3, 6, 7 の中央値
-                    <p>→ 並べる：3, 5, 6, 7, 8（5個なので3番目）→ <strong>答え：6</strong></p>
+
+                <div class="tip-box">
+                    <strong>✏️ コツ2：個数を数えて位置を計算</strong><br>
+                    データが何個あるか数え、中央値や四分位数の位置を式で計算する。
                 </div>
-                
-                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 経験的確率を求める手順</h3>
-                <div class="step-list">
-                    <div class="step-item">
-                        <span class="number-badge">1</span>
-                        <div>条件を満たすデータの個数 \(a\) を数える</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">2</span>
-                        <div>全データの個数 \(n\) を確認する</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">3</span>
-                        <div>\(\frac{a}{n}\) として分数で表す</div>
-                    </div>
-                    <div class="step-item">
-                        <span class="number-badge">4</span>
-                        <div>約分して最も簡単な形にする</div>
-                    </div>
+
+                <div class="tip-box">
+                    <strong>✏️ コツ3：前半・後半に分けて考える</strong><br>
+                    四分位数は、中央値で分けた前半と後半それぞれの中央値を求めるだけ。
                 </div>
-                
-                <div class="example-box" style="margin-top: 20px;">
-                    <strong>短い例：</strong> データ 2, 5, 3, 8, 5, 6 で5以上の確率
-                    <p>→ 5以上：5, 8, 5, 6の4個、全部で6個 → \(\frac{4}{6} = \frac{2}{3}\)</p>
+
+                <div class="tip-box">
+                    <strong>✏️ コツ4：確率は約分を忘れずに</strong><br>
+                    \(\frac{6}{8} = \frac{3}{4}\) のように、必ず最も簡単な分数にする。
                 </div>
             </div>
         </section>
-        
-        <!-- 6. よくあるつまづき -->
-        <section id="section6">
-            <h2>6. よくあるつまづき</h2>
+
+        <!-- 5. よくあるつまづき -->
+        <section id="section5">
+            <h2>5. よくあるつまづき</h2>
             <div class="section">
                 <div class="caution-box">
                     <div class="caution-title">⚠️ つまづき1：並べ替えを忘れる</div>
@@ -666,9 +608,9 @@
             </div>
         </section>
         
-        <!-- 7. 仕上げチェックリスト -->
-        <section id="section7">
-            <h2>7. 仕上げチェックリスト</h2>
+        <!-- 6. 仕上げチェックリスト -->
+        <section id="section6">
+            <h2>6. 仕上げチェックリスト</h2>
             <div class="section">
                 <div class="checklist">
                     <div class="checklist-item">データを小さい順に正しく並べ替えたか</div>
@@ -679,7 +621,43 @@
                 </div>
             </div>
         </section>
-        
+
+        <!-- 7. 練習問題 -->
+        <section id="section7">
+            <h2>7. 練習問題</h2>
+            <div class="section">
+                <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+                <div class="rule-box" style="background: #f5f5f5;">
+                    <strong>練習1</strong>
+                    <p>次のデータの中央値と最頻値を求めなさい。</p>
+                    <p style="text-align: center; font-weight: bold; color: #1976d2;">12, 8, 15, 8, 10, 14, 8</p>
+                    <details style="margin-top: 15px;">
+                        <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                        <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                            <p><strong>並べ替え：</strong>8, 8, 8, 10, 12, 14, 15（7個）</p>
+                            <p><strong>中央値：</strong>7個なので4番目 → <strong>10</strong></p>
+                            <p><strong>最頻値：</strong>8が3回で最多 → <strong>8</strong></p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+                    <strong>練習2</strong>
+                    <p>次のデータで、10以上になる確率を求めなさい。</p>
+                    <p style="text-align: center; font-weight: bold; color: #1976d2;">5, 12, 8, 15, 10, 7, 11, 9</p>
+                    <details style="margin-top: 15px;">
+                        <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                        <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                            <p><strong>10以上のデータ：</strong>12, 15, 10, 11 → 4個</p>
+                            <p><strong>全データ：</strong>8個</p>
+                            <p><strong>確率：</strong>\(\frac{4}{8} = \frac{1}{2}\)</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
         <!-- まとめ -->
         <div class="summary">
             📌 まとめ：データは並べて、個数を数えて、位置を計算！
