@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>データの分析（代表値・四分位数）と確率 - 中学数学教材</title>
+    
+    <!-- KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    
+    <!-- KaTeX JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+            onload="renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '\\[', right: '\\]', display: true},
+                    {left: '\\(', right: '\\)', display: false}
+                ],
+                throwOnError: false
+            });"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Hiragino Sans', 'Yu Gothic UI', sans-serif;
+            background: linear-gradient(135deg, #e3f2fd 0%, #f5f5f5 100%);
+            padding: 20px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        h1 {
+            color: #1976d2;
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 3px solid #1976d2;
+            padding-bottom: 15px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        h2 {
+            color: #1976d2;
+            font-size: 22px;
+            margin: 30px 0 15px 0;
+            padding: 10px 15px;
+            background: linear-gradient(90deg, #e3f2fd 0%, transparent 100%);
+            border-left: 5px solid #1976d2;
+            border-radius: 5px;
+        }
+        
+        .section {
+            background: #f8fbff;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        
+        .important-rule {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-left: 5px solid #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #e65100;
+        }
+        
+        .rule-box {
+            background: white;
+            border: 2px solid #64b5f6;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        
+        .example-box {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .example-title {
+            color: #1976d2;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .number-badge {
+            background: #1976d2;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .step-list {
+            margin: 15px 0;
+            padding-left: 0;
+        }
+        
+        .step-item {
+            background: white;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .caution-box {
+            background: #fff9f0;
+            border-left: 4px solid #ff6f00;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        
+        .caution-title {
+            color: #ff6f00;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .checklist {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #4caf50;
+        }
+        
+        .checklist-item {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .checklist-item::before {
+            content: "✓";
+            color: #4caf50;
+            font-weight: bold;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        
+        .summary {
+            background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .tip-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        
+        ul {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        .formula {
+            text-align: center;
+            margin: 15px 0;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+        
+        .data-example {
+            background: #fff;
+            border: 2px dashed #1976d2;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #1976d2;
+        }
+        
+        .svg-container {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        .svg-caption {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 データの分析（代表値・四分位数）と確率</h1>
+        <div class="subtitle">中学生・基礎〜標準レベル</div>
+        
+        <!-- 1. テーマの定義／最重要の考え方 -->
+        <section>
+            <h2>1. テーマの定義／最重要の考え方</h2>
+            <div class="section">
+                <p><strong>データの代表値</strong>とは、たくさんのデータを1つの数値で特徴づけるものです。主に以下の3つがあります：</p>
+                <ul>
+                    <li><strong>中央値（メジアン）</strong>：データを小さい順に並べたとき、ちょうど真ん中にくる値</li>
+                    <li><strong>最頻値（モード）</strong>：データの中で最も多く現れる値</li>
+                    <li><strong>四分位数</strong>：データを4等分する区切りの値（第1四分位数Q₁、第2四分位数Q₂、第3四分位数Q₃）</li>
+                </ul>
+                
+                <div class="important-rule">
+                    🎯 最重要の考え方：データは必ず小さい順に並べる！
+                </div>
+                
+                <!-- 並べ替えの図 -->
+                <div class="svg-container">
+                    <svg width="700" height="210" viewBox="0 0 700 210">
+                        <!-- タイトル -->
+                        <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">並べ替えの重要性</text>
+                        
+                        <!-- Before: バラバラのデータ -->
+                        <text x="30" y="55" font-size="14" font-weight="bold" fill="#666">元のデータ（バラバラ）</text>
+                        <rect x="50" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
+                        <text x="75" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">3</text>
+                        
+                        <rect x="110" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
+                        <text x="135" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">5</text>
+                        
+                        <rect x="170" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
+                        <text x="195" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">6</text>
+                        
+                        <rect x="230" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
+                        <text x="255" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">2</text>
+                        
+                        <rect x="290" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
+                        <text x="315" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">4</text>
+                        
+                        <rect x="350" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
+                        <text x="375" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">7</text>
+                        
+                        <rect x="410" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
+                        <text x="435" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">4</text>
+                        
+                        <rect x="470" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
+                        <text x="495" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">9</text>
+                        
+                        <!-- 矢印と説明 -->
+                        <path d="M 285 110 L 285 140" stroke="#ff9800" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                        <text x="310" y="128" font-size="14" font-weight="bold" fill="#ff9800">並べ替え！</text>
+                        
+                        <!-- After: 並べたデータ -->
+                        <text x="30" y="145" font-size="14" font-weight="bold" fill="#2e7d32">小さい順に並べた！</text>
+                        <rect x="50" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
+                        <text x="75" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">2</text>
+                        
+                        <rect x="110" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
+                        <text x="135" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">3</text>
+                        
+                        <rect x="170" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
+                        <text x="195" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">4</text>
+                        
+                        <rect x="230" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
+                        <text x="255" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">4</text>
+                        
+                        <rect x="290" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
+                        <text x="315" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">5</text>
+                        
+                        <rect x="350" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
+                        <text x="375" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">6</text>
+                        
+                        <rect x="410" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
+                        <text x="435" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">7</text>
+                        
+                        <rect x="470" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
+                        <text x="495" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">9</text>
+                        
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                <polygon points="0 0, 10 3, 0 6" fill="#ff9800"/>
+                            </marker>
+                        </defs>
+                    </svg>
+                    <div class="svg-caption">必ず並べ替えてから計算する！</div>
+                </div>
+                
+                <p style="margin-top: 15px;"><strong>経験的確率</strong>は、実際のデータから求める確率です：</p>
+                <div class="formula">
+                    \[ \text{確率} = \frac{\text{条件を満たすデータの個数}}{\text{全データの個数}} \]
+                </div>
+            </div>
+        </section>
+        
+        <!-- 2. 覚えるルール -->
+        <section>
+            <h2>2. 覚えるルール</h2>
+            <div class="section">
+                <div class="important-rule">
+                    【最重要】データを必ず小さい順に並べ替えてから計算する
+                </div>
+                
+                <div class="rule-box">
+                    <strong>📌 中央値の求め方</strong>
+                    <ul>
+                        <li><strong>データの個数が奇数のとき</strong>：真ん中の値がそのまま中央値<br>
+                            例）5個なら3番目、7個なら4番目</li>
+                        <li><strong>データの個数が偶数のとき</strong>：真ん中の2つの平均が中央値<br>
+                            例）8個なら4番目と5番目の平均</li>
+                    </ul>
+                    <div class="formula">
+                        \[ \text{中央値の位置} = \frac{n+1}{2} \text{ 番目} \quad (n:\text{データ個数}) \]
+                    </div>
+                    
+                    <!-- 中央値の位置の図 -->
+                    <div class="svg-container">
+                        <svg width="700" height="280" viewBox="0 0 700 280">
+                            <!-- 奇数個の場合 -->
+                            <text x="50" y="25" font-size="15" font-weight="bold" fill="#1976d2">奇数個（5個）の場合</text>
+                            
+                            <rect x="80" y="40" width="50" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                            <text x="105" y="65" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">2</text>
+                            <text x="105" y="95" font-size="12" fill="#666" text-anchor="middle">1番目</text>
+                            
+                            <rect x="140" y="40" width="50" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                            <text x="165" y="65" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">3</text>
+                            <text x="165" y="95" font-size="12" fill="#666" text-anchor="middle">2番目</text>
+                            
+                            <rect x="200" y="40" width="50" height="40" fill="#fff3e0" stroke="#ff9800" stroke-width="3" rx="5"/>
+                            <text x="225" y="65" font-size="16" font-weight="bold" fill="#e65100" text-anchor="middle">5</text>
+                            <text x="225" y="95" font-size="12" font-weight="bold" fill="#ff9800" text-anchor="middle">3番目</text>
+                            
+                            <rect x="260" y="40" width="50" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                            <text x="285" y="65" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">7</text>
+                            <text x="285" y="95" font-size="12" fill="#666" text-anchor="middle">4番目</text>
+                            
+                            <rect x="320" y="40" width="50" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                            <text x="345" y="65" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">8</text>
+                            <text x="345" y="95" font-size="12" fill="#666" text-anchor="middle">5番目</text>
+                            
+                            <path d="M 225 105 L 225 120" stroke="#ff9800" stroke-width="2" marker-end="url(#arrowhead2)"/>
+                            <text x="225" y="135" font-size="13" font-weight="bold" fill="#ff9800" text-anchor="middle">中央値 = 5</text>
+                            
+                            <!-- 偶数個の場合 -->
+                            <text x="50" y="160" font-size="15" font-weight="bold" fill="#1976d2">偶数個（8個）の場合</text>
+
+                            <rect x="50" y="175" width="50" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                            <text x="75" y="200" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">2</text>
+
+                            <rect x="110" y="175" width="50" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                            <text x="135" y="200" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">3</text>
+
+                            <rect x="170" y="175" width="50" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                            <text x="195" y="200" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">4</text>
+
+                            <rect x="230" y="175" width="50" height="40" fill="#fff3e0" stroke="#ff9800" stroke-width="3" rx="5"/>
+                            <text x="255" y="200" font-size="16" font-weight="bold" fill="#e65100" text-anchor="middle">4</text>
+                            <text x="255" y="230" font-size="11" font-weight="bold" fill="#ff9800" text-anchor="middle">4番目</text>
+
+                            <rect x="290" y="175" width="50" height="40" fill="#fff3e0" stroke="#ff9800" stroke-width="3" rx="5"/>
+                            <text x="315" y="200" font-size="16" font-weight="bold" fill="#e65100" text-anchor="middle">5</text>
+                            <text x="315" y="230" font-size="11" font-weight="bold" fill="#ff9800" text-anchor="middle">5番目</text>
+
+                            <rect x="350" y="175" width="50" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                            <text x="375" y="200" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">6</text>
+
+                            <rect x="410" y="175" width="50" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                            <text x="435" y="200" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">7</text>
+
+                            <rect x="470" y="175" width="50" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                            <text x="495" y="200" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">9</text>
+
+                            <!-- 平均を示す -->
+                            <path d="M 285 240 L 285 250" stroke="#ff9800" stroke-width="2" marker-end="url(#arrowhead2)"/>
+                            <text x="290" y="265" font-size="13" font-weight="bold" fill="#e65100">(4+5)÷2 = 4.5</text>
+                            <text x="290" y="278" font-size="13" font-weight="bold" fill="#ff9800">中央値 = 4.5</text>
+                            
+                            <defs>
+                                <marker id="arrowhead2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                    <polygon points="0 0, 10 3, 0 6" fill="#ff9800"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                        <div class="svg-caption">奇数個なら真ん中1つ、偶数個なら真ん中2つの平均</div>
+                    </div>
+                </div>
+                
+                <div class="rule-box">
+                    <strong>📌 最頻値の求め方</strong>
+                    <p>データの中で最も多く現れる値を探す。複数ある場合はすべて最頻値になる。</p>
+                </div>
+                
+                <div class="rule-box">
+                    <strong>📌 四分位数の求め方</strong>
+                    <ul>
+                        <li><strong>第2四分位数（Q₂）</strong>：中央値そのもの</li>
+                        <li><strong>第1四分位数（Q₁）</strong>：データの前半（中央値より小さい方）の中央値</li>
+                        <li><strong>第3四分位数（Q₃）</strong>：データの後半（中央値より大きい方）の中央値</li>
+                    </ul>
+                    
+                    <!-- 四分位数の図 -->
+                    <div class="svg-container">
+                        <svg width="700" height="240" viewBox="0 0 700 240">
+                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">四分位数の求め方（前半・後半で分ける）</text>
+                            
+                            <!-- 前半グループの背景 -->
+                            <rect x="40" y="45" width="250" height="90" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="8" stroke-dasharray="5,5"/>
+                            <text x="165" y="60" font-size="13" font-weight="bold" fill="#4caf50" text-anchor="middle">【前半グループ】</text>
+                            
+                            <!-- 前半データ -->
+                            <rect x="50" y="70" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="75" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">2</text>
+                            
+                            <rect x="110" y="70" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="135" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">3</text>
+                            
+                            <rect x="170" y="70" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="195" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">4</text>
+                            
+                            <rect x="230" y="70" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="255" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">4</text>
+                            
+                            <!-- 中央値の区切り線 -->
+                            <line x1="305" y1="45" x2="305" y2="135" stroke="#ff9800" stroke-width="4"/>
+                            <text x="305" y="150" font-size="13" font-weight="bold" fill="#ff9800" text-anchor="middle">中央値 = 4.5</text>
+                            <text x="305" y="165" font-size="11" fill="#ff9800" text-anchor="middle">（ここで前半・後半を分ける）</text>
+                            
+                            <!-- 後半グループの背景 -->
+                            <rect x="320" y="45" width="250" height="90" fill="#e3f2fd" stroke="#2196f3" stroke-width="2" rx="8" stroke-dasharray="5,5"/>
+                            <text x="445" y="60" font-size="13" font-weight="bold" fill="#2196f3" text-anchor="middle">【後半グループ】</text>
+                            
+                            <!-- 後半データ -->
+                            <rect x="330" y="70" width="50" height="40" fill="#bbdefb" stroke="#2196f3" stroke-width="2" rx="5"/>
+                            <text x="355" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">5</text>
+                            
+                            <rect x="390" y="70" width="50" height="40" fill="#bbdefb" stroke="#2196f3" stroke-width="2" rx="5"/>
+                            <text x="415" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">6</text>
+                            
+                            <rect x="450" y="70" width="50" height="40" fill="#bbdefb" stroke="#2196f3" stroke-width="2" rx="5"/>
+                            <text x="475" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">7</text>
+                            
+                            <rect x="510" y="70" width="50" height="40" fill="#bbdefb" stroke="#2196f3" stroke-width="2" rx="5"/>
+                            <text x="535" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">9</text>
+                            
+                            <!-- Q1の矢印 -->
+                            <path d="M 140 115 L 140 130" stroke="#4caf50" stroke-width="2" marker-end="url(#arrowhead3)"/>
+                            <text x="140" y="148" font-size="12" font-weight="bold" fill="#4caf50" text-anchor="middle">前半の中央値</text>
+                            <text x="140" y="163" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">Q₁ = 3.5</text>
+                            <text x="140" y="176" font-size="10" fill="#4caf50" text-anchor="middle">(3と4の平均)</text>
+
+                            <!-- Q3の矢印 -->
+                            <path d="M 420 115 L 420 130" stroke="#2196f3" stroke-width="2" marker-end="url(#arrowhead5)"/>
+                            <text x="420" y="148" font-size="12" font-weight="bold" fill="#2196f3" text-anchor="middle">後半の中央値</text>
+                            <text x="420" y="163" font-size="14" font-weight="bold" fill="#2196f3" text-anchor="middle">Q₃ = 6.5</text>
+                            <text x="420" y="176" font-size="10" fill="#2196f3" text-anchor="middle">(6と7の平均)</text>
+                            
+                            <!-- まとめ -->
+                            <rect x="80" y="185" width="540" height="45" fill="#fff9f0" stroke="#ff9800" stroke-width="2" rx="8"/>
+                            <text x="350" y="203" font-size="13" font-weight="bold" fill="#333" text-anchor="middle">💡 ポイント：中央値より小さい方が「前半」、大きい方が「後半」</text>
+                            <text x="350" y="220" font-size="12" fill="#666" text-anchor="middle">Q₁は前半だけの中央値、Q₃は後半だけの中央値を求める！</text>
+                            
+                            <defs>
+                                <marker id="arrowhead3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                    <polygon points="0 0, 10 3, 0 6" fill="#4caf50"/>
+                                </marker>
+                                <marker id="arrowhead5" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                    <polygon points="0 0, 10 3, 0 6" fill="#2196f3"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                        <div class="svg-caption">中央値で前半・後半に分けて、それぞれの中央値を求める</div>
+                    </div>
+                </div>
+                
+                <div class="rule-box">
+                    <strong>📌 経験的確率</strong>
+                    <div class="formula">
+                        \[ P = \frac{a}{n} \]
+                        \( a \)：条件を満たすデータの個数、\( n \)：全データの個数
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 3. 簡単にするコツ -->
+        <section>
+            <h2>3. 簡単にするコツ</h2>
+            <div class="section">
+                <div class="tip-box">
+                    <strong>✏️ コツ1：並べ替えを最初に</strong><br>
+                    バラバラのデータを見ても何も分からない。まず小さい順に並べ替える。
+                </div>
+                
+                <div class="tip-box">
+                    <strong>✏️ コツ2：個数を数えて位置を計算</strong><br>
+                    データが何個あるか数え、中央値や四分位数の位置を式で計算する。
+                </div>
+                
+                <div class="tip-box">
+                    <strong>✏️ コツ3：前半・後半に分けて考える</strong><br>
+                    四分位数は、中央値で分けた前半と後半それぞれの中央値を求めるだけ。
+                </div>
+                
+                <div class="tip-box">
+                    <strong>✏️ コツ4：確率は約分を忘れずに</strong><br>
+                    \(\frac{6}{8} = \frac{3}{4}\) のように、必ず最も簡単な分数にする。
+                </div>
+            </div>
+        </section>
+        
+        <!-- 4. 形の変換の代表例 -->
+        <section>
+            <h2>4. 代表的な計算例</h2>
+            <div class="section">
+                <div class="data-example">
+                    元のデータ：3, 5, 6, 2, 4, 7, 4, 9
+                </div>
+                
+                <div class="example-box">
+                    <div class="example-title">
+                        <span class="number-badge">例1</span>中央値を求める
+                    </div>
+                    <p><strong>手順：</strong>小さい順に並べる → 2, 3, 4, 4, 5, 6, 7, 9</p>
+                    <p>データは8個（偶数）なので、4番目と5番目の平均：</p>
+                    <div class="formula">
+                        \[ \text{中央値} = \frac{4 + 5}{2} = 4.5 \]
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <div class="example-title">
+                        <span class="number-badge">例2</span>最頻値を求める
+                    </div>
+                    <p>並べたデータ：2, 3, <strong style="color: #ff6f00;">4, 4</strong>, 5, 6, 7, 9</p>
+                    <p>4が2回現れて最も多い → <strong>最頻値は4</strong></p>
+                    
+                    <!-- 最頻値の図 -->
+                    <div class="svg-container">
+                        <svg width="600" height="150" viewBox="0 0 600 150">
+                            <text x="300" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">各値の出現回数</text>
+                            
+                            <!-- 2 -->
+                            <rect x="40" y="110" width="40" height="20" fill="#e3f2fd" stroke="#1976d2" stroke-width="1" rx="3"/>
+                            <text x="60" y="140" font-size="14" fill="#333" text-anchor="middle">2</text>
+                            
+                            <!-- 3 -->
+                            <rect x="100" y="110" width="40" height="20" fill="#e3f2fd" stroke="#1976d2" stroke-width="1" rx="3"/>
+                            <text x="120" y="140" font-size="14" fill="#333" text-anchor="middle">3</text>
+                            
+                            <!-- 4 (最頻値) -->
+                            <rect x="160" y="90" width="40" height="20" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="3"/>
+                            <rect x="160" y="110" width="40" height="20" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="3"/>
+                            <text x="180" y="140" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">4</text>
+                            <text x="180" y="55" font-size="12" font-weight="bold" fill="#ff9800" text-anchor="middle">2回！</text>
+                            
+                            <!-- 5 -->
+                            <rect x="220" y="110" width="40" height="20" fill="#e3f2fd" stroke="#1976d2" stroke-width="1" rx="3"/>
+                            <text x="240" y="140" font-size="14" fill="#333" text-anchor="middle">5</text>
+                            
+                            <!-- 6 -->
+                            <rect x="280" y="110" width="40" height="20" fill="#e3f2fd" stroke="#1976d2" stroke-width="1" rx="3"/>
+                            <text x="300" y="140" font-size="14" fill="#333" text-anchor="middle">6</text>
+                            
+                            <!-- 7 -->
+                            <rect x="340" y="110" width="40" height="20" fill="#e3f2fd" stroke="#1976d2" stroke-width="1" rx="3"/>
+                            <text x="360" y="140" font-size="14" fill="#333" text-anchor="middle">7</text>
+                            
+                            <!-- 9 -->
+                            <rect x="400" y="110" width="40" height="20" fill="#e3f2fd" stroke="#1976d2" stroke-width="1" rx="3"/>
+                            <text x="420" y="140" font-size="14" fill="#333" text-anchor="middle">9</text>
+                            
+                            <!-- 矢印 -->
+                            <path d="M 180 62 L 180 85" stroke="#ff9800" stroke-width="2" marker-end="url(#arrowhead6)"/>
+                            
+                            <defs>
+                                <marker id="arrowhead6" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                    <polygon points="0 0, 10 3, 0 6" fill="#ff9800"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                        <div class="svg-caption">4が最も多く現れる → 最頻値 = 4</div>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <div class="example-title">
+                        <span class="number-badge">例3</span>第3四分位数（Q₃）を求める
+                    </div>
+                    <p>中央値（4.5）より大きいデータの後半：<strong>5, 6, 7, 9</strong></p>
+                    <p>この4個の中央値は2番目と3番目の平均：</p>
+                    <div class="formula">
+                        \[ Q_3 = \frac{6 + 7}{2} = 6.5 \]
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <div class="example-title">
+                        <span class="number-badge">例4</span>5以下になる確率
+                    </div>
+                    <p>5以下のデータ：2, 3, 4, 4, 5 → 5個</p>
+                    <p>全データ：8個</p>
+                    <div class="formula">
+                        \[ P = \frac{5}{8} \]
+                    </div>
+                    
+                    <!-- 確率の視覚化 -->
+                    <div class="svg-container">
+                        <svg width="600" height="160" viewBox="0 0 600 160">
+                            <text x="300" y="25" font-size="15" font-weight="bold" fill="#1976d2" text-anchor="middle">「5以下」の確率の視覚化</text>
+                            
+                            <!-- 5以下（緑） -->
+                            <rect x="50" y="50" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="75" y="75" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">2</text>
+                            <text x="75" y="105" font-size="11" fill="#4caf50" text-anchor="middle">✓ 5以下</text>
+                            
+                            <rect x="110" y="50" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="135" y="75" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">3</text>
+                            <text x="135" y="105" font-size="11" fill="#4caf50" text-anchor="middle">✓ 5以下</text>
+                            
+                            <rect x="170" y="50" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="195" y="75" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">4</text>
+                            <text x="195" y="105" font-size="11" fill="#4caf50" text-anchor="middle">✓ 5以下</text>
+                            
+                            <rect x="230" y="50" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="255" y="75" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">4</text>
+                            <text x="255" y="105" font-size="11" fill="#4caf50" text-anchor="middle">✓ 5以下</text>
+                            
+                            <rect x="290" y="50" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="315" y="75" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">5</text>
+                            <text x="315" y="105" font-size="11" fill="#4caf50" text-anchor="middle">✓ 5以下</text>
+                            
+                            <!-- 6以上（グレー） -->
+                            <rect x="350" y="50" width="50" height="40" fill="#f5f5f5" stroke="#999" stroke-width="2" rx="5"/>
+                            <text x="375" y="75" font-size="16" font-weight="bold" fill="#666" text-anchor="middle">6</text>
+                            <text x="375" y="105" font-size="11" fill="#999" text-anchor="middle">✗ 6以上</text>
+                            
+                            <rect x="410" y="50" width="50" height="40" fill="#f5f5f5" stroke="#999" stroke-width="2" rx="5"/>
+                            <text x="435" y="75" font-size="16" font-weight="bold" fill="#666" text-anchor="middle">7</text>
+                            <text x="435" y="105" font-size="11" fill="#999" text-anchor="middle">✗ 6以上</text>
+                            
+                            <rect x="470" y="50" width="50" height="40" fill="#f5f5f5" stroke="#999" stroke-width="2" rx="5"/>
+                            <text x="495" y="75" font-size="16" font-weight="bold" fill="#666" text-anchor="middle">9</text>
+                            <text x="495" y="105" font-size="11" fill="#999" text-anchor="middle">✗ 6以上</text>
+                            
+                            <!-- 計算 -->
+                            <text x="300" y="140" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">5以下：5個 ÷ 全体：8個 = 5/8</text>
+                        </svg>
+                        <div class="svg-caption">条件を満たすデータ（緑）の個数 ÷ 全データ個数</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 5. 基本手順 -->
+        <section>
+            <h2>5. 基本的な計算手順</h2>
+            <div class="section">
+                <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 代表値を求める手順</h3>
+                <div class="step-list">
+                    <div class="step-item">
+                        <span class="number-badge">1</span>
+                        <div>データを小さい順に並べ替える</div>
+                    </div>
+                    <div class="step-item">
+                        <span class="number-badge">2</span>
+                        <div>データの個数 \(n\) を数える</div>
+                    </div>
+                    <div class="step-item">
+                        <span class="number-badge">3</span>
+                        <div>求めたいもの（中央値、四分位数など）の位置を計算する</div>
+                    </div>
+                    <div class="step-item">
+                        <span class="number-badge">4</span>
+                        <div>その位置の値を読み取る（偶数個なら平均を計算）</div>
+                    </div>
+                </div>
+                
+                <div class="example-box" style="margin-top: 20px;">
+                    <strong>短い例：</strong> データ 5, 8, 3, 6, 7 の中央値
+                    <p>→ 並べる：3, 5, 6, 7, 8（5個なので3番目）→ <strong>答え：6</strong></p>
+                </div>
+                
+                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 経験的確率を求める手順</h3>
+                <div class="step-list">
+                    <div class="step-item">
+                        <span class="number-badge">1</span>
+                        <div>条件を満たすデータの個数 \(a\) を数える</div>
+                    </div>
+                    <div class="step-item">
+                        <span class="number-badge">2</span>
+                        <div>全データの個数 \(n\) を確認する</div>
+                    </div>
+                    <div class="step-item">
+                        <span class="number-badge">3</span>
+                        <div>\(\frac{a}{n}\) として分数で表す</div>
+                    </div>
+                    <div class="step-item">
+                        <span class="number-badge">4</span>
+                        <div>約分して最も簡単な形にする</div>
+                    </div>
+                </div>
+                
+                <div class="example-box" style="margin-top: 20px;">
+                    <strong>短い例：</strong> データ 2, 5, 3, 8, 5, 6 で5以上の確率
+                    <p>→ 5以上：5, 8, 5, 6の4個、全部で6個 → \(\frac{4}{6} = \frac{2}{3}\)</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 6. よくあるつまづき -->
+        <section>
+            <h2>6. よくあるつまづき</h2>
+            <div class="section">
+                <div class="caution-box">
+                    <div class="caution-title">⚠️ つまづき1：並べ替えを忘れる</div>
+                    <p><strong>ダメな例：</strong> 3, 5, 6, 2, 4, 7 のまま「真ん中は6と2」と考える</p>
+                    <p><strong>対策：</strong> 最初に必ず並べ替える。これをしないとすべて間違う！</p>
+                </div>
+                
+                <div class="caution-box">
+                    <div class="caution-title">⚠️ つまづき2：個数の数え間違い</div>
+                    <p><strong>ダメな例：</strong> 重複する数を1個としか数えない</p>
+                    <p><strong>対策：</strong> 2, 3, 4, 4, 5 は「5個」。4が2回あることに注意。</p>
+                </div>
+                
+                <div class="caution-box">
+                    <div class="caution-title">⚠️ つまづき3：偶数個の中央値で平均を忘れる</div>
+                    <p><strong>ダメな例：</strong> 8個のデータで4番目だけを答える</p>
+                    <p><strong>対策：</strong> 偶数個なら真ん中2つの平均を取る。4番目と5番目を足して2で割る。</p>
+                </div>
+                
+                <div class="caution-box">
+                    <div class="caution-title">⚠️ つまづき4：四分位数で中央値を含めてしまう</div>
+                    <p><strong>ダメな例：</strong> Q₁を求めるとき中央値まで含めて計算</p>
+                    <p><strong>対策：</strong> 前半・後半は中央値を含めない。中央値より小さい/大きいデータだけで考える。</p>
+                </div>
+                
+                <div class="caution-box">
+                    <div class="caution-title">⚠️ つまづき5：確率の分母を間違える</div>
+                    <p><strong>ダメな例：</strong> 「5以下」の個数を分母にする</p>
+                    <p><strong>対策：</strong> 分母は常に全データの個数。分子が条件を満たす個数。</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 7. 仕上げチェックリスト -->
+        <section>
+            <h2>7. 仕上げチェックリスト</h2>
+            <div class="section">
+                <div class="checklist">
+                    <div class="checklist-item">データを小さい順に正しく並べ替えたか</div>
+                    <div class="checklist-item">データの個数を正確に数えたか（重複も含めて）</div>
+                    <div class="checklist-item">中央値や四分位数の位置計算は正しいか</div>
+                    <div class="checklist-item">確率の分母は全データの個数になっているか</div>
+                    <div class="checklist-item">確率の答えは約分して最も簡単な形にしたか</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- まとめ -->
+        <div class="summary">
+            📌 まとめ：データは並べて、個数を数えて、位置を計算！
+        </div>
+    </div>
+</body>
+</html>
