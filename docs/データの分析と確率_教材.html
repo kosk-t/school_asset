@@ -315,7 +315,68 @@
                                 </marker>
                             </defs>
                         </svg>
-                        <div class="svg-caption">中央値で前半・後半に分けて、それぞれの中央値を求める</div>
+                        <div class="svg-caption">中央値で前半・後半に分けて、それぞれの中央値を求める（偶数個の場合）</div>
+                    </div>
+
+                    <p style="margin-top: 20px;"><strong>【奇数個の場合】中央値を除いて前半・後半に分ける</strong></p>
+
+                    <!-- 奇数個の四分位数の図 -->
+                    <div class="svg-container">
+                        <svg width="700" height="240" viewBox="0 0 700 240">
+                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">四分位数の求め方（奇数個：7個の場合）</text>
+
+                            <!-- 前半グループの背景 -->
+                            <rect x="55" y="45" width="190" height="90" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="8" stroke-dasharray="5,5"/>
+                            <text x="150" y="60" font-size="13" font-weight="bold" fill="#4caf50" text-anchor="middle">【前半グループ】</text>
+
+                            <!-- 前半データ -->
+                            <rect x="65" y="70" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="90" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">2</text>
+
+                            <rect x="125" y="70" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="150" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">3</text>
+
+                            <rect x="185" y="70" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="210" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">4</text>
+
+                            <!-- 中央値（除外される） -->
+                            <rect x="280" y="70" width="50" height="40" fill="#fff3e0" stroke="#ff9800" stroke-width="3" rx="5"/>
+                            <text x="305" y="95" font-size="16" font-weight="bold" fill="#e65100" text-anchor="middle">5</text>
+                            <text x="305" y="150" font-size="13" font-weight="bold" fill="#ff9800" text-anchor="middle">中央値 = 5</text>
+                            <text x="305" y="165" font-size="11" fill="#e65100" text-anchor="middle">（前半・後半に含めない）</text>
+
+                            <!-- 後半グループの背景 -->
+                            <rect x="365" y="45" width="190" height="90" fill="#e3f2fd" stroke="#2196f3" stroke-width="2" rx="8" stroke-dasharray="5,5"/>
+                            <text x="460" y="60" font-size="13" font-weight="bold" fill="#2196f3" text-anchor="middle">【後半グループ】</text>
+
+                            <!-- 後半データ -->
+                            <rect x="375" y="70" width="50" height="40" fill="#bbdefb" stroke="#2196f3" stroke-width="2" rx="5"/>
+                            <text x="400" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">6</text>
+
+                            <rect x="435" y="70" width="50" height="40" fill="#bbdefb" stroke="#2196f3" stroke-width="2" rx="5"/>
+                            <text x="460" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">7</text>
+
+                            <rect x="495" y="70" width="50" height="40" fill="#bbdefb" stroke="#2196f3" stroke-width="2" rx="5"/>
+                            <text x="520" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">8</text>
+
+                            <!-- Q1の矢印 -->
+                            <path d="M 150 115 L 150 130" stroke="#4caf50" stroke-width="2" marker-end="url(#arrowhead3)"/>
+                            <text x="150" y="148" font-size="12" font-weight="bold" fill="#4caf50" text-anchor="middle">前半の中央値</text>
+                            <text x="150" y="163" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">Q₁ = 3</text>
+                            <text x="150" y="176" font-size="10" fill="#4caf50" text-anchor="middle">(3個の真ん中)</text>
+
+                            <!-- Q3の矢印 -->
+                            <path d="M 460 115 L 460 130" stroke="#2196f3" stroke-width="2" marker-end="url(#arrowhead5)"/>
+                            <text x="460" y="148" font-size="12" font-weight="bold" fill="#2196f3" text-anchor="middle">後半の中央値</text>
+                            <text x="460" y="163" font-size="14" font-weight="bold" fill="#2196f3" text-anchor="middle">Q₃ = 7</text>
+                            <text x="460" y="176" font-size="10" fill="#2196f3" text-anchor="middle">(3個の真ん中)</text>
+
+                            <!-- まとめ -->
+                            <rect x="80" y="185" width="540" height="45" fill="#fff9f0" stroke="#ff9800" stroke-width="2" rx="8"/>
+                            <text x="350" y="203" font-size="13" font-weight="bold" fill="#333" text-anchor="middle">💡 奇数個のポイント：中央値そのものは前半にも後半にも含めない！</text>
+                            <text x="350" y="220" font-size="12" fill="#666" text-anchor="middle">中央値より小さいデータだけが前半、大きいデータだけが後半</text>
+                        </svg>
+                        <div class="svg-caption">奇数個の場合、中央値を除外して前半・後半に分ける</div>
                     </div>
                 </div>
                 
