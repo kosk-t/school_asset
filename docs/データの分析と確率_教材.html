@@ -7,7 +7,10 @@
     
     <!-- KaTeX CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-    
+
+    <!-- 共通CSS -->
+    <link rel="stylesheet" href="css/education-template.css">
+
     <!-- KaTeX JS -->
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
@@ -18,231 +21,12 @@
                 ],
                 throwOnError: false
             });"></script>
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', 'Hiragino Sans', 'Yu Gothic UI', sans-serif;
-            background: linear-gradient(135deg, #e3f2fd 0%, #f5f5f5 100%);
-            padding: 20px;
-            line-height: 1.8;
-            color: #333;
-        }
-        
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-        
-        h1 {
-            color: #1976d2;
-            font-size: 28px;
-            margin-bottom: 10px;
-            text-align: center;
-            border-bottom: 3px solid #1976d2;
-            padding-bottom: 15px;
-        }
-        
-        .subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
-        
-        h2 {
-            color: #1976d2;
-            font-size: 22px;
-            margin: 30px 0 15px 0;
-            padding: 10px 15px;
-            background: linear-gradient(90deg, #e3f2fd 0%, transparent 100%);
-            border-left: 5px solid #1976d2;
-            border-radius: 5px;
-        }
-        
-        .section {
-            background: #f8fbff;
-            padding: 20px;
-            border-radius: 12px;
-            margin: 20px 0;
-        }
-        
-        .important-rule {
-            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
-            border-left: 5px solid #ff9800;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 8px;
-            font-weight: bold;
-            color: #e65100;
-        }
-        
-        .rule-box {
-            background: white;
-            border: 2px solid #64b5f6;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 8px;
-        }
-        
-        .example-box {
-            background: white;
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 8px;
-        }
-        
-        .example-title {
-            color: #1976d2;
-            font-weight: bold;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .number-badge {
-            background: #1976d2;
-            color: white;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        
-        .step-list {
-            margin: 15px 0;
-            padding-left: 0;
-        }
-        
-        .step-item {
-            background: white;
-            padding: 12px;
-            margin: 8px 0;
-            border-radius: 8px;
-            display: flex;
-            align-items: flex-start;
-            border: 1px solid #e0e0e0;
-        }
-        
-        .caution-box {
-            background: #fff9f0;
-            border-left: 4px solid #ff6f00;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
-        
-        .caution-title {
-            color: #ff6f00;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-        
-        .checklist {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            border: 2px solid #4caf50;
-        }
-        
-        .checklist-item {
-            padding: 8px 0;
-            display: flex;
-            align-items: center;
-        }
-        
-        .checklist-item::before {
-            content: "✓";
-            color: #4caf50;
-            font-weight: bold;
-            font-size: 20px;
-            margin-right: 10px;
-        }
-        
-        .summary {
-            background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 30px;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        
-        .tip-box {
-            background: #e8f5e9;
-            border-left: 4px solid #4caf50;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
-        
-        ul {
-            margin: 10px 0;
-            padding-left: 25px;
-        }
-        
-        li {
-            margin: 8px 0;
-        }
-        
-        .formula {
-            text-align: center;
-            margin: 15px 0;
-            padding: 10px;
-            background: #f5f5f5;
-            border-radius: 5px;
-        }
-        
-        .data-example {
-            background: #fff;
-            border: 2px dashed #1976d2;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            color: #1976d2;
-        }
-        
-        .svg-container {
-            text-align: center;
-            margin: 20px 0;
-            padding: 15px;
-            background: white;
-            border-radius: 8px;
-        }
-        
-        .svg-caption {
-            color: #666;
-            font-size: 14px;
-            margin-top: 10px;
-            font-style: italic;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
         <h1>📊 データの分析（代表値・四分位数）と確率</h1>
         <div class="subtitle">中学生・基礎〜標準レベル</div>
-        
+
         <!-- 1. テーマの定義／最重要の考え方 -->
         <section>
             <h2>1. テーマの定義／最重要の考え方</h2>
@@ -253,73 +37,73 @@
                     <li><strong>最頻値（モード）</strong>：データの中で最も多く現れる値</li>
                     <li><strong>四分位数</strong>：データを4等分する区切りの値（第1四分位数Q₁、第2四分位数Q₂、第3四分位数Q₃）</li>
                 </ul>
-                
+
                 <div class="important-rule">
                     🎯 最重要の考え方：データは必ず小さい順に並べる！
                 </div>
-                
+
                 <!-- 並べ替えの図 -->
                 <div class="svg-container">
                     <svg width="700" height="210" viewBox="0 0 700 210">
                         <!-- タイトル -->
                         <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">並べ替えの重要性</text>
-                        
+
                         <!-- Before: バラバラのデータ -->
                         <text x="30" y="55" font-size="14" font-weight="bold" fill="#666">元のデータ（バラバラ）</text>
                         <rect x="50" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
                         <text x="75" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">3</text>
-                        
+
                         <rect x="110" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
                         <text x="135" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">5</text>
-                        
+
                         <rect x="170" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
                         <text x="195" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">6</text>
-                        
+
                         <rect x="230" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
                         <text x="255" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">2</text>
-                        
+
                         <rect x="290" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
                         <text x="315" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">4</text>
-                        
+
                         <rect x="350" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
                         <text x="375" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">7</text>
-                        
+
                         <rect x="410" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
                         <text x="435" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">4</text>
-                        
+
                         <rect x="470" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
                         <text x="495" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">9</text>
-                        
+
                         <!-- 矢印と説明 -->
                         <path d="M 285 110 L 285 140" stroke="#ff9800" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
                         <text x="310" y="128" font-size="14" font-weight="bold" fill="#ff9800">並べ替え！</text>
-                        
+
                         <!-- After: 並べたデータ -->
                         <text x="30" y="145" font-size="14" font-weight="bold" fill="#2e7d32">小さい順に並べた！</text>
                         <rect x="50" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
                         <text x="75" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">2</text>
-                        
+
                         <rect x="110" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
                         <text x="135" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">3</text>
-                        
+
                         <rect x="170" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
                         <text x="195" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">4</text>
-                        
+
                         <rect x="230" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
                         <text x="255" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">4</text>
-                        
+
                         <rect x="290" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
                         <text x="315" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">5</text>
-                        
+
                         <rect x="350" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
                         <text x="375" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">6</text>
-                        
+
                         <rect x="410" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
                         <text x="435" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">7</text>
-                        
+
                         <rect x="470" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
                         <text x="495" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">9</text>
-                        
+
                         <defs>
                             <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
                                 <polygon points="0 0, 10 3, 0 6" fill="#ff9800"/>
@@ -328,14 +112,14 @@
                     </svg>
                     <div class="svg-caption">必ず並べ替えてから計算する！</div>
                 </div>
-                
+
                 <p style="margin-top: 15px;"><strong>経験的確率</strong>は、実際のデータから求める確率です：</p>
                 <div class="formula">
                     \[ \text{確率} = \frac{\text{条件を満たすデータの個数}}{\text{全データの個数}} \]
                 </div>
             </div>
         </section>
-        
+
         <!-- 2. 覚えるルール -->
         <section>
             <h2>2. 覚えるルール</h2>
