@@ -78,7 +78,7 @@
                         <line x1="120" y1="300" x2="120" y2="50" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
                         <text x="610" y="285" font-size="14" fill="#333">x</text>
                         <text x="110" y="45" font-size="14" fill="#333">y</text>
-                        <text x="110" y="295" font-size="12" fill="#333">O</text>
+                        <text x="110" y="295" font-size="14" fill="#333">O</text>
 
                         <!-- 直線L1 (通過点 A, B) -->
                         <line x1="150" y1="240" x2="450" y2="100" stroke="#e53935" stroke-width="3"/>
@@ -95,23 +95,23 @@
                         <!-- 中点M -->
                         <circle cx="300" cy="170" r="6" fill="#ff9800"/>
                         <text x="305" y="165" font-size="14" font-weight="bold" fill="#ff9800">M(4, 5)</text>
-                        <text x="305" y="180" font-size="11" fill="#ff9800">← 中点</text>
+                        <text x="305" y="180" font-size="14" fill="#ff9800">← 中点</text>
 
                         <!-- 直線L2 (L1に平行) -->
                         <line x1="150" y1="290" x2="450" y2="150" stroke="#1976d2" stroke-width="3" stroke-dasharray="8,4"/>
                         <text x="460" y="145" font-size="14" font-weight="bold" fill="#1976d2">L₂</text>
-                        <text x="480" y="160" font-size="11" fill="#1976d2">(L₁に平行)</text>
+                        <text x="480" y="160" font-size="14" fill="#1976d2">(L₁に平行)</text>
 
                         <!-- y切片 C -->
                         <circle cx="120" cy="267" r="5" fill="#1976d2"/>
-                        <text x="75" y="262" font-size="12" font-weight="bold" fill="#1976d2">C(0, 1)</text>
+                        <text x="75" y="262" font-size="14" font-weight="bold" fill="#1976d2">C(0, 1)</text>
 
                         <!-- 傾きの説明（三角形） -->
                         <line x1="200" y1="217" x2="400" y2="217" stroke="#4caf50" stroke-width="2" stroke-dasharray="4,2"/>
                         <line x1="400" y1="217" x2="400" y2="123" stroke="#4caf50" stroke-width="2" stroke-dasharray="4,2"/>
-                        <text x="290" y="232" font-size="12" fill="#4caf50">横に4</text>
-                        <text x="405" y="175" font-size="12" fill="#4caf50">縦に4</text>
-                        <text x="500" y="220" font-size="13" fill="#4caf50">傾き = 4÷4 = 1</text>
+                        <text x="290" y="232" font-size="14" fill="#4caf50">横に4</text>
+                        <text x="405" y="175" font-size="14" fill="#4caf50">縦に4</text>
+                        <text x="500" y="220" font-size="14" fill="#4caf50">傾き = 4÷4 = 1</text>
                     </svg>
                     <div class="svg-caption">中点・傾き・平行の関係を視覚化</div>
                 </div>
@@ -127,7 +127,7 @@
                 </div>
 
                 <div class="rule-box">
-                    <strong>📌 中点の公式</strong>
+                    <strong>📌 中点の公式</strong> <a href="#ex-midpoint" class="example-link">→ 例1</a>
                     <p>点 \(A(x_1, y_1)\) と点 \(B(x_2, y_2)\) の中点 \(M\) は：</p>
                     <div class="formula">
                         \[ M\left(\frac{x_1 + x_2}{2},\ \frac{y_1 + y_2}{2}\right) \]
@@ -148,42 +148,43 @@
                             <!-- 座標軸 -->
                             <line x1="60" y1="200" x2="420" y2="200" stroke="#666" stroke-width="1" marker-end="url(#axisArrow)"/>
                             <line x1="80" y1="220" x2="80" y2="40" stroke="#666" stroke-width="1" marker-end="url(#axisArrow)"/>
-                            <text x="430" y="205" font-size="12" fill="#666">x</text>
-                            <text x="70" y="35" font-size="12" fill="#666">y</text>
-                            <text x="65" y="215" font-size="11" fill="#666">O</text>
+                            <text x="430" y="205" font-size="14" fill="#666">x</text>
+                            <text x="70" y="35" font-size="14" fill="#666">y</text>
+                            <text x="65" y="215" font-size="14" fill="#666">O</text>
 
                             <!-- 目盛り -->
-                            <text x="120" y="215" font-size="10" fill="#999" text-anchor="middle">2</text>
-                            <text x="200" y="215" font-size="10" fill="#999" text-anchor="middle">5</text>
-                            <text x="280" y="215" font-size="10" fill="#999" text-anchor="middle">8</text>
-                            <text x="65" y="160" font-size="10" fill="#999">4</text>
-                            <text x="65" y="120" font-size="10" fill="#999">5</text>
-                            <text x="65" y="80" font-size="10" fill="#999">6</text>
+                            <text x="120" y="215" font-size="14" fill="#999" text-anchor="middle">2</text>
+                            <text x="200" y="215" font-size="14" fill="#999" text-anchor="middle">5</text>
+                            <text x="280" y="215" font-size="14" fill="#999" text-anchor="middle">8</text>
+                            <text x="65" y="160" font-size="14" fill="#999">4</text>
+                            <text x="65" y="120" font-size="14" fill="#999">5</text>
+                            <text x="65" y="80" font-size="14" fill="#999">6</text>
 
                             <!-- 線分AB -->
                             <line x1="120" y1="155" x2="280" y2="75" stroke="#666" stroke-width="3"/>
 
                             <!-- 点A (2, 4) -->
                             <circle cx="120" cy="155" r="7" fill="#e53935"/>
-                            <text x="90" y="175" font-size="13" font-weight="bold" fill="#e53935">A(2, 4)</text>
+                            <text x="90" y="175" font-size="14" font-weight="bold" fill="#e53935">A(2, 4)</text>
 
                             <!-- 点B (8, 6) -->
                             <circle cx="280" cy="75" r="7" fill="#e53935"/>
-                            <text x="290" y="70" font-size="13" font-weight="bold" fill="#e53935">B(8, 6)</text>
+                            <text x="290" y="70" font-size="14" font-weight="bold" fill="#e53935">B(8, 6)</text>
 
                             <!-- 中点M (5, 5) -->
                             <circle cx="200" cy="115" r="7" fill="#ff9800"/>
-                            <text x="210" y="105" font-size="13" font-weight="bold" fill="#ff9800">M(5, 5)</text>
+                            <text x="210" y="105" font-size="14" font-weight="bold" fill="#ff9800">M(5, 5)</text>
 
                             <!-- 計算式 -->
-                            <text x="350" y="150" font-size="11" fill="#333" text-anchor="middle">x: (2+8)÷2 = 5</text>
-                            <text x="350" y="170" font-size="11" fill="#333" text-anchor="middle">y: (4+6)÷2 = 5</text>
+                            <text x="350" y="150" font-size="14" fill="#333" text-anchor="middle">x: (2+8)÷2 = 5</text>
+                            <text x="350" y="170" font-size="14" fill="#333" text-anchor="middle">y: (4+6)÷2 = 5</text>
                         </svg>
+                        <div class="svg-caption">2点の座標から中点を求める</div>
                     </div>
                 </div>
 
                 <div class="rule-box">
-                    <strong>📌 傾きの公式</strong>
+                    <strong>📌 傾きの公式</strong> <a href="#ex-slope" class="example-link">→ 例2</a>
                     <p>2点 \(A(x_1, y_1)\), \(B(x_2, y_2)\) を通る直線の傾き \(m\) は：</p>
                     <div class="formula">
                         \[ m = \frac{y_2 - y_1}{x_2 - x_1} = \frac{\text{yの増加量}}{\text{xの増加量}} \]
@@ -211,28 +212,29 @@
 
                             <!-- 点A -->
                             <circle cx="150" cy="142" r="6" fill="#e53935"/>
-                            <text x="120" y="155" font-size="12" font-weight="bold" fill="#e53935">A(1, 2)</text>
+                            <text x="120" y="155" font-size="14" font-weight="bold" fill="#e53935">A(1, 2)</text>
 
                             <!-- 点B -->
                             <circle cx="330" cy="78" r="6" fill="#e53935"/>
-                            <text x="340" y="75" font-size="12" font-weight="bold" fill="#e53935">B(5, 6)</text>
+                            <text x="340" y="75" font-size="14" font-weight="bold" fill="#e53935">B(5, 6)</text>
 
                             <!-- 横の変化 -->
                             <line x1="150" y1="142" x2="330" y2="142" stroke="#4caf50" stroke-width="2"/>
-                            <text x="240" y="158" font-size="12" font-weight="bold" fill="#4caf50" text-anchor="middle">5 − 1 = 4</text>
+                            <text x="240" y="158" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">5 − 1 = 4</text>
 
                             <!-- 縦の変化 -->
                             <line x1="330" y1="142" x2="330" y2="78" stroke="#2196f3" stroke-width="2"/>
-                            <text x="360" y="115" font-size="12" font-weight="bold" fill="#2196f3">6 − 2 = 4</text>
+                            <text x="360" y="115" font-size="14" font-weight="bold" fill="#2196f3">6 − 2 = 4</text>
 
                             <!-- 結果 -->
-                            <text x="250" y="200" font-size="13" font-weight="bold" fill="#333" text-anchor="middle">傾き m = 4 ÷ 4 = 1</text>
+                            <text x="250" y="200" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">傾き m = 4 ÷ 4 = 1</text>
                         </svg>
+                        <div class="svg-caption">傾きは「yの変化量÷xの変化量」で求める</div>
                     </div>
                 </div>
 
                 <div class="rule-box">
-                    <strong>📌 直線の方程式</strong>
+                    <strong>📌 直線の方程式</strong> <a href="#ex-parallel" class="example-link">→ 例3</a>
                     <p>傾き \(m\)、y切片 \(c\) の直線は：</p>
                     <div class="formula">
                         \[ y = mx + c \]
@@ -257,17 +259,18 @@
 
                             <!-- 直線1 -->
                             <line x1="80" y1="140" x2="380" y2="60" stroke="#e53935" stroke-width="3"/>
-                            <text x="390" y="55" font-size="13" font-weight="bold" fill="#e53935">L₁: y = 2x + 3</text>
+                            <text x="390" y="55" font-size="14" font-weight="bold" fill="#e53935">L₁: y = 2x + 3</text>
 
                             <!-- 直線2 -->
                             <line x1="80" y1="180" x2="380" y2="100" stroke="#1976d2" stroke-width="3"/>
-                            <text x="390" y="95" font-size="13" font-weight="bold" fill="#1976d2">L₂: y = 2x − 1</text>
+                            <text x="390" y="95" font-size="14" font-weight="bold" fill="#1976d2">L₂: y = 2x − 1</text>
 
                             <!-- 傾きの注釈 -->
                             <rect x="160" y="145" width="180" height="40" fill="#fff9c4" stroke="#ff9800" stroke-width="2" rx="8"/>
-                            <text x="250" y="167" font-size="13" font-weight="bold" fill="#e65100" text-anchor="middle">両方とも傾き = 2</text>
-                            <text x="250" y="182" font-size="11" fill="#666" text-anchor="middle">→ 平行！</text>
+                            <text x="250" y="167" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">両方とも傾き = 2</text>
+                            <text x="250" y="182" font-size="14" fill="#666" text-anchor="middle">→ 平行！</text>
                         </svg>
+                        <div class="svg-caption">平行な2直線は傾きが等しい</div>
                     </div>
                 </div>
             </div>
@@ -307,7 +310,7 @@
                     問題設定：直線 L₁ は点 A(2, 3) と B(6, 7) を通る
                 </div>
 
-                <div class="example-box">
+                <div class="example-box" id="ex-midpoint">
                     <div class="example-title">
                         <span class="number-badge">例1</span>線分ABの中点を求める
                     </div>
@@ -318,7 +321,7 @@
                     <p><strong>答え：M(4, 5)</strong></p>
                 </div>
 
-                <div class="example-box">
+                <div class="example-box" id="ex-slope">
                     <div class="example-title">
                         <span class="number-badge">例2</span>直線L₁の傾きを求める
                     </div>
@@ -329,7 +332,7 @@
                     <p><strong>答え：傾き m = 1</strong></p>
                 </div>
 
-                <div class="example-box">
+                <div class="example-box" id="ex-parallel">
                     <div class="example-title">
                         <span class="number-badge">例3</span>L₁に平行で点C(0, 2)を通る直線L₂の方程式
                     </div>
@@ -357,7 +360,7 @@
                     <!-- 負の傾きの図 -->
                     <div class="svg-container">
                         <svg width="400" height="180" viewBox="0 0 400 180">
-                            <text x="200" y="20" font-size="13" font-weight="bold" fill="#1976d2" text-anchor="middle">傾きが負 → 右下がり</text>
+                            <text x="200" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">傾きが負 → 右下がり</text>
 
                             <!-- 座標軸 -->
                             <line x1="50" y1="150" x2="350" y2="150" stroke="#ccc" stroke-width="1"/>
@@ -368,14 +371,15 @@
 
                             <!-- 点P -->
                             <circle cx="120" cy="65" r="5" fill="#9c27b0"/>
-                            <text x="95" y="55" font-size="11" font-weight="bold" fill="#9c27b0">P(1,5)</text>
+                            <text x="95" y="55" font-size="14" font-weight="bold" fill="#9c27b0">P(1,5)</text>
 
                             <!-- 点Q -->
                             <circle cx="280" cy="115" r="5" fill="#9c27b0"/>
-                            <text x="285" y="110" font-size="11" font-weight="bold" fill="#9c27b0">Q(4,2)</text>
+                            <text x="285" y="110" font-size="14" font-weight="bold" fill="#9c27b0">Q(4,2)</text>
 
-                            <text x="200" y="165" font-size="12" fill="#666" text-anchor="middle">m = −1 なので右に行くと下がる</text>
+                            <text x="200" y="165" font-size="14" fill="#666" text-anchor="middle">m = −1 なので右に行くと下がる</text>
                         </svg>
+                        <div class="svg-caption">傾きが負の直線は右下がり</div>
                     </div>
                 </div>
 

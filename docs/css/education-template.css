@@ -38,6 +38,7 @@ body {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05), 0 5px 15px rgba(0,0,0,0.03);
     position: relative;
     overflow: hidden;
+    counter-reset: figure;
 }
 
 /* 上部の装飾バー */
@@ -175,6 +176,7 @@ strong {
     text-align: center;
     margin: 20px 0;
     overflow-x: auto; /* スマホで横スクロール */
+    counter-increment: figure;
 }
 
 .svg-caption {
@@ -182,6 +184,11 @@ strong {
     font-size: 0.9rem;
     font-weight: bold;
     color: #636e72;
+}
+
+.svg-caption::before {
+    content: "図" counter(figure) "：";
+    color: #1976d2;
 }
 
 /* SVGテキストの白縁取り（線と重なっても読みやすく） */
@@ -383,7 +390,48 @@ strong {
     border-bottom: none;
 }
 
-/* 8. まとめ */
+/* 8. 実践ストーリー */
+.story-box {
+    background: linear-gradient(135deg, #fdfbfb 0%, #f5f7fa 100%);
+    border: 2px solid #b8c6db;
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 25px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.story-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 18px 18px 0 0;
+}
+
+.story-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #5a4fcf;
+    margin-bottom: 15px;
+    padding-top: 5px;
+}
+
+.story-box p {
+    margin-bottom: 1em;
+    line-height: 1.9;
+}
+
+.story-box hr {
+    border: none;
+    border-top: 1px dashed #b8c6db;
+    margin: 20px 0;
+}
+
+/* 9. まとめ */
 .summary {
     background: var(--text-color);
     color: white;
@@ -550,4 +598,43 @@ strong {
 @keyframes popIn {
     0% { transform: scale(0.9); opacity: 0; }
     100% { transform: scale(1); opacity: 1; }
+}
+
+/* =========================================
+   SVG内のテキスト (SVG Text)
+   ========================================= */
+
+/*
+ * ⚠️ SVGフォントサイズルール ⚠️
+ *
+ * font-sizeは必ず13px以上を使用すること！
+ * 推奨サイズ:
+ *   --svg-font-medium: 14px (最小・標準・本文・補足説明)
+ *   --svg-font-large:  16px (タイトル・強調)
+ *
+ * 悪い例: font-size="13" ← 禁止！
+ * 良い例: font-size="14" 以上
+ */
+
+:root {
+    --svg-font-medium: 14px;  /* 標準サイズ */
+    --svg-font-large: 16px;   /* タイトル用 */
+}
+
+.svg-container svg text {
+    font-family: KaTeX_Main, "Times New Roman", Georgia, serif;
+}
+
+/* =========================================
+   計算例へのリンク (Example Links)
+   ========================================= */
+.example-link {
+    font-size: 0.9em;
+    color: #1976d2;
+    text-decoration: none;
+    margin-left: 8px;
+}
+
+.example-link:hover {
+    text-decoration: underline;
 }
