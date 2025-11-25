@@ -1,68 +1,48 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>二次方程式の解き方（因数分解・平方完成・解の公式） - 中学数学教材</title>
-
-    <!-- KaTeX CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-
-    <!-- 共通CSS -->
-    <link rel="stylesheet" href="css/education-template.css">
-
-    <!-- KaTeX JS -->
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-            onload="renderMathInElement(document.body, {
-                delimiters: [
-                    {left: '\\[', right: '\\]', display: true},
-                    {left: '\\(', right: '\\)', display: false}
-                ],
-                throwOnError: false
-            });"></script>
-</head>
-<body>
-    <!--
-    ========== 教材メタ情報（画像生成用） ==========
-    テーマ: 二次方程式の解き方
-    対象: 中学生・基礎〜標準レベル
-    概要: 二次方程式 ax²+bx+c=0 を因数分解・平方完成・解の公式の3つの方法で解く技術を学ぶ。それぞれの方法の特徴と使い分け、判別式による解の個数判定、グラフとの関係も理解する。
-    キーワード: 二次方程式, 因数分解, 平方完成, 解の公式, 判別式, 零積の法則, 放物線, 重解
-    イメージ: 放物線とx軸の交点、因数分解の矢印図、平方完成の変形図、解の公式の数式
-    ================================================
-    -->
-
-    <div class="container">
-        <nav class="breadcrumb">
-            <a href="index.html">トップページに戻る</a>
-        </nav>
-
-        <h1>📐 二次方程式の解き方</h1>
-        <div class="subtitle">因数分解・平方完成・解の公式</div>
-
-        <!-- ========== 表紙（任意） ========== -->
-        <div class="cover-image">
-            <img src="images/noimage.jpg" alt="二次方程式の解き方">
-        </div>
-
-        <!-- ========== 目次 ========== -->
-        <nav class="toc">
-            <div class="toc-title">📚 目次</div>
-            <ol class="toc-list">
-                <li><a href="#section1">テーマの定義</a></li>
-                <li><a href="#section2">覚えるルール</a></li>
-                <li><a href="#section3">例題と解き方</a></li>
-                <li><a href="#section4">簡単にするコツ</a></li>
-                <li><a href="#section5">よくあるつまづき</a></li>
-                <li><a href="#section6">仕上げチェックリスト</a></li>
-                <li><a href="#section7">練習問題</a></li>
-                <li><a href="#related">関連教材</a></li>
-                <li><a href="#story">おまけ：歴史ストーリー「4000年前の数学者たち」</a></li>
-            </ol>
-        </nav>
-
-        <!-- 1. テーマの定義 -->
+---
+layout: material-raw
+title: 二次方程式の解き方
+icon: "📐"
+description: 二次方程式 ax²+bx+c=0 を因数分解・平方完成・解の公式の3つの方法で解く技術を学ぶ。それぞれの方法の特徴と使い分け、判別式による解の個数判定、グラフとの関係も理解する。
+level: 標準
+level_num: 2
+category: equations
+order: 1
+keywords:
+  - 二次方程式
+  - 因数分解
+  - 平方完成
+  - 解の公式
+  - 判別式
+  - 零積の法則
+  - 放物線
+  - 重解
+cover_image: /images/noimage.jpg
+cover_description: 放物線とx軸の交点、因数分解の矢印図、平方完成の変形図、解の公式の数式
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「4000年前の数学者たち」"
+subtitle: "因数分解・平方完成・解の公式"
+related:
+  - url: /累乗と平方根_教材.html
+    title: 累乗と平方根
+    note: 平方根を使った解法・解の公式に必要
+    type: prerequisite
+---
+<!-- 1. テーマの定義 -->
         <section id="section1">
             <h2>1. テーマの定義</h2>
             <div class="section">
@@ -766,19 +746,6 @@
             📌 まとめ：「=0」にして因数分解、ダメなら解の公式！
         </div>
 
-        <!-- 関連教材 -->
-        <div class="related-materials" id="related">
-            <h3>📎 関連教材</h3>
-            <ul>
-                <li>
-                    <a href="累乗と平方根_教材.html" class="tag-prerequisite">
-                        <span class="material-name">累乗と平方根</span>
-                        <span class="relation-note">平方根を使った解法・解の公式に必要</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
         <!-- おまけ：歴史ストーリー -->
         <section id="story">
             <h2>おまけ：歴史ストーリー「4000年前の数学者たち」</h2>
@@ -846,10 +813,3 @@
                 </div>
             </div>
         </section>
-
-        <nav class="breadcrumb breadcrumb-footer">
-            <a href="index.html">トップページに戻る</a>
-        </nav>
-    </div>
-</body>
-</html>

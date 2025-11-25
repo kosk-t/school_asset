@@ -42,7 +42,7 @@ node scripts/list-stories.js
 6. **仕上げチェックリスト**（5項目）
 7. **練習問題**（2問程度。`<details>`で答えを折りたたみにする）
 8. **まとめ一言**（ワンフレーズで要点を再確認）
-9. **関連教材**（前提知識や関連する教材へのリンク。該当があれば追加）
+9. **関連教材**（Front Matterの `related` で指定。レイアウトが自動生成）
 10. **おまけ：実践ストーリー「タイトル」**（学んだルールを使う具体的なシナリオ）
 
 ### 例題と解き方の作り方
@@ -362,34 +362,27 @@ node scripts/list-stories.js
 - インラインスタイルは使わない（共通CSSで定義済み）
 - レスポンシブ対応済み
 
-### 関連教材セクション
-前提知識や関連する教材がある場合は「まとめ」の後、「実践ストーリー」の前に追加：
+### 関連教材（Front Matterで指定）
+前提知識や関連する教材がある場合は、**Front Matterの `related` で指定**します。
+レイアウトが自動で関連教材セクションを生成するため、**本文にHTMLを書く必要はありません**。
 
-```html
-<div class="related-materials">
-    <h3>📎 関連教材</h3>
-    <ul>
-        <li>
-            <a href="前提教材_教材.html" class="tag-prerequisite">
-                <span class="material-name">前提教材名</span>
-                <span class="relation-note">なぜこの教材が前提なのかを一言で</span>
-            </a>
-        </li>
-        <li>
-            <a href="関連教材_教材.html" class="tag-related">
-                <span class="material-name">関連教材名</span>
-                <span class="relation-note">どう関連しているのかを一言で</span>
-            </a>
-        </li>
-    </ul>
-</div>
+```yaml
+related:
+  - url: /前提教材_教材.html
+    title: 前提教材名
+    note: なぜこの教材が前提なのかを一言で
+    type: prerequisite
+  - url: /関連教材_教材.html
+    title: 関連教材名
+    note: どう関連しているのかを一言で
+    type: related
 ```
 
-- `tag-prerequisite`: 📚 前提知識となる教材（この教材を学ぶ前に理解しておくべき）
-- `tag-related`: 🔗 関連する教材（内容が重なる、応用で使う）
-- `material-name`: 教材名（絵文字はCSSで自動付与）
-- `relation-note`: 関連理由の説明（簡潔に15字程度で）
-- 該当する教材がない場合はセクションごと省略してOK
+- `url`: 教材へのパス（`/` で始める）
+- `title`: 教材名
+- `note`: 関連理由の説明（簡潔に15字程度で）
+- `type`: `prerequisite`（前提知識）または `related`（関連教材）
+- 該当する教材がない場合は `related` ごと省略してOK
 - `curriculum.json` の `prerequisite` / `relatedTo` と整合性を取る
 
 **関連教材の決め方**:
@@ -486,6 +479,12 @@ toc:
   - id: section2
     title: 覚えるルール
   # ... 以下続く
+# 関連教材がある場合のみ追加（任意）
+related:
+  - url: /前提教材_教材.html
+    title: 前提教材名
+    note: なぜこの教材が前提なのか
+    type: prerequisite
 ---
 ```
 
