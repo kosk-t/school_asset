@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +14,7 @@
 
     <!-- KaTeX JS -->
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-            onload="renderMathInElement(document.body, {
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
                 delimiters: [
                     {left: '\\[', right: '\\]', display: true},
                     {left: '\\(', right: '\\)', display: false}
@@ -22,6 +22,7 @@
                 throwOnError: false
             });"></script>
 </head>
+
 <body>
     <!--
     ========== 教材メタ情報（画像生成用） ==========
@@ -91,20 +92,23 @@
                 <!-- 確率の基本の図 -->
                 <div class="svg-container">
                     <svg width="700" height="200" viewBox="0 0 700 200">
-                        <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">確率の基本イメージ</text>
+                        <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">確率の基本イメージ</text>
 
                         <!-- 全事象の円 -->
-                        <circle cx="350" cy="120" r="80" fill="#e3f2fd" stroke="#1976d2" stroke-width="3"/>
-                        <text x="350" y="45" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">全事象 Ω</text>
+                        <circle cx="350" cy="120" r="80" fill="#e3f2fd" stroke="#1976d2" stroke-width="3" />
+                        <text x="350" y="45" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">全事象
+                            Ω</text>
 
                         <!-- 事象Aの円 -->
-                        <circle cx="330" cy="120" r="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2"/>
-                        <text x="330" y="125" font-size="16" font-weight="bold" fill="#c62828" text-anchor="middle">A</text>
+                        <circle cx="330" cy="120" r="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" />
+                        <text x="330" y="125" font-size="16" font-weight="bold" fill="#c62828"
+                            text-anchor="middle">A</text>
 
                         <!-- 説明 -->
                         <text x="500" y="100" font-size="14" fill="#333">確率 P(A) =</text>
                         <text x="500" y="120" font-size="14" fill="#c62828" font-weight="bold">Aの場合の数</text>
-                        <line x1="480" y1="125" x2="610" y2="125" stroke="#333" stroke-width="1"/>
+                        <line x1="480" y1="125" x2="610" y2="125" stroke="#333" stroke-width="1" />
                         <text x="500" y="140" font-size="14" fill="#1976d2" font-weight="bold">全体の場合の数</text>
                     </svg>
                     <div class="svg-caption">確率 = 条件を満たす場合の数 ÷ 全体の場合の数</div>
@@ -123,25 +127,33 @@
                     <!-- 余事象の図 -->
                     <div class="svg-container">
                         <svg width="700" height="200" viewBox="0 0 700 200">
-                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">余事象のイメージ</text>
+                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
+                                text-anchor="middle">余事象のイメージ</text>
 
                             <!-- 全事象の円 -->
-                            <rect x="200" y="50" width="300" height="120" fill="#e3f2fd" stroke="#1976d2" stroke-width="3" rx="10"/>
-                            <text x="350" y="35" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">全事象 Ω = 1</text>
+                            <rect x="200" y="50" width="300" height="120" fill="#e3f2fd" stroke="#1976d2"
+                                stroke-width="3" rx="10" />
+                            <text x="350" y="35" font-size="14" font-weight="bold" fill="#1976d2"
+                                text-anchor="middle">全事象 Ω = 1</text>
 
                             <!-- 事象A -->
-                            <circle cx="280" cy="110" r="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2"/>
-                            <text x="280" y="115" font-size="16" font-weight="bold" fill="#c62828" text-anchor="middle">A</text>
+                            <circle cx="280" cy="110" r="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" />
+                            <text x="280" y="115" font-size="16" font-weight="bold" fill="#c62828"
+                                text-anchor="middle">A</text>
                             <text x="280" y="180" font-size="14" fill="#c62828" text-anchor="middle">P(A)</text>
 
                             <!-- 余事象 -->
-                            <text x="420" y="110" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">Aでない</text>
-                            <text x="420" y="130" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">（余事象）</text>
-                            <text x="420" y="180" font-size="14" fill="#2e7d32" text-anchor="middle">P(Āの上に線) = 1 - P(A)</text>
+                            <text x="420" y="110" font-size="16" font-weight="bold" fill="#2e7d32"
+                                text-anchor="middle">Aでない</text>
+                            <text x="420" y="130" font-size="16" font-weight="bold" fill="#2e7d32"
+                                text-anchor="middle">（余事象）</text>
+                            <text x="420" y="180" font-size="14" fill="#2e7d32" text-anchor="middle">P(Āの上に線) = 1 -
+                                P(A)</text>
 
                             <defs>
-                                <marker id="arrow-complement" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                                    <polygon points="0 0, 10 3, 0 6" fill="#ff9800"/>
+                                <marker id="arrow-complement" markerWidth="10" markerHeight="10" refX="9" refY="3"
+                                    orient="auto">
+                                    <polygon points="0 0, 10 3, 0 6" fill="#ff9800" />
                                 </marker>
                             </defs>
                         </svg>
@@ -162,18 +174,22 @@
                     <!-- 和の法則の図 -->
                     <div class="svg-container">
                         <svg width="700" height="250" viewBox="0 0 700 250">
-                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">和の法則のイメージ（ベン図）</text>
+                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
+                                text-anchor="middle">和の法則のイメージ（ベン図）</text>
 
                             <!-- 全事象の枠 -->
-                            <rect x="100" y="50" width="500" height="170" fill="none" stroke="#1976d2" stroke-width="2" rx="10"/>
+                            <rect x="100" y="50" width="500" height="170" fill="none" stroke="#1976d2" stroke-width="2"
+                                rx="10" />
                             <text x="110" y="70" font-size="14" fill="#1976d2">全事象</text>
 
                             <!-- 事象A -->
-                            <circle cx="300" cy="135" r="60" fill="#ffcdd2" fill-opacity="0.6" stroke="#e57373" stroke-width="2"/>
+                            <circle cx="300" cy="135" r="60" fill="#ffcdd2" fill-opacity="0.6" stroke="#e57373"
+                                stroke-width="2" />
                             <text x="250" y="140" font-size="18" font-weight="bold" fill="#c62828">A</text>
 
                             <!-- 事象B -->
-                            <circle cx="400" cy="135" r="60" fill="#c8e6c9" fill-opacity="0.6" stroke="#66bb6a" stroke-width="2"/>
+                            <circle cx="400" cy="135" r="60" fill="#c8e6c9" fill-opacity="0.6" stroke="#66bb6a"
+                                stroke-width="2" />
                             <text x="450" y="140" font-size="18" font-weight="bold" fill="#2e7d32">B</text>
 
                             <!-- 交わり部分 -->
@@ -181,7 +197,8 @@
                             <text x="340" y="155" font-size="14" fill="#ff6f00">（重なり）</text>
 
                             <!-- 説明 -->
-                            <text x="350" y="235" font-size="14" fill="#333" text-anchor="middle">P(A∪B) = P(A) + P(B) - P(A∩B)  ← 重なりを2回数えないよう引く</text>
+                            <text x="350" y="235" font-size="14" fill="#333" text-anchor="middle">P(A∪B) = P(A) + P(B) -
+                                P(A∩B) ← 重なりを2回数えないよう引く</text>
                         </svg>
                         <div class="svg-caption">AとBを足すと重なり部分を2回数えるので、1回分引く</div>
                     </div>
@@ -199,26 +216,34 @@
                     <!-- 排反事象の図 -->
                     <div class="svg-container">
                         <svg width="700" height="200" viewBox="0 0 700 200">
-                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">排反事象のイメージ（重ならない）</text>
+                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
+                                text-anchor="middle">排反事象のイメージ（重ならない）</text>
 
                             <!-- 全事象の枠 -->
-                            <rect x="100" y="50" width="500" height="130" fill="none" stroke="#1976d2" stroke-width="2" rx="10"/>
+                            <rect x="100" y="50" width="500" height="130" fill="none" stroke="#1976d2" stroke-width="2"
+                                rx="10" />
 
                             <!-- 事象A -->
-                            <circle cx="270" cy="115" r="50" fill="#ffcdd2" fill-opacity="0.8" stroke="#e57373" stroke-width="2"/>
-                            <text x="270" y="120" font-size="18" font-weight="bold" fill="#c62828" text-anchor="middle">A</text>
+                            <circle cx="270" cy="115" r="50" fill="#ffcdd2" fill-opacity="0.8" stroke="#e57373"
+                                stroke-width="2" />
+                            <text x="270" y="120" font-size="18" font-weight="bold" fill="#c62828"
+                                text-anchor="middle">A</text>
 
                             <!-- 事象B -->
-                            <circle cx="430" cy="115" r="50" fill="#c8e6c9" fill-opacity="0.8" stroke="#66bb6a" stroke-width="2"/>
-                            <text x="430" y="120" font-size="18" font-weight="bold" fill="#2e7d32" text-anchor="middle">B</text>
+                            <circle cx="430" cy="115" r="50" fill="#c8e6c9" fill-opacity="0.8" stroke="#66bb6a"
+                                stroke-width="2" />
+                            <text x="430" y="120" font-size="18" font-weight="bold" fill="#2e7d32"
+                                text-anchor="middle">B</text>
 
                             <!-- 矢印と説明 -->
-                            <path d="M 320 115 L 380 115" stroke="#ff9800" stroke-width="2" marker-end="url(#arrow-gap)"/>
+                            <path d="M 320 115 L 380 115" stroke="#ff9800" stroke-width="2"
+                                marker-end="url(#arrow-gap)" />
                             <text x="350" y="105" font-size="14" fill="#ff9800" text-anchor="middle">重ならない</text>
 
                             <defs>
-                                <marker id="arrow-gap" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                                    <polygon points="0 0, 10 3, 0 6" fill="#ff9800"/>
+                                <marker id="arrow-gap" markerWidth="10" markerHeight="10" refX="9" refY="3"
+                                    orient="auto">
+                                    <polygon points="0 0, 10 3, 0 6" fill="#ff9800" />
                                 </marker>
                             </defs>
                         </svg>
@@ -238,23 +263,28 @@
                     <!-- 条件付き確率の図 -->
                     <div class="svg-container">
                         <svg width="700" height="220" viewBox="0 0 700 220">
-                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">条件付き確率のイメージ</text>
+                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
+                                text-anchor="middle">条件付き確率のイメージ</text>
 
                             <!-- Bが起きた世界（枠） -->
-                            <rect x="200" y="50" width="300" height="140" fill="#e8f5e9" stroke="#4caf50" stroke-width="3" rx="10"/>
-                            <text x="350" y="45" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">Bが起きた世界（これが新しい「全体」）</text>
+                            <rect x="200" y="50" width="300" height="140" fill="#e8f5e9" stroke="#4caf50"
+                                stroke-width="3" rx="10" />
+                            <text x="350" y="45" font-size="14" font-weight="bold" fill="#4caf50"
+                                text-anchor="middle">Bが起きた世界（これが新しい「全体」）</text>
 
                             <!-- A∩B -->
-                            <circle cx="300" cy="120" r="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2"/>
-                            <text x="300" y="125" font-size="16" font-weight="bold" fill="#c62828" text-anchor="middle">A∩B</text>
+                            <circle cx="300" cy="120" r="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" />
+                            <text x="300" y="125" font-size="16" font-weight="bold" fill="#c62828"
+                                text-anchor="middle">A∩B</text>
 
                             <!-- 説明 -->
                             <text x="450" y="120" font-size="14" fill="#333">P(A|B) =</text>
                             <text x="450" y="140" font-size="14" fill="#c62828" font-weight="bold">AかつBの確率</text>
-                            <line x1="430" y1="145" x2="560" y2="145" stroke="#333" stroke-width="1"/>
+                            <line x1="430" y1="145" x2="560" y2="145" stroke="#333" stroke-width="1" />
                             <text x="450" y="160" font-size="14" fill="#4caf50" font-weight="bold">Bの確率</text>
 
-                            <text x="350" y="210" font-size="14" fill="#666" text-anchor="middle">「Bが起きた」前提で、その中でAが起きる確率</text>
+                            <text x="350" y="210" font-size="14" fill="#666"
+                                text-anchor="middle">「Bが起きた」前提で、その中でAが起きる確率</text>
                         </svg>
                         <div class="svg-caption">Bが起きた中で、Aも起きる確率</div>
                     </div>
@@ -269,7 +299,8 @@
                     </div>
                     <p>条件：AとBが互いに影響しない（独立）</p>
 
-                    <p><strong>💡 なぜ掛ける？</strong> サイコロを2回振るとき、1回目と2回目は無関係です。「1回目が1」かつ「2回目が2」の確率は (1/6) × (1/6) = 1/36 です。</p>
+                    <p><strong>💡 なぜ掛ける？</strong> サイコロを2回振るとき、1回目と2回目は無関係です。「1回目が1」かつ「2回目が2」の確率は (1/6) × (1/6) = 1/36
+                        です。</p>
                 </div>
 
                 <div class="rule-box">
@@ -362,7 +393,8 @@
                         <li>条件付き確率の公式を適用</li>
                     </ol>
                     <div class="formula">
-                        \[ P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{\frac{1}{5}}{\frac{1}{2}} = \frac{1}{5} \times \frac{2}{1} = \frac{2}{5} \]
+                        \[ P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{\frac{1}{5}}{\frac{1}{2}} = \frac{1}{5} \times
+                        \frac{2}{1} = \frac{2}{5} \]
                     </div>
                 </div>
 
@@ -497,7 +529,8 @@
                             <p>P(スペード) = \(\frac{13}{52}\)</p>
                             <p>P(絵札) = \(\frac{12}{52}\)（各スート3枚×4）</p>
                             <p>P(スペードかつ絵札) = \(\frac{3}{52}\)（J♠, Q♠, K♠）</p>
-                            <p><strong>答え：</strong>\(\frac{13}{52} + \frac{12}{52} - \frac{3}{52} = \frac{22}{52} = \frac{11}{26}\)</p>
+                            <p><strong>答え：</strong>\(\frac{13}{52} + \frac{12}{52} - \frac{3}{52} = \frac{22}{52} =
+                                \frac{11}{26}\)</p>
                         </div>
                     </details>
                 </div>
@@ -531,7 +564,8 @@
                 <div class="story-box">
                     <div class="story-title">🚪 モンティ・ホール問題：直感を裏切る確率の不思議</div>
 
-                    <p>1970年代、アメリカのクイズ番組「Let's Make a Deal」で実際に使われていたゲーム。司会者の名前から「モンティ・ホール問題」と呼ばれ、数学者たちを大混乱に陥れた伝説の確率パラドックスです。</p>
+                    <p>1970年代、アメリカのクイズ番組「Let's Make a
+                        Deal」で実際に使われていたゲーム。司会者の名前から「モンティ・ホール問題」と呼ばれ、数学者たちを大混乱に陥れた伝説の確率パラドックスです。</p>
 
                     <p style="background: #fff9c4; padding: 10px; border-radius: 8px; margin: 15px 0;">
                         <strong>【ルール】</strong><br>
@@ -589,12 +623,16 @@
                     </p>
 
                     <p><strong>【直感がハズレる理由】</strong></p>
-                    <p>司会者は<strong>「必ずハズレを開ける」</strong>という条件付き確率が鍵。最初にハズレを選んでいた場合（確率2/3）、司会者が残ったハズレを教えてくれるので、変えれば必ず当たる。この「司会者の知識」が確率を変える。</p>
+                    <p>司会者は<strong>「必ずハズレを開ける」</strong>という条件付き確率が鍵。最初にハズレを選んでいた場合（確率2/3）、司会者が残ったハズレを教えてくれるので、変えれば必ず当たる。この「司会者の知識」が確率を変える。
+                    </p>
 
                     <p><strong>教訓：</strong>条件付き確率を無視すると、博士号持ちでも間違える。数学的思考、侮れない。</p>
 
                     <p style="font-size: 14px; color: #666; margin-top: 20px;">
-                        ※この問題は実際にアメリカのテレビ番組「Let's Make a Deal」で使われていました。1990年、数学者マリリン・ボス・サバントが雑誌で解説し、多くの数学者から抗議を受けたエピソードは有名です。コンピューターシミュレーションでも検証されています（<a href="https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BB%E3%83%9B%E3%83%BC%E3%83%AB%E5%95%8F%E9%A1%8C" target="_blank" style="color: #1976d2;">モンティ・ホール問題</a>）。
+                        ※この問題は実際にアメリカのテレビ番組「Let's Make a
+                        Deal」で使われていました。1990年、数学者マリリン・ボス・サバントが雑誌で解説し、多くの数学者から抗議を受けたエピソードは有名です。コンピューターシミュレーションでも検証されています（<a
+                            href="https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BB%E3%83%9B%E3%83%BC%E3%83%AB%E5%95%8F%E9%A1%8C"
+                            target="_blank" style="color: #1976d2;">モンティ・ホール問題</a>）。
                     </p>
                 </div>
             </div>
@@ -605,4 +643,5 @@
         </nav>
     </div>
 </body>
+
 </html>

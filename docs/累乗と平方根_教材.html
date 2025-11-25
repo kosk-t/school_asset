@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,8 +17,7 @@
 
     <!-- KaTeX JS -->
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-            onload="renderMathInElement(document.body, {
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
                 delimiters: [
                     {left: '\\[', right: '\\]', display: true},
                     {left: '\\(', right: '\\)', display: false}
@@ -25,6 +25,7 @@
                 throwOnError: false
             });"></script>
 </head>
+
 <body>
     <!--
     ========== 教材メタ情報（画像生成用） ==========
@@ -46,7 +47,7 @@
 
         <!-- ========== 表紙（任意） ========== -->
         <div class="cover-image">
-            <img src="images/noimage.jpg" alt="累乗と平方根">
+            <img src="images/powers_and_roots.png" alt="累乗と平方根">
         </div>
 
         <!-- ========== 目次 ========== -->
@@ -90,38 +91,49 @@
                 <div class="svg-container">
                     <svg width="700" height="180" viewBox="0 0 700 180">
                         <!-- タイトル -->
-                        <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">累乗と平方根の関係</text>
+                        <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">累乗と平方根の関係</text>
 
                         <!-- 左：元の数 -->
-                        <rect x="80" y="60" width="80" height="60" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="10"/>
-                        <text x="120" y="98" font-size="24" font-weight="bold" fill="#1976d2" text-anchor="middle">3</text>
+                        <rect x="80" y="60" width="80" height="60" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"
+                            rx="10" />
+                        <text x="120" y="98" font-size="24" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">3</text>
 
                         <!-- 右矢印：累乗 -->
-                        <path d="M 170 75 L 280 75" stroke="#4caf50" stroke-width="3" fill="none" marker-end="url(#arrow-right)"/>
-                        <text x="225" y="65" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">2乗する</text>
+                        <path d="M 170 75 L 280 75" stroke="#4caf50" stroke-width="3" fill="none"
+                            marker-end="url(#arrow-right)" />
+                        <text x="225" y="65" font-size="14" font-weight="bold" fill="#4caf50"
+                            text-anchor="middle">2乗する</text>
                         <text x="225" y="98" font-size="16" fill="#4caf50" text-anchor="middle">3²</text>
 
                         <!-- 中央：結果 -->
-                        <rect x="290" y="60" width="80" height="60" fill="#fff3e0" stroke="#ff9800" stroke-width="3" rx="10"/>
-                        <text x="330" y="98" font-size="24" font-weight="bold" fill="#e65100" text-anchor="middle">9</text>
+                        <rect x="290" y="60" width="80" height="60" fill="#fff3e0" stroke="#ff9800" stroke-width="3"
+                            rx="10" />
+                        <text x="330" y="98" font-size="24" font-weight="bold" fill="#e65100"
+                            text-anchor="middle">9</text>
 
                         <!-- 左矢印：平方根 -->
-                        <path d="M 280 105 L 170 105" stroke="#9c27b0" stroke-width="3" fill="none" marker-end="url(#arrow-left)"/>
-                        <text x="225" y="135" font-size="14" font-weight="bold" fill="#9c27b0" text-anchor="middle">平方根をとる</text>
+                        <path d="M 280 105 L 170 105" stroke="#9c27b0" stroke-width="3" fill="none"
+                            marker-end="url(#arrow-left)" />
+                        <text x="225" y="135" font-size="14" font-weight="bold" fill="#9c27b0"
+                            text-anchor="middle">平方根をとる</text>
                         <text x="225" y="155" font-size="16" fill="#9c27b0" text-anchor="middle">√9</text>
 
                         <!-- 右側の説明 -->
-                        <rect x="420" y="50" width="250" height="80" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2" rx="8"/>
-                        <text x="545" y="75" font-size="14" font-weight="bold" fill="#7b1fa2" text-anchor="middle">💡 ポイント</text>
+                        <rect x="420" y="50" width="250" height="80" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"
+                            rx="8" />
+                        <text x="545" y="75" font-size="14" font-weight="bold" fill="#7b1fa2" text-anchor="middle">💡
+                            ポイント</text>
                         <text x="545" y="100" font-size="14" fill="#333" text-anchor="middle">3² = 9 と √9 = 3</text>
                         <text x="545" y="120" font-size="14" fill="#666" text-anchor="middle">は逆の計算！</text>
 
                         <defs>
                             <marker id="arrow-right" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                                <polygon points="0 0, 10 3, 0 6" fill="#4caf50"/>
+                                <polygon points="0 0, 10 3, 0 6" fill="#4caf50" />
                             </marker>
                             <marker id="arrow-left" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                                <polygon points="0 0, 10 3, 0 6" fill="#9c27b0"/>
+                                <polygon points="0 0, 10 3, 0 6" fill="#9c27b0" />
                             </marker>
                         </defs>
                     </svg>
@@ -146,32 +158,43 @@
                     <!-- 指数法則の図解 -->
                     <div class="svg-container">
                         <svg width="700" height="200" viewBox="0 0 700 200">
-                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">なぜ指数を足すのか？</text>
+                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
+                                text-anchor="middle">なぜ指数を足すのか？</text>
 
                             <!-- 2^3 の部分 -->
-                            <rect x="40" y="50" width="160" height="50" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="8"/>
-                            <text x="120" y="80" font-size="18" font-weight="bold" fill="#2e7d32" text-anchor="middle">2³ = 2 × 2 × 2</text>
+                            <rect x="40" y="50" width="160" height="50" fill="#c8e6c9" stroke="#4caf50" stroke-width="2"
+                                rx="8" />
+                            <text x="120" y="80" font-size="18" font-weight="bold" fill="#2e7d32"
+                                text-anchor="middle">2³ = 2 × 2 × 2</text>
                             <text x="120" y="120" font-size="14" fill="#4caf50" text-anchor="middle">3個</text>
 
                             <!-- × -->
-                            <text x="220" y="80" font-size="24" font-weight="bold" fill="#333" text-anchor="middle">×</text>
+                            <text x="220" y="80" font-size="24" font-weight="bold" fill="#333"
+                                text-anchor="middle">×</text>
 
                             <!-- 2^2 の部分 -->
-                            <rect x="250" y="50" width="120" height="50" fill="#bbdefb" stroke="#2196f3" stroke-width="2" rx="8"/>
-                            <text x="310" y="80" font-size="18" font-weight="bold" fill="#1565c0" text-anchor="middle">2² = 2 × 2</text>
+                            <rect x="250" y="50" width="120" height="50" fill="#bbdefb" stroke="#2196f3"
+                                stroke-width="2" rx="8" />
+                            <text x="310" y="80" font-size="18" font-weight="bold" fill="#1565c0"
+                                text-anchor="middle">2² = 2 × 2</text>
                             <text x="310" y="120" font-size="14" fill="#2196f3" text-anchor="middle">2個</text>
 
                             <!-- = -->
-                            <text x="400" y="80" font-size="24" font-weight="bold" fill="#333" text-anchor="middle">=</text>
+                            <text x="400" y="80" font-size="24" font-weight="bold" fill="#333"
+                                text-anchor="middle">=</text>
 
                             <!-- 結果 -->
-                            <rect x="430" y="50" width="230" height="50" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="8"/>
-                            <text x="545" y="80" font-size="18" font-weight="bold" fill="#e65100" text-anchor="middle">2 × 2 × 2 × 2 × 2</text>
+                            <rect x="430" y="50" width="230" height="50" fill="#fff3e0" stroke="#ff9800"
+                                stroke-width="2" rx="8" />
+                            <text x="545" y="80" font-size="18" font-weight="bold" fill="#e65100" text-anchor="middle">2
+                                × 2 × 2 × 2 × 2</text>
                             <text x="545" y="120" font-size="14" fill="#ff9800" text-anchor="middle">3 + 2 = 5個</text>
 
                             <!-- 結論 -->
-                            <rect x="180" y="145" width="340" height="45" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2" rx="8"/>
-                            <text x="350" y="172" font-size="16" font-weight="bold" fill="#7b1fa2" text-anchor="middle">だから 2³ × 2² = 2⁵ = 32</text>
+                            <rect x="180" y="145" width="340" height="45" fill="#f3e5f5" stroke="#9c27b0"
+                                stroke-width="2" rx="8" />
+                            <text x="350" y="172" font-size="16" font-weight="bold" fill="#7b1fa2"
+                                text-anchor="middle">だから 2³ × 2² = 2⁵ = 32</text>
                         </svg>
                         <div class="svg-caption">同じ底のかけ算は「個数を合わせる」＝指数を足す</div>
                     </div>
@@ -185,8 +208,10 @@
                     </div>
                     <p><strong>💡 なぜそうなる？</strong></p>
                     <ul>
-                        <li><strong>べき乗のべき乗</strong>：\((a^m)^n\) は「\(a\)を\(m\)個かけたもの」を\(n\)回かける。つまり\(a\)を合計 \(m \times n\) 個かけるから \(a^{mn}\)</li>
-                        <li><strong>積の累乗</strong>：\((ab)^n\) は \(ab\) を\(n\)回かける。\(a\)も\(b\)もそれぞれ\(n\)回かけられるから \(a^n b^n\)</li>
+                        <li><strong>べき乗のべき乗</strong>：\((a^m)^n\) は「\(a\)を\(m\)個かけたもの」を\(n\)回かける。つまり\(a\)を合計 \(m \times
+                            n\) 個かけるから \(a^{mn}\)</li>
+                        <li><strong>積の累乗</strong>：\((ab)^n\) は \(ab\) を\(n\)回かける。\(a\)も\(b\)もそれぞれ\(n\)回かけられるから \(a^n
+                            b^n\)</li>
                     </ul>
                 </div>
 
@@ -210,31 +235,45 @@
                     <!-- 平方根の図解 -->
                     <div class="svg-container">
                         <svg width="700" height="160" viewBox="0 0 700 160">
-                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">9の平方根は2つある</text>
+                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
+                                text-anchor="middle">9の平方根は2つある</text>
 
                             <!-- 正の平方根 -->
-                            <rect x="100" y="50" width="150" height="50" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="8"/>
-                            <text x="175" y="82" font-size="18" font-weight="bold" fill="#2e7d32" text-anchor="middle">(+3)² = 9</text>
-                            <path d="M 175 105 L 175 125" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow-down-g)"/>
-                            <text x="175" y="145" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">√9 = +3</text>
+                            <rect x="100" y="50" width="150" height="50" fill="#c8e6c9" stroke="#4caf50"
+                                stroke-width="2" rx="8" />
+                            <text x="175" y="82" font-size="18" font-weight="bold" fill="#2e7d32"
+                                text-anchor="middle">(+3)² = 9</text>
+                            <path d="M 175 105 L 175 125" stroke="#4caf50" stroke-width="2"
+                                marker-end="url(#arrow-down-g)" />
+                            <text x="175" y="145" font-size="14" font-weight="bold" fill="#4caf50"
+                                text-anchor="middle">√9 = +3</text>
 
                             <!-- 負の平方根 -->
-                            <rect x="300" y="50" width="150" height="50" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="8"/>
-                            <text x="375" y="82" font-size="18" font-weight="bold" fill="#c62828" text-anchor="middle">(−3)² = 9</text>
-                            <path d="M 375 105 L 375 125" stroke="#e57373" stroke-width="2" marker-end="url(#arrow-down-r)"/>
-                            <text x="375" y="145" font-size="14" font-weight="bold" fill="#c62828" text-anchor="middle">−√9 = −3</text>
+                            <rect x="300" y="50" width="150" height="50" fill="#ffcdd2" stroke="#e57373"
+                                stroke-width="2" rx="8" />
+                            <text x="375" y="82" font-size="18" font-weight="bold" fill="#c62828"
+                                text-anchor="middle">(−3)² = 9</text>
+                            <path d="M 375 105 L 375 125" stroke="#e57373" stroke-width="2"
+                                marker-end="url(#arrow-down-r)" />
+                            <text x="375" y="145" font-size="14" font-weight="bold" fill="#c62828"
+                                text-anchor="middle">−√9 = −3</text>
 
                             <!-- まとめ -->
-                            <rect x="490" y="60" width="180" height="70" fill="#fff9c4" stroke="#fbc02d" stroke-width="2" rx="8"/>
-                            <text x="580" y="85" font-size="14" font-weight="bold" fill="#f57f17" text-anchor="middle">9の平方根は</text>
-                            <text x="580" y="110" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">±3</text>
+                            <rect x="490" y="60" width="180" height="70" fill="#fff9c4" stroke="#fbc02d"
+                                stroke-width="2" rx="8" />
+                            <text x="580" y="85" font-size="14" font-weight="bold" fill="#f57f17"
+                                text-anchor="middle">9の平方根は</text>
+                            <text x="580" y="110" font-size="18" font-weight="bold" fill="#333"
+                                text-anchor="middle">±3</text>
 
                             <defs>
-                                <marker id="arrow-down-g" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                                    <polygon points="0 0, 10 3, 0 6" fill="#4caf50"/>
+                                <marker id="arrow-down-g" markerWidth="10" markerHeight="10" refX="9" refY="3"
+                                    orient="auto">
+                                    <polygon points="0 0, 10 3, 0 6" fill="#4caf50" />
                                 </marker>
-                                <marker id="arrow-down-r" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                                    <polygon points="0 0, 10 3, 0 6" fill="#e57373"/>
+                                <marker id="arrow-down-r" markerWidth="10" markerHeight="10" refX="9" refY="3"
+                                    orient="auto">
+                                    <polygon points="0 0, 10 3, 0 6" fill="#e57373" />
                                 </marker>
                             </defs>
                         </svg>
@@ -250,8 +289,10 @@
                     </div>
                     <p><strong>💡 なぜそうなる？</strong> 両辺を2乗して確かめよう！</p>
                     <ul>
-                        <li>\((\sqrt{a} \times \sqrt{b})^2 = a \times b\) なので、\(\sqrt{a} \times \sqrt{b}\) は \(ab\) の平方根 → \(\sqrt{ab}\)</li>
-                        <li>同様に \(\left(\frac{\sqrt{a}}{\sqrt{b}}\right)^2 = \frac{a}{b}\) なので、\(\frac{\sqrt{a}}{\sqrt{b}}\) は \(\frac{a}{b}\) の平方根 → \(\sqrt{\frac{a}{b}}\)</li>
+                        <li>\((\sqrt{a} \times \sqrt{b})^2 = a \times b\) なので、\(\sqrt{a} \times \sqrt{b}\) は \(ab\) の平方根
+                            → \(\sqrt{ab}\)</li>
+                        <li>同様に \(\left(\frac{\sqrt{a}}{\sqrt{b}}\right)^2 = \frac{a}{b}\)
+                            なので、\(\frac{\sqrt{a}}{\sqrt{b}}\) は \(\frac{a}{b}\) の平方根 → \(\sqrt{\frac{a}{b}}\)</li>
                     </ul>
                 </div>
             </div>
@@ -347,7 +388,8 @@
                         <li>約分する → \( \frac{6\sqrt{3}}{3} = 2\sqrt{3} \)</li>
                     </ol>
                     <div class="formula">
-                        \[ \frac{6}{\sqrt{3}} = \frac{6 \times \sqrt{3}}{\sqrt{3} \times \sqrt{3}} = \frac{6\sqrt{3}}{3} = 2\sqrt{3} \]
+                        \[ \frac{6}{\sqrt{3}} = \frac{6 \times \sqrt{3}}{\sqrt{3} \times \sqrt{3}} = \frac{6\sqrt{3}}{3}
+                        = 2\sqrt{3} \]
                     </div>
                 </div>
             </div>
@@ -370,38 +412,49 @@
                 <!-- ルート簡単化の図解 -->
                 <div class="svg-container">
                     <svg width="700" height="180" viewBox="0 0 700 180">
-                        <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">ルートの簡単化のコツ</text>
+                        <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">ルートの簡単化のコツ</text>
 
                         <!-- ステップ1 -->
-                        <rect x="30" y="50" width="100" height="50" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="8"/>
-                        <text x="80" y="82" font-size="18" font-weight="bold" fill="#1976d2" text-anchor="middle">√72</text>
+                        <rect x="30" y="50" width="100" height="50" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"
+                            rx="8" />
+                        <text x="80" y="82" font-size="18" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">√72</text>
 
-                        <path d="M 140 75 L 170 75" stroke="#666" stroke-width="2" marker-end="url(#arrow-step)"/>
+                        <path d="M 140 75 L 170 75" stroke="#666" stroke-width="2" marker-end="url(#arrow-step)" />
 
                         <!-- ステップ2 -->
-                        <rect x="180" y="50" width="150" height="50" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="8"/>
-                        <text x="255" y="82" font-size="16" font-weight="bold" fill="#e65100" text-anchor="middle">√(36 × 2)</text>
+                        <rect x="180" y="50" width="150" height="50" fill="#fff3e0" stroke="#ff9800" stroke-width="2"
+                            rx="8" />
+                        <text x="255" y="82" font-size="16" font-weight="bold" fill="#e65100" text-anchor="middle">√(36
+                            × 2)</text>
                         <text x="255" y="115" font-size="14" fill="#ff9800" text-anchor="middle">36は完全平方数！</text>
 
-                        <path d="M 340 75 L 370 75" stroke="#666" stroke-width="2" marker-end="url(#arrow-step)"/>
+                        <path d="M 340 75 L 370 75" stroke="#666" stroke-width="2" marker-end="url(#arrow-step)" />
 
                         <!-- ステップ3 -->
-                        <rect x="380" y="50" width="150" height="50" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="8"/>
-                        <text x="455" y="82" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">6 × √2</text>
+                        <rect x="380" y="50" width="150" height="50" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"
+                            rx="8" />
+                        <text x="455" y="82" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">6 ×
+                            √2</text>
 
-                        <path d="M 540 75 L 570 75" stroke="#666" stroke-width="2" marker-end="url(#arrow-step)"/>
+                        <path d="M 540 75 L 570 75" stroke="#666" stroke-width="2" marker-end="url(#arrow-step)" />
 
                         <!-- 答え -->
-                        <rect x="580" y="50" width="90" height="50" fill="#c8e6c9" stroke="#4caf50" stroke-width="3" rx="8"/>
-                        <text x="625" y="82" font-size="20" font-weight="bold" fill="#2e7d32" text-anchor="middle">6√2</text>
+                        <rect x="580" y="50" width="90" height="50" fill="#c8e6c9" stroke="#4caf50" stroke-width="3"
+                            rx="8" />
+                        <text x="625" y="82" font-size="20" font-weight="bold" fill="#2e7d32"
+                            text-anchor="middle">6√2</text>
 
                         <!-- ヒント -->
-                        <rect x="180" y="135" width="340" height="35" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2" rx="8"/>
-                        <text x="350" y="158" font-size="14" font-weight="bold" fill="#7b1fa2" text-anchor="middle">💡 完全平方数（4, 9, 16, 25, 36, ...）を見つけよう！</text>
+                        <rect x="180" y="135" width="340" height="35" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"
+                            rx="8" />
+                        <text x="350" y="158" font-size="14" font-weight="bold" fill="#7b1fa2" text-anchor="middle">💡
+                            完全平方数（4, 9, 16, 25, 36, ...）を見つけよう！</text>
 
                         <defs>
                             <marker id="arrow-step" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                                <polygon points="0 0, 10 3, 0 6" fill="#666"/>
+                                <polygon points="0 0, 10 3, 0 6" fill="#666" />
                             </marker>
                         </defs>
                     </svg>
@@ -460,7 +513,8 @@
                 <div class="caution-box">
                     <div class="caution-title">⚠️ つまづき5：有理化で分子にかけ忘れる</div>
                     <p><strong>ダメな例：</strong> \( \frac{1}{\sqrt{2}} = \frac{1}{2} \)</p>
-                    <p><strong>対策：</strong> 分母・分子の両方に \( \sqrt{2} \) をかける：\( \frac{1 \times \sqrt{2}}{\sqrt{2} \times \sqrt{2}} = \frac{\sqrt{2}}{2} \)</p>
+                    <p><strong>対策：</strong> 分母・分子の両方に \( \sqrt{2} \) をかける：\( \frac{1 \times \sqrt{2}}{\sqrt{2} \times
+                        \sqrt{2}} = \frac{\sqrt{2}}{2} \)</p>
                 </div>
             </div>
         </section>
@@ -553,10 +607,15 @@
                     </p>
 
                     <p>今なら「すごい発見だね！論文書こう！」で済む話が、古代ギリシャでは命がけ。<strong>数学の新発見も楽じゃない</strong>。</p>
-                    <p>ちなみに \( \sqrt{2} \approx 1.41421356 \) は「<strong>ひとよひとよにひとみごろ</strong>（一夜一夜に人見頃）」で覚えられる。ヒッパソスもこの語呂合わせを発明していれば、もう少し平和に広められたかもしれない。</p>
+                    <p>ちなみに \( \sqrt{2} \approx 1.41421356 \)
+                        は「<strong>ひとよひとよにひとみごろ</strong>（一夜一夜に人見頃）」で覚えられる。ヒッパソスもこの語呂合わせを発明していれば、もう少し平和に広められたかもしれない。</p>
 
                     <p style="font-size: 14px; color: #666; margin-top: 20px;">
-                        ※ヒッパソスが無理数を発見し、ピタゴラス学派から追放されたという話は伝説として伝わっていますが、史実の詳細は不明です。ただし、無理数の発見がピタゴラス学派に大きな衝撃を与えたことは事実とされています（<a href="https://ja.wikipedia.org/wiki/%E3%83%92%E3%83%83%E3%83%91%E3%82%BD%E3%82%B9" target="_blank" style="color: #1976d2;">ヒッパソス</a>、<a href="https://ja.wikipedia.org/wiki/%E7%84%A1%E7%90%86%E6%95%B0" target="_blank" style="color: #1976d2;">無理数</a>）。
+                        ※ヒッパソスが無理数を発見し、ピタゴラス学派から追放されたという話は伝説として伝わっていますが、史実の詳細は不明です。ただし、無理数の発見がピタゴラス学派に大きな衝撃を与えたことは事実とされています（<a
+                            href="https://ja.wikipedia.org/wiki/%E3%83%92%E3%83%83%E3%83%91%E3%82%BD%E3%82%B9"
+                            target="_blank" style="color: #1976d2;">ヒッパソス</a>、<a
+                            href="https://ja.wikipedia.org/wiki/%E7%84%A1%E7%90%86%E6%95%B0" target="_blank"
+                            style="color: #1976d2;">無理数</a>）。
                     </p>
                 </div>
             </div>
@@ -625,187 +684,187 @@
         </section>
 
         <script>
-        // ゲーム状態
-        let playerHp = 100;
-        let enemyHp = 100;
-        let currentQuestion = 0;
-        let combo = 0;
-        let correctCount = 0;
-        let questions = [];
+            // ゲーム状態
+            let playerHp = 100;
+            let enemyHp = 100;
+            let currentQuestion = 0;
+            let combo = 0;
+            let correctCount = 0;
+            let questions = [];
 
-        // 問題データ
-        const questionBank = [
-            // 累乗の基本
-            { q: "2³ = ?", choices: ["6", "8", "9", "16"], answer: 1 },
-            { q: "3² = ?", choices: ["6", "8", "9", "27"], answer: 2 },
-            { q: "5² = ?", choices: ["10", "15", "25", "50"], answer: 2 },
-            { q: "2⁴ = ?", choices: ["8", "12", "16", "32"], answer: 2 },
-            { q: "4² = ?", choices: ["8", "12", "16", "24"], answer: 2 },
-            { q: "10² = ?", choices: ["20", "100", "1000", "10"], answer: 1 },
-            // 平方根の基本
-            { q: "√9 = ?", choices: ["2", "3", "4", "81"], answer: 1 },
-            { q: "√16 = ?", choices: ["2", "4", "8", "256"], answer: 1 },
-            { q: "√25 = ?", choices: ["4", "5", "6", "125"], answer: 1 },
-            { q: "√36 = ?", choices: ["4", "6", "9", "18"], answer: 1 },
-            { q: "√49 = ?", choices: ["6", "7", "8", "14"], answer: 1 },
-            { q: "√64 = ?", choices: ["6", "7", "8", "32"], answer: 2 },
-            { q: "√81 = ?", choices: ["7", "8", "9", "27"], answer: 2 },
-            { q: "√100 = ?", choices: ["10", "20", "50", "1000"], answer: 0 },
-            { q: "√144 = ?", choices: ["11", "12", "13", "14"], answer: 1 },
-            // 指数法則
-            { q: "2² × 2³ = ?", choices: ["2⁵", "2⁶", "4⁵", "4⁶"], answer: 0 },
-            { q: "3² × 3² = ?", choices: ["3²", "3⁴", "6⁴", "9⁴"], answer: 1 },
-            { q: "5³ ÷ 5² = ?", choices: ["5", "25", "5⁵", "1"], answer: 0 },
-            // 平方根の簡略化（ルートの外に出る数）
-            { q: "√12 を簡単にすると？", choices: ["2√3", "3√2", "4√3", "6"], answer: 0 },
-            { q: "√18 を簡単にすると？", choices: ["2√9", "3√2", "6√3", "9√2"], answer: 1 },
-            { q: "√50 を簡単にすると？", choices: ["5√2", "2√5", "10√5", "25√2"], answer: 0 },
-        ];
+            // 問題データ
+            const questionBank = [
+                // 累乗の基本
+                { q: "2³ = ?", choices: ["6", "8", "9", "16"], answer: 1 },
+                { q: "3² = ?", choices: ["6", "8", "9", "27"], answer: 2 },
+                { q: "5² = ?", choices: ["10", "15", "25", "50"], answer: 2 },
+                { q: "2⁴ = ?", choices: ["8", "12", "16", "32"], answer: 2 },
+                { q: "4² = ?", choices: ["8", "12", "16", "24"], answer: 2 },
+                { q: "10² = ?", choices: ["20", "100", "1000", "10"], answer: 1 },
+                // 平方根の基本
+                { q: "√9 = ?", choices: ["2", "3", "4", "81"], answer: 1 },
+                { q: "√16 = ?", choices: ["2", "4", "8", "256"], answer: 1 },
+                { q: "√25 = ?", choices: ["4", "5", "6", "125"], answer: 1 },
+                { q: "√36 = ?", choices: ["4", "6", "9", "18"], answer: 1 },
+                { q: "√49 = ?", choices: ["6", "7", "8", "14"], answer: 1 },
+                { q: "√64 = ?", choices: ["6", "7", "8", "32"], answer: 2 },
+                { q: "√81 = ?", choices: ["7", "8", "9", "27"], answer: 2 },
+                { q: "√100 = ?", choices: ["10", "20", "50", "1000"], answer: 0 },
+                { q: "√144 = ?", choices: ["11", "12", "13", "14"], answer: 1 },
+                // 指数法則
+                { q: "2² × 2³ = ?", choices: ["2⁵", "2⁶", "4⁵", "4⁶"], answer: 0 },
+                { q: "3² × 3² = ?", choices: ["3²", "3⁴", "6⁴", "9⁴"], answer: 1 },
+                { q: "5³ ÷ 5² = ?", choices: ["5", "25", "5⁵", "1"], answer: 0 },
+                // 平方根の簡略化（ルートの外に出る数）
+                { q: "√12 を簡単にすると？", choices: ["2√3", "3√2", "4√3", "6"], answer: 0 },
+                { q: "√18 を簡単にすると？", choices: ["2√9", "3√2", "6√3", "9√2"], answer: 1 },
+                { q: "√50 を簡単にすると？", choices: ["5√2", "2√5", "10√5", "25√2"], answer: 0 },
+            ];
 
-        // シャッフル関数
-        function shuffle(array) {
-            const arr = [...array];
-            for (let i = arr.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [arr[i], arr[j]] = [arr[j], arr[i]];
-            }
-            return arr;
-        }
-
-        // ゲーム開始
-        function startGame() {
-            playerHp = 100;
-            enemyHp = 100;
-            currentQuestion = 0;
-            combo = 0;
-            correctCount = 0;
-            questions = shuffle(questionBank).slice(0, 5);
-
-            document.getElementById('playerHp').textContent = playerHp;
-            document.getElementById('enemyHp').textContent = enemyHp;
-            document.getElementById('playerHpBar').style.width = '100%';
-            document.getElementById('enemyHpBar').style.width = '100%';
-            document.getElementById('battleResult').style.display = 'none';
-            document.getElementById('questionArea').style.display = 'block';
-            document.getElementById('choices').style.display = 'grid';
-            document.getElementById('battleMessage').textContent = '問題に答えて攻撃しよう！';
-            document.getElementById('battleMessage').className = 'battle-message';
-            document.getElementById('comboDisplay').classList.remove('show');
-
-            showQuestion();
-        }
-
-        // 問題表示
-        function showQuestion() {
-            const q = questions[currentQuestion];
-            document.getElementById('questionNum').textContent = currentQuestion + 1;
-            document.getElementById('questionText').textContent = q.q;
-
-            const buttons = document.querySelectorAll('.choice-btn');
-            buttons.forEach((btn, i) => {
-                btn.textContent = q.choices[i];
-                btn.disabled = false;
-                btn.className = 'choice-btn';
-            });
-        }
-
-        // 回答チェック
-        function checkAnswer(selected) {
-            const q = questions[currentQuestion];
-            const buttons = document.querySelectorAll('.choice-btn');
-            buttons.forEach(btn => btn.disabled = true);
-
-            if (selected === q.answer) {
-                // 正解
-                combo++;
-                correctCount++;
-                const damage = 20 + (combo > 1 ? combo * 5 : 0); // コンボボーナス
-                enemyHp = Math.max(0, enemyHp - damage);
-
-                buttons[selected].classList.add('correct');
-                document.getElementById('playerSprite').classList.add('attack');
-                document.getElementById('enemySprite').classList.add('shake');
-
-                document.getElementById('enemyHp').textContent = enemyHp;
-                document.getElementById('enemyHpBar').style.width = enemyHp + '%';
-
-                let msg = `正解！ ${damage} ダメージ！`;
-                if (combo > 1) {
-                    msg += ` (${combo} COMBO!)`;
-                    document.getElementById('comboDisplay').textContent = `🔥 ${combo} COMBO!`;
-                    document.getElementById('comboDisplay').classList.add('show');
+            // シャッフル関数
+            function shuffle(array) {
+                const arr = [...array];
+                for (let i = arr.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
                 }
-                document.getElementById('battleMessage').textContent = msg;
-                document.getElementById('battleMessage').className = 'battle-message success';
+                return arr;
+            }
 
-            } else {
-                // 不正解
+            // ゲーム開始
+            function startGame() {
+                playerHp = 100;
+                enemyHp = 100;
+                currentQuestion = 0;
                 combo = 0;
-                const damage = 25;
-                playerHp = Math.max(0, playerHp - damage);
-
-                buttons[selected].classList.add('wrong');
-                buttons[q.answer].classList.add('correct');
-                document.getElementById('enemySprite').classList.add('attack');
-                document.getElementById('playerSprite').classList.add('shake');
+                correctCount = 0;
+                questions = shuffle(questionBank).slice(0, 5);
 
                 document.getElementById('playerHp').textContent = playerHp;
-                document.getElementById('playerHpBar').style.width = playerHp + '%';
-
-                document.getElementById('battleMessage').textContent = `不正解... ${damage} ダメージを受けた！`;
-                document.getElementById('battleMessage').className = 'battle-message damage';
+                document.getElementById('enemyHp').textContent = enemyHp;
+                document.getElementById('playerHpBar').style.width = '100%';
+                document.getElementById('enemyHpBar').style.width = '100%';
+                document.getElementById('battleResult').style.display = 'none';
+                document.getElementById('questionArea').style.display = 'block';
+                document.getElementById('choices').style.display = 'grid';
+                document.getElementById('battleMessage').textContent = '問題に答えて攻撃しよう！';
+                document.getElementById('battleMessage').className = 'battle-message';
                 document.getElementById('comboDisplay').classList.remove('show');
+
+                showQuestion();
             }
 
-            // アニメーションリセット
-            setTimeout(() => {
-                document.getElementById('playerSprite').classList.remove('attack', 'shake');
-                document.getElementById('enemySprite').classList.remove('attack', 'shake');
-            }, 500);
+            // 問題表示
+            function showQuestion() {
+                const q = questions[currentQuestion];
+                document.getElementById('questionNum').textContent = currentQuestion + 1;
+                document.getElementById('questionText').textContent = q.q;
 
-            // 次へ
-            setTimeout(() => {
-                if (enemyHp <= 0) {
-                    showResult(true);
-                } else if (playerHp <= 0) {
-                    showResult(false);
-                } else {
-                    currentQuestion++;
-                    if (currentQuestion >= questions.length) {
-                        // 問題終了時の判定
-                        showResult(enemyHp < playerHp);
-                    } else {
-                        showQuestion();
+                const buttons = document.querySelectorAll('.choice-btn');
+                buttons.forEach((btn, i) => {
+                    btn.textContent = q.choices[i];
+                    btn.disabled = false;
+                    btn.className = 'choice-btn';
+                });
+            }
+
+            // 回答チェック
+            function checkAnswer(selected) {
+                const q = questions[currentQuestion];
+                const buttons = document.querySelectorAll('.choice-btn');
+                buttons.forEach(btn => btn.disabled = true);
+
+                if (selected === q.answer) {
+                    // 正解
+                    combo++;
+                    correctCount++;
+                    const damage = 20 + (combo > 1 ? combo * 5 : 0); // コンボボーナス
+                    enemyHp = Math.max(0, enemyHp - damage);
+
+                    buttons[selected].classList.add('correct');
+                    document.getElementById('playerSprite').classList.add('attack');
+                    document.getElementById('enemySprite').classList.add('shake');
+
+                    document.getElementById('enemyHp').textContent = enemyHp;
+                    document.getElementById('enemyHpBar').style.width = enemyHp + '%';
+
+                    let msg = `正解！ ${damage} ダメージ！`;
+                    if (combo > 1) {
+                        msg += ` (${combo} COMBO!)`;
+                        document.getElementById('comboDisplay').textContent = `🔥 ${combo} COMBO!`;
+                        document.getElementById('comboDisplay').classList.add('show');
                     }
+                    document.getElementById('battleMessage').textContent = msg;
+                    document.getElementById('battleMessage').className = 'battle-message success';
+
+                } else {
+                    // 不正解
+                    combo = 0;
+                    const damage = 25;
+                    playerHp = Math.max(0, playerHp - damage);
+
+                    buttons[selected].classList.add('wrong');
+                    buttons[q.answer].classList.add('correct');
+                    document.getElementById('enemySprite').classList.add('attack');
+                    document.getElementById('playerSprite').classList.add('shake');
+
+                    document.getElementById('playerHp').textContent = playerHp;
+                    document.getElementById('playerHpBar').style.width = playerHp + '%';
+
+                    document.getElementById('battleMessage').textContent = `不正解... ${damage} ダメージを受けた！`;
+                    document.getElementById('battleMessage').className = 'battle-message damage';
+                    document.getElementById('comboDisplay').classList.remove('show');
                 }
-            }, 1200);
-        }
 
-        // 結果表示
-        function showResult(won) {
-            document.getElementById('questionArea').style.display = 'none';
-            document.getElementById('choices').style.display = 'none';
-            document.getElementById('comboDisplay').classList.remove('show');
+                // アニメーションリセット
+                setTimeout(() => {
+                    document.getElementById('playerSprite').classList.remove('attack', 'shake');
+                    document.getElementById('enemySprite').classList.remove('attack', 'shake');
+                }, 500);
 
-            const resultTitle = document.getElementById('resultTitle');
-            if (won) {
-                resultTitle.textContent = '🎉 勝利！';
-                resultTitle.className = 'result-title win';
-            } else {
-                resultTitle.textContent = '💀 敗北...';
-                resultTitle.className = 'result-title lose';
+                // 次へ
+                setTimeout(() => {
+                    if (enemyHp <= 0) {
+                        showResult(true);
+                    } else if (playerHp <= 0) {
+                        showResult(false);
+                    } else {
+                        currentQuestion++;
+                        if (currentQuestion >= questions.length) {
+                            // 問題終了時の判定
+                            showResult(enemyHp < playerHp);
+                        } else {
+                            showQuestion();
+                        }
+                    }
+                }, 1200);
             }
 
-            document.getElementById('resultStats').innerHTML =
-                `正解数: ${correctCount} / 5<br>残りHP: あなた ${playerHp} / 敵 ${enemyHp}`;
+            // 結果表示
+            function showResult(won) {
+                document.getElementById('questionArea').style.display = 'none';
+                document.getElementById('choices').style.display = 'none';
+                document.getElementById('comboDisplay').classList.remove('show');
 
-            document.getElementById('battleResult').style.display = 'block';
-            document.getElementById('battleMessage').textContent =
-                won ? 'おめでとう！累乗と平方根をマスターした！' : 'もう一度復習して再挑戦しよう！';
-        }
+                const resultTitle = document.getElementById('resultTitle');
+                if (won) {
+                    resultTitle.textContent = '🎉 勝利！';
+                    resultTitle.className = 'result-title win';
+                } else {
+                    resultTitle.textContent = '💀 敗北...';
+                    resultTitle.className = 'result-title lose';
+                }
 
-        // ページ読み込み時にゲーム開始
-        document.addEventListener('DOMContentLoaded', startGame);
+                document.getElementById('resultStats').innerHTML =
+                    `正解数: ${correctCount} / 5<br>残りHP: あなた ${playerHp} / 敵 ${enemyHp}`;
+
+                document.getElementById('battleResult').style.display = 'block';
+                document.getElementById('battleMessage').textContent =
+                    won ? 'おめでとう！累乗と平方根をマスターした！' : 'もう一度復習して再挑戦しよう！';
+            }
+
+            // ページ読み込み時にゲーム開始
+            document.addEventListener('DOMContentLoaded', startGame);
         </script>
 
         <nav class="breadcrumb breadcrumb-footer">
@@ -813,4 +872,5 @@
         </nav>
     </div>
 </body>
+
 </html>
