@@ -142,32 +142,30 @@ related:
                                     <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
                                         text-anchor="middle">a の符号とグラフの向き</text>
 
-                                    <!-- a > 0 -->
+                                    <!-- a > 0（下に凸）: ∪型、頂点が下（最小値） -->
                                     <g transform="translate(50, 40)">
                                         <text x="130" y="0" font-size="15" font-weight="bold" fill="#4caf50"
                                             text-anchor="middle">a > 0（下に凸）</text>
                                         <line x1="20" y1="140" x2="240" y2="140" stroke="#999" stroke-width="1" />
                                         <line x1="130" y1="160" x2="130" y2="15" stroke="#999" stroke-width="1" />
-                                        <path d="M 40 140 Q 85 30 130 30 Q 175 30 220 140" stroke="#4caf50"
+                                        <path d="M 40 30 Q 85 140 130 140 Q 175 140 220 30" stroke="#4caf50"
                                             stroke-width="3" fill="none" />
-                                        <circle cx="130" cy="30" r="6" fill="#ff9800" />
+                                        <circle cx="130" cy="140" r="6" fill="#ff9800" />
                                         <text x="130" y="172" font-size="14" fill="#4caf50"
                                             text-anchor="middle">頂点が最小値</text>
                                     </g>
 
-                                    <!-- a < 0 -->
+                                    <!-- a < 0（上に凸）: ∩型、頂点が上（最大値） -->
                                     <g transform="translate(380, 40)">
                                         <text x="130" y="0" font-size="15" font-weight="bold" fill="#e53935"
                                             text-anchor="middle">a < 0（上に凸）</text>
-                                                <line x1="20" y1="140" x2="240" y2="140" stroke="#999"
-                                                    stroke-width="1" />
-                                                <line x1="130" y1="160" x2="130" y2="15" stroke="#999"
-                                                    stroke-width="1" />
-                                                <path d="M 40 30 Q 85 140 130 140 Q 175 140 220 30" stroke="#e53935"
-                                                    stroke-width="3" fill="none" />
-                                                <circle cx="130" cy="140" r="6" fill="#ff9800" />
-                                                <text x="130" y="172" font-size="14" fill="#e53935"
-                                                    text-anchor="middle">頂点が最大値</text>
+                                        <line x1="20" y1="140" x2="240" y2="140" stroke="#999" stroke-width="1" />
+                                        <line x1="130" y1="160" x2="130" y2="15" stroke="#999" stroke-width="1" />
+                                        <path d="M 40 140 Q 85 30 130 30 Q 175 30 220 140" stroke="#e53935"
+                                            stroke-width="3" fill="none" />
+                                        <circle cx="130" cy="30" r="6" fill="#ff9800" />
+                                        <text x="130" y="172" font-size="14" fill="#e53935"
+                                            text-anchor="middle">頂点が最大値</text>
                                     </g>
                                 </svg>
                                 <div class="svg-caption">a > 0 なら下に凸、a < 0 なら上に凸</div>
