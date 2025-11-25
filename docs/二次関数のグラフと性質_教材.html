@@ -185,21 +185,16 @@ related:
 
                             <div class="rule-box">
                                 <strong>📌 頂点の座標</strong> <a href="#ex-vertex" class="example-link">→ 例3</a>
-                                <p><strong>方法1：対称軸から求める</strong></p>
+                                <p><strong>方法1：対称軸から求める（おすすめ）</strong></p>
                                 <ol style="margin: 10px 0 0 20px;">
-                                    <li>対称軸 \(x = -\frac{b}{2a}\) を求める</li>
-                                    <li>この \(x\) の値を元の式に代入して \(y\) を求める</li>
-                                    <li>頂点は \(\left(-\frac{b}{2a},\ y\right)\)</li>
+                                    <li>対称軸 \(x = -\frac{b}{2a}\) を計算</li>
+                                    <li>その \(x\) を元の式に代入して \(y\) を計算</li>
+                                    <li>→ 頂点の座標は \((x, y)\)</li>
                                 </ol>
 
-                                <p style="margin-top: 15px;"><strong>方法2：平方完成で求める</strong></p>
-                                <p>\(y = ax^2 + bx + c\) を平方完成すると：</p>
-                                <div class="formula">
-                                    \[ y = a\left(x + \frac{b}{2a}\right)^2 - \frac{b^2 - 4ac}{4a} \]
-                                </div>
-                                <p>または \(y = a(x - p)^2 + q\) の形にすれば、<strong>頂点は \((p, q)\)</strong></p>
-                                <p><strong>💡 なぜ頂点で最大・最小？</strong> 放物線は対称軸を中心に左右対称で、頂点から遠ざかるほど \(y\)
-                                    の値が大きく（または小さく）なる。だから頂点が折り返し点であり、最大値または最小値になる。</p>
+                                <p style="margin-top: 15px;"><strong>方法2：平方完成で求める</strong> <a href="#ex-vertex2" class="example-link">→ 例3-2</a></p>
+                                <p>\(y = a(x - p)^2 + q\) の形に変形できれば、<strong>頂点は \((p, q)\)</strong></p>
+                                <p><strong>💡 なぜ頂点で最大・最小？</strong> 放物線は対称軸を中心に左右対称。頂点から離れるほど \(y\) の値が変わるので、頂点が折り返し点（最大値か最小値）になる。</p>
                             </div>
 
                             <div class="rule-box">
@@ -282,16 +277,26 @@ related:
                     <p>同じ関数 \(y = x^2 - 4x + 3\) を平方完成して頂点を求めよ。</p>
                     <p><strong>解き方：</strong></p>
                     <ol>
-                        <li>\(x\) の係数（-4）を半分にして2乗 → \((-2)^2 = 4\)</li>
-                        <li>定数項を調整して平方完成</li>
+                        <li>\(x\) の係数（-4）を半分にして2乗 → \(\left(\frac{-4}{2}\right)^2 = (-2)^2 = 4\)</li>
+                        <li>この「4」を<strong>足して、同じ分だけ引く</strong>（式の値を変えないため）</li>
+                        <li>カッコでまとめて完成</li>
                     </ol>
                     <div class="formula">
                         \[ y = x^2 - 4x + 3 \]
-                        \[ y = (x^2 - 4x + 4) - 4 + 3 \]
+                    </div>
+                    <p>↓ \(+4\) を足して、\(-4\) を引く（プラマイゼロ）</p>
+                    <div class="formula">
+                        \[ y = x^2 - 4x \textcolor{blue}{+ 4} + 3 \textcolor{blue}{- 4} \]
+                    </div>
+                    <p>↓ 前半3つが \((x-2)^2\) になる</p>
+                    <div class="formula">
+                        \[ y = (x - 2)^2 + 3 - 4 \]
                         \[ y = (x - 2)^2 - 1 \]
                     </div>
-                    <p>\(y = (x - 2)^2 - 1\) より、頂点は \((2, -1)\)</p>
-                    <p><strong>答え：頂点 \((2, -1)\)</strong></p>
+                    <p>\(y = (x - 2)^2 - 1\) より、<strong>頂点は \((2, -1)\)</strong></p>
+                    <p style="background: #e3f2fd; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                        <strong>💡 ポイント：</strong>「足した分だけ引く」から式の値は変わらない。これで \((x - ◯)^2\) の形が作れる！
+                    </p>
                 </div>
 
                 <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 最大値・最小値を求める</h3>
@@ -434,7 +439,7 @@ related:
                     <div class="formula">
                         \[ x^2 - 6x - 16 = 0 \]
                     </div>
-                    <p>因数分解または解の公式で解く：</p>
+                    <p>因数分解または<a href="/二次方程式の解き方_教材.html" style="color: #1976d2;">解の公式</a>で解く：</p>
                     <div class="formula">
                         \[ (x - 8)(x + 2) = 0 \]
                         \[ x = 8 \quad \text{または} \quad x = -2 \]
