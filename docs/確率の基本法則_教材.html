@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>確率の基本法則 - 中学数学教材</title>
+
+    <!-- KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- 共通CSS -->
+    <link rel="stylesheet" href="css/education-template.css">
+
+    <!-- KaTeX JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+            onload="renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '\\[', right: '\\]', display: true},
+                    {left: '\\(', right: '\\)', display: false}
+                ],
+                throwOnError: false
+            });"></script>
+</head>
+<body>
+    <!--
+    ========== 教材メタ情報（画像生成用） ==========
+    テーマ: 確率の基本法則
+    対象: 中学生・基礎〜標準レベル
+    概要: 確率の計算で使う重要な法則（余事象、和の法則、排反事象、条件付き確率、独立事象）を学び、複雑な確率問題を効率よく解く方法を身につける。
+    キーワード: 確率, 余事象, 和の法則, 排反事象, 条件付き確率, 独立事象, ベン図, 全事象
+    イメージ: サイコロ、トランプ、ベン図、確率の計算式、集合のイメージ
+    ================================================
+    -->
+
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="index.html">トップページに戻る</a>
+        </nav>
+
+        <h1>🎲 確率の基本法則</h1>
+        <div class="subtitle">中学生・基礎〜標準レベル</div>
+
+        <!-- ========== 目次 ========== -->
+        <nav class="toc">
+            <div class="toc-title">📚 目次</div>
+            <ol class="toc-list">
+                <li><a href="#section1">テーマの定義</a></li>
+                <li><a href="#section2">覚えるルール</a></li>
+                <li><a href="#section3">例題と解き方</a></li>
+                <li><a href="#section4">簡単にするコツ</a></li>
+                <li><a href="#section5">よくあるつまづき</a></li>
+                <li><a href="#section6">仕上げチェックリスト</a></li>
+                <li><a href="#section7">練習問題</a></li>
+                <li><a href="#related">関連教材</a></li>
+                <li><a href="#story">おまけ：確率パラドックス「ドアを変えると当たる確率が2倍？」</a></li>
+            </ol>
+        </nav>
+
+        <!-- 1. テーマの定義 -->
+        <section id="section1">
+            <h2>1. テーマの定義</h2>
+            <div class="section">
+                <p>ガチャで当たる確率、天気予報の降水確率、ゲームで勝つ確率...私たちの生活には「確率」があふれています。複雑な確率も、いくつかの基本法則を使えば簡単に計算できます。</p>
+                <p>このページでは、確率計算の便利な法則を学びます：</p>
+                <ul>
+                    <li><strong>余事象</strong>：「〜でない」確率を使って計算を簡単にする</li>
+                    <li><strong>和の法則</strong>：「AまたはB」の確率を求める</li>
+                    <li><strong>排反事象</strong>：同時に起こらない事象の確率</li>
+                    <li><strong>条件付き確率</strong>：「Bが起きたときのAの確率」を求める</li>
+                    <li><strong>独立事象</strong>：互いに影響しない事象の確率</li>
+                    <li><strong>四分位範囲</strong>：データのばらつきを示す指標</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2. 覚えるルール -->
+        <section id="section2">
+            <h2>2. 覚えるルール</h2>
+            <div class="section">
+                <div class="important-rule">
+                    【最重要】確率の基本：\( P(A) = \frac{n(A)}{n(\Omega)} \)<br>
+                    （\(n(A)\)：事象Aの場合の数、\(n(\Omega)\)：全事象の場合の数）
+                </div>
+
+                <!-- 確率の基本の図 -->
+                <div class="svg-container">
+                    <svg width="700" height="200" viewBox="0 0 700 200">
+                        <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">確率の基本イメージ</text>
+
+                        <!-- 全事象の円 -->
+                        <circle cx="350" cy="120" r="80" fill="#e3f2fd" stroke="#1976d2" stroke-width="3"/>
+                        <text x="350" y="45" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">全事象 Ω</text>
+
+                        <!-- 事象Aの円 -->
+                        <circle cx="330" cy="120" r="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2"/>
+                        <text x="330" y="125" font-size="16" font-weight="bold" fill="#c62828" text-anchor="middle">A</text>
+
+                        <!-- 説明 -->
+                        <text x="500" y="100" font-size="14" fill="#333">確率 P(A) =</text>
+                        <text x="500" y="120" font-size="14" fill="#c62828" font-weight="bold">Aの場合の数</text>
+                        <line x1="480" y1="125" x2="610" y2="125" stroke="#333" stroke-width="1"/>
+                        <text x="500" y="140" font-size="14" fill="#1976d2" font-weight="bold">全体の場合の数</text>
+                    </svg>
+                    <div class="svg-caption">確率 = 条件を満たす場合の数 ÷ 全体の場合の数</div>
+                </div>
+
+                <p><strong>💡 なぜこの公式？</strong> サイコロで1が出る確率は、「1が出る場合（1通り）」÷「全部の場合（6通り）」= 1/6。これが確率の基本的な考え方です。</p>
+
+                <div class="rule-box">
+                    <strong>📌 余事象の法則</strong> <a href="#ex-complement" class="example-link">→ 例1</a>
+                    <div class="formula">
+                        \[ P(A) + P(\overline{A}) = 1 \]
+                    </div>
+                    <p>\(\overline{A}\) は「Aでない」ことを表す（余事象）</p>
+                    <p>変形すると：\( P(A) = 1 - P(\overline{A}) \)</p>
+
+                    <!-- 余事象の図 -->
+                    <div class="svg-container">
+                        <svg width="700" height="200" viewBox="0 0 700 200">
+                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">余事象のイメージ</text>
+
+                            <!-- 全事象の円 -->
+                            <rect x="200" y="50" width="300" height="120" fill="#e3f2fd" stroke="#1976d2" stroke-width="3" rx="10"/>
+                            <text x="350" y="35" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">全事象 Ω = 1</text>
+
+                            <!-- 事象A -->
+                            <circle cx="280" cy="110" r="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2"/>
+                            <text x="280" y="115" font-size="16" font-weight="bold" fill="#c62828" text-anchor="middle">A</text>
+                            <text x="280" y="180" font-size="14" fill="#c62828" text-anchor="middle">P(A)</text>
+
+                            <!-- 余事象 -->
+                            <text x="420" y="110" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">Aでない</text>
+                            <text x="420" y="130" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">（余事象）</text>
+                            <text x="420" y="180" font-size="14" fill="#2e7d32" text-anchor="middle">P(Āの上に線) = 1 - P(A)</text>
+
+                            <defs>
+                                <marker id="arrow-complement" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                    <polygon points="0 0, 10 3, 0 6" fill="#ff9800"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                        <div class="svg-caption">全体 = A + Aでない → P(A) + P(Āの上に線) = 1</div>
+                    </div>
+
+                    <p><strong>💡 なぜ便利？</strong> 「少なくとも1つ当たる確率」など、直接数えると複雑な問題を「1 - 全部外れる確率」で簡単に計算できます。</p>
+                </div>
+
+                <div class="rule-box">
+                    <strong>📌 和の法則（一般）</strong> <a href="#ex-union" class="example-link">→ 例2</a>
+                    <div class="formula">
+                        \[ P(A \cup B) = P(A) + P(B) - P(A \cap B) \]
+                    </div>
+                    <p>\(A \cup B\)：AまたはB（少なくとも一方が起こる）</p>
+                    <p>\(A \cap B\)：AかつB（両方とも起こる）</p>
+
+                    <!-- 和の法則の図 -->
+                    <div class="svg-container">
+                        <svg width="700" height="250" viewBox="0 0 700 250">
+                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">和の法則のイメージ（ベン図）</text>
+
+                            <!-- 全事象の枠 -->
+                            <rect x="100" y="50" width="500" height="170" fill="none" stroke="#1976d2" stroke-width="2" rx="10"/>
+                            <text x="110" y="70" font-size="14" fill="#1976d2">全事象</text>
+
+                            <!-- 事象A -->
+                            <circle cx="300" cy="135" r="60" fill="#ffcdd2" fill-opacity="0.6" stroke="#e57373" stroke-width="2"/>
+                            <text x="250" y="140" font-size="18" font-weight="bold" fill="#c62828">A</text>
+
+                            <!-- 事象B -->
+                            <circle cx="400" cy="135" r="60" fill="#c8e6c9" fill-opacity="0.6" stroke="#66bb6a" stroke-width="2"/>
+                            <text x="450" y="140" font-size="18" font-weight="bold" fill="#2e7d32">B</text>
+
+                            <!-- 交わり部分 -->
+                            <text x="350" y="140" font-size="14" font-weight="bold" fill="#ff6f00">A∩B</text>
+                            <text x="340" y="155" font-size="14" fill="#ff6f00">（重なり）</text>
+
+                            <!-- 説明 -->
+                            <text x="350" y="235" font-size="14" fill="#333" text-anchor="middle">P(A∪B) = P(A) + P(B) - P(A∩B)  ← 重なりを2回数えないよう引く</text>
+                        </svg>
+                        <div class="svg-caption">AとBを足すと重なり部分を2回数えるので、1回分引く</div>
+                    </div>
+
+                    <p><strong>💡 なぜ引く？</strong> P(A)とP(B)を単純に足すと、重なり部分（A∩B）を2回数えてしまうので、1回分を引いて調整します。</p>
+                </div>
+
+                <div class="rule-box">
+                    <strong>📌 排反事象（同時に起こらない）</strong> <a href="#ex-exclusive" class="example-link">→ 例3</a>
+                    <div class="formula">
+                        \[ P(A \cup B) = P(A) + P(B) \]
+                    </div>
+                    <p>条件：\( P(A \cap B) = 0 \)（AとBが同時に起こらない）</p>
+
+                    <!-- 排反事象の図 -->
+                    <div class="svg-container">
+                        <svg width="700" height="200" viewBox="0 0 700 200">
+                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">排反事象のイメージ（重ならない）</text>
+
+                            <!-- 全事象の枠 -->
+                            <rect x="100" y="50" width="500" height="130" fill="none" stroke="#1976d2" stroke-width="2" rx="10"/>
+
+                            <!-- 事象A -->
+                            <circle cx="270" cy="115" r="50" fill="#ffcdd2" fill-opacity="0.8" stroke="#e57373" stroke-width="2"/>
+                            <text x="270" y="120" font-size="18" font-weight="bold" fill="#c62828" text-anchor="middle">A</text>
+
+                            <!-- 事象B -->
+                            <circle cx="430" cy="115" r="50" fill="#c8e6c9" fill-opacity="0.8" stroke="#66bb6a" stroke-width="2"/>
+                            <text x="430" y="120" font-size="18" font-weight="bold" fill="#2e7d32" text-anchor="middle">B</text>
+
+                            <!-- 矢印と説明 -->
+                            <path d="M 320 115 L 380 115" stroke="#ff9800" stroke-width="2" marker-end="url(#arrow-gap)"/>
+                            <text x="350" y="105" font-size="14" fill="#ff9800" text-anchor="middle">重ならない</text>
+
+                            <defs>
+                                <marker id="arrow-gap" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                    <polygon points="0 0, 10 3, 0 6" fill="#ff9800"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                        <div class="svg-caption">排反事象なら重なりがないので、単純に足すだけ</div>
+                    </div>
+
+                    <p><strong>💡 なぜ簡単？</strong> 重なりがないので、引く必要がなく単純に足せます。サイコロで「1または2」の確率は1/6 + 1/6 = 1/3です。</p>
+                </div>
+
+                <div class="rule-box">
+                    <strong>📌 条件付き確率</strong> <a href="#ex-conditional" class="example-link">→ 例4</a>
+                    <div class="formula">
+                        \[ P(A|B) = \frac{P(A \cap B)}{P(B)} \]
+                    </div>
+                    <p>\(P(A|B)\)：「Bが起きたときのAの確率」</p>
+
+                    <!-- 条件付き確率の図 -->
+                    <div class="svg-container">
+                        <svg width="700" height="220" viewBox="0 0 700 220">
+                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">条件付き確率のイメージ</text>
+
+                            <!-- Bが起きた世界（枠） -->
+                            <rect x="200" y="50" width="300" height="140" fill="#e8f5e9" stroke="#4caf50" stroke-width="3" rx="10"/>
+                            <text x="350" y="45" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">Bが起きた世界（これが新しい「全体」）</text>
+
+                            <!-- A∩B -->
+                            <circle cx="300" cy="120" r="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2"/>
+                            <text x="300" y="125" font-size="16" font-weight="bold" fill="#c62828" text-anchor="middle">A∩B</text>
+
+                            <!-- 説明 -->
+                            <text x="450" y="120" font-size="14" fill="#333">P(A|B) =</text>
+                            <text x="450" y="140" font-size="14" fill="#c62828" font-weight="bold">AかつBの確率</text>
+                            <line x1="430" y1="145" x2="560" y2="145" stroke="#333" stroke-width="1"/>
+                            <text x="450" y="160" font-size="14" fill="#4caf50" font-weight="bold">Bの確率</text>
+
+                            <text x="350" y="210" font-size="14" fill="#666" text-anchor="middle">「Bが起きた」前提で、その中でAが起きる確率</text>
+                        </svg>
+                        <div class="svg-caption">Bが起きた中で、Aも起きる確率</div>
+                    </div>
+
+                    <p><strong>💡 なぜこの式？</strong> 「Bが起きた」前提なので、考える範囲がBだけになります。その中でAも起きる割合がP(A∩B)/P(B)です。</p>
+                </div>
+
+                <div class="rule-box">
+                    <strong>📌 独立事象</strong> <a href="#ex-independent" class="example-link">→ 例5</a>
+                    <div class="formula">
+                        \[ P(A \cap B) = P(A) \times P(B) \]
+                    </div>
+                    <p>条件：AとBが互いに影響しない（独立）</p>
+
+                    <p><strong>💡 なぜ掛ける？</strong> サイコロを2回振るとき、1回目と2回目は無関係です。「1回目が1」かつ「2回目が2」の確率は (1/6) × (1/6) = 1/36 です。</p>
+                </div>
+
+                <div class="rule-box">
+                    <strong>📌 四分位範囲（IQR）</strong>
+                    <div class="formula">
+                        \[ \text{IQR} = Q_3 - Q_1 \]
+                    </div>
+                    <p>\(Q_1\)：第1四分位数、\(Q_3\)：第3四分位数</p>
+                    <p>データのばらつき（中央50%の範囲）を示す指標です。</p>
+
+                    <p><strong>💡 なぜ使う？</strong> 平均値は外れ値に影響されやすいですが、IQRは中央部分のばらつきを見るので、データの実態をつかみやすいです。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 例題と解き方 -->
+        <section id="section3">
+            <h2>3. 例題と解き方</h2>
+            <div class="section">
+                <p>各法則を使って実際に解いてみましょう。どの問題も「どの法則を使うか」を見極めることがポイントです。</p>
+
+                <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 余事象を使う</h3>
+
+                <div class="example-box" id="ex-complement">
+                    <div class="example-title">
+                        <span class="number-badge">例1</span>少なくとも1回当たる確率
+                    </div>
+                    <p>当たる確率が \(\frac{1}{10}\) のくじを3回引く。少なくとも1回当たる確率を求める。</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>「少なくとも1回」は直接数えると複雑 → 余事象を使う</li>
+                        <li>余事象は「3回とも外れる」</li>
+                        <li>1回外れる確率は \(1 - \frac{1}{10} = \frac{9}{10}\)</li>
+                        <li>3回とも外れる確率（独立事象）= \(\left(\frac{9}{10}\right)^3 = \frac{729}{1000}\)</li>
+                        <li>少なくとも1回当たる確率 = \(1 - \frac{729}{1000} = \frac{271}{1000}\)</li>
+                    </ol>
+                    <div class="formula">
+                        \[ P(\text{少なくとも1回当たる}) = 1 - \left(\frac{9}{10}\right)^3 = \frac{271}{1000} \]
+                    </div>
+                </div>
+
+                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 和の法則を使う</h3>
+
+                <div class="example-box" id="ex-union">
+                    <div class="example-title">
+                        <span class="number-badge">例2</span>トランプで絵札またはハート
+                    </div>
+                    <p>トランプ52枚から1枚引く。絵札（J, Q, K）またはハートを引く確率を求める。</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>A：絵札を引く → 各スートに3枚ずつ → P(A) = \(\frac{12}{52}\)</li>
+                        <li>B：ハートを引く → 13枚 → P(B) = \(\frac{13}{52}\)</li>
+                        <li>A∩B：ハートの絵札（J♥, Q♥, K♥） → P(A∩B) = \(\frac{3}{52}\)</li>
+                        <li>和の法則を適用</li>
+                    </ol>
+                    <div class="formula">
+                        \[ P(A \cup B) = \frac{12}{52} + \frac{13}{52} - \frac{3}{52} = \frac{22}{52} = \frac{11}{26} \]
+                    </div>
+                </div>
+
+                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 排反事象を使う</h3>
+
+                <div class="example-box" id="ex-exclusive">
+                    <div class="example-title">
+                        <span class="number-badge">例3</span>サイコロで3以下の目
+                    </div>
+                    <p>サイコロを1回振って、1, 2, 3のいずれかが出る確率を求める。</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>「1が出る」「2が出る」「3が出る」は排反事象（同時に起こらない）</li>
+                        <li>それぞれの確率：\(P(1) = \frac{1}{6}\), \(P(2) = \frac{1}{6}\), \(P(3) = \frac{1}{6}\)</li>
+                        <li>排反事象なので単純に足す</li>
+                    </ol>
+                    <div class="formula">
+                        \[ P(1,2,3\text{のいずれか}) = \frac{1}{6} + \frac{1}{6} + \frac{1}{6} = \frac{3}{6} = \frac{1}{2} \]
+                    </div>
+                </div>
+
+                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 条件付き確率を使う</h3>
+
+                <div class="example-box" id="ex-conditional">
+                    <div class="example-title">
+                        <span class="number-badge">例4</span>赤玉を引いたとき、大きい玉である確率
+                    </div>
+                    <p>袋の中に、大きい赤玉2個、小さい赤玉3個、大きい青玉1個、小さい青玉4個が入っている。1個取り出したら赤だった。これが大きい玉である確率を求める。</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>B（赤玉を引く）= 2 + 3 = 5個 → P(B) = \(\frac{5}{10} = \frac{1}{2}\)</li>
+                        <li>A∩B（赤かつ大きい）= 2個 → P(A∩B) = \(\frac{2}{10} = \frac{1}{5}\)</li>
+                        <li>条件付き確率の公式を適用</li>
+                    </ol>
+                    <div class="formula">
+                        \[ P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{\frac{1}{5}}{\frac{1}{2}} = \frac{1}{5} \times \frac{2}{1} = \frac{2}{5} \]
+                    </div>
+                </div>
+
+                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 独立事象を使う</h3>
+
+                <div class="example-box" id="ex-independent">
+                    <div class="example-title">
+                        <span class="number-badge">例5</span>サイコロ2個で両方とも偶数
+                    </div>
+                    <p>サイコロを2個同時に振る。両方とも偶数が出る確率を求める。</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>1個目が偶数（2, 4, 6）の確率 = \(\frac{3}{6} = \frac{1}{2}\)</li>
+                        <li>2個目が偶数の確率 = \(\frac{1}{2}\)（1個目と無関係）</li>
+                        <li>独立事象なので掛ける</li>
+                    </ol>
+                    <div class="formula">
+                        \[ P(\text{両方偶数}) = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4} \]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 簡単にするコツ -->
+        <section id="section4">
+            <h2>4. 簡単にするコツ</h2>
+            <div class="section">
+                <div class="tip-box">
+                    <strong>✏️ コツ1：「少なくとも」は余事象</strong><br>
+                    「少なくとも1回」「少なくとも1個」など → 余事象「1回も〜ない」を使うと簡単。
+                </div>
+
+                <div class="tip-box">
+                    <strong>✏️ コツ2：ベン図を描く</strong><br>
+                    「または」の問題は、ベン図で重なりを確認すると間違いにくい。
+                </div>
+
+                <div class="tip-box">
+                    <strong>✏️ コツ3：排反かどうか確認</strong><br>
+                    同時に起こらないなら排反 → 引く必要なく単純に足せる。
+                </div>
+
+                <div class="tip-box">
+                    <strong>✏️ コツ4：条件付き確率は「世界を狭める」</strong><br>
+                    「Bが起きた」前提なので、考える範囲がBだけになる。
+                </div>
+
+                <div class="tip-box">
+                    <strong>✏️ コツ5：独立かどうか確認</strong><br>
+                    サイコロ、コイン、復元抽出など → 独立なので掛け算でOK。
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. よくあるつまづき -->
+        <section id="section5">
+            <h2>5. よくあるつまづき</h2>
+            <div class="section">
+                <div class="caution-box">
+                    <div class="caution-title">⚠️ つまづき1：和の法則で引き忘れ</div>
+                    <p><strong>ダメな例：</strong> P(A∪B) = P(A) + P(B) として重なりを引かない</p>
+                    <p><strong>対策：</strong> 排反でない限り、必ず P(A∩B) を引く。ベン図で確認！</p>
+                </div>
+
+                <div class="caution-box">
+                    <div class="caution-title">⚠️ つまづき2：条件付き確率で分母を間違える</div>
+                    <p><strong>ダメな例：</strong> P(A|B) = P(A∩B) ÷ P(A) と逆にする</p>
+                    <p><strong>対策：</strong> 「|」の後ろが分母。P(A|B) なら B が起きた前提 → P(B) が分母。</p>
+                </div>
+
+                <div class="caution-box">
+                    <div class="caution-title">⚠️ つまづき3：独立でないのに掛ける</div>
+                    <p><strong>ダメな例：</strong> 非復元抽出（引いたら戻さない）で独立扱い</p>
+                    <p><strong>対策：</strong> 1回目が2回目に影響するなら独立でない。条件付き確率を使う。</p>
+                </div>
+
+                <div class="caution-box">
+                    <div class="caution-title">⚠️ つまづき4：余事象を忘れる</div>
+                    <p><strong>ダメな例：</strong> 「少なくとも1回」を場合分けで数える</p>
+                    <p><strong>対策：</strong> 「少なくとも」は余事象が断然楽。1 - P(全部外れ) で計算。</p>
+                </div>
+
+                <div class="caution-box">
+                    <div class="caution-title">⚠️ つまづき5：確率の約分忘れ</div>
+                    <p><strong>ダメな例：</strong> \(\frac{12}{52}\) のまま答える</p>
+                    <p><strong>対策：</strong> 必ず最も簡単な分数に約分（\(\frac{12}{52} = \frac{3}{13}\)）。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 仕上げチェックリスト -->
+        <section id="section6">
+            <h2>6. 仕上げチェックリスト</h2>
+            <div class="section">
+                <div class="checklist">
+                    <div class="checklist-item">「または」の問題で排反かどうか確認したか</div>
+                    <div class="checklist-item">和の法則を使うとき、重なりを引いたか</div>
+                    <div class="checklist-item">条件付き確率の分母は「|の後ろ」にしたか</div>
+                    <div class="checklist-item">独立事象かどうか確認したか（復元抽出か非復元抽出か）</div>
+                    <div class="checklist-item">確率の答えは約分して最も簡単な形にしたか</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 練習問題 -->
+        <section id="section7">
+            <h2>7. 練習問題</h2>
+            <div class="section">
+                <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+                <div class="rule-box" style="background: #f5f5f5;">
+                    <strong>練習1</strong>
+                    <p>サイコロを2回振る。少なくとも1回は6が出る確率を求めなさい。</p>
+                    <details style="margin-top: 15px;">
+                        <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                        <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                            <p><strong>余事象を使う：</strong>「2回とも6でない」確率を求める</p>
+                            <p>1回で6でない確率 = \(\frac{5}{6}\)</p>
+                            <p>2回とも6でない = \(\left(\frac{5}{6}\right)^2 = \frac{25}{36}\)</p>
+                            <p><strong>答え：</strong>\(1 - \frac{25}{36} = \frac{11}{36}\)</p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+                    <strong>練習2</strong>
+                    <p>トランプ52枚から1枚引く。スペードまたは絵札を引く確率を求めなさい。</p>
+                    <details style="margin-top: 15px;">
+                        <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                        <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                            <p><strong>和の法則：</strong></p>
+                            <p>P(スペード) = \(\frac{13}{52}\)</p>
+                            <p>P(絵札) = \(\frac{12}{52}\)（各スート3枚×4）</p>
+                            <p>P(スペードかつ絵札) = \(\frac{3}{52}\)（J♠, Q♠, K♠）</p>
+                            <p><strong>答え：</strong>\(\frac{13}{52} + \frac{12}{52} - \frac{3}{52} = \frac{22}{52} = \frac{11}{26}\)</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- まとめ -->
+        <div class="summary">
+            📌 まとめ：法則を見極めて、式に当てはめる！
+        </div>
+
+        <!-- 関連教材 -->
+        <section id="related">
+            <div class="related-materials">
+                <h3>📎 関連教材</h3>
+                <ul>
+                    <li>
+                        <a href="データの分析と確率_教材.html" class="tag-prerequisite">
+                            <span class="material-name">データの分析と確率</span>
+                            <span class="relation-note">確率の基本と経験的確率を学べる</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- おまけ：実践ストーリー -->
+        <section id="story">
+            <h2>おまけ：確率パラドックス「ドアを変えると当たる確率が2倍？」</h2>
+            <div class="section">
+                <div class="story-box">
+                    <div class="story-title">🚪 モンティ・ホール問題：直感を裏切る確率の不思議</div>
+
+                    <p>1970年代、アメリカのクイズ番組「Let's Make a Deal」で実際に使われていたゲーム。司会者の名前から「モンティ・ホール問題」と呼ばれ、数学者たちを大混乱に陥れた伝説の確率パラドックスです。</p>
+
+                    <p style="background: #fff9c4; padding: 10px; border-radius: 8px; margin: 15px 0;">
+                        <strong>【ルール】</strong><br>
+                        3つのドアがあり、1つだけ当たり（車）、残り2つはハズレ（ヤギ）。<br>
+                        ① あなたがドアを1つ選ぶ<br>
+                        ② 司会者が残り2つのうち、<strong>必ずハズレのドアを1つ開ける</strong><br>
+                        ③ 「最初に選んだドアを変えますか？」と聞かれる
+                    </p>
+
+                    <p><strong>問題：変えた方が得？それとも変えない方が得？</strong></p>
+
+                    <p style="background: #e3f2fd; padding: 10px; border-radius: 8px; margin: 15px 0;">
+                        <strong>直感の答え：</strong>「どっちも同じ確率（1/2）でしょ？」<br>
+                        <strong>数学の答え：</strong>「変えると確率が<span style="color: #e53935; font-weight: bold;">2倍</span>になる！」
+                    </p>
+
+                    <p><strong>【なぜ2倍？条件付き確率で考える】</strong></p>
+
+                    <table class="material-table" style="margin: 15px 0;">
+                        <tr>
+                            <th>当たりの位置</th>
+                            <th>最初の選択</th>
+                            <th>司会者が開けるドア</th>
+                            <th>変えた場合</th>
+                        </tr>
+                        <tr>
+                            <td>ドア1（確率 1/3）</td>
+                            <td>ドア1を選択</td>
+                            <td>ドア2か3（ハズレ）</td>
+                            <td style="color: #e53935; font-weight: bold;">❌ ハズレ</td>
+                        </tr>
+                        <tr>
+                            <td>ドア2（確率 1/3）</td>
+                            <td>ドア1を選択</td>
+                            <td>ドア3（ハズレ）</td>
+                            <td style="color: #4caf50; font-weight: bold;">✅ 当たり</td>
+                        </tr>
+                        <tr>
+                            <td>ドア3（確率 1/3）</td>
+                            <td>ドア1を選択</td>
+                            <td>ドア2（ハズレ）</td>
+                            <td style="color: #4caf50; font-weight: bold;">✅ 当たり</td>
+                        </tr>
+                    </table>
+
+                    <p><strong>結論：</strong>変えないと当たる確率 = 1/3、変えると当たる確率 = 2/3</p>
+
+                    <div class="formula">
+                        \[ P(\text{変えて当たる}) = \frac{2}{3} = 2 \times P(\text{変えずに当たる}) \]
+                    </div>
+
+                    <p style="background: #ffebee; padding: 10px; border-radius: 8px; margin: 15px 0;">
+                        <strong>衝撃の事実：</strong>1990年、数学者マリリン・ボス・サバントがこの問題を雑誌で解説したところ、なんと<strong>数学の博士号を持つ人たちから1000通以上の抗議の手紙</strong>が届いた。「あなたは間違っている！」と。<br>
+                        でも、実際に実験したら...本当に2/3で当たった。数学、恐るべし。
+                    </p>
+
+                    <p><strong>【直感がハズレる理由】</strong></p>
+                    <p>司会者は<strong>「必ずハズレを開ける」</strong>という条件付き確率が鍵。最初にハズレを選んでいた場合（確率2/3）、司会者が残ったハズレを教えてくれるので、変えれば必ず当たる。この「司会者の知識」が確率を変える。</p>
+
+                    <p><strong>教訓：</strong>条件付き確率を無視すると、博士号持ちでも間違える。数学的思考、侮れない。</p>
+
+                    <p style="font-size: 14px; color: #666; margin-top: 20px;">
+                        ※この問題は実際にアメリカのテレビ番組「Let's Make a Deal」で使われていました。1990年、数学者マリリン・ボス・サバントが雑誌で解説し、多くの数学者から抗議を受けたエピソードは有名です。コンピューターシミュレーションでも検証されています（<a href="https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BB%E3%83%9B%E3%83%BC%E3%83%AB%E5%95%8F%E9%A1%8C" target="_blank" style="color: #1976d2;">モンティ・ホール問題</a>）。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <nav class="breadcrumb breadcrumb-footer">
+            <a href="index.html">トップページに戻る</a>
+        </nav>
+    </div>
+</body>
+</html>
