@@ -182,9 +182,6 @@ h2 {
         rgba(255, 245, 157, 1) 75%,
         rgba(255, 245, 157, 0.3) 95%,
         rgba(255, 245, 157, 0) 100%);
-    background-position: 0 60%;
-    background-size: 100% 60%;
-    background-repeat: no-repeat;
     padding: 8px 40px 8px 8px;
     display: inline-block;
     margin-bottom: 25px;
@@ -196,9 +193,9 @@ h2::before {
     content: '';
     position: absolute;
     left: 0;
-    bottom: 8px;
+    top: 0;
     width: 4px;
-    height: calc(60% + 3px);
+    height: 100%;
     background: #fdd835;
 }
 
