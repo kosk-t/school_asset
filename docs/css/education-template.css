@@ -194,9 +194,9 @@ h2::before {
     position: absolute;
     left: 0;
     top: 0;
-    width: 4px;
+    width: 6px;
     height: 100%;
-    background: #fdd835;
+    background: #ffee58;
 }
 
 h3 {
