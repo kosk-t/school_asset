@@ -205,7 +205,7 @@ related:
                             </div>
 
                             <div class="rule-box">
-                                <strong>📌 最大値・最小値の求め方</strong> <a href="#ex-maxmin" class="example-link">→ 例4</a>
+                                <strong>📌 最大値・最小値の求め方</strong> <a href="#ex-maxmin" class="example-link">→ 例4</a> <a href="#ex-projectile" class="example-link">→ 例6（応用）</a>
                                 <ol style="margin: 10px 0 0 20px;">
                                     <li>頂点の座標 \((p, q)\) を求める</li>
                                     <li>\(a > 0\) なら下に凸 → 頂点で<strong>最小値 \(q\)</strong>（最大値なし）</li>
@@ -331,6 +331,118 @@ related:
                         \[ x = 3: y = 9 - 12 + 3 = 0 \]
                     </div>
                     <p><strong>答え：最小値 -1（\(x = 2\) のとき）、最大値 3（\(x = 0\) のとき）</strong></p>
+                </div>
+
+                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 実生活への応用（放物運動）</h3>
+
+                <div class="example-box" id="ex-projectile">
+                    <div class="example-title">
+                        <span class="number-badge">例6</span>コインを投げる問題
+                    </div>
+                    <p>オリバーがオフィスビルの窓からコインを水平な地面に向かって投げた。コインの軌道は次の二次関数でモデル化される：</p>
+                    <div class="formula">
+                        \[ y = 8 + 3x - 0.5x^2 \]
+                    </div>
+                    <p>ここで \(y\) はコインの高さ（メートル）、\(x\) は水平距離（メートル）を表す。建物の壁は \(y\) 軸に沿っている。</p>
+
+                    <!-- 放物線の図 -->
+                    <!-- 座標変換: SVG_x = 70 + x*45, SVG_y = 250 - y*15 -->
+                    <!-- y = 8 + 3x - 0.5x² の点を計算 -->
+                    <div class="svg-container">
+                        <svg width="500" height="280" viewBox="0 0 500 280">
+                            <defs>
+                                <marker id="arrow-axis2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                    <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+                                </marker>
+                            </defs>
+
+                            <!-- 建物（壁） -->
+                            <rect x="40" y="30" width="30" height="220" fill="#e0e0e0" stroke="#999" stroke-width="1"/>
+                            <line x1="70" y1="30" x2="70" y2="250" stroke="#666" stroke-width="2"/>
+                            <text x="55" y="140" font-size="14" fill="#666" text-anchor="middle" transform="rotate(-90,55,140)">建物</text>
+
+                            <!-- 座標軸 -->
+                            <line x1="70" y1="250" x2="470" y2="250" stroke="#333" stroke-width="2" marker-end="url(#arrow-axis2)"/>
+                            <line x1="70" y1="260" x2="70" y2="20" stroke="#333" stroke-width="2" marker-end="url(#arrow-axis2)"/>
+                            <text x="480" y="255" font-size="14" fill="#333">x</text>
+                            <text x="60" y="15" font-size="14" fill="#333">y</text>
+                            <text x="55" y="265" font-size="14" fill="#333">O</text>
+
+                            <!-- 放物線（正確な座標で描画）-->
+                            <!-- x=0,y=8 → x=1,y=10.5 → x=2,y=12 → x=3,y=12.5(頂点) → x=4,y=12 → ... → x=8,y=0 -->
+                            <path d="M 70 130
+                                     L 92.5 109.4 L 115 92.5 L 137.5 79.4 L 160 70 L 182.5 64.4
+                                     L 205 62.5
+                                     L 227.5 64.4 L 250 70 L 272.5 79.4 L 295 92.5 L 317.5 109.4
+                                     L 340 130 L 362.5 154.4 L 385 182.5 L 407.5 214.4 L 430 250"
+                                  stroke="#e53935" stroke-width="3" fill="none"/>
+
+                            <!-- 点A（出発点）x=0, y=8 -->
+                            <circle cx="70" cy="130" r="6" fill="#4caf50"/>
+                            <text x="80" y="120" font-size="14" font-weight="bold" fill="#4caf50">A</text>
+                            <text x="80" y="145" font-size="14" fill="#666">出発点</text>
+
+                            <!-- 点B（最高点）x=3, y=12.5 -->
+                            <circle cx="205" cy="62.5" r="6" fill="#ff9800"/>
+                            <text x="215" y="55" font-size="14" font-weight="bold" fill="#ff9800">B</text>
+                            <text x="215" y="78" font-size="14" fill="#666">最高点</text>
+
+                            <!-- 点C（着地点）x=8, y=0 -->
+                            <circle cx="430" cy="250" r="6" fill="#2196f3"/>
+                            <text x="415" y="240" font-size="14" font-weight="bold" fill="#2196f3">C</text>
+                            <text x="400" y="270" font-size="14" fill="#666">着地点</text>
+
+                            <!-- 高さの補助線 -->
+                            <line x1="70" y1="130" x2="70" y2="250" stroke="#4caf50" stroke-width="1" stroke-dasharray="4,4"/>
+                            <text x="30" y="190" font-size="14" fill="#4caf50">8m</text>
+                        </svg>
+                        <div class="svg-caption">コインの軌道（放物線）</div>
+                    </div>
+
+                    <p><strong>(a) コインを投げた高さを求めよ。</strong></p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>出発点 A は壁の位置、つまり \(x = 0\) の点</li>
+                        <li>\(x = 0\) を式に代入する</li>
+                    </ol>
+                    <div class="formula">
+                        \[ y = 8 + 3(0) - 0.5(0)^2 = 8 \]
+                    </div>
+                    <p><strong>答え：8 メートル</strong></p>
+
+                    <p style="margin-top: 20px;"><strong>(b) コインが達する最高点の高さを求めよ。</strong></p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>式を整理：\(y = -0.5x^2 + 3x + 8\)（\(a = -0.5, b = 3, c = 8\)）</li>
+                        <li>\(a = -0.5 < 0\) なので上に凸 → 頂点が最大値</li>
+                        <li>対称軸 \(x = -\frac{b}{2a} = -\frac{3}{2 \times (-0.5)} = -\frac{3}{-1} = 3\)</li>
+                        <li>\(x = 3\) を代入して最高点の高さを求める</li>
+                    </ol>
+                    <div class="formula">
+                        \[ y = -0.5(3)^2 + 3(3) + 8 = -0.5 \times 9 + 9 + 8 = -4.5 + 17 = 12.5 \]
+                    </div>
+                    <p><strong>答え：12.5 メートル</strong></p>
+
+                    <p style="margin-top: 20px;"><strong>(c) コインが地面に着く地点の、壁からの水平距離を求めよ。</strong></p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>地面は \(y = 0\) の位置</li>
+                        <li>\(y = 0\) として方程式を解く</li>
+                    </ol>
+                    <div class="formula">
+                        \[ 0 = -0.5x^2 + 3x + 8 \]
+                    </div>
+                    <p>両辺を \(-0.5\) で割って整理：</p>
+                    <div class="formula">
+                        \[ x^2 - 6x - 16 = 0 \]
+                    </div>
+                    <p>因数分解または解の公式で解く：</p>
+                    <div class="formula">
+                        \[ (x - 8)(x + 2) = 0 \]
+                        \[ x = 8 \quad \text{または} \quad x = -2 \]
+                    </div>
+                    <p>\(x > 0\)（水平距離は正）なので：</p>
+                    <p><strong>答え：8 メートル</strong></p>
                 </div>
             </div>
         </section>
