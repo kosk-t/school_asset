@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Yomogi&family=M+PLUS+Rounded+1c:wght@400;700;800&family=Varela+Round&display=swap');
 
 /* =========================================
    ベーススタイル (Base Styles)
@@ -172,15 +172,34 @@ h1 {
 }
 
 h2 {
-    font-size: 1.4rem;
-    color: #fff;
-    background: var(--primary-color);
-    padding: 12px 25px;
-    border-radius: 15px;
+    /* マーカーライン風 + Yomogiフォント */
+    font-family: 'Yomogi', cursive;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    background: linear-gradient(90deg,
+        rgba(255, 245, 157, 1) 0%,
+        rgba(255, 245, 157, 1) 75%,
+        rgba(255, 245, 157, 0.3) 95%,
+        rgba(255, 245, 157, 0) 100%);
+    background-position: 0 60%;
+    background-size: 100% 60%;
+    background-repeat: no-repeat;
+    padding: 8px 40px 8px 8px;
     display: inline-block;
-    box-shadow: 4px 4px 0px rgba(0, 163, 255, 0.3);
     margin-bottom: 25px;
-    transform: rotate(-1deg); /* 少し傾けてポップさを出す */
+    letter-spacing: 0.05em;
+    position: relative;
+}
+
+h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 8px;
+    width: 4px;
+    height: calc(60% + 3px);
+    background: #fdd835;
 }
 
 h3 {

@@ -5,7 +5,7 @@
             "label": "Jekyll: Serve",
             "type": "shell",
             "command": "C:\\Ruby34-x64\\bin\\jekyll.bat",
-            "args": ["serve", "--baseurl", ""],
+            "args": ["serve", "--baseurl="],
             "options": {
                 "cwd": "${workspaceFolder}/docs"
             },
