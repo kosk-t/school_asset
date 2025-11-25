@@ -1,7 +1,3 @@
----
-layout: null
-title: トップページ
----
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -9,8 +5,7 @@ title: トップページ
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ site.title }} - {{ site.description }}</title>
 
-    <link rel="stylesheet" href="{{ '/css/education-template.css' | relative_url }}">
-
+    {% include head-css.html %}
     {% include home-styles.html %}
 </head>
 <body>
@@ -31,23 +26,14 @@ title: トップページ
         <div class="category-section">
             <h2>{{ category.icon }} {{ category.name }}</h2>
             <div class="material-grid">
-                {% assign cat_materials = site.data.materials | where: "category", category.id | sort: "order" %}
+                {% assign cat_materials = site.materials | where: "category", category.id | sort: "order" %}
                 {% for material in cat_materials %}
-                <a href="{{ material.slug }}.html" class="quest-card">
+                <a href="{{ material.url | relative_url }}" class="quest-card">
                     <div class="quest-icon">{{ material.icon }}</div>
                     <div class="quest-title">{{ material.title }}</div>
                     <div class="quest-desc">{{ material.description }}</div>
                     <div class="quest-meta">
-                        {% case material.level_num %}
-                        {% when 1 %}
-                        <span class="level-badge lvl-basic">Lv.1 {{ material.level }}</span>
-                        {% when 2 %}
-                        <span class="level-badge lvl-standard">Lv.2 {{ material.level }}</span>
-                        {% when 3 %}
-                        <span class="level-badge lvl-advanced">Lv.3 {{ material.level }}</span>
-                        {% else %}
-                        <span class="level-badge lvl-standard">Lv.2 {{ material.level }}</span>
-                        {% endcase %}
+                        {% include level-badge.html level=material.level_num level_name=material.level %}
                         <div class="play-btn">▶</div>
                     </div>
                 </a>

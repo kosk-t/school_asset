@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Jekyll: Serve",
+            "type": "shell",
+            "command": "C:\\Ruby34-x64\\bin\\jekyll.bat",
+            "args": ["serve"],
+            "options": {
+                "cwd": "${workspaceFolder}/docs"
+            },
+            "problemMatcher": [],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "isBackground": true
+        },
+        {
+            "label": "Jekyll: Build",
+            "type": "shell",
+            "command": "C:\\Ruby34-x64\\bin\\jekyll.bat",
+            "args": ["build"],
+            "options": {
+                "cwd": "${workspaceFolder}/docs"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

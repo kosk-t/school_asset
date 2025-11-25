@@ -14,6 +14,13 @@ node scripts/list-stories.js
 
 以下の条件で教材HTMLを作成してください。
 
+### Jekyll構成について
+このプロジェクトはJekyllを使用しています。教材ファイルは以下の構成で作成します：
+- **テンプレート**: `assets/education-template.html`（Front Matter付き）
+- **出力先**: `docs/<テーマ名>_教材.html`
+- **メタデータ**: `docs/_data/materials.yml` に追加
+- **レイアウト**: `docs/_layouts/material-raw.html` が自動適用
+
 ### 基本設定
 - **テーマ**: 引数で指定（例：二次方程式の平方完成、一次方程式、比例と反比例）
 - **対象**: 指定がなければ中学生・基礎〜標準レベル
@@ -35,7 +42,7 @@ node scripts/list-stories.js
 6. **仕上げチェックリスト**（5項目）
 7. **練習問題**（2問程度。`<details>`で答えを折りたたみにする）
 8. **まとめ一言**（ワンフレーズで要点を再確認）
-9. **関連教材**（前提知識や関連する教材へのリンク。該当があれば追加）
+9. **関連教材**（Front Matterの `related` で指定。レイアウトが自動生成）
 10. **おまけ：実践ストーリー「タイトル」**（学んだルールを使う具体的なシナリオ）
 
 ### 例題と解き方の作り方
@@ -355,34 +362,27 @@ node scripts/list-stories.js
 - インラインスタイルは使わない（共通CSSで定義済み）
 - レスポンシブ対応済み
 
-### 関連教材セクション
-前提知識や関連する教材がある場合は「まとめ」の後、「実践ストーリー」の前に追加：
+### 関連教材（Front Matterで指定）
+前提知識や関連する教材がある場合は、**Front Matterの `related` で指定**します。
+レイアウトが自動で関連教材セクションを生成するため、**本文にHTMLを書く必要はありません**。
 
-```html
-<div class="related-materials">
-    <h3>📎 関連教材</h3>
-    <ul>
-        <li>
-            <a href="前提教材_教材.html" class="tag-prerequisite">
-                <span class="material-name">前提教材名</span>
-                <span class="relation-note">なぜこの教材が前提なのかを一言で</span>
-            </a>
-        </li>
-        <li>
-            <a href="関連教材_教材.html" class="tag-related">
-                <span class="material-name">関連教材名</span>
-                <span class="relation-note">どう関連しているのかを一言で</span>
-            </a>
-        </li>
-    </ul>
-</div>
+```yaml
+related:
+  - url: /前提教材_教材.html
+    title: 前提教材名
+    note: なぜこの教材が前提なのかを一言で
+    type: prerequisite
+  - url: /関連教材_教材.html
+    title: 関連教材名
+    note: どう関連しているのかを一言で
+    type: related
 ```
 
-- `tag-prerequisite`: 📚 前提知識となる教材（この教材を学ぶ前に理解しておくべき）
-- `tag-related`: 🔗 関連する教材（内容が重なる、応用で使う）
-- `material-name`: 教材名（絵文字はCSSで自動付与）
-- `relation-note`: 関連理由の説明（簡潔に15字程度で）
-- 該当する教材がない場合はセクションごと省略してOK
+- `url`: 教材へのパス（`/` で始める）
+- `title`: 教材名
+- `note`: 関連理由の説明（簡潔に15字程度で）
+- `type`: `prerequisite`（前提知識）または `related`（関連教材）
+- 該当する教材がない場合は `related` ごと省略してOK
 - `curriculum.json` の `prerequisite` / `relatedTo` と整合性を取る
 
 **関連教材の決め方**:
@@ -449,48 +449,74 @@ node scripts/list-stories.js
   ```
 
 ### テンプレートと出力
-1. `docs/education-template.html` をベースに使用
-2. CSSパスは `css/education-template.css` のまま
+1. `assets/education-template.html` をベースに使用（Front Matter付き）
+2. レイアウト `material-raw` が自動でhead部分（CSS, KaTeX）を挿入
 3. 出力先: `docs/<テーマ名>_教材.html`
 
-### 教材メタ情報（必須）
-`<body>`直後に以下のコメントを含めてください（画像生成AI用）:
+### Front Matter（必須）
+ファイル先頭に以下のYAML Front Matterを含めてください：
 
-```html
-<!--
-========== 教材メタ情報（画像生成用） ==========
-テーマ: テーマ名
-対象: 中学生・基礎〜標準レベル
-概要: このテーマで学ぶ内容を2〜3文で説明
-キーワード: 重要な用語をカンマ区切りで5〜8個
-イメージ: 表紙画像に含めたいビジュアル要素の説明（図形、グラフ、数式など）
-================================================
--->
+```yaml
+---
+layout: material-raw
+title: テーマ名
+icon: "絵文字"
+description: このテーマで学ぶ内容を2〜3文で説明
+level: 標準
+level_num: 2
+category: numbers/equations/functions/geometry/data
+order: カテゴリ内の表示順（1〜）
+keywords:
+  - キーワード1
+  - キーワード2
+  - キーワード3
+cover_image: /images/noimage.jpg
+cover_description: 表紙画像に含めたいビジュアル要素の説明
+battle_game: false
+toc:
+  - id: section1
+    title: テーマの定義
+  - id: section2
+    title: 覚えるルール
+  # ... 以下続く
+# 関連教材がある場合のみ追加（任意）
+related:
+  - url: /前提教材_教材.html
+    title: 前提教材名
+    note: なぜこの教材が前提なのか
+    type: prerequisite
+---
 ```
 
-### 目次ページへの追加
-教材作成後、`docs/index.html` に以下の形式でリンクを追加してください。
+### カテゴリID
+- `numbers`: 数と式（正負の数、文字式、式の展開、因数分解など）
+- `equations`: 方程式（一次方程式、連立方程式、二次方程式など）
+- `functions`: 関数（比例・反比例、一次関数、二次関数など）
+- `geometry`: 図形（平面図形、空間図形、合同、相似、三平方の定理など）
+- `data`: データの活用（度数分布、代表値、確率など）
 
-**分類カテゴリ**（適切なものを選択）:
-- 数と式（正負の数、文字式、式の展開、因数分解など）
-- 方程式（一次方程式、連立方程式、二次方程式など）
-- 関数（比例・反比例、一次関数、二次関数など）
-- 図形（平面図形、空間図形、合同、相似、三平方の定理など）
-- データの活用（度数分布、代表値、確率など）
+### 目次ページへの追加（自動生成）
+`docs/index.html` はLiquidテンプレートで自動生成されます。
+**手動でindex.htmlを編集する必要はありません。**
 
-**追加するHTML形式**:
-```html
-<li class="material-item">
-    <a href="<テーマ名>_教材.html"><テーマ名></a>
-    <div class="material-desc">簡潔な説明（キーワード3つ程度）</div>
-    <span class="level-badge level-standard">基礎〜標準</span>
-</li>
+代わりに `docs/_data/materials.yml` に教材情報を追加してください：
+
+```yaml
+- slug: テーマ名_教材
+  title: テーマ名
+  icon: "絵文字"
+  description: 簡潔な説明（キーワード3つ程度）
+  level: 標準
+  level_num: 2
+  category: equations
+  order: 1
+  cover_image: images/noimage.jpg
 ```
 
-**レベルバッジ**:
-- `level-basic`: 基礎
-- `level-standard`: 基礎〜標準
-- `level-advanced`: 標準〜発展
+**levelとlevel_numの対応**:
+- `level_num: 1` / `level: 基礎`
+- `level_num: 2` / `level: 標準`
+- `level_num: 3` / `level: 発展`
 
 ### カリキュラムマップへの追加
 教材作成後、`assets/curriculum.json` の `materials` セクションに教材情報を追加してください。
@@ -526,3 +552,13 @@ node scripts/list-stories.js
 2. 教材の内容（ルール・例題）から該当する項目を選ぶ
 3. パス形式で記載（例: `中3/数と式/平方根/分母の有理化`）
 4. 主要な項目を5〜10個程度選ぶ（完璧でなくてOK、後で調整可能）
+
+### Jekyllビルド
+教材追加後、以下のコマンドでビルドを確認できます：
+```bash
+cd docs && bundle exec jekyll build
+```
+開発サーバーで確認：
+```bash
+cd docs && bundle exec jekyll serve
+```

@@ -1,0 +1,102 @@
+# 教材メタデータ
+# Front Matterを使わずにここで一元管理
+
+- slug: 累乗と平方根_教材
+  title: 累乗と平方根
+  icon: "🔢"
+  description: 指数法則・ルートの計算・有理化をマスターしよう！
+  level: 標準
+  level_num: 2
+  category: numbers
+  order: 1
+  cover_image: images/powers_and_roots.png
+
+- slug: 二次方程式の解き方_教材
+  title: 二次方程式の解き方
+  icon: "📐"
+  description: 因数分解・平方完成・解の公式の3つの方法をマスターしよう！
+  level: 標準
+  level_num: 2
+  category: equations
+  order: 1
+  cover_image: images/noimage.jpg
+
+- slug: 座標平面上の直線_教材
+  title: 座標平面上の直線
+  icon: "📐"
+  description: 中点・傾き・平行の公式を使いこなして、直線をマスターしよう！
+  level: 標準
+  level_num: 2
+  category: functions
+  order: 1
+  cover_image: images/noimage.jpg
+
+- slug: 二次関数のグラフと性質_教材
+  title: 二次関数のグラフと性質
+  icon: "📈"
+  description: 対称軸・頂点・最大最小を求めるスキルをマスターしよう！
+  level: 標準
+  level_num: 2
+  category: functions
+  order: 2
+  cover_image: images/noimage.jpg
+
+- slug: 平面図形の面積公式_教材
+  title: 平面図形の面積公式
+  icon: "📏"
+  description: 平行四辺形・三角形・台形の面積公式をマスターしよう！
+  level: 基礎
+  level_num: 1
+  category: geometry
+  order: 1
+  cover_image: images/noimage.jpg
+
+- slug: 円と球の性質_教材
+  title: 円と球の性質
+  icon: "⚪"
+  description: 円周・円の面積・球の表面積と体積をマスターしよう！
+  level: 標準
+  level_num: 2
+  category: geometry
+  order: 2
+  cover_image: images/noimage.jpg
+
+- slug: おうぎ形の弧と面積_教材
+  title: おうぎ形の弧と面積
+  icon: "🥧"
+  description: 弧の長さと扇形の面積を中心角で計算しよう！
+  level: 標準
+  level_num: 2
+  category: geometry
+  order: 3
+  cover_image: images/noimage.jpg
+
+- slug: 立体図形の体積と表面積_教材
+  title: 立体図形の体積と表面積
+  icon: "📦"
+  description: 角柱・円柱・円錐・角錐の体積と側面積をマスターしよう！
+  level: 標準
+  level_num: 2
+  category: geometry
+  order: 4
+  cover_image: images/volume_solids.png
+
+- slug: データの分析と確率_教材
+  title: データの分析と確率
+  icon: "🎲"
+  description: 代表値・四分位数・経験的確率をマスターして宝箱を開けよう！
+  level: 標準
+  level_num: 2
+  category: data
+  order: 1
+  cover_image: images/データの分析と確率_教材.jpg
+
+- slug: 確率の基本法則_教材
+  title: 確率の基本法則
+  icon: "🧮"
+  description: 余事象・和の法則・条件付き確率をマスターしよう！
+  level: 標準
+  level_num: 2
+  category: data
+  order: 2
+  cover_image: images/noimage.jpg

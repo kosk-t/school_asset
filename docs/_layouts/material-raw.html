@@ -1,0 +1,91 @@
+---
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} - {{ site.title }}</title>
+
+    <!-- KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- 共通CSS -->
+    <link rel="stylesheet" href="{{ '/css/education-template.css' | relative_url }}">
+
+    {% if page.battle_game %}
+    <!-- バトルゲーム用CSS -->
+    <link rel="stylesheet" href="{{ '/css/battle-game.css' | relative_url }}">
+    {% endif %}
+
+    <!-- KaTeX JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+            onload="renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '\\[', right: '\\]', display: true},
+                    {left: '\\(', right: '\\)', display: false}
+                ],
+                throwOnError: false
+            });"></script>
+</head>
+<body>
+    <!--
+    ========== 教材メタ情報（画像生成用） ==========
+    テーマ: {{ page.title }}
+    対象: {{ page.level | default: "中学生・基礎〜標準レベル" }}
+    概要: {{ page.description }}
+    キーワード: {{ page.keywords | join: ", " }}
+    イメージ: {{ page.cover_description }}
+    ================================================
+    -->
+
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="{{ '/' | relative_url }}">トップページに戻る</a>
+        </nav>
+
+        <h1>{{ page.icon }} {{ page.title }}</h1>
+        <div class="subtitle">{{ page.subtitle | default: page.level | default: "中学生・基礎〜標準レベル" }}</div>
+
+        {% if page.cover_image %}
+        <div class="cover-image">
+            <img src="{{ page.cover_image | relative_url }}" alt="{{ page.title }}">
+        </div>
+        {% endif %}
+
+        {% if page.toc %}
+        <nav class="toc">
+            <div class="toc-title">📚 目次</div>
+            <ol class="toc-list">
+                {% for item in page.toc %}
+                <li><a href="#{{ item.id }}">{{ item.title }}</a></li>
+                {% endfor %}
+            </ol>
+        </nav>
+        {% endif %}
+
+        {{ content }}
+
+        {% if page.related %}
+        <div class="related-materials" id="related">
+            <h3>📎 関連教材</h3>
+            <ul>
+                {% for item in page.related %}
+                <li>
+                    <a href="{{ item.url | relative_url }}" class="tag-{{ item.type | default: 'related' }}">
+                        <span class="material-name">{{ item.icon }} {{ item.title }}</span>
+                        {% if item.note %}<span class="relation-note">{{ item.note }}</span>{% endif %}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <nav class="breadcrumb breadcrumb-footer">
+            <a href="{{ '/' | relative_url }}">トップページに戻る</a>
+        </nav>
+    </div>
+</body>
+</html>
