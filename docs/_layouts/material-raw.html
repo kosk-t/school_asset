@@ -1,0 +1,45 @@
+---
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} - {{ site.title }}</title>
+
+    <!-- KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- 共通CSS -->
+    <link rel="stylesheet" href="{{ '/css/education-template.css' | relative_url }}">
+
+    {% if page.battle_game %}
+    <!-- バトルゲーム用CSS -->
+    <link rel="stylesheet" href="{{ '/css/battle-game.css' | relative_url }}">
+    {% endif %}
+
+    <!-- KaTeX JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+            onload="renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '\\[', right: '\\]', display: true},
+                    {left: '\\(', right: '\\)', display: false}
+                ],
+                throwOnError: false
+            });"></script>
+</head>
+<body>
+    <!--
+    ========== 教材メタ情報（画像生成用） ==========
+    テーマ: {{ page.title }}
+    対象: {{ page.level | default: "中学生・基礎〜標準レベル" }}
+    概要: {{ page.description }}
+    キーワード: {{ page.keywords | join: ", " }}
+    イメージ: {{ page.cover_description }}
+    ================================================
+    -->
+
+    {{ content }}
+</body>
+</html>

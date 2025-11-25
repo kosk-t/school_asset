@@ -1,0 +1,10 @@
+{% case include.level %}
+{% when 1 %}
+<span class="level-badge lvl-basic">Lv.1 {{ include.level_name }}</span>
+{% when 2 %}
+<span class="level-badge lvl-standard">Lv.2 {{ include.level_name }}</span>
+{% when 3 %}
+<span class="level-badge lvl-advanced">Lv.3 {{ include.level_name }}</span>
+{% else %}
+<span class="level-badge lvl-standard">Lv.2 {{ include.level_name }}</span>
+{% endcase %}

@@ -1,0 +1,7 @@
+<div class="rule-box">
+    <strong>📌 {{ include.title }}</strong>
+    {% if include.example_link %}
+    <a href="#{{ include.example_link }}" class="example-link">→ {{ include.example_text | default: "例題" }}</a>
+    {% endif %}
+    {{ include.content }}
+</div>

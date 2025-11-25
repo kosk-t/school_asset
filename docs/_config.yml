@@ -1,0 +1,69 @@
+# Jekyll設定ファイル
+title: 数学クエスト
+description: 中学数学教材ライブラリ
+url: ""
+baseurl: ""
+
+# ビルド設定
+encoding: UTF-8
+markdown: kramdown
+highlighter: rouge
+
+# Kramdown設定（数式との互換性）
+kramdown:
+  input: GFM
+  math_engine: null
+  syntax_highlighter: rouge
+  hard_wrap: false
+
+# コレクション設定
+collections:
+  materials:
+    output: true
+    permalink: /:name.html
+
+# デフォルト値
+defaults:
+  - scope:
+      path: ""
+      type: "materials"
+    values:
+      layout: "material-raw"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+
+# 除外ファイル
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+  - CLAUDE.md
+  - scripts/
+  - assets/
+
+# プラグイン
+plugins:
+  - jekyll-seo-tag
+
+# カテゴリ定義（日本語表示用）
+categories:
+  numbers:
+    name: "数と式"
+    icon: "🧮"
+  equations:
+    name: "方程式"
+    icon: "⚖️"
+  functions:
+    name: "関数"
+    icon: "📈"
+  geometry:
+    name: "図形"
+    icon: "📐"
+  data:
+    name: "データの活用"
+    icon: "📊"

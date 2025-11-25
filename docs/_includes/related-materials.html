@@ -1,0 +1,20 @@
+{% if include.materials %}
+<div class="related-materials">
+    <h3>📎 関連教材</h3>
+    <ul>
+        {% for rel in include.materials %}
+        {% assign material = site.materials | where: "slug", rel.slug | first %}
+        {% if material %}
+        <li>
+            <a href="{{ material.url | relative_url }}" class="tag-{{ rel.type | default: 'related' }}">
+                <span class="material-name">{{ material.title }}</span>
+                {% if rel.note %}
+                <span class="relation-note">{{ rel.note }}</span>
+                {% endif %}
+            </a>
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}

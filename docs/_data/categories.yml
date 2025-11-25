@@ -1,0 +1,25 @@
+# カテゴリ定義
+- id: numbers
+  name: "数と式"
+  icon: "🧮"
+  order: 1
+
+- id: equations
+  name: "方程式"
+  icon: "⚖️"
+  order: 2
+
+- id: functions
+  name: "関数"
+  icon: "📈"
+  order: 3
+
+- id: geometry
+  name: "図形"
+  icon: "📐"
+  order: 4
+
+- id: data
+  name: "データの活用"
+  icon: "📊"
+  order: 5

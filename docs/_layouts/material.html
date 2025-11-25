@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} - {{ site.title }}</title>
+
+    {% include head-css.html %}
+    {% if page.battle_game %}
+    <link rel="stylesheet" href="{{ '/css/battle-game.css' | relative_url }}">
+    {% endif %}
+    {% include head-katex.html %}
+</head>
+<body>
+    <!--
+    ========== 教材メタ情報（画像生成用） ==========
+    テーマ: {{ page.title }}
+    対象: {{ page.level | default: "中学生・基礎〜標準レベル" }}
+    概要: {{ page.description }}
+    キーワード: {{ page.keywords | join: ", " }}
+    イメージ: {{ page.cover_description }}
+    ================================================
+    -->
+
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="{{ '/' | relative_url }}">トップページに戻る</a>
+        </nav>
+
+        <h1>{{ page.icon }} {{ page.title }}</h1>
+        <div class="subtitle">{{ page.level | default: "中学生・基礎〜標準レベル" }}</div>
+
+        {% if page.cover_image %}
+        <div class="cover-image">
+            <img src="{{ page.cover_image | relative_url }}" alt="{{ page.title }}">
+        </div>
+        {% endif %}
+
+        {% include toc.html %}
+
+        {{ content }}
+
+        {% if page.related_materials %}
+        {% include related-materials.html materials=page.related_materials %}
+        {% endif %}
+
+        <nav class="breadcrumb breadcrumb-footer">
+            <a href="{{ '/' | relative_url }}">トップページに戻る</a>
+        </nav>
+    </div>
+</body>
+</html>

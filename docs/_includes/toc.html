@@ -1,0 +1,10 @@
+{% if page.toc %}
+<nav class="toc">
+    <div class="toc-title">📚 目次</div>
+    <ol class="toc-list">
+        {% for item in page.toc %}
+        <li><a href="#{{ item.id }}">{{ item.title }}</a></li>
+        {% endfor %}
+    </ol>
+</nav>
+{% endif %}
