@@ -33,7 +33,7 @@ title: トップページ
             <div class="material-grid">
                 {% assign cat_materials = site.data.materials | where: "category", category.id | sort: "order" %}
                 {% for material in cat_materials %}
-                <a href="{{ material.slug }}.html" class="quest-card">
+                <a href="{{ material.slug | append: '.html' | relative_url }}" class="quest-card">
                     <div class="quest-icon">{{ material.icon }}</div>
                     <div class="quest-title">{{ material.title }}</div>
                     <div class="quest-desc">{{ material.description }}</div>

@@ -43,9 +43,10 @@ assets/
 ### Jekyllビルド
 ```bash
 cd docs
-bundle install        # 初回のみ
-bundle exec jekyll serve  # 開発サーバー起動
+bundle install                         # 初回のみ
+bundle exec jekyll serve --baseurl ""  # ローカル開発（http://localhost:4000/）
 ```
+※ GitHub Pages用に`baseurl: "/school_asset"`を設定しているため、ローカルでは`--baseurl ""`で上書きする
 
 ## コーディング規約
 - インデント: スペース4つ

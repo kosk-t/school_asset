@@ -1,8 +1,8 @@
 # Jekyll設定ファイル
 title: 数学クエスト
 description: 中学数学教材ライブラリ
-url: ""
-baseurl: ""
+url: "https://kosk-t.github.io"
+baseurl: "/school_asset"
 
 # ビルド設定
 encoding: UTF-8
