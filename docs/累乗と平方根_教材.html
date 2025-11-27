@@ -245,6 +245,74 @@ toc:
         </div>
 
         <div class="rule-box">
+            <strong>📌 底が同じ累乗の方程式（指数が等しい）</strong> <a href="#ex-equation" class="example-link">→ 例8</a>
+            <div class="important-rule" style="background: #fff3e0; border-left: 4px solid #ff9800; padding: 10px; margin: 10px 0;">
+                💡 <strong>底が同じで累乗が等しいなら、指数も等しい！</strong>
+            </div>
+
+            <div class="formula">
+                \[ a^m = a^n \quad \Rightarrow \quad m = n \quad (a \neq 0, a \neq 1) \]
+            </div>
+
+            <p style="background: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                <strong>📝 具体例で理解：</strong><br>
+                \( 3^{x+5} = 3^{2x+4} \) のとき → 底が3で同じ → 指数が等しい → \( x+5 = 2x+4 \) → \( x = 1 \)
+            </p>
+
+            <p><strong>💡 なぜそうなる？</strong></p>
+            <ul>
+                <li>底が1より大きい（または0と1の間）なら、累乗の値は指数によって一意に決まる</li>
+                <li>例：\( 2^3 = 8 \) と \( 2^5 = 32 \) は異なる値。\( 2^m = 2^n \) なら \( m = n \) しかありえない</li>
+            </ul>
+
+            <!-- 累乗の方程式の図解 -->
+            <div class="svg-container">
+                <svg width="700" height="180" viewBox="0 0 700 180">
+                    <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
+                        text-anchor="middle">底が同じなら、指数を等式にできる</text>
+
+                    <!-- 元の方程式 -->
+                    <rect x="50" y="60" width="180" height="50" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"
+                        rx="8" />
+                    <text x="140" y="92" font-size="18" font-weight="bold" fill="#1976d2" text-anchor="middle">3^(x+5) = 3^(2x+4)</text>
+
+                    <!-- 矢印 -->
+                    <path d="M 240 85 L 280 85" stroke="#4caf50" stroke-width="3" marker-end="url(#arrow-eq)" />
+                    <text x="260" y="75" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">底が同じ</text>
+
+                    <!-- 指数の等式 -->
+                    <rect x="290" y="60" width="160" height="50" fill="#c8e6c9" stroke="#4caf50" stroke-width="2"
+                        rx="8" />
+                    <text x="370" y="92" font-size="18" font-weight="bold" fill="#2e7d32" text-anchor="middle">x+5 = 2x+4</text>
+
+                    <!-- 矢印 -->
+                    <path d="M 460 85 L 500 85" stroke="#ff9800" stroke-width="3" marker-end="url(#arrow-solve)" />
+                    <text x="480" y="75" font-size="14" font-weight="bold" fill="#ff9800" text-anchor="middle">解く</text>
+
+                    <!-- 解 -->
+                    <rect x="510" y="60" width="80" height="50" fill="#fff3e0" stroke="#ff9800" stroke-width="3"
+                        rx="8" />
+                    <text x="550" y="92" font-size="20" font-weight="bold" fill="#e65100" text-anchor="middle">x = 1</text>
+
+                    <!-- 説明 -->
+                    <rect x="150" y="135" width="400" height="35" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2" rx="8" />
+                    <text x="350" y="158" font-size="14" font-weight="bold" fill="#7b1fa2" text-anchor="middle">
+                        底が同じなら、累乗が等しい ⇔ 指数が等しい</text>
+
+                    <defs>
+                        <marker id="arrow-eq" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#4caf50" />
+                        </marker>
+                        <marker id="arrow-solve" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#ff9800" />
+                        </marker>
+                    </defs>
+                </svg>
+                <div class="svg-caption">累乗の方程式は、指数の方程式に変換できる</div>
+            </div>
+        </div>
+
+        <div class="rule-box">
             <strong>📌 べき乗のべき乗・積の累乗</strong> <a href="#ex-power" class="example-link">→ 例2</a>
             <div class="formula">
                 \[ (a^m)^n = a^{mn} \quad \text{（べき乗のべき乗 → 指数をかける）} \]
@@ -517,6 +585,37 @@ toc:
             <p>※直接計算：\( 2^3 + 2^5 = 8 + 32 = 40 \)、\( 3^4 + 3^4 = 81 + 81 = 162 \) でも同じ答え</p>
         </div>
 
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 累乗の方程式</h3>
+
+        <div class="example-box" id="ex-equation">
+            <div class="example-title">
+                <span class="number-badge">例8</span>底が同じ累乗の方程式
+            </div>
+            <p>\( 3^{x+5} = 3^{2x+4} \) と \( 2^{3x-1} = 8 \) を解く</p>
+            <p><strong>解き方：</strong></p>
+            <p><strong>① \( 3^{x+5} = 3^{2x+4} \) の解法</strong></p>
+            <ol>
+                <li>底が同じ3なので、指数が等しい</li>
+                <li>\( x+5 = 2x+4 \)</li>
+                <li>方程式を解く → \( x = 1 \)</li>
+            </ol>
+            <div class="formula">
+                \[ 3^{x+5} = 3^{2x+4} \quad \Rightarrow \quad x+5 = 2x+4 \quad \Rightarrow \quad x = 1 \]
+            </div>
+
+            <p><strong>② \( 2^{3x-1} = 8 \) の解法</strong></p>
+            <ol>
+                <li>右辺を2の累乗で表す → \( 8 = 2^3 \)</li>
+                <li>両辺が同じ底2になった → \( 2^{3x-1} = 2^3 \)</li>
+                <li>指数が等しい → \( 3x-1 = 3 \)</li>
+                <li>方程式を解く → \( 3x = 4 \) → \( x = \frac{4}{3} \)</li>
+            </ol>
+            <div class="formula">
+                \[ 2^{3x-1} = 8 = 2^3 \quad \Rightarrow \quad 3x-1 = 3 \quad \Rightarrow \quad x = \frac{4}{3} \]
+            </div>
+            <p>※ポイント：右辺を累乗の形（2³、3⁴など）に変換してから、底を揃える</p>
+        </div>
+
         <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 負の指数（マイナス乗）</h3>
 
         <div class="example-box" id="ex-negative">
@@ -765,6 +864,35 @@ toc:
                 </div>
             </details>
         </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習6</strong>
+            <p>\( 2^{x+3} = 2^{7} \) を解きなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>底が同じ2なので、指数が等しい：</p>
+                    <p>\( x+3 = 7 \)</p>
+                    <p>\( x = 4 \)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習7</strong>
+            <p>\( 3^{2x-1} = 27 \) を解きなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>右辺を3の累乗で表す：\( 27 = 3^3 \)</p>
+                    <p>\( 3^{2x-1} = 3^3 \)</p>
+                    <p>底が同じなので、指数が等しい：</p>
+                    <p>\( 2x-1 = 3 \)</p>
+                    <p>\( 2x = 4 \)</p>
+                    <p>\( x = 2 \)</p>
+                </div>
+            </details>
+        </div>
     </div>
 </section>
 
@@ -932,6 +1060,10 @@ toc:
         { q: "2³ + 2⁵ = ?", choices: ["40", "32", "256", "2⁸"], answer: 0 },
         { q: "3² + 3² = ?", choices: ["9", "18", "81", "3⁴"], answer: 1 },
         { q: "2⁴ + 2⁴ = ?", choices: ["16", "32", "64", "256"], answer: 1 },
+        // 累乗の方程式
+        { q: "2ˣ = 16 のとき x = ?", choices: ["2", "3", "4", "8"], answer: 2 },
+        { q: "3ˣ = 27 のとき x = ?", choices: ["1", "2", "3", "9"], answer: 2 },
+        { q: "5ˣ = 125 のとき x = ?", choices: ["2", "3", "4", "5"], answer: 1 },
     ];
 
     // シャッフル関数
