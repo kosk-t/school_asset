@@ -65,18 +65,18 @@ related:
 <section id="section2">
     <h2>2. 覚えるルール</h2>
     <div class="section">
-        <p><strong>二次関数</strong>とは、\(x\) の2乗を含む関数です！E/p>
+        <p><strong>二次関数</strong>とは、\(x\) の2乗を含む関数です。</p>
         <div class="formula">
             \[ y = ax^2 + bx + c \quad (a \neq 0) \]
         </div>
-        <p style="color: #666; font-size: 0.9em;">ↁE\(a, b, c\) は定数、E(a = 0\) だと2乗がなくなり一次関数になる�Eで、\(a \neq 0\)
-            が条件、E/p>
+        <p style="color: #666; font-size: 0.9em;">※ \(a, b, c\) は定数。\(a = 0\) だと2乗がなくなり一次関数になるので、\(a \neq 0\)
+            が条件。</p>
 
         <div class="important-rule">
-            🎯 最重要E��二次関数のグラフ�E「放物線」、対称軸は \(x = -\frac{b}{2a}\)
+            🎯 最重要：二次関数のグラフは「放物線」、対称軸は \(x = -\frac{b}{2a}\)
         </div>
 
-        <!-- グラフ�E概要図 -->
+        <!-- グラフの概要図 -->
         <div class="svg-container">
             <svg width="700" height="280" viewBox="0 0 700 280">
                 <defs>
@@ -87,7 +87,7 @@ related:
 
                 <!-- タイトル -->
                 <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
-                    text-anchor="middle">二次関数のグラフ�E特徴</text>
+                    text-anchor="middle">二次関数のグラフの特徴</text>
 
                 <!-- 座標軸 -->
                 <line x1="50" y1="240" x2="650" y2="240" stroke="#333" stroke-width="2" marker-end="url(#axis-arrow)" />
@@ -96,7 +96,7 @@ related:
                 <text x="340" y="35" font-size="14" fill="#333">y</text>
                 <text x="335" y="255" font-size="14" fill="#333">O</text>
 
-                <!-- 放物線（下に凸�E�E- 2つの二次ベジェ曲線で正確に描画 -->
+                <!-- 放物線（下に凸）- 2つの二次ベジェ曲線で正確に描画 -->
                 <path d="M 150 240 Q 250 80 350 80 Q 450 80 550 240" stroke="#e53935" stroke-width="3" fill="none" />
 
                 <!-- 頂点 -->
@@ -108,37 +108,37 @@ related:
                 <text x="380" y="160" font-size="14" font-weight="bold" fill="#1976d2">対称軸</text>
                 <text x="380" y="178" font-size="14" fill="#1976d2">x = -b/(2a)</text>
 
-                <!-- 注釁E-->
+                <!-- 注釈 -->
                 <rect x="490" y="120" width="180" height="100" fill="#fff3e0" stroke="#ff9800" stroke-width="2"
                     rx="8" />
                 <text x="580" y="145" font-size="14" font-weight="bold" fill="#e65100"
-                    text-anchor="middle">放物線�E性質</text>
+                    text-anchor="middle">放物線の性質</text>
                 <text x="580" y="165" font-size="14" fill="#333" text-anchor="middle">• 対称軸で左右対称</text>
                 <text x="580" y="183" font-size="14" fill="#333" text-anchor="middle">• 頂点で折り返す</text>
-                <text x="580" y="201" font-size="14" fill="#333" text-anchor="middle">• なめらかな曲緁E/text>
+                <text x="580" y="201" font-size="14" fill="#333" text-anchor="middle">• なめらかな曲線</text>
             </svg>
-            <div class="svg-caption">二次関数のグラフ�E放物線（対称軸で左右対称�E�E/div>
+            <div class="svg-caption">二次関数のグラフは放物線（対称軸で左右対称）</div>
         </div>
 
         <div class="rule-box">
-            <strong>📌 \(a\) の符号とグラフ�E向き</strong> <a href="#ex-shape" class="example-link">ↁE侁E</a>
+            <strong>📌 \(a\) の符号とグラフの向き</strong> <a href="#ex-shape" class="example-link">→ 例1</a>
             <ul>
-                <li><strong>\(a > 0\)�E�正�E�E/strong>�E�下に凸�E�∪型）、E��点が最小値</li>
-                <li><strong>\(a < 0\)�E�負�E�E/strong>�E�上に凸�E�∩型）、E��点が最大値</li>
+                <li><strong>\(a > 0\)（正）</strong>：下に凸（∪型）、頂点が最小値</li>
+                <li><strong>\(a < 0\)（負）</strong>：上に凸（∩型）、頂点が最大値</li>
             </ul>
-            <p><strong>💡 なぜそぁE��る！E/strong> \(y = ax^2\) で \(x^2\) は常に正�E�また�E0�E�、E(a > 0\) なめE\(y\)
-                も正の方向（上）に大きくなり、\(a < 0\) なら負の方向（下）に小さくなる。だから \(a\) の符号でグラフ�E向きが決まる、E/p>
+            <p><strong>💡 なぜそうなる？</strong> \(y = ax^2\) で \(x^2\) は常に正（または0）。\(a > 0\) なら \(y\)
+                も正の方向（上）に大きくなり、\(a < 0\) なら負の方向（下）に小さくなる。だから \(a\) の符号でグラフの向きが決まる。</p>
 
-                    <!-- aの符号とグラフ�E図 -->
+                    <!-- aの符号とグラフの図 -->
                     <div class="svg-container">
                         <svg width="700" height="220" viewBox="0 0 700 220">
                             <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">a
-                                の符号とグラフ�E向き</text>
+                                の符号とグラフの向き</text>
 
-                            <!-- a > 0�E�下に凸�E�E ∪型、E��点が下（最小値�E�E-->
+                            <!-- a > 0（下に凸） ∪型、頂点が下（最小値）-->
                             <g transform="translate(50, 40)">
                                 <text x="130" y="0" font-size="15" font-weight="bold" fill="#4caf50"
-                                    text-anchor="middle">a > 0�E�下に凸�E�E/text>
+                                    text-anchor="middle">a > 0（下に凸）</text>
                                 <line x1="20" y1="140" x2="240" y2="140" stroke="#999" stroke-width="1" />
                                 <line x1="130" y1="160" x2="130" y2="15" stroke="#999" stroke-width="1" />
                                 <path d="M 40 30 Q 85 140 130 140 Q 175 140 220 30" stroke="#4caf50" stroke-width="3"
@@ -147,10 +147,10 @@ related:
                                 <text x="130" y="172" font-size="14" fill="#4caf50" text-anchor="middle">頂点が最小値</text>
                             </g>
 
-                            <!-- a < 0�E�上に凸�E�E ∩型、E��点が上（最大値�E�E-->
+                            <!-- a < 0（上に凸） ∩型、頂点が上（最大値）-->
                             <g transform="translate(380, 40)">
                                 <text x="130" y="0" font-size="15" font-weight="bold" fill="#e53935"
-                                    text-anchor="middle">a < 0�E�上に凸�E�E/text>
+                                    text-anchor="middle">a &lt; 0（上に凸）</text>
                                         <line x1="20" y1="140" x2="240" y2="140" stroke="#999" stroke-width="1" />
                                         <line x1="130" y1="160" x2="130" y2="15" stroke="#999" stroke-width="1" />
                                         <path d="M 40 140 Q 85 30 130 30 Q 175 30 220 140" stroke="#e53935"
@@ -165,42 +165,42 @@ related:
                     </div>
 
                     <div class="rule-box">
-                        <strong>📌 対称軸の公弁E/strong> <a href="#ex-axis" class="example-link">ↁE侁E</a>
-                        <p>\(y = ax^2 + bx + c\) の対称軸は�E�E/p>
+                        <strong>📌 対称軸の公式</strong> <a href="#ex-axis" class="example-link">→ 例2</a>
+                        <p>\(y = ax^2 + bx + c\) の対称軸は：</p>
                         <div class="formula">
                             \[ x = -\frac{b}{2a} \]
                         </div>
-                        <p style="color: #666; font-size: 0.9em;">ↁEグラフを左右に刁E��る縦の直線。この直線で折り返すと左右が重なる、E/p>
-                        <p><strong>💡 なぜこの公式！E/strong> 平方完�Eすると \(y = a(x - p)^2 + q\) の形になり、\(x = p\) が対称軸。計算すると
-                            \(p = -\frac{b}{2a}\) になる（平方完�Eの公式から導ける）、E/p>
+                        <p style="color: #666; font-size: 0.9em;">※ グラフを左右に分ける縦の直線。この直線で折り返すと左右が重なる。</p>
+                        <p><strong>💡 なぜこの公式？</strong> 平方完成すると \(y = a(x - p)^2 + q\) の形になり、\(x = p\) が対称軸。計算すると
+                            \(p = -\frac{b}{2a}\) になる（平方完成の公式から導ける）。</p>
                     </div>
 
                     <div class="rule-box">
-                        <strong>📌 頂点の座樁E/strong> <a href="#ex-vertex" class="example-link">ↁE侁E</a>
-                        <p><strong>方況E�E�対称軸から求める（おすすめE��E/strong></p>
+                        <strong>📌 頂点の座標</strong> <a href="#ex-vertex" class="example-link">→ 例3</a>
+                        <p><strong>方法①：対称軸から求める（おすすめ）</strong></p>
                         <ol style="margin: 10px 0 0 20px;">
-                            <li>対称軸 \(x = -\frac{b}{2a}\) を計箁E/li>
-                            <li>そ�E \(x\) を�Eの式に代入して \(y\) を計箁E/li>
-                            <li>ↁE頂点の座標�E \((x, y)\)</li>
+                            <li>対称軸 \(x = -\frac{b}{2a}\) を計算</li>
+                            <li>その \(x\) を元の式に代入して \(y\) を計算</li>
+                            <li>→ 頂点の座標は \((x, y)\)</li>
                         </ol>
 
-                        <p style="margin-top: 15px;"><strong>方況E�E�平方完�Eで求めめE/strong> <a href="#ex-vertex2"
-                                class="example-link">ↁE侁E-2</a></p>
-                        <p>\(y = a(x - p)^2 + q\) の形に変形できれば、Estrong>頂点は \((p, q)\)</strong></p>
-                        <p><strong>💡 なぜ頂点で最大・最小！E/strong> 放物線�E対称軸を中忁E��左右対称。頂点から離れるほど \(y\)
-                            の値が変わる�Eで、E��点が折り返し点�E�最大値か最小値�E�になる、E/p>
+                        <p style="margin-top: 15px;"><strong>方法②：平方完成で求める</strong> <a href="#ex-vertex2"
+                                class="example-link">→ 例3-2</a></p>
+                        <p>\(y = a(x - p)^2 + q\) の形に変形できれば、<strong>頂点は \((p, q)\)</strong></p>
+                        <p><strong>💡 なぜ頂点で最大・最小？</strong> 放物線は対称軸を中心に左右対称。頂点から離れるほど \(y\)
+                            の値が変わるので、頂点が折り返し点（最大値か最小値）になる。</p>
                     </div>
 
                     <div class="rule-box">
-                        <strong>📌 最大値・最小値の求め方</strong> <a href="#ex-maxmin" class="example-link">ↁE侁E</a> <a
-                            href="#ex-projectile" class="example-link">ↁE侁E�E�応用�E�E/a>
+                        <strong>📌 最大値・最小値の求め方</strong> <a href="#ex-maxmin" class="example-link">→ 例4</a> <a
+                            href="#ex-projectile" class="example-link">→ 例5（応用）</a>
                         <ol style="margin: 10px 0 0 20px;">
-                            <li>頂点の座樁E\((p, q)\) を求めめE/li>
-                            <li>\(a > 0\) なら下に凸 ↁE頂点で<strong>最小値 \(q\)</strong>�E�最大値なし！E/li>
-                            <li>\(a < 0\) なら上に凸 ↁE頂点で<strong>最大値 \(q\)</strong>�E�最小値なし！E/li>
+                            <li>頂点の座標 \((p, q)\) を求める</li>
+                            <li>\(a > 0\) なら下に凸 → 頂点で<strong>最小値 \(q\)</strong>（最大値なし）</li>
+                            <li>\(a < 0\) なら上に凸 → 頂点で<strong>最大値 \(q\)</strong>（最小値なし）</li>
                         </ol>
-                        <p style="margin-top: 10px;"><strong>💡 「定義域」がある場合�E�E�E/strong> 「\(x\) の篁E��ぁE\(a \leq x
-                            \leq b\)」�Eように制限があるとき�E、E��点だけでなく端点 \(x = a, x = b\) でも値を計算し、その中で最大・最小を判定する、E/p>
+                        <p style="margin-top: 10px;"><strong>💡 「定義域」がある場合：</strong> 「\(x\) の範囲が \(a \leq x
+                            \leq b\)」のように制限があるときは、頂点だけでなく端点 \(x = a, x = b\) でも値を計算し、その中で最大・最小を判定する。</p>
                     </div>
         </div>
 </section>
@@ -209,143 +209,143 @@ related:
 <section id="section3">
     <h2>3. 例題と解き方</h2>
     <div class="section">
-        <p>ルールを使って実際に解ぁE��みましょぁE��E/p>
+        <p>ルールを使って実際に解いてみましょう。</p>
 
-        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ グラフ�E向きを判定すめE/h3>
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ グラフの向きを判定する</h3>
 
         <div class="example-box" id="ex-shape">
             <div class="example-title">
-                <span class="number-badge">侁E</span>グラフ�E向きを判定すめE
+                <span class="number-badge">例1</span>グラフの向きを判定する
             </div>
-            <p>次の二次関数のグラフ�E上に凸か、下に凸か判定せよ、E/p>
-            <p>�E�E�E�\(y = 2x^2 + 3x - 1\)　　�E�E�E�\(y = -x^2 + 4x + 5\)</p>
-            <p><strong>解き方�E�E/strong></p>
+            <p>次の二次関数のグラフは上に凸か、下に凸か判定せよ。</p>
+            <p>（1）\(y = 2x^2 + 3x - 1\)　　（2）\(y = -x^2 + 4x + 5\)</p>
+            <p><strong>解き方：</strong></p>
             <ol>
-                <li>\(x^2\) の係数 \(a\) の符号を確認すめE/li>
+                <li>\(x^2\) の係数 \(a\) の符号を確認する</li>
                 <li>\(a > 0\) なら下に凸、\(a < 0\) なら上に凸</li>
             </ol>
-            <p><strong>答え�E�E/strong></p>
-            <p>�E�E�E�\(a = 2 > 0\) なので<strong>下に凸</strong></p>
-            <p>�E�E�E�\(a = -1 < 0\) なので<strong>上に凸</strong></p>
+            <p><strong>答え：</strong></p>
+            <p>（1）\(a = 2 > 0\) なので<strong>下に凸</strong></p>
+            <p>（2）\(a = -1 < 0\) なので<strong>上に凸</strong></p>
         </div>
 
-        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 対称軸を求めめE/h3>
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 対称軸を求める</h3>
 
         <div class="example-box" id="ex-axis">
             <div class="example-title">
-                <span class="number-badge">侁E</span>対称軸を求めめE
+                <span class="number-badge">例2</span>対称軸を求める
             </div>
-            <p>\(y = x^2 - 4x + 3\) の対称軸の方程式を求めよ、E/p>
-            <p><strong>解き方�E�E/strong></p>
+            <p>\(y = x^2 - 4x + 3\) の対称軸の方程式を求めよ。</p>
+            <p><strong>解き方：</strong></p>
             <ol>
-                <li>係数を確認すめEↁE\(a = 1, b = -4, c = 3\)</li>
-                <li>対称軸の公弁E\(x = -\frac{b}{2a}\) に代入</li>
+                <li>係数を確認する → \(a = 1, b = -4, c = 3\)</li>
+                <li>対称軸の公式 \(x = -\frac{b}{2a}\) に代入</li>
             </ol>
             <div class="formula">
                 \[ x = -\frac{-4}{2 \cdot 1} = \frac{4}{2} = 2 \]
             </div>
-            <p><strong>答え�E�\(x = 2\)</strong></p>
+            <p><strong>答え：\(x = 2\)</strong></p>
         </div>
 
-        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 頂点を求めめE/h3>
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 頂点を求める</h3>
 
         <div class="example-box" id="ex-vertex">
             <div class="example-title">
-                <span class="number-badge">侁E</span>頂点を求める（対称軸から�E�E
+                <span class="number-badge">例3</span>頂点を求める（対称軸から）
             </div>
-            <p>同じ関数 \(y = x^2 - 4x + 3\) の頂点の座標を求めよ、E/p>
-            <p><strong>解き方�E�E/strong></p>
+            <p>同じ関数 \(y = x^2 - 4x + 3\) の頂点の座標を求めよ。</p>
+            <p><strong>解き方：</strong></p>
             <ol>
-                <li>対称軸 \(x = 2\) を求める（侁Eより�E�E/li>
-                <li>こ�E \(x\) の値を�Eの式に代入して \(y\) を求めめE/li>
+                <li>対称軸 \(x = 2\) を求める（例2より）</li>
+                <li>この \(x\) の値を元の式に代入して \(y\) を求める</li>
             </ol>
             <div class="formula">
                 \[ y = 2^2 - 4 \cdot 2 + 3 = 4 - 8 + 3 = -1 \]
             </div>
-            <p><strong>答え�E�頂点 \((2, -1)\)</strong></p>
+            <p><strong>答え：頂点 \((2, -1)\)</strong></p>
         </div>
 
         <div class="example-box" id="ex-vertex2">
             <div class="example-title">
-                <span class="number-badge">侁E-2</span>頂点を求める（平方完�Eで�E�E
+                <span class="number-badge">例3-2</span>頂点を求める（平方完成で）
             </div>
-            <p>同じ関数 \(y = x^2 - 4x + 3\) を平方完�Eして頂点を求めよ、E/p>
-            <p><strong>解き方�E�E/strong></p>
+            <p>同じ関数 \(y = x^2 - 4x + 3\) を平方完成して頂点を求めよ。</p>
+            <p><strong>解き方：</strong></p>
             <ol>
-                <li>\(x\) の係数�E�E4�E�を半�Eにして2乁EↁE\(\left(\frac{-4}{2}\right)^2 = (-2)^2 = 4\)</li>
-                <li>こ�E、E」を<strong>足して、同じ�Eだけ引く</strong>�E�式�E値を変えなぁE��めE��E/li>
-                <li>カチE��でまとめて完�E</li>
+                <li>\(x\) の係数（-4）を半分にして2乗 → \(\left(\frac{-4}{2}\right)^2 = (-2)^2 = 4\)</li>
+                <li>この「4」を<strong>足して、同じ分だけ引く</strong>（式の値を変えないため）</li>
+                <li>カッコでまとめて完成</li>
             </ol>
             <div class="formula">
                 \[ y = x^2 - 4x + 3 \]
             </div>
-            <p>ↁE\(+4\) を足して、\(-4\) を引く�E��Eラマイゼロ�E�E/p>
+            <p>→ \(+4\) を足して、\(-4\) を引く（プラマイゼロ）</p>
             <div class="formula">
                 \[ y = x^2 - 4x \textcolor{blue}{+ 4} + 3 \textcolor{blue}{- 4} \]
             </div>
-            <p>ↁE前半3つぁE\((x-2)^2\) になめE/p>
+            <p>→ 前半3つが \((x-2)^2\) になる</p>
             <div class="formula">
                 \[ y = (x - 2)^2 + 3 - 4 \]
                 \[ y = (x - 2)^2 - 1 \]
             </div>
-            <p>\(y = (x - 2)^2 - 1\) より、Estrong>頂点は \((2, -1)\)</strong></p>
+            <p>\(y = (x - 2)^2 - 1\) より、<strong>頂点は \((2, -1)\)</strong></p>
             <p style="background: #e3f2fd; padding: 10px; border-radius: 5px; margin-top: 10px;">
-                <strong>💡 ポイント！E/strong>「足した刁E��け引く」から式�E値は変わらなぁE��これで \((x - ◯)^2\) の形が作れる！E
+                <strong>💡 ポイント：</strong>「足した分だけ引く」から式の値は変わらない。これで \((x - ◯)^2\) の形が作れる！
             </p>
         </div>
 
-        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 最大値・最小値を求めめE/h3>
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 最大値・最小値を求める</h3>
 
         <div class="example-box" id="ex-maxmin">
             <div class="example-title">
-                <span class="number-badge">侁E</span>最大値・最小値を求めめE
+                <span class="number-badge">例4</span>最大値・最小値を求める
             </div>
-            <p>次の二次関数の最大値また�E最小値を求めよ、E/p>
-            <p>�E�E�E�\(y = x^2 - 4x + 3\)　　�E�E�E�\(y = -2x^2 + 8x - 5\)</p>
-            <p><strong>解き方�E�E/strong></p>
+            <p>次の二次関数の最大値または最小値を求めよ。</p>
+            <p>（1）\(y = x^2 - 4x + 3\)　　（2）\(y = -2x^2 + 8x - 5\)</p>
+            <p><strong>解き方：</strong></p>
             <ol>
-                <li>頂点の座標を求めめE/li>
-                <li>\(a\) の符号を確認して、最大値か最小値かを判宁E/li>
+                <li>頂点の座標を求める</li>
+                <li>\(a\) の符号を確認して、最大値か最小値かを判定</li>
             </ol>
-            <p><strong>答え�E�E/strong></p>
-            <p>�E�E�E�頂点 \((2, -1)\)、\(a = 1 > 0\) より下に凸 ↁE<strong>最小値 -1</strong>�E�E(x = 2\) のとき！E/p>
-            <p>�E�E�E�平方完�Eすると \(y = -2(x - 2)^2 + 3\) より頂点 \((2, 3)\)、\(a = -2 < 0\) より上に凸 ↁE<strong>最大値
-                    3</strong>�E�E(x = 2\) のとき！E/p>
+            <p><strong>答え：</strong></p>
+            <p>（1）頂点 \((2, -1)\)、\(a = 1 > 0\) より下に凸 → <strong>最小値 -1</strong>（\(x = 2\) のとき）</p>
+            <p>（2）平方完成すると \(y = -2(x - 2)^2 + 3\) より頂点 \((2, 3)\)、\(a = -2 < 0\) より上に凸 → <strong>最大値
+                    3</strong>（\(x = 2\) のとき）</p>
         </div>
 
         <div class="example-box" id="ex-range">
             <div class="example-title">
-                <span class="number-badge">侁E</span>定義域がある場合�E最大最封E
+                <span class="number-badge">例5</span>定義域がある場合の最大最小
             </div>
-            <p>\(y = x^2 - 4x + 3\)�E�E(0 \leq x \leq 3\)�E��E最大値と最小値を求めよ、E/p>
-            <p><strong>解き方�E�E/strong></p>
+            <p>\(y = x^2 - 4x + 3\)（\(0 \leq x \leq 3\)）の最大値と最小値を求めよ。</p>
+            <p><strong>解き方：</strong></p>
             <ol>
-                <li>頂点 \((2, -1)\) が篁E��冁E��あるか確誁EↁE\(0 \leq 2 \leq 3\) で篁E��冁E/li>
-                <li>頂点と端点�E�E(x = 0, 3\)�E�での値を比輁E/li>
+                <li>頂点 \((2, -1)\) が範囲内にあるか確認 → \(0 \leq 2 \leq 3\) で範囲内</li>
+                <li>頂点と端点（\(x = 0, 3\)）での値を比較</li>
             </ol>
             <div class="formula">
                 \[ x = 0: y = 0 - 0 + 3 = 3 \]
-                \[ x = 2: y = -1 \quad \text{�E�頂点�E�} \]
+                \[ x = 2: y = -1 \quad \text{（頂点）} \]
                 \[ x = 3: y = 9 - 12 + 3 = 0 \]
             </div>
-            <p><strong>答え�E�最小値 -1�E�E(x = 2\) のとき）、最大値 3�E�E(x = 0\) のとき！E/strong></p>
+            <p><strong>答え：最小値 -1（\(x = 2\) のとき）、最大値 3（\(x = 0\) のとき）</strong></p>
         </div>
 
-        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 実生活への応用�E�放物運動�E�E/h3>
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 実生活への応用（放物運動）</h3>
 
         <div class="example-box" id="ex-projectile">
             <div class="example-title">
-                <span class="number-badge">侁E</span>コインを投げる問顁E
+                <span class="number-badge">例6</span>コインを投げる問題
             </div>
-            <p>オリバ�Eがオフィスビルの窓からコインを水平な地面に向かって投げた。コインの軌道は次の二次関数でモチE��化される�E�E/p>
+            <p>オリバーがオフィスビルの窓からコインを水平な地面に向かって投げた。コインの軌道は次の二次関数でモデル化される。</p>
             <div class="formula">
                 \[ y = 8 + 3x - 0.5x^2 \]
             </div>
-            <p>ここで \(y\) はコインの高さ�E�メートル�E�、\(x\) は水平距離�E�メートル�E�を表す。建物の壁�E \(y\) 軸に沿ってぁE��、E/p>
+            <p>ここで \(y\) はコインの高さ（メートル）、\(x\) は水平距離（メートル）を表す。建物の壁は \(y\) 軸に沿っている。</p>
 
-            <!-- 放物線�E図 -->
+            <!-- 放物線の図 -->
             <!-- 座標変換: SVG_x = 70 + x*45, SVG_y = 250 - y*15 -->
-            <!-- y = 8 + 3x - 0.5x² の点を計箁E-->
+            <!-- y = 8 + 3x - 0.5x² の点を計算 -->
             <div class="svg-container">
                 <svg width="500" height="280" viewBox="0 0 500 280">
                     <defs>
@@ -354,7 +354,7 @@ related:
                         </marker>
                     </defs>
 
-                    <!-- 建物�E�壁E��E-->
+                    <!-- 建物（壁） -->
                     <rect x="40" y="30" width="30" height="220" fill="#e0e0e0" stroke="#999" stroke-width="1" />
                     <line x1="70" y1="30" x2="70" y2="250" stroke="#666" stroke-width="2" />
                     <text x="55" y="140" font-size="14" fill="#666" text-anchor="middle"
@@ -369,8 +369,8 @@ related:
                     <text x="60" y="15" font-size="14" fill="#333">y</text>
                     <text x="55" y="265" font-size="14" fill="#333">O</text>
 
-                    <!-- 放物線（正確な座標で描画�E�E->
-                    <!-- x=0,y=8 ↁEx=1,y=10.5 ↁEx=2,y=12 ↁEx=3,y=12.5(頂点) ↁEx=4,y=12 ↁE... ↁEx=8,y=0 -->
+                    <!-- 放物線（正確な座標で描画） -->
+                    <!-- x=0,y=8 → x=1,y=10.5 → x=2,y=12 → x=3,y=12.5(頂点) → x=4,y=12 → ... → x=8,y=0 -->
                     <path d="M 70 130
                                      L 92.5 109.4 L 115 92.5 L 137.5 79.4 L 160 70 L 182.5 64.4
                                      L 205 62.5
@@ -378,254 +378,254 @@ related:
                                      L 340 130 L 362.5 154.4 L 385 182.5 L 407.5 214.4 L 430 250" stroke="#e53935"
                         stroke-width="3" fill="none" />
 
-                    <!-- 点A�E��E発点�E�x=0, y=8 -->
+                    <!-- 点A（出発点）x=0, y=8 -->
                     <circle cx="70" cy="130" r="6" fill="#4caf50" />
                     <text x="80" y="120" font-size="14" font-weight="bold" fill="#4caf50">A</text>
                     <text x="80" y="145" font-size="14" fill="#666">出発点</text>
 
-                    <!-- 点B�E�最高点�E�x=3, y=12.5 -->
+                    <!-- 点B（最高点）x=3, y=12.5 -->
                     <circle cx="205" cy="62.5" r="6" fill="#ff9800" />
                     <text x="215" y="55" font-size="14" font-weight="bold" fill="#ff9800">B</text>
                     <text x="215" y="78" font-size="14" fill="#666">最高点</text>
 
-                    <!-- 点C�E�着地点�E�x=8, y=0 -->
+                    <!-- 点C（着地点）x=8, y=0 -->
                     <circle cx="430" cy="250" r="6" fill="#2196f3" />
                     <text x="415" y="240" font-size="14" font-weight="bold" fill="#2196f3">C</text>
                     <text x="400" y="270" font-size="14" fill="#666">着地点</text>
 
-                    <!-- 高さの補助緁E-->
+                    <!-- 高さの補助線 -->
                     <line x1="70" y1="130" x2="70" y2="250" stroke="#4caf50" stroke-width="1" stroke-dasharray="4,4" />
                     <text x="30" y="190" font-size="14" fill="#4caf50">8m</text>
                 </svg>
-                <div class="svg-caption">コインの軌道�E�放物線！E/div>
+                <div class="svg-caption">コインの軌道（放物線）</div>
             </div>
 
-            <p><strong>(a) コインを投げた高さを求めよ、E/strong></p>
-            <p><strong>解き方�E�E/strong></p>
+            <p><strong>(a) コインを投げた高さを求めよ。</strong></p>
+            <p><strong>解き方：</strong></p>
             <ol>
-                <li>出発点 A は壁�E位置、つまめE\(x = 0\) の点</li>
+                <li>出発点 A は壁の位置、つまり \(x = 0\) の点</li>
                 <li>\(x = 0\) を式に代入する</li>
             </ol>
             <div class="formula">
                 \[ y = 8 + 3(0) - 0.5(0)^2 = 8 \]
             </div>
-            <p><strong>答え�E�E メートル</strong></p>
+            <p><strong>答え：8 メートル</strong></p>
 
-            <p style="margin-top: 20px;"><strong>(b) コインが達する最高点の高さを求めよ、E/strong></p>
-            <p><strong>解き方�E�E/strong></p>
+            <p style="margin-top: 20px;"><strong>(b) コインが達する最高点の高さを求めよ。</strong></p>
+            <p><strong>解き方：</strong></p>
             <ol>
-                <li>式を整琁E��\(y = -0.5x^2 + 3x + 8\)�E�E(a = -0.5, b = 3, c = 8\)�E�E/li>
-                <li>\(a = -0.5 < 0\) なので上に凸 ↁE頂点が最大値</li>
+                <li>式を整理：\(y = -0.5x^2 + 3x + 8\)（\(a = -0.5, b = 3, c = 8\)）</li>
+                <li>\(a = -0.5 < 0\) なので上に凸 → 頂点が最大値</li>
                 <li>対称軸 \(x = -\frac{b}{2a} = -\frac{3}{2 \times (-0.5)} = -\frac{3}{-1} = 3\)</li>
-                <li>\(x = 3\) を代入して最高点の高さを求めめE/li>
+                <li>\(x = 3\) を代入して最高点の高さを求める</li>
             </ol>
             <div class="formula">
                 \[ y = -0.5(3)^2 + 3(3) + 8 = -0.5 \times 9 + 9 + 8 = -4.5 + 17 = 12.5 \]
             </div>
-            <p><strong>答え�E�E2.5 メートル</strong></p>
+            <p><strong>答え：12.5 メートル</strong></p>
 
-            <p style="margin-top: 20px;"><strong>(c) コインが地面に着く地点の、壁から�E水平距離を求めよ、E/strong></p>
-            <p><strong>解き方�E�E/strong></p>
+            <p style="margin-top: 20px;"><strong>(c) コインが地面に着く地点の、壁からの水平距離を求めよ。</strong></p>
+            <p><strong>解き方：</strong></p>
             <ol>
                 <li>地面は \(y = 0\) の位置</li>
-                <li>\(y = 0\) として方程式を解ぁE/li>
+                <li>\(y = 0\) として方程式を解く</li>
             </ol>
             <div class="formula">
                 \[ 0 = -0.5x^2 + 3x + 8 \]
             </div>
-            <p>両辺めE\(-0.5\) で割って整琁E��E/p>
+            <p>両辺を \(-0.5\) で割って整理：</p>
             <div class="formula">
                 \[ x^2 - 6x - 16 = 0 \]
             </div>
-            <p>因数刁E��また�E<a href="二次方程式�E解き方_教材.html" style="color: #1976d2;">解の公弁E/a>で解く！E/p>
+            <p>因数分解（または<a href="二次方程式の解き方_教材.html" style="color: #1976d2;">解の公式</a>）で解く：</p>
             <div class="formula">
                 \[ (x - 8)(x + 2) = 0 \]
-                \[ x = 8 \quad \text{また�E} \quad x = -2 \]
+                \[ x = 8 \quad \text{または} \quad x = -2 \]
             </div>
-            <p>\(x > 0\)�E�水平距離は正�E�なので�E�E/p>
-            <p><strong>答え�E�E メートル</strong></p>
+            <p>\(x > 0\)（水平距離は正）なので：</p>
+            <p><strong>答え：8 メートル</strong></p>
         </div>
     </div>
 </section>
 
-<!-- 4. 簡単にするコチE-->
+<!-- 4. 簡単にするコツ -->
 <section id="section4">
-    <h2>4. 簡単にするコチE/h2>
+    <h2>4. 簡単にするコツ</h2>
     <div class="section">
         <div class="tip-box">
-            <strong>✏︁EコチE�E�まぁE\(a\) の符号を確誁E/strong><br>
-            \(a > 0\) ぁE\(a < 0\) かで、グラフ�E向きと最大最小が決まる。最初に確認する習�Eを、E</div>
+            <strong>✏︎ コツ①：まず \(a\) の符号を確認</strong><br>
+            \(a > 0\) か \(a < 0\) かで、グラフの向きと最大最小が決まる。最初に確認する習慣を。</div>
 
                 <div class="tip-box">
-                    <strong>✏︁EコチE�E�対称軸は「�Eイナスb割めEa」と覚えめE/strong><br>
-                    \(x = -\frac{b}{2a}\) を何度も使ぁE�Eで、丸暗記しておく、E
+                    <strong>✏︎ コツ②：対称軸は「マイナスb割る2a」と覚える</strong><br>
+                    \(x = -\frac{b}{2a}\) を何度も使うので、丸暗記しておく。
                 </div>
 
                 <div class="tip-box">
-                    <strong>✏︁EコチE�E�平方完�Eで頂点を一発で求めめE/strong><br>
-                    \(y = a(x - p)^2 + q\) の形にすれば、E��点は \((p, q)\)。対称軸から計算するより早ぁE��E
+                    <strong>✏︎ コツ③：平方完成で頂点を一発で求める</strong><br>
+                    \(y = a(x - p)^2 + q\) の形にすれば、頂点は \((p, q)\)。対称軸から計算するより早い。
                 </div>
 
                 <div class="tip-box">
-                    <strong>✏︁EコチE�E�定義域があるとき�E端点も確誁E/strong><br>
-                    篁E��が制限されてぁE��とき�E、E��点だけでなく両端の値も計算して比輁E��る、E
+                    <strong>✏︎ コツ④：定義域があるときは端点も確認</strong><br>
+                    範囲が制限されているときは、頂点だけでなく両端の値も計算して比較する。
                 </div>
 
                 <div class="tip-box">
-                    <strong>✏︁EコチE�E�グラフを簡単に描いてイメージする</strong><br>
-                    対称軸・頂点・\(y\) 刁E���E�E(x = 0\) のとき）�E3点を打てば、だぁE��ぁE�E形が�Eかる、E
+                    <strong>✏︎ コツ⑤：グラフを簡単に描いてイメージする</strong><br>
+                    対称軸・頂点・\(y\) 切片（\(x = 0\) のとき）の3点を打てば、だいたいの形がわかる。
                 </div>
         </div>
 </section>
 
-<!-- 5. よくあるつまづぁE-->
+<!-- 5. よくあるつまづき -->
 <section id="section5">
-    <h2>5. よくあるつまづぁE/h2>
+    <h2>5. よくあるつまづき</h2>
     <div class="section">
         <div class="caution-box">
-            <div class="caution-title">⚠�E�EつまづぁE�E�\(a\) の符号を送E��する</div>
-            <p><strong>ダメな例！E/strong> \(a = -2\) なのに下に凸と答えめE/p>
-            <p><strong>対策！E/strong> \(a > 0\) は下、\(a < 0\) は上。�Eイナスは上に凸�E�E/p>
+            <div class="caution-title">⚠️ つまづき①：\(a\) の符号を逆にする</div>
+            <p><strong>ダメな例：</strong> \(a = -2\) なのに下に凸と答える</p>
+            <p><strong>対策：</strong> \(a > 0\) は下、\(a < 0\) は上。マイナスは上に凸！</p>
         </div>
 
         <div class="caution-box">
-            <div class="caution-title">⚠�E�EつまづぁE�E�対称軸の公式で符号ミス</div>
-            <p><strong>ダメな例！E/strong> \(b = -4\) のとき、\(x = -\frac{-4}{2}\) めE\(-2\) とする</p>
-            <p><strong>対策！E/strong> マイナス×�Eイナスはプラス、E(-\frac{-4}{2} = \frac{4}{2} = 2\)</p>
+            <div class="caution-title">⚠️ つまづき②：対称軸の公式で符号ミス</div>
+            <p><strong>ダメな例：</strong> \(b = -4\) のとき、\(x = -\frac{-4}{2}\) を \(-2\) とする</p>
+            <p><strong>対策：</strong> マイナス×マイナスはプラス。\(-\frac{-4}{2} = \frac{4}{2} = 2\)</p>
         </div>
 
         <div class="caution-box">
-            <div class="caution-title">⚠�E�EつまづぁE�E�頂点の \(y\) 座標を求め忘れめE/div>
-            <p><strong>ダメな例！E/strong> 対称軸 \(x = 2\) を求めて、E��点めE\((2, 0)\) とする</p>
-            <p><strong>対策！E/strong> 忁E�� \(x = 2\) を�Eの式に代入して \(y\) を計算！E/p>
+            <div class="caution-title">⚠️ つまづき③：頂点の \(y\) 座標を求め忘れる</div>
+            <p><strong>ダメな例：</strong> 対称軸 \(x = 2\) を求めて、頂点を \((2, 0)\) とする</p>
+            <p><strong>対策：</strong> 必ず \(x = 2\) を元の式に代入して \(y\) を計算！</p>
         </div>
 
         <div class="caution-box">
-            <div class="caution-title">⚠�E�EつまづぁE�E�平方完�Eで定数頁E�E調整ミス</div>
-            <p><strong>ダメな例！E/strong> \(x^2 - 4x + 3 = (x - 2)^2\) と変形する</p>
-            <p><strong>対策！E/strong> \((x - 2)^2 = x^2 - 4x + 4\) だから、\(+3\) と合わせて \((x - 2)^2 - 1\)</p>
+            <div class="caution-title">⚠️ つまづき④：平方完成で定数項の調整ミス</div>
+            <p><strong>ダメな例：</strong> \(x^2 - 4x + 3 = (x - 2)^2\) と変形する</p>
+            <p><strong>対策：</strong> \((x - 2)^2 = x^2 - 4x + 4\) だから、\(+3\) と合わせて \((x - 2)^2 - 1\)</p>
         </div>
 
         <div class="caution-box">
-            <div class="caution-title">⚠�E�EつまづぁE�E�定義域�E端点を忘れめE/div>
-            <p><strong>ダメな例！E/strong> 篁E��ぁE\(0 \leq x \leq 3\) なのに、E��点だけで最大最小を判宁E/p>
-            <p><strong>対策！E/strong> 頂点と \(x = 0, 3\) での値を比輁E��て、本当�E最大最小を決める</p>
+            <div class="caution-title">⚠️ つまづき⑤：定義域の端点を忘れる</div>
+            <p><strong>ダメな例：</strong> 範囲が \(0 \leq x \leq 3\) なのに、頂点だけで最大最小を判定</p>
+            <p><strong>対策：</strong> 頂点と \(x = 0, 3\) での値を比較して、本当の最大最小を決める</p>
         </div>
     </div>
 </section>
 
-<!-- 6. 仕上げチェチE��リスチE-->
+<!-- 6. 仕上げチェックリスト -->
 <section id="section6">
-    <h2>6. 仕上げチェチE��リスチE/h2>
+    <h2>6. 仕上げチェックリスト</h2>
     <div class="section">
         <div class="checklist">
-            <div class="checklist-item">\(a\) の符号からグラフ�E向きを正しく判定したか</div>
-            <div class="checklist-item">対称軸 \(x = -\frac{b}{2a}\) の計算で符号ミスをしてぁE��ぁE��</div>
-            <div class="checklist-item">頂点の \(y\) 座標を求めるとき、ちめE��と代入計算したか</div>
+            <div class="checklist-item">\(a\) の符号からグラフの向きを正しく判定したか</div>
+            <div class="checklist-item">対称軸 \(x = -\frac{b}{2a}\) の計算で符号ミスをしていないか</div>
+            <div class="checklist-item">頂点の \(y\) 座標を求めるとき、ちゃんと代入計算したか</div>
             <div class="checklist-item">最大値・最小値は \(a\) の符号から正しく判定したか</div>
             <div class="checklist-item">定義域がある場合、端点での値も確認したか</div>
         </div>
     </div>
 </section>
 
-<!-- 7. 練習問顁E-->
+<!-- 7. 練習問題 -->
 <section id="section7">
-    <h2>7. 練習問顁E/h2>
+    <h2>7. 練習問題</h2>
     <div class="section">
-        <p>学んだことを使って、以下�E問題を解ぁE��みよう、E/p>
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
 
         <div class="rule-box" style="background: #f5f5f5;">
-            <strong>練翁E</strong>
-            <p>\(y = -x^2 + 6x - 5\) の対称軸と頂点を求めなさい、E/p>
+            <strong>練習①</strong>
+            <p>\(y = -x^2 + 6x - 5\) の対称軸と頂点を求めなさい。</p>
             <details style="margin-top: 15px;">
                 <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
                 <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
-                    <p><strong>対称軸�E�E/strong>\(x = -\frac{6}{2 \cdot (-1)} = \frac{6}{2} = 3\)</p>
-                    <p><strong>\(y\) 座標！E/strong>\(y = -3^2 + 6 \cdot 3 - 5 = -9 + 18 - 5 = 4\)</p>
-                    <p><strong>答え�E�対称軸 \(x = 3\)、E��点 \((3, 4)\)</strong></p>
+                    <p><strong>対称軸：</strong>\(x = -\frac{6}{2 \cdot (-1)} = \frac{6}{2} = 3\)</p>
+                    <p><strong>\(y\) 座標：</strong>\(y = -3^2 + 6 \cdot 3 - 5 = -9 + 18 - 5 = 4\)</p>
+                    <p><strong>答え：対称軸 \(x = 3\)、頂点 \((3, 4)\)</strong></p>
                 </div>
             </details>
         </div>
 
         <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
-            <strong>練翁E</strong>
-            <p>\(y = 2x^2 - 8x + 10\) の最小値を求めなさい、E/p>
+            <strong>練習②</strong>
+            <p>\(y = 2x^2 - 8x + 10\) の最小値を求めなさい。</p>
             <details style="margin-top: 15px;">
                 <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
                 <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
-                    <p><strong>平方完�E�E�E/strong>\(y = 2(x^2 - 4x) + 10 = 2(x^2 - 4x + 4 - 4) + 10 = 2(x - 2)^2 - 8
+                    <p><strong>平方完成：</strong>\(y = 2(x^2 - 4x) + 10 = 2(x^2 - 4x + 4 - 4) + 10 = 2(x - 2)^2 - 8
                         + 10 = 2(x - 2)^2 + 2\)</p>
-                    <p><strong>頂点�E�E/strong>\((2, 2)\)</p>
+                    <p><strong>頂点：</strong>\((2, 2)\)</p>
                     <p>\(a = 2 > 0\) より下に凸</p>
-                    <p><strong>答え�E�最小値 2�E�E(x = 2\) のとき！E/strong></p>
+                    <p><strong>答え：最小値 2（\(x = 2\) のとき）</strong></p>
                 </div>
             </details>
         </div>
     </div>
 </section>
 
-<!-- まとめE-->
+<!-- まとめ -->
 <div class="summary">
-    📌 まとめE��対称軸は「�Eb÷2a」、E��点で折り返し、a の符号で向きが決まる！E
+    📌 まとめ：対称軸は「−b÷2a」、頂点で折り返し、a の符号で向きが決まる！
 </div>
 
-<!-- おまけ：実践スト�Eリー -->
+<!-- おまけ：実践ストーリー -->
 <section id="story">
-    <h2>おまけ：歴史スト�Eリー「ガリレオの大発見と大ピンチ、E/h2>
+    <h2>おまけ：歴史ストーリー「ガリレオの大発見と大ピンチ」</h2>
     <div class="section">
         <div class="story-box">
-            <div class="story-title">📖 ガリレオの大発見と大ピンチE��E600年代イタリア�E�E/div>
+            <div class="story-title">📖 ガリレオの大発見と大ピンチ（1600年代イタリア）</div>
 
-            <p>1600年代のイタリア。ガリレオ・ガリレイは、当時の「常識」に真っ向から挑戦してぁE��天才科学老E��った、E/p>
+            <p>1600年代のイタリア。ガリレオ・ガリレイは、当時の「常識」に真っ向から挑戦していた天才科学者だった。</p>
 
             <p style="background: #fff9c4; padding: 10px; border-radius: 8px; margin: 15px 0;">
-                <strong>当時の常識！E/strong>「大砲の弾は、まっすぐ飛んでから急に落ちる、Ebr>
-                <strong>ガリレオの主張�E�E/strong>「いめE��放物線を描いて飛�Eはずだ�E�、E
+                <strong>当時の常識：</strong>「大砲の弾は、まっすぐ飛んでから急に落ちる」<br>
+                <strong>ガリレオの主張：</strong>「いや、放物線を描いて飛ぶはずだ！」
             </p>
 
-            <p>当時の人、E�E「弾はまっすぐ飛�E続け、力が尽きたら真下に落ちる」と信じてぁE��。でもガリレオは実験と計算から、Estrong>「弾道�E放物線（二次関数のグラフ）だ�E�、E/strong>と気づぁE��、E
+            <p>当時の人々は「弾はまっすぐ飛び続け、力が尽きたら真下に落ちる」と信じていた。でもガリレオは実験と計算から、<strong>「弾道は放物線（二次関数のグラフ）だ！」</strong>と気づいた。
             </p>
 
-            <p><strong>【ガリレオの発見、E/strong></p>
-            <p>斜め上に投げた物体�E軌道は、水平方向�E動きと垂直方向�E動き�E�重力）を絁E��合わせると...</p>
+            <p><strong>【ガリレオの発見】</strong></p>
+            <p>斜め上に投げた物体の軌道は、水平方向の動きと垂直方向の動き（重力）を組み合わせると...</p>
 
             <div class="formula">
-                \[ y = (\text{初速による上�E}) - (\text{重力による落下}) \]
-                \[ y = ax - bx^2 \quad \text{�E�二次関数�E�E��} \]
+                \[ y = (\text{初速による上昇}) - (\text{重力による落下}) \]
+                \[ y = ax - bx^2 \quad \text{（二次関数の形！）} \]
             </div>
 
-            <p>これを証明するため、ガリレオは斜面で琁E��転がす実験を繰り返した。でめE..</p>
+            <p>これを証明するため、ガリレオは斜面で球を転がす実験を繰り返した。でも...</p>
 
             <p style="background: #ffebee; padding: 10px; border-radius: 8px; margin: 15px 0;">
-                <strong>カトリチE��教会！E/strong>「�E�E�何を言ってるんだガリレオ。そもそもお前、地動説を唱えただろ？『地琁E��動く』なんて聖書に反する。放物線とかいぁE��に、まず老E��を改めろ、Ebr>
-                <strong>ガリレオ�E�E/strong>「でも望遠鏡で木星�E衛星が回ってる�E見えたし...地琁E��回ってると思うんですけど、Ebr>
-                <strong>教会！E/strong>、E..裁判な、E
+                <strong>カトリック教会：</strong>「何を言ってるんだガリレオ。そもそもお前、地動説を唱えただろ？『地球が動く』なんて聖書に反する。放物線とかいう前に、まず考えを改めろ」<br>
+                <strong>ガリレオ：</strong>「でも望遠鏡で木星の衛星が回ってるの見えたし...地球も回ってると思うんですけど」<br>
+                <strong>教会：</strong>「...裁判な」
             </p>
 
-            <p>ガリレオは宗教裁判にかけられ、地動説を撤回させられた。彼の発見した放物線�E琁E��も、すぐには認められなかった、E/p>
+            <p>ガリレオは宗教裁判にかけられ、地動説を撤回させられた。彼の発見した放物線の理論も、すぐには認められなかった。</p>
 
-            <p><strong>【でも、後�E世界は...、E/strong></p>
-            <p>ガリレオの死後、ニュートンが「運動�E法則」を確立し、放物線�E琁E��が正しいことが完�Eに証明された。今では�E�E/p>
+            <p><strong>【でも、後の世界は...】</strong></p>
+            <p>ガリレオの死後、ニュートンが「運動の法則」を確立し、放物線の理論が正しいことが完全に証明された。今では：</p>
             <ul>
-                <li>ミサイルの弾道計箁E/li>
-                <li>野球のボ�Eルの軌道予測</li>
-                <li>ロケチE��の打ち上げ</li>
+                <li>ミサイルの弾道計算</li>
+                <li>野球のボールの軌道予測</li>
+                <li>ロケットの打ち上げ</li>
             </ul>
-            <p>すべて放物線（二次関数�E�を使って計算されてぁE��、E/p>
+            <p>すべて放物線（二次関数）を使って計算されている。</p>
 
             <p style="background: #e3f2fd; padding: 10px; border-radius: 8px; margin: 15px 0;">
-                <strong>ガリレオの最期�E言葉（伝説�E�！E/strong><br>
-                裁判で地動説の撤回を強制された後、つぶめE��た、Ebr>
-                「それでも地琁E�E回ってぁE���E�Eppur si muove�E�、E
+                <strong>ガリレオの最期の言葉（伝説）：</strong><br>
+                裁判で地動説の撤回を強制された後、つぶやいた：<br>
+                「それでも地球は回っている（Eppur si muove）」
             </p>
 
-            <p><strong>教訓！E/strong>正しい数学は、たとえ権力に潰されても、いつか忁E��認められる。ガリレオが命がけで証明した放物線�E琁E��を、今、君は教科書で普通に学んでぁE��。数学、時代を趁E��て最強、E
+            <p><strong>教訓：</strong>正しい数学は、たとえ権力に潰されても、いつか必ず認められる。ガリレオが命がけで証明した放物線の理論を、今、君は教科書で普通に学んでいる。数学、時代を超えて最強。
             </p>
 
             <p style="font-size: 14px; color: #666; margin-top: 20px;">
-                ※ガリレオの弾道が放物線であるとぁE��発見�E『新科学対話』！E638年�E�に記されてぁE��す。地動説を巡る裁判につぁE��は、E633年の宗教裁判で有罪となりましたが、E992年にローマ教皁E��ハネ・パウロ2世によって名誉回復されました�E�Ea
+                ※ガリレオの弾道が放物線であるという発見は『新科学対話』（1638年）に記されています。地動説を巡る裁判については、1633年の宗教裁判で有罪となりましたが、1992年にローマ教皇ヨハネ・パウロ2世によって名誉回復されました（<a
                     href="https://ja.wikipedia.org/wiki/%E3%82%AC%E3%83%AA%E3%83%AC%E3%82%AA%E3%83%BB%E3%82%AC%E3%83%AA%E3%83%AC%E3%82%A4"
-                    target="_blank" style="color: #1976d2;">ガリレオ・ガリレイ</a>�E�、E
+                    target="_blank" style="color: #1976d2;">ガリレオ・ガリレイ</a>）。
             </p>
         </div>
     </div>

@@ -1,129 +1,129 @@
 ---
 layout: material-raw
-title: 遒ｺ邇・・蝓ｺ譛ｬ豕募援
-icon: "ｧｮ"
-description: 遒ｺ邇・・險育ｮ励〒菴ｿ縺・㍾隕√↑豕募援・井ｽ吩ｺ玖ｱ｡縲∝柱縺ｮ豕募援縲∵賜蜿堺ｺ玖ｱ｡縲∵擅莉ｶ莉倥″遒ｺ邇・∫峡遶倶ｺ玖ｱ｡・峨ｒ蟄ｦ縺ｳ縲∬､・尅縺ｪ遒ｺ邇・撫鬘後ｒ蜉ｹ邇・ｈ縺剰ｧ｣縺乗婿豕輔ｒ霄ｫ縺ｫ縺､縺代ｋ縲・
-level: 讓呎ｺ・
+title: 確率の基本法則
+icon: "🧮"
+description: 確率の計算で使う重要な法則（余事象、和の法則、排反事象、条件付き確率、独立事象）を学び、複雑な確率問題を効率よく解く方法を身につける。
+level: 標準
 level_num: 2
 category: data
 order: 2
 keywords:
-- 遒ｺ邇・
-- 菴吩ｺ玖ｱ｡
-- 蜥後・豕募援
-- 謗貞渚莠玖ｱ｡
-- 譚｡莉ｶ莉倥″遒ｺ邇・
-- 迢ｬ遶倶ｺ玖ｱ｡
-- 繝吶Φ蝗ｳ
-- 蜈ｨ莠玖ｱ｡
-cover_image: "/images/遒ｺ邇・・蝓ｺ譛ｬ豕募援_謨呎攝.png"
-cover_description: 繧ｵ繧､繧ｳ繝ｭ縲√ヨ繝ｩ繝ｳ繝励√・繝ｳ蝗ｳ縲∫｢ｺ邇・・險育ｮ怜ｼ上・寔蜷医・繧､繝｡繝ｼ繧ｸ
+- 確率
+- 余事象
+- 和の法則
+- 排反事象
+- 条件付き確率
+- 独立事象
+- ベン図
+- 全事象
+cover_image: /images/確率の基本法則_教材.png
+cover_description: サイコロ、トランプ、ベン図、確率の計算式、集合のイメージ
 toc:
-- id: section1
-title: "繝・・繝槭・螳夂ｾｩ"
-- id: section2
-title: "隕壹∴繧九Ν繝ｼ繝ｫ"
-- id: section3
-title: "萓矩｡後→隗｣縺肴婿"
-- id: section4
-title: "邁｡蜊倥↓縺吶ｋ繧ｳ繝・
-- id: section5
-title: "繧医￥縺ゅｋ縺､縺ｾ縺･縺・
-- id: section6
-title: "莉穂ｸ翫￡繝√ぉ繝・け繝ｪ繧ｹ繝・
-- id: section7
-title: "邱ｴ鄙貞撫鬘・
-- id: story
-title: "縺翫∪縺托ｼ夂｢ｺ邇・ヱ繝ｩ繝峨ャ繧ｯ繧ｹ縲後ラ繧｢繧貞､峨∴繧九→蠖薙◆繧狗｢ｺ邇・′2蛟搾ｼ溘・
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：確率パラドックス「ドアを変えると当たる確率が2倍？」"
 related:
-- url: /繝・・繧ｿ縺ｮ蛻・梵縺ｨ遒ｺ邇㍉謨呎攝.html
-title: 繝・・繧ｿ縺ｮ蛻・梵縺ｨ遒ｺ邇・
-note: 遒ｺ邇・・蝓ｺ譛ｬ縺ｨ邨碁ｨ鍋噪遒ｺ邇・ｒ蟄ｦ縺ｹ繧・
-type: prerequisite
+  - url: /データの分析と確率_教材.html
+    title: データの分析と確率
+    note: 確率の基本と経験的確率を学べる
+    type: prerequisite
 ---
-<!-- 1. 繝・・繝槭・螳夂ｾｩ -->
+<!-- 1. テーマの定義 -->
 <section id="section1">
-    <h2>1. 繝・・繝槭・螳夂ｾｩ</h2>
+    <h2>1. テーマの定義</h2>
     <div class="section">
-        <p>繧ｬ繝√Ε縺ｧ蠖薙◆繧狗｢ｺ邇・∝､ｩ豌嶺ｺ亥ｱ縺ｮ髯肴ｰｴ遒ｺ邇・√ご繝ｼ繝縺ｧ蜍昴▽遒ｺ邇・..遘√◆縺｡縺ｮ逕滓ｴｻ縺ｫ縺ｯ縲檎｢ｺ邇・阪′縺ゅ・繧後※縺・∪縺吶り､・尅縺ｪ遒ｺ邇・ｂ縲√＞縺上▽縺九・蝓ｺ譛ｬ豕募援繧剃ｽｿ縺医・邁｡蜊倥↓險育ｮ励〒縺阪∪縺吶・/p>
-        <p>縺薙・繝壹・繧ｸ縺ｧ縺ｯ縲∫｢ｺ邇・ｨ育ｮ励・萓ｿ蛻ｩ縺ｪ豕募援繧貞ｭｦ縺ｳ縺ｾ縺呻ｼ・/p>
+        <p>ガチャで当たる確率、天気予報の降水確率、ゲームで勝つ確率...私たちの生活には「確率」があふれています。複雑な確率も、いくつかの基本法則を使えば簡単に計算できます。</p>
+        <p>このページでは、確率計算の便利な法則を学びます：</p>
         <ul>
-            <li><strong>菴吩ｺ玖ｱ｡</strong>・壹後懊〒縺ｪ縺・咲｢ｺ邇・ｒ菴ｿ縺｣縺ｦ險育ｮ励ｒ邁｡蜊倥↓縺吶ｋ</li>
-            <li><strong>蜥後・豕募援</strong>・壹窟縺ｾ縺溘・B縲阪・遒ｺ邇・ｒ豎ゅａ繧・/li>
-            <li><strong>謗貞渚莠玖ｱ｡</strong>・壼酔譎ゅ↓襍ｷ縺薙ｉ縺ｪ縺・ｺ玖ｱ｡縺ｮ遒ｺ邇・/li>
-            <li><strong>譚｡莉ｶ莉倥″遒ｺ邇・/strong>・壹沓縺瑚ｵｷ縺阪◆縺ｨ縺阪・A縺ｮ遒ｺ邇・阪ｒ豎ゅａ繧・/li>
-            <li><strong>迢ｬ遶倶ｺ玖ｱ｡</strong>・壻ｺ偵＞縺ｫ蠖ｱ髻ｿ縺励↑縺・ｺ玖ｱ｡縺ｮ遒ｺ邇・/li>
-            <li><strong>蝗帛・菴咲ｯ・峇</strong>・壹ョ繝ｼ繧ｿ縺ｮ縺ｰ繧峨▽縺阪ｒ遉ｺ縺呎欠讓・/li>
+            <li><strong>余事象</strong>：「〜でない」確率を使って計算を簡単にする</li>
+            <li><strong>和の法則</strong>：「AまたはB」の確率を求める</li>
+            <li><strong>排反事象</strong>：同時に起こらない事象の確率</li>
+            <li><strong>条件付き確率</strong>：「Bが起きたときのAの確率」を求める</li>
+            <li><strong>独立事象</strong>：互いに影響しない事象の確率</li>
+            <li><strong>四分位範囲</strong>：データのばらつきを示す指標</li>
         </ul>
     </div>
 </section>
 
-<!-- 2. 隕壹∴繧九Ν繝ｼ繝ｫ -->
+<!-- 2. 覚えるルール -->
 <section id="section2">
-    <h2>2. 隕壹∴繧九Ν繝ｼ繝ｫ</h2>
+    <h2>2. 覚えるルール</h2>
     <div class="section">
         <div class="important-rule">
-            縲先怙驥崎ｦ√醍｢ｺ邇・・蝓ｺ譛ｬ・喀( P(A) = \frac{n(A)}{n(\Omega)} \)<br>
-            ・・(n(A)\)・壻ｺ玖ｱ｡A縺ｮ蝣ｴ蜷医・謨ｰ縲―(n(\Omega)\)・壼・莠玖ｱ｡縺ｮ蝣ｴ蜷医・謨ｰ・・
+            【最重要】確率の基本：\( P(A) = \frac{n(A)}{n(\Omega)} \)<br>
+            （\(n(A)\)：事象Aの場合の数、\(n(\Omega)\)：全事象の場合の数）
         </div>
 
-        <!-- 遒ｺ邇・・蝓ｺ譛ｬ縺ｮ蝗ｳ -->
+        <!-- 確率の基本の図 -->
         <div class="svg-container">
             <svg width="700" height="200" viewBox="0 0 700 200">
                 <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
-                    text-anchor="middle">遒ｺ邇・・蝓ｺ譛ｬ繧､繝｡繝ｼ繧ｸ</text>
+                    text-anchor="middle">確率の基本イメージ</text>
 
-                <!-- 蜈ｨ莠玖ｱ｡縺ｮ蜀・-->
+                <!-- 全事象の円 -->
                 <circle cx="350" cy="120" r="80" fill="#e3f2fd" stroke="#1976d2" stroke-width="3" />
-                <text x="350" y="45" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">蜈ｨ莠玖ｱ｡
-                    ﾎｩ</text>
+                <text x="350" y="45" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">全事象
+                    Ω</text>
 
-                <!-- 莠玖ｱ｡A縺ｮ蜀・-->
+                <!-- 事象Aの円 -->
                 <circle cx="330" cy="120" r="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" />
                 <text x="330" y="125" font-size="16" font-weight="bold" fill="#c62828" text-anchor="middle">A</text>
 
-                <!-- 隱ｬ譏・-->
-                <text x="500" y="100" font-size="14" fill="#333">遒ｺ邇・P(A) =</text>
-                <text x="500" y="120" font-size="14" fill="#c62828" font-weight="bold">A縺ｮ蝣ｴ蜷医・謨ｰ</text>
+                <!-- 説明 -->
+                <text x="500" y="100" font-size="14" fill="#333">確率 P(A) =</text>
+                <text x="500" y="120" font-size="14" fill="#c62828" font-weight="bold">Aの場合の数</text>
                 <line x1="480" y1="125" x2="610" y2="125" stroke="#333" stroke-width="1" />
-                <text x="500" y="140" font-size="14" fill="#1976d2" font-weight="bold">蜈ｨ菴薙・蝣ｴ蜷医・謨ｰ</text>
+                <text x="500" y="140" font-size="14" fill="#1976d2" font-weight="bold">全体の場合の数</text>
             </svg>
-            <div class="svg-caption">遒ｺ邇・= 譚｡莉ｶ繧呈ｺ縺溘☆蝣ｴ蜷医・謨ｰ ﾃｷ 蜈ｨ菴薙・蝣ｴ蜷医・謨ｰ</div>
+            <div class="svg-caption">確率 = 条件を満たす場合の数 ÷ 全体の場合の数</div>
         </div>
 
-        <p><strong>庁 縺ｪ縺懊％縺ｮ蜈ｬ蠑擾ｼ・/strong> 繧ｵ繧､繧ｳ繝ｭ縺ｧ1縺悟・繧狗｢ｺ邇・・縲√・縺悟・繧句ｴ蜷茨ｼ・騾壹ｊ・峨催ｷ縲悟・驛ｨ縺ｮ蝣ｴ蜷茨ｼ・騾壹ｊ・峨・ 1/6縲ゅ％繧後′遒ｺ邇・・蝓ｺ譛ｬ逧・↑閠・∴譁ｹ縺ｧ縺吶・/p>
+        <p><strong>💡 なぜこの公式？</strong> サイコロで1が出る確率は、「1が出る場合（1通り）」÷「全部の場合（6通り）」= 1/6。これが確率の基本的な考え方です。</p>
 
         <div class="rule-box">
-            <strong>東 菴吩ｺ玖ｱ｡縺ｮ豕募援</strong> <a href="#ex-complement" class="example-link">竊・萓・</a>
+            <strong>📌 余事象の法則</strong> <a href="#ex-complement" class="example-link">→ 例1</a>
             <div class="formula">
                 \[ P(A) + P(\overline{A}) = 1 \]
             </div>
-            <p>\(\overline{A}\) 縺ｯ縲窟縺ｧ縺ｪ縺・阪％縺ｨ繧定｡ｨ縺呻ｼ井ｽ吩ｺ玖ｱ｡・・/p>
-            <p>螟牙ｽ｢縺吶ｋ縺ｨ・喀( P(A) = 1 - P(\overline{A}) \)</p>
+            <p>\(\overline{A}\) は「Aでない」ことを表す（余事象）</p>
+            <p>変形すると：\( P(A) = 1 - P(\overline{A}) \)</p>
 
-            <!-- 菴吩ｺ玖ｱ｡縺ｮ蝗ｳ -->
+            <!-- 余事象の図 -->
             <div class="svg-container">
                 <svg width="700" height="200" viewBox="0 0 700 200">
                     <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
-                        text-anchor="middle">菴吩ｺ玖ｱ｡縺ｮ繧､繝｡繝ｼ繧ｸ</text>
+                        text-anchor="middle">余事象のイメージ</text>
 
-                    <!-- 蜈ｨ莠玖ｱ｡縺ｮ蜀・-->
+                    <!-- 全事象の円 -->
                     <rect x="200" y="50" width="300" height="120" fill="#e3f2fd" stroke="#1976d2" stroke-width="3"
                         rx="10" />
-                    <text x="350" y="35" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">蜈ｨ莠玖ｱ｡ ﾎｩ =
+                    <text x="350" y="35" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">全事象 Ω =
                         1</text>
 
-                    <!-- 莠玖ｱ｡A -->
+                    <!-- 事象A -->
                     <circle cx="280" cy="110" r="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" />
                     <text x="280" y="115" font-size="16" font-weight="bold" fill="#c62828" text-anchor="middle">A</text>
                     <text x="280" y="180" font-size="14" fill="#c62828" text-anchor="middle">P(A)</text>
 
-                    <!-- 菴吩ｺ玖ｱ｡ -->
+                    <!-- 余事象 -->
                     <text x="420" y="110" font-size="16" font-weight="bold" fill="#2e7d32"
-                        text-anchor="middle">A縺ｧ縺ｪ縺・/text>
+                        text-anchor="middle">Aでない</text>
                     <text x="420" y="130" font-size="16" font-weight="bold" fill="#2e7d32"
-                        text-anchor="middle">・井ｽ吩ｺ玖ｱ｡・・/text>
-                    <text x="420" y="180" font-size="14" fill="#2e7d32" text-anchor="middle">P(ﾄ縺ｮ荳翫↓邱・ = 1 -
+                        text-anchor="middle">（余事象）</text>
+                    <text x="420" y="180" font-size="14" fill="#2e7d32" text-anchor="middle">P(Āの上に線) = 1 -
                         P(A)</text>
 
                     <defs>
@@ -133,85 +133,85 @@ type: prerequisite
                         </marker>
                     </defs>
                 </svg>
-                <div class="svg-caption">蜈ｨ菴・= A + A縺ｧ縺ｪ縺・竊・P(A) + P(ﾄ縺ｮ荳翫↓邱・ = 1</div>
+                <div class="svg-caption">全体 = A + Aでない → P(A) + P(Āの上に線) = 1</div>
             </div>
 
-            <p><strong>庁 縺ｪ縺應ｾｿ蛻ｩ・・/strong> 縲悟ｰ代↑縺上→繧・縺､蠖薙◆繧狗｢ｺ邇・阪↑縺ｩ縲∫峩謗･謨ｰ縺医ｋ縺ｨ隍・尅縺ｪ蝠城｡後ｒ縲・ - 蜈ｨ驛ｨ螟悶ｌ繧狗｢ｺ邇・阪〒邁｡蜊倥↓險育ｮ励〒縺阪∪縺吶・/p>
+            <p><strong>💡 なぜ便利？</strong> 「少なくとも1つ当たる確率」など、直接数えると複雑な問題を「1 - 全部外れる確率」で簡単に計算できます。</p>
         </div>
 
         <div class="rule-box">
-            <strong>東 蜥後・豕募援・井ｸ闊ｬ・・/strong> <a href="#ex-union" class="example-link">竊・萓・</a>
+            <strong>📌 和の法則（一般）</strong> <a href="#ex-union" class="example-link">→ 例2</a>
             <div class="formula">
                 \[ P(A \cup B) = P(A) + P(B) - P(A \cap B) \]
             </div>
-            <p>\(A \cup B\)・哂縺ｾ縺溘・B・亥ｰ代↑縺上→繧ゆｸ譁ｹ縺瑚ｵｷ縺薙ｋ・・/p>
-            <p>\(A \cap B\)・哂縺九▽B・井ｸ｡譁ｹ縺ｨ繧りｵｷ縺薙ｋ・・/p>
+            <p>\(A \cup B\)：AまたはB（少なくとも一方が起こる）</p>
+            <p>\(A \cap B\)：AかつB（両方とも起こる）</p>
 
-            <!-- 蜥後・豕募援縺ｮ蝗ｳ -->
+            <!-- 和の法則の図 -->
             <div class="svg-container">
                 <svg width="700" height="250" viewBox="0 0 700 250">
                     <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
-                        text-anchor="middle">蜥後・豕募援縺ｮ繧､繝｡繝ｼ繧ｸ・医・繝ｳ蝗ｳ・・/text>
+                        text-anchor="middle">和の法則のイメージ（ベン図）</text>
 
-                    <!-- 蜈ｨ莠玖ｱ｡縺ｮ譫 -->
+                    <!-- 全事象の枠 -->
                     <rect x="100" y="50" width="500" height="170" fill="none" stroke="#1976d2" stroke-width="2"
                         rx="10" />
-                    <text x="110" y="70" font-size="14" fill="#1976d2">蜈ｨ莠玖ｱ｡</text>
+                    <text x="110" y="70" font-size="14" fill="#1976d2">全事象</text>
 
-                    <!-- 莠玖ｱ｡A -->
+                    <!-- 事象A -->
                     <circle cx="300" cy="135" r="60" fill="#ffcdd2" fill-opacity="0.6" stroke="#e57373"
                         stroke-width="2" />
                     <text x="250" y="140" font-size="18" font-weight="bold" fill="#c62828">A</text>
 
-                    <!-- 莠玖ｱ｡B -->
+                    <!-- 事象B -->
                     <circle cx="400" cy="135" r="60" fill="#c8e6c9" fill-opacity="0.6" stroke="#66bb6a"
                         stroke-width="2" />
                     <text x="450" y="140" font-size="18" font-weight="bold" fill="#2e7d32">B</text>
 
-                    <!-- 莠､繧上ｊ驛ｨ蛻・-->
-                    <text x="350" y="140" font-size="14" font-weight="bold" fill="#ff6f00">A竏ｩB</text>
-                    <text x="340" y="155" font-size="14" fill="#ff6f00">・磯㍾縺ｪ繧奇ｼ・/text>
+                    <!-- 交わり部分 -->
+                    <text x="350" y="140" font-size="14" font-weight="bold" fill="#ff6f00">A∩B</text>
+                    <text x="340" y="155" font-size="14" fill="#ff6f00">（重なり）</text>
 
-                    <!-- 隱ｬ譏・-->
-                    <text x="350" y="235" font-size="14" fill="#333" text-anchor="middle">P(A竏ｪB) = P(A) + P(B) -
-                        P(A竏ｩB) 竊・驥阪↑繧翫ｒ2蝗樊焚縺医↑縺・ｈ縺・ｼ輔￥</text>
+                    <!-- 説明 -->
+                    <text x="350" y="235" font-size="14" fill="#333" text-anchor="middle">P(A∪B) = P(A) + P(B) -
+                        P(A∩B) ← 重なりを2回数えないよう引く</text>
                 </svg>
-                <div class="svg-caption">A縺ｨB繧定ｶｳ縺吶→驥阪↑繧企Κ蛻・ｒ2蝗樊焚縺医ｋ縺ｮ縺ｧ縲・蝗槫・蠑輔￥</div>
+                <div class="svg-caption">AとBを足すと重なり部分を2回数えるので、1回分引く</div>
             </div>
 
-            <p><strong>庁 縺ｪ縺懷ｼ輔￥・・/strong> P(A)縺ｨP(B)繧貞腰邏斐↓雜ｳ縺吶→縲・㍾縺ｪ繧企Κ蛻・ｼ・竏ｩB・峨ｒ2蝗樊焚縺医※縺励∪縺・・縺ｧ縲・蝗槫・繧貞ｼ輔＞縺ｦ隱ｿ謨ｴ縺励∪縺吶・/p>
+            <p><strong>💡 なぜ引く？</strong> P(A)とP(B)を単純に足すと、重なり部分（A∩B）を2回数えてしまうので、1回分を引いて調整します。</p>
         </div>
 
         <div class="rule-box">
-            <strong>東 謗貞渚莠玖ｱ｡・亥酔譎ゅ↓襍ｷ縺薙ｉ縺ｪ縺・ｼ・/strong> <a href="#ex-exclusive" class="example-link">竊・萓・</a>
+            <strong>📌 排反事象（同時に起こらない）</strong> <a href="#ex-exclusive" class="example-link">→ 例3</a>
             <div class="formula">
                 \[ P(A \cup B) = P(A) + P(B) \]
             </div>
-            <p>譚｡莉ｶ・喀( P(A \cap B) = 0 \)・・縺ｨB縺悟酔譎ゅ↓襍ｷ縺薙ｉ縺ｪ縺・ｼ・/p>
+            <p>条件：\( P(A \cap B) = 0 \)（AとBが同時に起こらない）</p>
 
-            <!-- 謗貞渚莠玖ｱ｡縺ｮ蝗ｳ -->
+            <!-- 排反事象の図 -->
             <div class="svg-container">
                 <svg width="700" height="200" viewBox="0 0 700 200">
                     <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
-                        text-anchor="middle">謗貞渚莠玖ｱ｡縺ｮ繧､繝｡繝ｼ繧ｸ・磯㍾縺ｪ繧峨↑縺・ｼ・/text>
+                        text-anchor="middle">排反事象のイメージ（重ならない）</text>
 
-                    <!-- 蜈ｨ莠玖ｱ｡縺ｮ譫 -->
+                    <!-- 全事象の枠 -->
                     <rect x="100" y="50" width="500" height="130" fill="none" stroke="#1976d2" stroke-width="2"
                         rx="10" />
 
-                    <!-- 莠玖ｱ｡A -->
+                    <!-- 事象A -->
                     <circle cx="270" cy="115" r="50" fill="#ffcdd2" fill-opacity="0.8" stroke="#e57373"
                         stroke-width="2" />
                     <text x="270" y="120" font-size="18" font-weight="bold" fill="#c62828" text-anchor="middle">A</text>
 
-                    <!-- 莠玖ｱ｡B -->
+                    <!-- 事象B -->
                     <circle cx="430" cy="115" r="50" fill="#c8e6c9" fill-opacity="0.8" stroke="#66bb6a"
                         stroke-width="2" />
                     <text x="430" y="120" font-size="18" font-weight="bold" fill="#2e7d32" text-anchor="middle">B</text>
 
-                    <!-- 遏｢蜊ｰ縺ｨ隱ｬ譏・-->
+                    <!-- 矢印と説明 -->
                     <path d="M 320 115 L 380 115" stroke="#ff9800" stroke-width="2" marker-end="url(#arrow-gap)" />
-                    <text x="350" y="105" font-size="14" fill="#ff9800" text-anchor="middle">驥阪↑繧峨↑縺・/text>
+                    <text x="350" y="105" font-size="14" fill="#ff9800" text-anchor="middle">重ならない</text>
 
                     <defs>
                         <marker id="arrow-gap" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
@@ -219,149 +219,149 @@ type: prerequisite
                         </marker>
                     </defs>
                 </svg>
-                <div class="svg-caption">謗貞渚莠玖ｱ｡縺ｪ繧蛾㍾縺ｪ繧翫′縺ｪ縺・・縺ｧ縲∝腰邏斐↓雜ｳ縺吶□縺・/div>
+                <div class="svg-caption">排反事象なら重なりがないので、単純に足すだけ</div>
             </div>
 
-            <p><strong>庁 縺ｪ縺懃ｰ｡蜊假ｼ・/strong> 驥阪↑繧翫′縺ｪ縺・・縺ｧ縲∝ｼ輔￥蠢・ｦ√′縺ｪ縺丞腰邏斐↓雜ｳ縺帙∪縺吶ゅし繧､繧ｳ繝ｭ縺ｧ縲・縺ｾ縺溘・2縲阪・遒ｺ邇・・1/6 + 1/6 = 1/3縺ｧ縺吶・/p>
+            <p><strong>💡 なぜ簡単？</strong> 重なりがないので、引く必要がなく単純に足せます。サイコロで「1または2」の確率は1/6 + 1/6 = 1/3です。</p>
         </div>
 
         <div class="rule-box">
-            <strong>東 譚｡莉ｶ莉倥″遒ｺ邇・/strong> <a href="#ex-conditional" class="example-link">竊・萓・</a>
+            <strong>📌 条件付き確率</strong> <a href="#ex-conditional" class="example-link">→ 例4</a>
             <div class="formula">
                 \[ P(A|B) = \frac{P(A \cap B)}{P(B)} \]
             </div>
-            <p>\(P(A|B)\)・壹沓縺瑚ｵｷ縺阪◆縺ｨ縺阪・A縺ｮ遒ｺ邇・・/p>
+            <p>\(P(A|B)\)：「Bが起きたときのAの確率」</p>
 
-            <!-- 譚｡莉ｶ莉倥″遒ｺ邇・・蝗ｳ -->
+            <!-- 条件付き確率の図 -->
             <div class="svg-container">
                 <svg width="700" height="220" viewBox="0 0 700 220">
                     <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
-                        text-anchor="middle">譚｡莉ｶ莉倥″遒ｺ邇・・繧､繝｡繝ｼ繧ｸ</text>
+                        text-anchor="middle">条件付き確率のイメージ</text>
 
-                    <!-- B縺瑚ｵｷ縺阪◆荳也阜・域棧・・-->
+                    <!-- Bが起きた世界（枠） -->
                     <rect x="200" y="50" width="300" height="140" fill="#e8f5e9" stroke="#4caf50" stroke-width="3"
                         rx="10" />
                     <text x="350" y="45" font-size="14" font-weight="bold" fill="#4caf50"
-                        text-anchor="middle">B縺瑚ｵｷ縺阪◆荳也阜・医％繧後′譁ｰ縺励＞縲悟・菴薙搾ｼ・/text>
+                        text-anchor="middle">Bが起きた世界（これが新しい「全体」）</text>
 
-                    <!-- A竏ｩB -->
+                    <!-- A∩B -->
                     <circle cx="300" cy="120" r="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" />
                     <text x="300" y="125" font-size="16" font-weight="bold" fill="#c62828"
-                        text-anchor="middle">A竏ｩB</text>
+                        text-anchor="middle">A∩B</text>
 
-                    <!-- 隱ｬ譏・-->
+                    <!-- 説明 -->
                     <text x="450" y="120" font-size="14" fill="#333">P(A|B) =</text>
-                    <text x="450" y="140" font-size="14" fill="#c62828" font-weight="bold">A縺九▽B縺ｮ遒ｺ邇・/text>
+                    <text x="450" y="140" font-size="14" fill="#c62828" font-weight="bold">AかつBの確率</text>
                     <line x1="430" y1="145" x2="560" y2="145" stroke="#333" stroke-width="1" />
-                    <text x="450" y="160" font-size="14" fill="#4caf50" font-weight="bold">B縺ｮ遒ｺ邇・/text>
+                    <text x="450" y="160" font-size="14" fill="#4caf50" font-weight="bold">Bの確率</text>
 
-                    <text x="350" y="210" font-size="14" fill="#666" text-anchor="middle">縲沓縺瑚ｵｷ縺阪◆縲榊燕謠舌〒縲√◎縺ｮ荳ｭ縺ｧA縺瑚ｵｷ縺阪ｋ遒ｺ邇・/text>
+                    <text x="350" y="210" font-size="14" fill="#666" text-anchor="middle">「Bが起きた」前提で、その中でAが起きる確率</text>
                 </svg>
-                <div class="svg-caption">B縺瑚ｵｷ縺阪◆荳ｭ縺ｧ縲、繧りｵｷ縺阪ｋ遒ｺ邇・/div>
+                <div class="svg-caption">Bが起きた中で、Aも起きる確率</div>
             </div>
 
-            <p><strong>庁 縺ｪ縺懊％縺ｮ蠑擾ｼ・/strong> 縲沓縺瑚ｵｷ縺阪◆縲榊燕謠舌↑縺ｮ縺ｧ縲∬・∴繧狗ｯ・峇縺沓縺縺代↓縺ｪ繧翫∪縺吶ゅ◎縺ｮ荳ｭ縺ｧA繧りｵｷ縺阪ｋ蜑ｲ蜷医′P(A竏ｩB)/P(B)縺ｧ縺吶・/p>
+            <p><strong>💡 なぜこの式？</strong> 「Bが起きた」前提なので、考える範囲がBだけになります。その中でAも起きる割合がP(A∩B)/P(B)です。</p>
         </div>
 
         <div class="rule-box">
-            <strong>東 迢ｬ遶倶ｺ玖ｱ｡</strong> <a href="#ex-independent" class="example-link">竊・萓・</a>
+            <strong>📌 独立事象</strong> <a href="#ex-independent" class="example-link">→ 例5</a>
             <div class="formula">
                 \[ P(A \cap B) = P(A) \times P(B) \]
             </div>
-            <p>譚｡莉ｶ・哂縺ｨB縺御ｺ偵＞縺ｫ蠖ｱ髻ｿ縺励↑縺・ｼ育峡遶具ｼ・/p>
+            <p>条件：AとBが互いに影響しない（独立）</p>
 
-            <p><strong>庁 縺ｪ縺懈寺縺代ｋ・・/strong> 繧ｵ繧､繧ｳ繝ｭ繧・蝗樊険繧九→縺阪・蝗樒岼縺ｨ2蝗樒岼縺ｯ辟｡髢｢菫ゅ〒縺吶ゅ・蝗樒岼縺・縲阪°縺､縲・蝗樒岼縺・縲阪・遒ｺ邇・・ (1/6) ﾃ・(1/6) = 1/36
-                縺ｧ縺吶・/p>
+            <p><strong>💡 なぜ掛ける？</strong> サイコロを2回振るとき、1回目と2回目は無関係です。「1回目が1」かつ「2回目が2」の確率は (1/6) × (1/6) = 1/36
+                です。</p>
         </div>
 
         <div class="rule-box">
-            <strong>東 蝗帛・菴咲ｯ・峇・・QR・・/strong>
+            <strong>📌 四分位範囲（IQR）</strong>
             <div class="formula">
                 \[ \text{IQR} = Q_3 - Q_1 \]
             </div>
-            <p>\(Q_1\)・夂ｬｬ1蝗帛・菴肴焚縲―(Q_3\)・夂ｬｬ3蝗帛・菴肴焚</p>
-            <p>繝・・繧ｿ縺ｮ縺ｰ繧峨▽縺搾ｼ井ｸｭ螟ｮ50%縺ｮ遽・峇・峨ｒ遉ｺ縺呎欠讓吶〒縺吶・/p>
+            <p>\(Q_1\)：第1四分位数、\(Q_3\)：第3四分位数</p>
+            <p>データのばらつき（中央50%の範囲）を示す指標です。</p>
 
-            <p><strong>庁 縺ｪ縺應ｽｿ縺・ｼ・/strong> 蟷ｳ蝮・､縺ｯ螟悶ｌ蛟､縺ｫ蠖ｱ髻ｿ縺輔ｌ繧・☆縺・〒縺吶′縲！QR縺ｯ荳ｭ螟ｮ驛ｨ蛻・・縺ｰ繧峨▽縺阪ｒ隕九ｋ縺ｮ縺ｧ縲√ョ繝ｼ繧ｿ縺ｮ螳滓・繧偵▽縺九∩繧・☆縺・〒縺吶・/p>
+            <p><strong>💡 なぜ使う？</strong> 平均値は外れ値に影響されやすいですが、IQRは中央部分のばらつきを見るので、データの実態をつかみやすいです。</p>
         </div>
     </div>
 </section>
 
-<!-- 3. 萓矩｡後→隗｣縺肴婿 -->
+<!-- 3. 例題と解き方 -->
 <section id="section3">
-    <h2>3. 萓矩｡後→隗｣縺肴婿</h2>
+    <h2>3. 例題と解き方</h2>
     <div class="section">
-        <p>蜷・ｳ募援繧剃ｽｿ縺｣縺ｦ螳滄圀縺ｫ隗｣縺・※縺ｿ縺ｾ縺励ｇ縺・ゅ←縺ｮ蝠城｡後ｂ縲後←縺ｮ豕募援繧剃ｽｿ縺・°縲阪ｒ隕区･ｵ繧√ｋ縺薙→縺後・繧､繝ｳ繝医〒縺吶・/p>
+        <p>各法則を使って実際に解いてみましょう。どの問題も「どの法則を使うか」を見極めることがポイントです。</p>
 
-        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">笆ｶ 菴吩ｺ玖ｱ｡繧剃ｽｿ縺・/h3>
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 余事象を使う</h3>
 
         <div class="example-box" id="ex-complement">
             <div class="example-title">
-                <span class="number-badge">萓・</span>蟆代↑縺上→繧・蝗槫ｽ薙◆繧狗｢ｺ邇・
+                <span class="number-badge">例1</span>少なくとも1回当たる確率
             </div>
-            <p>蠖薙◆繧狗｢ｺ邇・′ \(\frac{1}{10}\) 縺ｮ縺上§繧・蝗槫ｼ輔￥縲ょｰ代↑縺上→繧・蝗槫ｽ薙◆繧狗｢ｺ邇・ｒ豎ゅａ繧九・/p>
-            <p><strong>隗｣縺肴婿・・/strong></p>
+            <p>当たる確率が \(\frac{1}{10}\) のくじを3回引く。少なくとも1回当たる確率を求める。</p>
+            <p><strong>解き方：</strong></p>
             <ol>
-                <li>縲悟ｰ代↑縺上→繧・蝗槭阪・逶ｴ謗･謨ｰ縺医ｋ縺ｨ隍・尅 竊・菴吩ｺ玖ｱ｡繧剃ｽｿ縺・/li>
-                <li>菴吩ｺ玖ｱ｡縺ｯ縲・蝗槭→繧ょ､悶ｌ繧九・/li>
-                <li>1蝗槫､悶ｌ繧狗｢ｺ邇・・ \(1 - \frac{1}{10} = \frac{9}{10}\)</li>
-                <li>3蝗槭→繧ょ､悶ｌ繧狗｢ｺ邇・ｼ育峡遶倶ｺ玖ｱ｡・・ \(\left(\frac{9}{10}\right)^3 = \frac{729}{1000}\)</li>
-                <li>蟆代↑縺上→繧・蝗槫ｽ薙◆繧狗｢ｺ邇・= \(1 - \frac{729}{1000} = \frac{271}{1000}\)</li>
+                <li>「少なくとも1回」は直接数えると複雑 → 余事象を使う</li>
+                <li>余事象は「3回とも外れる」</li>
+                <li>1回外れる確率は \(1 - \frac{1}{10} = \frac{9}{10}\)</li>
+                <li>3回とも外れる確率（独立事象）= \(\left(\frac{9}{10}\right)^3 = \frac{729}{1000}\)</li>
+                <li>少なくとも1回当たる確率 = \(1 - \frac{729}{1000} = \frac{271}{1000}\)</li>
             </ol>
             <div class="formula">
-                \[ P(\text{蟆代↑縺上→繧・蝗槫ｽ薙◆繧急) = 1 - \left(\frac{9}{10}\right)^3 = \frac{271}{1000} \]
+                \[ P(\text{少なくとも1回当たる}) = 1 - \left(\frac{9}{10}\right)^3 = \frac{271}{1000} \]
             </div>
         </div>
 
-        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">笆ｶ 蜥後・豕募援繧剃ｽｿ縺・/h3>
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 和の法則を使う</h3>
 
         <div class="example-box" id="ex-union">
             <div class="example-title">
-                <span class="number-badge">萓・</span>繝医Λ繝ｳ繝励〒邨ｵ譛ｭ縺ｾ縺溘・繝上・繝・
+                <span class="number-badge">例2</span>トランプで絵札またはハート
             </div>
-            <p>繝医Λ繝ｳ繝・2譫壹°繧・譫壼ｼ輔￥縲らｵｵ譛ｭ・・, Q, K・峨∪縺溘・繝上・繝医ｒ蠑輔￥遒ｺ邇・ｒ豎ゅａ繧九・/p>
-            <p><strong>隗｣縺肴婿・・/strong></p>
+            <p>トランプ52枚から1枚引く。絵札（J, Q, K）またはハートを引く確率を求める。</p>
+            <p><strong>解き方：</strong></p>
             <ol>
-                <li>A・夂ｵｵ譛ｭ繧貞ｼ輔￥ 竊・蜷・せ繝ｼ繝医↓3譫壹★縺､ 竊・P(A) = \(\frac{12}{52}\)</li>
-                <li>B・壹ワ繝ｼ繝医ｒ蠑輔￥ 竊・13譫・竊・P(B) = \(\frac{13}{52}\)</li>
-                <li>A竏ｩB・壹ワ繝ｼ繝医・邨ｵ譛ｭ・・笙･, Q笙･, K笙･・・竊・P(A竏ｩB) = \(\frac{3}{52}\)</li>
-                <li>蜥後・豕募援繧帝←逕ｨ</li>
+                <li>A：絵札を引く → 各スートに3枚ずつ → P(A) = \(\frac{12}{52}\)</li>
+                <li>B：ハートを引く → 13枚 → P(B) = \(\frac{13}{52}\)</li>
+                <li>A∩B：ハートの絵札（J♥, Q♥, K♥） → P(A∩B) = \(\frac{3}{52}\)</li>
+                <li>和の法則を適用</li>
             </ol>
             <div class="formula">
                 \[ P(A \cup B) = \frac{12}{52} + \frac{13}{52} - \frac{3}{52} = \frac{22}{52} = \frac{11}{26} \]
             </div>
         </div>
 
-        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">笆ｶ 謗貞渚莠玖ｱ｡繧剃ｽｿ縺・/h3>
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 排反事象を使う</h3>
 
         <div class="example-box" id="ex-exclusive">
             <div class="example-title">
-                <span class="number-badge">萓・</span>繧ｵ繧､繧ｳ繝ｭ縺ｧ3莉･荳九・逶ｮ
+                <span class="number-badge">例3</span>サイコロで3以下の目
             </div>
-            <p>繧ｵ繧､繧ｳ繝ｭ繧・蝗樊険縺｣縺ｦ縲・, 2, 3縺ｮ縺・★繧後°縺悟・繧狗｢ｺ邇・ｒ豎ゅａ繧九・/p>
-            <p><strong>隗｣縺肴婿・・/strong></p>
+            <p>サイコロを1回振って、1, 2, 3のいずれかが出る確率を求める。</p>
+            <p><strong>解き方：</strong></p>
             <ol>
-                <li>縲・縺悟・繧九阪・縺悟・繧九阪・縺悟・繧九阪・謗貞渚莠玖ｱ｡・亥酔譎ゅ↓襍ｷ縺薙ｉ縺ｪ縺・ｼ・/li>
-                <li>縺昴ｌ縺槭ｌ縺ｮ遒ｺ邇・ｼ喀(P(1) = \frac{1}{6}\), \(P(2) = \frac{1}{6}\), \(P(3) = \frac{1}{6}\)</li>
-                <li>謗貞渚莠玖ｱ｡縺ｪ縺ｮ縺ｧ蜊倡ｴ斐↓雜ｳ縺・/li>
+                <li>「1が出る」「2が出る」「3が出る」は排反事象（同時に起こらない）</li>
+                <li>それぞれの確率：\(P(1) = \frac{1}{6}\), \(P(2) = \frac{1}{6}\), \(P(3) = \frac{1}{6}\)</li>
+                <li>排反事象なので単純に足す</li>
             </ol>
             <div class="formula">
-                \[ P(1,2,3\text{縺ｮ縺・★繧後°}) = \frac{1}{6} + \frac{1}{6} + \frac{1}{6} = \frac{3}{6} = \frac{1}{2} \]
+                \[ P(1,2,3\text{のいずれか}) = \frac{1}{6} + \frac{1}{6} + \frac{1}{6} = \frac{3}{6} = \frac{1}{2} \]
             </div>
         </div>
 
-        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">笆ｶ 譚｡莉ｶ莉倥″遒ｺ邇・ｒ菴ｿ縺・/h3>
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 条件付き確率を使う</h3>
 
         <div class="example-box" id="ex-conditional">
             <div class="example-title">
-                <span class="number-badge">萓・</span>襍､邇峨ｒ蠑輔＞縺溘→縺阪∝､ｧ縺阪＞邇峨〒縺ゅｋ遒ｺ邇・
+                <span class="number-badge">例4</span>赤玉を引いたとき、大きい玉である確率
             </div>
-            <p>陲九・荳ｭ縺ｫ縲∝､ｧ縺阪＞襍､邇・蛟九∝ｰ上＆縺・ｵ､邇・蛟九∝､ｧ縺阪＞髱堤脂1蛟九∝ｰ上＆縺・搨邇・蛟九′蜈･縺｣縺ｦ縺・ｋ縲・蛟句叙繧雁・縺励◆繧芽ｵ､縺縺｣縺溘ゅ％繧後′螟ｧ縺阪＞邇峨〒縺ゅｋ遒ｺ邇・ｒ豎ゅａ繧九・/p>
-            <p><strong>隗｣縺肴婿・・/strong></p>
+            <p>袋の中に、大きい赤玉2個、小さい赤玉3個、大きい青玉1個、小さい青玉4個が入っている。1個取り出したら赤だった。これが大きい玉である確率を求める。</p>
+            <p><strong>解き方：</strong></p>
             <ol>
-                <li>B・郁ｵ､邇峨ｒ蠑輔￥・・ 2 + 3 = 5蛟・竊・P(B) = \(\frac{5}{10} = \frac{1}{2}\)</li>
-                <li>A竏ｩB・郁ｵ､縺九▽螟ｧ縺阪＞・・ 2蛟・竊・P(A竏ｩB) = \(\frac{2}{10} = \frac{1}{5}\)</li>
-                <li>譚｡莉ｶ莉倥″遒ｺ邇・・蜈ｬ蠑上ｒ驕ｩ逕ｨ</li>
+                <li>B（赤玉を引く）= 2 + 3 = 5個 → P(B) = \(\frac{5}{10} = \frac{1}{2}\)</li>
+                <li>A∩B（赤かつ大きい）= 2個 → P(A∩B) = \(\frac{2}{10} = \frac{1}{5}\)</li>
+                <li>条件付き確率の公式を適用</li>
             </ol>
             <div class="formula">
                 \[ P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{\frac{1}{5}}{\frac{1}{2}} = \frac{1}{5} \times
@@ -369,138 +369,138 @@ type: prerequisite
             </div>
         </div>
 
-        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">笆ｶ 迢ｬ遶倶ｺ玖ｱ｡繧剃ｽｿ縺・/h3>
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 独立事象を使う</h3>
 
         <div class="example-box" id="ex-independent">
             <div class="example-title">
-                <span class="number-badge">萓・</span>繧ｵ繧､繧ｳ繝ｭ2蛟九〒荳｡譁ｹ縺ｨ繧ょ・謨ｰ
+                <span class="number-badge">例5</span>サイコロ2個で両方とも偶数
             </div>
-            <p>繧ｵ繧､繧ｳ繝ｭ繧・蛟句酔譎ゅ↓謖ｯ繧九ゆｸ｡譁ｹ縺ｨ繧ょ・謨ｰ縺悟・繧狗｢ｺ邇・ｒ豎ゅａ繧九・/p>
-            <p><strong>隗｣縺肴婿・・/strong></p>
+            <p>サイコロを2個同時に振る。両方とも偶数が出る確率を求める。</p>
+            <p><strong>解き方：</strong></p>
             <ol>
-                <li>1蛟狗岼縺悟・謨ｰ・・, 4, 6・峨・遒ｺ邇・= \(\frac{3}{6} = \frac{1}{2}\)</li>
-                <li>2蛟狗岼縺悟・謨ｰ縺ｮ遒ｺ邇・= \(\frac{1}{2}\)・・蛟狗岼縺ｨ辟｡髢｢菫ゑｼ・/li>
-                <li>迢ｬ遶倶ｺ玖ｱ｡縺ｪ縺ｮ縺ｧ謗帙￠繧・/li>
+                <li>1個目が偶数（2, 4, 6）の確率 = \(\frac{3}{6} = \frac{1}{2}\)</li>
+                <li>2個目が偶数の確率 = \(\frac{1}{2}\)（1個目と無関係）</li>
+                <li>独立事象なので掛ける</li>
             </ol>
             <div class="formula">
-                \[ P(\text{荳｡譁ｹ蛛ｶ謨ｰ}) = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4} \]
+                \[ P(\text{両方偶数}) = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4} \]
             </div>
         </div>
     </div>
 </section>
 
-<!-- 4. 邁｡蜊倥↓縺吶ｋ繧ｳ繝・-->
+<!-- 4. 簡単にするコツ -->
 <section id="section4">
-    <h2>4. 邁｡蜊倥↓縺吶ｋ繧ｳ繝・/h2>
+    <h2>4. 簡単にするコツ</h2>
     <div class="section">
         <div class="tip-box">
-            <strong>笨擾ｸ・繧ｳ繝・・壹悟ｰ代↑縺上→繧ゅ阪・菴吩ｺ玖ｱ｡</strong><br>
-            縲悟ｰ代↑縺上→繧・蝗槭阪悟ｰ代↑縺上→繧・蛟九阪↑縺ｩ 竊・菴吩ｺ玖ｱ｡縲・蝗槭ｂ縲懊↑縺・阪ｒ菴ｿ縺・→邁｡蜊倥・
+            <strong>✏️ コツ1：「少なくとも」は余事象</strong><br>
+            「少なくとも1回」「少なくとも1個」など → 余事象「1回も〜ない」を使うと簡単。
         </div>
 
         <div class="tip-box">
-            <strong>笨擾ｸ・繧ｳ繝・・壹・繝ｳ蝗ｳ繧呈緒縺・/strong><br>
-            縲後∪縺溘・縲阪・蝠城｡後・縲√・繝ｳ蝗ｳ縺ｧ驥阪↑繧翫ｒ遒ｺ隱阪☆繧九→髢馴＆縺・↓縺上＞縲・
+            <strong>✏️ コツ2：ベン図を描く</strong><br>
+            「または」の問題は、ベン図で重なりを確認すると間違いにくい。
         </div>
 
         <div class="tip-box">
-            <strong>笨擾ｸ・繧ｳ繝・・壽賜蜿阪°縺ｩ縺・°遒ｺ隱・/strong><br>
-            蜷梧凾縺ｫ襍ｷ縺薙ｉ縺ｪ縺・↑繧画賜蜿・竊・蠑輔￥蠢・ｦ√↑縺丞腰邏斐↓雜ｳ縺帙ｋ縲・
+            <strong>✏️ コツ3：排反かどうか確認</strong><br>
+            同時に起こらないなら排反 → 引く必要なく単純に足せる。
         </div>
 
         <div class="tip-box">
-            <strong>笨擾ｸ・繧ｳ繝・・壽擅莉ｶ莉倥″遒ｺ邇・・縲御ｸ也阜繧堤強繧√ｋ縲・/strong><br>
-            縲沓縺瑚ｵｷ縺阪◆縲榊燕謠舌↑縺ｮ縺ｧ縲∬・∴繧狗ｯ・峇縺沓縺縺代↓縺ｪ繧九・
+            <strong>✏️ コツ4：条件付き確率は「世界を狭める」</strong><br>
+            「Bが起きた」前提なので、考える範囲がBだけになる。
         </div>
 
         <div class="tip-box">
-            <strong>笨擾ｸ・繧ｳ繝・・夂峡遶九°縺ｩ縺・°遒ｺ隱・/strong><br>
-            繧ｵ繧､繧ｳ繝ｭ縲√さ繧､繝ｳ縲∝ｾｩ蜈・歓蜃ｺ縺ｪ縺ｩ 竊・迢ｬ遶九↑縺ｮ縺ｧ謗帙￠邂励〒OK縲・
+            <strong>✏️ コツ5：独立かどうか確認</strong><br>
+            サイコロ、コイン、復元抽出など → 独立なので掛け算でOK。
         </div>
     </div>
 </section>
 
-<!-- 5. 繧医￥縺ゅｋ縺､縺ｾ縺･縺・-->
+<!-- 5. よくあるつまづき -->
 <section id="section5">
-    <h2>5. 繧医￥縺ゅｋ縺､縺ｾ縺･縺・/h2>
+    <h2>5. よくあるつまづき</h2>
     <div class="section">
         <div class="caution-box">
-            <div class="caution-title">笞・・縺､縺ｾ縺･縺・・壼柱縺ｮ豕募援縺ｧ蠑輔″蠢倥ｌ</div>
-            <p><strong>繝繝｡縺ｪ萓具ｼ・/strong> P(A竏ｪB) = P(A) + P(B) 縺ｨ縺励※驥阪↑繧翫ｒ蠑輔°縺ｪ縺・/p>
-            <p><strong>蟇ｾ遲厄ｼ・/strong> 謗貞渚縺ｧ縺ｪ縺・剞繧翫∝ｿ・★ P(A竏ｩB) 繧貞ｼ輔￥縲ゅ・繝ｳ蝗ｳ縺ｧ遒ｺ隱搾ｼ・/p>
+            <div class="caution-title">⚠️ つまづき1：和の法則で引き忘れ</div>
+            <p><strong>ダメな例：</strong> P(A∪B) = P(A) + P(B) として重なりを引かない</p>
+            <p><strong>対策：</strong> 排反でない限り、必ず P(A∩B) を引く。ベン図で確認！</p>
         </div>
 
         <div class="caution-box">
-            <div class="caution-title">笞・・縺､縺ｾ縺･縺・・壽擅莉ｶ莉倥″遒ｺ邇・〒蛻・ｯ阪ｒ髢馴＆縺医ｋ</div>
-            <p><strong>繝繝｡縺ｪ萓具ｼ・/strong> P(A|B) = P(A竏ｩB) ﾃｷ P(A) 縺ｨ騾・↓縺吶ｋ</p>
-            <p><strong>蟇ｾ遲厄ｼ・/strong> 縲芸縲阪・蠕後ｍ縺悟・豈阪１(A|B) 縺ｪ繧・B 縺瑚ｵｷ縺阪◆蜑肴署 竊・P(B) 縺悟・豈阪・/p>
+            <div class="caution-title">⚠️ つまづき2：条件付き確率で分母を間違える</div>
+            <p><strong>ダメな例：</strong> P(A|B) = P(A∩B) ÷ P(A) と逆にする</p>
+            <p><strong>対策：</strong> 「|」の後ろが分母。P(A|B) なら B が起きた前提 → P(B) が分母。</p>
         </div>
 
         <div class="caution-box">
-            <div class="caution-title">笞・・縺､縺ｾ縺･縺・・夂峡遶九〒縺ｪ縺・・縺ｫ謗帙￠繧・/div>
-            <p><strong>繝繝｡縺ｪ萓具ｼ・/strong> 髱槫ｾｩ蜈・歓蜃ｺ・亥ｼ輔＞縺溘ｉ謌ｻ縺輔↑縺・ｼ峨〒迢ｬ遶区桶縺・/p>
-            <p><strong>蟇ｾ遲厄ｼ・/strong> 1蝗樒岼縺・蝗樒岼縺ｫ蠖ｱ髻ｿ縺吶ｋ縺ｪ繧臥峡遶九〒縺ｪ縺・よ擅莉ｶ莉倥″遒ｺ邇・ｒ菴ｿ縺・・/p>
+            <div class="caution-title">⚠️ つまづき3：独立でないのに掛ける</div>
+            <p><strong>ダメな例：</strong> 非復元抽出（引いたら戻さない）で独立扱い</p>
+            <p><strong>対策：</strong> 1回目が2回目に影響するなら独立でない。条件付き確率を使う。</p>
         </div>
 
         <div class="caution-box">
-            <div class="caution-title">笞・・縺､縺ｾ縺･縺・・壻ｽ吩ｺ玖ｱ｡繧貞ｿ倥ｌ繧・/div>
-            <p><strong>繝繝｡縺ｪ萓具ｼ・/strong> 縲悟ｰ代↑縺上→繧・蝗槭阪ｒ蝣ｴ蜷亥・縺代〒謨ｰ縺医ｋ</p>
-            <p><strong>蟇ｾ遲厄ｼ・/strong> 縲悟ｰ代↑縺上→繧ゅ阪・菴吩ｺ玖ｱ｡縺梧妙辟ｶ讌ｽ縲・ - P(蜈ｨ驛ｨ螟悶ｌ) 縺ｧ險育ｮ励・/p>
+            <div class="caution-title">⚠️ つまづき4：余事象を忘れる</div>
+            <p><strong>ダメな例：</strong> 「少なくとも1回」を場合分けで数える</p>
+            <p><strong>対策：</strong> 「少なくとも」は余事象が断然楽。1 - P(全部外れ) で計算。</p>
         </div>
 
         <div class="caution-box">
-            <div class="caution-title">笞・・縺､縺ｾ縺･縺・・夂｢ｺ邇・・邏・・蠢倥ｌ</div>
-            <p><strong>繝繝｡縺ｪ萓具ｼ・/strong> \(\frac{12}{52}\) 縺ｮ縺ｾ縺ｾ遲斐∴繧・/p>
-            <p><strong>蟇ｾ遲厄ｼ・/strong> 蠢・★譛繧らｰ｡蜊倥↑蛻・焚縺ｫ邏・・・・(\frac{12}{52} = \frac{3}{13}\)・峨・/p>
+            <div class="caution-title">⚠️ つまづき5：確率の約分忘れ</div>
+            <p><strong>ダメな例：</strong> \(\frac{12}{52}\) のまま答える</p>
+            <p><strong>対策：</strong> 必ず最も簡単な分数に約分（\(\frac{12}{52} = \frac{3}{13}\)）。</p>
         </div>
     </div>
 </section>
 
-<!-- 6. 莉穂ｸ翫￡繝√ぉ繝・け繝ｪ繧ｹ繝・-->
+<!-- 6. 仕上げチェックリスト -->
 <section id="section6">
-    <h2>6. 莉穂ｸ翫￡繝√ぉ繝・け繝ｪ繧ｹ繝・/h2>
+    <h2>6. 仕上げチェックリスト</h2>
     <div class="section">
         <div class="checklist">
-            <div class="checklist-item">縲後∪縺溘・縲阪・蝠城｡後〒謗貞渚縺九←縺・°遒ｺ隱阪＠縺溘°</div>
-            <div class="checklist-item">蜥後・豕募援繧剃ｽｿ縺・→縺阪・㍾縺ｪ繧翫ｒ蠑輔＞縺溘°</div>
-            <div class="checklist-item">譚｡莉ｶ莉倥″遒ｺ邇・・蛻・ｯ阪・縲芸縺ｮ蠕後ｍ縲阪↓縺励◆縺・/div>
-            <div class="checklist-item">迢ｬ遶倶ｺ玖ｱ｡縺九←縺・°遒ｺ隱阪＠縺溘°・亥ｾｩ蜈・歓蜃ｺ縺矩撼蠕ｩ蜈・歓蜃ｺ縺具ｼ・/div>
-            <div class="checklist-item">遒ｺ邇・・遲斐∴縺ｯ邏・・縺励※譛繧らｰ｡蜊倥↑蠖｢縺ｫ縺励◆縺・/div>
+            <div class="checklist-item">「または」の問題で排反かどうか確認したか</div>
+            <div class="checklist-item">和の法則を使うとき、重なりを引いたか</div>
+            <div class="checklist-item">条件付き確率の分母は「|の後ろ」にしたか</div>
+            <div class="checklist-item">独立事象かどうか確認したか（復元抽出か非復元抽出か）</div>
+            <div class="checklist-item">確率の答えは約分して最も簡単な形にしたか</div>
         </div>
     </div>
 </section>
 
-<!-- 7. 邱ｴ鄙貞撫鬘・-->
+<!-- 7. 練習問題 -->
 <section id="section7">
-    <h2>7. 邱ｴ鄙貞撫鬘・/h2>
+    <h2>7. 練習問題</h2>
     <div class="section">
-        <p>蟄ｦ繧薙□縺薙→繧剃ｽｿ縺｣縺ｦ縲∽ｻ･荳九・蝠城｡後ｒ隗｣縺・※縺ｿ繧医≧縲・/p>
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
 
         <div class="rule-box" style="background: #f5f5f5;">
-            <strong>邱ｴ鄙・</strong>
-            <p>繧ｵ繧､繧ｳ繝ｭ繧・蝗樊険繧九ょｰ代↑縺上→繧・蝗槭・6縺悟・繧狗｢ｺ邇・ｒ豎ゅａ縺ｪ縺輔＞縲・/p>
+            <strong>練習1</strong>
+            <p>サイコロを2回振る。少なくとも1回は6が出る確率を求めなさい。</p>
             <details style="margin-top: 15px;">
-                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">遲斐∴繧定ｦ九ｋ</summary>
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
                 <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
-                    <p><strong>菴吩ｺ玖ｱ｡繧剃ｽｿ縺・ｼ・/strong>縲・蝗槭→繧・縺ｧ縺ｪ縺・咲｢ｺ邇・ｒ豎ゅａ繧・/p>
-                    <p>1蝗槭〒6縺ｧ縺ｪ縺・｢ｺ邇・= \(\frac{5}{6}\)</p>
-                    <p>2蝗槭→繧・縺ｧ縺ｪ縺・= \(\left(\frac{5}{6}\right)^2 = \frac{25}{36}\)</p>
-                    <p><strong>遲斐∴・・/strong>\(1 - \frac{25}{36} = \frac{11}{36}\)</p>
+                    <p><strong>余事象を使う：</strong>「2回とも6でない」確率を求める</p>
+                    <p>1回で6でない確率 = \(\frac{5}{6}\)</p>
+                    <p>2回とも6でない = \(\left(\frac{5}{6}\right)^2 = \frac{25}{36}\)</p>
+                    <p><strong>答え：</strong>\(1 - \frac{25}{36} = \frac{11}{36}\)</p>
                 </div>
             </details>
         </div>
 
         <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
-            <strong>邱ｴ鄙・</strong>
-            <p>繝医Λ繝ｳ繝・2譫壹°繧・譫壼ｼ輔￥縲ゅせ繝壹・繝峨∪縺溘・邨ｵ譛ｭ繧貞ｼ輔￥遒ｺ邇・ｒ豎ゅａ縺ｪ縺輔＞縲・/p>
+            <strong>練習2</strong>
+            <p>トランプ52枚から1枚引く。スペードまたは絵札を引く確率を求めなさい。</p>
             <details style="margin-top: 15px;">
-                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">遲斐∴繧定ｦ九ｋ</summary>
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
                 <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
-                    <p><strong>蜥後・豕募援・・/strong></p>
-                    <p>P(繧ｹ繝壹・繝・ = \(\frac{13}{52}\)</p>
-                    <p>P(邨ｵ譛ｭ) = \(\frac{12}{52}\)・亥推繧ｹ繝ｼ繝・譫堙・・・/p>
-                    <p>P(繧ｹ繝壹・繝峨°縺､邨ｵ譛ｭ) = \(\frac{3}{52}\)・・笙, Q笙, K笙・・/p>
-                    <p><strong>遲斐∴・・/strong>\(\frac{13}{52} + \frac{12}{52} - \frac{3}{52} = \frac{22}{52} =
+                    <p><strong>和の法則：</strong></p>
+                    <p>P(スペード) = \(\frac{13}{52}\)</p>
+                    <p>P(絵札) = \(\frac{12}{52}\)（各スート3枚×4）</p>
+                    <p>P(スペードかつ絵札) = \(\frac{3}{52}\)（J♠, Q♠, K♠）</p>
+                    <p><strong>答え：</strong>\(\frac{13}{52} + \frac{12}{52} - \frac{3}{52} = \frac{22}{52} =
                         \frac{11}{26}\)</p>
                 </div>
             </details>
@@ -508,87 +508,87 @@ type: prerequisite
     </div>
 </section>
 
-<!-- 縺ｾ縺ｨ繧・-->
+<!-- まとめ -->
 <div class="summary">
-    東 縺ｾ縺ｨ繧・ｼ壽ｳ募援繧定ｦ区･ｵ繧√※縲∝ｼ上↓蠖薙※縺ｯ繧√ｋ・・
+    📌 まとめ：法則を見極めて、式に当てはめる！
 </div>
 
-<!-- 縺翫∪縺托ｼ壼ｮ溯ｷｵ繧ｹ繝医・繝ｪ繝ｼ -->
+<!-- おまけ：実践ストーリー -->
 <section id="story">
-    <h2>縺翫∪縺托ｼ夂｢ｺ邇・ヱ繝ｩ繝峨ャ繧ｯ繧ｹ縲後ラ繧｢繧貞､峨∴繧九→蠖薙◆繧狗｢ｺ邇・′2蛟搾ｼ溘・/h2>
+    <h2>おまけ：確率パラドックス「ドアを変えると当たる確率が2倍？」</h2>
     <div class="section">
         <div class="story-box">
-            <div class="story-title">坎 繝｢繝ｳ繝・ぅ繝ｻ繝帙・繝ｫ蝠城｡鯉ｼ夂峩諢溘ｒ陬丞・繧狗｢ｺ邇・・荳肴晁ｭｰ</div>
+            <div class="story-title">🚪 モンティ・ホール問題：直感を裏切る確率の不思議</div>
 
-            <p>1970蟷ｴ莉｣縲√い繝｡繝ｪ繧ｫ縺ｮ繧ｯ繧､繧ｺ逡ｪ邨・鍬et's Make a
-                Deal縲阪〒螳滄圀縺ｫ菴ｿ繧上ｌ縺ｦ縺・◆繧ｲ繝ｼ繝縲ょ昇莨夊・・蜷榊燕縺九ｉ縲後Δ繝ｳ繝・ぅ繝ｻ繝帙・繝ｫ蝠城｡後阪→蜻ｼ縺ｰ繧後∵焚蟄ｦ閠・◆縺｡繧貞､ｧ豺ｷ荵ｱ縺ｫ髯･繧後◆莨晁ｪｬ縺ｮ遒ｺ邇・ヱ繝ｩ繝峨ャ繧ｯ繧ｹ縺ｧ縺吶・/p>
+            <p>1970年代、アメリカのクイズ番組「Let's Make a
+                Deal」で実際に使われていたゲーム。司会者の名前から「モンティ・ホール問題」と呼ばれ、数学者たちを大混乱に陥れた伝説の確率パラドックスです。</p>
 
             <p style="background: #fff9c4; padding: 10px; border-radius: 8px; margin: 15px 0;">
-                <strong>縲舌Ν繝ｼ繝ｫ縲・/strong><br>
-                3縺､縺ｮ繝峨い縺後≠繧翫・縺､縺縺大ｽ薙◆繧奇ｼ郁ｻ奇ｼ峨∵ｮ九ｊ2縺､縺ｯ繝上ぜ繝ｬ・医Ζ繧ｮ・峨・br>
-                竭 縺ゅ↑縺溘′繝峨い繧・縺､驕ｸ縺ｶ<br>
-                竭｡ 蜿ｸ莨夊・′谿九ｊ2縺､縺ｮ縺・■縲・strong>蠢・★繝上ぜ繝ｬ縺ｮ繝峨い繧・縺､髢九￠繧・/strong><br>
-                竭｢ 縲梧怙蛻昴↓驕ｸ繧薙□繝峨い繧貞､峨∴縺ｾ縺吶°・溘阪→閨槭°繧後ｋ
+                <strong>【ルール】</strong><br>
+                3つのドアがあり、1つだけ当たり（車）、残り2つはハズレ（ヤギ）。<br>
+                ① あなたがドアを1つ選ぶ<br>
+                ② 司会者が残り2つのうち、<strong>必ずハズレのドアを1つ開ける</strong><br>
+                ③ 「最初に選んだドアを変えますか？」と聞かれる
             </p>
 
-            <p><strong>蝠城｡鯉ｼ壼､峨∴縺滓婿縺悟ｾ暦ｼ溘◎繧後→繧ょ､峨∴縺ｪ縺・婿縺悟ｾ暦ｼ・/strong></p>
+            <p><strong>問題：変えた方が得？それとも変えない方が得？</strong></p>
 
             <p style="background: #e3f2fd; padding: 10px; border-radius: 8px; margin: 15px 0;">
-                <strong>逶ｴ諢溘・遲斐∴・・/strong>縲後←縺｣縺｡繧ょ酔縺倡｢ｺ邇・ｼ・/2・峨〒縺励ｇ・溘・br>
-                <strong>謨ｰ蟄ｦ縺ｮ遲斐∴・・/strong>縲悟､峨∴繧九→遒ｺ邇・′<span style="color: #e53935; font-weight: bold;">2蛟・/span>縺ｫ縺ｪ繧具ｼ√・
+                <strong>直感の答え：</strong>「どっちも同じ確率（1/2）でしょ？」<br>
+                <strong>数学の答え：</strong>「変えると確率が<span style="color: #e53935; font-weight: bold;">2倍</span>になる！」
             </p>
 
-            <p><strong>縲舌↑縺・蛟搾ｼ滓擅莉ｶ莉倥″遒ｺ邇・〒閠・∴繧九・/strong></p>
+            <p><strong>【なぜ2倍？条件付き確率で考える】</strong></p>
 
             <table class="material-table" style="margin: 15px 0;">
                 <tr>
-                    <th>蠖薙◆繧翫・菴咲ｽｮ</th>
-                    <th>譛蛻昴・驕ｸ謚・/th>
-                    <th>蜿ｸ莨夊・′髢九￠繧九ラ繧｢</th>
-                    <th>螟峨∴縺溷ｴ蜷・/th>
+                    <th>当たりの位置</th>
+                    <th>最初の選択</th>
+                    <th>司会者が開けるドア</th>
+                    <th>変えた場合</th>
                 </tr>
                 <tr>
-                    <td>繝峨い1・育｢ｺ邇・1/3・・/td>
-                    <td>繝峨い1繧帝∈謚・/td>
-                    <td>繝峨い2縺・・医ワ繧ｺ繝ｬ・・/td>
-                    <td style="color: #e53935; font-weight: bold;">笶・繝上ぜ繝ｬ</td>
+                    <td>ドア1（確率 1/3）</td>
+                    <td>ドア1を選択</td>
+                    <td>ドア2か3（ハズレ）</td>
+                    <td style="color: #e53935; font-weight: bold;">❌ ハズレ</td>
                 </tr>
                 <tr>
-                    <td>繝峨い2・育｢ｺ邇・1/3・・/td>
-                    <td>繝峨い1繧帝∈謚・/td>
-                    <td>繝峨い3・医ワ繧ｺ繝ｬ・・/td>
-                    <td style="color: #4caf50; font-weight: bold;">笨・蠖薙◆繧・/td>
+                    <td>ドア2（確率 1/3）</td>
+                    <td>ドア1を選択</td>
+                    <td>ドア3（ハズレ）</td>
+                    <td style="color: #4caf50; font-weight: bold;">✅ 当たり</td>
                 </tr>
                 <tr>
-                    <td>繝峨い3・育｢ｺ邇・1/3・・/td>
-                    <td>繝峨い1繧帝∈謚・/td>
-                    <td>繝峨い2・医ワ繧ｺ繝ｬ・・/td>
-                    <td style="color: #4caf50; font-weight: bold;">笨・蠖薙◆繧・/td>
+                    <td>ドア3（確率 1/3）</td>
+                    <td>ドア1を選択</td>
+                    <td>ドア2（ハズレ）</td>
+                    <td style="color: #4caf50; font-weight: bold;">✅ 当たり</td>
                 </tr>
             </table>
 
-            <p><strong>邨占ｫ厄ｼ・/strong>螟峨∴縺ｪ縺・→蠖薙◆繧狗｢ｺ邇・= 1/3縲∝､峨∴繧九→蠖薙◆繧狗｢ｺ邇・= 2/3</p>
+            <p><strong>結論：</strong>変えないと当たる確率 = 1/3、変えると当たる確率 = 2/3</p>
 
             <div class="formula">
-                \[ P(\text{螟峨∴縺ｦ蠖薙◆繧急) = \frac{2}{3} = 2 \times P(\text{螟峨∴縺壹↓蠖薙◆繧急) \]
+                \[ P(\text{変えて当たる}) = \frac{2}{3} = 2 \times P(\text{変えずに当たる}) \]
             </div>
 
             <p style="background: #ffebee; padding: 10px; border-radius: 8px; margin: 15px 0;">
-                <strong>陦晄茶縺ｮ莠句ｮ滂ｼ・/strong>1990蟷ｴ縲∵焚蟄ｦ閠・・繝ｪ繝ｪ繝ｳ繝ｻ繝懊せ繝ｻ繧ｵ繝舌Φ繝医′縺薙・蝠城｡後ｒ髮題ｪ後〒隗｣隱ｬ縺励◆縺ｨ縺薙ｍ縲√↑繧薙→<strong>謨ｰ蟄ｦ縺ｮ蜊壼｣ｫ蜿ｷ繧呈戟縺､莠ｺ縺溘■縺九ｉ1000騾壻ｻ･荳翫・謚苓ｭｰ縺ｮ謇狗ｴ・/strong>縺悟ｱ翫＞縺溘ゅ後≠縺ｪ縺溘・髢馴＆縺｣縺ｦ縺・ｋ・√阪→縲・br>
-                縺ｧ繧ゅ∝ｮ滄圀縺ｫ螳滄ｨ薙＠縺溘ｉ...譛ｬ蠖薙↓2/3縺ｧ蠖薙◆縺｣縺溘よ焚蟄ｦ縲∵＄繧九∋縺励・
+                <strong>衝撃の事実：</strong>1990年、数学者マリリン・ボス・サバントがこの問題を雑誌で解説したところ、なんと<strong>数学の博士号を持つ人たちから1000通以上の抗議の手紙</strong>が届いた。「あなたは間違っている！」と。<br>
+                でも、実際に実験したら...本当に2/3で当たった。数学、恐るべし。
             </p>
 
-            <p><strong>縲千峩諢溘′繝上ぜ繝ｬ繧狗炊逕ｱ縲・/strong></p>
-            <p>蜿ｸ莨夊・・<strong>縲悟ｿ・★繝上ぜ繝ｬ繧帝幕縺代ｋ縲・/strong>縺ｨ縺・≧譚｡莉ｶ莉倥″遒ｺ邇・′骰ｵ縲よ怙蛻昴↓繝上ぜ繝ｬ繧帝∈繧薙〒縺・◆蝣ｴ蜷茨ｼ育｢ｺ邇・/3・峨∝昇莨夊・′谿九▲縺溘ワ繧ｺ繝ｬ繧呈蕗縺医※縺上ｌ繧九・縺ｧ縲∝､峨∴繧後・蠢・★蠖薙◆繧九ゅ％縺ｮ縲悟昇莨夊・・遏･隴倥阪′遒ｺ邇・ｒ螟峨∴繧九・
+            <p><strong>【直感がハズレる理由】</strong></p>
+            <p>司会者は<strong>「必ずハズレを開ける」</strong>という条件付き確率が鍵。最初にハズレを選んでいた場合（確率2/3）、司会者が残ったハズレを教えてくれるので、変えれば必ず当たる。この「司会者の知識」が確率を変える。
             </p>
 
-            <p><strong>謨呵ｨ難ｼ・/strong>譚｡莉ｶ莉倥″遒ｺ邇・ｒ辟｡隕悶☆繧九→縲∝忽螢ｫ蜿ｷ謖√■縺ｧ繧る俣驕輔∴繧九よ焚蟄ｦ逧・晁・∽ｾｮ繧後↑縺・・/p>
+            <p><strong>教訓：</strong>条件付き確率を無視すると、博士号持ちでも間違える。数学的思考、侮れない。</p>
 
             <p style="font-size: 14px; color: #666; margin-top: 20px;">
-                窶ｻ縺薙・蝠城｡後・螳滄圀縺ｫ繧｢繝｡繝ｪ繧ｫ縺ｮ繝・Ξ繝鍋分邨・鍬et's Make a
-                Deal縲阪〒菴ｿ繧上ｌ縺ｦ縺・∪縺励◆縲・990蟷ｴ縲∵焚蟄ｦ閠・・繝ｪ繝ｪ繝ｳ繝ｻ繝懊せ繝ｻ繧ｵ繝舌Φ繝医′髮題ｪ後〒隗｣隱ｬ縺励∝､壹￥縺ｮ謨ｰ蟄ｦ閠・°繧画蒲隴ｰ繧貞女縺代◆繧ｨ繝斐た繝ｼ繝峨・譛牙錐縺ｧ縺吶ゅさ繝ｳ繝斐Η繝ｼ繧ｿ繝ｼ繧ｷ繝溘Η繝ｬ繝ｼ繧ｷ繝ｧ繝ｳ縺ｧ繧よ､懆ｨｼ縺輔ｌ縺ｦ縺・∪縺呻ｼ・a
+                ※この問題は実際にアメリカのテレビ番組「Let's Make a
+                Deal」で使われていました。1990年、数学者マリリン・ボス・サバントが雑誌で解説し、多くの数学者から抗議を受けたエピソードは有名です。コンピューターシミュレーションでも検証されています（<a
                     href="https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BB%E3%83%9B%E3%83%BC%E3%83%AB%E5%95%8F%E9%A1%8C"
-                    target="_blank" style="color: #1976d2;">繝｢繝ｳ繝・ぅ繝ｻ繝帙・繝ｫ蝠城｡・/a>・峨・
+                    target="_blank" style="color: #1976d2;">モンティ・ホール問題</a>）。
             </p>
         </div>
     </div>
