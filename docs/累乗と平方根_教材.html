@@ -118,12 +118,24 @@ toc:
         <div class="rule-box">
             <strong>📌 指数法則（底が同じなら指数同士で計算すればOK！）</strong> <a href="#ex-exponent" class="example-link">→ 例1</a>
             <div class="important-rule" style="background: #fff3e0; border-left: 4px solid #ff9800; padding: 10px; margin: 10px 0;">
-                💡 累乗の底が同じときは、指数同士を足したり引いたりすればいい！
+                💡 <strong>底が同じときの重要ルール：底はそのまま、指数だけ計算！</strong>
             </div>
+
+            <p><strong>🔑 基本の考え方</strong></p>
+            <ul>
+                <li><strong>かけ算のとき</strong>：底が同じなら、底はそのままで指数を<strong>足し算</strong>する</li>
+                <li><strong>わり算のとき</strong>：底が同じなら、底はそのままで指数を<strong>引き算</strong>する</li>
+            </ul>
+
             <div class="formula">
-                \[ a^m \times a^n = a^{m+n} \quad \text{（かけ算 → 指数を足す）} \]
-                \[ a^m \div a^n = a^{m-n} \quad \text{（わり算 → 指数を引く）} \]
+                \[ a^m \times a^n = a^{m+n} \quad \text{（底が同じ → 指数を足す）} \]
+                \[ a^m \div a^n = a^{m-n} \quad \text{（底が同じ → 指数を引く）} \]
             </div>
+
+            <p style="background: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                <strong>📝 具体例で理解：</strong><br>
+                \( 2^3 \times 2^5 \) のとき → 底は2で同じ → 底2はそのまま、指数3と5を足す → \( 2^{3+5} = 2^8 \)
+            </p>
 
             <!-- 指数法則の図解 -->
             <div class="svg-container">
@@ -447,12 +459,18 @@ toc:
     <h2>4. 簡単にするコツ</h2>
     <div class="section">
         <div class="tip-box">
-            <strong>✏️ コツ1：累乗は「何個かけるか」で考える</strong><br>
+            <strong>✏️ コツ1：底が同じなら、底を無視して指数だけ足し算！</strong><br>
+            \( 2^3 \times 2^4 \) のように底が同じ2のとき → 底2はそのまま、指数3と4を足す → \( 2^{3+4} = 2^7 \)<br>
+            <span style="color: #666;">（理由：「2を3個」×「2を4個」＝「2を7個」だから）</span>
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：累乗は「何個かけるか」で考える</strong><br>
             \( 2^3 \times 2^4 \) なら「2を3個」×「2を4個」＝「2を7個」＝ \( 2^7 \)
         </div>
 
         <div class="tip-box">
-            <strong>✏️ コツ2：ルートの中を素因数分解する</strong><br>
+            <strong>✏️ コツ3：ルートの中を素因数分解する</strong><br>
             \( \sqrt{72} = \sqrt{36 \times 2} = \sqrt{36} \times \sqrt{2} = 6\sqrt{2} \)
         </div>
 
@@ -502,23 +520,23 @@ toc:
         </div>
 
         <div class="tip-box">
-            <strong>✏️ コツ3：分母の有理化は「同じルートをかける」</strong><br>
+            <strong>✏️ コツ4：分母の有理化は「同じルートをかける」</strong><br>
             \( \frac{1}{\sqrt{2}} = \frac{1 \times \sqrt{2}}{\sqrt{2} \times \sqrt{2}} = \frac{\sqrt{2}}{2} \)
         </div>
 
         <div class="tip-box">
-            <strong>✏️ コツ4：負の指数は「1/●●」の形に直す</strong><br>
+            <strong>✏️ コツ5：負の指数は「1/●●」の形に直す</strong><br>
             マイナス乗を見たら、まず逆数の形に直すとわかりやすい！<br>
             例：\( 5^{-2} = \frac{1}{5^2} = \frac{1}{25} \)
         </div>
 
         <div class="tip-box">
-            <strong>✏️ コツ5：底が同じなら指数同士で計算</strong><br>
+            <strong>✏️ コツ6：底が同じなら指数同士で計算（負の指数も同じ）</strong><br>
             \( 2^{-3} \times 2^5 = 2^{-3+5} = 2^2 = 4 \)（底が同じ2なので、指数を足す）
         </div>
 
         <div class="tip-box">
-            <strong>✏️ コツ6：覚えておくと便利な値</strong><br>
+            <strong>✏️ コツ7：覚えておくと便利な値</strong><br>
             <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 10px;">
                 <span>\( 2^2 = 4 \)</span>
                 <span>\( 3^2 = 9 \)</span>
