@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ManabiNote AI - AI家庭教師ミライ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['"Noto Sans JP"', 'sans-serif'],
+            'display': ['"Zen Maru Gothic"', 'sans-serif'],
+            'eng': ['"Inter"', 'sans-serif'],
+          },
+          colors: {
+            'surface': '#F3F4F6',
+            'surface-card': '#FFFFFF',
+            'primary': '#4F46E5',
+            'primary-dark': '#3730A3',
+            'accent': '#0EA5E9',
+            'success': '#10B981',
+            'warning': '#F59E0B',
+            'danger': '#EF4444',
+            'text-main': '#1E293B',
+            'text-sub': '#64748B',
+          },
+          boxShadow: {
+            'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+            'glow': '0 0 20px rgba(79, 70, 229, 0.15)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #F8FAFC;
+      color: #1E293B;
+      font-feature-settings: "palt";
+    }
+
+    .blend-multiply { mix-blend-mode: multiply; }
+
+    .char-container {
+      overflow: hidden;
+      position: relative;
+    }
+    .char-img {
+      position: absolute;
+      max-width: none;
+    }
+
+    .pose-stand .char-img {
+      width: 400%;
+      left: -150%;
+      top: 5%;
+    }
+
+    .face-happy .char-img {
+      width: 800%; 
+      left: -540%; 
+      top: -550%;
+    }
+    
+    .face-confused .char-img {
+      width: 800%; 
+      left: -540%; 
+      top: -420%;
+    }
+
+    .face-teach .char-img {
+      width: 800%; 
+      left: -665%; 
+      top: -290%;
+    }
+
+    .face-correct .char-img {
+      width: 800%; 
+      left: -540%; 
+      top: -160%;
+    }
+
+    .face-thinking .char-img {
+      width: 800%; 
+      left: -540%; 
+      top: -290%;
+    }
+
+    .face-wave .char-img {
+      width: 800%; 
+      left: -665%; 
+      top: -420%;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .nav-active {
+      background-color: #EEF2FF;
+      color: #4F46E5;
+      border-right: 3px solid #4F46E5;
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .hover-lift {
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
+    }
+    .hover-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .fade-in {
+      animation: fadeIn 0.3s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: #E5E7EB;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body class="h-screen flex overflow-hidden">
+
+  <!-- ========================================== -->
+  <!-- SIDEBAR -->
+  <!-- ========================================== -->
+  <aside id="sidebar-student" class="sidebar-student w-20 lg:w-64 bg-white border-r border-gray-100 flex flex-col justify-between flex-shrink-0 z-20">
+    <div>
+      <div class="h-20 flex items-center justify-center lg:justify-start lg:px-6 border-b border-gray-50">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center shadow-glow text-white font-eng font-bold text-xl">
+          √
+        </div>
+        <span class="hidden lg:block ml-3 font-eng font-bold text-lg text-text-main tracking-tight">Manabi<span class="text-primary">Note</span></span>
+      </div>
+
+      <nav class="mt-6 flex flex-col gap-1 px-3">
+        <a href="#" onclick="showSection('student-home'); return false;" class="student-nav nav-active flex items-center gap-4 px-3 py-3 rounded-lg font-medium transition-colors" data-section="student-home">
+          <span class="text-xl">🏠</span>
+          <span class="hidden lg:block">Dashboard</span>
+        </a>
+        <a href="#" onclick="showSection('student-homework'); return false;" class="student-nav flex items-center gap-4 px-3 py-3 rounded-lg text-text-sub hover:bg-gray-50 transition-colors" data-section="student-homework">
+          <span class="text-xl">📸</span>
+          <span class="hidden lg:block">Homework AI</span>
+        </a>
+        <a href="#" onclick="showSection('student-homework-result'); return false;" class="student-nav flex items-center gap-4 px-3 py-3 rounded-lg text-text-sub hover:bg-gray-50 transition-colors" data-section="student-homework-result">
+          <span class="text-xl">✏️</span>
+          <span class="hidden lg:block">AI Scoring</span>
+        </a>
+        <a href="#" onclick="showSection('student-daily-3'); return false;" class="student-nav flex items-center gap-4 px-3 py-3 rounded-lg text-text-sub hover:bg-gray-50 transition-colors" data-section="student-daily-3">
+          <span class="text-xl">🎯</span>
+          <span class="hidden lg:block">Daily Challenge</span>
+        </a>
+        <a href="#" onclick="showSection('student-games'); return false;" class="student-nav flex items-center gap-4 px-3 py-3 rounded-lg text-text-sub hover:bg-gray-50 transition-colors" data-section="student-games">
+          <span class="text-xl">🎮</span>
+          <span class="hidden lg:block">Math Games</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="p-4 border-t border-gray-50">
+      <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 cursor-pointer transition-colors">
+        <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden border-2 border-white shadow-sm">
+          <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Taro" alt="User" class="w-full h-full">
+        </div>
+        <div class="hidden lg:block">
+          <p class="text-sm font-bold text-text-main">Taro.S</p>
+          <p class="text-xs text-text-sub">Student Grade 8</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Parent Sidebar (hidden by default) -->
+  <aside id="sidebar-parent" class="sidebar-parent hidden w-20 lg:w-64 bg-white border-r border-gray-100 flex-col justify-between flex-shrink-0 z-20">
+    <div>
+      <div class="h-20 flex items-center justify-center lg:justify-start lg:px-6 border-b border-gray-50">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center shadow-glow text-white font-eng font-bold text-xl">
+          √
+        </div>
+        <span class="hidden lg:block ml-3 font-eng font-bold text-lg text-text-main tracking-tight">Manabi<span class="text-primary">Note</span></span>
+      </div>
+
+      <nav class="mt-6 flex flex-col gap-1 px-3">
+        <a href="#" onclick="showSection('parent-dashboard'); return false;" class="parent-nav nav-active flex items-center gap-4 px-3 py-3 rounded-lg font-medium transition-colors" data-section="parent-dashboard">
+          <span class="text-xl">📊</span>
+          <span class="hidden lg:block">Dashboard</span>
+        </a>
+        <a href="#" onclick="showSection('parent-summary'); return false;" class="parent-nav flex items-center gap-4 px-3 py-3 rounded-lg text-text-sub hover:bg-gray-50 transition-colors" data-section="parent-summary">
+          <span class="text-xl">📋</span>
+          <span class="hidden lg:block">Detailed Report</span>
+        </a>
+        <a href="#" onclick="showSection('parent-settings'); return false;" class="parent-nav flex items-center gap-4 px-3 py-3 rounded-lg text-text-sub hover:bg-gray-50 transition-colors" data-section="parent-settings">
+          <span class="text-xl">⚙️</span>
+          <span class="hidden lg:block">Settings</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="p-4 border-t border-gray-50">
+      <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 cursor-pointer transition-colors">
+        <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden border-2 border-white shadow-sm">
+          <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Parent" alt="Parent" class="w-full h-full">
+        </div>
+        <div class="hidden lg:block">
+          <p class="text-sm font-bold text-text-main">保護者</p>
+          <p class="text-xs text-text-sub">Parent Account</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ========================================== -->
+  <!-- MAIN CONTENT -->
+  <!-- ========================================== -->
+  <main class="flex-1 overflow-y-auto no-scrollbar relative">
+    
+    <!-- Background Blobs -->
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+      <div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-purple-200 rounded-full blur-[100px] opacity-20"></div>
+      <div class="absolute bottom-[-10%] left-[10%] w-[400px] h-[400px] bg-blue-200 rounded-full blur-[80px] opacity-20"></div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- STUDENT: HOME -->
+    <!-- ========================================== -->
+    <section id="student-home" class="student-section fade-in">
+      <header class="sticky top-0 z-10 glass px-8 py-4 flex items-center justify-between">
+        <h1 class="font-display text-xl text-text-main">こんにちは、たろう君 👋</h1>
+        <div class="flex items-center gap-4">
+          <div class="bg-white px-4 py-1.5 rounded-full border border-gray-100 shadow-sm flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+            <span class="text-sm font-medium text-text-sub">AI Mirai: <span class="text-primary font-bold">Online</span></span>
+          </div>
+          <button onclick="switchRole('parent')" class="bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all">
+            保護者モードへ
+          </button>
+        </div>
+      </header>
+
+      <div class="p-4 lg:p-8 max-w-7xl mx-auto relative z-10">
+        
+        <!-- Hero Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8">
+          
+          <div class="lg:col-span-8 bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] rounded-3xl p-8 text-white relative overflow-hidden shadow-glow group">
+            <div class="absolute right-[-20px] bottom-[-40px] w-[300px] h-[400px] md:w-[400px] md:h-[500px] char-container pose-stand blend-multiply opacity-90 transition-transform duration-500 group-hover:scale-105">
+              <img src="三面図1.jpg" alt="Mirai" class="char-img">
+            </div>
+            
+            <div class="relative z-10 max-w-lg">
+              <span class="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-bold mb-4 border border-white/10">✨ 今日のアドバイス</span>
+              <h2 class="font-display text-3xl mb-4 leading-relaxed">
+                昨日の復習、<br>すごく順調だね！
+              </h2>
+              <p class="text-indigo-100 mb-8 leading-relaxed text-sm md:text-base">
+                一次関数のグラフ、傾きの理解が深まってるよ。<br>
+                今日は苦手な「変域」をマスターして、完璧にしちゃおう！
+              </p>
+              <button onclick="showSection('student-daily-3')" class="bg-white text-primary px-6 py-3 rounded-xl font-bold hover:bg-indigo-50 transition-colors shadow-lg flex items-center gap-2">
+                <span>学習を始める</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </button>
+            </div>
+
+            <div class="absolute top-10 right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+          </div>
+
+          <div class="lg:col-span-4 flex flex-col gap-6">
+            
+            <!-- Stats Card -->
+            <div class="bg-white rounded-3xl p-6 shadow-soft hover-lift h-full flex flex-col justify-between border border-gray-100">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <p class="text-text-sub text-xs font-bold uppercase tracking-wider">Today's Progress</p>
+                  <h3 class="font-display text-xl text-text-main">今日の進捗</h3>
+                </div>
+                <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-accent">
+                  📊
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-2 gap-4">
+                <div class="bg-gray-50 rounded-xl p-4 text-center">
+                  <p class="text-2xl font-bold text-primary">18<span class="text-sm">分</span></p>
+                  <p class="text-xs text-text-sub">学習時間</p>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-4 text-center">
+                  <p class="text-2xl font-bold text-success">1/3</p>
+                  <p class="text-xs text-text-sub">今日の3問</p>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-4 text-center">
+                  <p class="text-2xl font-bold text-warning">1回</p>
+                  <p class="text-xs text-text-sub">ゲーム</p>
+                </div>
+                <div class="bg-green-50 rounded-xl p-4 text-center">
+                  <p class="text-2xl font-bold text-success">✓</p>
+                  <p class="text-xs text-text-sub">宿題UP</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Action -->
+            <div onclick="showSection('student-homework')" class="bg-white rounded-3xl p-6 shadow-soft hover-lift border-2 border-dashed border-gray-200 hover:border-primary transition-colors cursor-pointer group">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-orange-50 text-orange-500 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                  📸
+                </div>
+                <div>
+                  <h3 class="font-bold text-text-main">宿題スキャン</h3>
+                  <p class="text-xs text-text-sub">わからない問題を撮影</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Section Title -->
+        <h3 class="font-display text-lg text-text-main mb-4 flex items-center gap-2">
+          <span class="w-1.5 h-6 bg-primary rounded-full"></span>
+          ピックアップ学習
+        </h3>
+
+        <!-- Learning Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div onclick="showSection('student-daily-3')" class="bg-white rounded-2xl p-6 shadow-soft hover-lift border border-gray-100 cursor-pointer">
+            <div class="flex justify-between items-start mb-4">
+              <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded-md">数学 II</span>
+              <div class="w-10 h-10 rounded-full bg-gray-100 overflow-hidden relative char-container face-teach border border-gray-200">
+                <img src="三面図1.jpg" alt="icon" class="char-img blend-multiply">
+              </div>
+            </div>
+            <h4 class="font-bold text-lg mb-2">図形の証明問題</h4>
+            <p class="text-sm text-text-sub mb-4">三角形の合同条件を使った証明の書き方をマスターしよう。</p>
+            <div class="flex items-center text-xs text-text-sub gap-3">
+              <span class="flex items-center gap-1">⏱ 15 min</span>
+              <span class="flex items-center gap-1">🔥 難易度: 中</span>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 shadow-soft hover-lift border border-gray-100 cursor-pointer">
+            <div class="flex justify-between items-start mb-4">
+              <span class="bg-purple-100 text-purple-700 text-xs font-bold px-2 py-1 rounded-md">英語</span>
+               <div class="w-10 h-10 rounded-full bg-gray-100 overflow-hidden relative char-container face-happy border border-gray-200">
+                <img src="三面図1.jpg" alt="icon" class="char-img blend-multiply">
+              </div>
+            </div>
+            <h4 class="font-bold text-lg mb-2">現在完了形の復習</h4>
+            <p class="text-sm text-text-sub mb-4">経験・完了・継続の3つの用法を聞き分けられるかな？</p>
+            <div class="flex items-center text-xs text-text-sub gap-3">
+              <span class="flex items-center gap-1">⏱ 10 min</span>
+              <span class="flex items-center gap-1">✨ 復習推奨</span>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 shadow-soft hover-lift border border-gray-100 cursor-pointer">
+            <div class="flex justify-between items-start mb-4">
+              <span class="bg-red-100 text-red-700 text-xs font-bold px-2 py-1 rounded-md">弱点克服</span>
+               <div class="w-10 h-10 rounded-full bg-gray-100 overflow-hidden relative char-container face-confused border border-gray-200">
+                <img src="三面図1.jpg" alt="icon" class="char-img blend-multiply">
+              </div>
+            </div>
+            <h4 class="font-bold text-lg mb-2">確率の計算</h4>
+            <p class="text-sm text-text-sub mb-4">前回間違えた「くじ引き」の問題に再チャレンジ！</p>
+            <div class="flex items-center text-xs text-text-sub gap-3">
+              <span class="flex items-center gap-1">⏱ 20 min</span>
+              <span class="flex items-center gap-1">💪 あと少し！</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Weekly Chart -->
+        <div class="bg-white rounded-3xl p-6 shadow-soft border border-gray-100">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="font-display text-lg text-text-main flex items-center gap-2">
+              <span class="w-1.5 h-6 bg-accent rounded-full"></span>
+              Weekly Activity
+            </h3>
+            <span class="text-xs text-text-sub">11月25日〜12月1日</span>
+          </div>
+          <div class="flex items-end justify-between gap-4 h-32 px-4">
+            <div class="flex-1 flex flex-col items-center gap-2">
+              <div class="w-full bg-primary rounded-t-lg" style="height: 60%"></div>
+              <span class="text-xs text-text-sub">月</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-2">
+              <div class="w-full bg-primary rounded-t-lg" style="height: 80%"></div>
+              <span class="text-xs text-text-sub">火</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-2">
+              <div class="w-full bg-primary rounded-t-lg" style="height: 45%"></div>
+              <span class="text-xs text-text-sub">水</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-2">
+              <div class="w-full bg-gradient-to-t from-primary to-purple-400 rounded-t-lg" style="height: 35%"></div>
+              <span class="text-xs font-bold text-primary">今日</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-2">
+              <div class="w-full bg-gray-100 rounded-t-lg" style="height: 10%"></div>
+              <span class="text-xs text-text-sub/50">金</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-2">
+              <div class="w-full bg-gray-100 rounded-t-lg" style="height: 10%"></div>
+              <span class="text-xs text-text-sub/50">土</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-2">
+              <div class="w-full bg-gray-100 rounded-t-lg" style="height: 10%"></div>
+              <span class="text-xs text-text-sub/50">日</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- STUDENT: HOMEWORK UPLOAD -->
+    <!-- ========================================== -->
+    <section id="student-homework" class="student-section fade-in hidden">
+      <header class="sticky top-0 z-10 glass px-8 py-4 flex items-center justify-between">
+        <h1 class="font-display text-xl text-text-main">📸 Homework AI</h1>
+        <button onclick="switchRole('parent')" class="bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all">
+          保護者モードへ
+        </button>
+      </header>
+
+      <div class="p-4 lg:p-8 max-w-4xl mx-auto relative z-10">
+        
+        <!-- Upload Hero -->
+        <div class="bg-gradient-to-r from-orange-500 to-amber-500 rounded-3xl p-8 text-white mb-8 relative overflow-hidden">
+          <div class="absolute right-0 bottom-0 w-48 h-48 char-container face-teach blend-multiply opacity-80">
+            <img src="三面図1.jpg" alt="Mirai" class="char-img">
+          </div>
+          <div class="relative z-10">
+            <h2 class="font-display text-2xl mb-2">宿題をアップロード</h2>
+            <p class="text-orange-100">プリントやノートを撮影して、AIに採点してもらおう！</p>
+          </div>
+        </div>
+
+        <!-- Upload Zone -->
+        <div class="bg-white rounded-3xl p-8 shadow-soft border border-gray-100 mb-6">
+          <div class="border-2 border-dashed border-gray-200 rounded-2xl p-12 text-center hover:border-primary hover:bg-primary/5 transition-all cursor-pointer group">
+            <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/10 transition-colors">
+              <span class="text-4xl">📷</span>
+            </div>
+            <p class="font-bold text-text-main mb-2">ここをタップして画像を選択</p>
+            <p class="text-sm text-text-sub mb-6">または画像をドラッグ＆ドロップ</p>
+            <button class="bg-primary text-white px-8 py-3 rounded-xl font-bold hover:bg-primary-dark transition-colors shadow-lg">
+              写真を撮る・選ぶ
+            </button>
+          </div>
+        </div>
+
+        <!-- Tips -->
+        <div class="bg-amber-50 rounded-2xl p-6 mb-6 flex gap-4 items-start border border-amber-100">
+          <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+            💡
+          </div>
+          <div>
+            <h4 class="font-bold text-text-main mb-2">きれいに撮るコツ</h4>
+            <ul class="text-sm text-text-sub space-y-1">
+              <li>・明るい場所で撮影しよう</li>
+              <li>・紙がまっすぐになるように</li>
+              <li>・文字がはっきり見えるようにピントを合わせてね</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Uploaded Files -->
+        <div class="bg-white rounded-3xl p-6 shadow-soft border border-gray-100">
+          <h3 class="font-display text-lg text-text-main mb-4 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-primary rounded-full"></span>
+            アップロード済み
+          </h3>
+          
+          <div class="space-y-3">
+            <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer" onclick="showSection('student-homework-result')">
+              <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center border border-gray-200">
+                📄
+              </div>
+              <div class="flex-1">
+                <p class="font-bold text-text-main text-sm">一次方程式プリント.jpg</p>
+                <p class="text-xs text-text-sub">今日 18:30</p>
+              </div>
+              <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">採点済み</span>
+            </div>
+
+            <div class="flex items-center gap-4 p-4 bg-blue-50 rounded-xl border border-blue-100">
+              <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center border border-blue-200">
+                <span class="animate-pulse">⏳</span>
+              </div>
+              <div class="flex-1">
+                <p class="font-bold text-text-main text-sm">比例のグラフ問題.jpg</p>
+                <p class="text-xs text-primary">採点中...</p>
+              </div>
+              <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full">処理中</span>
+            </div>
+          </div>
+
+          <button onclick="showSection('student-homework-result')" class="w-full mt-6 bg-primary text-white py-4 rounded-xl font-bold hover:bg-primary-dark transition-colors shadow-lg flex items-center justify-center gap-2">
+            採点結果を見る
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- STUDENT: HOMEWORK RESULT -->
+    <!-- ========================================== -->
+    <section id="student-homework-result" class="student-section fade-in hidden">
+      <header class="sticky top-0 z-10 glass px-8 py-4 flex items-center justify-between">
+        <h1 class="font-display text-xl text-text-main">✏️ AI Scoring Result</h1>
+        <button onclick="switchRole('parent')" class="bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-bold shadow-lg">
+          保護者モードへ
+        </button>
+      </header>
+
+      <div class="p-4 lg:p-8 max-w-5xl mx-auto relative z-10">
+        
+        <!-- Score Hero -->
+        <div class="bg-gradient-to-r from-green-500 to-emerald-500 rounded-3xl p-8 text-white mb-8 relative overflow-hidden">
+          <div class="absolute right-4 bottom-0 w-40 h-40 char-container face-correct blend-multiply opacity-90">
+            <img src="三面図1.jpg" alt="Mirai" class="char-img">
+          </div>
+          <div class="relative z-10 flex items-center gap-8">
+            <div class="w-28 h-28 bg-white/20 backdrop-blur rounded-full flex items-center justify-center">
+              <span class="text-4xl font-bold">80%</span>
+            </div>
+            <div>
+              <p class="text-green-100 text-sm mb-1">一次方程式プリント（11月27日）</p>
+              <h2 class="font-display text-2xl mb-2">5問中 4問正解！</h2>
+              <p class="text-green-100">🎉 よくがんばりました！</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-6">
+          <!-- Results List -->
+          <div class="lg:col-span-2 bg-white rounded-3xl p-6 shadow-soft border border-gray-100">
+            <h3 class="font-display text-lg text-text-main mb-4 flex items-center gap-2">
+              <span class="w-1.5 h-6 bg-primary rounded-full"></span>
+              問題ごとの結果
+            </h3>
+            
+            <div class="space-y-3">
+              <div class="flex items-start gap-4 p-4 bg-green-50 rounded-xl border-l-4 border-green-500">
+                <div class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">○</div>
+                <div class="flex-1">
+                  <p class="font-bold text-text-main text-sm">問1. 2x + 5 = 11</p>
+                  <p class="text-green-600 text-sm">✨ 完璧！移項も計算も正確</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-4 bg-green-50 rounded-xl border-l-4 border-green-500">
+                <div class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">○</div>
+                <div class="flex-1">
+                  <p class="font-bold text-text-main text-sm">問2. 3x - 7 = 2x + 4</p>
+                  <p class="text-green-600 text-sm">✨ 正解！xをまとめる手順バッチリ</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-4 bg-red-50 rounded-xl border-l-4 border-red-500">
+                <div class="w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">×</div>
+                <div class="flex-1">
+                  <p class="font-bold text-text-main text-sm">問3. -2x + 8 = 4x - 10</p>
+                  <p class="text-red-600 text-sm">惜しい！<span class="bg-yellow-200 px-1 rounded">移項するとき符号が逆</span>になるよ</p>
+                  <button class="text-primary text-sm mt-2 font-medium hover:underline">→ 詳しい解説を見る</button>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-4 bg-green-50 rounded-xl border-l-4 border-green-500">
+                <div class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">○</div>
+                <div class="flex-1">
+                  <p class="font-bold text-text-main text-sm">問4. 4(x - 2) = 12</p>
+                  <p class="text-green-600 text-sm">✨ カッコの展開も正確！</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-4 bg-green-50 rounded-xl border-l-4 border-green-500">
+                <div class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">○</div>
+                <div class="flex-1">
+                  <p class="font-bold text-text-main text-sm">問5. x/3 + 2 = 5</p>
+                  <p class="text-green-600 text-sm">✨ 分数の扱いも問題なし</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="space-y-6">
+            <!-- AI Comment -->
+            <div class="bg-white rounded-3xl p-6 shadow-soft border border-gray-100 relative">
+              <div class="absolute -top-4 -left-2 w-12 h-12 rounded-full bg-gray-100 overflow-hidden char-container face-teach border-2 border-white shadow-sm">
+                <img src="三面図1.jpg" alt="Mirai" class="char-img blend-multiply">
+              </div>
+              <div class="pt-4">
+                <p class="text-sm font-bold text-text-main mb-2">ミライ先生より</p>
+                <p class="text-sm text-text-sub leading-relaxed">
+                  一次方程式の基本はOK！移項のとき符号ミスに気をつければもっと伸びるよ 📝
+                </p>
+                <div class="mt-4 p-3 bg-amber-50 rounded-xl border border-amber-100">
+                  <p class="text-xs text-text-sub">重点ポイント</p>
+                  <p class="font-bold text-text-main text-sm">移項時の符号の変化</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Related -->
+            <div class="bg-white rounded-2xl p-4 shadow-soft border border-gray-100">
+              <h4 class="font-bold text-text-main text-sm mb-3">📚 関連リンク</h4>
+              <div class="space-y-2">
+                <a href="#" class="block text-primary text-sm hover:underline">→ 一次方程式の解説</a>
+                <a href="#" class="block text-primary text-sm hover:underline">→ 移項の練習問題</a>
+              </div>
+            </div>
+
+            <button onclick="showSection('student-daily-3')" class="w-full bg-success text-white py-4 rounded-xl font-bold hover:bg-green-600 transition-colors shadow-lg">
+              今日の3問へ →
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- STUDENT: DAILY 3 QUESTIONS -->
+    <!-- ========================================== -->
+    <section id="student-daily-3" class="student-section fade-in hidden">
+      <header class="sticky top-0 z-10 glass px-8 py-4 flex items-center justify-between">
+        <h1 class="font-display text-xl text-text-main">🎯 Daily Challenge</h1>
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">
+            <span class="w-3 h-3 rounded-full bg-success"></span>
+            <span class="w-3 h-3 rounded-full bg-warning animate-pulse"></span>
+            <span class="w-3 h-3 rounded-full bg-gray-200"></span>
+            <span class="font-bold text-text-main ml-2">2/3</span>
+          </div>
+          <button onclick="switchRole('parent')" class="bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-bold shadow-lg">
+            保護者モードへ
+          </button>
+        </div>
+      </header>
+
+      <div class="p-4 lg:p-8 max-w-4xl mx-auto relative z-10">
+        
+        <!-- Question Card -->
+        <div class="bg-white rounded-3xl shadow-soft border border-gray-100 overflow-hidden mb-6">
+          <div class="bg-gradient-to-r from-warning to-amber-400 px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">📝</span>
+              <div class="text-white">
+                <p class="font-bold">一次方程式</p>
+                <p class="text-amber-100 text-sm">移項の練習</p>
+              </div>
+            </div>
+            <span class="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur">弱点対策</span>
+          </div>
+
+          <div class="p-6">
+            <!-- Mirai Comment -->
+            <div class="flex gap-4 items-start mb-6">
+              <div class="w-12 h-12 rounded-full bg-gray-100 overflow-hidden char-container face-thinking border border-gray-200 flex-shrink-0">
+                <img src="三面図1.jpg" alt="Mirai" class="char-img blend-multiply">
+              </div>
+              <div class="bg-gray-50 rounded-2xl rounded-tl-none p-4 flex-1">
+                <p class="text-sm text-text-main">この問題、移項がポイントだよ。落ち着いてやってみてね！</p>
+              </div>
+            </div>
+
+            <p class="text-text-main mb-4"><span class="font-bold">問題：</span>次の一次方程式を解きなさい。</p>
+            
+            <div class="bg-gradient-to-r from-primary/5 to-purple-50 p-8 rounded-2xl text-center mb-6">
+              <p class="font-eng font-bold text-3xl text-text-main tracking-wide">-3x + 12 = 2x - 8</p>
+            </div>
+
+            <!-- Answer Input -->
+            <div class="mb-6">
+              <label class="text-sm text-text-sub mb-2 block">答えを書いてね：</label>
+              <div class="flex items-center gap-3">
+                <span class="font-eng font-bold text-2xl text-text-main">x =</span>
+                <input type="text" class="flex-1 px-6 py-4 border-2 border-gray-200 rounded-xl font-eng text-2xl text-center focus:border-primary focus:outline-none transition-colors" placeholder="?">
+              </div>
+            </div>
+
+            <!-- Hint -->
+            <div class="bg-amber-50 p-4 rounded-xl mb-6 border border-amber-100">
+              <button class="flex items-center gap-2 font-bold text-text-main text-sm w-full" onclick="this.nextElementSibling.classList.toggle('hidden')">
+                💡 ヒントを見る
+                <svg class="w-4 h-4 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+              <div class="hidden mt-3 text-sm text-text-sub">
+                まず、xを含む項を左辺に、数字だけの項を右辺に移項しよう。移項するときは符号が逆になることを忘れずに！
+              </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex gap-3">
+              <button class="flex-1 bg-primary text-white py-4 rounded-xl font-bold hover:bg-primary-dark transition-colors shadow-lg">
+                答えを確認する
+              </button>
+              <button class="px-8 py-4 bg-gray-100 text-text-sub rounded-xl font-bold hover:bg-gray-200 transition-colors">
+                スキップ
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Answer Explanation (shown after answering) -->
+        <div class="bg-white rounded-3xl shadow-soft border border-gray-100 overflow-hidden mb-6">
+          <div class="bg-success px-6 py-4 flex items-center gap-3">
+            <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white text-xl">🎉</div>
+            <span class="font-bold text-white text-lg">正解！ x = 4</span>
+          </div>
+          <div class="p-6">
+            <h4 class="font-bold text-text-main mb-4">📖 解説</h4>
+            <div class="space-y-4">
+              <div class="flex gap-4 items-start">
+                <span class="w-8 h-8 bg-primary text-white font-bold rounded-full flex items-center justify-center flex-shrink-0">1</span>
+                <div>
+                  <p class="font-bold text-text-main text-sm">xの項を左辺に集める</p>
+                  <p class="text-text-sub text-sm font-eng">-3x - 2x = -8 - 12</p>
+                </div>
+              </div>
+              <div class="flex gap-4 items-start">
+                <span class="w-8 h-8 bg-primary text-white font-bold rounded-full flex items-center justify-center flex-shrink-0">2</span>
+                <div>
+                  <p class="font-bold text-text-main text-sm">計算する</p>
+                  <p class="text-text-sub text-sm font-eng">-5x = -20</p>
+                </div>
+              </div>
+              <div class="flex gap-4 items-start">
+                <span class="w-8 h-8 bg-primary text-white font-bold rounded-full flex items-center justify-center flex-shrink-0">3</span>
+                <div>
+                  <p class="font-bold text-text-main text-sm">両辺を-5で割る</p>
+                  <p class="text-text-sub text-sm font-eng">x = 4</p>
+                </div>
+              </div>
+            </div>
+            
+            <button class="w-full mt-6 bg-success text-white py-4 rounded-xl font-bold hover:bg-green-600 transition-colors shadow-lg flex items-center justify-center gap-2">
+              次の問題へ
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Progress -->
+        <div class="bg-white rounded-3xl p-6 shadow-soft border border-gray-100">
+          <h4 class="font-bold text-text-main mb-4">📋 今日の進捗</h4>
+          <div class="space-y-3">
+            <div class="flex items-center gap-4 p-3 bg-green-50 rounded-xl">
+              <div class="w-8 h-8 bg-success text-white rounded-full flex items-center justify-center font-bold">✓</div>
+              <div>
+                <p class="font-bold text-text-main text-sm">問1. 比例の式（復習）</p>
+                <p class="text-success text-xs">正解！</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 p-3 bg-amber-50 rounded-xl border border-amber-200">
+              <div class="w-8 h-8 bg-warning text-white rounded-full flex items-center justify-center font-bold animate-pulse">2</div>
+              <div>
+                <p class="font-bold text-text-main text-sm">問2. 一次方程式（弱点対策）</p>
+                <p class="text-warning text-xs">チャレンジ中...</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 p-3 bg-gray-50 rounded-xl">
+              <div class="w-8 h-8 bg-gray-200 text-text-sub rounded-full flex items-center justify-center font-bold">3</div>
+              <div>
+                <p class="font-bold text-text-sub text-sm">問3. 図形の角度（今週の単元）</p>
+                <p class="text-text-sub/50 text-xs">待機中</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- STUDENT: GAMES -->
+    <!-- ========================================== -->
+    <section id="student-games" class="student-section fade-in hidden">
+      <header class="sticky top-0 z-10 glass px-8 py-4 flex items-center justify-between">
+        <h1 class="font-display text-xl text-text-main">🎮 Math Games</h1>
+        <div class="flex items-center gap-4">
+          <div class="bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100 flex items-center gap-3">
+            <span class="text-sm">⏱️</span>
+            <span class="text-sm text-text-sub">5分 / 15分</span>
+            <div class="w-16 h-2 bg-gray-100 rounded-full overflow-hidden">
+              <div class="h-full bg-warning w-1/3 rounded-full"></div>
+            </div>
+          </div>
+          <button onclick="switchRole('parent')" class="bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-bold shadow-lg">
+            保護者モードへ
+          </button>
+        </div>
+      </header>
+
+      <div class="p-4 lg:p-8 max-w-5xl mx-auto relative z-10">
+        
+        <!-- Hero -->
+        <div class="bg-gradient-to-r from-purple-600 to-pink-500 rounded-3xl p-8 text-white mb-8 relative overflow-hidden">
+          <div class="absolute right-0 bottom-0 w-56 h-56 char-container face-wave blend-multiply opacity-80">
+            <img src="三面図1.jpg" alt="Mirai" class="char-img">
+          </div>
+          <div class="relative z-10">
+            <span class="inline-block px-3 py-1 rounded-full bg-white/20 text-xs font-bold mb-4">🎮 ゲームで学ぼう！</span>
+            <h2 class="font-display text-2xl mb-2">楽しみながら計算力UP！</h2>
+            <p class="text-purple-100 text-sm">ゲームも学習になるんだよ。でも、やりすぎには注意してね 😊</p>
+          </div>
+        </div>
+
+        <!-- Game Cards -->
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          
+          <div class="bg-white rounded-3xl overflow-hidden shadow-soft hover-lift border border-gray-100 cursor-pointer group">
+            <div class="h-24 bg-gradient-to-r from-red-500 to-orange-500 p-5 flex items-end">
+              <h3 class="font-bold text-white text-lg">計算スプリント</h3>
+            </div>
+            <div class="p-5">
+              <div class="flex gap-2 mb-3">
+                <span class="bg-red-100 text-red-700 text-xs font-bold px-2 py-1 rounded-md">四則演算</span>
+                <span class="bg-orange-100 text-orange-700 text-xs font-bold px-2 py-1 rounded-md">計算力UP</span>
+              </div>
+              <p class="text-text-sub text-sm mb-4">
+                60秒間で計算問題にチャレンジ！正解を重ねてコンボをつなげよう。
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-text-sub text-sm">難易度 ★★☆</span>
+                <button class="bg-gradient-to-r from-red-500 to-orange-500 text-white font-bold px-5 py-2 rounded-xl shadow-lg group-hover:-translate-y-0.5 transition-all">
+                  遊ぶ
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-3xl overflow-hidden shadow-soft hover-lift border border-gray-100 cursor-pointer group">
+            <div class="h-24 bg-gradient-to-r from-blue-500 to-cyan-500 p-5 flex items-end">
+              <h3 class="font-bold text-white text-lg">用語バトル</h3>
+            </div>
+            <div class="p-5">
+              <div class="flex gap-2 mb-3">
+                <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded-md">用語・定義</span>
+                <span class="bg-cyan-100 text-cyan-700 text-xs font-bold px-2 py-1 rounded-md">知識UP</span>
+              </div>
+              <p class="text-text-sub text-sm mb-4">
+                数学の用語や定義をクイズ形式で学ぼう。意外と知らない言葉があるかも？
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-text-sub text-sm">難易度 ★☆☆</span>
+                <button class="bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold px-5 py-2 rounded-xl shadow-lg group-hover:-translate-y-0.5 transition-all">
+                  遊ぶ
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-3xl overflow-hidden shadow-soft hover-lift border border-gray-100 cursor-pointer group">
+            <div class="h-24 bg-gradient-to-r from-green-500 to-teal-500 p-5 flex items-end">
+              <h3 class="font-bold text-white text-lg">グラフでGO</h3>
+            </div>
+            <div class="p-5">
+              <div class="flex gap-2 mb-3">
+                <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded-md">一次関数</span>
+                <span class="bg-teal-100 text-teal-700 text-xs font-bold px-2 py-1 rounded-md">グラフ読解</span>
+              </div>
+              <p class="text-text-sub text-sm mb-4">
+                グラフを見て、対応する式を当てよう！傾きと切片の感覚が身につく。
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-text-sub text-sm">難易度 ★★★</span>
+                <button class="bg-gradient-to-r from-green-500 to-teal-500 text-white font-bold px-5 py-2 rounded-xl shadow-lg group-hover:-translate-y-0.5 transition-all">
+                  遊ぶ
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-3xl overflow-hidden shadow-soft hover-lift border border-gray-100 cursor-pointer group">
+            <div class="h-24 bg-gradient-to-r from-pink-500 to-purple-500 p-5 flex items-end">
+              <h3 class="font-bold text-white text-lg">確率ガチャ</h3>
+            </div>
+            <div class="p-5">
+              <div class="flex gap-2 mb-3">
+                <span class="bg-pink-100 text-pink-700 text-xs font-bold px-2 py-1 rounded-md">確率</span>
+                <span class="bg-purple-100 text-purple-700 text-xs font-bold px-2 py-1 rounded-md">期待値</span>
+              </div>
+              <p class="text-text-sub text-sm mb-4">
+                ゲームのガチャをシミュレーション！確率や期待値の感覚を楽しく学べる。
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-text-sub text-sm">難易度 ★★☆</span>
+                <button class="bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold px-5 py-2 rounded-xl shadow-lg group-hover:-translate-y-0.5 transition-all">
+                  遊ぶ
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="bg-white rounded-3xl p-6 shadow-soft border border-gray-100">
+          <h3 class="font-display text-lg text-text-main mb-4 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-warning rounded-full"></span>
+            あなたの記録
+          </h3>
+          <div class="grid grid-cols-3 gap-4">
+            <div class="bg-gray-50 rounded-xl p-4 text-center">
+              <p class="text-2xl font-bold text-primary">127</p>
+              <p class="text-xs text-text-sub">総プレイ</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 text-center">
+              <p class="text-2xl font-bold text-warning">15</p>
+              <p class="text-xs text-text-sub">最高コンボ</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 text-center">
+              <p class="text-2xl font-bold text-success">85%</p>
+              <p class="text-xs text-text-sub">平均正答率</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- PARENT: DASHBOARD -->
+    <!-- ========================================== -->
+    <section id="parent-dashboard" class="parent-section fade-in hidden">
+      <header class="sticky top-0 z-10 glass px-8 py-4 flex items-center justify-between">
+        <h1 class="font-display text-xl text-text-main">📊 保護者ダッシュボード</h1>
+        <div class="flex items-center gap-4">
+          <span class="text-sm text-text-sub">11月25日〜12月1日</span>
+          <button onclick="switchRole('student')" class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all">
+            生徒モードへ
+          </button>
+        </div>
+      </header>
+
+      <div class="p-4 lg:p-8 max-w-6xl mx-auto relative z-10">
+        
+        <!-- Stats -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div class="bg-white rounded-2xl p-5 shadow-soft border border-gray-100">
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-2xl">📚</span>
+              <span class="text-xs text-success font-bold">↑ +23分</span>
+            </div>
+            <p class="text-2xl font-bold text-text-main">2h18m</p>
+            <p class="text-xs text-text-sub">学習時間</p>
+          </div>
+          <div class="bg-white rounded-2xl p-5 shadow-soft border border-gray-100">
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-2xl">✅</span>
+              <span class="text-xs text-primary font-bold">正答率78%</span>
+            </div>
+            <p class="text-2xl font-bold text-text-main">47問</p>
+            <p class="text-xs text-text-sub">解いた問題</p>
+          </div>
+          <div class="bg-white rounded-2xl p-5 shadow-soft border border-gray-100">
+            <span class="text-2xl">📝</span>
+            <p class="text-2xl font-bold text-text-main mt-3">4枚</p>
+            <p class="text-xs text-text-sub">宿題提出</p>
+          </div>
+          <div class="bg-white rounded-2xl p-5 shadow-soft border border-gray-100">
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-2xl">🎮</span>
+              <span class="text-xs text-text-sub">学習:ゲーム=3:1</span>
+            </div>
+            <p class="text-2xl font-bold text-text-main">42分</p>
+            <p class="text-xs text-text-sub">ゲーム時間</p>
+          </div>
+        </div>
+
+        <!-- Charts Grid -->
+        <div class="grid lg:grid-cols-2 gap-6 mb-8">
+          <!-- Weekly Chart -->
+          <div class="bg-white rounded-3xl p-6 shadow-soft border border-gray-100">
+            <h3 class="font-display text-lg text-text-main mb-4 flex items-center gap-2">
+              <span class="w-1.5 h-6 bg-primary rounded-full"></span>
+              学習時間の推移
+            </h3>
+            <div class="flex items-end justify-between gap-3 h-32 px-2">
+              <div class="flex-1 flex flex-col items-center gap-2">
+                <div class="w-full flex flex-col gap-0.5">
+                  <div class="w-full bg-warning/60 rounded-t" style="height: 12px"></div>
+                  <div class="w-full bg-primary rounded-b" style="height: 38px"></div>
+                </div>
+                <span class="text-xs text-text-sub">月</span>
+              </div>
+              <div class="flex-1 flex flex-col items-center gap-2">
+                <div class="w-full flex flex-col gap-0.5">
+                  <div class="w-full bg-warning/60 rounded-t" style="height: 10px"></div>
+                  <div class="w-full bg-primary rounded-b" style="height: 48px"></div>
+                </div>
+                <span class="text-xs text-text-sub">火</span>
+              </div>
+              <div class="flex-1 flex flex-col items-center gap-2">
+                <div class="w-full flex flex-col gap-0.5">
+                  <div class="w-full bg-warning/60 rounded-t" style="height: 8px"></div>
+                  <div class="w-full bg-primary rounded-b" style="height: 28px"></div>
+                </div>
+                <span class="text-xs text-text-sub">水</span>
+              </div>
+              <div class="flex-1 flex flex-col items-center gap-2">
+                <div class="w-full flex flex-col gap-0.5">
+                  <div class="w-full bg-warning/60 rounded-t" style="height: 10px"></div>
+                  <div class="w-full bg-gradient-to-t from-primary to-purple-400 rounded-b" style="height: 20px"></div>
+                </div>
+                <span class="text-xs font-bold text-primary">今日</span>
+              </div>
+              <div class="flex-1 flex flex-col items-center gap-2">
+                <div class="w-full bg-gray-100 rounded" style="height: 8px"></div>
+                <span class="text-xs text-text-sub/50">金</span>
+              </div>
+              <div class="flex-1 flex flex-col items-center gap-2">
+                <div class="w-full bg-gray-100 rounded" style="height: 8px"></div>
+                <span class="text-xs text-text-sub/50">土</span>
+              </div>
+              <div class="flex-1 flex flex-col items-center gap-2">
+                <div class="w-full bg-gray-100 rounded" style="height: 8px"></div>
+                <span class="text-xs text-text-sub/50">日</span>
+              </div>
+            </div>
+            <div class="flex gap-4 mt-4">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded bg-primary"></span>
+                <span class="text-xs text-text-sub">学習</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded bg-warning/60"></span>
+                <span class="text-xs text-text-sub">ゲーム</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Today Status -->
+          <div class="bg-white rounded-3xl p-6 shadow-soft border border-gray-100">
+            <h3 class="font-display text-lg text-text-main mb-4 flex items-center gap-2">
+              <span class="w-1.5 h-6 bg-accent rounded-full"></span>
+              今日のステータス
+            </h3>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+                <div class="flex items-center gap-3">
+                  <span>⏱️</span>
+                  <span class="text-sm text-text-main">学習時間</span>
+                </div>
+                <span class="font-bold text-primary">18分</span>
+              </div>
+              <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+                <div class="flex items-center gap-3">
+                  <span>🎮</span>
+                  <span class="text-sm text-text-main">ゲーム時間</span>
+                </div>
+                <span class="font-bold text-warning">5分</span>
+              </div>
+              <div class="flex items-center justify-between p-3 bg-green-50 rounded-xl">
+                <div class="flex items-center gap-3">
+                  <span>📝</span>
+                  <span class="text-sm text-text-main">宿題アップ</span>
+                </div>
+                <span class="font-bold text-success">済み ✓</span>
+              </div>
+              <div class="flex items-center justify-between p-3 bg-amber-50 rounded-xl">
+                <div class="flex items-center gap-3">
+                  <span>🎯</span>
+                  <span class="text-sm text-text-main">今日の3問</span>
+                </div>
+                <span class="font-bold text-warning">1/3問</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Report -->
+        <div class="bg-white rounded-3xl p-6 shadow-soft border border-gray-100 relative mb-8">
+          <div class="absolute -top-4 left-6 w-14 h-14 rounded-full bg-gray-100 overflow-hidden char-container face-teach border-2 border-white shadow-md">
+            <img src="三面図1.jpg" alt="Mirai" class="char-img blend-multiply">
+          </div>
+          <div class="pt-6">
+            <h3 class="font-display text-lg text-text-main mb-4">ミライ先生からの週次レポート</h3>
+            <p class="text-text-sub leading-relaxed mb-4">
+              今週のたろうさんは、<span class="bg-yellow-100 px-1 rounded font-medium text-text-main">毎日コツコツ学習を続けることができました</span>！特に一次方程式の理解が深まってきています。ただ、移項のときの符号ミスがまだ見られるので、来週はここを重点的に復習します。
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <div class="bg-green-50 px-4 py-2 rounded-xl border border-green-100">
+                <p class="text-xs text-text-sub">今週の良かった点</p>
+                <p class="font-bold text-success text-sm">継続的な学習習慣</p>
+              </div>
+              <div class="bg-amber-50 px-4 py-2 rounded-xl border border-amber-100">
+                <p class="text-xs text-text-sub">来週の重点</p>
+                <p class="font-bold text-warning text-sm">移項時の符号</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="grid md:grid-cols-2 gap-4">
+          <div onclick="showSection('parent-summary')" class="bg-white rounded-2xl p-5 shadow-soft border border-gray-100 hover-lift cursor-pointer group flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-xl">📋</div>
+            <div class="flex-1">
+              <p class="font-bold text-text-main">詳細サマリーを見る</p>
+              <p class="text-xs text-text-sub">単元別の習熟度やミスの傾向</p>
+            </div>
+            <span class="text-primary text-xl group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+          <div onclick="showSection('parent-settings')" class="bg-white rounded-2xl p-5 shadow-soft border border-gray-100 hover-lift cursor-pointer group flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center text-xl">⚙️</div>
+            <div class="flex-1">
+              <p class="font-bold text-text-main">ルール・制限を設定</p>
+              <p class="text-xs text-text-sub">ゲーム時間や通知の設定</p>
+            </div>
+            <span class="text-primary text-xl group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- PARENT: SUMMARY -->
+    <!-- ========================================== -->
+    <section id="parent-summary" class="parent-section fade-in hidden">
+      <header class="sticky top-0 z-10 glass px-8 py-4 flex items-center justify-between">
+        <h1 class="font-display text-xl text-text-main">📋 Detailed Report</h1>
+        <button onclick="switchRole('student')" class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold shadow-lg">
+          生徒モードへ
+        </button>
+      </header>
+
+      <div class="p-4 lg:p-8 max-w-6xl mx-auto relative z-10">
+        
+        <!-- Unit Table -->
+        <div class="bg-white rounded-3xl p-6 shadow-soft border border-gray-100 mb-6">
+          <h3 class="font-display text-lg text-text-main mb-4 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-primary rounded-full"></span>
+            単元別習熟度
+          </h3>
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b-2 border-gray-100">
+                  <th class="text-left py-3 px-4 text-text-sub text-sm font-medium">単元</th>
+                  <th class="text-left py-3 px-4 text-text-sub text-sm font-medium">習熟度</th>
+                  <th class="text-left py-3 px-4 text-text-sub text-sm font-medium">正答率</th>
+                  <th class="text-left py-3 px-4 text-text-sub text-sm font-medium">備考</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-50">
+                  <td class="py-4 px-4 font-medium text-text-main">一次方程式</td>
+                  <td class="py-4 px-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-24 h-2 bg-gray-100 rounded-full overflow-hidden">
+                        <div class="h-full bg-warning w-[70%] rounded-full"></div>
+                      </div>
+                      <span class="text-warning text-sm font-bold">70%</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-4 text-text-sub">68%</td>
+                  <td class="py-4 px-4">
+                    <span class="bg-amber-100 text-amber-700 text-xs font-bold px-2 py-1 rounded-md">移項でミスが多い</span>
+                  </td>
+                </tr>
+                <tr class="border-b border-gray-50">
+                  <td class="py-4 px-4 font-medium text-text-main">比例・反比例</td>
+                  <td class="py-4 px-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-24 h-2 bg-gray-100 rounded-full overflow-hidden">
+                        <div class="h-full bg-success w-[85%] rounded-full"></div>
+                      </div>
+                      <span class="text-success text-sm font-bold">85%</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-4 text-text-sub">82%</td>
+                  <td class="py-4 px-4">
+                    <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded-md">順調！</span>
+                  </td>
+                </tr>
+                <tr class="border-b border-gray-50">
+                  <td class="py-4 px-4 font-medium text-text-main">一次関数</td>
+                  <td class="py-4 px-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-24 h-2 bg-gray-100 rounded-full overflow-hidden">
+                        <div class="h-full bg-primary w-[75%] rounded-full"></div>
+                      </div>
+                      <span class="text-primary text-sm font-bold">75%</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-4 text-text-sub">74%</td>
+                  <td class="py-4 px-4">
+                    <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded-md">グラフ読解を強化中</span>
+                  </td>
+                </tr>
+                <tr class="border-b border-gray-50">
+                  <td class="py-4 px-4 font-medium text-text-main">図形の性質</td>
+                  <td class="py-4 px-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-24 h-2 bg-gray-100 rounded-full overflow-hidden">
+                        <div class="h-full bg-success w-[90%] rounded-full"></div>
+                      </div>
+                      <span class="text-success text-sm font-bold">90%</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-4 text-text-sub">88%</td>
+                  <td class="py-4 px-4">
+                    <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded-md">得意分野！</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 font-medium text-text-main">確率</td>
+                  <td class="py-4 px-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-24 h-2 bg-gray-100 rounded-full overflow-hidden">
+                        <div class="h-full bg-danger w-[55%] rounded-full"></div>
+                      </div>
+                      <span class="text-danger text-sm font-bold">55%</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-4 text-text-sub">52%</td>
+                  <td class="py-4 px-4">
+                    <span class="bg-red-100 text-red-700 text-xs font-bold px-2 py-1 rounded-md">要復習</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Weak Points -->
+        <div class="bg-white rounded-3xl p-6 shadow-soft border border-gray-100 mb-6">
+          <h3 class="font-display text-lg text-text-main mb-4 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-danger rounded-full"></span>
+            よく間違える単元 TOP3
+          </h3>
+          <div class="space-y-3">
+            <div class="flex items-center gap-4 p-4 bg-red-50 rounded-xl border-l-4 border-red-500">
+              <span class="w-10 h-10 bg-danger text-white font-bold rounded-full flex items-center justify-center">1</span>
+              <div class="flex-1">
+                <p class="font-bold text-text-main">確率（樹形図・場合の数）</p>
+                <p class="text-danger text-sm">正答率 52%</p>
+              </div>
+              <span class="bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full">重点対策</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 bg-amber-50 rounded-xl border-l-4 border-warning">
+              <span class="w-10 h-10 bg-warning text-white font-bold rounded-full flex items-center justify-center">2</span>
+              <div class="flex-1">
+                <p class="font-bold text-text-main">一次方程式（移項）</p>
+                <p class="text-warning text-sm">正答率 68%</p>
+              </div>
+              <span class="bg-amber-100 text-amber-700 text-xs font-bold px-3 py-1 rounded-full">改善中</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 bg-blue-50 rounded-xl border-l-4 border-primary">
+              <span class="w-10 h-10 bg-primary text-white font-bold rounded-full flex items-center justify-center">3</span>
+              <div class="flex-1">
+                <p class="font-bold text-text-main">一次関数（グラフから式）</p>
+                <p class="text-primary text-sm">正答率 74%</p>
+              </div>
+              <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full">強化中</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Analysis -->
+        <div class="bg-gradient-to-r from-primary/10 to-purple-50 rounded-3xl p-6 border border-primary/20">
+          <div class="flex gap-4 items-start">
+            <div class="w-14 h-14 rounded-full bg-white overflow-hidden char-container face-thinking border border-gray-200 flex-shrink-0">
+              <img src="三面図1.jpg" alt="Mirai" class="char-img blend-multiply">
+            </div>
+            <div>
+              <h3 class="font-display text-lg text-text-main mb-2">ミライ先生からの詳細分析</h3>
+              <p class="text-text-sub leading-relaxed">
+                たろうさんの学習パターンを分析した結果、「計算自体はできているが、符号の扱いで引っかかる」傾向が見られます。特に負の数を含む移項で間違いやすいようです。これは多くの生徒さんがつまずくポイントなので、焦らず練習を重ねれば必ず克服できます 📝
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- PARENT: SETTINGS -->
+    <!-- ========================================== -->
+    <section id="parent-settings" class="parent-section fade-in hidden">
+      <header class="sticky top-0 z-10 glass px-8 py-4 flex items-center justify-between">
+        <h1 class="font-display text-xl text-text-main">⚙️ Settings</h1>
+        <button onclick="switchRole('student')" class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold shadow-lg">
+          生徒モードへ
+        </button>
+      </header>
+
+      <div class="p-4 lg:p-8 max-w-3xl mx-auto relative z-10">
+        
+        <!-- Game Settings -->
+        <div class="bg-white rounded-3xl p-6 shadow-soft border border-gray-100 mb-6">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="text-2xl">🎮</span>
+            <h3 class="font-display text-lg text-text-main">ゲーム時間の設定</h3>
+          </div>
+          
+          <div class="space-y-6">
+            <div>
+              <label class="text-sm text-text-sub mb-3 block">1日のゲーム上限時間</label>
+              <div class="flex items-center gap-4">
+                <input type="range" min="5" max="60" value="15" class="flex-1 h-2 bg-gray-100 rounded-full appearance-none cursor-pointer accent-primary">
+                <div class="bg-gray-50 px-5 py-3 rounded-xl border border-gray-200">
+                  <span class="font-bold text-2xl text-primary">15</span>
+                  <span class="text-text-sub">分</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label class="text-sm text-text-sub mb-3 block">学習とゲームの比率</label>
+              <div class="grid grid-cols-3 gap-3">
+                <label class="bg-gray-50 rounded-xl p-4 cursor-pointer hover:border-primary border-2 border-transparent text-center transition-all">
+                  <input type="radio" name="ratio" class="sr-only">
+                  <p class="font-bold text-xl text-text-main">1:1</p>
+                  <p class="text-xs text-text-sub">学習10分→ゲーム10分</p>
+                </label>
+                <label class="bg-primary/10 rounded-xl p-4 cursor-pointer border-2 border-primary text-center">
+                  <input type="radio" name="ratio" class="sr-only" checked>
+                  <p class="font-bold text-xl text-primary">2:1</p>
+                  <p class="text-xs text-primary">学習10分→ゲーム5分</p>
+                </label>
+                <label class="bg-gray-50 rounded-xl p-4 cursor-pointer hover:border-primary border-2 border-transparent text-center transition-all">
+                  <input type="radio" name="ratio" class="sr-only">
+                  <p class="font-bold text-xl text-text-main">3:1</p>
+                  <p class="text-xs text-text-sub">学習15分→ゲーム5分</p>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notification Settings -->
+        <div class="bg-white rounded-3xl p-6 shadow-soft border border-gray-100 mb-6">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="text-2xl">🔔</span>
+            <h3 class="font-display text-lg text-text-main">通知設定</h3>
+          </div>
+          
+          <div class="space-y-4">
+            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+              <div>
+                <p class="font-medium text-text-main text-sm">3日連続で学習がなかったら通知</p>
+                <p class="text-xs text-text-sub">ログインしていない場合に通知</p>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" checked class="sr-only peer">
+                <div class="w-14 h-8 bg-gray-200 rounded-full peer peer-checked:bg-success transition-colors">
+                  <div class="absolute top-1 left-1 w-6 h-6 bg-white rounded-full shadow peer-checked:translate-x-6 transition-transform"></div>
+                </div>
+              </label>
+            </div>
+
+            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+              <div>
+                <p class="font-medium text-text-main text-sm">テスト1週間前に弱点単元をお知らせ</p>
+                <p class="text-xs text-text-sub">テスト日設定で1週間前に通知</p>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" checked class="sr-only peer">
+                <div class="w-14 h-8 bg-gray-200 rounded-full peer peer-checked:bg-success transition-colors">
+                  <div class="absolute top-1 left-1 w-6 h-6 bg-white rounded-full shadow peer-checked:translate-x-6 transition-transform"></div>
+                </div>
+              </label>
+            </div>
+
+            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+              <div>
+                <p class="font-medium text-text-main text-sm">週次レポートをメールで受け取る</p>
+                <p class="text-xs text-text-sub">毎週日曜日にサマリーをお届け</p>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" class="sr-only peer">
+                <div class="w-14 h-8 bg-gray-200 rounded-full peer peer-checked:bg-success transition-colors">
+                  <div class="absolute top-1 left-1 w-6 h-6 bg-white rounded-full shadow peer-checked:translate-x-6 transition-transform"></div>
+                </div>
+              </label>
+            </div>
+
+            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+              <div>
+                <p class="font-medium text-text-main text-sm">ゲームの使いすぎ警告</p>
+                <p class="text-xs text-text-sub">上限を超えそうな場合に通知</p>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" checked class="sr-only peer">
+                <div class="w-14 h-8 bg-gray-200 rounded-full peer peer-checked:bg-success transition-colors">
+                  <div class="absolute top-1 left-1 w-6 h-6 bg-white rounded-full shadow peer-checked:translate-x-6 transition-transform"></div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Test Date -->
+        <div class="bg-white rounded-3xl p-6 shadow-soft border border-gray-100 mb-6">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="text-2xl">📅</span>
+            <h3 class="font-display text-lg text-text-main">テスト日の設定</h3>
+          </div>
+          
+          <div>
+            <label class="text-sm text-text-sub mb-2 block">次のテスト予定日</label>
+            <input type="date" value="2024-12-15" class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl bg-white focus:border-primary focus:outline-none transition-colors">
+            <p class="text-text-sub text-sm mt-3">
+              💡 テスト日を設定すると、1週間前から弱点単元の集中対策が始まります
+            </p>
+          </div>
+        </div>
+
+        <button class="w-full bg-primary text-white py-4 rounded-xl font-bold hover:bg-primary-dark transition-colors shadow-lg">
+          設定を保存する
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Mobile FAB -->
+  <button class="lg:hidden fixed bottom-6 right-6 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center text-2xl z-50">
+    ✨
+  </button>
+
+  <!-- ========================================== -->
+  <!-- JavaScript -->
+  <!-- ========================================== -->
+  <script>
+    function switchRole(role) {
+      const studentSidebar = document.getElementById('sidebar-student');
+      const parentSidebar = document.getElementById('sidebar-parent');
+
+      if (role === 'student') {
+        studentSidebar.classList.remove('hidden');
+        studentSidebar.classList.add('flex');
+        parentSidebar.classList.add('hidden');
+        parentSidebar.classList.remove('flex');
+        
+        document.querySelectorAll('.student-section').forEach(s => s.classList.add('hidden'));
+        document.querySelectorAll('.parent-section').forEach(s => s.classList.add('hidden'));
+        showSection('student-home');
+      } else {
+        studentSidebar.classList.add('hidden');
+        studentSidebar.classList.remove('flex');
+        parentSidebar.classList.remove('hidden');
+        parentSidebar.classList.add('flex');
+        
+        document.querySelectorAll('.student-section').forEach(s => s.classList.add('hidden'));
+        document.querySelectorAll('.parent-section').forEach(s => s.classList.add('hidden'));
+        showSection('parent-dashboard');
+      }
+    }
+
+    function showSection(sectionId) {
+      const isStudent = sectionId.startsWith('student');
+      const sectionClass = isStudent ? 'student-section' : 'parent-section';
+      const navClass = isStudent ? 'student-nav' : 'parent-nav';
+
+      // Hide all sections of this type
+      document.querySelectorAll('.' + sectionClass).forEach(section => {
+        section.classList.add('hidden');
+      });
+
+      // Show target section
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) {
+        targetSection.classList.remove('hidden');
+        targetSection.classList.remove('fade-in');
+        void targetSection.offsetWidth;
+        targetSection.classList.add('fade-in');
+      }
+
+      // Update nav
+      document.querySelectorAll('.' + navClass).forEach(nav => {
+        if (nav.dataset.section === sectionId) {
+          nav.classList.add('nav-active');
+          nav.classList.remove('text-text-sub');
+        } else {
+          nav.classList.remove('nav-active');
+          nav.classList.add('text-text-sub');
+        }
+      });
+
+      // Scroll to top
+      document.querySelector('main').scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      switchRole('student');
+    });
+  </script>
+
+</body>
+</html>
