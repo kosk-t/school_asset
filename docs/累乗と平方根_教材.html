@@ -116,7 +116,10 @@ toc:
         </div>
 
         <div class="rule-box">
-            <strong>📌 指数法則（同じ底のかけ算・わり算）</strong> <a href="#ex-exponent" class="example-link">→ 例1</a>
+            <strong>📌 指数法則（底が同じなら指数同士で計算すればOK！）</strong> <a href="#ex-exponent" class="example-link">→ 例1</a>
+            <div class="important-rule" style="background: #fff3e0; border-left: 4px solid #ff9800; padding: 10px; margin: 10px 0;">
+                💡 累乗の底が同じときは、指数同士を足したり引いたりすればいい！
+            </div>
             <div class="formula">
                 \[ a^m \times a^n = a^{m+n} \quad \text{（かけ算 → 指数を足す）} \]
                 \[ a^m \div a^n = a^{m-n} \quad \text{（わり算 → 指数を引く）} \]
@@ -187,6 +190,60 @@ toc:
             </div>
             <p><strong>なぜ1になる？</strong> 指数法則から自然に導けます：</p>
             <p>\( a^n \div a^n = a^{n-n} = a^0 \)、でも \( a^n \div a^n = 1 \) だから、\( a^0 = 1 \)</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 負の指数（マイナス乗は逆数になる）</strong> <a href="#ex-negative" class="example-link">→ 例6</a>
+            <div class="formula">
+                \[ a^{-n} = \frac{1}{a^n} \quad (a \neq 0) \]
+            </div>
+            <p><strong>💡 考え方：指数がマイナスになると逆数になる！</strong></p>
+            <p>例：</p>
+            <ul>
+                <li>\( 2^{-3} = \frac{1}{2^3} = \frac{1}{8} \)</li>
+                <li>\( 10^{-2} = \frac{1}{10^2} = \frac{1}{100} = 0.01 \)</li>
+                <li>\( 5^{-1} = \frac{1}{5^1} = \frac{1}{5} \)</li>
+            </ul>
+            <p><strong>なぜそうなる？</strong> 指数法則から自然に導けます：</p>
+            <p>\( a^n \times a^{-n} = a^{n + (-n)} = a^0 = 1 \)</p>
+            <p>つまり \( a^{-n} \) は \( a^n \) をかけると1になる数 → \( a^n \) の逆数</p>
+
+            <!-- 負の指数の図解 -->
+            <div class="svg-container">
+                <svg width="700" height="200" viewBox="0 0 700 200">
+                    <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
+                        text-anchor="middle">指数がマイナスになると逆数になる</text>
+
+                    <!-- 正の指数 -->
+                    <rect x="80" y="50" width="120" height="50" fill="#c8e6c9" stroke="#4caf50" stroke-width="2"
+                        rx="8" />
+                    <text x="140" y="82" font-size="18" font-weight="bold" fill="#2e7d32" text-anchor="middle">2³ = 8</text>
+                    <text x="140" y="120" font-size="14" fill="#4caf50" text-anchor="middle">正の指数</text>
+
+                    <!-- 矢印 -->
+                    <text x="240" y="80" font-size="24" font-weight="bold" fill="#666" text-anchor="middle">⇄</text>
+
+                    <!-- 負の指数 -->
+                    <rect x="280" y="50" width="160" height="50" fill="#ffcdd2" stroke="#e57373" stroke-width="2"
+                        rx="8" />
+                    <text x="360" y="82" font-size="18" font-weight="bold" fill="#c62828" text-anchor="middle">2⁻³ = 1/8</text>
+                    <text x="360" y="120" font-size="14" fill="#c62828" text-anchor="middle">負の指数 = 逆数</text>
+
+                    <!-- まとめ -->
+                    <rect x="480" y="50" width="180" height="50" fill="#fff9c4" stroke="#fbc02d" stroke-width="2"
+                        rx="8" />
+                    <text x="570" y="75" font-size="14" font-weight="bold" fill="#f57f17"
+                        text-anchor="middle">2³ × 2⁻³ = 1</text>
+                    <text x="570" y="95" font-size="14" fill="#666" text-anchor="middle">8 × 1/8 = 1</text>
+
+                    <!-- 応用例 -->
+                    <rect x="150" y="140" width="400" height="45" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"
+                        rx="8" />
+                    <text x="350" y="167" font-size="15" font-weight="bold" fill="#1565c0" text-anchor="middle">
+                        応用：10⁻² = 0.01（小数を累乗で表せる！）</text>
+                </svg>
+                <div class="svg-caption">マイナス乗は「分数の1/●●」の形になる</div>
+            </div>
         </div>
 
         <div class="rule-box">
@@ -352,6 +409,36 @@ toc:
                 = 2\sqrt{3} \]
             </div>
         </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 負の指数（マイナス乗）</h3>
+
+        <div class="example-box" id="ex-negative">
+            <div class="example-title">
+                <span class="number-badge">例6</span>負の指数の計算
+            </div>
+            <p>\( 2^{-4} \) と \( 3^{-2} \times 3^5 \) を計算する</p>
+            <p><strong>解き方：</strong></p>
+            <p><strong>① \( 2^{-4} \) の計算</strong></p>
+            <ol>
+                <li>負の指数は逆数になる → \( 2^{-4} = \frac{1}{2^4} \)</li>
+                <li>分母の累乗を計算 → \( 2^4 = 16 \)</li>
+                <li>答え → \( \frac{1}{16} \)</li>
+            </ol>
+            <div class="formula">
+                \[ 2^{-4} = \frac{1}{2^4} = \frac{1}{16} \]
+            </div>
+
+            <p><strong>② \( 3^{-2} \times 3^5 \) の計算</strong></p>
+            <ol>
+                <li>底が同じ（どちらも3）なので指数法則が使える</li>
+                <li>指数を足す → \( -2 + 5 = 3 \)</li>
+                <li>答え → \( 3^3 = 27 \)</li>
+            </ol>
+            <div class="formula">
+                \[ 3^{-2} \times 3^5 = 3^{-2+5} = 3^3 = 27 \]
+            </div>
+            <p>※別解：先に負の指数を逆数にしてから計算することもできる：\( \frac{1}{3^2} \times 3^5 = \frac{3^5}{9} = \frac{243}{9} = 27 \)</p>
+        </div>
     </div>
 </section>
 
@@ -420,7 +507,18 @@ toc:
         </div>
 
         <div class="tip-box">
-            <strong>✏️ コツ4：覚えておくと便利な値</strong><br>
+            <strong>✏️ コツ4：負の指数は「1/●●」の形に直す</strong><br>
+            マイナス乗を見たら、まず逆数の形に直すとわかりやすい！<br>
+            例：\( 5^{-2} = \frac{1}{5^2} = \frac{1}{25} \)
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ5：底が同じなら指数同士で計算</strong><br>
+            \( 2^{-3} \times 2^5 = 2^{-3+5} = 2^2 = 4 \)（底が同じ2なので、指数を足す）
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ6：覚えておくと便利な値</strong><br>
             <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 10px;">
                 <span>\( 2^2 = 4 \)</span>
                 <span>\( 3^2 = 9 \)</span>
@@ -512,6 +610,32 @@ toc:
                 <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
                     <p>\( 98 = 49 \times 2 = 7^2 \times 2 \) なので：</p>
                     <p>\( \sqrt{98} = \sqrt{49 \times 2} = \sqrt{49} \times \sqrt{2} = 7\sqrt{2} \)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>\( 2^{-3} \times 2^5 \) を計算しなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>底が同じ2なので、指数を足す：</p>
+                    <p>\( 2^{-3} \times 2^5 = 2^{-3+5} = 2^2 = 4 \)</p>
+                    <p>別解：先に負の指数を逆数にする方法：</p>
+                    <p>\( 2^{-3} \times 2^5 = \frac{1}{2^3} \times 2^5 = \frac{2^5}{8} = \frac{32}{8} = 4 \)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習4</strong>
+            <p>\( 5^{-2} \) を計算しなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>負の指数は逆数になる：</p>
+                    <p>\( 5^{-2} = \frac{1}{5^2} = \frac{1}{25} \)</p>
                 </div>
             </details>
         </div>
@@ -672,6 +796,12 @@ toc:
         { q: "√12 を簡単にすると？", choices: ["2√3", "3√2", "4√3", "6"], answer: 0 },
         { q: "√18 を簡単にすると？", choices: ["2√9", "3√2", "6√3", "9√2"], answer: 1 },
         { q: "√50 を簡単にすると？", choices: ["5√2", "2√5", "10√5", "25√2"], answer: 0 },
+        // 負の指数（マイナス乗）
+        { q: "2⁻² = ?", choices: ["1/4", "4", "-4", "1/2"], answer: 0 },
+        { q: "5⁻¹ = ?", choices: ["5", "1/5", "-5", "0"], answer: 1 },
+        { q: "10⁻³ = ?", choices: ["0.001", "0.01", "0.1", "1000"], answer: 0 },
+        { q: "2⁻³ × 2⁵ = ?", choices: ["4", "8", "16", "32"], answer: 0 },
+        { q: "3⁻¹ × 3³ = ?", choices: ["1", "3", "9", "27"], answer: 2 },
     ];
 
     // シャッフル関数
