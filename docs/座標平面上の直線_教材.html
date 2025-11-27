@@ -8,536 +8,555 @@ level_num: 2
 category: functions
 order: 1
 keywords:
-  - 中点
-  - 傾き
-  - 勾配
-  - 平行
-  - 直線の方程式
-  - 一次関数
-  - y = mx + c
-  - 座標平面
+- 中点
+- 傾き
+- 勾配
+- 平行
+- 直線の方程式
+- 一次関数
+- y = mx + c
+- 座標平面
 cover_image: /images/noimage.jpg
 cover_description: 座標平面に引かれた2本の平行な直線、点A・B・中点Mの図、傾きを示す三角形（rise/run）
 toc:
-  - id: section1
-    title: "テーマの定義"
-  - id: section2
-    title: "覚えるルール"
-  - id: section3
-    title: "例題と解き方"
-  - id: section4
-    title: "簡単にするコツ"
-  - id: section5
-    title: "よくあるつまづき"
-  - id: section6
-    title: "仕上げチェックリスト"
-  - id: section7
-    title: "練習問題"
-  - id: story
-    title: "おまけ：歴史ストーリー「デカルトとハエの伝説」"
+- id: section1
+  title: "テーマの定義"
+- id: section2
+  title: "覚えるルール"
+- id: section3
+  title: "例題と解き方"
+- id: section4
+  title: "簡単にするコツ"
+- id: section5
+  title: "よくあるつまづき"
+- id: section6
+  title: "仕上げチェックリスト"
+- id: section7
+  title: "練習問題"
+- id: story
+  title: "おまけ：歴史ストーリー「デカルトとハエの伝説」"
 ---
 <!-- 1. テーマの定義 -->
-        <section id="section1">
-            <h2>1. テーマの定義</h2>
-            <div class="section">
-                <p>地図やゲーム画面では、位置を座標で表します。座標を使えば、2点の真ん中の位置や直線の傾きを計算で求めることができます。</p>
-                <p>このページでは、座標平面上の直線について以下を学びます：</p>
-                <ul>
-                    <li><strong>中点</strong>：2点の真ん中の座標を求める</li>
-                    <li><strong>傾き</strong>：直線の「右に1進むと、どれだけ上がるか」を計算する</li>
-                    <li><strong>平行な直線</strong>：傾きが同じ直線の方程式を作る</li>
-                </ul>
-
-                <!-- 総合イメージ図 -->
-                <div class="svg-container">
-                    <svg width="650" height="280" viewBox="0 0 650 280">
-                        <defs>
-                            <marker id="arrow-section1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                                <polygon points="0 0, 10 3, 0 6" fill="#333"/>
-                            </marker>
-                        </defs>
-
-                        <!-- タイトル -->
-                        <text x="325" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">座標平面上の直線の3つのポイント</text>
-
-                        <!-- 座標軸 -->
-                        <line x1="80" y1="240" x2="550" y2="240" stroke="#333" stroke-width="2" marker-end="url(#arrow-section1)"/>
-                        <line x1="100" y1="260" x2="100" y2="40" stroke="#333" stroke-width="2" marker-end="url(#arrow-section1)"/>
-                        <text x="560" y="245" font-size="14" fill="#333">x</text>
-                        <text x="90" y="35" font-size="14" fill="#333">y</text>
-                        <text x="90" y="255" font-size="14" fill="#333">O</text>
-
-                        <!-- 直線L1 (通過点 A, B) -->
-                        <line x1="130" y1="200" x2="400" y2="80" stroke="#e53935" stroke-width="3"/>
-                        <text x="410" y="75" font-size="14" font-weight="bold" fill="#e53935">L₁</text>
-
-                        <!-- 点A -->
-                        <circle cx="180" cy="178" r="6" fill="#e53935"/>
-                        <text x="165" y="200" font-size="14" font-weight="bold" fill="#e53935">A(2, 3)</text>
-
-                        <!-- 点B -->
-                        <circle cx="360" cy="98" r="6" fill="#e53935"/>
-                        <text x="365" y="90" font-size="14" font-weight="bold" fill="#e53935">B(6, 7)</text>
-
-                        <!-- 中点M -->
-                        <circle cx="270" cy="138" r="6" fill="#ff9800"/>
-                        <text x="275" y="130" font-size="14" font-weight="bold" fill="#ff9800">M(4, 5)</text>
-                        <text x="275" y="148" font-size="14" fill="#ff9800">← 中点</text>
-
-                        <!-- 直線L2 (L1に平行) -->
-                        <line x1="130" y1="250" x2="400" y2="130" stroke="#1976d2" stroke-width="3" stroke-dasharray="8,4"/>
-                        <text x="410" y="125" font-size="14" font-weight="bold" fill="#1976d2">L₂ (L₁に平行)</text>
-
-                        <!-- 傾きの説明（三角形） -->
-                        <line x1="180" y1="178" x2="360" y2="178" stroke="#4caf50" stroke-width="2" stroke-dasharray="4,2"/>
-                        <line x1="360" y1="178" x2="360" y2="98" stroke="#4caf50" stroke-width="2" stroke-dasharray="4,2"/>
-                        <text x="260" y="195" font-size="14" fill="#4caf50">横に4</text>
-                        <text x="370" y="145" font-size="14" fill="#4caf50">縦に4</text>
-                        <text x="470" y="180" font-size="14" fill="#4caf50">傾き = 4÷4 = 1</text>
-                    </svg>
-                    <div class="svg-caption">中点・傾き・平行の関係を視覚化</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 2. 覚えるルール -->
-        <section id="section2">
-            <h2>2. 覚えるルール</h2>
-            <div class="section">
-                <div class="important-rule">
-                    【最重要】傾き ＝ yの変化 ÷ xの変化 <a href="#ex-slope" class="example-link">→ 例2</a>
-                </div>
-
-                <!-- 傾きの図解 -->
-                <div class="svg-container">
-                    <svg width="500" height="200" viewBox="0 0 500 200">
-                        <text x="250" y="25" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">傾き = 縦の変化 ÷ 横の変化</text>
-
-                        <!-- 座標軸 -->
-                        <line x1="60" y1="160" x2="440" y2="160" stroke="#ccc" stroke-width="1"/>
-                        <line x1="80" y1="180" x2="80" y2="30" stroke="#ccc" stroke-width="1"/>
-
-                        <!-- 直線 -->
-                        <line x1="100" y1="140" x2="380" y2="50" stroke="#e53935" stroke-width="3"/>
-
-                        <!-- 点A -->
-                        <circle cx="150" cy="124" r="6" fill="#e53935"/>
-                        <text x="115" y="140" font-size="14" font-weight="bold" fill="#e53935">A(1, 2)</text>
-
-                        <!-- 点B -->
-                        <circle cx="330" cy="66" r="6" fill="#e53935"/>
-                        <text x="340" y="60" font-size="14" font-weight="bold" fill="#e53935">B(5, 6)</text>
-
-                        <!-- 横の変化 -->
-                        <line x1="150" y1="124" x2="330" y2="124" stroke="#4caf50" stroke-width="2"/>
-                        <text x="240" y="145" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">横に 5−1=4</text>
-
-                        <!-- 縦の変化 -->
-                        <line x1="330" y1="124" x2="330" y2="66" stroke="#2196f3" stroke-width="2"/>
-                        <text x="365" y="100" font-size="14" font-weight="bold" fill="#2196f3">縦に 6−2=4</text>
-
-                        <!-- 結果 -->
-                        <text x="250" y="185" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">傾き m = 4 ÷ 4 = 1</text>
-                    </svg>
-                    <div class="svg-caption">傾きは「yの変化量÷xの変化量」で求める</div>
-                </div>
-
-                <div class="rule-box">
-                    <strong>📌 中点の公式</strong> <a href="#ex-midpoint" class="example-link">→ 例1</a>
-                    <p>点 \(A(x_1, y_1)\) と点 \(B(x_2, y_2)\) の中点 \(M\) は：</p>
-                    <div class="formula">
-                        \[ M\left(\frac{x_1 + x_2}{2},\ \frac{y_1 + y_2}{2}\right) \]
-                    </div>
-                    <p style="color: #666; font-size: 0.9em;">→ x座標どうし、y座標どうしを足して2で割る！</p>
-                    <p><strong>💡 なぜそうなる？</strong> 中点は「2点のちょうど真ん中」なので、各座標の<strong>平均</strong>になる。平均は「足して個数で割る」から、2点なら足して2で割る。</p>
-
-                    <!-- 中点の図解 -->
-                    <div class="svg-container">
-                        <svg width="500" height="250" viewBox="0 0 500 250">
-                            <defs>
-                                <marker id="axisArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                                    <polygon points="0 0, 10 3, 0 6" fill="#666"/>
-                                </marker>
-                            </defs>
-
-                            <text x="250" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">中点 = 両端の座標を足して2で割る</text>
-
-                            <!-- 座標軸 -->
-                            <line x1="60" y1="200" x2="420" y2="200" stroke="#666" stroke-width="1" marker-end="url(#axisArrow)"/>
-                            <line x1="80" y1="220" x2="80" y2="40" stroke="#666" stroke-width="1" marker-end="url(#axisArrow)"/>
-                            <text x="430" y="205" font-size="14" fill="#666">x</text>
-                            <text x="70" y="35" font-size="14" fill="#666">y</text>
-                            <text x="65" y="215" font-size="14" fill="#666">O</text>
-
-                            <!-- 目盛り -->
-                            <text x="120" y="215" font-size="14" fill="#999" text-anchor="middle">2</text>
-                            <text x="200" y="215" font-size="14" fill="#999" text-anchor="middle">5</text>
-                            <text x="280" y="215" font-size="14" fill="#999" text-anchor="middle">8</text>
-                            <text x="65" y="160" font-size="14" fill="#999">4</text>
-                            <text x="65" y="120" font-size="14" fill="#999">5</text>
-                            <text x="65" y="80" font-size="14" fill="#999">6</text>
-
-                            <!-- 線分AB -->
-                            <line x1="120" y1="155" x2="280" y2="75" stroke="#666" stroke-width="3"/>
-
-                            <!-- 点A (2, 4) -->
-                            <circle cx="120" cy="155" r="7" fill="#e53935"/>
-                            <text x="90" y="175" font-size="14" font-weight="bold" fill="#e53935">A(2, 4)</text>
-
-                            <!-- 点B (8, 6) -->
-                            <circle cx="280" cy="75" r="7" fill="#e53935"/>
-                            <text x="290" y="70" font-size="14" font-weight="bold" fill="#e53935">B(8, 6)</text>
-
-                            <!-- 中点M (5, 5) -->
-                            <circle cx="200" cy="115" r="7" fill="#ff9800"/>
-                            <text x="210" y="105" font-size="14" font-weight="bold" fill="#ff9800">M(5, 5)</text>
-
-                            <!-- 計算式 -->
-                            <text x="350" y="150" font-size="14" fill="#333" text-anchor="middle">x: (2+8)÷2 = 5</text>
-                            <text x="350" y="170" font-size="14" fill="#333" text-anchor="middle">y: (4+6)÷2 = 5</text>
-                        </svg>
-                        <div class="svg-caption">2点の座標から中点を求める</div>
-                    </div>
-                </div>
-
-                <div class="rule-box">
-                    <strong>📌 傾きの公式</strong> <a href="#ex-slope" class="example-link">→ 例2</a>
-                    <p>2点 \(A(x_1, y_1)\), \(B(x_2, y_2)\) を通る直線の傾き \(m\) は：</p>
-                    <div class="formula">
-                        \[ m = \frac{y_2 - y_1}{x_2 - x_1} = \frac{\text{yの増加量}}{\text{xの増加量}} \]
-                    </div>
-                    <p style="color: #666; font-size: 0.9em;">→ 「yの変化」÷「xの変化」で傾きが出る！</p>
-                    <p><strong>💡 なぜそうなる？</strong> 傾きとは「xが1増えるとyがいくつ増えるか」を表す数。AからBに移動するとき、xが\((x_2-x_1)\)増えてyが\((y_2-y_1)\)増えるから、1あたりに直すと\(\frac{y_2-y_1}{x_2-x_1}\)になる。</p>
-
-                    <div class="tip-box" style="margin-top: 15px;">
-                        <strong>💡 どちらの点を先にしてもOK！</strong><br>
-                        \(\frac{y_2 - y_1}{x_2 - x_1}\) でも \(\frac{y_1 - y_2}{x_1 - x_2}\) でも同じ結果になる。<br>
-                        <span style="color: #e53935; font-weight: bold;">ただし、分子と分母で引く順番を揃えること！</span><br>
-                        <span style="font-size: 0.9em;">例：\(\frac{6-2}{5-1}\) と \(\frac{2-6}{1-5}\) は両方とも答えは1。</span>
-                    </div>
-                </div>
-
-                <div class="rule-box">
-                    <strong>📌 直線の方程式</strong> <a href="#ex-parallel" class="example-link">→ 例5</a>
-                    <p>傾き \(m\)、y切片 \(c\) の直線は：</p>
-                    <div class="formula">
-                        \[ y = mx + c \]
-                    </div>
-                    <ul>
-                        <li>\(m\)：傾き（直線の急さ）</li>
-                        <li>\(c\)：y切片（y軸との交点のy座標）</li>
-                    </ul>
-                </div>
-
-                <div class="rule-box">
-                    <strong>📌 平行な直線の条件</strong> <a href="#ex-parallel" class="example-link">→ 例5</a>
-                    <div class="formula">
-                        2直線が平行 ⇔ 傾きが等しい
-                    </div>
-                    <p>直線 \(L_1\) の傾きが \(m\) のとき、\(L_1\) に平行な直線の傾きも \(m\)</p>
-                    <p><strong>💡 なぜそうなる？</strong> 傾きは直線の「角度（傾き具合）」を表す。平行な2直線は同じ角度で進むから、傾きも同じになる。逆に傾きが違えば、いつか交わってしまうので平行ではない。</p>
-
-                    <!-- 平行の図解 -->
-                    <div class="svg-container">
-                        <svg width="500" height="180" viewBox="0 0 500 180">
-                            <text x="250" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">平行な直線は傾きが同じ</text>
-
-                            <!-- 直線1 -->
-                            <line x1="60" y1="120" x2="300" y2="50" stroke="#e53935" stroke-width="3"/>
-                            <text x="310" y="45" font-size="14" font-weight="bold" fill="#e53935">L₁: y = 2x + 3</text>
-
-                            <!-- 直線2 -->
-                            <line x1="60" y1="155" x2="300" y2="85" stroke="#1976d2" stroke-width="3"/>
-                            <text x="310" y="80" font-size="14" font-weight="bold" fill="#1976d2">L₂: y = 2x − 1</text>
-
-                            <!-- 傾きの注釈 -->
-                            <rect x="130" y="120" width="160" height="40" fill="#fff9c4" stroke="#ff9800" stroke-width="2" rx="8"/>
-                            <text x="210" y="142" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">両方とも傾き = 2</text>
-                            <text x="210" y="157" font-size="14" fill="#666" text-anchor="middle">→ 平行！</text>
-                        </svg>
-                        <div class="svg-caption">平行な2直線は傾きが等しい</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. 例題と解き方 -->
-        <section id="section3">
-            <h2>3. 例題と解き方</h2>
-            <div class="section">
-                <p>ルールを使って実際に解いてみましょう。</p>
-
-                <div class="data-example">
-                    問題設定：直線 L₁ は点 A(2, 3) と B(6, 7) を通る
-                </div>
-
-                <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 中点を求める</h3>
-
-                <div class="example-box" id="ex-midpoint">
-                    <div class="example-title">
-                        <span class="number-badge">例1</span>線分ABの中点Mを求める
-                    </div>
-                    <p>点 A(2, 3) と B(6, 7) を結ぶ線分ABの中点Mの座標を求めよ。</p>
-                    <p><strong>解き方：</strong></p>
-                    <ol>
-                        <li>2点の座標を確認する → A(2, 3)、B(6, 7)</li>
-                        <li>x座標を足して2で割る → \(\frac{2+6}{2} = \frac{8}{2} = 4\)</li>
-                        <li>y座標を足して2で割る → \(\frac{3+7}{2} = \frac{10}{2} = 5\)</li>
-                        <li>中点の座標として答える → <strong>M(4, 5)</strong></li>
-                    </ol>
-                </div>
-
-                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 傾きを求める</h3>
-
-                <div class="example-box" id="ex-slope">
-                    <div class="example-title">
-                        <span class="number-badge">例2</span>直線L₁の傾きを求める
-                    </div>
-                    <p>点 A(2, 3) と B(6, 7) を通る直線L₁の傾きを求めよ。</p>
-                    <p><strong>解き方：</strong></p>
-                    <ol>
-                        <li>2点の座標を確認する → A(2, 3)、B(6, 7)</li>
-                        <li>yの変化を計算する → \(7 - 3 = 4\)</li>
-                        <li>xの変化を計算する → \(6 - 2 = 4\)</li>
-                        <li>割り算して約分する → \(m = \frac{4}{4} = 1\)</li>
-                    </ol>
-                    <p><strong>答え：傾き m = 1</strong></p>
-                </div>
-
-                <div class="example-box" id="ex-slope-negative">
-                    <div class="example-title">
-                        <span class="number-badge">例3</span>傾きが負の場合
-                    </div>
-                    <p>点 P(1, 5) と Q(4, 2) を通る直線の傾きを求めよ。</p>
-                    <p><strong>解き方：</strong></p>
-                    <ol>
-                        <li>2点の座標を確認する → P(1, 5)、Q(4, 2)</li>
-                        <li>yの変化を計算する → \(2 - 5 = -3\)</li>
-                        <li>xの変化を計算する → \(4 - 1 = 3\)</li>
-                        <li>割り算する → \(m = \frac{-3}{3} = -1\)</li>
-                    </ol>
-                    <p><strong>答え：傾き m = −1</strong>（右下がりの直線）</p>
-
-                    <!-- 負の傾きの図 -->
-                    <div class="svg-container">
-                        <svg width="400" height="180" viewBox="0 0 400 180">
-                            <text x="200" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">傾きが負 → 右下がり</text>
-
-                            <!-- 座標軸 -->
-                            <line x1="50" y1="150" x2="350" y2="150" stroke="#ccc" stroke-width="1"/>
-                            <line x1="70" y1="170" x2="70" y2="30" stroke="#ccc" stroke-width="1"/>
-
-                            <!-- 直線（右下がり） -->
-                            <line x1="90" y1="50" x2="320" y2="130" stroke="#9c27b0" stroke-width="3"/>
-
-                            <!-- 点P -->
-                            <circle cx="120" cy="65" r="5" fill="#9c27b0"/>
-                            <text x="95" y="55" font-size="14" font-weight="bold" fill="#9c27b0">P(1,5)</text>
-
-                            <!-- 点Q -->
-                            <circle cx="280" cy="115" r="5" fill="#9c27b0"/>
-                            <text x="285" y="110" font-size="14" font-weight="bold" fill="#9c27b0">Q(4,2)</text>
-
-                            <text x="200" y="165" font-size="14" fill="#666" text-anchor="middle">m = −1 なので右に行くと下がる</text>
-                        </svg>
-                        <div class="svg-caption">傾きが負の直線は右下がり</div>
-                    </div>
-                </div>
-
-                <div class="example-box" id="ex-slope-fraction">
-                    <div class="example-title">
-                        <span class="number-badge">例4</span>分数の傾きになる場合
-                    </div>
-                    <p>点 A(1, 2) と B(5, 8) を通る直線の傾きを求めよ。</p>
-                    <p><strong>解き方：</strong></p>
-                    <ol>
-                        <li>2点の座標を確認する → A(1, 2)、B(5, 8)</li>
-                        <li>yの変化を計算する → \(8 - 2 = 6\)</li>
-                        <li>xの変化を計算する → \(5 - 1 = 4\)</li>
-                        <li>割り算して<strong>約分する</strong> → \(m = \frac{6}{4} = \frac{3}{2}\)</li>
-                    </ol>
-                    <p><strong>答え：傾き m = \(\frac{3}{2}\)</strong></p>
-                </div>
-
-                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 平行な直線の方程式を求める</h3>
-
-                <div class="example-box" id="ex-parallel">
-                    <div class="example-title">
-                        <span class="number-badge">例5</span>L₁に平行で点C(0, 2)を通る直線L₂の方程式
-                    </div>
-                    <p>直線L₁（傾き1）に平行で、点C(0, 2)を通る直線L₂の方程式を求めよ。</p>
-                    <p><strong>解き方：</strong></p>
-                    <ol>
-                        <li>元の直線L₁の傾きを確認する → \(m = 1\)</li>
-                        <li>平行なので同じ傾きを使う → L₂の傾きも \(m = 1\)</li>
-                        <li>通る点からy切片を読み取る → C(0, 2)なので \(c = 2\)</li>
-                        <li>\(y = mx + c\) の形で答える → \(y = 1 \cdot x + 2 = x + 2\)</li>
-                    </ol>
-                    <p><strong>答え：y = x + 2</strong></p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. 簡単にするコツ -->
-        <section id="section4">
-            <h2>4. 簡単にするコツ</h2>
-            <div class="section">
-                <div class="tip-box">
-                    <strong>✏️ コツ1：座標を(x, y)の順に書く</strong><br>
-                    混乱しないように、必ず「横、縦」の順で書く習慣をつける。
-                </div>
-
-                <div class="tip-box">
-                    <strong>✏️ コツ2：傾きは「分数のまま」で計算</strong><br>
-                    \(\frac{3}{2}\) のような分数でも無理に小数にしない。計算が楽になる。
-                </div>
-
-                <div class="tip-box">
-                    <strong>✏️ コツ3：平行なら傾きをコピー</strong><br>
-                    「平行な直線を求めよ」と言われたら、元の直線の傾きをそのまま使う。
-                </div>
-
-                <div class="tip-box">
-                    <strong>✏️ コツ4：y切片は問題文から読み取る</strong><br>
-                    「y軸と(0, k)で交わる」と書いてあれば、それがy切片 \(c = k\) になる。
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. よくあるつまづき -->
-        <section id="section5">
-            <h2>5. よくあるつまづき</h2>
-            <div class="section">
-                <div class="caution-box">
-                    <div class="caution-title">⚠️ つまづき1：傾きの分子と分母を逆にする</div>
-                    <p><strong>ダメな例：</strong> \(\frac{x_2 - x_1}{y_2 - y_1}\) と計算する</p>
-                    <p><strong>対策：</strong> 「yの変化が上（分子）、xの変化が下（分母）」と覚える</p>
-                </div>
-
-                <div class="caution-box">
-                    <div class="caution-title">⚠️ つまづき2：中点で「足す」を「引く」にする</div>
-                    <p><strong>ダメな例：</strong> \(\frac{x_2 - x_1}{2}\) と計算</p>
-                    <p><strong>対策：</strong> 中点は「足して2で割る」。傾きと混同しない！</p>
-                </div>
-
-                <div class="caution-box">
-                    <div class="caution-title">⚠️ つまづき3：負の数の引き算ミス</div>
-                    <p><strong>ダメな例：</strong> A(2, −3), B(4, 1) で \(1 - 3 = -2\) とする</p>
-                    <p><strong>対策：</strong> \(1 - (-3) = 1 + 3 = 4\)。マイナスの前はカッコで囲む！</p>
-                </div>
-
-                <div class="caution-box">
-                    <div class="caution-title">⚠️ つまづき4：y切片の読み間違い</div>
-                    <p><strong>ダメな例：</strong> (0, 5)を通ると書いてあるのにy切片を0にする</p>
-                    <p><strong>対策：</strong> (0, c)のcがy切片。y軸との交点のy座標を使う。</p>
-                </div>
-
-                <div class="caution-box">
-                    <div class="caution-title">⚠️ つまづき5：約分を忘れる</div>
-                    <p><strong>ダメな例：</strong> 傾きを\(\frac{6}{4}\)のまま答える</p>
-                    <p><strong>対策：</strong> 必ず約分して\(\frac{3}{2}\)にする。分数は最も簡単な形に！</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. 仕上げチェックリスト -->
-        <section id="section6">
-            <h2>6. 仕上げチェックリスト</h2>
-            <div class="section">
-                <div class="checklist">
-                    <div class="checklist-item">中点は「足して2で割る」で計算したか</div>
-                    <div class="checklist-item">傾きは「yの変化÷xの変化」で正しく計算したか</div>
-                    <div class="checklist-item">負の数の計算で符号ミスをしていないか</div>
-                    <div class="checklist-item">平行な直線は元の直線と同じ傾きを使ったか</div>
-                    <div class="checklist-item">分数は約分して最も簡単な形にしたか</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. 練習問題 -->
-        <section id="section7">
-            <h2>7. 練習問題</h2>
-            <div class="section">
-                <p>学んだことを使って、以下の問題を解いてみよう。</p>
-
-                <div class="rule-box" style="background: #f5f5f5;">
-                    <strong>練習1</strong>
-                    <p>点 A(1, 4) と B(7, 10) を結ぶ線分ABの中点Mの座標を求めよ。</p>
-                    <details style="margin-top: 15px;">
-                        <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
-                        <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
-                            <p>x座標：\(\frac{1+7}{2} = \frac{8}{2} = 4\)</p>
-                            <p>y座標：\(\frac{4+10}{2} = \frac{14}{2} = 7\)</p>
-                            <p><strong>答え：M(4, 7)</strong></p>
-                        </div>
-                    </details>
-                </div>
-
-                <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
-                    <strong>練習2</strong>
-                    <p>点 P(2, 1) と Q(8, 7) を通る直線の傾きを求めよ。</p>
-                    <details style="margin-top: 15px;">
-                        <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
-                        <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
-                            <p>\(m = \frac{7-1}{8-2} = \frac{6}{6} = 1\)</p>
-                            <p><strong>答え：傾き m = 1</strong></p>
-                        </div>
-                    </details>
-                </div>
-            </div>
-        </section>
-
-        <!-- まとめ -->
-        <div class="summary">
-            📌 まとめ：中点は「足して半分」、傾きは「yの変化÷xの変化」、平行は「傾き同じ」！
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>地図やゲーム画面では、位置を座標で表します。座標を使えば、2点の真ん中の位置や直線の傾きを計算で求めることができます。</p>
+        <p>このページでは、座標平面上の直線について以下を学びます：</p>
+        <ul>
+            <li><strong>中点</strong>：2点の真ん中の座標を求める</li>
+            <li><strong>傾き</strong>：直線の「右に1進むと、どれだけ上がるか」を計算する</li>
+            <li><strong>平行な直線</strong>：傾きが同じ直線の方程式を作る</li>
+        </ul>
+
+        <!-- 総合イメージ図 -->
+        <div class="svg-container">
+            <svg width="650" height="280" viewBox="0 0 650 280">
+                <defs>
+                    <marker id="arrow-section1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#333" />
+                    </marker>
+                </defs>
+
+                <!-- タイトル -->
+                <text x="325" y="20" font-size="14" font-weight="bold" fill="#1976d2"
+                    text-anchor="middle">座標平面上の直線の3つのポイント</text>
+
+                <!-- 座標軸 -->
+                <line x1="80" y1="240" x2="550" y2="240" stroke="#333" stroke-width="2"
+                    marker-end="url(#arrow-section1)" />
+                <line x1="100" y1="260" x2="100" y2="40" stroke="#333" stroke-width="2"
+                    marker-end="url(#arrow-section1)" />
+                <text x="560" y="245" font-size="14" fill="#333">x</text>
+                <text x="90" y="35" font-size="14" fill="#333">y</text>
+                <text x="90" y="255" font-size="14" fill="#333">O</text>
+
+                <!-- 直線L1 (通過点 A, B) -->
+                <line x1="130" y1="200" x2="400" y2="80" stroke="#e53935" stroke-width="3" />
+                <text x="410" y="75" font-size="14" font-weight="bold" fill="#e53935">L₁</text>
+
+                <!-- 点A -->
+                <circle cx="180" cy="178" r="6" fill="#e53935" />
+                <text x="165" y="200" font-size="14" font-weight="bold" fill="#e53935">A(2, 3)</text>
+
+                <!-- 点B -->
+                <circle cx="360" cy="98" r="6" fill="#e53935" />
+                <text x="365" y="90" font-size="14" font-weight="bold" fill="#e53935">B(6, 7)</text>
+
+                <!-- 中点M -->
+                <circle cx="270" cy="138" r="6" fill="#ff9800" />
+                <text x="275" y="130" font-size="14" font-weight="bold" fill="#ff9800">M(4, 5)</text>
+                <text x="275" y="148" font-size="14" fill="#ff9800">← 中点</text>
+
+                <!-- 直線L2 (L1に平行) -->
+                <line x1="130" y1="250" x2="400" y2="130" stroke="#1976d2" stroke-width="3" stroke-dasharray="8,4" />
+                <text x="410" y="125" font-size="14" font-weight="bold" fill="#1976d2">L₂ (L₁に平行)</text>
+
+                <!-- 傾きの説明（三角形） -->
+                <line x1="180" y1="178" x2="360" y2="178" stroke="#4caf50" stroke-width="2" stroke-dasharray="4,2" />
+                <line x1="360" y1="178" x2="360" y2="98" stroke="#4caf50" stroke-width="2" stroke-dasharray="4,2" />
+                <text x="260" y="195" font-size="14" fill="#4caf50">横に4</text>
+                <text x="370" y="145" font-size="14" fill="#4caf50">縦に4</text>
+                <text x="470" y="180" font-size="14" fill="#4caf50">傾き = 4÷4 = 1</text>
+            </svg>
+            <div class="svg-caption">中点・傾き・平行の関係を視覚化</div>
+        </div>
+    </div>
+</section>
+
+<!-- 2. 覚えるルール -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】傾き ＝ yの変化 ÷ xの変化 <a href="#ex-slope" class="example-link">→ 例2</a>
         </div>
 
-        <!-- おまけ：歴史ストーリー -->
-        <section id="story">
-            <h2>おまけ：歴史ストーリー「デカルトとハエの伝説」</h2>
-            <div class="section">
-                <div class="story-box">
-                    <div class="story-title">📖 デカルトとハエの伝説（17世紀・フランス）</div>
+        <!-- 傾きの図解 -->
+        <div class="svg-container">
+            <svg width="500" height="200" viewBox="0 0 500 200">
+                <text x="250" y="25" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">傾き = 縦の変化 ÷
+                    横の変化</text>
 
-                    <p>フランスの哲学者・数学者ルネ・デカルトは、子どもの頃から病弱だった。学校でも特別に「朝寝坊」を許されていたほど。大人になってもベッドで過ごす時間が長かったという。</p>
-                    <p>ある日、デカルトはベッドに寝転がりながら、天井を見つめていた。すると1匹のハエが天井を歩いている。</p>
+                <!-- 座標軸 -->
+                <line x1="60" y1="160" x2="440" y2="160" stroke="#ccc" stroke-width="1" />
+                <line x1="80" y1="180" x2="80" y2="30" stroke="#ccc" stroke-width="1" />
 
-                    <p style="background: #fff9c4; padding: 10px; border-radius: 8px; margin: 15px 0;">
-                        「あのハエの位置を、どうやって正確に伝えればいいだろう...？」
-                    </p>
+                <!-- 直線 -->
+                <line x1="100" y1="140" x2="380" y2="50" stroke="#e53935" stroke-width="3" />
 
-                    <p><strong>【ひらめき！】</strong></p>
-                    <p>デカルトは天井の角を見た。縦と横の線が交わっている。<br>
-                    「角からの距離で表せばいい！横に何マス、縦に何マス...」</p>
+                <!-- 点A -->
+                <circle cx="150" cy="124" r="6" fill="#e53935" />
+                <text x="115" y="140" font-size="14" font-weight="bold" fill="#e53935">A(1, 2)</text>
 
-                    <p>こうして生まれたのが<strong>座標平面</strong>。2つの数の組 \((x, y)\) で平面上のどんな点も表せる。</p>
+                <!-- 点B -->
+                <circle cx="330" cy="66" r="6" fill="#e53935" />
+                <text x="340" y="60" font-size="14" font-weight="bold" fill="#e53935">B(5, 6)</text>
 
-                    <p><strong>【ハエの位置を追跡】</strong></p>
-                    <p>例えば、ハエが天井の角から右に3マス、上に2マスの位置にいたら：</p>
-                    <div class="formula">
-                        \[ \text{ハエの位置} = (3, 2) \]
-                    </div>
+                <!-- 横の変化 -->
+                <line x1="150" y1="124" x2="330" y2="124" stroke="#4caf50" stroke-width="2" />
+                <text x="240" y="145" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">横に
+                    5−1=4</text>
 
-                    <p>ハエが直線的に移動していたら？傾きと切片で表せる！</p>
-                    <p>もしハエが点 \((0, 1)\) から点 \((3, 4)\) へ移動したなら：</p>
-                    <div class="formula">
-                        \[ \text{傾き} = \frac{4 - 1}{3 - 0} = \frac{3}{3} = 1 \]
-                    </div>
-                    <p>y切片は1だから、ハエの軌跡は \( y = x + 1 \)。</p>
+                <!-- 縦の変化 -->
+                <line x1="330" y1="124" x2="330" y2="66" stroke="#2196f3" stroke-width="2" />
+                <text x="365" y="100" font-size="14" font-weight="bold" fill="#2196f3">縦に 6−2=4</text>
 
-                    <p><strong>【デカルト座標の誕生】</strong></p>
-                    <p>この「縦と横の数で位置を表す」方法は「デカルト座標」と呼ばれるようになった。<br>
-                    今では地図、ゲーム、グラフィックス、GPS...あらゆる場所で使われている。</p>
+                <!-- 結果 -->
+                <text x="250" y="185" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">傾き m = 4 ÷ 4 =
+                    1</text>
+            </svg>
+            <div class="svg-caption">傾きは「yの変化量÷xの変化量」で求める</div>
+        </div>
 
-                    <p style="background: #e8f5e9; padding: 10px; border-radius: 8px; margin: 15px 0;">
-                        ちなみに、このハエの話は伝説であり、本当かどうかは分からない。<br>
-                        でも「朝寝坊の天才がベッドでゴロゴロしながら数学史を変えた」というのは、なんだか勇気をもらえる話ではないだろうか。
-                    </p>
-                    <p>教訓：<strong>ベッドでダラダラしていても、天井を見ていれば大発見があるかもしれない</strong>。...まあ、普通はただ寝落ちするだけだが。</p>
-
-                    <p style="font-size: 14px; color: #666; margin-top: 20px;">
-                        ※デカルトが座標系を発明したことは事実ですが、ハエのエピソードは後世に作られた伝説の可能性があります。デカルト自身の著作『方法序説』（1637年）で座標系の概念が示されています（<a href="https://ja.wikipedia.org/wiki/%E3%83%87%E3%82%AB%E3%83%AB%E3%83%88%E5%BA%A7%E6%A8%99%E7%B3%BB" target="_blank" style="color: #1976d2;">デカルト座標系</a>）。
-                    </p>
-                </div>
+        <div class="rule-box">
+            <strong>📌 中点の公式</strong> <a href="#ex-midpoint" class="example-link">→ 例1</a>
+            <p>点 \(A(x_1, y_1)\) と点 \(B(x_2, y_2)\) の中点 \(M\) は：</p>
+            <div class="formula">
+                \[ M\left(\frac{x_1 + x_2}{2},\ \frac{y_1 + y_2}{2}\right) \]
             </div>
-        </section>
+            <p style="color: #666; font-size: 0.9em;">→ x座標どうし、y座標どうしを足して2で割る！</p>
+            <p><strong>💡 なぜそうなる？</strong> 中点は「2点のちょうど真ん中」なので、各座標の<strong>平均</strong>になる。平均は「足して個数で割る」から、2点なら足して2で割る。
+            </p>
+
+            <!-- 中点の図解 -->
+            <div class="svg-container">
+                <svg width="500" height="250" viewBox="0 0 500 250">
+                    <defs>
+                        <marker id="axisArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#666" />
+                        </marker>
+                    </defs>
+
+                    <text x="250" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">中点 =
+                        両端の座標を足して2で割る</text>
+
+                    <!-- 座標軸 -->
+                    <line x1="60" y1="200" x2="420" y2="200" stroke="#666" stroke-width="1"
+                        marker-end="url(#axisArrow)" />
+                    <line x1="80" y1="220" x2="80" y2="40" stroke="#666" stroke-width="1"
+                        marker-end="url(#axisArrow)" />
+                    <text x="430" y="205" font-size="14" fill="#666">x</text>
+                    <text x="70" y="35" font-size="14" fill="#666">y</text>
+                    <text x="65" y="215" font-size="14" fill="#666">O</text>
+
+                    <!-- 目盛り -->
+                    <text x="120" y="215" font-size="14" fill="#999" text-anchor="middle">2</text>
+                    <text x="200" y="215" font-size="14" fill="#999" text-anchor="middle">5</text>
+                    <text x="280" y="215" font-size="14" fill="#999" text-anchor="middle">8</text>
+                    <text x="65" y="160" font-size="14" fill="#999">4</text>
+                    <text x="65" y="120" font-size="14" fill="#999">5</text>
+                    <text x="65" y="80" font-size="14" fill="#999">6</text>
+
+                    <!-- 線分AB -->
+                    <line x1="120" y1="155" x2="280" y2="75" stroke="#666" stroke-width="3" />
+
+                    <!-- 点A (2, 4) -->
+                    <circle cx="120" cy="155" r="7" fill="#e53935" />
+                    <text x="90" y="175" font-size="14" font-weight="bold" fill="#e53935">A(2, 4)</text>
+
+                    <!-- 点B (8, 6) -->
+                    <circle cx="280" cy="75" r="7" fill="#e53935" />
+                    <text x="290" y="70" font-size="14" font-weight="bold" fill="#e53935">B(8, 6)</text>
+
+                    <!-- 中点M (5, 5) -->
+                    <circle cx="200" cy="115" r="7" fill="#ff9800" />
+                    <text x="210" y="105" font-size="14" font-weight="bold" fill="#ff9800">M(5, 5)</text>
+
+                    <!-- 計算式 -->
+                    <text x="350" y="150" font-size="14" fill="#333" text-anchor="middle">x: (2+8)÷2 = 5</text>
+                    <text x="350" y="170" font-size="14" fill="#333" text-anchor="middle">y: (4+6)÷2 = 5</text>
+                </svg>
+                <div class="svg-caption">2点の座標から中点を求める</div>
+            </div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 傾きの公式</strong> <a href="#ex-slope" class="example-link">→ 例2</a>
+            <p>2点 \(A(x_1, y_1)\), \(B(x_2, y_2)\) を通る直線の傾き \(m\) は：</p>
+            <div class="formula">
+                \[ m = \frac{y_2 - y_1}{x_2 - x_1} = \frac{\text{yの増加量}}{\text{xの増加量}} \]
+            </div>
+            <p style="color: #666; font-size: 0.9em;">→ 「yの変化」÷「xの変化」で傾きが出る！</p>
+            <p><strong>💡 なぜそうなる？</strong>
+                傾きとは「xが1増えるとyがいくつ増えるか」を表す数。AからBに移動するとき、xが\((x_2-x_1)\)増えてyが\((y_2-y_1)\)増えるから、1あたりに直すと\(\frac{y_2-y_1}{x_2-x_1}\)になる。
+            </p>
+
+            <div class="tip-box" style="margin-top: 15px;">
+                <strong>💡 どちらの点を先にしてもOK！</strong><br>
+                \(\frac{y_2 - y_1}{x_2 - x_1}\) でも \(\frac{y_1 - y_2}{x_1 - x_2}\) でも同じ結果になる。<br>
+                <span style="color: #e53935; font-weight: bold;">ただし、分子と分母で引く順番を揃えること！</span><br>
+                <span style="font-size: 0.9em;">例：\(\frac{6-2}{5-1}\) と \(\frac{2-6}{1-5}\) は両方とも答えは1。</span>
+            </div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 直線の方程式</strong> <a href="#ex-parallel" class="example-link">→ 例5</a>
+            <p>傾き \(m\)、y切片 \(c\) の直線は：</p>
+            <div class="formula">
+                \[ y = mx + c \]
+            </div>
+            <ul>
+                <li>\(m\)：傾き（直線の急さ）</li>
+                <li>\(c\)：y切片（y軸との交点のy座標）</li>
+            </ul>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 平行な直線の条件</strong> <a href="#ex-parallel" class="example-link">→ 例5</a>
+            <div class="formula">
+                2直線が平行 ⇔ 傾きが等しい
+            </div>
+            <p>直線 \(L_1\) の傾きが \(m\) のとき、\(L_1\) に平行な直線の傾きも \(m\)</p>
+            <p><strong>💡 なぜそうなる？</strong> 傾きは直線の「角度（傾き具合）」を表す。平行な2直線は同じ角度で進むから、傾きも同じになる。逆に傾きが違えば、いつか交わってしまうので平行ではない。
+            </p>
+
+            <!-- 平行の図解 -->
+            <div class="svg-container">
+                <svg width="500" height="180" viewBox="0 0 500 180">
+                    <text x="250" y="20" font-size="14" font-weight="bold" fill="#1976d2"
+                        text-anchor="middle">平行な直線は傾きが同じ</text>
+
+                    <!-- 直線1 -->
+                    <line x1="60" y1="120" x2="300" y2="50" stroke="#e53935" stroke-width="3" />
+                    <text x="310" y="45" font-size="14" font-weight="bold" fill="#e53935">L₁: y = 2x + 3</text>
+
+                    <!-- 直線2 -->
+                    <line x1="60" y1="155" x2="300" y2="85" stroke="#1976d2" stroke-width="3" />
+                    <text x="310" y="80" font-size="14" font-weight="bold" fill="#1976d2">L₂: y = 2x − 1</text>
+
+                    <!-- 傾きの注釈 -->
+                    <rect x="130" y="120" width="160" height="40" fill="#fff9c4" stroke="#ff9800" stroke-width="2"
+                        rx="8" />
+                    <text x="210" y="142" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">両方とも傾き =
+                        2</text>
+                    <text x="210" y="157" font-size="14" fill="#666" text-anchor="middle">→ 平行！</text>
+                </svg>
+                <div class="svg-caption">平行な2直線は傾きが等しい</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. 例題と解き方 -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>ルールを使って実際に解いてみましょう。</p>
+
+        <div class="data-example">
+            問題設定：直線 L₁ は点 A(2, 3) と B(6, 7) を通る
+        </div>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 中点を求める</h3>
+
+        <div class="example-box" id="ex-midpoint">
+            <div class="example-title">
+                <span class="number-badge">例1</span>線分ABの中点Mを求める
+            </div>
+            <p>点 A(2, 3) と B(6, 7) を結ぶ線分ABの中点Mの座標を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>2点の座標を確認する → A(2, 3)、B(6, 7)</li>
+                <li>x座標を足して2で割る → \(\frac{2+6}{2} = \frac{8}{2} = 4\)</li>
+                <li>y座標を足して2で割る → \(\frac{3+7}{2} = \frac{10}{2} = 5\)</li>
+                <li>中点の座標として答える → <strong>M(4, 5)</strong></li>
+            </ol>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 傾きを求める</h3>
+
+        <div class="example-box" id="ex-slope">
+            <div class="example-title">
+                <span class="number-badge">例2</span>直線L₁の傾きを求める
+            </div>
+            <p>点 A(2, 3) と B(6, 7) を通る直線L₁の傾きを求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>2点の座標を確認する → A(2, 3)、B(6, 7)</li>
+                <li>yの変化を計算する → \(7 - 3 = 4\)</li>
+                <li>xの変化を計算する → \(6 - 2 = 4\)</li>
+                <li>割り算して約分する → \(m = \frac{4}{4} = 1\)</li>
+            </ol>
+            <p><strong>答え：傾き m = 1</strong></p>
+        </div>
+
+        <div class="example-box" id="ex-slope-negative">
+            <div class="example-title">
+                <span class="number-badge">例3</span>傾きが負の場合
+            </div>
+            <p>点 P(1, 5) と Q(4, 2) を通る直線の傾きを求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>2点の座標を確認する → P(1, 5)、Q(4, 2)</li>
+                <li>yの変化を計算する → \(2 - 5 = -3\)</li>
+                <li>xの変化を計算する → \(4 - 1 = 3\)</li>
+                <li>割り算する → \(m = \frac{-3}{3} = -1\)</li>
+            </ol>
+            <p><strong>答え：傾き m = −1</strong>（右下がりの直線）</p>
+
+            <!-- 負の傾きの図 -->
+            <div class="svg-container">
+                <svg width="400" height="180" viewBox="0 0 400 180">
+                    <text x="200" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">傾きが負 →
+                        右下がり</text>
+
+                    <!-- 座標軸 -->
+                    <line x1="50" y1="150" x2="350" y2="150" stroke="#ccc" stroke-width="1" />
+                    <line x1="70" y1="170" x2="70" y2="30" stroke="#ccc" stroke-width="1" />
+
+                    <!-- 直線（右下がり） -->
+                    <line x1="90" y1="50" x2="320" y2="130" stroke="#9c27b0" stroke-width="3" />
+
+                    <!-- 点P -->
+                    <circle cx="120" cy="65" r="5" fill="#9c27b0" />
+                    <text x="95" y="55" font-size="14" font-weight="bold" fill="#9c27b0">P(1,5)</text>
+
+                    <!-- 点Q -->
+                    <circle cx="280" cy="115" r="5" fill="#9c27b0" />
+                    <text x="285" y="110" font-size="14" font-weight="bold" fill="#9c27b0">Q(4,2)</text>
+
+                    <text x="200" y="165" font-size="14" fill="#666" text-anchor="middle">m = −1 なので右に行くと下がる</text>
+                </svg>
+                <div class="svg-caption">傾きが負の直線は右下がり</div>
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-slope-fraction">
+            <div class="example-title">
+                <span class="number-badge">例4</span>分数の傾きになる場合
+            </div>
+            <p>点 A(1, 2) と B(5, 8) を通る直線の傾きを求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>2点の座標を確認する → A(1, 2)、B(5, 8)</li>
+                <li>yの変化を計算する → \(8 - 2 = 6\)</li>
+                <li>xの変化を計算する → \(5 - 1 = 4\)</li>
+                <li>割り算して<strong>約分する</strong> → \(m = \frac{6}{4} = \frac{3}{2}\)</li>
+            </ol>
+            <p><strong>答え：傾き m = \(\frac{3}{2}\)</strong></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 平行な直線の方程式を求める</h3>
+
+        <div class="example-box" id="ex-parallel">
+            <div class="example-title">
+                <span class="number-badge">例5</span>L₁に平行で点C(0, 2)を通る直線L₂の方程式
+            </div>
+            <p>直線L₁（傾き1）に平行で、点C(0, 2)を通る直線L₂の方程式を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>元の直線L₁の傾きを確認する → \(m = 1\)</li>
+                <li>平行なので同じ傾きを使う → L₂の傾きも \(m = 1\)</li>
+                <li>通る点からy切片を読み取る → C(0, 2)なので \(c = 2\)</li>
+                <li>\(y = mx + c\) の形で答える → \(y = 1 \cdot x + 2 = x + 2\)</li>
+            </ol>
+            <p><strong>答え：y = x + 2</strong></p>
+        </div>
+    </div>
+</section>
+
+<!-- 4. 簡単にするコツ -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：座標を(x, y)の順に書く</strong><br>
+            混乱しないように、必ず「横、縦」の順で書く習慣をつける。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：傾きは「分数のまま」で計算</strong><br>
+            \(\frac{3}{2}\) のような分数でも無理に小数にしない。計算が楽になる。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：平行なら傾きをコピー</strong><br>
+            「平行な直線を求めよ」と言われたら、元の直線の傾きをそのまま使う。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：y切片は問題文から読み取る</strong><br>
+            「y軸と(0, k)で交わる」と書いてあれば、それがy切片 \(c = k\) になる。
+        </div>
+    </div>
+</section>
+
+<!-- 5. よくあるつまづき -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：傾きの分子と分母を逆にする</div>
+            <p><strong>ダメな例：</strong> \(\frac{x_2 - x_1}{y_2 - y_1}\) と計算する</p>
+            <p><strong>対策：</strong> 「yの変化が上（分子）、xの変化が下（分母）」と覚える</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：中点で「足す」を「引く」にする</div>
+            <p><strong>ダメな例：</strong> \(\frac{x_2 - x_1}{2}\) と計算</p>
+            <p><strong>対策：</strong> 中点は「足して2で割る」。傾きと混同しない！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：負の数の引き算ミス</div>
+            <p><strong>ダメな例：</strong> A(2, −3), B(4, 1) で \(1 - 3 = -2\) とする</p>
+            <p><strong>対策：</strong> \(1 - (-3) = 1 + 3 = 4\)。マイナスの前はカッコで囲む！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：y切片の読み間違い</div>
+            <p><strong>ダメな例：</strong> (0, 5)を通ると書いてあるのにy切片を0にする</p>
+            <p><strong>対策：</strong> (0, c)のcがy切片。y軸との交点のy座標を使う。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき5：約分を忘れる</div>
+            <p><strong>ダメな例：</strong> 傾きを\(\frac{6}{4}\)のまま答える</p>
+            <p><strong>対策：</strong> 必ず約分して\(\frac{3}{2}\)にする。分数は最も簡単な形に！</p>
+        </div>
+    </div>
+</section>
+
+<!-- 6. 仕上げチェックリスト -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">中点は「足して2で割る」で計算したか</div>
+            <div class="checklist-item">傾きは「yの変化÷xの変化」で正しく計算したか</div>
+            <div class="checklist-item">負の数の計算で符号ミスをしていないか</div>
+            <div class="checklist-item">平行な直線は元の直線と同じ傾きを使ったか</div>
+            <div class="checklist-item">分数は約分して最も簡単な形にしたか</div>
+        </div>
+    </div>
+</section>
+
+<!-- 7. 練習問題 -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>点 A(1, 4) と B(7, 10) を結ぶ線分ABの中点Mの座標を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>x座標：\(\frac{1+7}{2} = \frac{8}{2} = 4\)</p>
+                    <p>y座標：\(\frac{4+10}{2} = \frac{14}{2} = 7\)</p>
+                    <p><strong>答え：M(4, 7)</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>点 P(2, 1) と Q(8, 7) を通る直線の傾きを求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(m = \frac{7-1}{8-2} = \frac{6}{6} = 1\)</p>
+                    <p><strong>答え：傾き m = 1</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- まとめ -->
+<div class="summary">
+    📌 まとめ：中点は「足して半分」、傾きは「yの変化÷xの変化」、平行は「傾き同じ」！
+</div>
+
+<!-- おまけ：歴史ストーリー -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「デカルトとハエの伝説」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 デカルトとハエの伝説（17世紀・フランス）</div>
+
+            <p>フランスの哲学者・数学者ルネ・デカルトは、子どもの頃から病弱だった。学校でも特別に「朝寝坊」を許されていたほど。大人になってもベッドで過ごす時間が長かったという。</p>
+            <p>ある日、デカルトはベッドに寝転がりながら、天井を見つめていた。すると1匹のハエが天井を歩いている。</p>
+
+            <p style="background: #fff9c4; padding: 10px; border-radius: 8px; margin: 15px 0;">
+                「あのハエの位置を、どうやって正確に伝えればいいだろう...？」
+            </p>
+
+            <p><strong>【ひらめき！】</strong></p>
+            <p>デカルトは天井の角を見た。縦と横の線が交わっている。<br>
+                「角からの距離で表せばいい！横に何マス、縦に何マス...」</p>
+
+            <p>こうして生まれたのが<strong>座標平面</strong>。2つの数の組 \((x, y)\) で平面上のどんな点も表せる。</p>
+
+            <p><strong>【ハエの位置を追跡】</strong></p>
+            <p>例えば、ハエが天井の角から右に3マス、上に2マスの位置にいたら：</p>
+            <div class="formula">
+                \[ \text{ハエの位置} = (3, 2) \]
+            </div>
+
+            <p>ハエが直線的に移動していたら？傾きと切片で表せる！</p>
+            <p>もしハエが点 \((0, 1)\) から点 \((3, 4)\) へ移動したなら：</p>
+            <div class="formula">
+                \[ \text{傾き} = \frac{4 - 1}{3 - 0} = \frac{3}{3} = 1 \]
+            </div>
+            <p>y切片は1だから、ハエの軌跡は \( y = x + 1 \)。</p>
+
+            <p><strong>【デカルト座標の誕生】</strong></p>
+            <p>この「縦と横の数で位置を表す」方法は「デカルト座標」と呼ばれるようになった。<br>
+                今では地図、ゲーム、グラフィックス、GPS...あらゆる場所で使われている。</p>
+
+            <p style="background: #e8f5e9; padding: 10px; border-radius: 8px; margin: 15px 0;">
+                ちなみに、このハエの話は伝説であり、本当かどうかは分からない。<br>
+                でも「朝寝坊の天才がベッドでゴロゴロしながら数学史を変えた」というのは、なんだか勇気をもらえる話ではないだろうか。
+            </p>
+            <p>教訓：<strong>ベッドでダラダラしていても、天井を見ていれば大発見があるかもしれない</strong>。...まあ、普通はただ寝落ちするだけだが。</p>
+
+            <p style="font-size: 14px; color: #666; margin-top: 20px;">
+                ※デカルトが座標系を発明したことは事実ですが、ハエのエピソードは後世に作られた伝説の可能性があります。デカルト自身の著作『方法序説』（1637年）で座標系の概念が示されています（<a
+                    href="https://ja.wikipedia.org/wiki/%E3%83%87%E3%82%AB%E3%83%AB%E3%83%88%E5%BA%A7%E6%A8%99%E7%B3%BB"
+                    target="_blank" style="color: #1976d2;">デカルト座標系</a>）。
+            </p>
+        </div>
+    </div>
+</section>
