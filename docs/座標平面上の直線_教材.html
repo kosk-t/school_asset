@@ -1,54 +1,54 @@
 ---
 layout: material-raw
-title: 座標平面上の直線
-icon: "📐"
-description: 座標平面上での直線の扱い方を学ぶ。2点から中点を求める公式、傾きの計算、平行な直線の方程式の作り方を習得する。一次関数と解析幾何の基礎となる重要単元。
-level: 標準
+title: 蠎ｧ讓吝ｹｳ髱｢荳翫・逶ｴ邱・
+icon: "盗"
+description: 蠎ｧ讓吝ｹｳ髱｢荳翫〒縺ｮ逶ｴ邱壹・謇ｱ縺・婿繧貞ｭｦ縺ｶ縲・轤ｹ縺九ｉ荳ｭ轤ｹ繧呈ｱゅａ繧句・蠑上∝だ縺阪・險育ｮ励∝ｹｳ陦後↑逶ｴ邱壹・譁ｹ遞句ｼ上・菴懊ｊ譁ｹ繧堤ｿ貞ｾ励☆繧九ゆｸ谺｡髢｢謨ｰ縺ｨ隗｣譫仙ｹｾ菴輔・蝓ｺ遉弱→縺ｪ繧矩㍾隕∝腰蜈・・
+level: 讓呎ｺ・
 level_num: 2
 category: functions
 order: 1
 keywords:
-- 中点
-- 傾き
-- 勾配
-- 平行
-- 直線の方程式
-- 一次関数
+- 荳ｭ轤ｹ
+- 蛯ｾ縺・
+- 蜍ｾ驟・
+- 蟷ｳ陦・
+- 逶ｴ邱壹・譁ｹ遞句ｼ・
+- 荳谺｡髢｢謨ｰ
 - y = mx + c
-- 座標平面
-cover_image: /images/noimage.jpg
-cover_description: 座標平面に引かれた2本の平行な直線、点A・B・中点Mの図、傾きを示す三角形（rise/run）
+- 蠎ｧ讓吝ｹｳ髱｢
+cover_image: "/images/蠎ｧ讓吝ｹｳ髱｢荳翫・逶ｴ邱喟謨呎攝.png"
+cover_description: 蠎ｧ讓吝ｹｳ髱｢縺ｫ蠑輔°繧後◆2譛ｬ縺ｮ蟷ｳ陦後↑逶ｴ邱壹∫せA繝ｻB繝ｻ荳ｭ轤ｹM縺ｮ蝗ｳ縲∝だ縺阪ｒ遉ｺ縺吩ｸ芽ｧ貞ｽ｢・・ise/run・・
 toc:
 - id: section1
-  title: "テーマの定義"
+title: "繝・・繝槭・螳夂ｾｩ"
 - id: section2
-  title: "覚えるルール"
+title: "隕壹∴繧九Ν繝ｼ繝ｫ"
 - id: section3
-  title: "例題と解き方"
+title: "萓矩｡後→隗｣縺肴婿"
 - id: section4
-  title: "簡単にするコツ"
+title: "邁｡蜊倥↓縺吶ｋ繧ｳ繝・
 - id: section5
-  title: "よくあるつまづき"
+title: "繧医￥縺ゅｋ縺､縺ｾ縺･縺・
 - id: section6
-  title: "仕上げチェックリスト"
+title: "莉穂ｸ翫￡繝√ぉ繝・け繝ｪ繧ｹ繝・
 - id: section7
-  title: "練習問題"
+title: "邱ｴ鄙貞撫鬘・
 - id: story
-  title: "おまけ：歴史ストーリー「デカルトとハエの伝説」"
+title: "縺翫∪縺托ｼ壽ｭｴ蜿ｲ繧ｹ繝医・繝ｪ繝ｼ縲後ョ繧ｫ繝ｫ繝医→繝上お縺ｮ莨晁ｪｬ縲・
 ---
-<!-- 1. テーマの定義 -->
+<!-- 1. 繝・・繝槭・螳夂ｾｩ -->
 <section id="section1">
-    <h2>1. テーマの定義</h2>
+    <h2>1. 繝・・繝槭・螳夂ｾｩ</h2>
     <div class="section">
-        <p>地図やゲーム画面では、位置を座標で表します。座標を使えば、2点の真ん中の位置や直線の傾きを計算で求めることができます。</p>
-        <p>このページでは、座標平面上の直線について以下を学びます：</p>
+        <p>蝨ｰ蝗ｳ繧・ご繝ｼ繝逕ｻ髱｢縺ｧ縺ｯ縲∽ｽ咲ｽｮ繧貞ｺｧ讓吶〒陦ｨ縺励∪縺吶ょｺｧ讓吶ｒ菴ｿ縺医・縲・轤ｹ縺ｮ逵溘ｓ荳ｭ縺ｮ菴咲ｽｮ繧・峩邱壹・蛯ｾ縺阪ｒ險育ｮ励〒豎ゅａ繧九％縺ｨ縺後〒縺阪∪縺吶・/p>
+        <p>縺薙・繝壹・繧ｸ縺ｧ縺ｯ縲∝ｺｧ讓吝ｹｳ髱｢荳翫・逶ｴ邱壹↓縺､縺・※莉･荳九ｒ蟄ｦ縺ｳ縺ｾ縺呻ｼ・/p>
         <ul>
-            <li><strong>中点</strong>：2点の真ん中の座標を求める</li>
-            <li><strong>傾き</strong>：直線の「右に1進むと、どれだけ上がるか」を計算する</li>
-            <li><strong>平行な直線</strong>：傾きが同じ直線の方程式を作る</li>
+            <li><strong>荳ｭ轤ｹ</strong>・・轤ｹ縺ｮ逵溘ｓ荳ｭ縺ｮ蠎ｧ讓吶ｒ豎ゅａ繧・/li>
+            <li><strong>蛯ｾ縺・/strong>・夂峩邱壹・縲悟承縺ｫ1騾ｲ繧縺ｨ縲√←繧後□縺台ｸ翫′繧九°縲阪ｒ險育ｮ励☆繧・/li>
+            <li><strong>蟷ｳ陦後↑逶ｴ邱・/strong>・壼だ縺阪′蜷後§逶ｴ邱壹・譁ｹ遞句ｼ上ｒ菴懊ｋ</li>
         </ul>
 
-        <!-- 総合イメージ図 -->
+        <!-- 邱丞粋繧､繝｡繝ｼ繧ｸ蝗ｳ -->
         <div class="svg-container">
             <svg width="650" height="280" viewBox="0 0 650 280">
                 <defs>
@@ -57,11 +57,11 @@ toc:
                     </marker>
                 </defs>
 
-                <!-- タイトル -->
+                <!-- 繧ｿ繧､繝医Ν -->
                 <text x="325" y="20" font-size="14" font-weight="bold" fill="#1976d2"
-                    text-anchor="middle">座標平面上の直線の3つのポイント</text>
+                    text-anchor="middle">蠎ｧ讓吝ｹｳ髱｢荳翫・逶ｴ邱壹・3縺､縺ｮ繝昴う繝ｳ繝・/text>
 
-                <!-- 座標軸 -->
+                <!-- 蠎ｧ讓呵ｻｸ -->
                 <line x1="80" y1="240" x2="550" y2="240" stroke="#333" stroke-width="2"
                     marker-end="url(#arrow-section1)" />
                 <line x1="100" y1="260" x2="100" y2="40" stroke="#333" stroke-width="2"
@@ -70,95 +70,95 @@ toc:
                 <text x="90" y="35" font-size="14" fill="#333">y</text>
                 <text x="90" y="255" font-size="14" fill="#333">O</text>
 
-                <!-- 直線L1 (通過点 A, B) -->
+                <!-- 逶ｴ邱哭1 (騾夐℃轤ｹ A, B) -->
                 <line x1="130" y1="200" x2="400" y2="80" stroke="#e53935" stroke-width="3" />
-                <text x="410" y="75" font-size="14" font-weight="bold" fill="#e53935">L₁</text>
+                <text x="410" y="75" font-size="14" font-weight="bold" fill="#e53935">L竄・/text>
 
-                <!-- 点A -->
+                <!-- 轤ｹA -->
                 <circle cx="180" cy="178" r="6" fill="#e53935" />
                 <text x="165" y="200" font-size="14" font-weight="bold" fill="#e53935">A(2, 3)</text>
 
-                <!-- 点B -->
+                <!-- 轤ｹB -->
                 <circle cx="360" cy="98" r="6" fill="#e53935" />
                 <text x="365" y="90" font-size="14" font-weight="bold" fill="#e53935">B(6, 7)</text>
 
-                <!-- 中点M -->
+                <!-- 荳ｭ轤ｹM -->
                 <circle cx="270" cy="138" r="6" fill="#ff9800" />
                 <text x="275" y="130" font-size="14" font-weight="bold" fill="#ff9800">M(4, 5)</text>
-                <text x="275" y="148" font-size="14" fill="#ff9800">← 中点</text>
+                <text x="275" y="148" font-size="14" fill="#ff9800">竊・荳ｭ轤ｹ</text>
 
-                <!-- 直線L2 (L1に平行) -->
+                <!-- 逶ｴ邱哭2 (L1縺ｫ蟷ｳ陦・ -->
                 <line x1="130" y1="250" x2="400" y2="130" stroke="#1976d2" stroke-width="3" stroke-dasharray="8,4" />
-                <text x="410" y="125" font-size="14" font-weight="bold" fill="#1976d2">L₂ (L₁に平行)</text>
+                <text x="410" y="125" font-size="14" font-weight="bold" fill="#1976d2">L竄・(L竄√↓蟷ｳ陦・</text>
 
-                <!-- 傾きの説明（三角形） -->
+                <!-- 蛯ｾ縺阪・隱ｬ譏趣ｼ井ｸ芽ｧ貞ｽ｢・・-->
                 <line x1="180" y1="178" x2="360" y2="178" stroke="#4caf50" stroke-width="2" stroke-dasharray="4,2" />
                 <line x1="360" y1="178" x2="360" y2="98" stroke="#4caf50" stroke-width="2" stroke-dasharray="4,2" />
-                <text x="260" y="195" font-size="14" fill="#4caf50">横に4</text>
-                <text x="370" y="145" font-size="14" fill="#4caf50">縦に4</text>
-                <text x="470" y="180" font-size="14" fill="#4caf50">傾き = 4÷4 = 1</text>
+                <text x="260" y="195" font-size="14" fill="#4caf50">讓ｪ縺ｫ4</text>
+                <text x="370" y="145" font-size="14" fill="#4caf50">邵ｦ縺ｫ4</text>
+                <text x="470" y="180" font-size="14" fill="#4caf50">蛯ｾ縺・= 4ﾃｷ4 = 1</text>
             </svg>
-            <div class="svg-caption">中点・傾き・平行の関係を視覚化</div>
+            <div class="svg-caption">荳ｭ轤ｹ繝ｻ蛯ｾ縺阪・蟷ｳ陦後・髢｢菫ゅｒ隕冶ｦ壼喧</div>
         </div>
     </div>
 </section>
 
-<!-- 2. 覚えるルール -->
+<!-- 2. 隕壹∴繧九Ν繝ｼ繝ｫ -->
 <section id="section2">
-    <h2>2. 覚えるルール</h2>
+    <h2>2. 隕壹∴繧九Ν繝ｼ繝ｫ</h2>
     <div class="section">
         <div class="important-rule">
-            【最重要】傾き ＝ yの変化 ÷ xの変化 <a href="#ex-slope" class="example-link">→ 例2</a>
+            縲先怙驥崎ｦ√大だ縺・・・y縺ｮ螟牙喧 ﾃｷ x縺ｮ螟牙喧 <a href="#ex-slope" class="example-link">竊・萓・</a>
         </div>
 
-        <!-- 傾きの図解 -->
+        <!-- 蛯ｾ縺阪・蝗ｳ隗｣ -->
         <div class="svg-container">
             <svg width="500" height="200" viewBox="0 0 500 200">
-                <text x="250" y="25" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">傾き = 縦の変化 ÷
-                    横の変化</text>
+                <text x="250" y="25" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">蛯ｾ縺・= 邵ｦ縺ｮ螟牙喧 ﾃｷ
+                    讓ｪ縺ｮ螟牙喧</text>
 
-                <!-- 座標軸 -->
+                <!-- 蠎ｧ讓呵ｻｸ -->
                 <line x1="60" y1="160" x2="440" y2="160" stroke="#ccc" stroke-width="1" />
                 <line x1="80" y1="180" x2="80" y2="30" stroke="#ccc" stroke-width="1" />
 
-                <!-- 直線 -->
+                <!-- 逶ｴ邱・-->
                 <line x1="100" y1="140" x2="380" y2="50" stroke="#e53935" stroke-width="3" />
 
-                <!-- 点A -->
+                <!-- 轤ｹA -->
                 <circle cx="150" cy="124" r="6" fill="#e53935" />
                 <text x="115" y="140" font-size="14" font-weight="bold" fill="#e53935">A(1, 2)</text>
 
-                <!-- 点B -->
+                <!-- 轤ｹB -->
                 <circle cx="330" cy="66" r="6" fill="#e53935" />
                 <text x="340" y="60" font-size="14" font-weight="bold" fill="#e53935">B(5, 6)</text>
 
-                <!-- 横の変化 -->
+                <!-- 讓ｪ縺ｮ螟牙喧 -->
                 <line x1="150" y1="124" x2="330" y2="124" stroke="#4caf50" stroke-width="2" />
-                <text x="240" y="145" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">横に
-                    5−1=4</text>
+                <text x="240" y="145" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">讓ｪ縺ｫ
+                    5竏・=4</text>
 
-                <!-- 縦の変化 -->
+                <!-- 邵ｦ縺ｮ螟牙喧 -->
                 <line x1="330" y1="124" x2="330" y2="66" stroke="#2196f3" stroke-width="2" />
-                <text x="365" y="100" font-size="14" font-weight="bold" fill="#2196f3">縦に 6−2=4</text>
+                <text x="365" y="100" font-size="14" font-weight="bold" fill="#2196f3">邵ｦ縺ｫ 6竏・=4</text>
 
-                <!-- 結果 -->
-                <text x="250" y="185" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">傾き m = 4 ÷ 4 =
+                <!-- 邨先棡 -->
+                <text x="250" y="185" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">蛯ｾ縺・m = 4 ﾃｷ 4 =
                     1</text>
             </svg>
-            <div class="svg-caption">傾きは「yの変化量÷xの変化量」で求める</div>
+            <div class="svg-caption">蛯ｾ縺阪・縲軽縺ｮ螟牙喧驥湘ｷx縺ｮ螟牙喧驥上阪〒豎ゅａ繧・/div>
         </div>
 
         <div class="rule-box">
-            <strong>📌 中点の公式</strong> <a href="#ex-midpoint" class="example-link">→ 例1</a>
-            <p>点 \(A(x_1, y_1)\) と点 \(B(x_2, y_2)\) の中点 \(M\) は：</p>
+            <strong>東 荳ｭ轤ｹ縺ｮ蜈ｬ蠑・/strong> <a href="#ex-midpoint" class="example-link">竊・萓・</a>
+            <p>轤ｹ \(A(x_1, y_1)\) 縺ｨ轤ｹ \(B(x_2, y_2)\) 縺ｮ荳ｭ轤ｹ \(M\) 縺ｯ・・/p>
             <div class="formula">
                 \[ M\left(\frac{x_1 + x_2}{2},\ \frac{y_1 + y_2}{2}\right) \]
             </div>
-            <p style="color: #666; font-size: 0.9em;">→ x座標どうし、y座標どうしを足して2で割る！</p>
-            <p><strong>💡 なぜそうなる？</strong> 中点は「2点のちょうど真ん中」なので、各座標の<strong>平均</strong>になる。平均は「足して個数で割る」から、2点なら足して2で割る。
+            <p style="color: #666; font-size: 0.9em;">竊・x蠎ｧ讓吶←縺・＠縲【蠎ｧ讓吶←縺・＠繧定ｶｳ縺励※2縺ｧ蜑ｲ繧具ｼ・/p>
+            <p><strong>庁 縺ｪ縺懊◎縺・↑繧具ｼ・/strong> 荳ｭ轤ｹ縺ｯ縲・轤ｹ縺ｮ縺｡繧・≧縺ｩ逵溘ｓ荳ｭ縲阪↑縺ｮ縺ｧ縲∝推蠎ｧ讓吶・<strong>蟷ｳ蝮・/strong>縺ｫ縺ｪ繧九ょｹｳ蝮・・縲瑚ｶｳ縺励※蛟区焚縺ｧ蜑ｲ繧九阪°繧峨・轤ｹ縺ｪ繧芽ｶｳ縺励※2縺ｧ蜑ｲ繧九・
             </p>
 
-            <!-- 中点の図解 -->
+            <!-- 荳ｭ轤ｹ縺ｮ蝗ｳ隗｣ -->
             <div class="svg-container">
                 <svg width="500" height="250" viewBox="0 0 500 250">
                     <defs>
@@ -167,10 +167,10 @@ toc:
                         </marker>
                     </defs>
 
-                    <text x="250" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">中点 =
-                        両端の座標を足して2で割る</text>
+                    <text x="250" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">荳ｭ轤ｹ =
+                        荳｡遶ｯ縺ｮ蠎ｧ讓吶ｒ雜ｳ縺励※2縺ｧ蜑ｲ繧・/text>
 
-                    <!-- 座標軸 -->
+                    <!-- 蠎ｧ讓呵ｻｸ -->
                     <line x1="60" y1="200" x2="420" y2="200" stroke="#666" stroke-width="1"
                         marker-end="url(#axisArrow)" />
                     <line x1="80" y1="220" x2="80" y2="40" stroke="#666" stroke-width="1"
@@ -179,7 +179,7 @@ toc:
                     <text x="70" y="35" font-size="14" fill="#666">y</text>
                     <text x="65" y="215" font-size="14" fill="#666">O</text>
 
-                    <!-- 目盛り -->
+                    <!-- 逶ｮ逶帙ｊ -->
                     <text x="120" y="215" font-size="14" fill="#999" text-anchor="middle">2</text>
                     <text x="200" y="215" font-size="14" fill="#999" text-anchor="middle">5</text>
                     <text x="280" y="215" font-size="14" fill="#999" text-anchor="middle">8</text>
@@ -187,375 +187,375 @@ toc:
                     <text x="65" y="120" font-size="14" fill="#999">5</text>
                     <text x="65" y="80" font-size="14" fill="#999">6</text>
 
-                    <!-- 線分AB -->
+                    <!-- 邱壼・AB -->
                     <line x1="120" y1="155" x2="280" y2="75" stroke="#666" stroke-width="3" />
 
-                    <!-- 点A (2, 4) -->
+                    <!-- 轤ｹA (2, 4) -->
                     <circle cx="120" cy="155" r="7" fill="#e53935" />
                     <text x="90" y="175" font-size="14" font-weight="bold" fill="#e53935">A(2, 4)</text>
 
-                    <!-- 点B (8, 6) -->
+                    <!-- 轤ｹB (8, 6) -->
                     <circle cx="280" cy="75" r="7" fill="#e53935" />
                     <text x="290" y="70" font-size="14" font-weight="bold" fill="#e53935">B(8, 6)</text>
 
-                    <!-- 中点M (5, 5) -->
+                    <!-- 荳ｭ轤ｹM (5, 5) -->
                     <circle cx="200" cy="115" r="7" fill="#ff9800" />
                     <text x="210" y="105" font-size="14" font-weight="bold" fill="#ff9800">M(5, 5)</text>
 
-                    <!-- 計算式 -->
-                    <text x="350" y="150" font-size="14" fill="#333" text-anchor="middle">x: (2+8)÷2 = 5</text>
-                    <text x="350" y="170" font-size="14" fill="#333" text-anchor="middle">y: (4+6)÷2 = 5</text>
+                    <!-- 險育ｮ怜ｼ・-->
+                    <text x="350" y="150" font-size="14" fill="#333" text-anchor="middle">x: (2+8)ﾃｷ2 = 5</text>
+                    <text x="350" y="170" font-size="14" fill="#333" text-anchor="middle">y: (4+6)ﾃｷ2 = 5</text>
                 </svg>
-                <div class="svg-caption">2点の座標から中点を求める</div>
+                <div class="svg-caption">2轤ｹ縺ｮ蠎ｧ讓吶°繧我ｸｭ轤ｹ繧呈ｱゅａ繧・/div>
             </div>
         </div>
 
         <div class="rule-box">
-            <strong>📌 傾きの公式</strong> <a href="#ex-slope" class="example-link">→ 例2</a>
-            <p>2点 \(A(x_1, y_1)\), \(B(x_2, y_2)\) を通る直線の傾き \(m\) は：</p>
+            <strong>東 蛯ｾ縺阪・蜈ｬ蠑・/strong> <a href="#ex-slope" class="example-link">竊・萓・</a>
+            <p>2轤ｹ \(A(x_1, y_1)\), \(B(x_2, y_2)\) 繧帝壹ｋ逶ｴ邱壹・蛯ｾ縺・\(m\) 縺ｯ・・/p>
             <div class="formula">
-                \[ m = \frac{y_2 - y_1}{x_2 - x_1} = \frac{\text{yの増加量}}{\text{xの増加量}} \]
+                \[ m = \frac{y_2 - y_1}{x_2 - x_1} = \frac{\text{y縺ｮ蠅怜刈驥殉}{\text{x縺ｮ蠅怜刈驥殉} \]
             </div>
-            <p style="color: #666; font-size: 0.9em;">→ 「yの変化」÷「xの変化」で傾きが出る！</p>
-            <p><strong>💡 なぜそうなる？</strong>
-                傾きとは「xが1増えるとyがいくつ増えるか」を表す数。AからBに移動するとき、xが\((x_2-x_1)\)増えてyが\((y_2-y_1)\)増えるから、1あたりに直すと\(\frac{y_2-y_1}{x_2-x_1}\)になる。
+            <p style="color: #666; font-size: 0.9em;">竊・縲軽縺ｮ螟牙喧縲催ｷ縲警縺ｮ螟牙喧縲阪〒蛯ｾ縺阪′蜃ｺ繧具ｼ・/p>
+            <p><strong>庁 縺ｪ縺懊◎縺・↑繧具ｼ・/strong>
+                蛯ｾ縺阪→縺ｯ縲警縺・蠅励∴繧九→y縺後＞縺上▽蠅励∴繧九°縲阪ｒ陦ｨ縺呎焚縲・縺九ｉB縺ｫ遘ｻ蜍輔☆繧九→縺阪』縺圭((x_2-x_1)\)蠅励∴縺ｦy縺圭((y_2-y_1)\)蠅励∴繧九°繧峨・縺ゅ◆繧翫↓逶ｴ縺吶→\(\frac{y_2-y_1}{x_2-x_1}\)縺ｫ縺ｪ繧九・
             </p>
 
             <div class="tip-box" style="margin-top: 15px;">
-                <strong>💡 どちらの点を先にしてもOK！</strong><br>
-                \(\frac{y_2 - y_1}{x_2 - x_1}\) でも \(\frac{y_1 - y_2}{x_1 - x_2}\) でも同じ結果になる。<br>
-                <span style="color: #e53935; font-weight: bold;">ただし、分子と分母で引く順番を揃えること！</span><br>
-                <span style="font-size: 0.9em;">例：\(\frac{6-2}{5-1}\) と \(\frac{2-6}{1-5}\) は両方とも答えは1。</span>
+                <strong>庁 縺ｩ縺｡繧峨・轤ｹ繧貞・縺ｫ縺励※繧０K・・/strong><br>
+                \(\frac{y_2 - y_1}{x_2 - x_1}\) 縺ｧ繧・\(\frac{y_1 - y_2}{x_1 - x_2}\) 縺ｧ繧ょ酔縺倡ｵ先棡縺ｫ縺ｪ繧九・br>
+                <span style="color: #e53935; font-weight: bold;">縺溘□縺励∝・蟄舌→蛻・ｯ阪〒蠑輔￥鬆・分繧呈純縺医ｋ縺薙→・・/span><br>
+                <span style="font-size: 0.9em;">萓具ｼ喀(\frac{6-2}{5-1}\) 縺ｨ \(\frac{2-6}{1-5}\) 縺ｯ荳｡譁ｹ縺ｨ繧らｭ斐∴縺ｯ1縲・/span>
             </div>
         </div>
 
         <div class="rule-box">
-            <strong>📌 直線の方程式</strong> <a href="#ex-parallel" class="example-link">→ 例5</a>
-            <p>傾き \(m\)、y切片 \(c\) の直線は：</p>
+            <strong>東 逶ｴ邱壹・譁ｹ遞句ｼ・/strong> <a href="#ex-parallel" class="example-link">竊・萓・</a>
+            <p>蛯ｾ縺・\(m\)縲【蛻・援 \(c\) 縺ｮ逶ｴ邱壹・・・/p>
             <div class="formula">
                 \[ y = mx + c \]
             </div>
             <ul>
-                <li>\(m\)：傾き（直線の急さ）</li>
-                <li>\(c\)：y切片（y軸との交点のy座標）</li>
+                <li>\(m\)・壼だ縺搾ｼ育峩邱壹・諤･縺包ｼ・/li>
+                <li>\(c\)・噐蛻・援・・霆ｸ縺ｨ縺ｮ莠､轤ｹ縺ｮy蠎ｧ讓呻ｼ・/li>
             </ul>
         </div>
 
         <div class="rule-box">
-            <strong>📌 平行な直線の条件</strong> <a href="#ex-parallel" class="example-link">→ 例5</a>
+            <strong>東 蟷ｳ陦後↑逶ｴ邱壹・譚｡莉ｶ</strong> <a href="#ex-parallel" class="example-link">竊・萓・</a>
             <div class="formula">
-                2直線が平行 ⇔ 傾きが等しい
+                2逶ｴ邱壹′蟷ｳ陦・竍・蛯ｾ縺阪′遲峨＠縺・
             </div>
-            <p>直線 \(L_1\) の傾きが \(m\) のとき、\(L_1\) に平行な直線の傾きも \(m\)</p>
-            <p><strong>💡 なぜそうなる？</strong> 傾きは直線の「角度（傾き具合）」を表す。平行な2直線は同じ角度で進むから、傾きも同じになる。逆に傾きが違えば、いつか交わってしまうので平行ではない。
+            <p>逶ｴ邱・\(L_1\) 縺ｮ蛯ｾ縺阪′ \(m\) 縺ｮ縺ｨ縺阪―(L_1\) 縺ｫ蟷ｳ陦後↑逶ｴ邱壹・蛯ｾ縺阪ｂ \(m\)</p>
+            <p><strong>庁 縺ｪ縺懊◎縺・↑繧具ｼ・/strong> 蛯ｾ縺阪・逶ｴ邱壹・縲瑚ｧ貞ｺｦ・亥だ縺榊・蜷茨ｼ峨阪ｒ陦ｨ縺吶ょｹｳ陦後↑2逶ｴ邱壹・蜷後§隗貞ｺｦ縺ｧ騾ｲ繧縺九ｉ縲∝だ縺阪ｂ蜷後§縺ｫ縺ｪ繧九る・↓蛯ｾ縺阪′驕輔∴縺ｰ縲√＞縺､縺倶ｺ､繧上▲縺ｦ縺励∪縺・・縺ｧ蟷ｳ陦後〒縺ｯ縺ｪ縺・・
             </p>
 
-            <!-- 平行の図解 -->
+            <!-- 蟷ｳ陦後・蝗ｳ隗｣ -->
             <div class="svg-container">
                 <svg width="500" height="180" viewBox="0 0 500 180">
                     <text x="250" y="20" font-size="14" font-weight="bold" fill="#1976d2"
-                        text-anchor="middle">平行な直線は傾きが同じ</text>
+                        text-anchor="middle">蟷ｳ陦後↑逶ｴ邱壹・蛯ｾ縺阪′蜷後§</text>
 
-                    <!-- 直線1 -->
+                    <!-- 逶ｴ邱・ -->
                     <line x1="60" y1="120" x2="300" y2="50" stroke="#e53935" stroke-width="3" />
-                    <text x="310" y="45" font-size="14" font-weight="bold" fill="#e53935">L₁: y = 2x + 3</text>
+                    <text x="310" y="45" font-size="14" font-weight="bold" fill="#e53935">L竄・ y = 2x + 3</text>
 
-                    <!-- 直線2 -->
+                    <!-- 逶ｴ邱・ -->
                     <line x1="60" y1="155" x2="300" y2="85" stroke="#1976d2" stroke-width="3" />
-                    <text x="310" y="80" font-size="14" font-weight="bold" fill="#1976d2">L₂: y = 2x − 1</text>
+                    <text x="310" y="80" font-size="14" font-weight="bold" fill="#1976d2">L竄・ y = 2x 竏・1</text>
 
-                    <!-- 傾きの注釈 -->
+                    <!-- 蛯ｾ縺阪・豕ｨ驥・-->
                     <rect x="130" y="120" width="160" height="40" fill="#fff9c4" stroke="#ff9800" stroke-width="2"
                         rx="8" />
-                    <text x="210" y="142" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">両方とも傾き =
+                    <text x="210" y="142" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">荳｡譁ｹ縺ｨ繧ょだ縺・=
                         2</text>
-                    <text x="210" y="157" font-size="14" fill="#666" text-anchor="middle">→ 平行！</text>
+                    <text x="210" y="157" font-size="14" fill="#666" text-anchor="middle">竊・蟷ｳ陦鯉ｼ・/text>
                 </svg>
-                <div class="svg-caption">平行な2直線は傾きが等しい</div>
+                <div class="svg-caption">蟷ｳ陦後↑2逶ｴ邱壹・蛯ｾ縺阪′遲峨＠縺・/div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 3. 例題と解き方 -->
+<!-- 3. 萓矩｡後→隗｣縺肴婿 -->
 <section id="section3">
-    <h2>3. 例題と解き方</h2>
+    <h2>3. 萓矩｡後→隗｣縺肴婿</h2>
     <div class="section">
-        <p>ルールを使って実際に解いてみましょう。</p>
+        <p>繝ｫ繝ｼ繝ｫ繧剃ｽｿ縺｣縺ｦ螳滄圀縺ｫ隗｣縺・※縺ｿ縺ｾ縺励ｇ縺・・/p>
 
         <div class="data-example">
-            問題設定：直線 L₁ は点 A(2, 3) と B(6, 7) を通る
+            蝠城｡瑚ｨｭ螳夲ｼ夂峩邱・L竄・縺ｯ轤ｹ A(2, 3) 縺ｨ B(6, 7) 繧帝壹ｋ
         </div>
 
-        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 中点を求める</h3>
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">笆ｶ 荳ｭ轤ｹ繧呈ｱゅａ繧・/h3>
 
         <div class="example-box" id="ex-midpoint">
             <div class="example-title">
-                <span class="number-badge">例1</span>線分ABの中点Mを求める
+                <span class="number-badge">萓・</span>邱壼・AB縺ｮ荳ｭ轤ｹM繧呈ｱゅａ繧・
             </div>
-            <p>点 A(2, 3) と B(6, 7) を結ぶ線分ABの中点Mの座標を求めよ。</p>
-            <p><strong>解き方：</strong></p>
+            <p>轤ｹ A(2, 3) 縺ｨ B(6, 7) 繧堤ｵ舌・邱壼・AB縺ｮ荳ｭ轤ｹM縺ｮ蠎ｧ讓吶ｒ豎ゅａ繧医・/p>
+            <p><strong>隗｣縺肴婿・・/strong></p>
             <ol>
-                <li>2点の座標を確認する → A(2, 3)、B(6, 7)</li>
-                <li>x座標を足して2で割る → \(\frac{2+6}{2} = \frac{8}{2} = 4\)</li>
-                <li>y座標を足して2で割る → \(\frac{3+7}{2} = \frac{10}{2} = 5\)</li>
-                <li>中点の座標として答える → <strong>M(4, 5)</strong></li>
+                <li>2轤ｹ縺ｮ蠎ｧ讓吶ｒ遒ｺ隱阪☆繧・竊・A(2, 3)縲。(6, 7)</li>
+                <li>x蠎ｧ讓吶ｒ雜ｳ縺励※2縺ｧ蜑ｲ繧・竊・\(\frac{2+6}{2} = \frac{8}{2} = 4\)</li>
+                <li>y蠎ｧ讓吶ｒ雜ｳ縺励※2縺ｧ蜑ｲ繧・竊・\(\frac{3+7}{2} = \frac{10}{2} = 5\)</li>
+                <li>荳ｭ轤ｹ縺ｮ蠎ｧ讓吶→縺励※遲斐∴繧・竊・<strong>M(4, 5)</strong></li>
             </ol>
         </div>
 
-        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 傾きを求める</h3>
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">笆ｶ 蛯ｾ縺阪ｒ豎ゅａ繧・/h3>
 
         <div class="example-box" id="ex-slope">
             <div class="example-title">
-                <span class="number-badge">例2</span>直線L₁の傾きを求める
+                <span class="number-badge">萓・</span>逶ｴ邱哭竄√・蛯ｾ縺阪ｒ豎ゅａ繧・
             </div>
-            <p>点 A(2, 3) と B(6, 7) を通る直線L₁の傾きを求めよ。</p>
-            <p><strong>解き方：</strong></p>
+            <p>轤ｹ A(2, 3) 縺ｨ B(6, 7) 繧帝壹ｋ逶ｴ邱哭竄√・蛯ｾ縺阪ｒ豎ゅａ繧医・/p>
+            <p><strong>隗｣縺肴婿・・/strong></p>
             <ol>
-                <li>2点の座標を確認する → A(2, 3)、B(6, 7)</li>
-                <li>yの変化を計算する → \(7 - 3 = 4\)</li>
-                <li>xの変化を計算する → \(6 - 2 = 4\)</li>
-                <li>割り算して約分する → \(m = \frac{4}{4} = 1\)</li>
+                <li>2轤ｹ縺ｮ蠎ｧ讓吶ｒ遒ｺ隱阪☆繧・竊・A(2, 3)縲。(6, 7)</li>
+                <li>y縺ｮ螟牙喧繧定ｨ育ｮ励☆繧・竊・\(7 - 3 = 4\)</li>
+                <li>x縺ｮ螟牙喧繧定ｨ育ｮ励☆繧・竊・\(6 - 2 = 4\)</li>
+                <li>蜑ｲ繧顔ｮ励＠縺ｦ邏・・縺吶ｋ 竊・\(m = \frac{4}{4} = 1\)</li>
             </ol>
-            <p><strong>答え：傾き m = 1</strong></p>
+            <p><strong>遲斐∴・壼だ縺・m = 1</strong></p>
         </div>
 
         <div class="example-box" id="ex-slope-negative">
             <div class="example-title">
-                <span class="number-badge">例3</span>傾きが負の場合
+                <span class="number-badge">萓・</span>蛯ｾ縺阪′雋縺ｮ蝣ｴ蜷・
             </div>
-            <p>点 P(1, 5) と Q(4, 2) を通る直線の傾きを求めよ。</p>
-            <p><strong>解き方：</strong></p>
+            <p>轤ｹ P(1, 5) 縺ｨ Q(4, 2) 繧帝壹ｋ逶ｴ邱壹・蛯ｾ縺阪ｒ豎ゅａ繧医・/p>
+            <p><strong>隗｣縺肴婿・・/strong></p>
             <ol>
-                <li>2点の座標を確認する → P(1, 5)、Q(4, 2)</li>
-                <li>yの変化を計算する → \(2 - 5 = -3\)</li>
-                <li>xの変化を計算する → \(4 - 1 = 3\)</li>
-                <li>割り算する → \(m = \frac{-3}{3} = -1\)</li>
+                <li>2轤ｹ縺ｮ蠎ｧ讓吶ｒ遒ｺ隱阪☆繧・竊・P(1, 5)縲＿(4, 2)</li>
+                <li>y縺ｮ螟牙喧繧定ｨ育ｮ励☆繧・竊・\(2 - 5 = -3\)</li>
+                <li>x縺ｮ螟牙喧繧定ｨ育ｮ励☆繧・竊・\(4 - 1 = 3\)</li>
+                <li>蜑ｲ繧顔ｮ励☆繧・竊・\(m = \frac{-3}{3} = -1\)</li>
             </ol>
-            <p><strong>答え：傾き m = −1</strong>（右下がりの直線）</p>
+            <p><strong>遲斐∴・壼だ縺・m = 竏・</strong>・亥承荳九′繧翫・逶ｴ邱夲ｼ・/p>
 
-            <!-- 負の傾きの図 -->
+            <!-- 雋縺ｮ蛯ｾ縺阪・蝗ｳ -->
             <div class="svg-container">
                 <svg width="400" height="180" viewBox="0 0 400 180">
-                    <text x="200" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">傾きが負 →
-                        右下がり</text>
+                    <text x="200" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">蛯ｾ縺阪′雋 竊・
+                        蜿ｳ荳九′繧・/text>
 
-                    <!-- 座標軸 -->
+                    <!-- 蠎ｧ讓呵ｻｸ -->
                     <line x1="50" y1="150" x2="350" y2="150" stroke="#ccc" stroke-width="1" />
                     <line x1="70" y1="170" x2="70" y2="30" stroke="#ccc" stroke-width="1" />
 
-                    <!-- 直線（右下がり） -->
+                    <!-- 逶ｴ邱夲ｼ亥承荳九′繧奇ｼ・-->
                     <line x1="90" y1="50" x2="320" y2="130" stroke="#9c27b0" stroke-width="3" />
 
-                    <!-- 点P -->
+                    <!-- 轤ｹP -->
                     <circle cx="120" cy="65" r="5" fill="#9c27b0" />
                     <text x="95" y="55" font-size="14" font-weight="bold" fill="#9c27b0">P(1,5)</text>
 
-                    <!-- 点Q -->
+                    <!-- 轤ｹQ -->
                     <circle cx="280" cy="115" r="5" fill="#9c27b0" />
                     <text x="285" y="110" font-size="14" font-weight="bold" fill="#9c27b0">Q(4,2)</text>
 
-                    <text x="200" y="165" font-size="14" fill="#666" text-anchor="middle">m = −1 なので右に行くと下がる</text>
+                    <text x="200" y="165" font-size="14" fill="#666" text-anchor="middle">m = 竏・ 縺ｪ縺ｮ縺ｧ蜿ｳ縺ｫ陦後￥縺ｨ荳九′繧・/text>
                 </svg>
-                <div class="svg-caption">傾きが負の直線は右下がり</div>
+                <div class="svg-caption">蛯ｾ縺阪′雋縺ｮ逶ｴ邱壹・蜿ｳ荳九′繧・/div>
             </div>
         </div>
 
         <div class="example-box" id="ex-slope-fraction">
             <div class="example-title">
-                <span class="number-badge">例4</span>分数の傾きになる場合
+                <span class="number-badge">萓・</span>蛻・焚縺ｮ蛯ｾ縺阪↓縺ｪ繧句ｴ蜷・
             </div>
-            <p>点 A(1, 2) と B(5, 8) を通る直線の傾きを求めよ。</p>
-            <p><strong>解き方：</strong></p>
+            <p>轤ｹ A(1, 2) 縺ｨ B(5, 8) 繧帝壹ｋ逶ｴ邱壹・蛯ｾ縺阪ｒ豎ゅａ繧医・/p>
+            <p><strong>隗｣縺肴婿・・/strong></p>
             <ol>
-                <li>2点の座標を確認する → A(1, 2)、B(5, 8)</li>
-                <li>yの変化を計算する → \(8 - 2 = 6\)</li>
-                <li>xの変化を計算する → \(5 - 1 = 4\)</li>
-                <li>割り算して<strong>約分する</strong> → \(m = \frac{6}{4} = \frac{3}{2}\)</li>
+                <li>2轤ｹ縺ｮ蠎ｧ讓吶ｒ遒ｺ隱阪☆繧・竊・A(1, 2)縲。(5, 8)</li>
+                <li>y縺ｮ螟牙喧繧定ｨ育ｮ励☆繧・竊・\(8 - 2 = 6\)</li>
+                <li>x縺ｮ螟牙喧繧定ｨ育ｮ励☆繧・竊・\(5 - 1 = 4\)</li>
+                <li>蜑ｲ繧顔ｮ励＠縺ｦ<strong>邏・・縺吶ｋ</strong> 竊・\(m = \frac{6}{4} = \frac{3}{2}\)</li>
             </ol>
-            <p><strong>答え：傾き m = \(\frac{3}{2}\)</strong></p>
+            <p><strong>遲斐∴・壼だ縺・m = \(\frac{3}{2}\)</strong></p>
         </div>
 
-        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 平行な直線の方程式を求める</h3>
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">笆ｶ 蟷ｳ陦後↑逶ｴ邱壹・譁ｹ遞句ｼ上ｒ豎ゅａ繧・/h3>
 
         <div class="example-box" id="ex-parallel">
             <div class="example-title">
-                <span class="number-badge">例5</span>L₁に平行で点C(0, 2)を通る直線L₂の方程式
+                <span class="number-badge">萓・</span>L竄√↓蟷ｳ陦後〒轤ｹC(0, 2)繧帝壹ｋ逶ｴ邱哭竄ゅ・譁ｹ遞句ｼ・
             </div>
-            <p>直線L₁（傾き1）に平行で、点C(0, 2)を通る直線L₂の方程式を求めよ。</p>
-            <p><strong>解き方：</strong></p>
+            <p>逶ｴ邱哭竄・ｼ亥だ縺・・峨↓蟷ｳ陦後〒縲∫せC(0, 2)繧帝壹ｋ逶ｴ邱哭竄ゅ・譁ｹ遞句ｼ上ｒ豎ゅａ繧医・/p>
+            <p><strong>隗｣縺肴婿・・/strong></p>
             <ol>
-                <li>元の直線L₁の傾きを確認する → \(m = 1\)</li>
-                <li>平行なので同じ傾きを使う → L₂の傾きも \(m = 1\)</li>
-                <li>通る点からy切片を読み取る → C(0, 2)なので \(c = 2\)</li>
-                <li>\(y = mx + c\) の形で答える → \(y = 1 \cdot x + 2 = x + 2\)</li>
+                <li>蜈・・逶ｴ邱哭竄√・蛯ｾ縺阪ｒ遒ｺ隱阪☆繧・竊・\(m = 1\)</li>
+                <li>蟷ｳ陦後↑縺ｮ縺ｧ蜷後§蛯ｾ縺阪ｒ菴ｿ縺・竊・L竄ゅ・蛯ｾ縺阪ｂ \(m = 1\)</li>
+                <li>騾壹ｋ轤ｹ縺九ｉy蛻・援繧定ｪｭ縺ｿ蜿悶ｋ 竊・C(0, 2)縺ｪ縺ｮ縺ｧ \(c = 2\)</li>
+                <li>\(y = mx + c\) 縺ｮ蠖｢縺ｧ遲斐∴繧・竊・\(y = 1 \cdot x + 2 = x + 2\)</li>
             </ol>
-            <p><strong>答え：y = x + 2</strong></p>
+            <p><strong>遲斐∴・噐 = x + 2</strong></p>
         </div>
     </div>
 </section>
 
-<!-- 4. 簡単にするコツ -->
+<!-- 4. 邁｡蜊倥↓縺吶ｋ繧ｳ繝・-->
 <section id="section4">
-    <h2>4. 簡単にするコツ</h2>
+    <h2>4. 邁｡蜊倥↓縺吶ｋ繧ｳ繝・/h2>
     <div class="section">
         <div class="tip-box">
-            <strong>✏️ コツ1：座標を(x, y)の順に書く</strong><br>
-            混乱しないように、必ず「横、縦」の順で書く習慣をつける。
+            <strong>笨擾ｸ・繧ｳ繝・・壼ｺｧ讓吶ｒ(x, y)縺ｮ鬆・↓譖ｸ縺・/strong><br>
+            豺ｷ荵ｱ縺励↑縺・ｈ縺・↓縲∝ｿ・★縲梧ｨｪ縲∫ｸｦ縲阪・鬆・〒譖ｸ縺冗ｿ呈・繧偵▽縺代ｋ縲・
         </div>
 
         <div class="tip-box">
-            <strong>✏️ コツ2：傾きは「分数のまま」で計算</strong><br>
-            \(\frac{3}{2}\) のような分数でも無理に小数にしない。計算が楽になる。
+            <strong>笨擾ｸ・繧ｳ繝・・壼だ縺阪・縲悟・謨ｰ縺ｮ縺ｾ縺ｾ縲阪〒險育ｮ・/strong><br>
+            \(\frac{3}{2}\) 縺ｮ繧医≧縺ｪ蛻・焚縺ｧ繧ら┌逅・↓蟆乗焚縺ｫ縺励↑縺・りｨ育ｮ励′讌ｽ縺ｫ縺ｪ繧九・
         </div>
 
         <div class="tip-box">
-            <strong>✏️ コツ3：平行なら傾きをコピー</strong><br>
-            「平行な直線を求めよ」と言われたら、元の直線の傾きをそのまま使う。
+            <strong>笨擾ｸ・繧ｳ繝・・壼ｹｳ陦後↑繧牙だ縺阪ｒ繧ｳ繝斐・</strong><br>
+            縲悟ｹｳ陦後↑逶ｴ邱壹ｒ豎ゅａ繧医阪→險繧上ｌ縺溘ｉ縲∝・縺ｮ逶ｴ邱壹・蛯ｾ縺阪ｒ縺昴・縺ｾ縺ｾ菴ｿ縺・・
         </div>
 
         <div class="tip-box">
-            <strong>✏️ コツ4：y切片は問題文から読み取る</strong><br>
-            「y軸と(0, k)で交わる」と書いてあれば、それがy切片 \(c = k\) になる。
+            <strong>笨擾ｸ・繧ｳ繝・・噐蛻・援縺ｯ蝠城｡梧枚縺九ｉ隱ｭ縺ｿ蜿悶ｋ</strong><br>
+            縲軽霆ｸ縺ｨ(0, k)縺ｧ莠､繧上ｋ縲阪→譖ｸ縺・※縺ゅｌ縺ｰ縲√◎繧後′y蛻・援 \(c = k\) 縺ｫ縺ｪ繧九・
         </div>
     </div>
 </section>
 
-<!-- 5. よくあるつまづき -->
+<!-- 5. 繧医￥縺ゅｋ縺､縺ｾ縺･縺・-->
 <section id="section5">
-    <h2>5. よくあるつまづき</h2>
+    <h2>5. 繧医￥縺ゅｋ縺､縺ｾ縺･縺・/h2>
     <div class="section">
         <div class="caution-box">
-            <div class="caution-title">⚠️ つまづき1：傾きの分子と分母を逆にする</div>
-            <p><strong>ダメな例：</strong> \(\frac{x_2 - x_1}{y_2 - y_1}\) と計算する</p>
-            <p><strong>対策：</strong> 「yの変化が上（分子）、xの変化が下（分母）」と覚える</p>
+            <div class="caution-title">笞・・縺､縺ｾ縺･縺・・壼だ縺阪・蛻・ｭ舌→蛻・ｯ阪ｒ騾・↓縺吶ｋ</div>
+            <p><strong>繝繝｡縺ｪ萓具ｼ・/strong> \(\frac{x_2 - x_1}{y_2 - y_1}\) 縺ｨ險育ｮ励☆繧・/p>
+            <p><strong>蟇ｾ遲厄ｼ・/strong> 縲軽縺ｮ螟牙喧縺御ｸ奇ｼ亥・蟄撰ｼ峨』縺ｮ螟牙喧縺御ｸ具ｼ亥・豈搾ｼ峨阪→隕壹∴繧・/p>
         </div>
 
         <div class="caution-box">
-            <div class="caution-title">⚠️ つまづき2：中点で「足す」を「引く」にする</div>
-            <p><strong>ダメな例：</strong> \(\frac{x_2 - x_1}{2}\) と計算</p>
-            <p><strong>対策：</strong> 中点は「足して2で割る」。傾きと混同しない！</p>
+            <div class="caution-title">笞・・縺､縺ｾ縺･縺・・壻ｸｭ轤ｹ縺ｧ縲瑚ｶｳ縺吶阪ｒ縲悟ｼ輔￥縲阪↓縺吶ｋ</div>
+            <p><strong>繝繝｡縺ｪ萓具ｼ・/strong> \(\frac{x_2 - x_1}{2}\) 縺ｨ險育ｮ・/p>
+            <p><strong>蟇ｾ遲厄ｼ・/strong> 荳ｭ轤ｹ縺ｯ縲瑚ｶｳ縺励※2縺ｧ蜑ｲ繧九阪ょだ縺阪→豺ｷ蜷後＠縺ｪ縺・ｼ・/p>
         </div>
 
         <div class="caution-box">
-            <div class="caution-title">⚠️ つまづき3：負の数の引き算ミス</div>
-            <p><strong>ダメな例：</strong> A(2, −3), B(4, 1) で \(1 - 3 = -2\) とする</p>
-            <p><strong>対策：</strong> \(1 - (-3) = 1 + 3 = 4\)。マイナスの前はカッコで囲む！</p>
+            <div class="caution-title">笞・・縺､縺ｾ縺･縺・・夊ｲ縺ｮ謨ｰ縺ｮ蠑輔″邂励Α繧ｹ</div>
+            <p><strong>繝繝｡縺ｪ萓具ｼ・/strong> A(2, 竏・), B(4, 1) 縺ｧ \(1 - 3 = -2\) 縺ｨ縺吶ｋ</p>
+            <p><strong>蟇ｾ遲厄ｼ・/strong> \(1 - (-3) = 1 + 3 = 4\)縲ゅ・繧､繝翫せ縺ｮ蜑阪・繧ｫ繝・さ縺ｧ蝗ｲ繧・・/p>
         </div>
 
         <div class="caution-box">
-            <div class="caution-title">⚠️ つまづき4：y切片の読み間違い</div>
-            <p><strong>ダメな例：</strong> (0, 5)を通ると書いてあるのにy切片を0にする</p>
-            <p><strong>対策：</strong> (0, c)のcがy切片。y軸との交点のy座標を使う。</p>
+            <div class="caution-title">笞・・縺､縺ｾ縺･縺・・噐蛻・援縺ｮ隱ｭ縺ｿ髢馴＆縺・/div>
+            <p><strong>繝繝｡縺ｪ萓具ｼ・/strong> (0, 5)繧帝壹ｋ縺ｨ譖ｸ縺・※縺ゅｋ縺ｮ縺ｫy蛻・援繧・縺ｫ縺吶ｋ</p>
+            <p><strong>蟇ｾ遲厄ｼ・/strong> (0, c)縺ｮc縺軽蛻・援縲Ｚ霆ｸ縺ｨ縺ｮ莠､轤ｹ縺ｮy蠎ｧ讓吶ｒ菴ｿ縺・・/p>
         </div>
 
         <div class="caution-box">
-            <div class="caution-title">⚠️ つまづき5：約分を忘れる</div>
-            <p><strong>ダメな例：</strong> 傾きを\(\frac{6}{4}\)のまま答える</p>
-            <p><strong>対策：</strong> 必ず約分して\(\frac{3}{2}\)にする。分数は最も簡単な形に！</p>
+            <div class="caution-title">笞・・縺､縺ｾ縺･縺・・夂ｴ・・繧貞ｿ倥ｌ繧・/div>
+            <p><strong>繝繝｡縺ｪ萓具ｼ・/strong> 蛯ｾ縺阪ｒ\(\frac{6}{4}\)縺ｮ縺ｾ縺ｾ遲斐∴繧・/p>
+            <p><strong>蟇ｾ遲厄ｼ・/strong> 蠢・★邏・・縺励※\(\frac{3}{2}\)縺ｫ縺吶ｋ縲ょ・謨ｰ縺ｯ譛繧らｰ｡蜊倥↑蠖｢縺ｫ・・/p>
         </div>
     </div>
 </section>
 
-<!-- 6. 仕上げチェックリスト -->
+<!-- 6. 莉穂ｸ翫￡繝√ぉ繝・け繝ｪ繧ｹ繝・-->
 <section id="section6">
-    <h2>6. 仕上げチェックリスト</h2>
+    <h2>6. 莉穂ｸ翫￡繝√ぉ繝・け繝ｪ繧ｹ繝・/h2>
     <div class="section">
         <div class="checklist">
-            <div class="checklist-item">中点は「足して2で割る」で計算したか</div>
-            <div class="checklist-item">傾きは「yの変化÷xの変化」で正しく計算したか</div>
-            <div class="checklist-item">負の数の計算で符号ミスをしていないか</div>
-            <div class="checklist-item">平行な直線は元の直線と同じ傾きを使ったか</div>
-            <div class="checklist-item">分数は約分して最も簡単な形にしたか</div>
+            <div class="checklist-item">荳ｭ轤ｹ縺ｯ縲瑚ｶｳ縺励※2縺ｧ蜑ｲ繧九阪〒險育ｮ励＠縺溘°</div>
+            <div class="checklist-item">蛯ｾ縺阪・縲軽縺ｮ螟牙喧ﾃｷx縺ｮ螟牙喧縲阪〒豁｣縺励￥險育ｮ励＠縺溘°</div>
+            <div class="checklist-item">雋縺ｮ謨ｰ縺ｮ險育ｮ励〒隨ｦ蜿ｷ繝溘せ繧偵＠縺ｦ縺・↑縺・°</div>
+            <div class="checklist-item">蟷ｳ陦後↑逶ｴ邱壹・蜈・・逶ｴ邱壹→蜷後§蛯ｾ縺阪ｒ菴ｿ縺｣縺溘°</div>
+            <div class="checklist-item">蛻・焚縺ｯ邏・・縺励※譛繧らｰ｡蜊倥↑蠖｢縺ｫ縺励◆縺・/div>
         </div>
     </div>
 </section>
 
-<!-- 7. 練習問題 -->
+<!-- 7. 邱ｴ鄙貞撫鬘・-->
 <section id="section7">
-    <h2>7. 練習問題</h2>
+    <h2>7. 邱ｴ鄙貞撫鬘・/h2>
     <div class="section">
-        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+        <p>蟄ｦ繧薙□縺薙→繧剃ｽｿ縺｣縺ｦ縲∽ｻ･荳九・蝠城｡後ｒ隗｣縺・※縺ｿ繧医≧縲・/p>
 
         <div class="rule-box" style="background: #f5f5f5;">
-            <strong>練習1</strong>
-            <p>点 A(1, 4) と B(7, 10) を結ぶ線分ABの中点Mの座標を求めよ。</p>
+            <strong>邱ｴ鄙・</strong>
+            <p>轤ｹ A(1, 4) 縺ｨ B(7, 10) 繧堤ｵ舌・邱壼・AB縺ｮ荳ｭ轤ｹM縺ｮ蠎ｧ讓吶ｒ豎ゅａ繧医・/p>
             <details style="margin-top: 15px;">
-                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">遲斐∴繧定ｦ九ｋ</summary>
                 <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
-                    <p>x座標：\(\frac{1+7}{2} = \frac{8}{2} = 4\)</p>
-                    <p>y座標：\(\frac{4+10}{2} = \frac{14}{2} = 7\)</p>
-                    <p><strong>答え：M(4, 7)</strong></p>
+                    <p>x蠎ｧ讓呻ｼ喀(\frac{1+7}{2} = \frac{8}{2} = 4\)</p>
+                    <p>y蠎ｧ讓呻ｼ喀(\frac{4+10}{2} = \frac{14}{2} = 7\)</p>
+                    <p><strong>遲斐∴・哺(4, 7)</strong></p>
                 </div>
             </details>
         </div>
 
         <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
-            <strong>練習2</strong>
-            <p>点 P(2, 1) と Q(8, 7) を通る直線の傾きを求めよ。</p>
+            <strong>邱ｴ鄙・</strong>
+            <p>轤ｹ P(2, 1) 縺ｨ Q(8, 7) 繧帝壹ｋ逶ｴ邱壹・蛯ｾ縺阪ｒ豎ゅａ繧医・/p>
             <details style="margin-top: 15px;">
-                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">遲斐∴繧定ｦ九ｋ</summary>
                 <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
                     <p>\(m = \frac{7-1}{8-2} = \frac{6}{6} = 1\)</p>
-                    <p><strong>答え：傾き m = 1</strong></p>
+                    <p><strong>遲斐∴・壼だ縺・m = 1</strong></p>
                 </div>
             </details>
         </div>
     </div>
 </section>
 
-<!-- まとめ -->
+<!-- 縺ｾ縺ｨ繧・-->
 <div class="summary">
-    📌 まとめ：中点は「足して半分」、傾きは「yの変化÷xの変化」、平行は「傾き同じ」！
+    東 縺ｾ縺ｨ繧・ｼ壻ｸｭ轤ｹ縺ｯ縲瑚ｶｳ縺励※蜊雁・縲阪∝だ縺阪・縲軽縺ｮ螟牙喧ﾃｷx縺ｮ螟牙喧縲阪∝ｹｳ陦後・縲悟だ縺榊酔縺倥搾ｼ・
 </div>
 
-<!-- おまけ：歴史ストーリー -->
+<!-- 縺翫∪縺托ｼ壽ｭｴ蜿ｲ繧ｹ繝医・繝ｪ繝ｼ -->
 <section id="story">
-    <h2>おまけ：歴史ストーリー「デカルトとハエの伝説」</h2>
+    <h2>縺翫∪縺托ｼ壽ｭｴ蜿ｲ繧ｹ繝医・繝ｪ繝ｼ縲後ョ繧ｫ繝ｫ繝医→繝上お縺ｮ莨晁ｪｬ縲・/h2>
     <div class="section">
         <div class="story-box">
-            <div class="story-title">📖 デカルトとハエの伝説（17世紀・フランス）</div>
+            <div class="story-title">当 繝・き繝ｫ繝医→繝上お縺ｮ莨晁ｪｬ・・7荳也ｴ繝ｻ繝輔Λ繝ｳ繧ｹ・・/div>
 
-            <p>フランスの哲学者・数学者ルネ・デカルトは、子どもの頃から病弱だった。学校でも特別に「朝寝坊」を許されていたほど。大人になってもベッドで過ごす時間が長かったという。</p>
-            <p>ある日、デカルトはベッドに寝転がりながら、天井を見つめていた。すると1匹のハエが天井を歩いている。</p>
+            <p>繝輔Λ繝ｳ繧ｹ縺ｮ蜩ｲ蟄ｦ閠・・謨ｰ蟄ｦ閠・Ν繝阪・繝・き繝ｫ繝医・縲∝ｭ舌←繧ゅ・鬆・°繧臥羅蠑ｱ縺縺｣縺溘ょｭｦ譬｡縺ｧ繧ら音蛻･縺ｫ縲梧悃蟇晏搖縲阪ｒ險ｱ縺輔ｌ縺ｦ縺・◆縺ｻ縺ｩ縲ょ､ｧ莠ｺ縺ｫ縺ｪ縺｣縺ｦ繧ゅ・繝・ラ縺ｧ驕弱＃縺呎凾髢薙′髟ｷ縺九▲縺溘→縺・≧縲・/p>
+            <p>縺ゅｋ譌･縲√ョ繧ｫ繝ｫ繝医・繝吶ャ繝峨↓蟇晁ｻ｢縺後ｊ縺ｪ縺後ｉ縲∝､ｩ莠輔ｒ隕九▽繧√※縺・◆縲ゅ☆繧九→1蛹ｹ縺ｮ繝上お縺悟､ｩ莠輔ｒ豁ｩ縺・※縺・ｋ縲・/p>
 
             <p style="background: #fff9c4; padding: 10px; border-radius: 8px; margin: 15px 0;">
-                「あのハエの位置を、どうやって正確に伝えればいいだろう...？」
+                縲後≠縺ｮ繝上お縺ｮ菴咲ｽｮ繧偵√←縺・ｄ縺｣縺ｦ豁｣遒ｺ縺ｫ莨昴∴繧後・縺・＞縺繧阪≧...・溘・
             </p>
 
-            <p><strong>【ひらめき！】</strong></p>
-            <p>デカルトは天井の角を見た。縦と横の線が交わっている。<br>
-                「角からの距離で表せばいい！横に何マス、縦に何マス...」</p>
+            <p><strong>縲舌・繧峨ａ縺搾ｼ√・/strong></p>
+            <p>繝・き繝ｫ繝医・螟ｩ莠輔・隗偵ｒ隕九◆縲らｸｦ縺ｨ讓ｪ縺ｮ邱壹′莠､繧上▲縺ｦ縺・ｋ縲・br>
+                縲瑚ｧ偵°繧峨・霍晞屬縺ｧ陦ｨ縺帙・縺・＞・∵ｨｪ縺ｫ菴輔・繧ｹ縲∫ｸｦ縺ｫ菴輔・繧ｹ...縲・/p>
 
-            <p>こうして生まれたのが<strong>座標平面</strong>。2つの数の組 \((x, y)\) で平面上のどんな点も表せる。</p>
+            <p>縺薙≧縺励※逕溘∪繧後◆縺ｮ縺・strong>蠎ｧ讓吝ｹｳ髱｢</strong>縲・縺､縺ｮ謨ｰ縺ｮ邨・\((x, y)\) 縺ｧ蟷ｳ髱｢荳翫・縺ｩ繧薙↑轤ｹ繧り｡ｨ縺帙ｋ縲・/p>
 
-            <p><strong>【ハエの位置を追跡】</strong></p>
-            <p>例えば、ハエが天井の角から右に3マス、上に2マスの位置にいたら：</p>
+            <p><strong>縲舌ワ繧ｨ縺ｮ菴咲ｽｮ繧定ｿｽ霍｡縲・/strong></p>
+            <p>萓九∴縺ｰ縲√ワ繧ｨ縺悟､ｩ莠輔・隗偵°繧牙承縺ｫ3繝槭せ縲∽ｸ翫↓2繝槭せ縺ｮ菴咲ｽｮ縺ｫ縺・◆繧会ｼ・/p>
             <div class="formula">
-                \[ \text{ハエの位置} = (3, 2) \]
+                \[ \text{繝上お縺ｮ菴咲ｽｮ} = (3, 2) \]
             </div>
 
-            <p>ハエが直線的に移動していたら？傾きと切片で表せる！</p>
-            <p>もしハエが点 \((0, 1)\) から点 \((3, 4)\) へ移動したなら：</p>
+            <p>繝上お縺檎峩邱夂噪縺ｫ遘ｻ蜍輔＠縺ｦ縺・◆繧会ｼ溷だ縺阪→蛻・援縺ｧ陦ｨ縺帙ｋ・・/p>
+            <p>繧ゅ＠繝上お縺檎せ \((0, 1)\) 縺九ｉ轤ｹ \((3, 4)\) 縺ｸ遘ｻ蜍輔＠縺溘↑繧会ｼ・/p>
             <div class="formula">
-                \[ \text{傾き} = \frac{4 - 1}{3 - 0} = \frac{3}{3} = 1 \]
+                \[ \text{蛯ｾ縺閤 = \frac{4 - 1}{3 - 0} = \frac{3}{3} = 1 \]
             </div>
-            <p>y切片は1だから、ハエの軌跡は \( y = x + 1 \)。</p>
+            <p>y蛻・援縺ｯ1縺縺九ｉ縲√ワ繧ｨ縺ｮ霆瑚ｷ｡縺ｯ \( y = x + 1 \)縲・/p>
 
-            <p><strong>【デカルト座標の誕生】</strong></p>
-            <p>この「縦と横の数で位置を表す」方法は「デカルト座標」と呼ばれるようになった。<br>
-                今では地図、ゲーム、グラフィックス、GPS...あらゆる場所で使われている。</p>
+            <p><strong>縲舌ョ繧ｫ繝ｫ繝亥ｺｧ讓吶・隱慕函縲・/strong></p>
+            <p>縺薙・縲檎ｸｦ縺ｨ讓ｪ縺ｮ謨ｰ縺ｧ菴咲ｽｮ繧定｡ｨ縺吶肴婿豕輔・縲後ョ繧ｫ繝ｫ繝亥ｺｧ讓吶阪→蜻ｼ縺ｰ繧後ｋ繧医≧縺ｫ縺ｪ縺｣縺溘・br>
+                莉翫〒縺ｯ蝨ｰ蝗ｳ縲√ご繝ｼ繝縲√げ繝ｩ繝輔ぅ繝・け繧ｹ縲；PS...縺ゅｉ繧・ｋ蝣ｴ謇縺ｧ菴ｿ繧上ｌ縺ｦ縺・ｋ縲・/p>
 
             <p style="background: #e8f5e9; padding: 10px; border-radius: 8px; margin: 15px 0;">
-                ちなみに、このハエの話は伝説であり、本当かどうかは分からない。<br>
-                でも「朝寝坊の天才がベッドでゴロゴロしながら数学史を変えた」というのは、なんだか勇気をもらえる話ではないだろうか。
+                縺｡縺ｪ縺ｿ縺ｫ縲√％縺ｮ繝上お縺ｮ隧ｱ縺ｯ莨晁ｪｬ縺ｧ縺ゅｊ縲∵悽蠖薙°縺ｩ縺・°縺ｯ蛻・°繧峨↑縺・・br>
+                縺ｧ繧ゅ梧悃蟇晏搖縺ｮ螟ｩ謇阪′繝吶ャ繝峨〒繧ｴ繝ｭ繧ｴ繝ｭ縺励↑縺後ｉ謨ｰ蟄ｦ蜿ｲ繧貞､峨∴縺溘阪→縺・≧縺ｮ縺ｯ縲√↑繧薙□縺句窮豌励ｒ繧ゅｉ縺医ｋ隧ｱ縺ｧ縺ｯ縺ｪ縺・□繧阪≧縺九・
             </p>
-            <p>教訓：<strong>ベッドでダラダラしていても、天井を見ていれば大発見があるかもしれない</strong>。...まあ、普通はただ寝落ちするだけだが。</p>
+            <p>謨呵ｨ難ｼ・strong>繝吶ャ繝峨〒繝繝ｩ繝繝ｩ縺励※縺・※繧ゅ∝､ｩ莠輔ｒ隕九※縺・ｌ縺ｰ螟ｧ逋ｺ隕九′縺ゅｋ縺九ｂ縺励ｌ縺ｪ縺・/strong>縲・..縺ｾ縺ゅ∵勸騾壹・縺溘□蟇晁誠縺｡縺吶ｋ縺縺代□縺後・/p>
 
             <p style="font-size: 14px; color: #666; margin-top: 20px;">
-                ※デカルトが座標系を発明したことは事実ですが、ハエのエピソードは後世に作られた伝説の可能性があります。デカルト自身の著作『方法序説』（1637年）で座標系の概念が示されています（<a
+                窶ｻ繝・き繝ｫ繝医′蠎ｧ讓咏ｳｻ繧堤匱譏弱＠縺溘％縺ｨ縺ｯ莠句ｮ溘〒縺吶′縲√ワ繧ｨ縺ｮ繧ｨ繝斐た繝ｼ繝峨・蠕御ｸ悶↓菴懊ｉ繧後◆莨晁ｪｬ縺ｮ蜿ｯ閭ｽ諤ｧ縺後≠繧翫∪縺吶ゅョ繧ｫ繝ｫ繝郁・霄ｫ縺ｮ闡嶺ｽ懊取婿豕募ｺ剰ｪｬ縲擾ｼ・637蟷ｴ・峨〒蠎ｧ讓咏ｳｻ縺ｮ讎ょｿｵ縺檎､ｺ縺輔ｌ縺ｦ縺・∪縺呻ｼ・a
                     href="https://ja.wikipedia.org/wiki/%E3%83%87%E3%82%AB%E3%83%AB%E3%83%88%E5%BA%A7%E6%A8%99%E7%B3%BB"
-                    target="_blank" style="color: #1976d2;">デカルト座標系</a>）。
+                    target="_blank" style="color: #1976d2;">繝・き繝ｫ繝亥ｺｧ讓咏ｳｻ</a>・峨・
             </p>
         </div>
     </div>
