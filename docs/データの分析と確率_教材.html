@@ -14,6 +14,8 @@ keywords:
   - Q1
   - Q2
   - Q3
+  - 箱ひげ図
+  - 四分位範囲
   - 経験的確率
   - 代表値
   - 並べ替え
@@ -46,6 +48,7 @@ toc:
                 <ul>
                     <li><strong>代表値</strong>：データを1つの数値で特徴づける（中央値・最頻値）</li>
                     <li><strong>四分位数</strong>：データを4等分する区切りの値</li>
+                    <li><strong>箱ひげ図</strong>：四分位数を使ってデータの散らばりを図で表す</li>
                     <li><strong>経験的確率</strong>：実際のデータから確率を求める</li>
                 </ul>
             </div>
@@ -362,9 +365,91 @@ toc:
                         <div class="svg-caption">奇数個の場合、中央値を除外して前半・後半に分ける</div>
                     </div>
                 </div>
-                
+
                 <div class="rule-box">
-                    <strong>📌 経験的確率</strong> <a href="#ex-probability" class="example-link">→ 例4</a>
+                    <strong>📌 箱ひげ図の描き方</strong> <a href="#ex-boxplot" class="example-link">→ 例4</a>
+                    <p>箱ひげ図は、データの散らばりを視覚的に表すグラフ。四分位数を使って描く。</p>
+                    <ul>
+                        <li><strong>最小値</strong>：データの中で最も小さい値</li>
+                        <li><strong>Q₁（第1四分位数）</strong>：箱の左端</li>
+                        <li><strong>Q₂（中央値）</strong>：箱の中の線</li>
+                        <li><strong>Q₃（第3四分位数）</strong>：箱の右端</li>
+                        <li><strong>最大値</strong>：データの中で最も大きい値</li>
+                        <li><strong>四分位範囲（IQR）</strong>：Q₃ − Q₁（箱の幅）</li>
+                    </ul>
+
+                    <!-- 箱ひげ図の構成要素の図 -->
+                    <div class="svg-container">
+                        <svg width="700" height="220" viewBox="0 0 700 220">
+                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">箱ひげ図の構成要素</text>
+
+                            <!-- 数直線 -->
+                            <line x1="50" y1="100" x2="650" y2="100" stroke="#999" stroke-width="2"/>
+
+                            <!-- 目盛り -->
+                            <line x1="80" y1="95" x2="80" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="80" y="120" font-size="14" fill="#666" text-anchor="middle">2</text>
+
+                            <line x1="170" y1="95" x2="170" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="170" y="120" font-size="14" fill="#666" text-anchor="middle">3.5</text>
+
+                            <line x1="290" y1="95" x2="290" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="290" y="120" font-size="14" fill="#666" text-anchor="middle">4.5</text>
+
+                            <line x1="440" y1="95" x2="440" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="440" y="120" font-size="14" fill="#666" text-anchor="middle">6.5</text>
+
+                            <line x1="620" y1="95" x2="620" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="620" y="120" font-size="14" fill="#666" text-anchor="middle">9</text>
+
+                            <!-- 左のひげ -->
+                            <line x1="80" y1="70" x2="170" y2="70" stroke="#4caf50" stroke-width="3"/>
+                            <line x1="80" y1="60" x2="80" y2="80" stroke="#4caf50" stroke-width="3"/>
+                            <text x="80" y="50" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">最小値</text>
+
+                            <!-- 箱 -->
+                            <rect x="170" y="55" width="270" height="30" fill="#e3f2fd" stroke="#1976d2" stroke-width="3"/>
+
+                            <!-- 中央値の線 -->
+                            <line x1="290" y1="55" x2="290" y2="85" stroke="#ff9800" stroke-width="4"/>
+                            <text x="290" y="45" font-size="14" font-weight="bold" fill="#ff9800" text-anchor="middle">中央値(Q₂)</text>
+
+                            <!-- Q1のラベル -->
+                            <path d="M 170 90 L 170 140" stroke="#4caf50" stroke-width="2" stroke-dasharray="4,2"/>
+                            <text x="170" y="155" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">Q₁</text>
+
+                            <!-- Q3のラベル -->
+                            <path d="M 440 90 L 440 140" stroke="#2196f3" stroke-width="2" stroke-dasharray="4,2"/>
+                            <text x="440" y="155" font-size="14" font-weight="bold" fill="#2196f3" text-anchor="middle">Q₃</text>
+
+                            <!-- 右のひげ -->
+                            <line x1="440" y1="70" x2="620" y2="70" stroke="#2196f3" stroke-width="3"/>
+                            <line x1="620" y1="60" x2="620" y2="80" stroke="#2196f3" stroke-width="3"/>
+                            <text x="620" y="50" font-size="14" font-weight="bold" fill="#2196f3" text-anchor="middle">最大値</text>
+
+                            <!-- 四分位範囲の説明 -->
+                            <line x1="170" y1="175" x2="440" y2="175" stroke="#9c27b0" stroke-width="2"/>
+                            <line x1="170" y1="170" x2="170" y2="180" stroke="#9c27b0" stroke-width="2"/>
+                            <line x1="440" y1="170" x2="440" y2="180" stroke="#9c27b0" stroke-width="2"/>
+                            <text x="305" y="195" font-size="14" font-weight="bold" fill="#9c27b0" text-anchor="middle">四分位範囲（IQR）= Q₃ − Q₁ = 6.5 − 3.5 = 3</text>
+                        </svg>
+                        <div class="svg-caption">箱ひげ図は「最小値・Q₁・中央値・Q₃・最大値」の5つの値で描く</div>
+                    </div>
+
+                    <div class="formula">
+                        \[ \text{四分位範囲（IQR）} = Q_3 - Q_1 \]
+                    </div>
+
+                    <p style="margin-top: 15px;"><strong>【箱ひげ図から分かること】</strong></p>
+                    <ul>
+                        <li>箱の幅（四分位範囲）が広い → データの散らばりが大きい</li>
+                        <li>中央値の線が箱の中央にない → データが左右非対称</li>
+                        <li>ひげの長さが違う → データの端の方に偏りがある</li>
+                    </ul>
+                </div>
+
+                <div class="rule-box">
+                    <strong>📌 経験的確率</strong> <a href="#ex-probability" class="example-link">→ 例5</a>
                     <div class="formula">
                         \[ P = \frac{a}{n} \]
                         \( a \)：条件を満たすデータの個数、\( n \)：全データの個数
@@ -477,12 +562,111 @@ toc:
                         \[ Q_3 = \frac{6 + 7}{2} = 6.5 \]
                     </div>
                 </div>
-                
+
+                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 箱ひげ図を描く</h3>
+
+                <div class="example-box" id="ex-boxplot">
+                    <div class="example-title">
+                        <span class="number-badge">例4</span>箱ひげ図を描く
+                    </div>
+                    <p>同じデータ 2, 3, 4, 4, 5, 6, 7, 9 の箱ひげ図を描く</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>5つの値を求める：
+                            <ul>
+                                <li>最小値 = <strong>2</strong></li>
+                                <li>Q₁ = <strong>3.5</strong>（前半 2,3,4,4 の中央値）</li>
+                                <li>中央値 = <strong>4.5</strong></li>
+                                <li>Q₃ = <strong>6.5</strong>（後半 5,6,7,9 の中央値）</li>
+                                <li>最大値 = <strong>9</strong></li>
+                            </ul>
+                        </li>
+                        <li>数直線上に箱ひげ図を描く</li>
+                    </ol>
+
+                    <!-- 箱ひげ図の描き方 -->
+                    <div class="svg-container">
+                        <svg width="650" height="200" viewBox="0 0 650 200">
+                            <text x="325" y="25" font-size="15" font-weight="bold" fill="#1976d2" text-anchor="middle">データ 2, 3, 4, 4, 5, 6, 7, 9 の箱ひげ図</text>
+
+                            <!-- 数直線 -->
+                            <line x1="50" y1="100" x2="600" y2="100" stroke="#999" stroke-width="2"/>
+
+                            <!-- 目盛り（0から10まで） -->
+                            <line x1="50" y1="95" x2="50" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="50" y="120" font-size="14" fill="#666" text-anchor="middle">0</text>
+
+                            <line x1="105" y1="95" x2="105" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="105" y="120" font-size="14" fill="#666" text-anchor="middle">1</text>
+
+                            <line x1="160" y1="95" x2="160" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="160" y="120" font-size="14" fill="#666" text-anchor="middle">2</text>
+
+                            <line x1="215" y1="95" x2="215" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="215" y="120" font-size="14" fill="#666" text-anchor="middle">3</text>
+
+                            <line x1="270" y1="95" x2="270" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="270" y="120" font-size="14" fill="#666" text-anchor="middle">4</text>
+
+                            <line x1="325" y1="95" x2="325" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="325" y="120" font-size="14" fill="#666" text-anchor="middle">5</text>
+
+                            <line x1="380" y1="95" x2="380" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="380" y="120" font-size="14" fill="#666" text-anchor="middle">6</text>
+
+                            <line x1="435" y1="95" x2="435" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="435" y="120" font-size="14" fill="#666" text-anchor="middle">7</text>
+
+                            <line x1="490" y1="95" x2="490" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="490" y="120" font-size="14" fill="#666" text-anchor="middle">8</text>
+
+                            <line x1="545" y1="95" x2="545" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="545" y="120" font-size="14" fill="#666" text-anchor="middle">9</text>
+
+                            <line x1="600" y1="95" x2="600" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="600" y="120" font-size="14" fill="#666" text-anchor="middle">10</text>
+
+                            <!-- 最小値 = 2 (x = 160) -->
+                            <!-- Q₁ = 3.5 (x = 242.5) -->
+                            <!-- 中央値 = 4.5 (x = 297.5) -->
+                            <!-- Q₃ = 6.5 (x = 407.5) -->
+                            <!-- 最大値 = 9 (x = 545) -->
+
+                            <!-- 左のひげ（最小値からQ₁まで） -->
+                            <line x1="160" y1="60" x2="242" y2="60" stroke="#4caf50" stroke-width="3"/>
+                            <line x1="160" y1="50" x2="160" y2="70" stroke="#4caf50" stroke-width="3"/>
+                            <text x="160" y="45" font-size="14" fill="#4caf50" text-anchor="middle">2</text>
+
+                            <!-- 箱（Q₁からQ₃まで） -->
+                            <rect x="242" y="45" width="166" height="30" fill="#e3f2fd" stroke="#1976d2" stroke-width="3"/>
+
+                            <!-- 中央値の線 -->
+                            <line x1="297" y1="45" x2="297" y2="75" stroke="#ff9800" stroke-width="4"/>
+                            <text x="297" y="170" font-size="14" font-weight="bold" fill="#ff9800" text-anchor="middle">4.5</text>
+
+                            <!-- Q₁のラベル -->
+                            <text x="242" y="170" font-size="14" fill="#4caf50" text-anchor="middle">3.5</text>
+
+                            <!-- Q₃のラベル -->
+                            <text x="408" y="170" font-size="14" fill="#2196f3" text-anchor="middle">6.5</text>
+
+                            <!-- 右のひげ（Q₃から最大値まで） -->
+                            <line x1="408" y1="60" x2="545" y2="60" stroke="#2196f3" stroke-width="3"/>
+                            <line x1="545" y1="50" x2="545" y2="70" stroke="#2196f3" stroke-width="3"/>
+                            <text x="545" y="45" font-size="14" fill="#2196f3" text-anchor="middle">9</text>
+
+                            <!-- 四分位範囲 -->
+                            <text x="325" y="185" font-size="14" font-weight="bold" fill="#9c27b0" text-anchor="middle">四分位範囲 = 6.5 − 3.5 = 3</text>
+                        </svg>
+                        <div class="svg-caption">5つの値（最小値・Q₁・中央値・Q₃・最大値）を数直線上に描く</div>
+                    </div>
+                </div>
+
                 <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 経験的確率を求める</h3>
 
                 <div class="example-box" id="ex-probability">
                     <div class="example-title">
-                        <span class="number-badge">例4</span>5以下になる確率
+                        <span class="number-badge">例5</span>5以下になる確率
                     </div>
                     <p>データ 2, 3, 4, 4, 5, 6, 7, 9 から無作為に1つ選ぶとき、5以下になる確率を求める</p>
                     <p><strong>解き方：</strong></p>
