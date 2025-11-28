@@ -56,6 +56,15 @@ class MessageItem(BaseModel):
     timestamp: str
 
 
+class SessionImageItem(BaseModel):
+    """セッション画像アイテム"""
+    id: int
+    image_url: str
+    comment: Optional[str]
+    order: int
+    created_at: str
+
+
 class SessionResponse(BaseModel):
     """セッションレスポンス"""
     session_id: str
@@ -63,4 +72,14 @@ class SessionResponse(BaseModel):
     image_url: Optional[str]
     user_comment: Optional[str]
     messages: list[MessageItem]
+    images: list[SessionImageItem] = []
     created_at: str
+
+
+class ContinueUploadResponse(BaseModel):
+    """続きアップロードレスポンス"""
+    success: bool
+    session_id: str
+    image_url: str
+    image_order: int
+    response: str

@@ -27,13 +27,29 @@ class Session(Base):
 
     id = Column(String(50), primary_key=True)
     user_id = Column(String(50), ForeignKey("users.id"), nullable=False)
-    image_url = Column(String(500))
+    image_url = Column(String(500))  # 最初の画像（後方互換性のため残す）
     user_comment = Column(Text, default="")
     created_at = Column(DateTime, default=datetime.utcnow)
 
     # リレーション
     user = relationship("User", back_populates="sessions")
     messages = relationship("Message", back_populates="session", cascade="all, delete-orphan")
+    images = relationship("SessionImage", back_populates="session", cascade="all, delete-orphan")
+
+
+class SessionImage(Base):
+    """セッション画像モデル（途中経過の画像を保存）"""
+    __tablename__ = "session_images"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    session_id = Column(String(50), ForeignKey("sessions.id"), nullable=False)
+    image_url = Column(String(500), nullable=False)
+    comment = Column(Text, default="")
+    order = Column(Integer, default=0)  # 画像の順序
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    # リレーション
+    session = relationship("Session", back_populates="images")
 
 
 class Message(Base):

@@ -18,10 +18,11 @@ from dotenv import load_dotenv
 import httpx
 
 from database import get_db, init_db
-from models import User, Session, Message, Mistake
+from models import User, Session, Message, Mistake, SessionImage
 from schemas import (
     ChatRequest, ChatResponse, MistakeRecord, MistakeResponse,
-    UploadResponse, SessionResponse, HealthResponse
+    UploadResponse, SessionResponse, HealthResponse, ContinueUploadResponse,
+    SessionImageItem
 )
 
 load_dotenv()
@@ -314,6 +315,103 @@ async def chat(
     return ChatResponse(success=True, response=ai_response)
 
 
+@app.post("/api/homework/continue", response_model=ContinueUploadResponse)
+async def continue_homework(
+    image: UploadFile = File(...),
+    sessionId: str = Form(...),
+    comment: str = Form(default=""),
+    db: AsyncSession = Depends(get_db)
+):
+    """既存セッションに続きの画像をアップロード"""
+    from sqlalchemy import select, func
+    from sqlalchemy.orm import selectinload
+
+    # セッション取得
+    result = await db.execute(
+        select(Session)
+        .options(selectinload(Session.messages), selectinload(Session.images))
+        .where(Session.id == sessionId)
+    )
+    session = result.scalar_one_or_none()
+
+    if not session:
+        raise HTTPException(status_code=404, detail="セッションが見つかりません")
+
+    # ファイル保存
+    file_ext = os.path.splitext(image.filename)[1] or ".jpg"
+    filename = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:8]}{file_ext}"
+    file_path = os.path.join(UPLOAD_DIR, filename)
+
+    content = await image.read()
+    with open(file_path, "wb") as f:
+        f.write(content)
+
+    # Base64エンコード
+    content_type = image.content_type or "image/jpeg"
+    image_base64 = f"data:{content_type};base64,{base64.b64encode(content).decode()}"
+
+    # 画像の順序を決定
+    image_order = len(session.images) + 1
+
+    # SessionImageを保存
+    session_image = SessionImage(
+        session_id=session.id,
+        image_url=f"/uploads/{filename}",
+        comment=comment,
+        order=image_order
+    )
+    db.add(session_image)
+    await db.commit()
+
+    # 間違い傾向を取得
+    mistake_context = await get_user_mistake_summary(db, session.user_id)
+
+    # メッセージ履歴を構築
+    messages = [{"role": "system", "content": SYSTEM_PROMPT + mistake_context}]
+    for msg in sorted(session.messages, key=lambda m: m.created_at):
+        messages.append({"role": msg.role, "content": msg.content})
+
+    # 続きの画像についてのプロンプト
+    continue_prompt = (
+        f"生徒が続きを解きました！（{image_order}枚目の画像）\n"
+        f"生徒のコメント: 「{comment}」\n\n"
+        "前回の会話を踏まえて、この続きの解答を見てください。"
+        "進捗を褒めて、必要があれば次のステップをアドバイスしてね。"
+    ) if comment else (
+        f"生徒が続きを解きました！（{image_order}枚目の画像）\n\n"
+        "前回の会話を踏まえて、この続きの解答を見てください。"
+        "どこまで進んだか確認して、進捗を褒めてあげてね。"
+    )
+
+    messages.append({"role": "user", "content": continue_prompt})
+
+    # AI呼び出し（新しい画像を添付）
+    ai_response = await call_openrouter_api(messages, image_base64)
+
+    # メッセージ保存
+    user_message = Message(
+        session_id=session.id,
+        role="user",
+        content=continue_prompt
+    )
+    assistant_message = Message(
+        session_id=session.id,
+        role="assistant",
+        content=ai_response
+    )
+    db.add(user_message)
+    db.add(assistant_message)
+    await db.commit()
+
+    return ContinueUploadResponse(
+        success=True,
+        session_id=session.id,
+        image_url=f"/uploads/{filename}",
+        image_order=image_order,
+        response=ai_response
+    )
+
+
 @app.post("/api/mistakes/record", response_model=MistakeResponse)
 async def record_mistake(
     request: MistakeRecord,
@@ -403,7 +501,7 @@ async def get_session(
 
     result = await db.execute(
         select(Session)
-        .options(selectinload(Session.messages))
+        .options(selectinload(Session.messages), selectinload(Session.images))
         .where(Session.id == session_id)
     )
     session = result.scalar_one_or_none()
@@ -419,6 +517,16 @@ async def get_session(
         messages=[
             {"role": m.role, "content": m.content, "timestamp": m.created_at.isoformat()}
             for m in sorted(session.messages, key=lambda m: m.created_at)
+        ],
+        images=[
+            SessionImageItem(
+                id=img.id,
+                image_url=img.image_url,
+                comment=img.comment,
+                order=img.order,
+                created_at=img.created_at.isoformat()
+            )
+            for img in sorted(session.images, key=lambda i: i.order)
         ],
         created_at=session.created_at.isoformat()
     )

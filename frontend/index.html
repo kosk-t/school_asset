@@ -325,12 +325,23 @@
 
         <!-- Chat Interface (アップロード後) -->
         <div id="chat-container" class="hidden">
-          <!-- Uploaded Image (小さく表示) -->
-          <div class="bg-white rounded-2xl p-4 shadow-soft border border-gray-100 mb-6 flex gap-4 items-center">
-            <img id="chat-preview-image" src="" alt="アップロードした画像" class="w-20 h-20 object-cover rounded-lg border border-gray-200">
-            <div>
-              <p class="font-bold text-text-main text-sm">アップロードした宿題</p>
-              <p class="text-xs text-text-sub" id="upload-time"></p>
+          <!-- Uploaded Images (小さく表示) -->
+          <div class="bg-white rounded-2xl p-4 shadow-soft border border-gray-100 mb-6">
+            <div class="flex gap-4 items-center mb-3">
+              <div id="image-thumbnails" class="flex gap-2 overflow-x-auto no-scrollbar">
+                <!-- 画像サムネイルがここに追加される -->
+              </div>
+              <button onclick="showContinueUploadModal()" class="flex-shrink-0 w-16 h-16 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center text-text-sub hover:border-primary hover:text-primary transition-colors">
+                <span class="text-xl">+</span>
+                <span class="text-[10px]">続き</span>
+              </button>
+            </div>
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="font-bold text-text-main text-sm">アップロードした宿題</p>
+                <p class="text-xs text-text-sub" id="upload-time"></p>
+              </div>
+              <span id="image-count" class="text-xs text-text-sub bg-gray-100 px-2 py-1 rounded-full">1枚</span>
             </div>
           </div>
 
@@ -342,6 +353,9 @@
           <!-- Chat Input -->
           <div class="bg-white rounded-2xl p-4 shadow-soft border border-gray-100 sticky bottom-4">
             <div class="flex gap-3">
+              <button onclick="showContinueUploadModal()" class="px-4 py-3 border border-gray-200 rounded-xl text-text-sub hover:bg-gray-50 transition-colors flex items-center gap-2" title="続きをアップロード">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              </button>
               <input type="text" id="chat-input" class="flex-1 px-4 py-3 border border-gray-200 rounded-xl focus:border-primary focus:outline-none transition-colors" placeholder="質問を入力してね...">
               <button onclick="sendMessage()" id="send-btn" class="bg-primary text-white px-6 py-3 rounded-xl font-bold hover:bg-primary-dark transition-colors shadow-lg flex items-center gap-2">
                 <span class="hidden sm:inline">送信</span>
@@ -415,6 +429,51 @@
         <button onclick="closeUserSettings()" class="flex-1 py-3 border border-gray-200 rounded-xl font-bold text-text-sub hover:bg-gray-50 transition-colors">キャンセル</button>
         <button onclick="saveUserSettings()" class="flex-1 py-3 bg-primary text-white rounded-xl font-bold hover:bg-primary-dark transition-colors">保存</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Continue Upload Modal -->
+  <div id="continue-upload-modal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-3xl p-8 max-w-lg w-full mx-4 shadow-2xl">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="font-display text-xl text-text-main">続きをアップロード</h3>
+        <button onclick="closeContinueUploadModal()" class="w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center transition-colors">
+          <svg class="w-5 h-5 text-text-sub" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <p class="text-sm text-text-sub mb-4">途中まで解いた続きの画像をアップロードしてね。前の会話の続きとして見てもらえるよ！</p>
+
+      <!-- Upload Zone -->
+      <div id="continue-drop-zone" class="drop-zone border-2 border-dashed border-gray-200 rounded-2xl p-8 text-center hover:border-primary hover:bg-primary/5 transition-all cursor-pointer mb-4">
+        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
+          <span class="text-3xl">📷</span>
+        </div>
+        <p class="font-bold text-text-main mb-1">画像を選択</p>
+        <p class="text-xs text-text-sub">またはドラッグ＆ドロップ</p>
+        <input type="file" id="continue-file-input" accept="image/*" class="hidden">
+      </div>
+
+      <!-- Preview -->
+      <div id="continue-preview-container" class="hidden mb-4">
+        <div class="relative">
+          <img id="continue-preview-image" src="" alt="プレビュー" class="w-full rounded-xl border border-gray-200">
+          <button onclick="clearContinueImage()" class="absolute top-2 right-2 w-8 h-8 bg-white/90 rounded-full flex items-center justify-center shadow-md hover:bg-white transition-colors">
+            <svg class="w-4 h-4 text-text-sub" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Comment -->
+      <div class="mb-6">
+        <label class="text-sm font-bold text-text-main mb-2 block">コメント（任意）</label>
+        <textarea id="continue-comment" rows="2" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-primary focus:outline-none transition-colors resize-none" placeholder="「ここまで解いた」「これで合ってる？」など"></textarea>
+      </div>
+
+      <button onclick="uploadContinue()" id="continue-upload-btn" class="w-full bg-primary text-white py-4 rounded-xl font-bold hover:bg-primary-dark transition-colors shadow-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+        <span>続きを見てもらう</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </button>
     </div>
   </div>
 
@@ -589,18 +648,35 @@
       }
     }
 
+    // 画像リスト（セッション内の画像を管理）
+    let sessionImages = [];
+
     function showChatInterface(imageUrl, initialResponse) {
       document.getElementById('upload-zone-container').classList.add('hidden');
       document.getElementById('chat-container').classList.remove('hidden');
       document.getElementById('reset-btn').style.display = 'block';
 
-      document.getElementById('chat-preview-image').src = imageUrl;
+      // 画像リストを初期化
+      sessionImages = [{ url: imageUrl, order: 1 }];
+      updateImageThumbnails();
+
       document.getElementById('upload-time').textContent = new Date().toLocaleString('ja-JP');
 
       // Clear and add initial response
       const chatMessages = document.getElementById('chat-messages');
       chatMessages.innerHTML = '';
       addMessage('assistant', initialResponse);
+    }
+
+    function updateImageThumbnails() {
+      const container = document.getElementById('image-thumbnails');
+      container.innerHTML = sessionImages.map((img, index) => `
+        <div class="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 ${index === sessionImages.length - 1 ? 'border-primary' : 'border-gray-200'} relative">
+          <img src="${img.url}" alt="${img.order}枚目" class="w-full h-full object-cover">
+          <span class="absolute bottom-0 right-0 bg-black/60 text-white text-[10px] px-1 rounded-tl">${img.order}</span>
+        </div>
+      `).join('');
+      document.getElementById('image-count').textContent = `${sessionImages.length}枚`;
     }
 
     function addMessage(role, content) {
@@ -706,11 +782,13 @@
     function resetHomework() {
       currentSessionId = null;
       selectedFile = null;
+      sessionImages = [];
 
       document.getElementById('file-input').value = '';
       document.getElementById('preview-image').src = '';
       document.getElementById('user-comment').value = '';
       document.getElementById('chat-messages').innerHTML = '';
+      document.getElementById('image-thumbnails').innerHTML = '';
 
       document.getElementById('upload-zone-container').classList.remove('hidden');
       document.getElementById('chat-container').classList.add('hidden');
@@ -718,6 +796,125 @@
 
       document.getElementById('drop-zone').classList.remove('hidden');
       document.getElementById('preview-container').classList.add('hidden');
+    }
+
+    // Continue Upload Modal
+    let continueFile = null;
+
+    function showContinueUploadModal() {
+      if (!currentSessionId) return;
+      document.getElementById('continue-upload-modal').classList.remove('hidden');
+      setupContinueUpload();
+    }
+
+    function closeContinueUploadModal() {
+      document.getElementById('continue-upload-modal').classList.add('hidden');
+      clearContinueImage();
+    }
+
+    function setupContinueUpload() {
+      const dropZone = document.getElementById('continue-drop-zone');
+      const fileInput = document.getElementById('continue-file-input');
+
+      // Remove old listeners by cloning
+      const newDropZone = dropZone.cloneNode(true);
+      dropZone.parentNode.replaceChild(newDropZone, dropZone);
+
+      const newFileInput = fileInput.cloneNode(true);
+      fileInput.parentNode.replaceChild(newFileInput, fileInput);
+
+      // Add new listeners
+      newDropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        newDropZone.classList.add('drag-over');
+      });
+
+      newDropZone.addEventListener('dragleave', () => {
+        newDropZone.classList.remove('drag-over');
+      });
+
+      newDropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        newDropZone.classList.remove('drag-over');
+        const file = e.dataTransfer.files[0];
+        if (file && file.type.startsWith('image/')) {
+          handleContinueFileSelect(file);
+        }
+      });
+
+      newDropZone.addEventListener('click', () => {
+        document.getElementById('continue-file-input').click();
+      });
+
+      document.getElementById('continue-file-input').addEventListener('change', (e) => {
+        if (e.target.files[0]) {
+          handleContinueFileSelect(e.target.files[0]);
+        }
+      });
+    }
+
+    function handleContinueFileSelect(file) {
+      continueFile = file;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        document.getElementById('continue-preview-image').src = e.target.result;
+        document.getElementById('continue-drop-zone').classList.add('hidden');
+        document.getElementById('continue-preview-container').classList.remove('hidden');
+        document.getElementById('continue-upload-btn').disabled = false;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function clearContinueImage() {
+      continueFile = null;
+      document.getElementById('continue-file-input').value = '';
+      document.getElementById('continue-preview-image').src = '';
+      document.getElementById('continue-comment').value = '';
+      document.getElementById('continue-drop-zone').classList.remove('hidden');
+      document.getElementById('continue-preview-container').classList.add('hidden');
+      document.getElementById('continue-upload-btn').disabled = true;
+    }
+
+    async function uploadContinue() {
+      if (!continueFile || !currentSessionId) return;
+
+      const uploadBtn = document.getElementById('continue-upload-btn');
+      uploadBtn.disabled = true;
+      uploadBtn.innerHTML = '<span class="animate-pulse">分析中...</span>';
+
+      const formData = new FormData();
+      formData.append('image', continueFile);
+      formData.append('sessionId', currentSessionId);
+      formData.append('comment', document.getElementById('continue-comment').value);
+
+      try {
+        const response = await fetch(`${API_BASE}/api/homework/continue`, {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          // 画像リストに追加
+          sessionImages.push({ url: data.image_url, order: data.image_order });
+          updateImageThumbnails();
+
+          // チャットに応答を追加
+          addMessage('assistant', data.response);
+
+          // モーダルを閉じる
+          closeContinueUploadModal();
+        } else {
+          alert('エラーが発生しました: ' + (data.detail || data.error));
+        }
+      } catch (error) {
+        console.error('Continue upload error:', error);
+        alert('アップロードに失敗しました。もう一度試してみてね。');
+      } finally {
+        uploadBtn.disabled = false;
+        uploadBtn.innerHTML = '<span>続きを見てもらう</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>';
+      }
     }
 
     // Mistake History
