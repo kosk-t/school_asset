@@ -11,8 +11,11 @@ docs/Gemfile.lock
 .DS_Store
 Thumbs.db
 
-# Backend
-backend/node_modules/
+# Backend (Python/FastAPI)
 backend/.env
 backend/uploads/
 backend/data/
+backend/__pycache__/
+backend/*.pyc
+backend/.venv/
+backend/venv/

@@ -21,25 +21,36 @@
 ```bash
 # バックエンドのセットアップ
 cd backend
-npm install
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
 
 # 環境変数を設定
 cp .env.example .env
 # .env ファイルを編集して OPENROUTER_API_KEY を設定
 
 # サーバー起動
-npm start
+python main.py
+# または: uvicorn main:app --reload
 ```
 
-ブラウザで http://localhost:3001 にアクセス
+ブラウザで http://localhost:8000 にアクセス
 
 ### 環境変数
 
 | 変数名 | 説明 | 例 |
 |--------|------|-----|
 | `OPENROUTER_API_KEY` | OpenRouter APIキー | `sk-or-v1-xxx` |
-| `PORT` | サーバーポート | `3001` |
 | `AI_MODEL` | 使用するAIモデル | `anthropic/claude-sonnet-4` |
+
+### データベース
+
+SQLiteを使用。データは `backend/data/manabi.db` に保存されます。
+
+- **users**: ユーザー情報
+- **sessions**: 宿題チェックセッション
+- **messages**: チャット履歴
+- **mistakes**: 間違い履歴（苦手分野の記録）
 
 ### 使い方
 
