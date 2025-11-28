@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ManabiNote AI - AI家庭教師ミライ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['"Noto Sans JP"', 'sans-serif'],
+            'display': ['"Zen Maru Gothic"', 'sans-serif'],
+            'eng': ['"Inter"', 'sans-serif'],
+          },
+          colors: {
+            'surface': '#F3F4F6',
+            'surface-card': '#FFFFFF',
+            'primary': '#4F46E5',
+            'primary-dark': '#3730A3',
+            'accent': '#0EA5E9',
+            'success': '#10B981',
+            'warning': '#F59E0B',
+            'danger': '#EF4444',
+            'text-main': '#1E293B',
+            'text-sub': '#64748B',
+          },
+          boxShadow: {
+            'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+            'glow': '0 0 20px rgba(79, 70, 229, 0.15)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #F8FAFC;
+      color: #1E293B;
+      font-feature-settings: "palt";
+    }
+
+    .blend-multiply { mix-blend-mode: multiply; }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .nav-active {
+      background-color: #EEF2FF;
+      color: #4F46E5;
+      border-right: 3px solid #4F46E5;
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .hover-lift {
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
+    }
+    .hover-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .fade-in {
+      animation: fadeIn 0.3s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .typing-indicator span {
+      animation: typingBounce 1.4s infinite ease-in-out both;
+    }
+    .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+    .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+    @keyframes typingBounce {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+      40% { transform: scale(1); opacity: 1; }
+    }
+
+    /* ドラッグ&ドロップ */
+    .drop-zone {
+      transition: all 0.3s ease;
+    }
+    .drop-zone.drag-over {
+      border-color: #4F46E5;
+      background-color: rgba(79, 70, 229, 0.1);
+      transform: scale(1.02);
+    }
+
+    /* チャットメッセージ */
+    .chat-message {
+      max-width: 85%;
+    }
+    .chat-message.user {
+      margin-left: auto;
+    }
+    .chat-message.assistant {
+      margin-right: auto;
+    }
+
+    /* マークダウン風の表示 */
+    .ai-response p {
+      margin-bottom: 0.75rem;
+    }
+    .ai-response code {
+      background-color: #F3F4F6;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-family: 'SF Mono', Monaco, monospace;
+    }
+    .ai-response ul, .ai-response ol {
+      margin-left: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .ai-response li {
+      margin-bottom: 0.25rem;
+    }
+  </style>
+</head>
+<body class="h-screen flex overflow-hidden">
+
+  <!-- SIDEBAR -->
+  <aside class="w-20 lg:w-64 bg-white border-r border-gray-100 flex flex-col justify-between flex-shrink-0 z-20">
+    <div>
+      <div class="h-20 flex items-center justify-center lg:justify-start lg:px-6 border-b border-gray-50">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center shadow-glow text-white font-eng font-bold text-xl">
+          √
+        </div>
+        <span class="hidden lg:block ml-3 font-eng font-bold text-lg text-text-main tracking-tight">Manabi<span class="text-primary">Note</span></span>
+      </div>
+
+      <nav class="mt-6 flex flex-col gap-1 px-3">
+        <a href="#" onclick="showSection('home'); return false;" class="nav-link nav-active flex items-center gap-4 px-3 py-3 rounded-lg font-medium transition-colors" data-section="home">
+          <span class="text-xl">🏠</span>
+          <span class="hidden lg:block">ホーム</span>
+        </a>
+        <a href="#" onclick="showSection('homework'); return false;" class="nav-link flex items-center gap-4 px-3 py-3 rounded-lg text-text-sub hover:bg-gray-50 transition-colors" data-section="homework">
+          <span class="text-xl">📸</span>
+          <span class="hidden lg:block">宿題チェック</span>
+        </a>
+        <a href="#" onclick="showSection('history'); return false;" class="nav-link flex items-center gap-4 px-3 py-3 rounded-lg text-text-sub hover:bg-gray-50 transition-colors" data-section="history">
+          <span class="text-xl">📊</span>
+          <span class="hidden lg:block">学習履歴</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="p-4 border-t border-gray-50">
+      <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 cursor-pointer transition-colors" onclick="showUserSettings()">
+        <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden border-2 border-white shadow-sm">
+          <img id="user-avatar" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Taro" alt="User" class="w-full h-full">
+        </div>
+        <div class="hidden lg:block">
+          <p class="text-sm font-bold text-text-main" id="user-name">ゲスト</p>
+          <p class="text-xs text-text-sub">中学2年生</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 overflow-y-auto no-scrollbar relative">
+
+    <!-- Background Blobs -->
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+      <div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-purple-200 rounded-full blur-[100px] opacity-20"></div>
+      <div class="absolute bottom-[-10%] left-[10%] w-[400px] h-[400px] bg-blue-200 rounded-full blur-[80px] opacity-20"></div>
+    </div>
+
+    <!-- HOME SECTION -->
+    <section id="section-home" class="section fade-in">
+      <header class="sticky top-0 z-10 glass px-8 py-4 flex items-center justify-between">
+        <h1 class="font-display text-xl text-text-main">こんにちは！</h1>
+        <div class="flex items-center gap-4">
+          <div class="bg-white px-4 py-1.5 rounded-full border border-gray-100 shadow-sm flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+            <span class="text-sm font-medium text-text-sub">ミライ先生: <span class="text-primary font-bold" id="api-status">確認中...</span></span>
+          </div>
+        </div>
+      </header>
+
+      <div class="p-4 lg:p-8 max-w-5xl mx-auto relative z-10">
+
+        <!-- Hero Section -->
+        <div class="bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] rounded-3xl p-8 text-white relative overflow-hidden shadow-glow mb-8">
+          <div class="relative z-10 max-w-lg">
+            <span class="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-bold mb-4 border border-white/10">AI家庭教師</span>
+            <h2 class="font-display text-3xl mb-4 leading-relaxed">
+              数学の宿題を<br>一緒に解こう！
+            </h2>
+            <p class="text-indigo-100 mb-8 leading-relaxed text-sm md:text-base">
+              わからない問題や、解いた宿題を写真で撮って送ってね。<br>
+              ミライ先生が優しく教えてあげるよ！
+            </p>
+            <button onclick="showSection('homework')" class="bg-white text-primary px-6 py-3 rounded-xl font-bold hover:bg-indigo-50 transition-colors shadow-lg flex items-center gap-2">
+              <span>宿題をアップロード</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </button>
+          </div>
+          <div class="absolute top-10 right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+          <div class="absolute -right-10 -bottom-10 text-[200px] opacity-20">📚</div>
+        </div>
+
+        <!-- Quick Actions -->
+        <h3 class="font-display text-lg text-text-main mb-4 flex items-center gap-2">
+          <span class="w-1.5 h-6 bg-primary rounded-full"></span>
+          できること
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div onclick="showSection('homework')" class="bg-white rounded-2xl p-6 shadow-soft hover-lift border border-gray-100 cursor-pointer">
+            <div class="w-14 h-14 rounded-2xl bg-orange-50 flex items-center justify-center text-2xl mb-4">📷</div>
+            <h4 class="font-bold text-lg mb-2">宿題をチェック</h4>
+            <p class="text-sm text-text-sub">宿題の写真を撮って、答え合わせや解説をもらおう</p>
+          </div>
+
+          <div onclick="showSection('homework')" class="bg-white rounded-2xl p-6 shadow-soft hover-lift border border-gray-100 cursor-pointer">
+            <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-2xl mb-4">🤔</div>
+            <h4 class="font-bold text-lg mb-2">わからない問題</h4>
+            <p class="text-sm text-text-sub">途中まで解いた問題を見せて、ヒントをもらおう</p>
+          </div>
+
+          <div onclick="showSection('history')" class="bg-white rounded-2xl p-6 shadow-soft hover-lift border border-gray-100 cursor-pointer">
+            <div class="w-14 h-14 rounded-2xl bg-green-50 flex items-center justify-center text-2xl mb-4">📊</div>
+            <h4 class="font-bold text-lg mb-2">苦手を確認</h4>
+            <p class="text-sm text-text-sub">過去の間違いから、苦手な分野を把握しよう</p>
+          </div>
+        </div>
+
+        <!-- Tips -->
+        <div class="bg-amber-50 rounded-2xl p-6 flex gap-4 items-start border border-amber-100">
+          <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+            💡
+          </div>
+          <div>
+            <h4 class="font-bold text-text-main mb-2">使い方のコツ</h4>
+            <ul class="text-sm text-text-sub space-y-1">
+              <li>・<strong>黒字</strong>で解いた部分は「自分で考えた」ところ</li>
+              <li>・<strong>赤字</strong>で修正した部分は「答えを見た」ところ</li>
+              <li>・「ここがわからない」など、コメントを添えると的確なアドバイスがもらえるよ！</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOMEWORK SECTION -->
+    <section id="section-homework" class="section fade-in hidden">
+      <header class="sticky top-0 z-10 glass px-8 py-4 flex items-center justify-between">
+        <h1 class="font-display text-xl text-text-main">📸 宿題チェック</h1>
+        <button onclick="resetHomework()" class="text-text-sub hover:text-primary text-sm font-medium transition-colors" id="reset-btn" style="display: none;">
+          新しい宿題
+        </button>
+      </header>
+
+      <div class="p-4 lg:p-8 max-w-4xl mx-auto relative z-10">
+
+        <!-- Upload Zone (初期状態) -->
+        <div id="upload-zone-container" class="mb-6">
+          <div class="bg-white rounded-3xl p-8 shadow-soft border border-gray-100">
+            <div id="drop-zone" class="drop-zone border-2 border-dashed border-gray-200 rounded-2xl p-12 text-center hover:border-primary hover:bg-primary/5 transition-all cursor-pointer">
+              <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-4xl">📷</span>
+              </div>
+              <p class="font-bold text-text-main mb-2">ここをタップして画像を選択</p>
+              <p class="text-sm text-text-sub mb-6">または画像をドラッグ＆ドロップ</p>
+              <input type="file" id="file-input" accept="image/*" class="hidden">
+              <button onclick="document.getElementById('file-input').click()" class="bg-primary text-white px-8 py-3 rounded-xl font-bold hover:bg-primary-dark transition-colors shadow-lg">
+                写真を選ぶ
+              </button>
+            </div>
+
+            <!-- Preview (画像選択後) -->
+            <div id="preview-container" class="hidden">
+              <div class="relative">
+                <img id="preview-image" src="" alt="プレビュー" class="w-full rounded-xl border border-gray-200">
+                <button onclick="clearImage()" class="absolute top-2 right-2 w-8 h-8 bg-white/90 rounded-full flex items-center justify-center shadow-md hover:bg-white transition-colors">
+                  <svg class="w-4 h-4 text-text-sub" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+              </div>
+
+              <!-- Comment Input -->
+              <div class="mt-6">
+                <label class="text-sm font-bold text-text-main mb-2 block">コメント（任意）</label>
+                <textarea id="user-comment" rows="3" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-primary focus:outline-none transition-colors resize-none" placeholder="「ここがわからない」「答え合わせして」など、気になることを書いてね"></textarea>
+              </div>
+
+              <button onclick="uploadHomework()" id="upload-btn" class="w-full mt-6 bg-primary text-white py-4 rounded-xl font-bold hover:bg-primary-dark transition-colors shadow-lg flex items-center justify-center gap-2">
+                <span>ミライ先生に見てもらう</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Tips -->
+          <div class="bg-amber-50 rounded-2xl p-6 mt-6 flex gap-4 items-start border border-amber-100">
+            <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+              💡
+            </div>
+            <div>
+              <h4 class="font-bold text-text-main mb-2">きれいに撮るコツ</h4>
+              <ul class="text-sm text-text-sub space-y-1">
+                <li>・明るい場所で撮影しよう</li>
+                <li>・紙がまっすぐになるように</li>
+                <li>・文字がはっきり見えるようにピントを合わせてね</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Interface (アップロード後) -->
+        <div id="chat-container" class="hidden">
+          <!-- Uploaded Image (小さく表示) -->
+          <div class="bg-white rounded-2xl p-4 shadow-soft border border-gray-100 mb-6 flex gap-4 items-center">
+            <img id="chat-preview-image" src="" alt="アップロードした画像" class="w-20 h-20 object-cover rounded-lg border border-gray-200">
+            <div>
+              <p class="font-bold text-text-main text-sm">アップロードした宿題</p>
+              <p class="text-xs text-text-sub" id="upload-time"></p>
+            </div>
+          </div>
+
+          <!-- Chat Messages -->
+          <div id="chat-messages" class="space-y-4 mb-6">
+            <!-- Messages will be inserted here -->
+          </div>
+
+          <!-- Chat Input -->
+          <div class="bg-white rounded-2xl p-4 shadow-soft border border-gray-100 sticky bottom-4">
+            <div class="flex gap-3">
+              <input type="text" id="chat-input" class="flex-1 px-4 py-3 border border-gray-200 rounded-xl focus:border-primary focus:outline-none transition-colors" placeholder="質問を入力してね...">
+              <button onclick="sendMessage()" id="send-btn" class="bg-primary text-white px-6 py-3 rounded-xl font-bold hover:bg-primary-dark transition-colors shadow-lg flex items-center gap-2">
+                <span class="hidden sm:inline">送信</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HISTORY SECTION -->
+    <section id="section-history" class="section fade-in hidden">
+      <header class="sticky top-0 z-10 glass px-8 py-4 flex items-center justify-between">
+        <h1 class="font-display text-xl text-text-main">📊 学習履歴</h1>
+      </header>
+
+      <div class="p-4 lg:p-8 max-w-4xl mx-auto relative z-10">
+
+        <!-- Summary -->
+        <div class="bg-gradient-to-r from-green-500 to-emerald-500 rounded-3xl p-8 text-white mb-8 relative overflow-hidden">
+          <div class="relative z-10">
+            <h2 class="font-display text-2xl mb-2">苦手分野の分析</h2>
+            <p class="text-green-100">過去の間違いから、重点的に復習すべきポイントがわかるよ！</p>
+          </div>
+          <div class="absolute -right-10 -bottom-10 text-[150px] opacity-20">📈</div>
+        </div>
+
+        <!-- Mistake Summary -->
+        <div id="mistake-summary" class="bg-white rounded-3xl p-6 shadow-soft border border-gray-100 mb-6">
+          <h3 class="font-display text-lg text-text-main mb-4 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-warning rounded-full"></span>
+            よく間違えるポイント
+          </h3>
+          <div id="mistake-list" class="space-y-3">
+            <p class="text-text-sub text-center py-8">まだデータがありません。宿題をチェックすると、苦手分野が表示されます。</p>
+          </div>
+        </div>
+
+        <!-- Recent History -->
+        <div class="bg-white rounded-3xl p-6 shadow-soft border border-gray-100">
+          <h3 class="font-display text-lg text-text-main mb-4 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-primary rounded-full"></span>
+            最近のアクティビティ
+          </h3>
+          <div id="recent-activity" class="space-y-3">
+            <p class="text-text-sub text-center py-8">まだアクティビティがありません。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- User Settings Modal -->
+  <div id="user-settings-modal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl">
+      <h3 class="font-display text-xl text-text-main mb-6">ユーザー設定</h3>
+      <div class="space-y-4">
+        <div>
+          <label class="text-sm font-bold text-text-main mb-2 block">ニックネーム</label>
+          <input type="text" id="setting-name" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-primary focus:outline-none transition-colors" placeholder="名前を入力">
+        </div>
+        <div>
+          <label class="text-sm font-bold text-text-main mb-2 block">ユーザーID</label>
+          <input type="text" id="setting-user-id" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-primary focus:outline-none transition-colors bg-gray-50" readonly>
+          <p class="text-xs text-text-sub mt-1">このIDで学習履歴が保存されます</p>
+        </div>
+      </div>
+      <div class="flex gap-3 mt-6">
+        <button onclick="closeUserSettings()" class="flex-1 py-3 border border-gray-200 rounded-xl font-bold text-text-sub hover:bg-gray-50 transition-colors">キャンセル</button>
+        <button onclick="saveUserSettings()" class="flex-1 py-3 bg-primary text-white rounded-xl font-bold hover:bg-primary-dark transition-colors">保存</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // API Base URL
+    const API_BASE = window.location.origin;
+
+    // State
+    let currentUserId = localStorage.getItem('userId') || generateUserId();
+    let currentSessionId = null;
+    let selectedFile = null;
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      initUser();
+      checkApiStatus();
+      setupFileUpload();
+      loadMistakeHistory();
+
+      // Enter key to send message
+      document.getElementById('chat-input').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
+      });
+    });
+
+    function generateUserId() {
+      const id = 'user_' + Math.random().toString(36).substring(2, 11);
+      localStorage.setItem('userId', id);
+      return id;
+    }
+
+    function initUser() {
+      const name = localStorage.getItem('userName') || 'ゲスト';
+      document.getElementById('user-name').textContent = name;
+      document.getElementById('user-avatar').src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${currentUserId}`;
+      document.getElementById('setting-name').value = name;
+      document.getElementById('setting-user-id').value = currentUserId;
+    }
+
+    async function checkApiStatus() {
+      try {
+        const response = await fetch(`${API_BASE}/api/health`);
+        const data = await response.json();
+        document.getElementById('api-status').textContent = data.hasApiKey ? 'オンライン' : 'APIキー未設定';
+        document.getElementById('api-status').className = data.hasApiKey ? 'text-success font-bold' : 'text-warning font-bold';
+      } catch (error) {
+        document.getElementById('api-status').textContent = 'オフライン';
+        document.getElementById('api-status').className = 'text-danger font-bold';
+      }
+    }
+
+    // Navigation
+    function showSection(sectionName) {
+      document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+      document.getElementById(`section-${sectionName}`).classList.remove('hidden');
+
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('nav-active');
+        link.classList.add('text-text-sub', 'hover:bg-gray-50');
+      });
+      const activeLink = document.querySelector(`.nav-link[data-section="${sectionName}"]`);
+      if (activeLink) {
+        activeLink.classList.add('nav-active');
+        activeLink.classList.remove('text-text-sub', 'hover:bg-gray-50');
+      }
+    }
+
+    // User Settings
+    function showUserSettings() {
+      document.getElementById('user-settings-modal').classList.remove('hidden');
+    }
+
+    function closeUserSettings() {
+      document.getElementById('user-settings-modal').classList.add('hidden');
+    }
+
+    function saveUserSettings() {
+      const name = document.getElementById('setting-name').value || 'ゲスト';
+      localStorage.setItem('userName', name);
+      document.getElementById('user-name').textContent = name;
+      closeUserSettings();
+    }
+
+    // File Upload
+    function setupFileUpload() {
+      const dropZone = document.getElementById('drop-zone');
+      const fileInput = document.getElementById('file-input');
+
+      // Drag and drop
+      dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.classList.add('drag-over');
+      });
+
+      dropZone.addEventListener('dragleave', () => {
+        dropZone.classList.remove('drag-over');
+      });
+
+      dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('drag-over');
+        const file = e.dataTransfer.files[0];
+        if (file && file.type.startsWith('image/')) {
+          handleFileSelect(file);
+        }
+      });
+
+      // Click to select
+      dropZone.addEventListener('click', () => {
+        fileInput.click();
+      });
+
+      fileInput.addEventListener('change', (e) => {
+        if (e.target.files[0]) {
+          handleFileSelect(e.target.files[0]);
+        }
+      });
+    }
+
+    function handleFileSelect(file) {
+      selectedFile = file;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        document.getElementById('preview-image').src = e.target.result;
+        document.getElementById('drop-zone').classList.add('hidden');
+        document.getElementById('preview-container').classList.remove('hidden');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function clearImage() {
+      selectedFile = null;
+      document.getElementById('file-input').value = '';
+      document.getElementById('preview-image').src = '';
+      document.getElementById('user-comment').value = '';
+      document.getElementById('drop-zone').classList.remove('hidden');
+      document.getElementById('preview-container').classList.add('hidden');
+    }
+
+    async function uploadHomework() {
+      if (!selectedFile) return;
+
+      const uploadBtn = document.getElementById('upload-btn');
+      uploadBtn.disabled = true;
+      uploadBtn.innerHTML = '<span class="animate-pulse">分析中...</span>';
+
+      const formData = new FormData();
+      formData.append('image', selectedFile);
+      formData.append('userId', currentUserId);
+      formData.append('comment', document.getElementById('user-comment').value);
+
+      try {
+        const response = await fetch(`${API_BASE}/api/homework/upload`, {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          currentSessionId = data.sessionId;
+          showChatInterface(data.imageUrl, data.response);
+        } else {
+          alert('エラーが発生しました: ' + data.error);
+        }
+      } catch (error) {
+        console.error('Upload error:', error);
+        alert('アップロードに失敗しました。サーバーが起動しているか確認してください。');
+      } finally {
+        uploadBtn.disabled = false;
+        uploadBtn.innerHTML = '<span>ミライ先生に見てもらう</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>';
+      }
+    }
+
+    function showChatInterface(imageUrl, initialResponse) {
+      document.getElementById('upload-zone-container').classList.add('hidden');
+      document.getElementById('chat-container').classList.remove('hidden');
+      document.getElementById('reset-btn').style.display = 'block';
+
+      document.getElementById('chat-preview-image').src = imageUrl;
+      document.getElementById('upload-time').textContent = new Date().toLocaleString('ja-JP');
+
+      // Clear and add initial response
+      const chatMessages = document.getElementById('chat-messages');
+      chatMessages.innerHTML = '';
+      addMessage('assistant', initialResponse);
+    }
+
+    function addMessage(role, content) {
+      const chatMessages = document.getElementById('chat-messages');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `chat-message ${role} fade-in`;
+
+      if (role === 'assistant') {
+        messageDiv.innerHTML = `
+          <div class="flex gap-3 items-start">
+            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <span class="text-lg">🎓</span>
+            </div>
+            <div class="bg-white rounded-2xl rounded-tl-none p-4 shadow-soft border border-gray-100 ai-response">
+              ${formatAIResponse(content)}
+            </div>
+          </div>
+        `;
+      } else {
+        messageDiv.innerHTML = `
+          <div class="flex gap-3 items-start justify-end">
+            <div class="bg-primary text-white rounded-2xl rounded-tr-none p-4 shadow-soft">
+              ${escapeHtml(content)}
+            </div>
+            <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden flex-shrink-0">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=${currentUserId}" alt="User" class="w-full h-full">
+            </div>
+          </div>
+        `;
+      }
+
+      chatMessages.appendChild(messageDiv);
+      messageDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function addTypingIndicator() {
+      const chatMessages = document.getElementById('chat-messages');
+      const typingDiv = document.createElement('div');
+      typingDiv.id = 'typing-indicator';
+      typingDiv.className = 'chat-message assistant fade-in';
+      typingDiv.innerHTML = `
+        <div class="flex gap-3 items-start">
+          <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+            <span class="text-lg">🎓</span>
+          </div>
+          <div class="bg-white rounded-2xl rounded-tl-none p-4 shadow-soft border border-gray-100">
+            <div class="typing-indicator flex gap-1">
+              <span class="w-2 h-2 bg-primary/50 rounded-full"></span>
+              <span class="w-2 h-2 bg-primary/50 rounded-full"></span>
+              <span class="w-2 h-2 bg-primary/50 rounded-full"></span>
+            </div>
+          </div>
+        </div>
+      `;
+      chatMessages.appendChild(typingDiv);
+      typingDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function removeTypingIndicator() {
+      const indicator = document.getElementById('typing-indicator');
+      if (indicator) indicator.remove();
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById('chat-input');
+      const message = input.value.trim();
+      if (!message || !currentSessionId) return;
+
+      const sendBtn = document.getElementById('send-btn');
+      sendBtn.disabled = true;
+      input.value = '';
+
+      addMessage('user', message);
+      addTypingIndicator();
+
+      try {
+        const response = await fetch(`${API_BASE}/api/homework/chat`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sessionId: currentSessionId,
+            message,
+            userId: currentUserId
+          })
+        });
+
+        const data = await response.json();
+        removeTypingIndicator();
+
+        if (data.success) {
+          addMessage('assistant', data.response);
+        } else {
+          addMessage('assistant', 'ごめんね、エラーが発生しちゃった。もう一度試してみてね！');
+        }
+      } catch (error) {
+        removeTypingIndicator();
+        addMessage('assistant', 'サーバーに接続できませんでした。インターネット接続を確認してね。');
+      } finally {
+        sendBtn.disabled = false;
+      }
+    }
+
+    function resetHomework() {
+      currentSessionId = null;
+      selectedFile = null;
+
+      document.getElementById('file-input').value = '';
+      document.getElementById('preview-image').src = '';
+      document.getElementById('user-comment').value = '';
+      document.getElementById('chat-messages').innerHTML = '';
+
+      document.getElementById('upload-zone-container').classList.remove('hidden');
+      document.getElementById('chat-container').classList.add('hidden');
+      document.getElementById('reset-btn').style.display = 'none';
+
+      document.getElementById('drop-zone').classList.remove('hidden');
+      document.getElementById('preview-container').classList.add('hidden');
+    }
+
+    // Mistake History
+    async function loadMistakeHistory() {
+      try {
+        const response = await fetch(`${API_BASE}/api/mistakes/${currentUserId}`);
+        const data = await response.json();
+
+        const mistakeList = document.getElementById('mistake-list');
+        const recentActivity = document.getElementById('recent-activity');
+
+        if (data.summary && Object.keys(data.summary).length > 0) {
+          mistakeList.innerHTML = '';
+          for (const [category, info] of Object.entries(data.summary)) {
+            const item = document.createElement('div');
+            item.className = 'flex items-center justify-between p-4 bg-amber-50 rounded-xl border-l-4 border-warning';
+            item.innerHTML = `
+              <div>
+                <p class="font-bold text-text-main">${escapeHtml(category)}</p>
+                <p class="text-xs text-text-sub">最終: ${info.lastSeen}</p>
+              </div>
+              <div class="bg-warning text-white px-3 py-1 rounded-full text-sm font-bold">${info.count}回</div>
+            `;
+            mistakeList.appendChild(item);
+          }
+        }
+
+        if (data.mistakes && data.mistakes.length > 0) {
+          recentActivity.innerHTML = '';
+          const recent = data.mistakes.slice(-5).reverse();
+          for (const mistake of recent) {
+            const item = document.createElement('div');
+            item.className = 'flex items-center gap-4 p-3 bg-gray-50 rounded-xl';
+            item.innerHTML = `
+              <div class="w-8 h-8 bg-warning/20 text-warning rounded-full flex items-center justify-center">⚠</div>
+              <div class="flex-1">
+                <p class="font-bold text-text-main text-sm">${escapeHtml(mistake.category)}</p>
+                <p class="text-xs text-text-sub">${new Date(mistake.timestamp).toLocaleString('ja-JP')}</p>
+              </div>
+            `;
+            recentActivity.appendChild(item);
+          }
+        }
+      } catch (error) {
+        console.error('Failed to load mistake history:', error);
+      }
+    }
+
+    // Utilities
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function formatAIResponse(text) {
+      // Simple markdown-like formatting
+      return text
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/`(.*?)`/g, '<code>$1</code>')
+        .replace(/\n\n/g, '</p><p>')
+        .replace(/\n/g, '<br>')
+        .replace(/^(.*)$/gm, '<p>$1</p>')
+        .replace(/<p><\/p>/g, '');
+    }
+  </script>
+</body>
+</html>

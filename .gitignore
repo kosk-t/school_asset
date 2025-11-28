@@ -10,3 +10,9 @@ docs/Gemfile.lock
 # OS
 .DS_Store
 Thumbs.db
+
+# Backend
+backend/node_modules/
+backend/.env
+backend/uploads/
+backend/data/
