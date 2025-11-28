@@ -29,7 +29,9 @@ class Session(Base):
     user_id = Column(String(50), ForeignKey("users.id"), nullable=False)
     image_url = Column(String(500))  # 最初の画像（後方互換性のため残す）
     user_comment = Column(Text, default="")
+    summary = Column(Text, default="")  # LangChainによる会話サマリー
     created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     # リレーション
     user = relationship("User", back_populates="sessions")

@@ -24,6 +24,7 @@ from schemas import (
     UploadResponse, SessionResponse, HealthResponse, ContinueUploadResponse,
     SessionImageItem
 )
+from langchain_memory import get_memory_manager, get_chat_model
 
 load_dotenv()
 
@@ -269,7 +270,7 @@ async def chat(
     request: ChatRequest,
     db: AsyncSession = Depends(get_db)
 ):
-    """会話を続ける"""
+    """会話を続ける（LangChainメモリ使用）"""
     from sqlalchemy import select
     from sqlalchemy.orm import selectinload
 
@@ -288,14 +289,39 @@ async def chat(
     user_id = request.user_id or session.user_id
     mistake_context = await get_user_mistake_summary(db, user_id)
 
-    # メッセージ履歴を構築
-    messages = [{"role": "system", "content": SYSTEM_PROMPT + mistake_context}]
-    for msg in sorted(session.messages, key=lambda m: m.created_at):
-        messages.append({"role": msg.role, "content": msg.content})
-    messages.append({"role": "user", "content": request.message})
+    # LangChainメモリマネージャーを取得
+    memory_manager = get_memory_manager()
+
+    # DBからメモリを復元（初回のみ）
+    db_messages = [
+        {"role": m.role, "content": m.content}
+        for m in sorted(session.messages, key=lambda m: m.created_at)
+    ]
+    memory_manager.load_from_db_messages(
+        session.id,
+        db_messages,
+        existing_summary=session.summary or None
+    )
+
+    # ユーザーメッセージをメモリに追加
+    memory_manager.add_user_message(session.id, request.message)
+
+    # メモリからAPI用メッセージを取得
+    messages = memory_manager.get_messages_for_api(
+        session.id,
+        SYSTEM_PROMPT + mistake_context
+    )
 
     # AI呼び出し
     ai_response = await call_openrouter_api(messages)
+
+    # AIメッセージをメモリに追加
+    memory_manager.add_ai_message(session.id, ai_response)
+
+    # サマリーを取得して保存
+    summary = memory_manager.get_summary(session.id)
+    if summary:
+        session.summary = summary
 
     # メッセージ保存
     user_message = Message(
@@ -366,10 +392,19 @@ async def continue_homework(
     # 間違い傾向を取得
     mistake_context = await get_user_mistake_summary(db, session.user_id)
 
-    # メッセージ履歴を構築
-    messages = [{"role": "system", "content": SYSTEM_PROMPT + mistake_context}]
-    for msg in sorted(session.messages, key=lambda m: m.created_at):
-        messages.append({"role": msg.role, "content": msg.content})
+    # LangChainメモリマネージャーを取得
+    memory_manager = get_memory_manager()
+
+    # DBからメモリを復元
+    db_messages = [
+        {"role": m.role, "content": m.content}
+        for m in sorted(session.messages, key=lambda m: m.created_at)
+    ]
+    memory_manager.load_from_db_messages(
+        session.id,
+        db_messages,
+        existing_summary=session.summary or None
+    )
 
     # 続きの画像についてのプロンプト
     continue_prompt = (
@@ -383,10 +418,25 @@ async def continue_homework(
         "どこまで進んだか確認して、進捗を褒めてあげてね。"
     )
 
-    messages.append({"role": "user", "content": continue_prompt})
+    # ユーザーメッセージをメモリに追加
+    memory_manager.add_user_message(session.id, continue_prompt)
+
+    # メモリからAPI用メッセージを取得
+    messages = memory_manager.get_messages_for_api(
+        session.id,
+        SYSTEM_PROMPT + mistake_context
+    )
 
     # AI呼び出し（新しい画像を添付）
     ai_response = await call_openrouter_api(messages, image_base64)
+
+    # AIメッセージをメモリに追加
+    memory_manager.add_ai_message(session.id, ai_response)
+
+    # サマリーを取得して保存
+    summary = memory_manager.get_summary(session.id)
+    if summary:
+        session.summary = summary
 
     # メッセージ保存
     user_message = Message(
