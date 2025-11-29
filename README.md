@@ -1,65 +1,6 @@
 # 数学教材ライブラリ
 
-中学生向けの数学教材を作成・管理するプロジェクトです。
-
----
-
-## ManabiNote AI - 宿題フィードバックシステム
-
-数学の宿題をAIがチェックして、優しく指導してくれるシステムです。
-
-### 機能
-
-- **画像アップロード**: 宿題の写真を撮ってアップロード
-- **AI分析**: OpenRouterを通じてAIが数式を解析
-- **段階的ヒント**: 答えを直接教えるのではなく、ステップバイステップで導く
-- **間違い履歴**: ユーザーごとの間違いパターンを記録し、苦手分野を把握
-- **対話型学習**: AIとチャットしながら理解を深める
-
-### セットアップ
-
-```bash
-# バックエンドのセットアップ
-cd backend
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-
-# 環境変数を設定
-cp .env.example .env
-# .env ファイルを編集して OPENROUTER_API_KEY を設定
-
-# サーバー起動
-python main.py
-# または: uvicorn main:app --reload
-```
-
-ブラウザで http://localhost:8000 にアクセス
-
-### 環境変数
-
-| 変数名 | 説明 | 例 |
-|--------|------|-----|
-| `OPENROUTER_API_KEY` | OpenRouter APIキー | `sk-or-v1-xxx` |
-| `AI_MODEL` | 使用するAIモデル | `anthropic/claude-sonnet-4` |
-
-### データベース
-
-SQLiteを使用。データは `backend/data/manabi.db` に保存されます。
-
-- **users**: ユーザー情報
-- **sessions**: 宿題チェックセッション
-- **messages**: チャット履歴
-- **mistakes**: 間違い履歴（苦手分野の記録）
-
-### 使い方
-
-1. 宿題の写真を撮影（黒字=自分で解いた、赤字=修正した部分）
-2. 「宿題チェック」から画像をアップロード
-3. 必要に応じてコメントを添える（「ここがわからない」など）
-4. AIからのフィードバックを受け取り、対話しながら理解を深める
-
----
+中学生向けの数学教材を作成・管理するプロジェクトです。Jekyll + GitHub Pagesで運用しています。
 
 ## セットアップ
 
