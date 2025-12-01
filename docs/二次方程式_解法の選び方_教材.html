@@ -1,0 +1,629 @@
+---
+layout: material-raw
+title: 二次方程式：解法の選び方
+icon: "⚖️"
+description: 因数分解・平方完成・解の公式の3つの解法から、問題を見て最速で解ける方法を瞬時に選ぶ判断力を身につける。入試や試験で差がつく「見極め力」をマスターしよう。
+level: 標準
+level_num: 2
+category: equations
+order: 2
+keywords:
+- 二次方程式
+- 解法選択
+- 因数分解
+- 平方完成
+- 解の公式
+- 判断力
+- テスト対策
+cover_image: /images/二次方程式_解法の選び方_教材.png
+cover_description: 分岐するフローチャート、3つの解法アイコン、迷路から最短ルートを選ぶイメージ
+battle_game: false
+toc:
+- id: section1
+title: "テーマの定義"
+- id: section2
+title: "覚えるルール"
+- id: section3
+title: "例題と解き方"
+- id: section4
+title: "簡単にするコツ"
+- id: section5
+title: "よくあるつまづき"
+- id: section6
+title: "仕上げチェックリスト"
+- id: section7
+title: "練習問題"
+- id: story
+title: "おまけ：歴史ストーリー「アルゴリズムの父」"
+related:
+- url: /二次方程式の解き方_教材.html
+title: 二次方程式の解き方
+note: 3つの解法の手順を先に習得しよう
+type: prerequisite
+- url: /累乗と平方根_教材.html
+title: 累乗と平方根
+note: 解の公式・平方完成に必要
+type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>二次方程式の解き方は3つある。でも、テストで大切なのは<strong>「どれを使えば一番速いか」を瞬時に見抜く力</strong>だ。</p>
+
+        <p>このページでは、<strong>解法を選ぶ判断力</strong>を身につけます：</p>
+        <ul>
+            <li><strong>5秒で判断</strong>：問題を見た瞬間に最適な解法を選ぶ</li>
+            <li><strong>判断フローチャート</strong>：迷わないための決定木</li>
+            <li><strong>落とし穴を避ける</strong>：間違った選択をしがちなパターン</li>
+        </ul>
+
+        <div class="tip-box">
+            <strong>💡 なぜ「選び方」が重要？</strong><br>
+            テストは時間との勝負。同じ問題でも、因数分解なら30秒、解の公式なら2分かかることもある。<strong>正しい選択だけで1分以上の差</strong>がつく！
+        </div>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要：問題を見たら「因数分解できるか？」を最初に判断せよ！
+        </div>
+
+        <!-- 判断フローチャート -->
+        <div class="svg-container">
+            <svg width="700" height="480" viewBox="0 0 700 480">
+                <defs>
+                    <marker id="arrow-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#666" />
+                    </marker>
+                </defs>
+
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">二次方程式
+                    解法選択フローチャート</text>
+
+                <!-- スタート -->
+                <rect x="250" y="40" width="200" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="20" />
+                <text x="350" y="65" font-size="14" font-weight="bold" fill="#1565c0" text-anchor="middle">ax² + bx + c
+                    = 0</text>
+
+                <!-- 矢印1 -->
+                <path d="M 350 80 L 350 110" stroke="#666" stroke-width="2" marker-end="url(#arrow-flow)" />
+
+                <!-- 判断1：定数項なし？ -->
+                <polygon points="350,120 450,160 350,200 250,160" fill="#fff3e0" stroke="#ff9800" stroke-width="2" />
+                <text x="350" y="155" font-size="14" fill="#333" text-anchor="middle">c = 0?</text>
+                <text x="350" y="172" font-size="14" fill="#333" text-anchor="middle">(定数項なし)</text>
+
+                <!-- YES: 共通因数 -->
+                <path d="M 450 160 L 550 160" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow-flow)" />
+                <text x="480" y="150" font-size="14" fill="#4caf50">Yes</text>
+                <rect x="560" y="140" width="120" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="8" />
+                <text x="620" y="165" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">共通因数で</text>
+                <text x="620" y="180" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">くくる</text>
+
+                <!-- NO: 次の判断へ -->
+                <path d="M 350 200 L 350 230" stroke="#666" stroke-width="2" marker-end="url(#arrow-flow)" />
+                <text x="360" y="218" font-size="14" fill="#e65100">No</text>
+
+                <!-- 判断2：1次の項なし？ -->
+                <polygon points="350,240 450,280 350,320 250,280" fill="#fff3e0" stroke="#ff9800" stroke-width="2" />
+                <text x="350" y="275" font-size="14" fill="#333" text-anchor="middle">b = 0?</text>
+                <text x="350" y="292" font-size="14" fill="#333" text-anchor="middle">(1次の項なし)</text>
+
+                <!-- YES: 平方根 -->
+                <path d="M 450 280 L 550 280" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow-flow)" />
+                <text x="480" y="270" font-size="14" fill="#4caf50">Yes</text>
+                <rect x="560" y="260" width="120" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="8" />
+                <text x="620" y="285" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">平方根で</text>
+                <text x="620" y="300" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">解く</text>
+
+                <!-- NO: 次の判断へ -->
+                <path d="M 350 320 L 350 350" stroke="#666" stroke-width="2" marker-end="url(#arrow-flow)" />
+                <text x="360" y="338" font-size="14" fill="#e65100">No</text>
+
+                <!-- 判断3：因数分解できそう？ -->
+                <polygon points="350,360 470,405 350,450 230,405" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" />
+                <text x="350" y="395" font-size="14" fill="#333" text-anchor="middle">係数が小さい整数?</text>
+                <text x="350" y="415" font-size="14" fill="#333" text-anchor="middle">因数分解できそう?</text>
+
+                <!-- YES: 因数分解 -->
+                <path d="M 230 405 L 130 405" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow-flow)" />
+                <text x="175" y="395" font-size="14" fill="#4caf50">Yes</text>
+                <rect x="20" y="385" width="100" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="8" />
+                <text x="70" y="410" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">因数分解</text>
+
+                <!-- NO: 解の公式 -->
+                <path d="M 470 405 L 550 405" stroke="#e65100" stroke-width="2" marker-end="url(#arrow-flow)" />
+                <text x="490" y="395" font-size="14" fill="#e65100">No</text>
+                <rect x="560" y="385" width="120" height="40" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="8" />
+                <text x="620" y="410" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">解の公式</text>
+
+                <!-- 補足 -->
+                <text x="620" y="445" font-size="14" fill="#666" text-anchor="middle">（万能！迷ったらコレ）</text>
+            </svg>
+            <div class="svg-caption">迷ったら解の公式！でも因数分解できれば圧倒的に速い</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 判断ルール①：定数項がない（c = 0）なら共通因数</strong> <a href="#ex-common" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ ax^2 + bx = 0 \quad \Rightarrow \quad x(ax + b) = 0 \]
+            </div>
+            <p>定数項がなければ、必ず \(x\) が共通因数！これが<strong>最速パターン</strong>。</p>
+            <p><strong>💡 なぜ最速？</strong> くくり出すだけで因数分解完了。計算ミスもほぼゼロ。</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 判断ルール②：1次の項がない（b = 0）なら平方根</strong> <a href="#ex-sqrt" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ ax^2 + c = 0 \quad \Rightarrow \quad x^2 = -\frac{c}{a} \quad \Rightarrow \quad x =
+                \pm\sqrt{-\frac{c}{a}} \]
+            </div>
+            <p>\(x\) の1次の項がなければ、移項して平方根をとるだけ！</p>
+            <p><strong>💡 ポイント</strong> 右辺が負になったら「実数解なし」。</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 判断ルール③：係数が小さい整数なら因数分解を試す</strong> <a href="#ex-factor" class="example-link">→ 例3</a>
+            <p>以下の条件を満たすとき、因数分解が速い：</p>
+            <ul>
+                <li>\(a = 1\) で、\(b, c\) が小さい整数（-10〜10程度）</li>
+                <li>\(a \neq 1\) でも、\(a, c\) の約数が少ない（たすき掛けがすぐ終わる）</li>
+                <li>完全平方（\(x^2 \pm 2ax + a^2\)）や和と差の積（\(a^2 - b^2\)）の形</li>
+            </ul>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 判断ルール④：迷ったら解の公式</strong> <a href="#ex-formula" class="example-link">→ 例5</a>
+            <p>以下の場合は、すぐに解の公式を使う：</p>
+            <ul>
+                <li>係数が大きい・複雑な数（分数、小数、素数が多い）</li>
+                <li>因数分解を30秒試しても見つからない</li>
+                <li>「解を求めよ」だけで判別式も聞かれていない</li>
+            </ul>
+            <div class="formula">
+                \[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \]
+            </div>
+            <p><strong>💡 なぜ万能？</strong> どんな二次方程式も、この公式に代入すれば必ず解ける。</p>
+        </div>
+
+        <!-- 解法比較表 -->
+        <div class="rule-box">
+            <strong>📌 解法比較まとめ</strong>
+            <table class="material-table">
+                <tr>
+                    <th>解法</th>
+                    <th>使う条件</th>
+                    <th>メリット</th>
+                    <th>デメリット</th>
+                </tr>
+                <tr>
+                    <td><strong>共通因数</strong></td>
+                    <td>定数項がない</td>
+                    <td>最速（5秒）</td>
+                    <td>使える場面が限定的</td>
+                </tr>
+                <tr>
+                    <td><strong>平方根</strong></td>
+                    <td>1次の項がない</td>
+                    <td>速い（10秒）</td>
+                    <td>使える場面が限定的</td>
+                </tr>
+                <tr>
+                    <td><strong>因数分解</strong></td>
+                    <td>係数が小さい整数</td>
+                    <td>速い（30秒）</td>
+                    <td>見つからないこともある</td>
+                </tr>
+                <tr>
+                    <td><strong>解の公式</strong></td>
+                    <td>いつでもOK</td>
+                    <td>万能・確実</td>
+                    <td>計算量が多い（1分〜）</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p><strong>「どの解法を選ぶか」の判断</strong>に注目して例題を解きましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ パターン①：定数項がない → 共通因数</h3>
+
+        <div class="example-box" id="ex-common">
+            <div class="example-title">
+                <span class="number-badge">例1</span>共通因数パターン
+            </div>
+            <p>\(3x^2 - 12x = 0\) を解く</p>
+            <p><strong>判断（5秒）：</strong></p>
+            <ol>
+                <li>定数項がない（\(c = 0\)）→ <strong>共通因数でくくる！</strong></li>
+            </ol>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>共通因数 \(3x\) でくくる</li>
+                <li>零積の法則を使う</li>
+            </ol>
+            <div class="formula">
+                \[ 3x^2 - 12x = 3x(x - 4) = 0 \]
+                \[ 3x = 0 \ \text{または} \ x - 4 = 0 \]
+                \[ x = 0, \ 4 \]
+            </div>
+            <p style="color: #4caf50;"><strong>所要時間：約10秒</strong>（解の公式なら1分以上かかる）</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ パターン②：1次の項がない → 平方根</h3>
+
+        <div class="example-box" id="ex-sqrt">
+            <div class="example-title">
+                <span class="number-badge">例2</span>平方根パターン
+            </div>
+            <p>\(2x^2 - 18 = 0\) を解く</p>
+            <p><strong>判断（5秒）：</strong></p>
+            <ol>
+                <li>1次の項がない（\(b = 0\)）→ <strong>平方根で解く！</strong></li>
+            </ol>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(x^2\) の項を残して移項</li>
+                <li>両辺を2で割る</li>
+                <li>平方根をとる（±を忘れずに）</li>
+            </ol>
+            <div class="formula">
+                \[ 2x^2 = 18 \]
+                \[ x^2 = 9 \]
+                \[ x = \pm 3 \]
+            </div>
+            <p style="color: #4caf50;"><strong>所要時間：約15秒</strong></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ パターン③：係数が小さい → 因数分解</h3>
+
+        <div class="example-box" id="ex-factor">
+            <div class="example-title">
+                <span class="number-badge">例3</span>因数分解パターン（和と積）
+            </div>
+            <p>\(x^2 - 7x + 10 = 0\) を解く</p>
+            <p><strong>判断（5秒）：</strong></p>
+            <ol>
+                <li>\(a = 1\)、\(b = -7\)、\(c = 10\) で係数が小さい整数</li>
+                <li>「足して-7、かけて10」の2数を探す → <strong>因数分解！</strong></li>
+            </ol>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>足して-7、かけて10 → \(-2\) と \(-5\)</li>
+                <li>因数分解して零積の法則</li>
+            </ol>
+            <div class="formula">
+                \[ x^2 - 7x + 10 = (x - 2)(x - 5) = 0 \]
+                \[ x = 2, \ 5 \]
+            </div>
+            <p style="color: #4caf50;"><strong>所要時間：約20秒</strong></p>
+        </div>
+
+        <div class="example-box" id="ex-cross">
+            <div class="example-title">
+                <span class="number-badge">例4</span>因数分解パターン（たすき掛け）
+            </div>
+            <p>\(6x^2 + x - 2 = 0\) を解く</p>
+            <p><strong>判断（10秒）：</strong></p>
+            <ol>
+                <li>\(a = 6 \neq 1\) だが、\(6 = 2 \times 3\)、\(-2 = -2 \times 1\) と分解できそう</li>
+                <li>約数が少ないので → <strong>たすき掛けを試す！</strong></li>
+            </ol>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>6 = 2×3、-2 = -2×1 または 2×(-1) などで試す</li>
+                <li>たすき掛けで \(x\) の係数（1）になる組み合わせを探す</li>
+            </ol>
+            <!-- たすき掛け図 -->
+            <div class="svg-container">
+                <svg width="450" height="100" viewBox="0 0 450 100">
+                    <g transform="translate(30, 10)">
+                        <text x="30" y="25" font-size="15" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">2</text>
+                        <text x="30" y="60" font-size="15" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">3</text>
+                        <text x="90" y="25" font-size="15" font-weight="bold" fill="#e65100"
+                            text-anchor="middle">-2</text>
+                        <text x="90" y="60" font-size="15" font-weight="bold" fill="#e65100"
+                            text-anchor="middle">1</text>
+                        <line x1="42" y1="20" x2="78" y2="55" stroke="#4caf50" stroke-width="2" />
+                        <line x1="42" y1="55" x2="78" y2="20" stroke="#4caf50" stroke-width="2" />
+                        <text x="140" y="25" font-size="14" fill="#333">2×1 = 2</text>
+                        <text x="140" y="60" font-size="14" fill="#333">3×(-2) = -6</text>
+                        <line x1="140" y1="70" x2="220" y2="70" stroke="#333" stroke-width="1" />
+                        <text x="250" y="45" font-size="14" font-weight="bold" fill="#c62828">足して -4 ✗</text>
+                    </g>
+                    <!-- 2つ目 -->
+                    <g transform="translate(280, 10)">
+                        <text x="30" y="25" font-size="15" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">2</text>
+                        <text x="30" y="60" font-size="15" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">3</text>
+                        <text x="90" y="25" font-size="15" font-weight="bold" fill="#e65100"
+                            text-anchor="middle">1</text>
+                        <text x="90" y="60" font-size="15" font-weight="bold" fill="#e65100"
+                            text-anchor="middle">-2</text>
+                        <line x1="42" y1="20" x2="78" y2="55" stroke="#4caf50" stroke-width="2" />
+                        <line x1="42" y1="55" x2="78" y2="20" stroke="#4caf50" stroke-width="2" />
+                        <text x="115" y="45" font-size="14" font-weight="bold" fill="#4caf50">→ 1 ✓</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="formula">
+                \[ 6x^2 + x - 2 = (2x - 1)(3x + 2) = 0 \]
+                \[ x = \frac{1}{2}, \ -\frac{2}{3} \]
+            </div>
+            <p style="color: #4caf50;"><strong>所要時間：約40秒</strong>（慣れれば20秒）</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ パターン④：因数分解できない → 解の公式</h3>
+
+        <div class="example-box" id="ex-formula">
+            <div class="example-title">
+                <span class="number-badge">例5</span>解の公式パターン
+            </div>
+            <p>\(x^2 + 3x - 7 = 0\) を解く</p>
+            <p><strong>判断（10秒）：</strong></p>
+            <ol>
+                <li>「足して3、かけて-7」の整数ペアを探す...</li>
+                <li>7は素数で、1と7か-1と-7しかない → 足しても3にならない</li>
+                <li>因数分解できない → <strong>解の公式！</strong></li>
+            </ol>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>係数を確認：\(a = 1, b = 3, c = -7\)</li>
+                <li>解の公式に代入</li>
+            </ol>
+            <div class="formula">
+                \[ x = \frac{-3 \pm \sqrt{9 - 4 \cdot 1 \cdot (-7)}}{2 \cdot 1} = \frac{-3 \pm \sqrt{37}}{2} \]
+            </div>
+            <p style="color: #ff9800;"><strong>所要時間：約1分</strong>（計算量は多いが確実）</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ パターン⑤：特殊な形に気づく</h3>
+
+        <div class="example-box" id="ex-special">
+            <div class="example-title">
+                <span class="number-badge">例6</span>完全平方パターン
+            </div>
+            <p>\(x^2 - 10x + 25 = 0\) を解く</p>
+            <p><strong>判断（5秒）：</strong></p>
+            <ol>
+                <li>\(25 = 5^2\)、\(-10 = -2 \times 5\) → <strong>完全平方式！</strong></li>
+                <li>\((x - 5)^2\) の形だと気づく</li>
+            </ol>
+            <p><strong>解き方：</strong></p>
+            <div class="formula">
+                \[ x^2 - 10x + 25 = (x - 5)^2 = 0 \]
+                \[ x = 5 \ (\text{重解}) \]
+            </div>
+            <p style="color: #4caf50;"><strong>所要時間：約10秒</strong></p>
+        </div>
+
+        <div class="example-box" id="ex-diff">
+            <div class="example-title">
+                <span class="number-badge">例7</span>和と差の積パターン
+            </div>
+            <p>\(4x^2 - 49 = 0\) を解く</p>
+            <p><strong>判断（5秒）：</strong></p>
+            <ol>
+                <li>1次の項がない、かつ \(4x^2 = (2x)^2\)、\(49 = 7^2\)</li>
+                <li>\(a^2 - b^2\) の形 → <strong>和と差の積！</strong></li>
+            </ol>
+            <p><strong>解き方：</strong></p>
+            <div class="formula">
+                \[ 4x^2 - 49 = (2x)^2 - 7^2 = (2x + 7)(2x - 7) = 0 \]
+                \[ x = -\frac{7}{2}, \ \frac{7}{2} \]
+            </div>
+            <p style="color: #4caf50;"><strong>所要時間：約15秒</strong></p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：最初の3秒で「ない項」をチェック</strong><br>
+            問題を見たら、まず「定数項がない？」「1次の項がない？」を確認。ないなら最速パターン確定！
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：因数分解は30秒ルール</strong><br>
+            30秒探して見つからなければ、解の公式に切り替える。無理に探すより確実に解く方が速い。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：定数項の約数を先にリストアップ</strong><br>
+            \(x^2 + bx + c = 0\) で因数分解するとき、\(c\) の約数の組み合わせを書き出すと速い。
+            <p style="margin-top: 5px;">例：\(c = 12\) → (1,12), (2,6), (3,4) とその符号違い</p>
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：完全平方は「半分の2乗」で見抜く</strong><br>
+            \(x^2 + bx + c\) で \(c = \left(\frac{b}{2}\right)^2\) なら完全平方。
+            <p style="margin-top: 5px;">例：\(x^2 + 8x + 16\) → \(16 = 4^2 = \left(\frac{8}{2}\right)^2\) ✓</p>
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ5：解の公式は「先に判別式」</strong><br>
+            \(D = b^2 - 4ac\) を先に計算。\(D\) がきれいな数（平方数や0）なら計算がラク。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：因数分解にこだわりすぎる</div>
+            <p><strong>ダメな例：</strong> \(x^2 + 5x + 3 = 0\) で5分間因数分解を探し続ける</p>
+            <p><strong>対策：</strong> 30秒で見つからなければ解の公式へ！（この問題は因数分解できない）</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：共通因数を見逃す</div>
+            <p><strong>ダメな例：</strong> \(2x^2 + 6x = 0\) を解の公式で解こうとする</p>
+            <p><strong>対策：</strong> 定数項がないとき → まず共通因数チェック！ \(2x(x + 3) = 0\) で瞬殺。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：和と差の積を見逃す</div>
+            <p><strong>ダメな例：</strong> \(x^2 - 25 = 0\) を解の公式で解く</p>
+            <p><strong>対策：</strong> \(a^2 - b^2\) の形に気づく → \((x+5)(x-5) = 0\) で一瞬！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：符号を含めて探さない</div>
+            <p><strong>ダメな例：</strong> \(x^2 + x - 6 = 0\) で「足して1、かけて6」と考える</p>
+            <p><strong>対策：</strong> かけて\(-6\)なので異符号！(+3)と(-2)で「足して1、かけて-6」✓</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき5：平方根で±を忘れる</div>
+            <p><strong>ダメな例：</strong> \(x^2 = 16\) から \(x = 4\) だけ答える</p>
+            <p><strong>対策：</strong> \(x = \pm 4\)！マイナスの解も忘れずに。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">定数項がないとき → 共通因数でくくったか</div>
+            <div class="checklist-item">1次の項がないとき → 平方根で解いたか</div>
+            <div class="checklist-item">因数分解を30秒以上探していないか</div>
+            <div class="checklist-item">完全平方・和と差の積の形を見逃していないか</div>
+            <div class="checklist-item">因数分解できないときは解の公式を使ったか</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p><strong>まず「どの解法を使うか」を判断してから解こう！</strong></p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1：解法を選んで解く</strong>
+            <p>次の方程式を解きなさい：\(5x^2 - 20x = 0\)</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong>定数項がない → 共通因数！</p>
+                    <p>\(5x^2 - 20x = 5x(x - 4) = 0\)</p>
+                    <p><strong>答え：\(x = 0, 4\)</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2：解法を選んで解く</strong>
+            <p>次の方程式を解きなさい：\(x^2 + 4x + 1 = 0\)</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong>「足して4、かけて1」→ (1,1)は足して2、(-1,-1)は足して-2...見つからない → 解の公式！</p>
+                    <p>\(x = \frac{-4 \pm \sqrt{16 - 4}}{2} = \frac{-4 \pm \sqrt{12}}{2} = \frac{-4 \pm 2\sqrt{3}}{2} =
+                        -2 \pm \sqrt{3}\)</p>
+                    <p><strong>答え：\(x = -2 + \sqrt{3}, -2 - \sqrt{3}\)</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3：解法を選んで解く</strong>
+            <p>次の方程式を解きなさい：\(9x^2 - 1 = 0\)</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong>1次の項がない + \((3x)^2 - 1^2\) の形 → 和と差の積！</p>
+                    <p>\(9x^2 - 1 = (3x + 1)(3x - 1) = 0\)</p>
+                    <p><strong>答え：\(x = -\frac{1}{3}, \frac{1}{3}\)</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：「ない項をチェック → 因数分解を試す → ダメなら解の公式」の3ステップ！
+</div>
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「アルゴリズムの父」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 アルゴリズムの父（9世紀・バグダッド）</div>
+
+            <p>「アルゴリズム」という言葉を聞いたことがあるだろうか？プログラミングでよく使う「手順」や「やり方」を意味する言葉だ。</p>
+
+            <p>この言葉、実は<strong>ある数学者の名前から来ている</strong>。</p>
+
+            <p style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                <strong>その名は「アル・フワーリズミー」。</strong><br>
+                9世紀のバグダッド（現在のイラク）で活躍した天才数学者だ。<br>
+                彼の名前がラテン語化して「Algoritmi」→「Algorithm（アルゴリズム）」になった。
+            </p>
+
+            <p>当時のバグダッドは「知恵の館」と呼ばれる学術機関があり、世界中の知識が集まる場所だった。ギリシャ、インド、ペルシャ...様々な数学が混在していた。</p>
+
+            <p><strong>【問題は「バラバラすぎる」こと】</strong></p>
+            <p>二次方程式の解き方ひとつとっても、</p>
+            <ul>
+                <li>ギリシャ人は幾何学的に解く</li>
+                <li>インド人は数値計算で解く</li>
+                <li>バビロニア人は表を使って解く</li>
+            </ul>
+            <p>やり方がバラバラで、誰にも統一されていなかった。</p>
+
+            <p style="background: #fff9c4; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                <strong>アル・フワーリズミー：</strong>「これじゃダメだ。どんな問題でも使える<strong>統一された手順</strong>が必要だ」
+            </p>
+
+            <p>彼は820年頃、『ジャブルとムカバラの書』という本を書いた。</p>
+            <p>この本で、二次方程式を<strong>6つのタイプに分類</strong>し、それぞれに<strong>明確な解法手順</strong>を示した。</p>
+
+            <div class="formula">
+                \[ x^2 = 5x \quad (\text{タイプ1：平方と根}) \]
+                \[ x^2 + 10x = 39 \quad (\text{タイプ4：平方と根が数に等しい}) \]
+            </div>
+
+            <p>「このタイプならこう解く」「あのタイプならああ解く」——<strong>問題を見て解法を選ぶフローチャート</strong>の原型を、彼は1200年前に作ったのだ！</p>
+
+            <p><strong>【「代数学」という言葉も彼の発明】</strong></p>
+            <p>本のタイトルにある「ジャブル（al-jabr）」がラテン語化して「Algebra（代数学）」になった。つまり<strong>「アルゴリズム」も「代数学」も、この人の名前と本が由来</strong>だ。</p>
+
+            <p style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                <strong>驚くべき事実：</strong><br>
+                彼がいなければ、コンピュータプログラミングで使う「アルゴリズム」という言葉も、学校で習う「代数」という教科も、違う名前だったかもしれない。
+            </p>
+
+            <p><strong>教訓：</strong>「どの方法をいつ使うか」を体系化することの大切さは、1200年前から変わらない。君が今学んでいる「解法の選び方」は、アル・フワーリズミーの偉業を受け継いでいるのだ。
+            </p>
+
+            <p style="font-size: 14px; color: #666; margin-top: 20px;">
+                ※アル・フワーリズミーについて詳しくは <a
+                    href="https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%AF%E3%83%BC%E3%83%AA%E3%82%BA%E3%83%9F%E3%83%BC"
+                    target="_blank" style="color: #1976d2;">Wikipedia</a> を参照。
+            </p>
+        </div>
+    </div>
+</section>

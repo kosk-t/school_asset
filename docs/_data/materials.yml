@@ -100,3 +100,13 @@
   category: data
   order: 2
   cover_image: images/確率の基本法則_教材.png
+
+- slug: 二次方程式_解法の選び方_教材
+  title: 二次方程式：解法の選び方
+  icon: "⚖️"
+  description: 因数分解・平方完成・解の公式から最速の方法を選ぶ判断力を身につけよう！
+  level: 標準
+  level_num: 2
+  category: equations
+  order: 2
+  cover_image: images/noimage.jpg
