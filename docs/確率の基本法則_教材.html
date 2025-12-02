@@ -92,7 +92,9 @@ related:
             <div class="svg-caption">確率 = 条件を満たす場合の数 ÷ 全体の場合の数</div>
         </div>
 
-        <p><strong>💡 なぜこの公式？</strong> サイコロで1が出る確率は、「1が出る場合（1通り）」÷「全部の場合（6通り）」= 1/6。これが確率の基本的な考え方です。</p>
+        <details class="thinking"><summary>💡 考え方を見る</summary>
+        <p>サイコロで1が出る確率は、「1が出る場合（1通り）」÷「全部の場合（6通り）」= 1/6。これが確率の基本的な考え方です。</p>
+        </details>
 
         <div class="rule-box">
             <strong>📌 余事象の法則</strong> <a href="#ex-complement" class="example-link">→ 例1</a>
@@ -138,7 +140,9 @@ related:
                 <div class="svg-caption">全体 = A + Aでない → P(A) + P(Āの上に線) = 1</div>
             </div>
 
-            <p><strong>💡 なぜ便利？</strong> 「少なくとも1つ当たる確率」など、直接数えると複雑な問題を「1 - 全部外れる確率」で簡単に計算できます。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>「少なくとも1つ当たる確率」など、直接数えると複雑な問題を「1 - 全部外れる確率」で簡単に計算できます。</p>
+            </details>
         </div>
 
         <div class="rule-box">
@@ -182,7 +186,9 @@ related:
                 <div class="svg-caption">AとBを足すと重なり部分を2回数えるので、1回分引く</div>
             </div>
 
-            <p><strong>💡 なぜ引く？</strong> P(A)とP(B)を単純に足すと、重なり部分（A∩B）を2回数えてしまうので、1回分を引いて調整します。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>P(A)とP(B)を単純に足すと、重なり部分（A∩B）を2回数えてしまうので、1回分を引いて調整します。</p>
+            </details>
         </div>
 
         <div class="rule-box">
@@ -232,7 +238,9 @@ related:
                 <div class="svg-caption">排反事象なら重なりがないので、単純に足すだけ</div>
             </div>
 
-            <p><strong>💡 なぜ簡単？</strong> 重なりがないので、引く必要がなく単純に足せます。サイコロで「1または2」の確率は1/6 + 1/6 = 1/3です。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>重なりがないので、引く必要がなく単純に足せます。サイコロで「1または2」の確率は1/6 + 1/6 = 1/3です。</p>
+            </details>
         </div>
 
         <div class="rule-box">
@@ -271,7 +279,9 @@ related:
                 <div class="svg-caption">Bが起きた中で、Aも起きる確率</div>
             </div>
 
-            <p><strong>💡 なぜこの式？</strong> 「Bが起きた」前提なので、考える範囲がBだけになります。その中でAも起きる割合がP(A∩B)/P(B)です。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>「Bが起きた」前提なので、考える範囲がBだけになります。その中でAも起きる割合がP(A∩B)/P(B)です。</p>
+            </details>
         </div>
 
         <div class="rule-box">
@@ -288,7 +298,9 @@ related:
                 <li><strong>独立でない例：</strong>くじを引いて戻さずにまた引く（非復元抽出）→ 1回目に当たりを引くと、2回目の確率が変わる</li>
             </ul>
 
-            <p><strong>💡 なぜ掛ける？</strong> 「1回目が1」かつ「2回目が2」の確率は、それぞれ独立なので (1/6) × (1/6) = 1/36 です。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>「1回目が1」かつ「2回目が2」の確率は、それぞれ独立なので (1/6) × (1/6) = 1/36 です。</p>
+            </details>
         </div>
 
         <div class="rule-box">
@@ -299,7 +311,9 @@ related:
             <p>\(Q_1\)：第1四分位数、\(Q_3\)：第3四分位数</p>
             <p>データのばらつき（中央50%の範囲）を示す指標です。</p>
 
-            <p><strong>💡 なぜ使う？</strong> 平均値は外れ値に影響されやすいですが、IQRは中央部分のばらつきを見るので、データの実態をつかみやすいです。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>平均値は外れ値に影響されやすいですが、IQRは中央部分のばらつきを見るので、データの実態をつかみやすいです。</p>
+            </details>
         </div>
     </div>
 </section>

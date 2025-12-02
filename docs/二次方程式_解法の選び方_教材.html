@@ -153,8 +153,12 @@ related:
             <div class="formula">
                 \[ ax^2 + bx = 0 \quad \Rightarrow \quad x(ax + b) = 0 \]
             </div>
-            <p>定数項がなければ、必ず \(x\) が共通因数！これが<strong>最速パターン</strong>。</p>
-            <p><strong>💡 なぜ最速？</strong> くくり出すだけで因数分解完了。計算ミスもほぼゼロ。</p>
+            <p>定数項がなければ、必ず \(x\) が共通因数！これが<strong>最速パターン。</strong></p>
+            <p><strong>→ だから解は：</strong> \(x = 0\) または \(x = -\dfrac{b}{a}\) の2つ。</p>
+            <p><strong>✅ メリット：</strong> 最速（5秒）。くくり出すだけなので計算ミスもほぼゼロ。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>\(ax^2 + bx\) は両方の項に \(x\) が入っている → \(x\) でくくれる → \(x(ax + b) = 0\) の形になる。「積が0」になるには、\(x = 0\) か \(ax + b = 0\) のどちらかが0（零積の法則）。</p>
+            </details>
         </div>
 
         <div class="rule-box">
@@ -164,7 +168,11 @@ related:
                 \pm\sqrt{-\frac{c}{a}} \]
             </div>
             <p>\(x\) の1次の項がなければ、移項して平方根をとるだけ！</p>
-            <p><strong>💡 ポイント</strong> 右辺が負になったら「実数解なし」。</p>
+            <p><strong>→ だから解は：</strong> \(x = +\sqrt{-\dfrac{c}{a}}\) と \(x = -\sqrt{-\dfrac{c}{a}}\) の2つ（±を忘れずに！）</p>
+            <p><strong>✅ メリット：</strong> 速い（10秒）。移項して平方根をとるだけのシンプルな手順。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>\(ax^2 + c = 0\) を変形すると \(x^2 = -\dfrac{c}{a}\)。「2乗して○○になる数は？」と考えると、プラスとマイナスの2つある（例：\(x^2 = 9\) なら \(x = 3\) も \(x = -3\) も正解）。だから \(\pm\) がつく。</p>
+            </details>
         </div>
 
         <div class="rule-box">
@@ -175,6 +183,11 @@ related:
                 <li>\(a \neq 1\) でも、\(a, c\) の約数が少ない（たすき掛けがすぐ終わる）</li>
                 <li>完全平方（\(x^2 \pm 2ax + a^2\)）や和と差の積（\(a^2 - b^2\)）の形</li>
             </ul>
+            <p><strong>→ だから解は：</strong> \((x - p)(x - q) = 0\) の形になったら、\(x = p\) と \(x = q\) が解。</p>
+            <p><strong>✅ メリット：</strong> 速い（30秒）。整数解が出るので答えがスッキリ。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>\(x^2 + bx + c\) を \((x - p)(x - q)\) に分解すると、展開したとき \(b = -(p+q)\)、\(c = pq\) になる。つまり「足して \(-b\)、かけて \(c\)」になる2数を探せばいい。見つかれば因数分解完了、見つからなければ解の公式へ。</p>
+            </details>
         </div>
 
         <div class="rule-box">
@@ -188,7 +201,11 @@ related:
             <div class="formula">
                 \[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \]
             </div>
-            <p><strong>💡 なぜ万能？</strong> どんな二次方程式も、この公式に代入すれば必ず解ける。</p>
+            <p><strong>→ だから解は：</strong> \(a, b, c\) を代入して計算すれば、2つの解 \(x = \dfrac{-b + \sqrt{D}}{2a}\) と \(x = \dfrac{-b - \sqrt{D}}{2a}\) が求まる（\(D = b^2 - 4ac\)）。</p>
+            <p><strong>✅ メリット：</strong> 万能・確実。どんな二次方程式でも必ず解ける。迷ったらこれ。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>\(ax^2 + bx + c = 0\) を「平方完成」すると \(a\left(x + \dfrac{b}{2a}\right)^2 = \dfrac{b^2 - 4ac}{4a}\) になる。これを \(x\) について解くと公式が出てくる。つまり「\((x + ○)^2 = △\) の形に変形 → 平方根をとる」という流れ。</p>
+            </details>
         </div>
 
         <!-- 解法比較表 -->

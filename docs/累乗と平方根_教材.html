@@ -183,11 +183,12 @@ toc:
                 \( 2^3 + 2^5 \) のとき → 小さい方の \( 2^3 \) でくくる → \( 2^3(1 + 2^2) = 2^3 \times 5 = 8 \times 5 = 40 \)
             </p>
 
-            <p><strong>💡 なぜくくり出せる？</strong></p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
             <ul>
                 <li>\( 2^3 + 2^5 = 8 + 32 \) を計算するより、\( 8 \times (1 + 4) = 8 \times 5 = 40 \) の方が簡単</li>
                 <li>同じ数（ここでは \( 2^3 = 8 \)）が共通因数としてあるから、普通の足し算と同じようにくくり出せる</li>
             </ul>
+            </details>
 
             <!-- 累乗の足し算の図解 -->
             <div class="svg-container">
@@ -244,11 +245,12 @@ toc:
                 \( 3^{x+5} = 3^{2x+4} \) のとき → 底が3で同じ → 指数が等しい → \( x+5 = 2x+4 \) → \( x = 1 \)
             </p>
 
-            <p><strong>💡 なぜそうなる？</strong></p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
             <ul>
                 <li>底が1より大きい（または0と1の間）なら、累乗の値は指数によって一意に決まる</li>
                 <li>例：\( 2^3 = 8 \) と \( 2^5 = 32 \) は異なる値。\( 2^m = 2^n \) なら \( m = n \) しかありえない</li>
             </ul>
+            </details>
 
             <!-- 累乗の方程式の図解 -->
             <div class="svg-container">
@@ -303,13 +305,14 @@ toc:
                 \[ (a^m)^n = a^{mn} \quad \text{（べき乗のべき乗 → 指数をかける）} \]
                 \[ (ab)^n = a^n b^n \quad \text{（積の累乗 → それぞれにかける）} \]
             </div>
-            <p><strong>💡 なぜそうなる？</strong></p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
             <ul>
                 <li><strong>べき乗のべき乗</strong>：\((a^m)^n\) は「\(a\)を\(m\)個かけたもの」を\(n\)回かける。つまり\(a\)を合計 \(m \times
                     n\) 個かけるから \(a^{mn}\)</li>
                 <li><strong>積の累乗</strong>：\((ab)^n\) は \(ab\) を\(n\)回かける。\(a\)も\(b\)もそれぞれ\(n\)回かけられるから \(a^n
                     b^n\)</li>
             </ul>
+            </details>
         </div>
 
         <div class="rule-box">
@@ -317,8 +320,10 @@ toc:
             <div class="formula">
                 \[ a^0 = 1 \quad (a \neq 0) \]
             </div>
-            <p><strong>なぜ1になる？</strong> 指数法則から自然に導けます：</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>指数法則から自然に導けます：</p>
             <p>\( a^n \div a^n = a^{n-n} = a^0 \)、でも \( a^n \div a^n = 1 \) だから、\( a^0 = 1 \)</p>
+            </details>
         </div>
 
         <div class="rule-box">
@@ -333,9 +338,11 @@ toc:
                 <li>\( 10^{-2} = \frac{1}{10^2} = \frac{1}{100} = 0.01 \)</li>
                 <li>\( 5^{-1} = \frac{1}{5^1} = \frac{1}{5} \)</li>
             </ul>
-            <p><strong>なぜそうなる？</strong> 指数法則から自然に導けます：</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>指数法則から自然に導けます：</p>
             <p>\( a^n \times a^{-n} = a^{n + (-n)} = a^0 = 1 \)</p>
             <p>つまり \( a^{-n} \) は \( a^n \) をかけると1になる数 → \( a^n \) の逆数</p>
+            </details>
 
             <!-- 負の指数の図解 -->
             <div class="svg-container">
@@ -433,13 +440,15 @@ toc:
                 \[ \sqrt{ab} = \sqrt{a} \times \sqrt{b} \quad (a, b \geq 0) \]
                 \[ \sqrt{\frac{a}{b}} = \frac{\sqrt{a}}{\sqrt{b}} \quad (a \geq 0, b > 0) \]
             </div>
-            <p><strong>💡 なぜそうなる？</strong> 両辺を2乗して確かめよう！</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>両辺を2乗して確かめよう！</p>
             <ul>
                 <li>\((\sqrt{a} \times \sqrt{b})^2 = a \times b\) なので、\(\sqrt{a} \times \sqrt{b}\) は \(ab\) の平方根
                     → \(\sqrt{ab}\)</li>
                 <li>同様に \(\left(\frac{\sqrt{a}}{\sqrt{b}}\right)^2 = \frac{a}{b}\)
                     なので、\(\frac{\sqrt{a}}{\sqrt{b}}\) は \(\frac{a}{b}\) の平方根 → \(\sqrt{\frac{a}{b}}\)</li>
             </ul>
+            </details>
         </div>
     </div>
 </section>
