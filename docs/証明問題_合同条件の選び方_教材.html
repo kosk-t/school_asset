@@ -1,0 +1,723 @@
+---
+layout: material-raw
+title: 証明問題：合同条件の選び方
+icon: "🔺"
+description: 三角形の合同条件3つと直角三角形の合同条件2つから、どれを使えばいいか判断できるようになろう。証明問題で最も重要な「条件選び」をマスター！
+level: 標準
+level_num: 2
+category: geometry
+order: 5
+keywords:
+  - 合同条件
+  - 三角形
+  - 証明
+  - 直角三角形
+  - SSS
+  - SAS
+  - ASA
+cover_image: /images/noimage.jpg
+cover_description: 二つの三角形が重なり合う様子、合同条件のフローチャート
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「幾何学に王道なし」"
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「この2つの三角形が同じ形だと証明せよ」——テストでよく見る問題。合同条件は知っているのに、<strong>どれを使えばいいかわからない</strong>という人は多いはず。</p>
+        <p>このページでは、合同条件の選び方を学びます：</p>
+        <ul>
+            <li><strong>3つの合同条件</strong>：SSS・SAS・ASAの使い分け</li>
+            <li><strong>直角三角形の特別条件</strong>：斜辺を使った2つの条件</li>
+            <li><strong>判断フロー</strong>：問題を見て「どれを使う？」を即決する方法</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】合同条件は「与えられた情報」で選ぶ！<br>
+            辺が多い → SSS or SAS<br>
+            角が多い → ASA<br>
+            直角三角形 → 斜辺を使う条件
+        </div>
+
+        <!-- 合同条件の図解（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="320" viewBox="0 0 700 320">
+                <!-- 背景 -->
+                <rect width="700" height="320" fill="#fafafa"/>
+
+                <!-- タイトル -->
+                <text x="350" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">三角形の合同条件 3パターン</text>
+
+                <!-- SSS -->
+                <g transform="translate(20, 50)">
+                    <rect x="0" y="0" width="200" height="120" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                    <text x="100" y="25" text-anchor="middle" font-size="15" font-weight="bold" fill="#1976d2">SSS（3辺）</text>
+
+                    <!-- 三角形1 -->
+                    <polygon points="30,100 90,100 60,55" fill="none" stroke="#1976d2" stroke-width="2"/>
+                    <text x="60" y="115" text-anchor="middle" font-size="14" fill="#1976d2">a</text>
+                    <text x="40" y="72" text-anchor="middle" font-size="14" fill="#1976d2">b</text>
+                    <text x="80" y="72" text-anchor="middle" font-size="14" fill="#1976d2">c</text>
+
+                    <!-- = -->
+                    <text x="105" y="80" text-anchor="middle" font-size="18" fill="#333">=</text>
+
+                    <!-- 三角形2 -->
+                    <polygon points="120,100 180,100 150,55" fill="none" stroke="#1976d2" stroke-width="2"/>
+                    <text x="150" y="115" text-anchor="middle" font-size="14" fill="#1976d2">a</text>
+                    <text x="130" y="72" text-anchor="middle" font-size="14" fill="#1976d2">b</text>
+                    <text x="170" y="72" text-anchor="middle" font-size="14" fill="#1976d2">c</text>
+                </g>
+
+                <!-- SAS -->
+                <g transform="translate(250, 50)">
+                    <rect x="0" y="0" width="200" height="120" rx="8" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+                    <text x="100" y="25" text-anchor="middle" font-size="15" font-weight="bold" fill="#4caf50">SAS（2辺＋間の角）</text>
+
+                    <!-- 三角形1 -->
+                    <polygon points="30,100 90,100 60,55" fill="none" stroke="#4caf50" stroke-width="2"/>
+                    <text x="60" y="115" text-anchor="middle" font-size="14" fill="#4caf50">a</text>
+                    <text x="40" y="72" text-anchor="middle" font-size="14" fill="#4caf50">b</text>
+                    <!-- 角マーク -->
+                    <path d="M 35,100 Q 40,95 45,100" fill="none" stroke="#e53935" stroke-width="2"/>
+                    <text x="40" y="92" text-anchor="middle" font-size="11" fill="#e53935">θ</text>
+
+                    <!-- = -->
+                    <text x="105" y="80" text-anchor="middle" font-size="18" fill="#333">=</text>
+
+                    <!-- 三角形2 -->
+                    <polygon points="120,100 180,100 150,55" fill="none" stroke="#4caf50" stroke-width="2"/>
+                    <text x="150" y="115" text-anchor="middle" font-size="14" fill="#4caf50">a</text>
+                    <text x="130" y="72" text-anchor="middle" font-size="14" fill="#4caf50">b</text>
+                    <path d="M 125,100 Q 130,95 135,100" fill="none" stroke="#e53935" stroke-width="2"/>
+                    <text x="130" y="92" text-anchor="middle" font-size="11" fill="#e53935">θ</text>
+                </g>
+
+                <!-- ASA -->
+                <g transform="translate(480, 50)">
+                    <rect x="0" y="0" width="200" height="120" rx="8" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                    <text x="100" y="25" text-anchor="middle" font-size="15" font-weight="bold" fill="#ff9800">ASA（1辺＋両端の角）</text>
+
+                    <!-- 三角形1 -->
+                    <polygon points="30,100 90,100 60,55" fill="none" stroke="#ff9800" stroke-width="2"/>
+                    <text x="60" y="115" text-anchor="middle" font-size="14" fill="#ff9800">a</text>
+                    <!-- 角マーク -->
+                    <path d="M 35,100 Q 40,95 45,100" fill="none" stroke="#e53935" stroke-width="2"/>
+                    <path d="M 85,100 Q 80,95 75,100" fill="none" stroke="#9c27b0" stroke-width="2"/>
+                    <text x="38" y="92" text-anchor="middle" font-size="11" fill="#e53935">α</text>
+                    <text x="82" y="92" text-anchor="middle" font-size="11" fill="#9c27b0">β</text>
+
+                    <!-- = -->
+                    <text x="105" y="80" text-anchor="middle" font-size="18" fill="#333">=</text>
+
+                    <!-- 三角形2 -->
+                    <polygon points="120,100 180,100 150,55" fill="none" stroke="#ff9800" stroke-width="2"/>
+                    <text x="150" y="115" text-anchor="middle" font-size="14" fill="#ff9800">a</text>
+                    <path d="M 125,100 Q 130,95 135,100" fill="none" stroke="#e53935" stroke-width="2"/>
+                    <path d="M 175,100 Q 170,95 165,100" fill="none" stroke="#9c27b0" stroke-width="2"/>
+                    <text x="128" y="92" text-anchor="middle" font-size="11" fill="#e53935">α</text>
+                    <text x="172" y="92" text-anchor="middle" font-size="11" fill="#9c27b0">β</text>
+                </g>
+
+                <!-- 直角三角形の条件 -->
+                <text x="350" y="195" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">直角三角形の合同条件 2パターン</text>
+
+                <!-- 斜辺＋鋭角 -->
+                <g transform="translate(100, 215)">
+                    <rect x="0" y="0" width="220" height="95" rx="8" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
+                    <text x="110" y="22" text-anchor="middle" font-size="15" font-weight="bold" fill="#e91e63">斜辺＋1つの鋭角</text>
+
+                    <!-- 直角三角形1 -->
+                    <polygon points="30,85 90,85 90,45" fill="none" stroke="#e91e63" stroke-width="2"/>
+                    <!-- 直角マーク -->
+                    <rect x="82" y="77" width="8" height="8" fill="none" stroke="#e91e63" stroke-width="1"/>
+                    <text x="60" y="42" text-anchor="middle" font-size="12" fill="#e91e63">斜辺</text>
+                    <path d="M 35,85 Q 42,80 45,85" fill="none" stroke="#9c27b0" stroke-width="2"/>
+                    <text x="42" y="77" text-anchor="middle" font-size="11" fill="#9c27b0">θ</text>
+
+                    <!-- = -->
+                    <text x="115" y="65" text-anchor="middle" font-size="18" fill="#333">=</text>
+
+                    <!-- 直角三角形2 -->
+                    <polygon points="140,85 200,85 200,45" fill="none" stroke="#e91e63" stroke-width="2"/>
+                    <rect x="192" y="77" width="8" height="8" fill="none" stroke="#e91e63" stroke-width="1"/>
+                    <text x="170" y="42" text-anchor="middle" font-size="12" fill="#e91e63">斜辺</text>
+                    <path d="M 145,85 Q 152,80 155,85" fill="none" stroke="#9c27b0" stroke-width="2"/>
+                    <text x="152" y="77" text-anchor="middle" font-size="11" fill="#9c27b0">θ</text>
+                </g>
+
+                <!-- 斜辺＋他の1辺 -->
+                <g transform="translate(380, 215)">
+                    <rect x="0" y="0" width="220" height="95" rx="8" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"/>
+                    <text x="110" y="22" text-anchor="middle" font-size="15" font-weight="bold" fill="#9c27b0">斜辺＋他の1辺</text>
+
+                    <!-- 直角三角形1 -->
+                    <polygon points="30,85 90,85 90,45" fill="none" stroke="#9c27b0" stroke-width="2"/>
+                    <rect x="82" y="77" width="8" height="8" fill="none" stroke="#9c27b0" stroke-width="1"/>
+                    <text x="60" y="42" text-anchor="middle" font-size="12" fill="#9c27b0">斜辺</text>
+                    <text x="60" y="98" text-anchor="middle" font-size="12" fill="#9c27b0">a</text>
+
+                    <!-- = -->
+                    <text x="115" y="65" text-anchor="middle" font-size="18" fill="#333">=</text>
+
+                    <!-- 直角三角形2 -->
+                    <polygon points="140,85 200,85 200,45" fill="none" stroke="#9c27b0" stroke-width="2"/>
+                    <rect x="192" y="77" width="8" height="8" fill="none" stroke="#9c27b0" stroke-width="1"/>
+                    <text x="170" y="42" text-anchor="middle" font-size="12" fill="#9c27b0">斜辺</text>
+                    <text x="170" y="98" text-anchor="middle" font-size="12" fill="#9c27b0">a</text>
+                </g>
+            </svg>
+            <div class="svg-caption">三角形の合同条件5パターン</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 合同条件① SSS（3辺がそれぞれ等しい）</strong> <a href="#ex-sss" class="example-link">→ 例1</a>
+            <p>3組の辺がそれぞれ等しいとき、2つの三角形は合同</p>
+            <p><strong>→ 使う場面：</strong> 辺の長さが3つわかっているとき</p>
+            <p><strong>✅ メリット：</strong> 角度を計算しなくていいので楽！</p>
+            <details class="thinking"><summary>💡 なぜ3辺でOK？</summary>
+            <p>3辺の長さが決まると、三角形の形は1通りに決まる。「辺だけで形が決まる」から、角は調べなくていい。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 合同条件② SAS（2辺とその間の角がそれぞれ等しい）</strong> <a href="#ex-sas" class="example-link">→ 例2</a>
+            <p>2組の辺とその間の角がそれぞれ等しいとき、2つの三角形は合同</p>
+            <p><strong>→ 使う場面：</strong> 辺2つと、その「間の」角がわかっているとき</p>
+            <p><strong>⚠️ 注意：</strong> 角は必ず2辺の「間」！間でない角はダメ！</p>
+            <details class="thinking"><summary>💡 なぜ「間の角」限定？</summary>
+            <p>2辺と「間でない角」がわかっても、三角形の形が1通りに決まらないことがある。間の角なら確実に1通りに決まる。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 合同条件③ ASA（1辺とその両端の角がそれぞれ等しい）</strong> <a href="#ex-asa" class="example-link">→ 例3</a>
+            <p>1組の辺とその両端の角がそれぞれ等しいとき、2つの三角形は合同</p>
+            <p><strong>→ 使う場面：</strong> 辺1つと、その辺の「両端の」角がわかっているとき</p>
+            <p><strong>✅ メリット：</strong> 角が多くわかっているときに使いやすい！</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 直角三角形の合同条件①（斜辺と1つの鋭角）</strong> <a href="#ex-rt1" class="example-link">→ 例4</a>
+            <p>直角三角形で、斜辺と1つの鋭角がそれぞれ等しいとき合同</p>
+            <p><strong>→ 使う場面：</strong> 直角三角形＋斜辺＋鋭角がわかっているとき</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 直角三角形の合同条件②（斜辺と他の1辺）</strong> <a href="#ex-rt2" class="example-link">→ 例5</a>
+            <p>直角三角形で、斜辺と他の1辺がそれぞれ等しいとき合同</p>
+            <p><strong>→ 使う場面：</strong> 直角三角形＋斜辺＋もう1辺がわかっているとき</p>
+            <details class="thinking"><summary>💡 なぜ斜辺＋1辺でOK？</summary>
+            <p>直角があるので、斜辺と他の1辺が決まれば残りの1辺も三平方の定理で決まる。つまり実質的にSSS（3辺）と同じ。</p>
+            </details>
+        </div>
+
+        <!-- 判断フロー -->
+        <div class="important-rule" style="background: linear-gradient(135deg, #e8f5e9, #f3e5f5);">
+            <strong>📊 合同条件の判断フロー</strong>
+            <div class="svg-container" style="margin-top: 15px;">
+                <svg width="650" height="400" viewBox="0 0 650 400">
+                    <!-- 背景 -->
+                    <rect width="650" height="400" fill="#fafafa"/>
+
+                    <!-- 矢印の定義 -->
+                    <defs>
+                        <marker id="arrow-black" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+                        </marker>
+                    </defs>
+
+                    <!-- スタート -->
+                    <ellipse cx="325" cy="35" rx="80" ry="25" fill="#2196f3" stroke="#1565c0" stroke-width="2"/>
+                    <text x="325" y="40" text-anchor="middle" font-size="14" fill="white" font-weight="bold">問題を見る</text>
+
+                    <!-- 最初の分岐：直角三角形か？ -->
+                    <path d="M 325 60 L 325 85" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+                    <polygon points="325,110 430,150 325,190 220,150" fill="#fff9c4" stroke="#fbc02d" stroke-width="2"/>
+                    <text x="325" y="145" text-anchor="middle" font-size="14" fill="#333">直角三角形？</text>
+                    <text x="325" y="162" text-anchor="middle" font-size="12" fill="#666">（図に直角マークあり？）</text>
+
+                    <!-- YES → 直角三角形ルート -->
+                    <text x="445" y="145" font-size="13" fill="#4caf50" font-weight="bold">Yes</text>
+                    <path d="M 430 150 L 530 150" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+
+                    <!-- 直角三角形の分岐 -->
+                    <polygon points="575,150 620,180 575,210 530,180" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
+                    <text x="575" y="177" text-anchor="middle" font-size="13" fill="#333">斜辺が</text>
+                    <text x="575" y="192" text-anchor="middle" font-size="13" fill="#333">わかる？</text>
+
+                    <!-- 斜辺がわかる場合 -->
+                    <text x="625" y="175" font-size="12" fill="#4caf50">Yes</text>
+                    <path d="M 575 210 L 575 240" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+
+                    <!-- 斜辺＋何？ -->
+                    <polygon points="575,265 630,295 575,325 520,295" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"/>
+                    <text x="575" y="290" text-anchor="middle" font-size="12" fill="#333">鋭角 or</text>
+                    <text x="575" y="305" text-anchor="middle" font-size="12" fill="#333">他の1辺？</text>
+
+                    <!-- 結果ボックス -->
+                    <rect x="475" y="345" rx="5" ry="5" width="95" height="35" fill="#e91e63" stroke="#c2185b" stroke-width="2"/>
+                    <text x="522" y="368" text-anchor="middle" font-size="13" fill="white" font-weight="bold">斜辺＋鋭角</text>
+                    <text x="510" y="340" font-size="11" fill="#666">鋭角</text>
+                    <path d="M 550 325 L 530 345" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+
+                    <rect x="580" y="345" rx="5" ry="5" width="95" height="35" fill="#9c27b0" stroke="#7b1fa2" stroke-width="2"/>
+                    <text x="627" y="368" text-anchor="middle" font-size="13" fill="white" font-weight="bold">斜辺＋1辺</text>
+                    <text x="618" y="340" font-size="11" fill="#666">1辺</text>
+                    <path d="M 600 325 L 620 345" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+
+                    <!-- NO → 普通の三角形ルート -->
+                    <text x="200" y="180" font-size="13" fill="#e53935" font-weight="bold">No</text>
+                    <path d="M 220 150 L 120 150 L 120 200" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+
+                    <!-- 辺と角の数 -->
+                    <polygon points="120,225 200,260 120,295 40,260" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                    <text x="120" y="255" text-anchor="middle" font-size="13" fill="#333">わかる辺</text>
+                    <text x="120" y="272" text-anchor="middle" font-size="13" fill="#333">の数は？</text>
+
+                    <!-- 3辺 -->
+                    <text x="45" y="290" font-size="11" fill="#666">3辺</text>
+                    <path d="M 60 295 L 60 340" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+                    <rect x="15" y="345" rx="5" ry="5" width="90" height="35" fill="#1976d2" stroke="#0d47a1" stroke-width="2"/>
+                    <text x="60" y="368" text-anchor="middle" font-size="14" fill="white" font-weight="bold">SSS</text>
+
+                    <!-- 2辺 -->
+                    <text x="130" y="300" font-size="11" fill="#666">2辺</text>
+                    <path d="M 120 295 L 120 320" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+                    <polygon points="120,345 170,365 120,385 70,365" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+                    <text x="120" y="363" text-anchor="middle" font-size="12" fill="#333">間の角</text>
+                    <text x="120" y="378" text-anchor="middle" font-size="12" fill="#333">あり？</text>
+
+                    <!-- SAS -->
+                    <text x="40" y="370" font-size="11" fill="#4caf50">Yes</text>
+                    <path d="M 70 365 L 40 365 L 40 355 L 105 355" stroke="#4caf50" stroke-width="2" stroke-dasharray="4,2"/>
+                    <rect x="115" y="345" rx="5" ry="5" width="80" height="35" fill="#4caf50" stroke="#388e3c" stroke-width="2"/>
+                    <text x="155" y="368" text-anchor="middle" font-size="14" fill="white" font-weight="bold">SAS</text>
+                    <text x="120" y="395" font-size="10" fill="#666">Yesなら</text>
+
+                    <!-- 1辺 -->
+                    <text x="205" y="275" font-size="11" fill="#666">1辺</text>
+                    <path d="M 200 260 L 280 260 L 280 340" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+                    <polygon points="280,365 340,390 280,415 220,390" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                    <text x="280" y="388" text-anchor="middle" font-size="12" fill="#333">両端の角</text>
+                    <text x="280" y="403" text-anchor="middle" font-size="12" fill="#333">あり？</text>
+
+                    <!-- ASA -->
+                    <text x="350" y="385" font-size="11" fill="#4caf50">Yes</text>
+                    <path d="M 340 390 L 380 390" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+                    <rect x="385" y="373" rx="5" ry="5" width="80" height="35" fill="#ff9800" stroke="#f57c00" stroke-width="2"/>
+                    <text x="425" y="396" text-anchor="middle" font-size="14" fill="white" font-weight="bold">ASA</text>
+                </svg>
+                <div class="svg-caption">合同条件の判断フロー</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>問題を見て、どの合同条件を使えばいいか判断する練習をしましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 一般の三角形</h3>
+
+        <div class="example-box" id="ex-sss">
+            <div class="example-title">
+                <span class="number-badge">例1</span>SSS（3辺）を使う問題
+            </div>
+            <p>△ABCと△DEFにおいて、AB=DE、BC=EF、CA=FDのとき、△ABC≡△DEFを証明せよ。</p>
+            <p><strong>条件を選ぶ判断：</strong></p>
+            <ol>
+                <li>直角三角形ではない → 普通の三角形ルート</li>
+                <li>わかっている辺は？ → AB、BC、CA の<strong>3辺</strong></li>
+                <li>3辺がわかっている → <strong>SSS</strong>を使う！</li>
+            </ol>
+            <p><strong>証明：</strong></p>
+            <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin-top: 10px;">
+                △ABCと△DEFにおいて<br>
+                　AB = DE …①<br>
+                　BC = EF …②<br>
+                　CA = FD …③<br>
+                ①②③より、3組の辺がそれぞれ等しいから<br>
+                △ABC ≡ △DEF（SSS）
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-sas">
+            <div class="example-title">
+                <span class="number-badge">例2</span>SAS（2辺＋間の角）を使う問題
+            </div>
+            <p>△ABCと△DEFにおいて、AB=DE、∠ABC=∠DEF、BC=EFのとき、△ABC≡△DEFを証明せよ。</p>
+            <p><strong>条件を選ぶ判断：</strong></p>
+            <ol>
+                <li>直角三角形ではない → 普通の三角形ルート</li>
+                <li>わかっている辺は？ → AB、BC の<strong>2辺</strong></li>
+                <li>角∠ABCは辺ABと辺BCの「間の角」か？ → <strong>Yes！</strong></li>
+                <li>2辺と間の角 → <strong>SAS</strong>を使う！</li>
+            </ol>
+            <p><strong>証明：</strong></p>
+            <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin-top: 10px;">
+                △ABCと△DEFにおいて<br>
+                　AB = DE …①<br>
+                　∠ABC = ∠DEF …②<br>
+                　BC = EF …③<br>
+                ①②③より、2組の辺とその間の角がそれぞれ等しいから<br>
+                △ABC ≡ △DEF（SAS）
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-asa">
+            <div class="example-title">
+                <span class="number-badge">例3</span>ASA（1辺＋両端の角）を使う問題
+            </div>
+            <p>△ABCと△DEFにおいて、∠BAC=∠EDF、AC=DF、∠ACB=∠DFEのとき、△ABC≡△DEFを証明せよ。</p>
+            <p><strong>条件を選ぶ判断：</strong></p>
+            <ol>
+                <li>直角三角形ではない → 普通の三角形ルート</li>
+                <li>わかっている辺は？ → ACの<strong>1辺</strong></li>
+                <li>角∠BACは辺ACの端の角か？ → <strong>Yes！</strong>（頂点Aにある）</li>
+                <li>角∠ACBも辺ACの端の角か？ → <strong>Yes！</strong>（頂点Cにある）</li>
+                <li>1辺と両端の角 → <strong>ASA</strong>を使う！</li>
+            </ol>
+            <p><strong>証明：</strong></p>
+            <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin-top: 10px;">
+                △ABCと△DEFにおいて<br>
+                　∠BAC = ∠EDF …①<br>
+                　AC = DF …②<br>
+                　∠ACB = ∠DFE …③<br>
+                ①②③より、1組の辺とその両端の角がそれぞれ等しいから<br>
+                △ABC ≡ △DEF（ASA）
+            </div>
+        </div>
+
+        <h3 style="color: #e91e63; margin: 25px 0 10px 0;">▶ 直角三角形</h3>
+
+        <div class="example-box" id="ex-rt1">
+            <div class="example-title">
+                <span class="number-badge">例4</span>斜辺と1つの鋭角を使う問題
+            </div>
+            <p>直角三角形ABCと直角三角形DEFにおいて、∠ACB=∠DFE=90°、AB=DE（斜辺）、∠ABC=∠DEFのとき、△ABC≡△DEFを証明せよ。</p>
+            <p><strong>条件を選ぶ判断：</strong></p>
+            <ol>
+                <li>直角三角形である → 直角三角形ルート！</li>
+                <li>斜辺ABがわかっている → 斜辺の条件が使える</li>
+                <li>角∠ABCは鋭角 → <strong>斜辺＋1つの鋭角</strong>を使う！</li>
+            </ol>
+            <p><strong>証明：</strong></p>
+            <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin-top: 10px;">
+                △ABCと△DEFにおいて<br>
+                　∠ACB = ∠DFE = 90° …①<br>
+                　AB = DE（斜辺） …②<br>
+                　∠ABC = ∠DEF …③<br>
+                ①②③より、直角三角形で斜辺と1つの鋭角がそれぞれ等しいから<br>
+                △ABC ≡ △DEF
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-rt2">
+            <div class="example-title">
+                <span class="number-badge">例5</span>斜辺と他の1辺を使う問題
+            </div>
+            <p>直角三角形ABCと直角三角形DEFにおいて、∠ACB=∠DFE=90°、AB=DE（斜辺）、BC=EFのとき、△ABC≡△DEFを証明せよ。</p>
+            <p><strong>条件を選ぶ判断：</strong></p>
+            <ol>
+                <li>直角三角形である → 直角三角形ルート！</li>
+                <li>斜辺ABがわかっている → 斜辺の条件が使える</li>
+                <li>辺BCがわかっている（鋭角ではなく辺） → <strong>斜辺＋他の1辺</strong>を使う！</li>
+            </ol>
+            <p><strong>証明：</strong></p>
+            <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin-top: 10px;">
+                △ABCと△DEFにおいて<br>
+                　∠ACB = ∠DFE = 90° …①<br>
+                　AB = DE（斜辺） …②<br>
+                　BC = EF …③<br>
+                ①②③より、直角三角形で斜辺と他の1辺がそれぞれ等しいから<br>
+                △ABC ≡ △DEF
+            </div>
+        </div>
+
+        <h3 style="color: #9c27b0; margin: 25px 0 10px 0;">▶ 図から条件を見つける問題</h3>
+
+        <div class="example-box" id="ex-find">
+            <div class="example-title">
+                <span class="number-badge">例6</span>条件を自分で見つける問題
+            </div>
+            <p>四角形ABCDで、対角線ACとBDが点Oで交わり、AO=CO、BO=DOのとき、△ABO≡△CDOを証明せよ。</p>
+
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="300" height="220" viewBox="0 0 300 220">
+                    <rect width="300" height="220" fill="#fafafa"/>
+                    <!-- 四角形ABCD -->
+                    <polygon points="50,50 250,70 230,180 70,170" fill="none" stroke="#333" stroke-width="2"/>
+                    <!-- 対角線 -->
+                    <line x1="50" y1="50" x2="230" y2="180" stroke="#1976d2" stroke-width="2"/>
+                    <line x1="250" y1="70" x2="70" y2="170" stroke="#1976d2" stroke-width="2"/>
+                    <!-- 点O -->
+                    <circle cx="143" cy="117" r="4" fill="#e53935"/>
+                    <!-- 等しい辺のマーク -->
+                    <line x1="85" y1="75" x2="95" y2="70" stroke="#4caf50" stroke-width="2"/>
+                    <line x1="178" y1="143" x2="188" y2="138" stroke="#4caf50" stroke-width="2"/>
+                    <line x1="185" y1="95" x2="190" y2="105" stroke="#ff9800" stroke-width="2"/>
+                    <line x1="110" y1="135" x2="115" y2="145" stroke="#ff9800" stroke-width="2"/>
+                    <!-- ラベル -->
+                    <text x="40" y="45" font-size="14" fill="#333">A</text>
+                    <text x="255" y="70" font-size="14" fill="#333">B</text>
+                    <text x="235" y="190" font-size="14" fill="#333">C</text>
+                    <text x="55" y="180" font-size="14" fill="#333">D</text>
+                    <text x="145" y="110" font-size="14" fill="#e53935">O</text>
+                </svg>
+                <div class="svg-caption">対角線が点Oで交わる四角形</div>
+            </div>
+
+            <p><strong>条件を探す：</strong></p>
+            <ol>
+                <li>AO = CO（問題文にある）… 辺1つ目</li>
+                <li>BO = DO（問題文にある）… 辺2つ目</li>
+                <li>∠AOB と ∠COD は対頂角だから等しい … 角1つ</li>
+            </ol>
+            <p><strong>条件を選ぶ判断：</strong></p>
+            <ol>
+                <li>直角三角形ではない → 普通の三角形ルート</li>
+                <li>わかった辺は AO、BO の<strong>2辺</strong></li>
+                <li>∠AOBは辺AOと辺BOの「間の角」か？ → <strong>Yes！</strong></li>
+                <li>2辺と間の角 → <strong>SAS</strong>を使う！</li>
+            </ol>
+            <p><strong>証明：</strong></p>
+            <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin-top: 10px;">
+                △ABOと△CDOにおいて<br>
+                　AO = CO …①（仮定）<br>
+                　BO = DO …②（仮定）<br>
+                　∠AOB = ∠COD …③（対頂角）<br>
+                ①②③より、2組の辺とその間の角がそれぞれ等しいから<br>
+                △ABO ≡ △CDO（SAS）
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：まず「辺の数」を数える</strong><br>
+            条件を選ぶ第一歩は「わかっている辺がいくつあるか」。<br>
+            3辺→SSS、2辺→SAS（間の角があれば）、1辺→ASA（両端の角があれば）
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：直角三角形なら特別条件を優先</strong><br>
+            直角三角形で斜辺がわかっているなら、特別条件（斜辺＋鋭角 or 斜辺＋1辺）を使おう。<br>
+            普通の条件（SSS、SAS、ASA）でも証明できるが、特別条件のほうが楽なことが多い。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：対頂角・平行線を見落とすな</strong><br>
+            図から条件を見つける問題では、問題文に書かれていない条件が隠れている。<br>
+            <strong>よく使う隠れ条件：</strong><br>
+            ・対頂角は等しい<br>
+            ・平行線の錯角・同位角は等しい<br>
+            ・共通の辺・角は等しい（同じ辺や角を2つの三角形が共有している）
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：証明の書き方のテンプレ</strong><br>
+            証明の書き方は決まったパターンがある：<br>
+            ①「△ABCと△DEFにおいて」で始める<br>
+            ②条件を「〜 = 〜 …①」「〜 = 〜 …②」と番号付きで列挙<br>
+            ③「①②③より、〜だから」と結ぶ<br>
+            ④「△ABC ≡ △DEF（合同条件名）」で終わる
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：SASで「間の角」を間違える</div>
+            <p><strong>ダメな例：</strong> 「AB=DE、BC=EF、∠CAB=∠FDE だからSAS」</p>
+            <p>→ ∠CABは辺ABと辺BCの「間の角」ではない！（辺CAと辺ABの間の角）</p>
+            <p><strong>対策：</strong> 角の頂点が、2辺の両方に含まれているか確認。∠ABCなら、頂点Bが辺ABにも辺BCにも含まれている→間の角OK。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：ASAで「両端の角」を間違える</div>
+            <p><strong>ダメな例：</strong> 「AC=DF、∠ABC=∠DEF、∠BAC=∠EDF だからASA」</p>
+            <p>→ ∠ABCは辺ACの「端の角」ではない！（頂点Bは辺ACに含まれない）</p>
+            <p><strong>対策：</strong> 角の頂点が、わかっている辺の端点かを確認。辺ACなら、角は頂点Aか頂点Cにあるべき。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：条件を書く順番がバラバラ</div>
+            <p><strong>ダメな例：</strong> 「∠ABC=∠DEF、AB=DE、BC=EF だからSAS」</p>
+            <p>→ 順番がバラバラだと「間の角」がどこかわかりにくい</p>
+            <p><strong>対策：</strong> <strong>辺→角→辺</strong>の順番で書く。こうすると「真ん中の角」が間の角だとわかりやすい。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：斜辺を見落とす</div>
+            <p><strong>ダメな例：</strong> 直角三角形なのにSSSで証明しようとして、3辺目がわからず詰まる</p>
+            <p><strong>対策：</strong> 直角三角形なら、まず「斜辺」を探す。斜辺は直角の向かい側にある最も長い辺。斜辺がわかれば、あと1つの情報（鋭角 or 他の1辺）で合同が示せる。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">直角三角形かどうかを最初に確認した</div>
+            <div class="checklist-item">わかっている辺の数を数えた（3辺/2辺/1辺）</div>
+            <div class="checklist-item">SASなら「間の角」、ASAなら「両端の角」を確認した</div>
+            <div class="checklist-item">対頂角や共通の辺など、隠れた条件を見つけた</div>
+            <div class="checklist-item">証明の最後に合同条件名（SSS/SAS/ASAなど）を書いた</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、どの合同条件を使うか判断してみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>△ABCと△DEFにおいて、AB=DE、AC=DF、BC=EFのとき、△ABC≡△DEFを証明せよ。どの合同条件を使う？</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>使う条件：SSS（3組の辺がそれぞれ等しい）</strong></p>
+                    <p>判断理由：AB、AC、BCの3辺がわかっている→SSS</p>
+                    <p><strong>証明：</strong><br>
+                    △ABCと△DEFにおいて<br>
+                    　AB = DE …①<br>
+                    　AC = DF …②<br>
+                    　BC = EF …③<br>
+                    ①②③より、3組の辺がそれぞれ等しいから<br>
+                    △ABC ≡ △DEF（SSS）</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>右の図で、AB//CD、AB=CDのとき、△ABO≡△CDOを証明せよ。どの合同条件を使う？</p>
+            <div class="svg-container" style="margin: 10px 0;">
+                <svg width="280" height="180" viewBox="0 0 280 180">
+                    <rect width="280" height="180" fill="#fafafa"/>
+                    <!-- 平行四辺形っぽい図 -->
+                    <line x1="30" y1="50" x2="130" y2="50" stroke="#333" stroke-width="2"/>
+                    <line x1="150" y1="130" x2="250" y2="130" stroke="#333" stroke-width="2"/>
+                    <line x1="30" y1="50" x2="150" y2="130" stroke="#1976d2" stroke-width="2"/>
+                    <line x1="130" y1="50" x2="250" y2="130" stroke="#1976d2" stroke-width="2"/>
+                    <!-- 点O -->
+                    <circle cx="140" cy="90" r="4" fill="#e53935"/>
+                    <!-- 平行マーク -->
+                    <line x1="75" y1="45" x2="85" y2="45" stroke="#4caf50" stroke-width="2"/>
+                    <line x1="75" y1="48" x2="85" y2="48" stroke="#4caf50" stroke-width="2"/>
+                    <line x1="195" y1="125" x2="205" y2="125" stroke="#4caf50" stroke-width="2"/>
+                    <line x1="195" y1="128" x2="205" y2="128" stroke="#4caf50" stroke-width="2"/>
+                    <!-- ラベル -->
+                    <text x="20" y="45" font-size="14" fill="#333">A</text>
+                    <text x="130" y="45" font-size="14" fill="#333">B</text>
+                    <text x="255" y="135" font-size="14" fill="#333">C</text>
+                    <text x="140" y="145" font-size="14" fill="#333">D</text>
+                    <text x="145" y="85" font-size="14" fill="#e53935">O</text>
+                </svg>
+            </div>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>使う条件：ASA（1組の辺とその両端の角がそれぞれ等しい）</strong></p>
+                    <p>見つける条件：<br>
+                    ・AB = CD（仮定）… 辺<br>
+                    ・∠OAB = ∠OCD（AB//CDの錯角）… ABの端の角<br>
+                    ・∠OBA = ∠ODC（AB//CDの錯角）… ABの端の角</p>
+                    <p><strong>証明：</strong><br>
+                    △ABOと△CDOにおいて<br>
+                    　AB = CD …①（仮定）<br>
+                    　∠OAB = ∠OCD …②（錯角）<br>
+                    　∠OBA = ∠ODC …③（錯角）<br>
+                    ①②③より、1組の辺とその両端の角がそれぞれ等しいから<br>
+                    △ABO ≡ △CDO（ASA）</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：まず辺の数を数え、間の角・両端の角をチェック。直角三角形なら斜辺を探せ！
+</div>
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「幾何学に王道なし」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 ユークリッドと王様（紀元前300年頃・エジプト）</div>
+
+            <p>紀元前300年頃、エジプトのアレクサンドリア。ここに世界最高の図書館があった。その図書館で働く数学者ユークリッドは、ある日とんでもない本を書き上げた。</p>
+
+            <p>その名も<strong>『原論（ストイケイア）』</strong>——幾何学のすべてをまとめた13巻の大著だ。</p>
+
+            <p>この本、ちょっと変わっていた。最初に「点」「線」「角」などの定義を決め、誰もが納得する基本ルール（公理）を5つだけ置く。そこから全ての定理を<strong>論理だけで証明</strong>していく。三角形の合同条件も、この本で初めて「なぜ3辺が等しければ合同なのか」が証明された。</p>
+
+            <p>さて、この本の噂を聞いたエジプト王プトレマイオス1世。ユークリッドを宮殿に呼び出してこう言った。</p>
+
+            <p style="color: #1976d2; font-size: 1.1em;">「おい、この本、難しすぎるぞ。もっと簡単に幾何学をマスターできる<strong>近道</strong>はないのか？」</p>
+
+            <p>王様である。国を治める仕事で忙しい。効率的に学びたいのは当然だ。</p>
+
+            <p>しかしユークリッドは、こう答えた。</p>
+
+            <p style="color: #e53935; font-size: 1.2em; font-weight: bold;">「幾何学に王道なし（There is no royal road to geometry）」</p>
+
+            <p>つまり、「王様だからって特別な近道はありませんよ」ということ。王様もへったくれもなく、みんな同じように一歩一歩学ぶしかない、と。</p>
+
+            <p>王様の反応は記録に残っていない。たぶん苦笑いしたんじゃないだろうか。</p>
+
+            <hr style="margin: 20px 0; border: none; border-top: 1px dashed #ccc;">
+
+            <p>ちなみにこの『原論』、その後<strong>2300年以上</strong>読み継がれ、聖書の次に多く印刷された本とも言われる。リンカーン大統領も愛読者だったとか。</p>
+
+            <p>「王道はない」とは言ったが、実はユークリッドはちゃんと「効率的な学び方」を本に書いている。それが今回学んだ<strong>合同条件</strong>だ。</p>
+
+            <p>3辺を測る代わりに「2辺と間の角」で済ませたり、「1辺と両端の角」だけで三角形の形を決めたり。これらは「無駄な情報を省いて効率よく判断する方法」そのものだ。</p>
+
+            <p style="color: #333; font-weight: bold;">近道はないが、<strong>効率的なルート</strong>はある。<br>それを2300年前に整理してくれたユークリッドに感謝しよう。</p>
+
+            <p style="font-size: 0.9em; color: #666; margin-top: 20px;">
+            ※ユークリッドの『原論』は、その後のすべての数学教科書の原型となりました（<a href="https://ja.wikipedia.org/wiki/%E3%83%A6%E3%83%BC%E3%82%AF%E3%83%AA%E3%83%83%E3%83%89%E5%8E%9F%E8%AB%96" target="_blank" style="color: #1976d2;">ユークリッド原論 - Wikipedia</a>）。
+            </p>
+        </div>
+    </div>
+</section>

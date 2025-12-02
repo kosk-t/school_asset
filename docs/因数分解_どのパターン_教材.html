@@ -1,0 +1,715 @@
+---
+layout: material-raw
+title: 因数分解：どのパターン？
+icon: "🔍"
+description: 共通因数・和と差の積・完全平方・和と積・たすき掛けの5パターンから、式を見て最適な方法を瞬時に選ぶ判断力を身につける。因数分解マスターへの近道！
+level: 標準
+level_num: 2
+category: numbers
+order: 3
+keywords:
+  - 因数分解
+  - パターン判別
+  - 共通因数
+  - 完全平方
+  - たすき掛け
+  - 和と差の積
+cover_image: /images/noimage.jpg
+cover_description: 分岐するフローチャート、5つの因数分解パターンアイコン、パズルのピースがはまるイメージ
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学と暗号「因数分解がインターネットを守る」"
+related:
+  - url: /二次方程式の解き方_教材.html
+    title: 二次方程式の解き方
+    note: 因数分解の次はこれを習得しよう
+    type: related
+  - url: /二次方程式_解法の選び方_教材.html
+    title: 二次方程式：解法の選び方
+    note: 因数分解の判断力が活きる
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>因数分解のやり方は知っている。でも問題を見たとき、<strong>「どのパターンを使えばいいの？」</strong>と迷ったことはないだろうか？</p>
+
+        <p>このページでは、<strong>パターンを見抜く判断力</strong>を身につけます：</p>
+        <ul>
+            <li><strong>5秒で判断</strong>：式を見た瞬間に使うパターンがわかる</li>
+            <li><strong>判断フローチャート</strong>：迷わないための決定木</li>
+            <li><strong>5つのパターン</strong>：共通因数・和と差の積・完全平方・和と積・たすき掛け</li>
+        </ul>
+
+        <div class="tip-box">
+            <strong>💡 なぜ「パターン判別」が重要？</strong><br>
+            因数分解は二次方程式を解く最速の武器。でも<strong>正しいパターンを選べなければ時間をロスする</strong>。パターンを瞬時に見抜ければ、テストで大きな差がつく！
+        </div>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要：まず「共通因数」をチェック！その後で公式パターンを探せ！
+        </div>
+
+        <!-- 判断フローチャート -->
+        <div class="svg-container">
+            <svg width="700" height="560" viewBox="0 0 700 560">
+                <defs>
+                    <marker id="arrow-main" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#666" />
+                    </marker>
+                </defs>
+
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">因数分解 パターン判別フローチャート</text>
+
+                <!-- スタート -->
+                <rect x="250" y="40" width="200" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="20" />
+                <text x="350" y="65" font-size="14" font-weight="bold" fill="#1565c0" text-anchor="middle">因数分解したい式</text>
+
+                <!-- 矢印1 -->
+                <path d="M 350 80 L 350 110" stroke="#666" stroke-width="2" marker-end="url(#arrow-main)" />
+
+                <!-- 判断1：共通因数 -->
+                <polygon points="350,120 460,165 350,210 240,165" fill="#fff3e0" stroke="#ff9800" stroke-width="2" />
+                <text x="350" y="160" font-size="14" fill="#333" text-anchor="middle">共通因数ある？</text>
+                <text x="350" y="178" font-size="14" fill="#333" text-anchor="middle">（全項に共通の因数）</text>
+
+                <!-- YES: くくり出す -->
+                <path d="M 460 165 L 550 165" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow-main)" />
+                <text x="485" y="155" font-size="14" fill="#4caf50">Yes</text>
+                <rect x="560" y="145" width="120" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="8" />
+                <text x="620" y="170" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">まず</text>
+                <text x="620" y="185" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">くくり出す</text>
+
+                <!-- NO: 次へ -->
+                <path d="M 350 210 L 350 245" stroke="#666" stroke-width="2" marker-end="url(#arrow-main)" />
+                <text x="360" y="228" font-size="14" fill="#e65100">No</text>
+
+                <!-- 判断2：項の数 -->
+                <polygon points="350,255 445,295 350,335 255,295" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" />
+                <text x="350" y="295" font-size="14" fill="#333" text-anchor="middle">項が2つ？</text>
+
+                <!-- YES: 和と差の積 -->
+                <path d="M 445 295 L 550 295" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow-main)" />
+                <text x="475" y="285" font-size="14" fill="#4caf50">Yes</text>
+                <rect x="560" y="275" width="120" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="8" />
+                <text x="620" y="300" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">和と差の積</text>
+                <text x="620" y="330" font-size="12" fill="#666" text-anchor="middle">a² − b²</text>
+
+                <!-- NO: 次へ -->
+                <path d="M 350 335 L 350 365" stroke="#666" stroke-width="2" marker-end="url(#arrow-main)" />
+                <text x="360" y="353" font-size="14" fill="#e65100">No</text>
+
+                <!-- 判断3：完全平方？ -->
+                <polygon points="350,375 475,420 350,465 225,420" fill="#fce4ec" stroke="#e91e63" stroke-width="2" />
+                <text x="350" y="410" font-size="14" fill="#333" text-anchor="middle">定数項が</text>
+                <text x="350" y="428" font-size="14" fill="#333" text-anchor="middle">「半分の2乗」？</text>
+
+                <!-- YES: 完全平方 -->
+                <path d="M 225 420 L 130 420" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow-main)" />
+                <text x="170" y="410" font-size="14" fill="#4caf50">Yes</text>
+                <rect x="20" y="400" width="100" height="40" fill="#fce4ec" stroke="#e91e63" stroke-width="2" rx="8" />
+                <text x="70" y="425" font-size="14" font-weight="bold" fill="#c2185b" text-anchor="middle">完全平方</text>
+                <text x="70" y="455" font-size="12" fill="#666" text-anchor="middle">(a ± b)²</text>
+
+                <!-- NO: 次へ -->
+                <path d="M 350 465 L 350 495" stroke="#666" stroke-width="2" marker-end="url(#arrow-main)" />
+                <text x="360" y="483" font-size="14" fill="#e65100">No</text>
+
+                <!-- 判断4：a=1？ -->
+                <polygon points="350,505 435,535 350,565 265,535" fill="#e1f5fe" stroke="#03a9f4" stroke-width="2" />
+                <text x="350" y="540" font-size="14" fill="#333" text-anchor="middle">x²の係数が1？</text>
+
+                <!-- YES: 和と積 -->
+                <path d="M 265 535 L 130 535" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow-main)" />
+                <text x="190" y="525" font-size="14" fill="#4caf50">Yes</text>
+                <rect x="20" y="515" width="100" height="40" fill="#e1f5fe" stroke="#03a9f4" stroke-width="2" rx="8" />
+                <text x="70" y="540" font-size="14" font-weight="bold" fill="#0277bd" text-anchor="middle">和と積</text>
+
+                <!-- NO: たすき掛け -->
+                <path d="M 435 535 L 550 535" stroke="#e65100" stroke-width="2" marker-end="url(#arrow-main)" />
+                <text x="475" y="525" font-size="14" fill="#e65100">No</text>
+                <rect x="560" y="515" width="120" height="40" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="8" />
+                <text x="620" y="540" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">たすき掛け</text>
+            </svg>
+            <div class="svg-caption">共通因数のチェックが最優先！その後で公式パターンを探す</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 パターン①：共通因数をくくり出す【最優先】</strong> <a href="#ex-common" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ ab + ac = a(b + c) \]
+            </div>
+            <p><strong>見分け方：</strong>全ての項に同じ因数が含まれている</p>
+            <p><strong>→ だから結果は：</strong>共通因数を外に出し、残りをカッコ内に書く</p>
+            <p><strong>✅ メリット：</strong>最優先でチェック。これをやらないと他のパターンが見えないことも多い！</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>「分配法則」の逆。\(a(b + c) = ab + ac\) を右から左に読むと、共通因数 \(a\) を外に出す操作になる。数字も文字もまとめてくくれる。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 パターン②：和と差の積（2項のとき）</strong> <a href="#ex-diff" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ a^2 - b^2 = (a + b)(a - b) \]
+            </div>
+            <p><strong>見分け方：</strong>2項だけで、両方が「何かの2乗」になっている</p>
+            <p><strong>→ だから結果は：</strong>それぞれの平方根を取って、(a+b)(a-b) の形にする</p>
+            <p><strong>✅ メリット：</strong>一瞬で因数分解完了。2項のときは真っ先にチェック！</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>(a+b)(a-b) を展開すると \(a^2 - ab + ab - b^2 = a^2 - b^2\)。真ん中の項が消えるから「2乗 - 2乗」の形になる。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 パターン③：完全平方（3項で定数項が「半分の2乗」）</strong> <a href="#ex-perfect" class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ a^2 + 2ab + b^2 = (a + b)^2 \]
+                \[ a^2 - 2ab + b^2 = (a - b)^2 \]
+            </div>
+            <p><strong>見分け方：</strong>「1次の項の係数÷2」を2乗すると定数項になる</p>
+            <p>例：\(x^2 + 6x + 9\) → \((6÷2)^2 = 9\) ✓ → 完全平方！</p>
+            <p><strong>→ だから結果は：</strong>\((x ± 3)^2\) の形（符号は1次の項と同じ）</p>
+            <p><strong>✅ メリット：</strong>気づければ一瞬。二次方程式の重解パターンにもつながる。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>\((a + b)^2 = a^2 + 2ab + b^2\)。1次の項 \(2ab\) の係数の半分が \(b\) で、その2乗 \(b^2\) が定数項。だから「半分の2乗」で判定できる。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 パターン④：和と積（x²の係数が1のとき）</strong> <a href="#ex-sum-prod" class="example-link">→ 例4</a>
+            <div class="formula">
+                \[ x^2 + (p+q)x + pq = (x + p)(x + q) \]
+            </div>
+            <p><strong>見分け方：</strong>\(x^2\) の係数が1で、完全平方ではない</p>
+            <p><strong>見つけ方：</strong>「足して（1次の項の係数）、かけて（定数項）」になる2数を探す</p>
+            <p><strong>→ だから結果は：</strong>見つけた2数 \(p, q\) を使って \((x + p)(x + q)\) の形にする</p>
+            <p><strong>✅ メリット：</strong>最もよく使うパターン。慣れれば10秒で見つかる。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>\((x + p)(x + q) = x^2 + (p+q)x + pq\) を展開して比較。1次の項は「和」、定数項は「積」になっている。だから「足して○、かけて△」で探せる。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 パターン⑤：たすき掛け（x²の係数が1でないとき）</strong> <a href="#ex-cross" class="example-link">→ 例5</a>
+            <div class="formula">
+                \[ ax^2 + bx + c = (mx + p)(nx + q) \quad (mn = a, pq = c) \]
+            </div>
+            <p><strong>見分け方：</strong>\(x^2\) の係数が1でない</p>
+            <p><strong>見つけ方：</strong>\(a\) と \(c\) を2数に分解し、たすき掛けで \(b\) になる組み合わせを探す</p>
+            <p><strong>→ だから結果は：</strong>見つけた組み合わせで \((mx + p)(nx + q)\) の形にする</p>
+            <p><strong>✅ メリット：</strong>慣れれば強力。でも見つからなければ解の公式へ切り替える。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>\((mx + p)(nx + q) = mnx^2 + (mq + np)x + pq\)。つまり \(a = mn\)、\(c = pq\)、\(b = mq + np\)。たすき掛け図で「クロスして足して \(b\) になる」組み合わせを探す。</p>
+            </details>
+        </div>
+
+        <!-- パターン比較表 -->
+        <div class="rule-box">
+            <strong>📌 パターン比較まとめ</strong>
+            <table class="material-table">
+                <tr>
+                    <th>パターン</th>
+                    <th>式の特徴</th>
+                    <th>公式</th>
+                    <th>所要時間</th>
+                </tr>
+                <tr>
+                    <td><strong>共通因数</strong></td>
+                    <td>全項に共通因数</td>
+                    <td>\(ab + ac = a(b+c)\)</td>
+                    <td>5秒</td>
+                </tr>
+                <tr>
+                    <td><strong>和と差の積</strong></td>
+                    <td>2項で両方が2乗</td>
+                    <td>\(a^2 - b^2\)</td>
+                    <td>5秒</td>
+                </tr>
+                <tr>
+                    <td><strong>完全平方</strong></td>
+                    <td>定数項=半分の2乗</td>
+                    <td>\((a \pm b)^2\)</td>
+                    <td>10秒</td>
+                </tr>
+                <tr>
+                    <td><strong>和と積</strong></td>
+                    <td>x²の係数が1</td>
+                    <td>\((x+p)(x+q)\)</td>
+                    <td>15秒</td>
+                </tr>
+                <tr>
+                    <td><strong>たすき掛け</strong></td>
+                    <td>x²の係数が1でない</td>
+                    <td>\((mx+p)(nx+q)\)</td>
+                    <td>30秒〜</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p><strong>「どのパターンを使うか」の判断</strong>に注目して例題を解きましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ パターン①：共通因数をくくり出す</h3>
+
+        <div class="example-box" id="ex-common">
+            <div class="example-title">
+                <span class="number-badge">例1</span>共通因数パターン
+            </div>
+            <p>\(6x^2 + 9x\) を因数分解する</p>
+            <p><strong>判断（5秒）：</strong></p>
+            <ol>
+                <li>全ての項に \(3x\) が含まれている → <strong>共通因数をくくり出す！</strong></li>
+            </ol>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>共通因数 \(3x\) を外に出す</li>
+                <li>各項を \(3x\) で割った結果をカッコ内に書く</li>
+            </ol>
+            <div class="formula">
+                \[ 6x^2 + 9x = 3x(2x + 3) \]
+            </div>
+            <p style="color: #4caf50;"><strong>所要時間：約5秒</strong></p>
+        </div>
+
+        <div class="example-box" id="ex-common2">
+            <div class="example-title">
+                <span class="number-badge">例1b</span>共通因数 → さらに因数分解
+            </div>
+            <p>\(2x^2 - 8\) を因数分解する</p>
+            <p><strong>判断（5秒）：</strong></p>
+            <ol>
+                <li>全ての項に \(2\) が含まれている → まずくくり出す</li>
+                <li>くくった後に他のパターンが適用できるかチェック！</li>
+            </ol>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>共通因数 \(2\) をくくり出す</li>
+                <li>カッコ内が \(x^2 - 4\) → 和と差の積！</li>
+            </ol>
+            <div class="formula">
+                \[ 2x^2 - 8 = 2(x^2 - 4) = 2(x + 2)(x - 2) \]
+            </div>
+            <p style="color: #ff9800;"><strong>ポイント：</strong>くくった後も他のパターンをチェックすること！</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ パターン②：和と差の積</h3>
+
+        <div class="example-box" id="ex-diff">
+            <div class="example-title">
+                <span class="number-badge">例2</span>和と差の積パターン
+            </div>
+            <p>\(25x^2 - 16\) を因数分解する</p>
+            <p><strong>判断（5秒）：</strong></p>
+            <ol>
+                <li>2項だけ</li>
+                <li>\(25x^2 = (5x)^2\)、\(16 = 4^2\) で両方が2乗 → <strong>和と差の積！</strong></li>
+            </ol>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>それぞれの平方根を取る：\(5x\) と \(4\)</li>
+                <li>(和)(差) の形にする</li>
+            </ol>
+            <div class="formula">
+                \[ 25x^2 - 16 = (5x)^2 - 4^2 = (5x + 4)(5x - 4) \]
+            </div>
+            <p style="color: #4caf50;"><strong>所要時間：約5秒</strong></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ パターン③：完全平方</h3>
+
+        <div class="example-box" id="ex-perfect">
+            <div class="example-title">
+                <span class="number-badge">例3</span>完全平方パターン
+            </div>
+            <p>\(x^2 + 10x + 25\) を因数分解する</p>
+            <p><strong>判断（10秒）：</strong></p>
+            <ol>
+                <li>1次の項の係数は \(10\)</li>
+                <li>\((10 \div 2)^2 = 5^2 = 25\) → 定数項と一致！ → <strong>完全平方！</strong></li>
+            </ol>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>「半分」の \(5\) を使う</li>
+                <li>1次の項が正なので \((x + 5)^2\)</li>
+            </ol>
+            <div class="formula">
+                \[ x^2 + 10x + 25 = (x + 5)^2 \]
+            </div>
+            <p style="color: #4caf50;"><strong>所要時間：約10秒</strong></p>
+        </div>
+
+        <div class="example-box" id="ex-perfect2">
+            <div class="example-title">
+                <span class="number-badge">例3b</span>完全平方パターン（マイナス）
+            </div>
+            <p>\(x^2 - 14x + 49\) を因数分解する</p>
+            <p><strong>判断（10秒）：</strong></p>
+            <ol>
+                <li>1次の項の係数は \(-14\)</li>
+                <li>\((-14 \div 2)^2 = (-7)^2 = 49\) → 定数項と一致！ → <strong>完全平方！</strong></li>
+            </ol>
+            <p><strong>解き方：</strong></p>
+            <div class="formula">
+                \[ x^2 - 14x + 49 = (x - 7)^2 \]
+            </div>
+            <p style="color: #ff9800;"><strong>ポイント：</strong>1次の項がマイナスなら \((x - ○)^2\) になる</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ パターン④：和と積</h3>
+
+        <div class="example-box" id="ex-sum-prod">
+            <div class="example-title">
+                <span class="number-badge">例4</span>和と積パターン
+            </div>
+            <p>\(x^2 + 5x + 6\) を因数分解する</p>
+            <p><strong>判断（10秒）：</strong></p>
+            <ol>
+                <li>\(x^2\) の係数が \(1\)</li>
+                <li>\((5 \div 2)^2 = 6.25 \neq 6\) → 完全平方ではない</li>
+                <li>→ <strong>和と積！</strong>「足して5、かけて6」の2数を探す</li>
+            </ol>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>6の約数ペア：(1,6), (2,3)</li>
+                <li>足して5になるのは \(2 + 3 = 5\) ✓</li>
+            </ol>
+            <div class="formula">
+                \[ x^2 + 5x + 6 = (x + 2)(x + 3) \]
+            </div>
+            <p style="color: #4caf50;"><strong>所要時間：約15秒</strong></p>
+        </div>
+
+        <div class="example-box" id="ex-sum-prod2">
+            <div class="example-title">
+                <span class="number-badge">例4b</span>和と積パターン（異符号）
+            </div>
+            <p>\(x^2 + 2x - 15\) を因数分解する</p>
+            <p><strong>判断：</strong></p>
+            <ol>
+                <li>「足して2、かけて\(-15\)」の2数を探す</li>
+                <li>かけてマイナス → 異符号の2数！</li>
+            </ol>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>15の約数ペア：(1,15), (3,5)</li>
+                <li>差が2になるのは \(5 - 3 = 2\) ✓</li>
+                <li>かけて\(-15\) → \(+5\) と \(-3\)</li>
+            </ol>
+            <div class="formula">
+                \[ x^2 + 2x - 15 = (x + 5)(x - 3) \]
+            </div>
+            <p style="color: #ff9800;"><strong>ポイント：</strong>定数項がマイナスなら「差」で考える！</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ パターン⑤：たすき掛け</h3>
+
+        <div class="example-box" id="ex-cross">
+            <div class="example-title">
+                <span class="number-badge">例5</span>たすき掛けパターン
+            </div>
+            <p>\(2x^2 + 7x + 3\) を因数分解する</p>
+            <p><strong>判断（10秒）：</strong></p>
+            <ol>
+                <li>\(x^2\) の係数が \(2 \neq 1\) → <strong>たすき掛け！</strong></li>
+                <li>\(2 = 1 \times 2\)、\(3 = 1 \times 3\) の分解を試す</li>
+            </ol>
+            <p><strong>解き方：</strong></p>
+            <!-- たすき掛け図 -->
+            <div class="svg-container">
+                <svg width="400" height="100" viewBox="0 0 400 100">
+                    <g transform="translate(50, 10)">
+                        <text x="30" y="25" font-size="15" font-weight="bold" fill="#1976d2" text-anchor="middle">1</text>
+                        <text x="30" y="60" font-size="15" font-weight="bold" fill="#1976d2" text-anchor="middle">2</text>
+                        <text x="90" y="25" font-size="15" font-weight="bold" fill="#e65100" text-anchor="middle">1</text>
+                        <text x="90" y="60" font-size="15" font-weight="bold" fill="#e65100" text-anchor="middle">3</text>
+                        <line x1="42" y1="20" x2="78" y2="55" stroke="#4caf50" stroke-width="2" />
+                        <line x1="42" y1="55" x2="78" y2="20" stroke="#4caf50" stroke-width="2" />
+                        <text x="130" y="25" font-size="14" fill="#333">1×3 = 3</text>
+                        <text x="130" y="60" font-size="14" fill="#333">2×1 = 2</text>
+                        <line x1="130" y1="70" x2="200" y2="70" stroke="#333" stroke-width="1" />
+                        <text x="230" y="45" font-size="14" font-weight="bold" fill="#c62828">足して 5 ✗</text>
+                    </g>
+                    <!-- 2つ目 -->
+                    <g transform="translate(250, 10)">
+                        <text x="30" y="25" font-size="15" font-weight="bold" fill="#1976d2" text-anchor="middle">1</text>
+                        <text x="30" y="60" font-size="15" font-weight="bold" fill="#1976d2" text-anchor="middle">2</text>
+                        <text x="90" y="25" font-size="15" font-weight="bold" fill="#e65100" text-anchor="middle">3</text>
+                        <text x="90" y="60" font-size="15" font-weight="bold" fill="#e65100" text-anchor="middle">1</text>
+                        <line x1="42" y1="20" x2="78" y2="55" stroke="#4caf50" stroke-width="2" />
+                        <line x1="42" y1="55" x2="78" y2="20" stroke="#4caf50" stroke-width="2" />
+                        <text x="115" y="45" font-size="14" font-weight="bold" fill="#4caf50">→ 7 ✓</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="formula">
+                \[ 2x^2 + 7x + 3 = (x + 3)(2x + 1) \]
+            </div>
+            <p style="color: #4caf50;"><strong>所要時間：約30秒</strong>（慣れれば15秒）</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 複合パターン</h3>
+
+        <div class="example-box" id="ex-complex">
+            <div class="example-title">
+                <span class="number-badge">例6</span>複合パターン
+            </div>
+            <p>\(3x^2 - 12x + 12\) を因数分解する</p>
+            <p><strong>判断（10秒）：</strong></p>
+            <ol>
+                <li>まず共通因数チェック → 全項に \(3\) がある → くくり出す！</li>
+                <li>くくった後の式をさらに因数分解</li>
+            </ol>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>共通因数 \(3\) をくくり出す：\(3(x^2 - 4x + 4)\)</li>
+                <li>カッコ内は \((-4 \div 2)^2 = 4\) → 完全平方！</li>
+            </ol>
+            <div class="formula">
+                \[ 3x^2 - 12x + 12 = 3(x^2 - 4x + 4) = 3(x - 2)^2 \]
+            </div>
+            <p style="color: #ff9800;"><strong>ポイント：</strong>共通因数をくくった後が本番！他のパターンを忘れずにチェック</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：共通因数は「最優先」</strong><br>
+            どんな式でも、まず共通因数がないかチェック。これを飛ばすと他のパターンが見えなくなる。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：2項なら「和と差の積」を疑う</strong><br>
+            項が2つだけの式は、まず \(a^2 - b^2\) の形かチェック。両方が何かの2乗になっていれば一瞬！
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：完全平方は「半分の2乗」で見抜く</strong><br>
+            \(x^2 + bx + c\) の形で、\(c = (b/2)^2\) なら完全平方。暗算できる！
+            <p style="margin-top: 5px;">例：\(x^2 - 8x + 16\) → \(16 = (-8/2)^2 = 16\) ✓</p>
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：定数項の約数を先にリストアップ</strong><br>
+            和と積で探すとき、定数項の約数ペアを書き出すと速い。
+            <p style="margin-top: 5px;">例：\(c = 12\) → (1,12), (2,6), (3,4) とその符号違い</p>
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ5：たすき掛けは「約数が少ない」ものから</strong><br>
+            \(x^2\) の係数や定数項の約数が少ない場合、たすき掛けは数回で見つかる。約数が多いと大変なので、見つからなければ解の公式へ。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：共通因数をくくり忘れる</div>
+            <p><strong>ダメな例：</strong>\(2x^2 + 6x + 4\) をいきなりたすき掛けしようとする</p>
+            <p><strong>対策：</strong>まず \(2\) をくくり出す！ → \(2(x^2 + 3x + 2) = 2(x + 1)(x + 2)\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：くくった後を因数分解し忘れる</div>
+            <p><strong>ダメな例：</strong>\(3x^2 - 27 = 3(x^2 - 9)\) で終わり</p>
+            <p><strong>対策：</strong>カッコ内 \(x^2 - 9\) は和と差の積！ → \(3(x + 3)(x - 3)\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：完全平方を見逃す</div>
+            <p><strong>ダメな例：</strong>\(x^2 - 6x + 9\) で「足して-6、かけて9」を探す</p>
+            <p><strong>対策：</strong>\(9 = (-6/2)^2 = 9\) ✓ → 完全平方 \((x - 3)^2\) で一発！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：符号を間違える（和と積）</div>
+            <p><strong>ダメな例：</strong>\(x^2 - 3x - 10\) で「足して-3、かけて10」と考える</p>
+            <p><strong>対策：</strong>定数項は \(-10\) なので「足して-3、かけて\(-10\)」→ \((+2)\) と \((-5)\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき5：たすき掛けに時間をかけすぎる</div>
+            <p><strong>ダメな例：</strong>\(x^2 + 5x + 7\) を5分間たすき掛けで探す</p>
+            <p><strong>対策：</strong>「足して5、かけて7」の整数ペアは存在しない → 因数分解できない式！解の公式へ。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">共通因数を最初にチェックしたか</div>
+            <div class="checklist-item">2項のとき → 和と差の積を疑ったか</div>
+            <div class="checklist-item">3項のとき → まず完全平方かチェックしたか</div>
+            <div class="checklist-item">くくり出した後も、さらに因数分解できないか確認したか</div>
+            <div class="checklist-item">符号（プラス/マイナス）を正しく処理したか</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p><strong>まず「どのパターンを使うか」を判断してから因数分解しよう！</strong></p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1：パターンを選んで因数分解</strong>
+            <p>\(4x^2 - 9\) を因数分解しなさい</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong>2項で、\(4x^2 = (2x)^2\)、\(9 = 3^2\) → 和と差の積！</p>
+                    <p>\(4x^2 - 9 = (2x)^2 - 3^2 = (2x + 3)(2x - 3)\)</p>
+                    <p><strong>答え：\((2x + 3)(2x - 3)\)</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2：パターンを選んで因数分解</strong>
+            <p>\(x^2 - 8x + 16\) を因数分解しなさい</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong>\((-8 \div 2)^2 = 16\) → 定数項と一致！ → 完全平方！</p>
+                    <p>\(x^2 - 8x + 16 = (x - 4)^2\)</p>
+                    <p><strong>答え：\((x - 4)^2\)</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3：パターンを選んで因数分解</strong>
+            <p>\(5x^2 - 20x + 15\) を因数分解しなさい</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong>まず共通因数 \(5\) をくくり出す → さらに因数分解</p>
+                    <p>\(5x^2 - 20x + 15 = 5(x^2 - 4x + 3)\)</p>
+                    <p>カッコ内：「足して-4、かけて3」→ \(-1\) と \(-3\)</p>
+                    <p>\(= 5(x - 1)(x - 3)\)</p>
+                    <p><strong>答え：\(5(x - 1)(x - 3)\)</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：「共通因数 → 2項なら和差 → 完全平方チェック → 和と積/たすき掛け」の順でチェック！
+</div>
+
+<!-- ========== おまけ：数学と暗号 ========== -->
+<section id="story">
+    <h2>おまけ：数学と暗号「因数分解がインターネットを守る」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">🔐 クレジットカード番号を守る「因数分解の壁」</div>
+
+            <p>ネットショッピングでクレジットカード番号を入力したことがあるだろうか？</p>
+
+            <p>「この番号、途中で誰かに盗まれないの？」——実は、<strong>因数分解が難しいおかげで安全</strong>なのだ。</p>
+
+            <p style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                <strong>現在の暗号技術「RSA暗号」の仕組み：</strong><br>
+                2つの巨大な素数を掛け算する → 簡単！<br>
+                その結果を因数分解して元の素数に戻す → <strong>超難しい！</strong>
+            </p>
+
+            <p>例えば、こんな問題を考えてみよう：</p>
+
+            <div class="formula">
+                \[ 15 = ? \times ? \]
+            </div>
+
+            <p>これは簡単。\(15 = 3 \times 5\) と因数分解できる。</p>
+
+            <p>じゃあ、これはどうだろう？</p>
+
+            <div class="formula">
+                \[ 143 = ? \times ? \]
+            </div>
+
+            <p>少し考えると... \(143 = 11 \times 13\)。まだできる。</p>
+
+            <p><strong>では、これは？</strong></p>
+
+            <div style="background: #fff9c4; padding: 15px; border-radius: 8px; margin: 15px 0; overflow-x: auto;">
+                <code style="font-size: 12px; word-break: break-all;">
+                25195908475657893494027183240048398571429282126204032027777137836043662020707595556264018525880784406918290641249515082189298559149176184502808489120072844992687392807287776735971418347270261896375014971824691165077613379859095700097330459748808428401797429100642458691817195118746121515172654632282216869987549182422433637259085141865462043576798423387184774447920739934236584823824281198163815010674810451660377306056201619676256133844143603833904414952634432190114657544454178424020924616515723350778707749817125772467962926386356373289912154831438167899885040445364023527381951378636564391212010397122822120720357
+                </code>
+            </div>
+
+            <p>この617桁の数を因数分解せよ！</p>
+
+            <p>...無理だよね？</p>
+
+            <p style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                <strong>驚くべき事実：</strong><br>
+                この数の因数分解には、世界最速のスーパーコンピュータを使っても<strong>数百万年かかる</strong>と言われている。<br>
+                でも、答えを知っている人が「正解かどうか」を確かめるのは<strong>一瞬</strong>。
+            </p>
+
+            <p>この「掛け算は簡単、因数分解は激ムズ」という性質を利用したのがRSA暗号だ。</p>
+
+            <p><strong>【仕組みをざっくり説明】</strong></p>
+            <ul>
+                <li><strong>公開鍵</strong>：巨大な数（上の617桁みたいなやつ）→ 誰でも見れる</li>
+                <li><strong>秘密鍵</strong>：その因数分解の答え（2つの素数）→ 本人だけ知っている</li>
+            </ul>
+
+            <p>暗号を解くには因数分解が必要。でも因数分解は数百万年かかる。だから安全！</p>
+
+            <p><strong>【じゃあ将来は大丈夫？】</strong></p>
+            <p>実は、量子コンピュータが実用化されると、因数分解が高速にできるようになると言われている。そうなるとRSA暗号は破られてしまう可能性が...</p>
+
+            <p>だから今、世界中の数学者・暗号学者が「量子コンピュータでも破れない新しい暗号」を研究中だ。</p>
+
+            <p style="background: #fce4ec; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                <strong>教訓：</strong><br>
+                君が今学んでいる因数分解は、「掛け算の逆」という単純な操作。でも数が大きくなると、世界中のコンピュータを使っても解けない「難問」に変わる。<strong>シンプルな数学が、世界の安全を守っている</strong>のだ。
+            </p>
+
+            <p style="font-size: 14px; color: #666; margin-top: 20px;">
+                ※RSA暗号について詳しくは <a href="https://ja.wikipedia.org/wiki/RSA%E6%9A%97%E5%8F%B7" target="_blank" style="color: #1976d2;">Wikipedia</a> を参照。
+            </p>
+        </div>
+    </div>
+</section>
