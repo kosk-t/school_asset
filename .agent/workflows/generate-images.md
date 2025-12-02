@@ -27,5 +27,4 @@ docs 直下の *_教材.html のファイルを探索して、Front Matter の c
 docs\images\データの分析と確率_教材.jpg を参考に、一貫性のあるキャラクターで。
 ---画像生成指示 end---
 
-生成した画像を docs/imagesに移動し
-Front Matter の cover_image にパスを設定する。
+生成した画像を docs/imagesに移動

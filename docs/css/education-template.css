@@ -309,7 +309,7 @@ strong {
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-.rule-box strong {
+.rule-box > strong {
     background: none;
     color: #0984e3;
     font-size: 1.1rem;
@@ -489,6 +489,29 @@ strong {
     border: none;
     border-top: 1px dashed #b8c6db;
     margin: 20px 0;
+}
+
+/* 折りたたみ（考え方など） */
+details.thinking {
+    margin-top: 10px;
+}
+
+details.thinking > summary {
+    cursor: pointer;
+    color: #1976d2;
+    font-weight: bold;
+}
+
+details.thinking[open] > summary {
+    margin-bottom: 8px;
+}
+
+details.thinking > p {
+    margin: 0;
+    padding: 10px 15px;
+    background: #f5f5f5;
+    border-radius: 5px;
+    border-left: 3px solid #1976d2;
 }
 
 /* 9. まとめ */
