@@ -11,6 +11,16 @@
   order: 1
   cover_image: images/powers_and_roots.png
 
+- slug: 一次方程式_教材
+  title: 一次方程式
+  icon: "⚖️"
+  description: 等式の性質・移項・分数を含む方程式の解き方をマスターしよう！
+  level: 基礎
+  level_num: 1
+  category: equations
+  order: 1
+  cover_image: images/noimage.jpg
+
 - slug: 二次方程式の解き方_教材
   title: 二次方程式の解き方
   icon: "📐"
@@ -18,7 +28,7 @@
   level: 標準
   level_num: 2
   category: equations
-  order: 1
+  order: 2
   cover_image: images/二次方程式の解き方_教材.png
 
 - slug: 座標平面上の直線_教材
@@ -84,7 +94,7 @@
 - slug: データの分析と確率_教材
   title: データの分析と確率
   icon: "🎲"
-  description: 代表値・四分位数・経験的確率をマスターして宝箱を開けよう！
+  description: 代表値・四分位数・外れ値・経験的確率をマスターしよう！
   level: 標準
   level_num: 2
   category: data
@@ -108,5 +118,25 @@
   level: 標準
   level_num: 2
   category: equations
+  order: 3
+  cover_image: images/noimage.jpg
+
+- slug: 因数分解_どのパターン_教材
+  title: 因数分解：どのパターン？
+  icon: "🔍"
+  description: 共通因数・完全平方・たすき掛けの5パターンから最適な方法を選ぶ判断力を身につけよう！
+  level: 標準
+  level_num: 2
+  category: numbers
   order: 2
+  cover_image: images/noimage.jpg
+
+- slug: 証明問題_合同条件の選び方_教材
+  title: 証明問題：合同条件の選び方
+  icon: "🔺"
+  description: 三角形の合同条件3つと直角三角形の合同条件2つから、どれを使うか判断できるようになろう！
+  level: 標準
+  level_num: 2
+  category: geometry
+  order: 5
   cover_image: images/noimage.jpg

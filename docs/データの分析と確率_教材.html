@@ -2,7 +2,7 @@
 layout: material-raw
 title: データの分析と確率
 icon: "🎲"
-description: データを整理して代表値（中央値・最頻値）や四分位数を求める方法と、経験的確率の計算方法を学ぶ。データは必ず小さい順に並べ替えてから計算するのが最重要ポイント。
+description: データを整理して代表値（中央値・最頻値）や四分位数を求める方法と、外れ値の判定方法、経験的確率の計算を学ぶ。データは必ず小さい順に並べ替えてから計算するのが最重要ポイント。
 level: 標準
 level_num: 2
 category: data
@@ -16,6 +16,8 @@ keywords:
   - Q3
   - 箱ひげ図
   - 四分位範囲
+  - IQR
+  - 外れ値
   - 経験的確率
   - 代表値
   - 並べ替え
@@ -449,7 +451,107 @@ toc:
                 </div>
 
                 <div class="rule-box">
-                    <strong>📌 経験的確率</strong> <a href="#ex-probability" class="example-link">→ 例5</a>
+                    <strong>📌 外れ値の判定</strong> <a href="#ex-outlier" class="example-link">→ 例5</a>
+                    <p><strong>外れ値</strong>とは、他のデータから極端にかけ離れた値のこと。四分位範囲（IQR）を使って判定できる。</p>
+                    <ul>
+                        <li><strong>外れ値の基準</strong>：以下の範囲から外れた値</li>
+                    </ul>
+                    <div class="formula">
+                        \[ Q_1 - 1.5 \times \text{IQR} \quad \text{〜} \quad Q_3 + 1.5 \times \text{IQR} \]
+                    </div>
+                    <ul>
+                        <li>この範囲より<strong>小さい値</strong> → 下側の外れ値</li>
+                        <li>この範囲より<strong>大きい値</strong> → 上側の外れ値</li>
+                    </ul>
+
+                    <details><summary><strong>💡 なぜ1.5倍なの？</strong></summary>
+                    <p style="margin-top: 10px;">1.5という数値は統計学者が経験的に決めたもの。正規分布（釣り鐘型のデータ分布）を仮定すると、この範囲の外に出る確率は約0.7%（1000個に7個程度）。つまり「めったに起きないこと」を外れ値と判断している。</p>
+                    </details>
+
+                    <!-- 外れ値の判定の図 -->
+                    <div class="svg-container">
+                        <svg width="700" height="260" viewBox="0 0 700 260">
+                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">外れ値の判定範囲</text>
+
+                            <!-- 数直線 -->
+                            <line x1="30" y1="110" x2="670" y2="110" stroke="#999" stroke-width="2"/>
+
+                            <!-- 目盛り -->
+                            <line x1="50" y1="105" x2="50" y2="115" stroke="#999" stroke-width="1"/>
+                            <text x="50" y="130" font-size="14" fill="#666" text-anchor="middle">0</text>
+
+                            <line x1="150" y1="105" x2="150" y2="115" stroke="#999" stroke-width="1"/>
+                            <text x="150" y="130" font-size="14" fill="#666" text-anchor="middle">2</text>
+
+                            <line x1="250" y1="105" x2="250" y2="115" stroke="#999" stroke-width="1"/>
+                            <text x="250" y="130" font-size="14" fill="#666" text-anchor="middle">4</text>
+
+                            <line x1="350" y1="105" x2="350" y2="115" stroke="#999" stroke-width="1"/>
+                            <text x="350" y="130" font-size="14" fill="#666" text-anchor="middle">6</text>
+
+                            <line x1="450" y1="105" x2="450" y2="115" stroke="#999" stroke-width="1"/>
+                            <text x="450" y="130" font-size="14" fill="#666" text-anchor="middle">8</text>
+
+                            <line x1="550" y1="105" x2="550" y2="115" stroke="#999" stroke-width="1"/>
+                            <text x="550" y="130" font-size="14" fill="#666" text-anchor="middle">10</text>
+
+                            <line x1="650" y1="105" x2="650" y2="115" stroke="#999" stroke-width="1"/>
+                            <text x="650" y="130" font-size="14" fill="#666" text-anchor="middle">12</text>
+
+                            <!-- 箱ひげ図（Q1=3, Q2=5, Q3=7, IQR=4） -->
+                            <!-- Q1 - 1.5×IQR = 3 - 6 = -3 → 0より左なので範囲外 -->
+                            <!-- Q3 + 1.5×IQR = 7 + 6 = 13 → 12より右 -->
+
+                            <!-- 正常範囲の背景 -->
+                            <rect x="50" y="55" width="550" height="45" fill="#e8f5e9" fill-opacity="0.5" rx="5"/>
+                            <text x="325" y="48" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">正常範囲（外れ値でない）</text>
+
+                            <!-- 箱 -->
+                            <rect x="200" y="70" width="200" height="30" fill="#e3f2fd" stroke="#1976d2" stroke-width="3"/>
+
+                            <!-- Q1, Q2, Q3 -->
+                            <line x1="200" y1="70" x2="200" y2="100" stroke="#4caf50" stroke-width="3"/>
+                            <text x="200" y="145" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">Q₁=3</text>
+
+                            <line x1="300" y1="70" x2="300" y2="100" stroke="#ff9800" stroke-width="4"/>
+                            <text x="300" y="145" font-size="14" font-weight="bold" fill="#ff9800" text-anchor="middle">Q₂=5</text>
+
+                            <line x1="400" y1="70" x2="400" y2="100" stroke="#2196f3" stroke-width="3"/>
+                            <text x="400" y="145" font-size="14" font-weight="bold" fill="#2196f3" text-anchor="middle">Q₃=7</text>
+
+                            <!-- IQR表示 -->
+                            <line x1="200" y1="165" x2="400" y2="165" stroke="#9c27b0" stroke-width="2"/>
+                            <line x1="200" y1="160" x2="200" y2="170" stroke="#9c27b0" stroke-width="2"/>
+                            <line x1="400" y1="160" x2="400" y2="170" stroke="#9c27b0" stroke-width="2"/>
+                            <text x="300" y="180" font-size="14" font-weight="bold" fill="#9c27b0" text-anchor="middle">IQR = 7 - 3 = 4</text>
+
+                            <!-- 外れ値の判定線 -->
+                            <!-- Q1 - 1.5×IQR = 3 - 6 = -3 (画面外なので0に) -->
+                            <line x1="50" y1="55" x2="50" y2="100" stroke="#e53935" stroke-width="2" stroke-dasharray="4,2"/>
+                            <text x="50" y="200" font-size="14" fill="#e53935" text-anchor="middle">下限</text>
+                            <text x="50" y="215" font-size="14" fill="#e53935" text-anchor="middle">-3</text>
+
+                            <!-- Q3 + 1.5×IQR = 7 + 6 = 13 -->
+                            <line x1="600" y1="55" x2="600" y2="100" stroke="#e53935" stroke-width="2" stroke-dasharray="4,2"/>
+                            <text x="600" y="200" font-size="14" fill="#e53935" text-anchor="middle">上限</text>
+                            <text x="600" y="215" font-size="14" fill="#e53935" text-anchor="middle">13</text>
+
+                            <!-- 計算式 -->
+                            <rect x="100" y="225" width="500" height="30" fill="#fff3e0" stroke="#ff9800" stroke-width="1" rx="5"/>
+                            <text x="350" y="245" font-size="14" fill="#e65100" text-anchor="middle">下限 = Q₁ - 1.5×IQR = 3 - 6 = -3　　上限 = Q₃ + 1.5×IQR = 7 + 6 = 13</text>
+                        </svg>
+                        <div class="svg-caption">外れ値は「Q₁ - 1.5×IQR」より小さいか「Q₃ + 1.5×IQR」より大きい値</div>
+                    </div>
+
+                    <p style="margin-top: 15px;"><strong>【箱ひげ図での外れ値の表示】</strong></p>
+                    <ul>
+                        <li>外れ値がある場合、ひげは外れ値を除いた最小値・最大値まで伸ばす</li>
+                        <li>外れ値は「○」や「●」で個別に表示する</li>
+                    </ul>
+                </div>
+
+                <div class="rule-box">
+                    <strong>📌 経験的確率</strong> <a href="#ex-probability" class="example-link">→ 例6</a>
                     <div class="formula">
                         \[ P = \frac{a}{n} \]
                         \( a \)：条件を満たすデータの個数、\( n \)：全データの個数
@@ -662,11 +764,43 @@ toc:
                     </div>
                 </div>
 
+                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 外れ値を判定する</h3>
+
+                <div class="example-box" id="ex-outlier">
+                    <div class="example-title">
+                        <span class="number-badge">例5</span>外れ値の判定
+                    </div>
+                    <p>あるクラスの数学テストの点数：</p>
+                    <p style="text-align: center; font-weight: bold; color: #1976d2;">45, 52, 55, 60, 62, 65, 68, 70, 72, 75, 98</p>
+                    <p>98点は外れ値かどうか判定する</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>データを並べ替える（すでに昇順）→ 11個</li>
+                        <li>四分位数を求める：
+                            <ul>
+                                <li>Q₂（中央値）= 6番目 = <strong>65</strong></li>
+                                <li>Q₁ = 前半5個（45,52,55,60,62）の中央値 = <strong>55</strong></li>
+                                <li>Q₃ = 後半5個（68,70,72,75,98）の中央値 = <strong>72</strong></li>
+                            </ul>
+                        </li>
+                        <li>四分位範囲を計算：IQR = Q₃ − Q₁ = 72 − 55 = <strong>17</strong></li>
+                        <li>外れ値の上限を計算：Q₃ + 1.5×IQR = 72 + 1.5×17 = 72 + 25.5 = <strong>97.5</strong></li>
+                        <li>98 > 97.5 なので、<strong>98は外れ値</strong></li>
+                    </ol>
+                    <div class="formula">
+                        \[ \text{上限} = Q_3 + 1.5 \times \text{IQR} = 72 + 1.5 \times 17 = 97.5 \]
+                        \[ 98 > 97.5 \quad \Rightarrow \quad \text{外れ値！} \]
+                    </div>
+                    <p style="background: #fff3e0; padding: 10px; border-radius: 5px; margin-top: 15px;">
+                        <strong>💡 解釈：</strong>98点は他の生徒と比べて極端に高い。カンニング？...ではなく、その生徒が本当に優秀なだけかもしれない。外れ値＝異常値とは限らないことに注意！
+                    </p>
+                </div>
+
                 <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 経験的確率を求める</h3>
 
                 <div class="example-box" id="ex-probability">
                     <div class="example-title">
-                        <span class="number-badge">例5</span>5以下になる確率
+                        <span class="number-badge">例6</span>5以下になる確率
                     </div>
                     <p>データ 2, 3, 4, 4, 5, 6, 7, 9 から無作為に1つ選ぶとき、5以下になる確率を求める</p>
                     <p><strong>解き方：</strong></p>
