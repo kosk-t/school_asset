@@ -2,6 +2,39 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Knowledge: npm install",
+            "type": "shell",
+            "command": "npm",
+            "args": ["install"],
+            "options": {
+                "cwd": "${workspaceFolder}/scripts"
+            },
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Knowledge: Extract & Upload",
+            "type": "shell",
+            "command": "npm",
+            "args": ["run", "extract:upload"],
+            "options": {
+                "cwd": "${workspaceFolder}/scripts"
+            },
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Knowledge: Extract (JSON only)",
+            "type": "shell",
+            "command": "npm",
+            "args": ["run", "extract"],
+            "options": {
+                "cwd": "${workspaceFolder}/scripts"
+            },
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
             "label": "Jekyll: Serve",
             "type": "shell",
             "command": "C:\\Ruby34-x64\\bin\\jekyll.bat",

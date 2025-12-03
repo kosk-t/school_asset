@@ -10,3 +10,8 @@ docs/Gemfile.lock
 # OS
 .DS_Store
 Thumbs.db
+
+# Environment variables
+.env
+scripts/.env
+scripts/node_modules/

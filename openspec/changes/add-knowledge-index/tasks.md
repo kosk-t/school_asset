@@ -8,27 +8,27 @@
 
 ### 1. HTML ID追加
 
-- [ ] 1.1 ID命名規則を確定（rule-, method-, def-, tip-）
-- [ ] 1.2 二次方程式の解き方_教材.htmlにIDを追加（パイロット）
-  - [ ] 1.2.1 零積の法則 → `id="rule-zero-product"`
-  - [ ] 1.2.2 因数分解パターン → `id="method-factoring-patterns"`
-  - [ ] 1.2.3 和と積 → `id="method-sum-product"`
-  - [ ] 1.2.4 たすき掛け → `id="method-tasukigake"`
-  - [ ] 1.2.5 平方完成 → `id="rule-completing-square"`
-  - [ ] 1.2.6 解の公式 → `id="rule-quadratic-formula"`
-  - [ ] 1.2.7 判別式 → `id="rule-discriminant"`
-- [ ] 1.3 一次方程式_教材.htmlにIDを追加
-  - [ ] 1.3.1 等式の性質 → `id="rule-equality-properties"`
-  - [ ] 1.3.2 移項のルール → `id="rule-transposition"`
-  - [ ] 1.3.3 基本ステップ → `id="method-linear-eq-steps"`
-  - [ ] 1.3.4 分数・小数処理 → `id="method-fraction-decimal"`
-- [ ] 1.4 残りの教材にIDを追加（12ファイル）
+- [x] 1.1 ID命名規則を確定（rule-, method-, def-, tip-）
+- [x] 1.2 二次方程式の解き方_教材.htmlにIDを追加（パイロット）
+  - [x] 1.2.1 零積の法則 → `id="rule-zero-product"`
+  - [x] 1.2.2 因数分解パターン → `id="method-factoring-patterns"`
+  - [x] 1.2.3 和と積 → `id="method-sum-product"`
+  - [x] 1.2.4 たすき掛け → `id="method-tasukigake"`
+  - [x] 1.2.5 平方完成 → `id="rule-completing-square"`
+  - [x] 1.2.6 解の公式 → `id="rule-quadratic-formula"`
+  - [x] 1.2.7 判別式 → `id="rule-discriminant"`
+- [x] 1.3 一次方程式_教材.htmlにIDを追加
+  - [x] 1.3.1 等式の性質 → `id="rule-equality-properties"`
+  - [x] 1.3.2 移項のルール → `id="rule-transposition"`
+  - [x] 1.3.3 基本ステップ → `id="method-linear-eq-steps"`
+  - [x] 1.3.4 分数・小数処理 → `id="method-fraction-decimal"`
+- [x] 1.4 残りの教材にIDを追加（12ファイル）
 
 ### 2. Supabase基盤構築
 
-- [ ] 2.1 Supabaseプロジェクト作成
-- [ ] 2.2 pgvector拡張を有効化
-- [ ] 2.3 knowledge_chunksテーブル作成
+- [x] 2.1 Supabaseセットアップスクリプト作成 (`supabase/setup.sql`)
+- [x] 2.2 pgvector拡張を有効化（スクリプトに含む）
+- [x] 2.3 knowledge_chunksテーブル作成（スクリプトに含む）
   ```sql
   CREATE TABLE knowledge_chunks (
     id TEXT PRIMARY KEY,
@@ -46,30 +46,54 @@
     updated_at TIMESTAMPTZ DEFAULT NOW()
   );
   ```
-- [ ] 2.4 類似度検索RPC関数作成
-  ```sql
-  CREATE FUNCTION search_knowledge(
-    query_embedding VECTOR(1536),
-    match_threshold FLOAT DEFAULT 0.7,
-    match_count INT DEFAULT 5
-  ) RETURNS TABLE (...) AS $$
-  ```
-- [ ] 2.5 Row Level Security設定（読み取り専用公開）
+- [x] 2.4 類似度検索RPC関数作成（`search_knowledge`）
+- [x] 2.5 Row Level Security設定（読み取り専用公開）
+
+> **Note**: Supabaseプロジェクト自体の作成は手動で行う必要があります。
+> `supabase/setup.sql`をSQL Editorで実行してください。
 
 ### 3. チャンク抽出スクリプト
 
-- [ ] 3.1 `scripts/extract-chunks.ts`の基本構造を作成
-- [ ] 3.2 HTMLパーサー実装（cheerio使用）
-  - [ ] 3.2.1 ID付き要素の抽出
-  - [ ] 3.2.2 テキストコンテンツ取得（タグ除去）
-  - [ ] 3.2.3 数式（KaTeX）のテキスト化
-- [ ] 3.3 learns自動生成（OpenAI API）
-  - [ ] 3.3.1 プロンプト設計
-  - [ ] 3.3.2 バッチ処理実装
-- [ ] 3.4 埋め込み生成（text-embedding-3-small）
-- [ ] 3.5 Supabaseへのアップロード
-- [ ] 3.6 `knowledge_chunks.json`静的エクスポート（フォールバック用）
-- [ ] 3.7 GitHub Actions workflow作成（教材更新時に自動実行）
+- [x] 3.1 `scripts/extract-chunks.ts`の基本構造を作成
+- [x] 3.2 HTMLパーサー実装（jsdom使用）
+  - [x] 3.2.1 ID付き要素の抽出
+  - [x] 3.2.2 テキストコンテンツ取得（タグ除去）
+  - [x] 3.2.3 SVG・details要素の除外
+- [x] 3.3 learns自動生成（ヒューリスティック + OpenAI API対応準備）
+- [x] 3.4 埋め込み生成（text-embedding-3-small）
+- [x] 3.5 Supabaseへのアップロード（`--upload`オプション）
+- [x] 3.6 `knowledge_chunks.json`静的エクスポート（フォールバック用）
+- [x] 3.7 GitHub Actions workflow作成（`.github/workflows/update-knowledge-index.yml`）
+
+### 成果物一覧
+
+| ファイル | 説明 |
+|---------|------|
+| `supabase/setup.sql` | Supabaseセットアップ用SQLスクリプト |
+| `scripts/extract-chunks.ts` | チャンク抽出・アップロードスクリプト |
+| `scripts/package.json` | スクリプト用依存関係定義 |
+| `.github/workflows/update-knowledge-index.yml` | 自動更新ワークフロー |
+| `docs/_data/knowledge_chunks.json` | 静的エクスポート（スクリプト実行後に生成） |
+
+### 使用方法
+
+```bash
+# 依存関係インストール
+cd scripts
+npm install
+
+# チャンク抽出（JSONのみ）
+npm run extract
+
+# Supabaseにアップロード（環境変数必要）
+export SUPABASE_URL="https://xxx.supabase.co"
+export SUPABASE_SERVICE_KEY="xxx"
+export OPENAI_API_KEY="sk-xxx"
+npm run extract:upload
+
+# ドライラン（実際にはアップロードしない）
+npm run extract:dry-run
+```
 
 ---
 
@@ -102,19 +126,20 @@
 ```
 school_asset                          AI家庭教師
 ───────────────────────────────────   ─────────────────
-1.2 (パイロットHTML)
+1.2 (パイロットHTML) ✅
         │
         ▼
-2.1-2.5 (Supabase) ──▶ 3.1-3.7 (抽出スクリプト)
+2.1-2.5 (Supabase) ✅ ──▶ 3.1-3.7 (抽出スクリプト) ✅
                               │
                               │ DBにデータ投入完了
                               ▼
                        ════════════════════
                               │
                               ▼
-                       4.1-4.5 (MCPサーバー)
+                       4.1-4.5 (MCPサーバー) 🔜
 ```
 
-- タスク1（HTML ID追加）とタスク2（Supabase構築）は並行作業可能
-- タスク3はタスク1,2の完了後に開始
-- タスク4はタスク3でDBにデータが入った後にAI家庭教師側で開始
+- ✅ タスク1（HTML ID追加）完了
+- ✅ タスク2（Supabase構築）完了
+- ✅ タスク3（抽出スクリプト）完了
+- 🔜 タスク4はAI家庭教師プロジェクトで実施
