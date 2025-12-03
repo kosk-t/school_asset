@@ -135,7 +135,7 @@ toc:
                     <div class="svg-caption">必ず並べ替えてから計算する！</div>
                 </div>
 
-                <div class="rule-box">
+                <div class="rule-box" id="rule-median">
                     <strong>📌 中央値の求め方</strong> <a href="#ex-median" class="example-link">→ 例1</a>
                     <ul>
                         <li><strong>データの個数が奇数のとき</strong>：真ん中の値がそのまま中央値<br>
@@ -220,12 +220,12 @@ toc:
                     </div>
                 </div>
                 
-                <div class="rule-box">
+                <div class="rule-box" id="rule-mode">
                     <strong>📌 最頻値の求め方</strong> <a href="#ex-mode" class="example-link">→ 例2</a>
                     <p>データの中で最も多く現れる値を探す。複数ある場合はすべて最頻値になる。</p>
                 </div>
                 
-                <div class="rule-box">
+                <div class="rule-box" id="rule-quartiles">
                     <strong>📌 四分位数の求め方</strong> <a href="#ex-quartile" class="example-link">→ 例3</a>
                     <ul>
                         <li><strong>第2四分位数（Q₂）</strong>：中央値そのもの</li>
@@ -368,7 +368,7 @@ toc:
                     </div>
                 </div>
 
-                <div class="rule-box">
+                <div class="rule-box" id="rule-boxplot">
                     <strong>📌 箱ひげ図の描き方</strong> <a href="#ex-boxplot" class="example-link">→ 例4</a>
                     <p>箱ひげ図は、データの散らばりを視覚的に表すグラフ。四分位数を使って描く。</p>
                     <ul>
@@ -450,7 +450,7 @@ toc:
                     </ul>
                 </div>
 
-                <div class="rule-box">
+                <div class="rule-box" id="rule-outlier">
                     <strong>📌 外れ値の判定</strong> <a href="#ex-outlier" class="example-link">→ 例5</a>
                     <p><strong>外れ値</strong>とは、他のデータから極端にかけ離れた値のこと。四分位範囲（IQR）を使って判定できる。</p>
                     <ul>
@@ -550,7 +550,7 @@ toc:
                     </ul>
                 </div>
 
-                <div class="rule-box">
+                <div class="rule-box" id="rule-empirical-probability">
                     <strong>📌 経験的確率</strong> <a href="#ex-probability" class="example-link">→ 例6</a>
                     <div class="formula">
                         \[ P = \frac{a}{n} \]

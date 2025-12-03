@@ -96,7 +96,7 @@ related:
         <p>サイコロで1が出る確率は、「1が出る場合（1通り）」÷「全部の場合（6通り）」= 1/6。これが確率の基本的な考え方です。</p>
         </details>
 
-        <div class="rule-box">
+        <div class="rule-box" id="rule-complement">
             <strong>📌 余事象の法則</strong> <a href="#ex-complement" class="example-link">→ 例1</a>
             <div class="formula">
                 \[ P(A) + P(\overline{A}) = 1 \]
@@ -145,7 +145,7 @@ related:
             </details>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="rule-addition">
             <strong>📌 和の法則（一般）</strong> <a href="#ex-union" class="example-link">→ 例2</a>
             <div class="formula">
                 \[ P(A \cup B) = P(A) + P(B) - P(A \cap B) \]
@@ -191,7 +191,7 @@ related:
             </details>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="rule-exclusive">
             <strong>📌 排反事象（同時に起こらない）</strong> <a href="#ex-exclusive" class="example-link">→ 例3</a>
             <div class="formula">
                 \[ P(A \cup B) = P(A) + P(B) \]
@@ -243,7 +243,7 @@ related:
             </details>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="rule-conditional">
             <strong>📌 条件付き確率</strong> <a href="#ex-conditional" class="example-link">→ 例4</a>
             <div class="formula">
                 \[ P(A|B) = \frac{P(A \cap B)}{P(B)} \]
@@ -284,7 +284,7 @@ related:
             </details>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="rule-independent">
             <strong>📌 独立事象</strong> <a href="#ex-independent" class="example-link">→ 例5</a>
             <div class="formula">
                 \[ P(A \cap B) = P(A) \times P(B) \]
@@ -303,7 +303,7 @@ related:
             </details>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="def-iqr">
             <strong>📌 四分位範囲（IQR）</strong>
             <div class="formula">
                 \[ \text{IQR} = Q_3 - Q_1 \]

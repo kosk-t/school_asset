@@ -8,41 +8,41 @@ level_num: 2
 category: numbers
 order: 3
 keywords:
-  - 因数分解
-  - パターン判別
-  - 共通因数
-  - 完全平方
-  - たすき掛け
-  - 和と差の積
-cover_image: /images/noimage.jpg
+- 因数分解
+- パターン判別
+- 共通因数
+- 完全平方
+- たすき掛け
+- 和と差の積
+cover_image: /images/因数分解_どのパターン_教材.jpg
 cover_description: 分岐するフローチャート、5つの因数分解パターンアイコン、パズルのピースがはまるイメージ
 battle_game: false
 toc:
-  - id: section1
-    title: "テーマの定義"
-  - id: section2
-    title: "覚えるルール"
-  - id: section3
-    title: "例題と解き方"
-  - id: section4
-    title: "簡単にするコツ"
-  - id: section5
-    title: "よくあるつまづき"
-  - id: section6
-    title: "仕上げチェックリスト"
-  - id: section7
-    title: "練習問題"
-  - id: story
-    title: "おまけ：数学と暗号「因数分解がインターネットを守る」"
+- id: section1
+  title: "テーマの定義"
+- id: section2
+  title: "覚えるルール"
+- id: section3
+  title: "例題と解き方"
+- id: section4
+  title: "簡単にするコツ"
+- id: section5
+  title: "よくあるつまづき"
+- id: section6
+  title: "仕上げチェックリスト"
+- id: section7
+  title: "練習問題"
+- id: story
+  title: "おまけ：数学と暗号「因数分解がインターネットを守る」"
 related:
-  - url: /二次方程式の解き方_教材.html
-    title: 二次方程式の解き方
-    note: 因数分解の次はこれを習得しよう
-    type: related
-  - url: /二次方程式_解法の選び方_教材.html
-    title: 二次方程式：解法の選び方
-    note: 因数分解の判断力が活きる
-    type: related
+- url: /二次方程式の解き方_教材.html
+  title: 二次方程式の解き方
+  note: 因数分解の次はこれを習得しよう
+  type: related
+- url: /二次方程式_解法の選び方_教材.html
+  title: 二次方程式：解法の選び方
+  note: 因数分解の判断力が活きる
+  type: related
 ---
 <!-- ========== 1. テーマの定義 ========== -->
 <section id="section1">
@@ -81,11 +81,13 @@ related:
                     </marker>
                 </defs>
 
-                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">因数分解 パターン判別フローチャート</text>
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">因数分解
+                    パターン判別フローチャート</text>
 
                 <!-- スタート -->
                 <rect x="250" y="40" width="200" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="20" />
-                <text x="350" y="65" font-size="14" font-weight="bold" fill="#1565c0" text-anchor="middle">因数分解したい式</text>
+                <text x="350" y="65" font-size="14" font-weight="bold" fill="#1565c0"
+                    text-anchor="middle">因数分解したい式</text>
 
                 <!-- 矢印1 -->
                 <path d="M 350 80 L 350 110" stroke="#666" stroke-width="2" marker-end="url(#arrow-main)" />
@@ -156,7 +158,7 @@ related:
             <div class="svg-caption">共通因数のチェックが最優先！その後で公式パターンを探す</div>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="method-common-factor">
             <strong>📌 パターン①：共通因数をくくり出す【最優先】</strong> <a href="#ex-common" class="example-link">→ 例1</a>
             <div class="formula">
                 \[ ab + ac = a(b + c) \]
@@ -164,12 +166,13 @@ related:
             <p><strong>見分け方：</strong>全ての項に同じ因数が含まれている</p>
             <p><strong>→ だから結果は：</strong>共通因数を外に出し、残りをカッコ内に書く</p>
             <p><strong>✅ メリット：</strong>最優先でチェック。これをやらないと他のパターンが見えないことも多い！</p>
-            <details class="thinking"><summary>💡 考え方を見る</summary>
-            <p>「分配法則」の逆。\(a(b + c) = ab + ac\) を右から左に読むと、共通因数 \(a\) を外に出す操作になる。数字も文字もまとめてくくれる。</p>
+            <details class="thinking">
+                <summary>💡 考え方を見る</summary>
+                <p>「分配法則」の逆。\(a(b + c) = ab + ac\) を右から左に読むと、共通因数 \(a\) を外に出す操作になる。数字も文字もまとめてくくれる。</p>
             </details>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="method-difference-of-squares">
             <strong>📌 パターン②：和と差の積（2項のとき）</strong> <a href="#ex-diff" class="example-link">→ 例2</a>
             <div class="formula">
                 \[ a^2 - b^2 = (a + b)(a - b) \]
@@ -177,12 +180,13 @@ related:
             <p><strong>見分け方：</strong>2項だけで、両方が「何かの2乗」になっている</p>
             <p><strong>→ だから結果は：</strong>それぞれの平方根を取って、(a+b)(a-b) の形にする</p>
             <p><strong>✅ メリット：</strong>一瞬で因数分解完了。2項のときは真っ先にチェック！</p>
-            <details class="thinking"><summary>💡 考え方を見る</summary>
-            <p>(a+b)(a-b) を展開すると \(a^2 - ab + ab - b^2 = a^2 - b^2\)。真ん中の項が消えるから「2乗 - 2乗」の形になる。</p>
+            <details class="thinking">
+                <summary>💡 考え方を見る</summary>
+                <p>(a+b)(a-b) を展開すると \(a^2 - ab + ab - b^2 = a^2 - b^2\)。真ん中の項が消えるから「2乗 - 2乗」の形になる。</p>
             </details>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="method-perfect-square">
             <strong>📌 パターン③：完全平方（3項で定数項が「半分の2乗」）</strong> <a href="#ex-perfect" class="example-link">→ 例3</a>
             <div class="formula">
                 \[ a^2 + 2ab + b^2 = (a + b)^2 \]
@@ -192,12 +196,13 @@ related:
             <p>例：\(x^2 + 6x + 9\) → \((6÷2)^2 = 9\) ✓ → 完全平方！</p>
             <p><strong>→ だから結果は：</strong>\((x ± 3)^2\) の形（符号は1次の項と同じ）</p>
             <p><strong>✅ メリット：</strong>気づければ一瞬。二次方程式の重解パターンにもつながる。</p>
-            <details class="thinking"><summary>💡 考え方を見る</summary>
-            <p>\((a + b)^2 = a^2 + 2ab + b^2\)。1次の項 \(2ab\) の係数の半分が \(b\) で、その2乗 \(b^2\) が定数項。だから「半分の2乗」で判定できる。</p>
+            <details class="thinking">
+                <summary>💡 考え方を見る</summary>
+                <p>\((a + b)^2 = a^2 + 2ab + b^2\)。1次の項 \(2ab\) の係数の半分が \(b\) で、その2乗 \(b^2\) が定数項。だから「半分の2乗」で判定できる。</p>
             </details>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="method-sum-product-factoring">
             <strong>📌 パターン④：和と積（x²の係数が1のとき）</strong> <a href="#ex-sum-prod" class="example-link">→ 例4</a>
             <div class="formula">
                 \[ x^2 + (p+q)x + pq = (x + p)(x + q) \]
@@ -206,12 +211,13 @@ related:
             <p><strong>見つけ方：</strong>「足して（1次の項の係数）、かけて（定数項）」になる2数を探す</p>
             <p><strong>→ だから結果は：</strong>見つけた2数 \(p, q\) を使って \((x + p)(x + q)\) の形にする</p>
             <p><strong>✅ メリット：</strong>最もよく使うパターン。慣れれば10秒で見つかる。</p>
-            <details class="thinking"><summary>💡 考え方を見る</summary>
-            <p>\((x + p)(x + q) = x^2 + (p+q)x + pq\) を展開して比較。1次の項は「和」、定数項は「積」になっている。だから「足して○、かけて△」で探せる。</p>
+            <details class="thinking">
+                <summary>💡 考え方を見る</summary>
+                <p>\((x + p)(x + q) = x^2 + (p+q)x + pq\) を展開して比較。1次の項は「和」、定数項は「積」になっている。だから「足して○、かけて△」で探せる。</p>
             </details>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="method-cross-multiplication">
             <strong>📌 パターン⑤：たすき掛け（x²の係数が1でないとき）</strong> <a href="#ex-cross" class="example-link">→ 例5</a>
             <div class="formula">
                 \[ ax^2 + bx + c = (mx + p)(nx + q) \quad (mn = a, pq = c) \]
@@ -220,13 +226,15 @@ related:
             <p><strong>見つけ方：</strong>\(a\) と \(c\) を2数に分解し、たすき掛けで \(b\) になる組み合わせを探す</p>
             <p><strong>→ だから結果は：</strong>見つけた組み合わせで \((mx + p)(nx + q)\) の形にする</p>
             <p><strong>✅ メリット：</strong>慣れれば強力。でも見つからなければ解の公式へ切り替える。</p>
-            <details class="thinking"><summary>💡 考え方を見る</summary>
-            <p>\((mx + p)(nx + q) = mnx^2 + (mq + np)x + pq\)。つまり \(a = mn\)、\(c = pq\)、\(b = mq + np\)。たすき掛け図で「クロスして足して \(b\) になる」組み合わせを探す。</p>
+            <details class="thinking">
+                <summary>💡 考え方を見る</summary>
+                <p>\((mx + p)(nx + q) = mnx^2 + (mq + np)x + pq\)。つまり \(a = mn\)、\(c = pq\)、\(b = mq +
+                    np\)。たすき掛け図で「クロスして足して \(b\) になる」組み合わせを探す。</p>
             </details>
         </div>
 
         <!-- パターン比較表 -->
-        <div class="rule-box">
+        <div class="rule-box" id="rule-factoring-summary">
             <strong>📌 パターン比較まとめ</strong>
             <table class="material-table">
                 <tr>
@@ -445,10 +453,14 @@ related:
             <div class="svg-container">
                 <svg width="400" height="100" viewBox="0 0 400 100">
                     <g transform="translate(50, 10)">
-                        <text x="30" y="25" font-size="15" font-weight="bold" fill="#1976d2" text-anchor="middle">1</text>
-                        <text x="30" y="60" font-size="15" font-weight="bold" fill="#1976d2" text-anchor="middle">2</text>
-                        <text x="90" y="25" font-size="15" font-weight="bold" fill="#e65100" text-anchor="middle">1</text>
-                        <text x="90" y="60" font-size="15" font-weight="bold" fill="#e65100" text-anchor="middle">3</text>
+                        <text x="30" y="25" font-size="15" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">1</text>
+                        <text x="30" y="60" font-size="15" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">2</text>
+                        <text x="90" y="25" font-size="15" font-weight="bold" fill="#e65100"
+                            text-anchor="middle">1</text>
+                        <text x="90" y="60" font-size="15" font-weight="bold" fill="#e65100"
+                            text-anchor="middle">3</text>
                         <line x1="42" y1="20" x2="78" y2="55" stroke="#4caf50" stroke-width="2" />
                         <line x1="42" y1="55" x2="78" y2="20" stroke="#4caf50" stroke-width="2" />
                         <text x="130" y="25" font-size="14" fill="#333">1×3 = 3</text>
@@ -458,10 +470,14 @@ related:
                     </g>
                     <!-- 2つ目 -->
                     <g transform="translate(250, 10)">
-                        <text x="30" y="25" font-size="15" font-weight="bold" fill="#1976d2" text-anchor="middle">1</text>
-                        <text x="30" y="60" font-size="15" font-weight="bold" fill="#1976d2" text-anchor="middle">2</text>
-                        <text x="90" y="25" font-size="15" font-weight="bold" fill="#e65100" text-anchor="middle">3</text>
-                        <text x="90" y="60" font-size="15" font-weight="bold" fill="#e65100" text-anchor="middle">1</text>
+                        <text x="30" y="25" font-size="15" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">1</text>
+                        <text x="30" y="60" font-size="15" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">2</text>
+                        <text x="90" y="25" font-size="15" font-weight="bold" fill="#e65100"
+                            text-anchor="middle">3</text>
+                        <text x="90" y="60" font-size="15" font-weight="bold" fill="#e65100"
+                            text-anchor="middle">1</text>
                         <line x1="42" y1="20" x2="78" y2="55" stroke="#4caf50" stroke-width="2" />
                         <line x1="42" y1="55" x2="78" y2="20" stroke="#4caf50" stroke-width="2" />
                         <text x="115" y="45" font-size="14" font-weight="bold" fill="#4caf50">→ 7 ✓</text>
@@ -708,7 +724,8 @@ related:
             </p>
 
             <p style="font-size: 14px; color: #666; margin-top: 20px;">
-                ※RSA暗号について詳しくは <a href="https://ja.wikipedia.org/wiki/RSA%E6%9A%97%E5%8F%B7" target="_blank" style="color: #1976d2;">Wikipedia</a> を参照。
+                ※RSA暗号について詳しくは <a href="https://ja.wikipedia.org/wiki/RSA%E6%9A%97%E5%8F%B7" target="_blank"
+                    style="color: #1976d2;">Wikipedia</a> を参照。
             </p>
         </div>
     </div>
