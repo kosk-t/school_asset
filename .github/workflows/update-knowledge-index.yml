@@ -1,0 +1,70 @@
+name: Update Knowledge Index
+
+on:
+  # Manual trigger only
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (no actual upload)'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  extract-and-upload:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'scripts/package-lock.json'
+
+      - name: Install dependencies
+        working-directory: scripts
+        run: npm ci || npm install
+
+      - name: Extract chunks (JSON only)
+        working-directory: scripts
+        run: npx tsx extract-chunks.ts
+
+      - name: Upload to Supabase
+        if: ${{ !inputs.dry_run }}
+        working-directory: scripts
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: npx tsx extract-chunks.ts --upload
+
+      - name: Dry run upload
+        if: ${{ inputs.dry_run }}
+        working-directory: scripts
+        run: npx tsx extract-chunks.ts --upload --dry-run
+
+      - name: Commit knowledge_chunks.json if changed
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          if git diff --quiet docs/_data/knowledge_chunks.json; then
+            echo "No changes to knowledge_chunks.json"
+          else
+            git add docs/_data/knowledge_chunks.json
+            git commit -m "chore: update knowledge_chunks.json
+
+            🤖 Generated with [Claude Code](https://claude.com/claude-code)"
+            git push
+          fi
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: knowledge-chunks
+          path: docs/_data/knowledge_chunks.json
+          retention-days: 7

@@ -1,0 +1,23 @@
+{
+  "name": "school-asset-scripts",
+  "version": "1.0.0",
+  "description": "Scripts for school_asset knowledge index system",
+  "type": "module",
+  "scripts": {
+    "extract": "tsx extract-chunks.ts",
+    "extract:upload": "tsx extract-chunks.ts --upload",
+    "extract:dry-run": "tsx extract-chunks.ts --upload --dry-run"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.0",
+    "js-yaml": "^4.1.0",
+    "jsdom": "^24.1.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^20.14.0",
+    "tsx": "^4.15.0",
+    "typescript": "^5.5.0"
+  }
+}
