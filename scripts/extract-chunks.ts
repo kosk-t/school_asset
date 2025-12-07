@@ -334,6 +334,26 @@ async function uploadToSupabase(chunks: KnowledgeChunk[], dryRun: boolean): Prom
     throw new Error("SUPABASE_URL and SUPABASE_SERVICE_KEY environment variables are required");
   }
 
+  // Delete all existing chunks first (full sync)
+  console.log("\nDeleting existing chunks from Supabase...");
+  if (!dryRun) {
+    const deleteResponse = await fetch(`${supabaseUrl}/rest/v1/knowledge_chunks?id=neq.`, {
+      method: "DELETE",
+      headers: {
+        apikey: supabaseKey,
+        Authorization: `Bearer ${supabaseKey}`,
+      },
+    });
+
+    if (!deleteResponse.ok) {
+      const error = await deleteResponse.text();
+      throw new Error(`Failed to delete existing chunks: ${error}`);
+    }
+    console.log("Existing chunks deleted.");
+  } else {
+    console.log("[DRY RUN] Would delete all existing chunks");
+  }
+
   console.log(`\nUploading ${chunks.length} chunks to Supabase...`);
 
   for (let i = 0; i < chunks.length; i++) {
@@ -428,20 +448,24 @@ async function main(): Promise<void> {
 
   console.log(`\nTotal chunks extracted: ${allChunks.length}`);
 
+  // Filter out examples (only keep rule, method, definition for RAG)
+  const filteredChunks = allChunks.filter((chunk) => chunk.type !== "example");
+  console.log(`After filtering (excluding examples): ${filteredChunks.length}`);
+
   // Write JSON file (without embeddings for smaller file size)
-  const jsonChunks = allChunks.map(({ embedding, ...rest }) => rest);
+  const jsonChunks = filteredChunks.map(({ embedding, ...rest }) => rest);
   fs.writeFileSync(OUTPUT_FILE, JSON.stringify(jsonChunks, null, 2), "utf-8");
   console.log(`\nWrote ${OUTPUT_FILE}`);
 
   // Upload to Supabase if requested
   if (shouldUpload) {
-    await uploadToSupabase(allChunks, dryRun);
+    await uploadToSupabase(filteredChunks, dryRun);
   }
 
   // Summary
   console.log("\n" + "=".repeat(40));
   console.log("Summary by type:");
-  const byType = allChunks.reduce(
+  const byType = filteredChunks.reduce(
     (acc, chunk) => {
       acc[chunk.type] = (acc[chunk.type] || 0) + 1;
       return acc;
@@ -453,7 +477,7 @@ async function main(): Promise<void> {
   }
 
   console.log("\nSummary by category:");
-  const byCategory = allChunks.reduce(
+  const byCategory = filteredChunks.reduce(
     (acc, chunk) => {
       acc[chunk.category] = (acc[chunk.category] || 0) + 1;
       return acc;
