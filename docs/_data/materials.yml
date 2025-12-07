@@ -140,3 +140,33 @@
   category: geometry
   order: 5
   cover_image: images/noimage.jpg
+
+- slug: 三平方の定理_教材
+  title: 三平方の定理
+  icon: "📐"
+  description: 三平方の定理・逆・特別な直角三角形の比をマスターしよう！
+  level: 標準
+  level_num: 2
+  category: geometry
+  order: 6
+  cover_image: images/noimage.jpg
+
+- slug: 三平方の定理の応用_教材
+  title: 三平方の定理の応用
+  icon: "📏"
+  description: 対角線・空間図形・座標平面に三平方の定理を応用しよう！
+  level: 標準
+  level_num: 2
+  category: geometry
+  order: 7
+  cover_image: images/noimage.jpg
+
+- slug: 三平方の定理の総合問題_教材
+  title: 三平方の定理の総合問題
+  icon: "🎯"
+  description: 展開図・空間図形・最短距離など入試レベルの問題に挑戦！
+  level: 発展
+  level_num: 3
+  category: geometry
+  order: 8
+  cover_image: images/noimage.jpg
