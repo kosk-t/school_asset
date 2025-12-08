@@ -170,3 +170,63 @@
   category: geometry
   order: 8
   cover_image: images/noimage.jpg
+
+- slug: 連立方程式_教材
+  title: 連立方程式
+  icon: "🔗"
+  description: 加減法と代入法で2つの未知数を同時に解く！
+  level: 標準
+  level_num: 2
+  category: equations
+  order: 4
+  cover_image: images/noimage.jpg
+
+- slug: 連立方程式_加減法vs代入法_教材
+  title: 連立方程式：加減法 vs 代入法
+  icon: "⚖️"
+  description: 加減法と代入法、どちらが楽か一瞬で判断できるようになろう！
+  level: 標準
+  level_num: 2
+  category: equations
+  order: 5
+  cover_image: images/noimage.jpg
+
+- slug: 因数分解_教材
+  title: 因数分解
+  icon: "🧩"
+  description: 共通因数・乗法公式の逆・たすき掛けで式を積の形に！
+  level: 標準
+  level_num: 2
+  category: numbers
+  order: 3
+  cover_image: images/noimage.jpg
+
+- slug: 一次方程式_式の立て方_教材
+  title: 一次方程式：式の立て方
+  icon: "📝"
+  description: 文章問題を読んで方程式を立てる判断力を身につけよう！
+  level: 標準
+  level_num: 2
+  category: equations
+  order: 6
+  cover_image: images/noimage.jpg
+
+- slug: 一次関数_問題タイプ別攻略_教材
+  title: 一次関数：問題タイプ別攻略
+  icon: "🎯"
+  description: 式を求める・交点・変域・利用の5タイプを見抜く判断力！
+  level: 標準
+  level_num: 2
+  category: functions
+  order: 3
+  cover_image: images/noimage.jpg
+
+- slug: 相似の証明_条件の選び方_教材
+  title: 相似の証明：条件の選び方
+  icon: "🔍"
+  description: AA・SSS・SASの3条件からどれを使うか判断する力！
+  level: 標準
+  level_num: 2
+  category: geometry
+  order: 9
+  cover_image: images/noimage.jpg

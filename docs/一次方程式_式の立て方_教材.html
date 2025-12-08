@@ -1,0 +1,446 @@
+---
+layout: material-raw
+title: 一次方程式：式の立て方
+icon: "📝"
+description: 文章問題を読んで方程式を立てる方法をマスター。「何を x とおくか」「どこに等号を置くか」の判断力を身につけよう。
+level: 標準
+level_num: 2
+category: equations
+order: 2
+keywords:
+  - 一次方程式
+  - 文章題
+  - 立式
+  - 応用問題
+cover_image: /images/noimage.jpg
+cover_description: 文章から数式への変換をイメージした図
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「3700年前の数学パピルス」"
+related:
+  - url: /一次方程式_教材.html
+    title: 一次方程式
+    note: 方程式の解き方の基本（前提知識）
+    type: prerequisite
+  - url: /連立方程式_教材.html
+    title: 連立方程式
+    note: 未知数が2つになった発展形
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「りんご3個とみかん5個で350円」「兄は弟より3歳年上」…こんな文章問題、見たことあるよね？方程式は解けるのに、文章題になると手が止まる人は多い。でも大丈夫、<strong>「式の立て方」にはパターンがある</strong>んだ。</p>
+        <p>このページでは、文章問題を方程式に変換する力を身につけます：</p>
+        <ul>
+            <li><strong>何を x とおくか</strong>：求めたいものを文字で表す</li>
+            <li><strong>等しい量を見つける</strong>：「＝」でつなげる関係を探す</li>
+            <li><strong>パターン別の立式法</strong>：代金・個数・速さ・年齢・割合</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】立式の3ステップ：①求めたいもの → x　②等しい量を探す　③式を立てる
+        </div>
+
+        <!-- 判断フロー図解 -->
+        <div class="svg-container">
+            <svg width="700" height="280" viewBox="0 0 700 280">
+                <defs>
+                    <marker id="arrow-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#1976d2"/>
+                    </marker>
+                </defs>
+
+                <!-- ステップ1 -->
+                <rect x="50" y="30" width="180" height="70" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="140" y="55" text-anchor="middle" fill="#1976d2" font-weight="bold" font-size="16">STEP 1</text>
+                <text x="140" y="80" text-anchor="middle" fill="#333" font-size="14">求めたいもの → x</text>
+
+                <!-- 矢印1 -->
+                <path d="M 230 65 L 280 65" stroke="#1976d2" stroke-width="2" marker-end="url(#arrow-flow)"/>
+
+                <!-- ステップ2 -->
+                <rect x="280" y="30" width="180" height="70" rx="10" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+                <text x="370" y="55" text-anchor="middle" fill="#4caf50" font-weight="bold" font-size="16">STEP 2</text>
+                <text x="370" y="80" text-anchor="middle" fill="#333" font-size="14">等しい量を探す</text>
+
+                <!-- 矢印2 -->
+                <path d="M 460 65 L 510 65" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow-flow)"/>
+
+                <!-- ステップ3 -->
+                <rect x="510" y="30" width="150" height="70" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                <text x="585" y="55" text-anchor="middle" fill="#ff9800" font-weight="bold" font-size="16">STEP 3</text>
+                <text x="585" y="80" text-anchor="middle" fill="#333" font-size="14">式を立てる</text>
+
+                <!-- 下部の説明 -->
+                <rect x="50" y="130" width="180" height="120" rx="5" fill="#fafafa" stroke="#ddd"/>
+                <text x="140" y="155" text-anchor="middle" fill="#666" font-size="13">「何を求めるか」を</text>
+                <text x="140" y="175" text-anchor="middle" fill="#666" font-size="13">問題文から見つける</text>
+                <text x="140" y="210" text-anchor="middle" fill="#1976d2" font-size="14" font-weight="bold">例：りんごの個数</text>
+                <text x="140" y="235" text-anchor="middle" fill="#1976d2" font-size="14" font-weight="bold">→ x 個とおく</text>
+
+                <rect x="280" y="130" width="180" height="120" rx="5" fill="#fafafa" stroke="#ddd"/>
+                <text x="370" y="155" text-anchor="middle" fill="#666" font-size="13">「＝」で結べる</text>
+                <text x="370" y="175" text-anchor="middle" fill="#666" font-size="13">2つの量を探す</text>
+                <text x="370" y="210" text-anchor="middle" fill="#4caf50" font-size="14" font-weight="bold">例：合計金額</text>
+                <text x="370" y="235" text-anchor="middle" fill="#4caf50" font-size="14" font-weight="bold">= 払った金額</text>
+
+                <rect x="510" y="130" width="150" height="120" rx="5" fill="#fafafa" stroke="#ddd"/>
+                <text x="585" y="155" text-anchor="middle" fill="#666" font-size="13">左辺と右辺を</text>
+                <text x="585" y="175" text-anchor="middle" fill="#666" font-size="13">x で表す</text>
+                <text x="585" y="210" text-anchor="middle" fill="#ff9800" font-size="14" font-weight="bold">例：</text>
+                <text x="585" y="235" text-anchor="middle" fill="#ff9800" font-size="14" font-weight="bold">120x = 600</text>
+            </svg>
+            <div class="svg-caption">立式の3ステップ</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 パターン1：代金の問題</strong> <a href="#ex-price" class="example-link">→ 例1</a>
+            <p><strong>キーワード</strong>：「○円の品物を△個買った」「合計○円」「おつり○円」</p>
+            <div class="formula">
+                \[ \text{（単価）} \times \text{（個数）} = \text{（代金）} \]
+            </div>
+            <p><strong>→ よくある等式：</strong> 買った金額の合計 ＝ 払った金額、または 払った金額 − 買った金額 ＝ おつり</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 パターン2：個数の問題</strong> <a href="#ex-count" class="example-link">→ 例2</a>
+            <p><strong>キーワード</strong>：「○個ずつ配る」「△個余る」「□個足りない」</p>
+            <div class="formula">
+                \[ \text{（全体の個数）} = \text{（1人あたり）} \times \text{（人数）} \pm \text{（余り/不足）} \]
+            </div>
+            <p><strong>→ 注意：</strong>「余る」ならプラス、「足りない」ならマイナス</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 パターン3：速さ・時間・距離の問題</strong> <a href="#ex-speed" class="example-link">→ 例3</a>
+            <p><strong>キーワード</strong>：「時速○km」「△時間かかった」「□km離れている」</p>
+            <div class="formula">
+                \[ \text{（距離）} = \text{（速さ）} \times \text{（時間）} \]
+            </div>
+            <p><strong>→ よくある等式：</strong> 行きの距離 ＝ 帰りの距離、A地点までの距離 ＋ B地点までの距離 ＝ 全体の距離</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 パターン4：年齢の問題</strong> <a href="#ex-age" class="example-link">→ 例4</a>
+            <p><strong>キーワード</strong>：「○年後」「△年前」「□歳年上/年下」</p>
+            <p><strong>→ ポイント：</strong> 年齢差は何年経っても変わらない！ 「3歳年上」は永遠に3歳年上</p>
+            <div class="formula">
+                \[ \text{（現在の年齢）} + n = \text{（n年後の年齢）} \]
+            </div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 パターン5：割合・%の問題</strong> <a href="#ex-percent" class="example-link">→ 例5</a>
+            <p><strong>キーワード</strong>：「○%増える」「△割引」「□倍になる」</p>
+            <div class="formula">
+                \[ \text{（もとの量）} \times \frac{\text{割合}}{100} = \text{（割合に相当する量）} \]
+            </div>
+            <p><strong>→ 変換：</strong> 10%増 → 1.1倍、20%引き → 0.8倍、3割増 → 1.3倍</p>
+        </div>
+
+        <details class="thinking"><summary>💡 「等しい量」の見つけ方</summary>
+        <p>文章題で一番難しいのは「何と何が等しいか」を見つけること。コツは<strong>「〜は〜である」「合計で〜になる」「〜と同じ」</strong>という表現を探すこと。</p>
+        <p>例えば「りんご3個とみかん5個で350円」なら、「りんごの代金 + みかんの代金 = 350円」という等式が隠れている。</p>
+        </details>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>パターンごとに立式の方法を練習しよう。「求めたいもの → x」「等しい量 → 等式」の流れを意識！</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 代金の問題</h3>
+
+        <div class="example-box" id="ex-price">
+            <div class="example-title">
+                <span class="number-badge">例1</span>買い物の問題
+            </div>
+            <p>1個120円のりんごを何個か買い、1000円札を出したらおつりが280円だった。りんごは何個買ったか。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>求めたいもの：</strong>りんごの個数 → <strong>x 個</strong>とおく</li>
+                <li><strong>等しい量を探す：</strong>「払った金額 − 買った金額 = おつり」</li>
+                <li><strong>式を立てる：</strong>
+                    <ul>
+                        <li>りんごの代金：\(120x\) 円</li>
+                        <li>おつり：\(1000 - 120x = 280\)</li>
+                    </ul>
+                </li>
+            </ol>
+            <div class="formula">
+                \[ 1000 - 120x = 280 \]
+            </div>
+            <p>（解くと \(x = 6\)、答え：<strong>6個</strong>）</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 個数の問題</h3>
+
+        <div class="example-box" id="ex-count">
+            <div class="example-title">
+                <span class="number-badge">例2</span>配る問題
+            </div>
+            <p>ある個数のあめを、生徒に5個ずつ配ると3個余り、6個ずつ配ると4個足りない。生徒は何人いるか。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>求めたいもの：</strong>生徒の人数 → <strong>x 人</strong>とおく</li>
+                <li><strong>等しい量を探す：</strong>あめの総数は同じ！</li>
+                <li><strong>2通りで表す：</strong>
+                    <ul>
+                        <li>5個ずつ配って3個余る → 総数は \(5x + 3\)</li>
+                        <li>6個ずつ配ると4個足りない → 総数は \(6x - 4\)</li>
+                    </ul>
+                </li>
+            </ol>
+            <div class="formula">
+                \[ 5x + 3 = 6x - 4 \]
+            </div>
+            <p>（解くと \(x = 7\)、答え：<strong>7人</strong>）</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 速さの問題</h3>
+
+        <div class="example-box" id="ex-speed">
+            <div class="example-title">
+                <span class="number-badge">例3</span>往復の問題
+            </div>
+            <p>家から学校まで行くのに、行きは分速60mで歩き、帰りは分速80mで歩いたら、往復で35分かかった。家から学校までの距離を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>求めたいもの：</strong>家から学校までの距離 → <strong>x m</strong>とおく</li>
+                <li><strong>等しい量を探す：</strong>「行きの時間 + 帰りの時間 = 35分」</li>
+                <li><strong>式を立てる：</strong>
+                    <ul>
+                        <li>行きの時間：\(\frac{x}{60}\) 分</li>
+                        <li>帰りの時間：\(\frac{x}{80}\) 分</li>
+                    </ul>
+                </li>
+            </ol>
+            <div class="formula">
+                \[ \frac{x}{60} + \frac{x}{80} = 35 \]
+            </div>
+            <p>（解くと \(x = 1200\)、答え：<strong>1200m</strong>）</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 年齢の問題</h3>
+
+        <div class="example-box" id="ex-age">
+            <div class="example-title">
+                <span class="number-badge">例4</span>年齢の問題
+            </div>
+            <p>現在、父は42歳、子は12歳である。父の年齢が子の年齢の2倍になるのは何年後か。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>求めたいもの：</strong>何年後か → <strong>x 年後</strong>とおく</li>
+                <li><strong>x年後の年齢：</strong>
+                    <ul>
+                        <li>父：\(42 + x\) 歳</li>
+                        <li>子：\(12 + x\) 歳</li>
+                    </ul>
+                </li>
+                <li><strong>等しい量：</strong>「父の年齢 = 子の年齢の2倍」</li>
+            </ol>
+            <div class="formula">
+                \[ 42 + x = 2(12 + x) \]
+            </div>
+            <p>（解くと \(x = 18\)、答え：<strong>18年後</strong>）</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 割合の問題</h3>
+
+        <div class="example-box" id="ex-percent">
+            <div class="example-title">
+                <span class="number-badge">例5</span>割引の問題
+            </div>
+            <p>定価の20%引きで売ったら、売値は960円になった。定価はいくらか。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>求めたいもの：</strong>定価 → <strong>x 円</strong>とおく</li>
+                <li><strong>20%引き = 80% = 0.8倍</strong></li>
+                <li><strong>等しい量：</strong>「定価 × 0.8 = 売値」</li>
+            </ol>
+            <div class="formula">
+                \[ 0.8x = 960 \]
+            </div>
+            <p>（解くと \(x = 1200\)、答え：<strong>1200円</strong>）</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：キーワードをマーキングする</strong><br>
+            文章題を読んだら、まず「求めたいもの」と「等しい」「合計」「○○は△△である」などのキーワードに下線を引こう。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：単位を揃える</strong><br>
+            「時速○km」と「距離△m」が混在していたら、どちらかに統一してから立式する。単位がバラバラだと計算ミスのもと。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：図や表を描く</strong><br>
+            特に速さの問題や年齢の問題は、図や表を描くと関係が見えやすい。「行き」「帰り」の矢印を描いたり、「現在」「x年後」の表を作ったり。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：答えを代入して確かめる</strong><br>
+            解いた後、答えを元の文章題に当てはめて確認。「りんご6個で720円、おつり280円」→ 1000円払ったから OK！
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：何を x にするか迷う</div>
+            <p><strong>ダメな例：</strong> 「りんごの代金」「買った金額」など、関係する量をどれも x にしようとして混乱</p>
+            <p><strong>対策：</strong> 「何を求めよ」と聞かれているものを x にする！問題文の最後に答えがある。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：「余る」と「足りない」を逆にする</div>
+            <p><strong>ダメな例：</strong> 「3個足りない」を \(+3\) にしてしまう</p>
+            <p><strong>対策：</strong> 「足りない」は「もっと必要」→ マイナスで表す。「余る」は「多い」→ プラス。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：割合の変換ミス</div>
+            <p><strong>ダメな例：</strong> 「20%引き」を「0.2倍」にしてしまう</p>
+            <p><strong>対策：</strong> 「○%引き」は「(100−○)%」= 「(1−○/100)倍」。20%引きなら 0.8倍！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：速さ・時間・距離の関係を忘れる</div>
+            <p><strong>ダメな例：</strong> 時間 = 距離 × 速さ としてしまう</p>
+            <p><strong>対策：</strong> 「は・じ・き」で覚える。距離(き) = 速さ(は) × 時間(じ)。時間 = 距離 ÷ 速さ。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">問題文の「求めるもの」を x と正しくおけた</div>
+            <div class="checklist-item">「等しい量」を見つけて等式を作れた</div>
+            <div class="checklist-item">単位を揃えてから立式できた</div>
+            <div class="checklist-item">「余る/足りない」「○%引き」を正しく変換できた</div>
+            <div class="checklist-item">答えを元の文章に代入して確認した</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>1冊150円のノートを何冊か買い、1000円札を出したら100円のおつりがきた。ノートは何冊買ったか。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>立式：</strong> ノートの冊数を x とすると、おつり = 払った金額 − ノートの代金 より</p>
+                    <p>\[ 1000 - 150x = 100 \]</p>
+                    <p>\[ 150x = 900 \]</p>
+                    <p>\[ x = 6 \]</p>
+                    <p><strong>答え：6冊</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>兄と弟がいて、兄は弟より4歳年上である。5年後には兄の年齢が弟の年齢の1.5倍になる。現在の弟の年齢を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>立式：</strong> 弟の現在の年齢を x 歳とすると、兄は (x + 4) 歳</p>
+                    <p>5年後：弟 (x + 5) 歳、兄 (x + 9) 歳</p>
+                    <p>「兄 = 弟の1.5倍」より</p>
+                    <p>\[ x + 9 = 1.5(x + 5) \]</p>
+                    <p>\[ x + 9 = 1.5x + 7.5 \]</p>
+                    <p>\[ 1.5 = 0.5x \]</p>
+                    <p>\[ x = 3 \]</p>
+                    <p><strong>答え：3歳</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：文章題は「求めるもの → x」「等しい量 → 等式」の2ステップで立式できる！
+</div>
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「3700年前の数学パピルス」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 リンド数学パピルス（紀元前1650年頃、古代エジプト）</div>
+
+            <p>今から約3700年前、古代エジプトのある書記官アーメス（アハメスとも呼ばれる）が、一本のパピルス（紙のようなもの）に数学の問題を書き写していた。</p>
+
+            <p>このパピルス、後に発見者の名前から「リンド数学パピルス」と呼ばれることになる。長さ5m以上もある巻物で、85問もの数学問題が書かれていた。</p>
+
+            <p>その中にこんな問題がある：</p>
+
+            <blockquote style="background: #f5f5f5; padding: 15px; border-left: 4px solid #ff9800; margin: 15px 0;">
+                「ある量とその7分の1を足すと19になる。ある量を求めよ」
+            </blockquote>
+
+            <p>これ、現代の一次方程式で書くと...</p>
+
+            <div class="formula">
+                \[ x + \frac{x}{7} = 19 \]
+            </div>
+
+            <p>解くと \(x = 16\frac{5}{8}\)。古代エジプト人は、この未知の量を「<strong>アハ</strong>」（エジプト語で「量」の意味）と呼んでいた。</p>
+
+            <p>驚くべきことに、彼らは<strong>「試しの値を入れて調整する」</strong>という方法で、方程式を解いていた。現代の「検算」に近い発想だ！</p>
+
+            <p>「まず7を入れてみる → 7 + 1 = 8。でも答えは19だから、7を 19/8 倍すればいい！」という具合。</p>
+
+            <p>この方法、実は効率的で、古代エジプトの建築や測量に大活躍した。ピラミッドの正確な設計も、こうした計算技術に支えられていたのだ。</p>
+
+            <p style="font-size: 0.9em; color: #666; margin-top: 20px;">
+                ※リンド数学パピルスは現在、大英博物館に所蔵されています（<a href="https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%B3%E3%83%89%E6%95%B0%E5%AD%A6%E3%83%91%E3%83%94%E3%83%AB%E3%82%B9" target="_blank" style="color: #1976d2;">Wikipedia: リンド数学パピルス</a>）。
+            </p>
+        </div>
+    </div>
+</section>
