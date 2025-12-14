@@ -12,6 +12,92 @@ title: トップページ
     <link rel="stylesheet" href="{{ '/css/education-template.css' | relative_url }}">
 
     {% include home-styles.html %}
+
+    <style>
+        /* レベル別サブセクション */
+        .level-section {
+            margin-bottom: 30px;
+        }
+
+        .level-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px dashed #e0e0e0;
+        }
+
+        .level-header .level-icon {
+            font-size: 1.2em;
+        }
+
+        .level-header .level-name {
+            font-size: 0.95em;
+            font-weight: 700;
+            color: #666;
+        }
+
+        .level-header.lvl-basic .level-name { color: #009688; }
+        .level-header.lvl-standard .level-name { color: #1976d2; }
+        .level-header.lvl-advanced .level-name { color: #e65100; }
+
+        .level-header .level-count {
+            font-size: 0.8em;
+            color: #999;
+            margin-left: auto;
+        }
+
+        /* カテゴリ内に教材がない場合の非表示 */
+        .level-section:empty {
+            display: none;
+        }
+
+        /* 統計バー */
+        .stats-bar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: 800;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.85em;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 480px) {
+            .stats-bar {
+                padding: 15px 20px;
+                gap: 15px;
+            }
+            .stat-number {
+                font-size: 1.5em;
+            }
+            .stat-label {
+                font-size: 0.75em;
+            }
+            .level-header {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -27,44 +113,142 @@ title: トップページ
             </p>
         </div>
 
+        <!-- 統計バー -->
+        {% assign total_materials = site.data.materials | size %}
+        {% assign basic_count = site.data.materials | where: "level_num", 1 | size %}
+        {% assign standard_count = site.data.materials | where: "level_num", 2 | size %}
+        {% assign advanced_count = site.data.materials | where: "level_num", 3 | size %}
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-number">{{ total_materials }}</span>
+                <span class="stat-label">教材数</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">🌱 {{ basic_count }}</span>
+                <span class="stat-label">基礎</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">📘 {{ standard_count }}</span>
+                <span class="stat-label">標準</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">🎯 {{ advanced_count }}</span>
+                <span class="stat-label">発展</span>
+            </div>
+        </div>
+
         {% for category in site.data.categories %}
         <div class="category-section">
             <h2>{{ category.icon }} {{ category.name }}</h2>
-            <div class="material-grid">
-                {% assign cat_materials = site.data.materials | where: "category", category.id | sort: "order" %}
-                {% for material in cat_materials %}
-                <a href="{{ material.slug | append: '.html' | relative_url }}" class="quest-card">
-                    <div class="quest-icon">{{ material.icon }}</div>
-                    <div class="quest-title">{{ material.title }}</div>
-                    <div class="quest-desc">{{ material.description }}</div>
-                    <div class="quest-meta">
-                        {% case material.level_num %}
-                        {% when 1 %}
-                        <span class="level-badge lvl-basic">Lv.1 {{ material.level }}</span>
-                        {% when 2 %}
-                        <span class="level-badge lvl-standard">Lv.2 {{ material.level }}</span>
-                        {% when 3 %}
-                        <span class="level-badge lvl-advanced">Lv.3 {{ material.level }}</span>
-                        {% else %}
-                        <span class="level-badge lvl-standard">Lv.2 {{ material.level }}</span>
-                        {% endcase %}
-                        <div class="play-btn">▶</div>
-                    </div>
-                </a>
-                {% endfor %}
 
-                {% assign coming = site.data.coming_soon | where: "category", category.id %}
-                {% for item in coming %}
-                <div class="quest-card locked">
-                    <div class="quest-icon">🔒</div>
-                    <div class="quest-title">{{ item.title }}</div>
-                    <div class="quest-desc">{{ item.description }}（準備中）</div>
-                    <div class="quest-meta">
-                        <span class="level-badge" style="background:#eee; color:#999;">Coming Soon</span>
-                    </div>
+            {% assign cat_materials = site.data.materials | where: "category", category.id | sort: "order" %}
+
+            <!-- 基礎レベル -->
+            {% assign basic_materials = cat_materials | where: "level_num", 1 %}
+            {% if basic_materials.size > 0 %}
+            <div class="level-section">
+                <div class="level-header lvl-basic">
+                    <span class="level-icon">🌱</span>
+                    <span class="level-name">基礎（中1レベル）</span>
+                    <span class="level-count">{{ basic_materials.size }}教材</span>
                 </div>
-                {% endfor %}
+                <div class="material-grid">
+                    {% for material in basic_materials %}
+                    <a href="{{ material.slug | append: '.html' | relative_url }}" class="quest-card">
+                        <div class="quest-icon">{{ material.icon }}</div>
+                        <div class="quest-content">
+                            <div class="quest-title">{{ material.title }}</div>
+                            <div class="quest-desc">{{ material.description }}</div>
+                            <div class="quest-meta">
+                                <span class="level-badge lvl-basic">Lv.1</span>
+                                <div class="play-btn">▶</div>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
             </div>
+            {% endif %}
+
+            <!-- 標準レベル -->
+            {% assign standard_materials = cat_materials | where: "level_num", 2 %}
+            {% if standard_materials.size > 0 %}
+            <div class="level-section">
+                <div class="level-header lvl-standard">
+                    <span class="level-icon">📘</span>
+                    <span class="level-name">標準（中2-3レベル）</span>
+                    <span class="level-count">{{ standard_materials.size }}教材</span>
+                </div>
+                <div class="material-grid">
+                    {% for material in standard_materials %}
+                    <a href="{{ material.slug | append: '.html' | relative_url }}" class="quest-card">
+                        <div class="quest-icon">{{ material.icon }}</div>
+                        <div class="quest-content">
+                            <div class="quest-title">{{ material.title }}</div>
+                            <div class="quest-desc">{{ material.description }}</div>
+                            <div class="quest-meta">
+                                <span class="level-badge lvl-standard">Lv.2</span>
+                                <div class="play-btn">▶</div>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- 発展レベル -->
+            {% assign advanced_materials = cat_materials | where: "level_num", 3 %}
+            {% if advanced_materials.size > 0 %}
+            <div class="level-section">
+                <div class="level-header lvl-advanced">
+                    <span class="level-icon">🎯</span>
+                    <span class="level-name">発展（入試レベル）</span>
+                    <span class="level-count">{{ advanced_materials.size }}教材</span>
+                </div>
+                <div class="material-grid">
+                    {% for material in advanced_materials %}
+                    <a href="{{ material.slug | append: '.html' | relative_url }}" class="quest-card">
+                        <div class="quest-icon">{{ material.icon }}</div>
+                        <div class="quest-content">
+                            <div class="quest-title">{{ material.title }}</div>
+                            <div class="quest-desc">{{ material.description }}</div>
+                            <div class="quest-meta">
+                                <span class="level-badge lvl-advanced">Lv.3</span>
+                                <div class="play-btn">▶</div>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- 準備中の教材 -->
+            {% assign coming = site.data.coming_soon | where: "category", category.id %}
+            {% if coming.size > 0 %}
+            <div class="level-section">
+                <div class="level-header" style="border-bottom-color: #ddd;">
+                    <span class="level-icon">🔒</span>
+                    <span class="level-name" style="color: #999;">準備中</span>
+                </div>
+                <div class="material-grid">
+                    {% for item in coming %}
+                    <div class="quest-card locked">
+                        <div class="quest-icon">🔒</div>
+                        <div class="quest-content">
+                            <div class="quest-title">{{ item.title }}</div>
+                            <div class="quest-desc">{{ item.description }}</div>
+                            <div class="quest-meta">
+                                <span class="level-badge" style="background:#eee; color:#999;">Soon</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
         </div>
         {% endfor %}
 

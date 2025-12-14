@@ -1,194 +1,51 @@
 # 教材メタデータ
-# Front Matterを使わずにここで一元管理
+# orderの方針: 基礎(1-9) → 標準(10-49) → 発展(50+)
+# 同レベル内は学習順序で並べる
 
-- slug: 累乗と平方根_教材
-  title: 累乗と平方根
+# ============================================
+# 数と式 (numbers)
+# ============================================
+
+# --- 基礎 (中1) ---
+- slug: 正負の数の計算_教材
+  title: 正負の数の計算
+  icon: "➕➖"
+  description: 正負の数の加減乗除・四則混合計算をマスター！
+  level: 基礎
+  level_num: 1
+  category: numbers
+  order: 1
+  cover_image: images/noimage.jpg
+
+- slug: 文字式の基本_教材
+  title: 文字式の基本
+  icon: "🔤"
+  description: 文字式の表し方・式の値・一次式の加減をマスター！
+  level: 基礎
+  level_num: 1
+  category: numbers
+  order: 2
+  cover_image: images/noimage.jpg
+
+# --- 標準 (中2-3) ---
+- slug: 式の計算_教材
+  title: 式の計算
+  icon: "📝"
+  description: 単項式・多項式の計算と等式変形をマスター！
+  level: 標準
+  level_num: 2
+  category: numbers
+  order: 10
+  cover_image: images/noimage.jpg
+
+- slug: 乗法公式_教材
+  title: 乗法公式
   icon: "🔢"
-  description: 指数法則・ルートの計算・有理化をマスターしよう！
+  description: 和と差の積・和の平方・差の平方の3つの公式！
   level: 標準
   level_num: 2
   category: numbers
-  order: 1
-  cover_image: images/powers_and_roots.png
-
-- slug: 一次方程式_教材
-  title: 一次方程式
-  icon: "⚖️"
-  description: 等式の性質・移項・分数を含む方程式の解き方をマスターしよう！
-  level: 基礎
-  level_num: 1
-  category: equations
-  order: 1
-  cover_image: images/noimage.jpg
-
-- slug: 二次方程式の解き方_教材
-  title: 二次方程式の解き方
-  icon: "📐"
-  description: 因数分解・平方完成・解の公式の3つの方法をマスターしよう！
-  level: 標準
-  level_num: 2
-  category: equations
-  order: 2
-  cover_image: images/二次方程式の解き方_教材.png
-
-- slug: 座標平面上の直線_教材
-  title: 座標平面上の直線
-  icon: "📐"
-  description: 中点・傾き・平行の公式を使いこなして、直線をマスターしよう！
-  level: 標準
-  level_num: 2
-  category: functions
-  order: 1
-  cover_image: images/座標平面上の直線_教材.png
-
-- slug: 二次関数のグラフと性質_教材
-  title: 二次関数のグラフと性質
-  icon: "📈"
-  description: 対称軸・頂点・最大最小を求めるスキルをマスターしよう！
-  level: 標準
-  level_num: 2
-  category: functions
-  order: 2
-  cover_image: images/二次関数のグラフと性質_教材.png
-
-- slug: 平面図形の面積公式_教材
-  title: 平面図形の面積公式
-  icon: "📏"
-  description: 平行四辺形・三角形・台形の面積公式をマスターしよう！
-  level: 基礎
-  level_num: 1
-  category: geometry
-  order: 1
-  cover_image: images/平面図形の面積公式_教材.png
-
-- slug: 円と球の性質_教材
-  title: 円と球の性質
-  icon: "⚪"
-  description: 円周・円の面積・球の表面積と体積をマスターしよう！
-  level: 標準
-  level_num: 2
-  category: geometry
-  order: 2
-  cover_image: images/円と球の性質_教材.png
-
-- slug: おうぎ形の弧と面積_教材
-  title: おうぎ形の弧と面積
-  icon: "🥧"
-  description: 弧の長さと扇形の面積を中心角で計算しよう！
-  level: 標準
-  level_num: 2
-  category: geometry
-  order: 3
-  cover_image: images/おうぎ形の弧と面積_教材.png
-
-- slug: 立体図形の体積と表面積_教材
-  title: 立体図形の体積と表面積
-  icon: "📦"
-  description: 角柱・円柱・円錐・角錐の体積と側面積をマスターしよう！
-  level: 標準
-  level_num: 2
-  category: geometry
-  order: 4
-  cover_image: images/volume_solids.png
-
-- slug: データの分析と確率_教材
-  title: データの分析と確率
-  icon: "🎲"
-  description: 代表値・四分位数・外れ値・経験的確率をマスターしよう！
-  level: 標準
-  level_num: 2
-  category: data
-  order: 1
-  cover_image: images/データの分析と確率_教材.jpg
-
-- slug: 確率の基本法則_教材
-  title: 確率の基本法則
-  icon: "🧮"
-  description: 余事象・和の法則・条件付き確率をマスターしよう！
-  level: 標準
-  level_num: 2
-  category: data
-  order: 2
-  cover_image: images/確率の基本法則_教材.png
-
-- slug: 二次方程式_解法の選び方_教材
-  title: 二次方程式：解法の選び方
-  icon: "⚖️"
-  description: 因数分解・平方完成・解の公式から最速の方法を選ぶ判断力を身につけよう！
-  level: 標準
-  level_num: 2
-  category: equations
-  order: 3
-  cover_image: images/noimage.jpg
-
-- slug: 因数分解_どのパターン_教材
-  title: 因数分解：どのパターン？
-  icon: "🔍"
-  description: 共通因数・完全平方・たすき掛けの5パターンから最適な方法を選ぶ判断力を身につけよう！
-  level: 標準
-  level_num: 2
-  category: numbers
-  order: 2
-  cover_image: images/noimage.jpg
-
-- slug: 証明問題_合同条件の選び方_教材
-  title: 証明問題：合同条件の選び方
-  icon: "🔺"
-  description: 三角形の合同条件3つと直角三角形の合同条件2つから、どれを使うか判断できるようになろう！
-  level: 標準
-  level_num: 2
-  category: geometry
-  order: 5
-  cover_image: images/noimage.jpg
-
-- slug: 三平方の定理_教材
-  title: 三平方の定理
-  icon: "📐"
-  description: 三平方の定理・逆・特別な直角三角形の比をマスターしよう！
-  level: 標準
-  level_num: 2
-  category: geometry
-  order: 6
-  cover_image: images/noimage.jpg
-
-- slug: 三平方の定理の応用_教材
-  title: 三平方の定理の応用
-  icon: "📏"
-  description: 対角線・空間図形・座標平面に三平方の定理を応用しよう！
-  level: 標準
-  level_num: 2
-  category: geometry
-  order: 7
-  cover_image: images/noimage.jpg
-
-- slug: 三平方の定理の総合問題_教材
-  title: 三平方の定理の総合問題
-  icon: "🎯"
-  description: 展開図・空間図形・最短距離など入試レベルの問題に挑戦！
-  level: 発展
-  level_num: 3
-  category: geometry
-  order: 8
-  cover_image: images/noimage.jpg
-
-- slug: 連立方程式_教材
-  title: 連立方程式
-  icon: "🔗"
-  description: 加減法と代入法で2つの未知数を同時に解く！
-  level: 標準
-  level_num: 2
-  category: equations
-  order: 4
-  cover_image: images/noimage.jpg
-
-- slug: 連立方程式_加減法vs代入法_教材
-  title: 連立方程式：加減法 vs 代入法
-  icon: "⚖️"
-  description: 加減法と代入法、どちらが楽か一瞬で判断できるようになろう！
-  level: 標準
-  level_num: 2
-  category: equations
-  order: 5
+  order: 11
   cover_image: images/noimage.jpg
 
 - slug: 因数分解_教材
@@ -198,35 +55,259 @@
   level: 標準
   level_num: 2
   category: numbers
-  order: 3
+  order: 12
   cover_image: images/noimage.jpg
 
+- slug: 因数分解_どのパターン_教材
+  title: 因数分解：どのパターン？
+  icon: "🔍"
+  description: 5パターンから最適な方法を選ぶ判断力！
+  level: 標準
+  level_num: 2
+  category: numbers
+  order: 13
+  cover_image: images/noimage.jpg
+
+- slug: 累乗と平方根_教材
+  title: 累乗と平方根
+  icon: "√"
+  description: 指数法則・ルートの計算・有理化をマスター！
+  level: 標準
+  level_num: 2
+  category: numbers
+  order: 14
+  cover_image: images/powers_and_roots.png
+
+# ============================================
+# 方程式 (equations)
+# ============================================
+
+# --- 基礎 (中1) ---
+- slug: 一次方程式_教材
+  title: 一次方程式
+  icon: "⚖️"
+  description: 等式の性質・移項・分数を含む方程式の解き方！
+  level: 基礎
+  level_num: 1
+  category: equations
+  order: 1
+  cover_image: images/noimage.jpg
+
+# --- 標準 (中2-3) ---
 - slug: 一次方程式_式の立て方_教材
   title: 一次方程式：式の立て方
   icon: "📝"
-  description: 文章問題を読んで方程式を立てる判断力を身につけよう！
+  description: 文章問題を読んで方程式を立てる判断力！
   level: 標準
   level_num: 2
   category: equations
-  order: 6
+  order: 10
   cover_image: images/noimage.jpg
+
+- slug: 連立方程式_教材
+  title: 連立方程式
+  icon: "🔗"
+  description: 加減法と代入法で2つの未知数を同時に解く！
+  level: 標準
+  level_num: 2
+  category: equations
+  order: 11
+  cover_image: images/noimage.jpg
+
+- slug: 連立方程式_加減法vs代入法_教材
+  title: 連立方程式：加減法 vs 代入法
+  icon: "⚖️"
+  description: どちらが楽か一瞬で判断できるようになろう！
+  level: 標準
+  level_num: 2
+  category: equations
+  order: 12
+  cover_image: images/noimage.jpg
+
+- slug: 二次方程式の解き方_教材
+  title: 二次方程式の解き方
+  icon: "📐"
+  description: 因数分解・平方完成・解の公式の3つの方法！
+  level: 標準
+  level_num: 2
+  category: equations
+  order: 13
+  cover_image: images/二次方程式の解き方_教材.png
+
+- slug: 二次方程式_解法の選び方_教材
+  title: 二次方程式：解法の選び方
+  icon: "🎯"
+  description: 最速の解法を選ぶ判断力を身につけよう！
+  level: 標準
+  level_num: 2
+  category: equations
+  order: 14
+  cover_image: images/noimage.jpg
+
+# ============================================
+# 関数 (functions)
+# ============================================
+
+# --- 基礎 (中1) ---
+- slug: 比例と反比例_教材
+  title: 比例と反比例
+  icon: "📊"
+  description: 比例・反比例の式・グラフをマスター！
+  level: 基礎
+  level_num: 1
+  category: functions
+  order: 1
+  cover_image: images/noimage.jpg
+
+# --- 標準 (中2-3) ---
+- slug: 座標平面上の直線_教材
+  title: 座標平面上の直線
+  icon: "📐"
+  description: 中点・傾き・平行の公式で直線をマスター！
+  level: 標準
+  level_num: 2
+  category: functions
+  order: 10
+  cover_image: images/座標平面上の直線_教材.png
 
 - slug: 一次関数_問題タイプ別攻略_教材
   title: 一次関数：問題タイプ別攻略
   icon: "🎯"
-  description: 式を求める・交点・変域・利用の5タイプを見抜く判断力！
+  description: 5タイプの問題を見抜く判断力！
   level: 標準
   level_num: 2
   category: functions
-  order: 3
+  order: 11
+  cover_image: images/noimage.jpg
+
+- slug: 二次関数のグラフと性質_教材
+  title: 二次関数のグラフと性質
+  icon: "📈"
+  description: 対称軸・頂点・最大最小を求めるスキル！
+  level: 標準
+  level_num: 2
+  category: functions
+  order: 12
+  cover_image: images/二次関数のグラフと性質_教材.png
+
+# ============================================
+# 図形 (geometry)
+# ============================================
+
+# --- 基礎 (中1) ---
+- slug: 平面図形の面積公式_教材
+  title: 平面図形の面積公式
+  icon: "📏"
+  description: 平行四辺形・三角形・台形の面積公式！
+  level: 基礎
+  level_num: 1
+  category: geometry
+  order: 1
+  cover_image: images/平面図形の面積公式_教材.png
+
+# --- 標準 (中2-3) ---
+- slug: 円と球の性質_教材
+  title: 円と球の性質
+  icon: "⚪"
+  description: 円周・円の面積・球の表面積と体積！
+  level: 標準
+  level_num: 2
+  category: geometry
+  order: 10
+  cover_image: images/円と球の性質_教材.png
+
+- slug: おうぎ形の弧と面積_教材
+  title: おうぎ形の弧と面積
+  icon: "🥧"
+  description: 弧の長さと扇形の面積を中心角で計算！
+  level: 標準
+  level_num: 2
+  category: geometry
+  order: 11
+  cover_image: images/おうぎ形の弧と面積_教材.png
+
+- slug: 立体図形の体積と表面積_教材
+  title: 立体図形の体積と表面積
+  icon: "📦"
+  description: 角柱・円柱・円錐・角錐の体積と側面積！
+  level: 標準
+  level_num: 2
+  category: geometry
+  order: 12
+  cover_image: images/volume_solids.png
+
+- slug: 証明問題_合同条件の選び方_教材
+  title: 証明問題：合同条件の選び方
+  icon: "🔺"
+  description: 5つの合同条件からどれを使うか判断！
+  level: 標準
+  level_num: 2
+  category: geometry
+  order: 13
   cover_image: images/noimage.jpg
 
 - slug: 相似の証明_条件の選び方_教材
   title: 相似の証明：条件の選び方
   icon: "🔍"
-  description: AA・SSS・SASの3条件からどれを使うか判断する力！
+  description: AA・SSS・SASの3条件からどれを使うか判断！
   level: 標準
   level_num: 2
   category: geometry
-  order: 9
+  order: 14
   cover_image: images/noimage.jpg
+
+- slug: 三平方の定理_教材
+  title: 三平方の定理
+  icon: "📐"
+  description: 三平方の定理・逆・特別な直角三角形の比！
+  level: 標準
+  level_num: 2
+  category: geometry
+  order: 15
+  cover_image: images/noimage.jpg
+
+- slug: 三平方の定理の応用_教材
+  title: 三平方の定理の応用
+  icon: "📏"
+  description: 対角線・空間図形・座標平面に応用！
+  level: 標準
+  level_num: 2
+  category: geometry
+  order: 16
+  cover_image: images/noimage.jpg
+
+# --- 発展 ---
+- slug: 三平方の定理の総合問題_教材
+  title: 三平方の定理の総合問題
+  icon: "🎯"
+  description: 入試レベルの問題に挑戦！
+  level: 発展
+  level_num: 3
+  category: geometry
+  order: 50
+  cover_image: images/noimage.jpg
+
+# ============================================
+# データの活用 (data)
+# ============================================
+
+# --- 標準 ---
+- slug: データの分析と確率_教材
+  title: データの分析と確率
+  icon: "🎲"
+  description: 代表値・四分位数・経験的確率をマスター！
+  level: 標準
+  level_num: 2
+  category: data
+  order: 10
+  cover_image: images/データの分析と確率_教材.jpg
+
+- slug: 確率の基本法則_教材
+  title: 確率の基本法則
+  icon: "🧮"
+  description: 余事象・和の法則・条件付き確率をマスター！
+  level: 標準
+  level_num: 2
+  category: data
+  order: 11
+  cover_image: images/確率の基本法則_教材.png
