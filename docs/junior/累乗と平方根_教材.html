@@ -1,0 +1,1201 @@
+---
+layout: material-raw
+title: 累乗と平方根
+icon: "🔢"
+description: 累乗（指数）の計算と平方根（ルート）の基本を学ぶ。同じ数を何回かけるかを表す累乗と、二乗してある数になる数を求める平方根は「逆向きの操作」として理解する。
+level: 標準
+level_num: 2
+category: numbers
+order: 1
+keywords:
+- 累乗
+- 指数
+- 底
+- 平方根
+- ルート
+- 指数法則
+- 有理化
+- 根号
+cover_image: /images/累乗と平方根_教材.png
+cover_description: 2の累乗の階段状のイメージ、√記号、指数の塔、数直線上の√2の位置
+battle_game: true
+toc:
+- id: section1
+  title: "テーマの定義"
+- id: section2
+  title: "覚えるルール"
+- id: section3
+  title: "例題と解き方"
+- id: section4
+  title: "簡単にするコツ"
+- id: section5
+  title: "よくあるつまづき"
+- id: section6
+  title: "仕上げチェックリスト"
+- id: section7
+  title: "練習問題"
+- id: story
+  title: "おまけ：歴史ストーリー「ピタゴラス学派の悲劇」"
+- id: game
+  title: "🎮 バトルゲーム「ルートスライムを倒せ！」"
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>累乗と平方根は、数学のいろいろな場面で使う基本的な計算です。このページでは、以下のことを学びます：</p>
+        <ul>
+            <li><strong>累乗（るいじょう）</strong>：同じ数を何回もかける操作</li>
+            <li><strong>平方根（へいほうこん）</strong>：「何を2乗したらその数になるか」を求める操作</li>
+            <li><strong>用語</strong>：底、指数、ルートなどの読み方と意味</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要の考え方：累乗と平方根は「逆向きの操作」！
+        </div>
+
+        <!-- 逆操作の図 -->
+        <div class="svg-container">
+            <svg width="700" height="180" viewBox="0 0 700 180">
+                <!-- タイトル -->
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
+                    text-anchor="middle">累乗と平方根の関係</text>
+
+                <!-- 左：元の数 -->
+                <rect x="80" y="60" width="80" height="60" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="10" />
+                <text x="120" y="98" font-size="24" font-weight="bold" fill="#1976d2" text-anchor="middle">3</text>
+
+                <!-- 右矢印：累乗 -->
+                <path d="M 170 75 L 280 75" stroke="#4caf50" stroke-width="3" fill="none"
+                    marker-end="url(#arrow-right)" />
+                <text x="225" y="65" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">2乗する</text>
+                <text x="225" y="98" font-size="16" fill="#4caf50" text-anchor="middle">3²</text>
+
+                <!-- 中央：結果 -->
+                <rect x="290" y="60" width="80" height="60" fill="#fff3e0" stroke="#ff9800" stroke-width="3" rx="10" />
+                <text x="330" y="98" font-size="24" font-weight="bold" fill="#e65100" text-anchor="middle">9</text>
+
+                <!-- 左矢印：平方根 -->
+                <path d="M 280 105 L 170 105" stroke="#9c27b0" stroke-width="3" fill="none"
+                    marker-end="url(#arrow-left)" />
+                <text x="225" y="135" font-size="14" font-weight="bold" fill="#9c27b0"
+                    text-anchor="middle">平方根をとる</text>
+                <text x="225" y="155" font-size="16" fill="#9c27b0" text-anchor="middle">√9</text>
+
+                <!-- 右側の説明 -->
+                <rect x="420" y="50" width="250" height="80" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2" rx="8" />
+                <text x="545" y="75" font-size="14" font-weight="bold" fill="#7b1fa2" text-anchor="middle">💡
+                    ポイント</text>
+                <text x="545" y="100" font-size="14" fill="#333" text-anchor="middle">3² = 9 と √9 = 3</text>
+                <text x="545" y="120" font-size="14" fill="#666" text-anchor="middle">は逆の計算！</text>
+
+                <defs>
+                    <marker id="arrow-right" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#4caf50" />
+                    </marker>
+                    <marker id="arrow-left" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#9c27b0" />
+                    </marker>
+                </defs>
+            </svg>
+            <div class="svg-caption">2乗と平方根は打ち消し合う逆の操作</div>
+        </div>
+
+        <div class="rule-box" id="def-power">
+            <strong>📌 累乗の意味</strong>
+            <div class="formula">
+                \[ a^n = \underbrace{a \times a \times \cdots \times a}_{n\text{個}} \]
+            </div>
+            <p>例：\( 2^5 = 2 \times 2 \times 2 \times 2 \times 2 = 32 \)</p>
+        </div>
+
+        <div class="rule-box" id="rule-exponent-laws">
+            <strong>📌 指数法則（同じ底のかけ算・わり算）</strong> <a href="#ex-exponent" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ a^m \times a^n = a^{m+n} \quad \text{（かけ算 → 指数を足す）} \]
+                \[ a^m \div a^n = a^{m-n} \quad \text{（わり算 → 指数を引く）} \]
+            </div>
+
+            <!-- 指数法則の図解 -->
+            <div class="svg-container">
+                <svg width="700" height="200" viewBox="0 0 700 200">
+                    <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
+                        text-anchor="middle">なぜ指数を足すのか？</text>
+
+                    <!-- 2^3 の部分 -->
+                    <rect x="40" y="50" width="160" height="50" fill="#c8e6c9" stroke="#4caf50" stroke-width="2"
+                        rx="8" />
+                    <text x="120" y="80" font-size="18" font-weight="bold" fill="#2e7d32" text-anchor="middle">2³ = 2 ×
+                        2 × 2</text>
+                    <text x="120" y="120" font-size="14" fill="#4caf50" text-anchor="middle">3個</text>
+
+                    <!-- × -->
+                    <text x="220" y="80" font-size="24" font-weight="bold" fill="#333" text-anchor="middle">×</text>
+
+                    <!-- 2^2 の部分 -->
+                    <rect x="250" y="50" width="120" height="50" fill="#bbdefb" stroke="#2196f3" stroke-width="2"
+                        rx="8" />
+                    <text x="310" y="80" font-size="18" font-weight="bold" fill="#1565c0" text-anchor="middle">2² = 2 ×
+                        2</text>
+                    <text x="310" y="120" font-size="14" fill="#2196f3" text-anchor="middle">2個</text>
+
+                    <!-- = -->
+                    <text x="400" y="80" font-size="24" font-weight="bold" fill="#333" text-anchor="middle">=</text>
+
+                    <!-- 結果 -->
+                    <rect x="430" y="50" width="230" height="50" fill="#fff3e0" stroke="#ff9800" stroke-width="2"
+                        rx="8" />
+                    <text x="545" y="80" font-size="18" font-weight="bold" fill="#e65100" text-anchor="middle">2
+                        × 2 × 2 × 2 × 2</text>
+                    <text x="545" y="120" font-size="14" fill="#ff9800" text-anchor="middle">3 + 2 = 5個</text>
+
+                    <!-- 結論 -->
+                    <rect x="180" y="145" width="340" height="45" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"
+                        rx="8" />
+                    <text x="350" y="172" font-size="16" font-weight="bold" fill="#7b1fa2" text-anchor="middle">だから 2³ ×
+                        2² = 2⁵ = 32</text>
+                </svg>
+                <div class="svg-caption">同じ底のかけ算は「個数を合わせる」＝指数を足す</div>
+            </div>
+        </div>
+
+        <div class="rule-box" id="method-power-addition">
+            <strong>📌 底が同じ累乗の足し算・引き算（共通因数でくくる）</strong> <a href="#ex-add-exponent" class="example-link">→ 例7</a>
+            <div class="important-rule" style="background: #fff3e0; border-left: 4px solid #ff9800; padding: 10px; margin: 10px 0;">
+                💡 <strong>累乗同士の足し算は、小さい方の累乗でくくり出せる！</strong>
+            </div>
+
+            <p><strong>🔑 基本の考え方</strong></p>
+            <p>底が同じ累乗を足したり引いたりするときは、<strong>共通因数としてくくり出す</strong>ことができる。</p>
+
+            <div class="formula">
+                \[ a^m + a^n = a^m(1 + a^{n-m}) \quad \text{（m < n のとき、小さい方でくくる）} \]
+            </div>
+
+            <p style="background: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                <strong>📝 具体例で理解：</strong><br>
+                \( 2^3 + 2^5 \) のとき → 小さい方の \( 2^3 \) でくくる → \( 2^3(1 + 2^2) = 2^3 \times 5 = 8 \times 5 = 40 \)
+            </p>
+
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <ul>
+                <li>\( 2^3 + 2^5 = 8 + 32 \) を計算するより、\( 8 \times (1 + 4) = 8 \times 5 = 40 \) の方が簡単</li>
+                <li>同じ数（ここでは \( 2^3 = 8 \)）が共通因数としてあるから、普通の足し算と同じようにくくり出せる</li>
+            </ul>
+            </details>
+
+            <!-- 累乗の足し算の図解 -->
+            <div class="svg-container">
+                <svg width="700" height="180" viewBox="0 0 700 180">
+                    <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
+                        text-anchor="middle">累乗の足し算は小さい方でくくる</text>
+
+                    <!-- 元の式 -->
+                    <rect x="60" y="60" width="120" height="50" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"
+                        rx="8" />
+                    <text x="120" y="92" font-size="18" font-weight="bold" fill="#1976d2" text-anchor="middle">2³ + 2⁵</text>
+
+                    <!-- 矢印 -->
+                    <text x="200" y="90" font-size="20" fill="#666">=</text>
+
+                    <!-- くくり出す -->
+                    <rect x="230" y="60" width="180" height="50" fill="#c8e6c9" stroke="#4caf50" stroke-width="2"
+                        rx="8" />
+                    <text x="320" y="92" font-size="18" font-weight="bold" fill="#2e7d32" text-anchor="middle">2³(1 + 2²)</text>
+                    <text x="320" y="130" font-size="14" fill="#4caf50" text-anchor="middle">小さい方でくくる</text>
+
+                    <!-- 矢印 -->
+                    <text x="430" y="90" font-size="20" fill="#666">=</text>
+
+                    <!-- 計算 -->
+                    <rect x="460" y="60" width="120" height="50" fill="#fff3e0" stroke="#ff9800" stroke-width="2"
+                        rx="8" />
+                    <text x="520" y="92" font-size="18" font-weight="bold" fill="#e65100" text-anchor="middle">8 × 5</text>
+
+                    <!-- 矢印 -->
+                    <text x="600" y="90" font-size="20" fill="#666">=</text>
+
+                    <!-- 答え -->
+                    <rect x="620" y="60" width="60" height="50" fill="#c8e6c9" stroke="#4caf50" stroke-width="3"
+                        rx="8" />
+                    <text x="650" y="92" font-size="20" font-weight="bold" fill="#2e7d32" text-anchor="middle">40</text>
+                </svg>
+                <div class="svg-caption">底が同じ累乗の足し算は、共通因数でくくり出す</div>
+            </div>
+        </div>
+
+        <div class="rule-box" id="rule-power-equation">
+            <strong>📌 底が同じ累乗の方程式（指数が等しい）</strong> <a href="#ex-equation" class="example-link">→ 例8</a>
+            <div class="important-rule" style="background: #fff3e0; border-left: 4px solid #ff9800; padding: 10px; margin: 10px 0;">
+                💡 <strong>底が同じで累乗が等しいなら、指数も等しい！</strong>
+            </div>
+
+            <div class="formula">
+                \[ a^m = a^n \quad \Rightarrow \quad m = n \quad (a \neq 0, a \neq 1) \]
+            </div>
+
+            <p style="background: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                <strong>📝 具体例で理解：</strong><br>
+                \( 3^{x+5} = 3^{2x+4} \) のとき → 底が3で同じ → 指数が等しい → \( x+5 = 2x+4 \) → \( x = 1 \)
+            </p>
+
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <ul>
+                <li>底が1より大きい（または0と1の間）なら、累乗の値は指数によって一意に決まる</li>
+                <li>例：\( 2^3 = 8 \) と \( 2^5 = 32 \) は異なる値。\( 2^m = 2^n \) なら \( m = n \) しかありえない</li>
+            </ul>
+            </details>
+
+            <!-- 累乗の方程式の図解 -->
+            <div class="svg-container">
+                <svg width="700" height="180" viewBox="0 0 700 180">
+                    <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
+                        text-anchor="middle">底が同じなら、指数を等式にできる</text>
+
+                    <!-- 元の方程式 -->
+                    <rect x="50" y="60" width="180" height="50" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"
+                        rx="8" />
+                    <text x="140" y="92" font-size="18" font-weight="bold" fill="#1976d2" text-anchor="middle">3^(x+5) = 3^(2x+4)</text>
+
+                    <!-- 矢印 -->
+                    <path d="M 240 85 L 280 85" stroke="#4caf50" stroke-width="3" marker-end="url(#arrow-eq)" />
+                    <text x="260" y="75" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">底が同じ</text>
+
+                    <!-- 指数の等式 -->
+                    <rect x="290" y="60" width="160" height="50" fill="#c8e6c9" stroke="#4caf50" stroke-width="2"
+                        rx="8" />
+                    <text x="370" y="92" font-size="18" font-weight="bold" fill="#2e7d32" text-anchor="middle">x+5 = 2x+4</text>
+
+                    <!-- 矢印 -->
+                    <path d="M 460 85 L 500 85" stroke="#ff9800" stroke-width="3" marker-end="url(#arrow-solve)" />
+                    <text x="480" y="75" font-size="14" font-weight="bold" fill="#ff9800" text-anchor="middle">解く</text>
+
+                    <!-- 解 -->
+                    <rect x="510" y="60" width="80" height="50" fill="#fff3e0" stroke="#ff9800" stroke-width="3"
+                        rx="8" />
+                    <text x="550" y="92" font-size="20" font-weight="bold" fill="#e65100" text-anchor="middle">x = 1</text>
+
+                    <!-- 説明 -->
+                    <rect x="150" y="135" width="400" height="35" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2" rx="8" />
+                    <text x="350" y="158" font-size="14" font-weight="bold" fill="#7b1fa2" text-anchor="middle">
+                        底が同じなら、累乗が等しい ⇔ 指数が等しい</text>
+
+                    <defs>
+                        <marker id="arrow-eq" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#4caf50" />
+                        </marker>
+                        <marker id="arrow-solve" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#ff9800" />
+                        </marker>
+                    </defs>
+                </svg>
+                <div class="svg-caption">累乗の方程式は、指数の方程式に変換できる</div>
+            </div>
+        </div>
+
+        <div class="rule-box" id="rule-power-of-power">
+            <strong>📌 べき乗のべき乗・積の累乗</strong> <a href="#ex-power" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ (a^m)^n = a^{mn} \quad \text{（べき乗のべき乗 → 指数をかける）} \]
+                \[ (ab)^n = a^n b^n \quad \text{（積の累乗 → それぞれにかける）} \]
+            </div>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <ul>
+                <li><strong>べき乗のべき乗</strong>：\((a^m)^n\) は「\(a\)を\(m\)個かけたもの」を\(n\)回かける。つまり\(a\)を合計 \(m \times
+                    n\) 個かけるから \(a^{mn}\)</li>
+                <li><strong>積の累乗</strong>：\((ab)^n\) は \(ab\) を\(n\)回かける。\(a\)も\(b\)もそれぞれ\(n\)回かけられるから \(a^n
+                    b^n\)</li>
+            </ul>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-zero-exponent">
+            <strong>📌 0乗のルール</strong>
+            <div class="formula">
+                \[ a^0 = 1 \quad (a \neq 0) \]
+            </div>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>指数法則から自然に導けます：</p>
+            <p>\( a^n \div a^n = a^{n-n} = a^0 \)、でも \( a^n \div a^n = 1 \) だから、\( a^0 = 1 \)</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-negative-exponent">
+            <strong>📌 負の指数（マイナス乗は逆数になる）</strong> <a href="#ex-negative" class="example-link">→ 例6</a>
+            <div class="formula">
+                \[ a^{-n} = \frac{1}{a^n} \quad (a \neq 0) \]
+            </div>
+            <p><strong>💡 考え方：指数がマイナスになると逆数になる！</strong></p>
+            <p>例：</p>
+            <ul>
+                <li>\( 2^{-3} = \frac{1}{2^3} = \frac{1}{8} \)</li>
+                <li>\( 10^{-2} = \frac{1}{10^2} = \frac{1}{100} = 0.01 \)</li>
+                <li>\( 5^{-1} = \frac{1}{5^1} = \frac{1}{5} \)</li>
+            </ul>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>指数法則から自然に導けます：</p>
+            <p>\( a^n \times a^{-n} = a^{n + (-n)} = a^0 = 1 \)</p>
+            <p>つまり \( a^{-n} \) は \( a^n \) をかけると1になる数 → \( a^n \) の逆数</p>
+            </details>
+
+            <!-- 負の指数の図解 -->
+            <div class="svg-container">
+                <svg width="700" height="200" viewBox="0 0 700 200">
+                    <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
+                        text-anchor="middle">指数がマイナスになると逆数になる</text>
+
+                    <!-- 正の指数 -->
+                    <rect x="80" y="50" width="120" height="50" fill="#c8e6c9" stroke="#4caf50" stroke-width="2"
+                        rx="8" />
+                    <text x="140" y="82" font-size="18" font-weight="bold" fill="#2e7d32" text-anchor="middle">2³ = 8</text>
+                    <text x="140" y="120" font-size="14" fill="#4caf50" text-anchor="middle">正の指数</text>
+
+                    <!-- 矢印 -->
+                    <text x="240" y="80" font-size="24" font-weight="bold" fill="#666" text-anchor="middle">⇄</text>
+
+                    <!-- 負の指数 -->
+                    <rect x="280" y="50" width="160" height="50" fill="#ffcdd2" stroke="#e57373" stroke-width="2"
+                        rx="8" />
+                    <text x="360" y="82" font-size="18" font-weight="bold" fill="#c62828" text-anchor="middle">2⁻³ = 1/8</text>
+                    <text x="360" y="120" font-size="14" fill="#c62828" text-anchor="middle">負の指数 = 逆数</text>
+
+                    <!-- まとめ -->
+                    <rect x="480" y="50" width="180" height="50" fill="#fff9c4" stroke="#fbc02d" stroke-width="2"
+                        rx="8" />
+                    <text x="570" y="75" font-size="14" font-weight="bold" fill="#f57f17"
+                        text-anchor="middle">2³ × 2⁻³ = 1</text>
+                    <text x="570" y="95" font-size="14" fill="#666" text-anchor="middle">8 × 1/8 = 1</text>
+
+                    <!-- 応用例 -->
+                    <rect x="150" y="140" width="400" height="45" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"
+                        rx="8" />
+                    <text x="350" y="167" font-size="15" font-weight="bold" fill="#1565c0" text-anchor="middle">
+                        応用：10⁻² = 0.01（小数を累乗で表せる！）</text>
+                </svg>
+                <div class="svg-caption">マイナス乗は「分数の1/●●」の形になる</div>
+            </div>
+        </div>
+
+        <div class="rule-box" id="def-square-root">
+            <strong>📌 平方根の定義</strong>
+            <ul>
+                <li>\( x^2 = a \) となる \( x \) を \( a \) の<strong>平方根</strong>という</li>
+                <li>\( a > 0 \) のとき、平方根は<strong>正と負の2つ</strong>：\( +\sqrt{a} \) と \( -\sqrt{a} \)</li>
+                <li>\( \sqrt{a} \) は正の平方根だけを表す</li>
+            </ul>
+
+            <!-- 平方根の図解 -->
+            <div class="svg-container">
+                <svg width="700" height="160" viewBox="0 0 700 160">
+                    <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
+                        text-anchor="middle">9の平方根は2つある</text>
+
+                    <!-- 正の平方根 -->
+                    <rect x="100" y="50" width="150" height="50" fill="#c8e6c9" stroke="#4caf50" stroke-width="2"
+                        rx="8" />
+                    <text x="175" y="82" font-size="18" font-weight="bold" fill="#2e7d32" text-anchor="middle">(+3)² =
+                        9</text>
+                    <path d="M 175 105 L 175 125" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow-down-g)" />
+                    <text x="175" y="145" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">√9 =
+                        +3</text>
+
+                    <!-- 負の平方根 -->
+                    <rect x="300" y="50" width="150" height="50" fill="#ffcdd2" stroke="#e57373" stroke-width="2"
+                        rx="8" />
+                    <text x="375" y="82" font-size="18" font-weight="bold" fill="#c62828" text-anchor="middle">(−3)² =
+                        9</text>
+                    <path d="M 375 105 L 375 125" stroke="#e57373" stroke-width="2" marker-end="url(#arrow-down-r)" />
+                    <text x="375" y="145" font-size="14" font-weight="bold" fill="#c62828" text-anchor="middle">−√9 =
+                        −3</text>
+
+                    <!-- まとめ -->
+                    <rect x="490" y="60" width="180" height="70" fill="#fff9c4" stroke="#fbc02d" stroke-width="2"
+                        rx="8" />
+                    <text x="580" y="85" font-size="14" font-weight="bold" fill="#f57f17"
+                        text-anchor="middle">9の平方根は</text>
+                    <text x="580" y="110" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">±3</text>
+
+                    <defs>
+                        <marker id="arrow-down-g" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#4caf50" />
+                        </marker>
+                        <marker id="arrow-down-r" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#e57373" />
+                        </marker>
+                    </defs>
+                </svg>
+                <div class="svg-caption">\( \sqrt{9} = 3 \) は正の方だけ、「9の平方根」は \( \pm 3 \) の2つ</div>
+            </div>
+        </div>
+
+        <div class="rule-box" id="rule-radical-properties">
+            <strong>📌 根号の性質（積・商）</strong> <a href="#ex-simplify" class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ \sqrt{ab} = \sqrt{a} \times \sqrt{b} \quad (a, b \geq 0) \]
+                \[ \sqrt{\frac{a}{b}} = \frac{\sqrt{a}}{\sqrt{b}} \quad (a \geq 0, b > 0) \]
+            </div>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>両辺を2乗して確かめよう！</p>
+            <ul>
+                <li>\((\sqrt{a} \times \sqrt{b})^2 = a \times b\) なので、\(\sqrt{a} \times \sqrt{b}\) は \(ab\) の平方根
+                    → \(\sqrt{ab}\)</li>
+                <li>同様に \(\left(\frac{\sqrt{a}}{\sqrt{b}}\right)^2 = \frac{a}{b}\)
+                    なので、\(\frac{\sqrt{a}}{\sqrt{b}}\) は \(\frac{a}{b}\) の平方根 → \(\sqrt{\frac{a}{b}}\)</li>
+            </ul>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>ルールを使って実際に解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 累乗の計算</h3>
+
+        <div class="example-box" id="ex-exponent">
+            <div class="example-title">
+                <span class="number-badge">例1</span>指数法則（かけ算）
+            </div>
+            <p>\( 2^3 \times 2^4 \) を計算する</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>底が同じ（どちらも2）かどうか確認する → <strong>同じ</strong></li>
+                <li>かけ算なので指数を足す → \( 3 + 4 = 7 \)</li>
+                <li>実際の値を計算する → \( 2^7 = 128 \)</li>
+            </ol>
+            <div class="formula">
+                \[ 2^3 \times 2^4 = 2^{3+4} = 2^7 = 128 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-power">
+            <div class="example-title">
+                <span class="number-badge">例2</span>べき乗のべき乗
+            </div>
+            <p>\( (3^2)^3 \) を計算する</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>べき乗のべき乗なので指数を<strong>かける</strong>（足すのではない！）</li>
+                <li>指数をかける → \( 2 \times 3 = 6 \)</li>
+                <li>実際の値を計算する → \( 3^6 = 729 \)</li>
+            </ol>
+            <div class="formula">
+                \[ (3^2)^3 = 3^{2 \times 3} = 3^6 = 729 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ ルートの簡単化</h3>
+
+        <div class="example-box" id="ex-simplify">
+            <div class="example-title">
+                <span class="number-badge">例3</span>ルートの簡単化
+            </div>
+            <p>\( \sqrt{48} \) を簡単にする</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>ルートの中身を素因数分解する → \( 48 = 16 \times 3 = 4^2 \times 3 \)</li>
+                <li>2乗の部分（完全平方数）を見つける → <strong>16</strong></li>
+                <li>完全平方数をルートの外に出す → \( \sqrt{16} = 4 \)</li>
+                <li>残りはルートの中に残す → \( \sqrt{3} \)</li>
+            </ol>
+            <div class="formula">
+                \[ \sqrt{48} = \sqrt{16 \times 3} = \sqrt{16} \times \sqrt{3} = 4\sqrt{3} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-add">
+            <div class="example-title">
+                <span class="number-badge">例4</span>ルートの足し算
+            </div>
+            <p>\( 2\sqrt{3} + 5\sqrt{3} \) を計算する</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>ルートの中身が同じかどうか確認する → <strong>どちらも \( \sqrt{3} \)</strong></li>
+                <li>ルートの中身が同じなので、係数を足す → \( 2 + 5 = 7 \)</li>
+            </ol>
+            <div class="formula">
+                \[ 2\sqrt{3} + 5\sqrt{3} = (2+5)\sqrt{3} = 7\sqrt{3} \]
+            </div>
+            <p>※ルートの中身が同じなら、係数を足し引きできる（同類項）</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 分母の有理化</h3>
+
+        <div class="example-box" id="ex-rationalize">
+            <div class="example-title">
+                <span class="number-badge">例5</span>分母の有理化
+            </div>
+            <p>\( \frac{6}{\sqrt{3}} \) を有理化する</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>分母にあるルートと同じルート \( \sqrt{3} \) を分母・分子両方にかける</li>
+                <li>分母は \( \sqrt{3} \times \sqrt{3} = 3 \) になる</li>
+                <li>分子は \( 6 \times \sqrt{3} = 6\sqrt{3} \) になる</li>
+                <li>約分する → \( \frac{6\sqrt{3}}{3} = 2\sqrt{3} \)</li>
+            </ol>
+            <div class="formula">
+                \[ \frac{6}{\sqrt{3}} = \frac{6 \times \sqrt{3}}{\sqrt{3} \times \sqrt{3}} = \frac{6\sqrt{3}}{3}
+                = 2\sqrt{3} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 累乗の足し算</h3>
+
+        <div class="example-box" id="ex-add-exponent">
+            <div class="example-title">
+                <span class="number-badge">例7</span>底が同じ累乗の足し算
+            </div>
+            <p>\( 2^3 + 2^5 \) と \( 3^4 + 3^4 \) を計算する</p>
+            <p><strong>解き方：</strong></p>
+            <p><strong>① \( 2^3 + 2^5 \) の計算</strong></p>
+            <ol>
+                <li>小さい方の累乗 \( 2^3 \) でくくり出す</li>
+                <li>\( 2^3 + 2^5 = 2^3(1 + 2^{5-3}) = 2^3(1 + 2^2) \)</li>
+                <li>\( 2^2 = 4 \) なので、\( 2^3(1 + 4) = 2^3 \times 5 \)</li>
+                <li>\( 2^3 = 8 \) なので、\( 8 \times 5 = 40 \)</li>
+            </ol>
+            <div class="formula">
+                \[ 2^3 + 2^5 = 2^3(1 + 2^2) = 8 \times 5 = 40 \]
+            </div>
+
+            <p><strong>② \( 3^4 + 3^4 \) の計算</strong></p>
+            <ol>
+                <li>同じ累乗なので、2倍するだけ</li>
+                <li>\( 3^4 + 3^4 = 2 \times 3^4 \)</li>
+                <li>\( 3^4 = 81 \) なので、\( 2 \times 81 = 162 \)</li>
+            </ol>
+            <div class="formula">
+                \[ 3^4 + 3^4 = 2 \times 3^4 = 2 \times 81 = 162 \]
+            </div>
+            <p>※直接計算：\( 2^3 + 2^5 = 8 + 32 = 40 \)、\( 3^4 + 3^4 = 81 + 81 = 162 \) でも同じ答え</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 累乗の方程式</h3>
+
+        <div class="example-box" id="ex-equation">
+            <div class="example-title">
+                <span class="number-badge">例8</span>底が同じ累乗の方程式
+            </div>
+            <p>\( 3^{x+5} = 3^{2x+4} \) と \( 2^{3x-1} = 8 \) を解く</p>
+            <p><strong>解き方：</strong></p>
+            <p><strong>① \( 3^{x+5} = 3^{2x+4} \) の解法</strong></p>
+            <ol>
+                <li>底が同じ3なので、指数が等しい</li>
+                <li>\( x+5 = 2x+4 \)</li>
+                <li>方程式を解く → \( x = 1 \)</li>
+            </ol>
+            <div class="formula">
+                \[ 3^{x+5} = 3^{2x+4} \quad \Rightarrow \quad x+5 = 2x+4 \quad \Rightarrow \quad x = 1 \]
+            </div>
+
+            <p><strong>② \( 2^{3x-1} = 8 \) の解法</strong></p>
+            <ol>
+                <li>右辺を2の累乗で表す → \( 8 = 2^3 \)</li>
+                <li>両辺が同じ底2になった → \( 2^{3x-1} = 2^3 \)</li>
+                <li>指数が等しい → \( 3x-1 = 3 \)</li>
+                <li>方程式を解く → \( 3x = 4 \) → \( x = \frac{4}{3} \)</li>
+            </ol>
+            <div class="formula">
+                \[ 2^{3x-1} = 8 = 2^3 \quad \Rightarrow \quad 3x-1 = 3 \quad \Rightarrow \quad x = \frac{4}{3} \]
+            </div>
+            <p>※ポイント：右辺を累乗の形（2³、3⁴など）に変換してから、底を揃える</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 負の指数（マイナス乗）</h3>
+
+        <div class="example-box" id="ex-negative">
+            <div class="example-title">
+                <span class="number-badge">例6</span>負の指数の計算
+            </div>
+            <p>\( 2^{-4} \) と \( 3^{-2} \times 3^5 \) を計算する</p>
+            <p><strong>解き方：</strong></p>
+            <p><strong>① \( 2^{-4} \) の計算</strong></p>
+            <ol>
+                <li>負の指数は逆数になる → \( 2^{-4} = \frac{1}{2^4} \)</li>
+                <li>分母の累乗を計算 → \( 2^4 = 16 \)</li>
+                <li>答え → \( \frac{1}{16} \)</li>
+            </ol>
+            <div class="formula">
+                \[ 2^{-4} = \frac{1}{2^4} = \frac{1}{16} \]
+            </div>
+
+            <p><strong>② \( 3^{-2} \times 3^5 \) の計算</strong></p>
+            <ol>
+                <li>底が同じ（どちらも3）なので指数法則が使える</li>
+                <li>指数を足す → \( -2 + 5 = 3 \)</li>
+                <li>答え → \( 3^3 = 27 \)</li>
+            </ol>
+            <div class="formula">
+                \[ 3^{-2} \times 3^5 = 3^{-2+5} = 3^3 = 27 \]
+            </div>
+            <p>※別解：先に負の指数を逆数にしてから計算することもできる：\( \frac{1}{3^2} \times 3^5 = \frac{3^5}{9} = \frac{243}{9} = 27 \)</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：累乗は「何個かけるか」で考える</strong><br>
+            \( 2^3 \times 2^4 \) なら「2を3個」×「2を4個」＝「2を7個」＝ \( 2^7 \)
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：ルートの中を素因数分解する</strong><br>
+            \( \sqrt{72} = \sqrt{36 \times 2} = \sqrt{36} \times \sqrt{2} = 6\sqrt{2} \)
+        </div>
+
+        <!-- ルート簡単化の図解 -->
+        <div class="svg-container">
+            <svg width="700" height="180" viewBox="0 0 700 180">
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
+                    text-anchor="middle">ルートの簡単化のコツ</text>
+
+                <!-- ステップ1 -->
+                <rect x="30" y="50" width="100" height="50" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="8" />
+                <text x="80" y="82" font-size="18" font-weight="bold" fill="#1976d2" text-anchor="middle">√72</text>
+
+                <path d="M 140 75 L 170 75" stroke="#666" stroke-width="2" marker-end="url(#arrow-step)" />
+
+                <!-- ステップ2 -->
+                <rect x="180" y="50" width="150" height="50" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="8" />
+                <text x="255" y="82" font-size="16" font-weight="bold" fill="#e65100" text-anchor="middle">√(36
+                    × 2)</text>
+                <text x="255" y="115" font-size="14" fill="#ff9800" text-anchor="middle">36は完全平方数！</text>
+
+                <path d="M 340 75 L 370 75" stroke="#666" stroke-width="2" marker-end="url(#arrow-step)" />
+
+                <!-- ステップ3 -->
+                <rect x="380" y="50" width="150" height="50" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="8" />
+                <text x="455" y="82" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">6 ×
+                    √2</text>
+
+                <path d="M 540 75 L 570 75" stroke="#666" stroke-width="2" marker-end="url(#arrow-step)" />
+
+                <!-- 答え -->
+                <rect x="580" y="50" width="90" height="50" fill="#c8e6c9" stroke="#4caf50" stroke-width="3" rx="8" />
+                <text x="625" y="82" font-size="20" font-weight="bold" fill="#2e7d32" text-anchor="middle">6√2</text>
+
+                <!-- ヒント -->
+                <rect x="180" y="135" width="340" height="35" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2" rx="8" />
+                <text x="350" y="158" font-size="14" font-weight="bold" fill="#7b1fa2" text-anchor="middle">💡
+                    完全平方数（4, 9, 16, 25, 36, ...）を見つけよう！</text>
+
+                <defs>
+                    <marker id="arrow-step" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#666" />
+                    </marker>
+                </defs>
+            </svg>
+            <div class="svg-caption">ルートの中から完全平方数を見つけて外に出す</div>
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：分母の有理化は「同じルートをかける」</strong><br>
+            \( \frac{1}{\sqrt{2}} = \frac{1 \times \sqrt{2}}{\sqrt{2} \times \sqrt{2}} = \frac{\sqrt{2}}{2} \)
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：負の指数は「1/●●」の形に直す</strong><br>
+            マイナス乗を見たら、まず逆数の形に直すとわかりやすい！<br>
+            例：\( 5^{-2} = \frac{1}{5^2} = \frac{1}{25} \)
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ5：底が同じなら指数同士で計算（負の指数も同じ）</strong><br>
+            \( 2^{-3} \times 2^5 = 2^{-3+5} = 2^2 = 4 \)（底が同じ2なので、指数を足す）
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ6：覚えておくと便利な値</strong><br>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 10px;">
+                <span>\( 2^2 = 4 \)</span>
+                <span>\( 3^2 = 9 \)</span>
+                <span>\( 4^2 = 16 \)</span>
+                <span>\( 5^2 = 25 \)</span>
+                <span>\( 6^2 = 36 \)</span>
+                <span>\( 7^2 = 49 \)</span>
+                <span>\( 8^2 = 64 \)</span>
+                <span>\( 9^2 = 81 \)</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：底が違うのに指数法則を使う</div>
+            <p><strong>ダメな例：</strong> \( 2^3 \times 3^2 = 6^5 \)（これは間違い！）</p>
+            <p><strong>対策：</strong> 指数法則は「同じ底」のときだけ。底が違えば別々に計算：\( 2^3 \times 3^2 = 8 \times 9 = 72 \)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：\( \sqrt{9} = \pm 3 \) と書く</div>
+            <p><strong>ダメな例：</strong> 「\( \sqrt{9} = \pm 3 \)」と答える</p>
+            <p><strong>対策：</strong> \( \sqrt{9} = 3 \) （正の方だけ）。「9の平方根」と聞かれたら \( \pm 3 \)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：ルートの足し算を間違える</div>
+            <p><strong>ダメな例：</strong> \( \sqrt{2} + \sqrt{3} = \sqrt{5} \)（これは間違い！）</p>
+            <p><strong>対策：</strong> ルートの中身が違うと足せない。\( \sqrt{2} + \sqrt{3} \) はこれ以上簡単にならない</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：べき乗のべき乗で足し算する</div>
+            <p><strong>ダメな例：</strong> \( (2^3)^2 = 2^{3+2} = 2^5 \)</p>
+            <p><strong>対策：</strong> べき乗のべき乗は「かけ算」：\( (2^3)^2 = 2^{3 \times 2} = 2^6 = 64 \)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき5：有理化で分子にかけ忘れる</div>
+            <p><strong>ダメな例：</strong> \( \frac{1}{\sqrt{2}} = \frac{1}{2} \)</p>
+            <p><strong>対策：</strong> 分母・分子の両方に \( \sqrt{2} \) をかける：\( \frac{1 \times \sqrt{2}}{\sqrt{2} \times
+                \sqrt{2}} = \frac{\sqrt{2}}{2} \)</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">指数法則を使うとき、底が同じかどうか確認したか</div>
+            <div class="checklist-item">ルートの中は最も小さい数になっているか（簡単化できてるか）</div>
+            <div class="checklist-item">分母にルートが残っていないか（有理化したか）</div>
+            <div class="checklist-item">\( \sqrt{a} \) と「aの平方根」の違いを区別できているか</div>
+            <div class="checklist-item">約分や計算ミスがないか確認したか</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>\( 3^2 \times 3^3 \) を計算しなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>底が同じ3なので、指数を足す：</p>
+                    <p>\( 3^2 \times 3^3 = 3^{2+3} = 3^5 = 243 \)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\( \sqrt{98} \) を簡単にしなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\( 98 = 49 \times 2 = 7^2 \times 2 \) なので：</p>
+                    <p>\( \sqrt{98} = \sqrt{49 \times 2} = \sqrt{49} \times \sqrt{2} = 7\sqrt{2} \)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>\( 2^{-3} \times 2^5 \) を計算しなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>底が同じ2なので、指数を足す：</p>
+                    <p>\( 2^{-3} \times 2^5 = 2^{-3+5} = 2^2 = 4 \)</p>
+                    <p>別解：先に負の指数を逆数にする方法：</p>
+                    <p>\( 2^{-3} \times 2^5 = \frac{1}{2^3} \times 2^5 = \frac{2^5}{8} = \frac{32}{8} = 4 \)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習4</strong>
+            <p>\( 5^{-2} \) を計算しなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>負の指数は逆数になる：</p>
+                    <p>\( 5^{-2} = \frac{1}{5^2} = \frac{1}{25} \)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習5</strong>
+            <p>\( 2^4 + 2^6 \) を計算しなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>小さい方の累乗 \( 2^4 \) でくくり出す：</p>
+                    <p>\( 2^4 + 2^6 = 2^4(1 + 2^2) = 2^4 \times 5 = 16 \times 5 = 80 \)</p>
+                    <p>別解（直接計算）：\( 16 + 64 = 80 \)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習6</strong>
+            <p>\( 2^{x+3} = 2^{7} \) を解きなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>底が同じ2なので、指数が等しい：</p>
+                    <p>\( x+3 = 7 \)</p>
+                    <p>\( x = 4 \)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習7</strong>
+            <p>\( 3^{2x-1} = 27 \) を解きなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>右辺を3の累乗で表す：\( 27 = 3^3 \)</p>
+                    <p>\( 3^{2x-1} = 3^3 \)</p>
+                    <p>底が同じなので、指数が等しい：</p>
+                    <p>\( 2x-1 = 3 \)</p>
+                    <p>\( 2x = 4 \)</p>
+                    <p>\( x = 2 \)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- まとめ -->
+<div class="summary">
+    📌 まとめ：累乗は「何個かける」、平方根は「何を2乗したらその数になるか」！
+</div>
+
+<!-- おまけ：歴史ストーリー -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「ピタゴラス学派の悲劇」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 ピタゴラス学派の悲劇（紀元前5世紀・古代ギリシャ）</div>
+            <p>古代ギリシャに、数学の天才集団「ピタゴラス学派」がいた。リーダーのピタゴラスは「<strong>この世のすべては整数で表せる！</strong>」と主張していた。</p>
+            <p>長さも重さも、ぜんぶ整数か分数で書ける。それが彼らの誇りであり、信仰だった。</p>
+
+            <p><strong>【問題発生】</strong></p>
+            <p>ある日、弟子のヒッパソスが正方形の対角線を調べていた。</p>
+            <p>1辺が1の正方形。その対角線の長さは \( \sqrt{2} \)。ここまでは問題ない。</p>
+            <div class="formula">
+                \[ \sqrt{2} = 1.41421356237... \]
+            </div>
+            <p>「あれ...この数、どこまで計算しても終わらない。\( \frac{7}{5} \) でも \( \frac{99}{70} \) でもぴったりにならないぞ...？」</p>
+
+            <p><strong>【大発見、そして...】</strong></p>
+            <p>ヒッパソスは気づいてしまった。<strong>\( \sqrt{2} \) はどんな分数でも表せない</strong>。</p>
+            <p>これは後に「無理数」と呼ばれる数の、人類初の発見だった。</p>
+
+            <p style="background: #fff9c4; padding: 10px; border-radius: 8px; margin: 15px 0;">
+                <strong>ピタゴラス師匠の反応（想像）：</strong><br>
+                「は？整数で表せない数がある？そんなわけないだろ！」<br>
+                「...いや師匠、何度計算してもダメなんすよ」<br>
+                「うそだろ...俺の40年なんだったんだ...」
+            </p>
+
+            <p>学派の「すべては整数で表せる」という信仰が、たった1本の対角線で崩壊した。</p>
+
+            <p style="background: #ffebee; padding: 10px; border-radius: 8px; margin: 15px 0;">
+                そしてここからが怖い話。<br>
+                伝説によると、この発見を外部に漏らしたヒッパソスは...<br>
+                <strong>仲間に船から海へ投げ落とされた</strong>という。
+            </p>
+
+            <p>今なら「すごい発見だね！論文書こう！」で済む話が、古代ギリシャでは命がけ。<strong>数学の新発見も楽じゃない</strong>。</p>
+            <p>ちなみに \( \sqrt{2} \approx 1.41421356 \)
+                は「<strong>ひとよひとよにひとみごろ</strong>（一夜一夜に人見頃）」で覚えられる。ヒッパソスもこの語呂合わせを発明していれば、もう少し平和に広められたかもしれない。</p>
+
+            <p style="font-size: 14px; color: #666; margin-top: 20px;">
+                ※ヒッパソスが無理数を発見し、ピタゴラス学派から追放されたという話は伝説として伝わっていますが、史実の詳細は不明です。ただし、無理数の発見がピタゴラス学派に大きな衝撃を与えたことは事実とされています（<a
+                    href="https://ja.wikipedia.org/wiki/%E3%83%92%E3%83%83%E3%83%91%E3%82%BD%E3%82%B9" target="_blank"
+                    style="color: #1976d2;">ヒッパソス</a>、<a
+                    href="https://ja.wikipedia.org/wiki/%E7%84%A1%E7%90%86%E6%95%B0" target="_blank"
+                    style="color: #1976d2;">無理数</a>）。
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== バトルゲーム ========== -->
+<section id="game">
+    <h2>🎮 バトルゲーム「ルートスライムを倒せ！」</h2>
+    <div class="section">
+        <p>累乗と平方根の問題に答えて、モンスターを倒そう！正解すると攻撃、間違えると反撃を受けるぞ！</p>
+
+        <div class="battle-game" id="battleGame">
+            <!-- コンボ表示 -->
+            <div class="combo-display" id="comboDisplay">🔥 2 COMBO!</div>
+
+            <!-- バトルエリア -->
+            <div class="battle-area">
+                <div class="character player-char">
+                    <div class="character-name">あなた</div>
+                    <div class="character-sprite" id="playerSprite">🧙</div>
+                    <div class="hp-bar-container">
+                        <div class="hp-bar player" id="playerHpBar" style="width: 100%;"></div>
+                    </div>
+                    <div class="hp-text"><span id="playerHp">100</span> / 100</div>
+                </div>
+
+                <div class="vs-mark">⚔️ VS</div>
+
+                <div class="character enemy-char">
+                    <div class="character-name">ルートスライム</div>
+                    <div class="character-sprite" id="enemySprite">👾</div>
+                    <div class="hp-bar-container">
+                        <div class="hp-bar enemy" id="enemyHpBar" style="width: 100%;"></div>
+                    </div>
+                    <div class="hp-text"><span id="enemyHp">100</span> / 100</div>
+                </div>
+            </div>
+
+            <!-- 問題エリア -->
+            <div class="question-area" id="questionArea">
+                <div class="question-label">問題 <span id="questionNum">1</span> / 5</div>
+                <div class="question-text" id="questionText">2³ = ?</div>
+            </div>
+
+            <!-- 選択肢 -->
+            <div class="choices" id="choices">
+                <button class="choice-btn" onclick="checkAnswer(0)">6</button>
+                <button class="choice-btn" onclick="checkAnswer(1)">8</button>
+                <button class="choice-btn" onclick="checkAnswer(2)">9</button>
+                <button class="choice-btn" onclick="checkAnswer(3)">16</button>
+            </div>
+
+            <!-- メッセージ -->
+            <div class="battle-message" id="battleMessage">
+                問題に答えて攻撃しよう！
+            </div>
+
+            <!-- 結果画面（非表示） -->
+            <div class="battle-result" id="battleResult" style="display: none;">
+                <div class="result-title" id="resultTitle">勝利！</div>
+                <div class="result-stats" id="resultStats"></div>
+                <button class="restart-btn" onclick="startGame()">もう一度挑戦</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // ゲーム状態
+    let playerHp = 100;
+    let enemyHp = 100;
+    let currentQuestion = 0;
+    let combo = 0;
+    let correctCount = 0;
+    let questions = [];
+
+    // 問題データ
+    const questionBank = [
+        // 累乗の基本
+        { q: "2³ = ?", choices: ["6", "8", "9", "16"], answer: 1 },
+        { q: "3² = ?", choices: ["6", "8", "9", "27"], answer: 2 },
+        { q: "5² = ?", choices: ["10", "15", "25", "50"], answer: 2 },
+        { q: "2⁴ = ?", choices: ["8", "12", "16", "32"], answer: 2 },
+        { q: "4² = ?", choices: ["8", "12", "16", "24"], answer: 2 },
+        { q: "10² = ?", choices: ["20", "100", "1000", "10"], answer: 1 },
+        // 平方根の基本
+        { q: "√9 = ?", choices: ["2", "3", "4", "81"], answer: 1 },
+        { q: "√16 = ?", choices: ["2", "4", "8", "256"], answer: 1 },
+        { q: "√25 = ?", choices: ["4", "5", "6", "125"], answer: 1 },
+        { q: "√36 = ?", choices: ["4", "6", "9", "18"], answer: 1 },
+        { q: "√49 = ?", choices: ["6", "7", "8", "14"], answer: 1 },
+        { q: "√64 = ?", choices: ["6", "7", "8", "32"], answer: 2 },
+        { q: "√81 = ?", choices: ["7", "8", "9", "27"], answer: 2 },
+        { q: "√100 = ?", choices: ["10", "20", "50", "1000"], answer: 0 },
+        { q: "√144 = ?", choices: ["11", "12", "13", "14"], answer: 1 },
+        // 指数法則
+        { q: "2² × 2³ = ?", choices: ["2⁵", "2⁶", "4⁵", "4⁶"], answer: 0 },
+        { q: "3² × 3² = ?", choices: ["3²", "3⁴", "6⁴", "9⁴"], answer: 1 },
+        { q: "5³ ÷ 5² = ?", choices: ["5", "25", "5⁵", "1"], answer: 0 },
+        // 平方根の簡略化（ルートの外に出る数）
+        { q: "√12 を簡単にすると？", choices: ["2√3", "3√2", "4√3", "6"], answer: 0 },
+        { q: "√18 を簡単にすると？", choices: ["2√9", "3√2", "6√3", "9√2"], answer: 1 },
+        { q: "√50 を簡単にすると？", choices: ["5√2", "2√5", "10√5", "25√2"], answer: 0 },
+        // 負の指数（マイナス乗）
+        { q: "2⁻² = ?", choices: ["1/4", "4", "-4", "1/2"], answer: 0 },
+        { q: "5⁻¹ = ?", choices: ["5", "1/5", "-5", "0"], answer: 1 },
+        { q: "10⁻³ = ?", choices: ["0.001", "0.01", "0.1", "1000"], answer: 0 },
+        { q: "2⁻³ × 2⁵ = ?", choices: ["4", "8", "16", "32"], answer: 0 },
+        { q: "3⁻¹ × 3³ = ?", choices: ["1", "3", "9", "27"], answer: 2 },
+        // 累乗の足し算
+        { q: "2³ + 2⁵ = ?", choices: ["40", "32", "256", "2⁸"], answer: 0 },
+        { q: "3² + 3² = ?", choices: ["9", "18", "81", "3⁴"], answer: 1 },
+        { q: "2⁴ + 2⁴ = ?", choices: ["16", "32", "64", "256"], answer: 1 },
+        // 累乗の方程式
+        { q: "2ˣ = 16 のとき x = ?", choices: ["2", "3", "4", "8"], answer: 2 },
+        { q: "3ˣ = 27 のとき x = ?", choices: ["1", "2", "3", "9"], answer: 2 },
+        { q: "5ˣ = 125 のとき x = ?", choices: ["2", "3", "4", "5"], answer: 1 },
+    ];
+
+    // シャッフル関数
+    function shuffle(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    // ゲーム開始
+    function startGame() {
+        playerHp = 100;
+        enemyHp = 100;
+        currentQuestion = 0;
+        combo = 0;
+        correctCount = 0;
+        questions = shuffle(questionBank).slice(0, 5);
+
+        document.getElementById('playerHp').textContent = playerHp;
+        document.getElementById('enemyHp').textContent = enemyHp;
+        document.getElementById('playerHpBar').style.width = '100%';
+        document.getElementById('enemyHpBar').style.width = '100%';
+        document.getElementById('battleResult').style.display = 'none';
+        document.getElementById('questionArea').style.display = 'block';
+        document.getElementById('choices').style.display = 'grid';
+        document.getElementById('battleMessage').textContent = '問題に答えて攻撃しよう！';
+        document.getElementById('battleMessage').className = 'battle-message';
+        document.getElementById('comboDisplay').classList.remove('show');
+
+        showQuestion();
+    }
+
+    // 問題表示
+    function showQuestion() {
+        const q = questions[currentQuestion];
+        document.getElementById('questionNum').textContent = currentQuestion + 1;
+        document.getElementById('questionText').textContent = q.q;
+
+        const buttons = document.querySelectorAll('.choice-btn');
+        buttons.forEach((btn, i) => {
+            btn.textContent = q.choices[i];
+            btn.disabled = false;
+            btn.className = 'choice-btn';
+        });
+    }
+
+    // 回答チェック
+    function checkAnswer(selected) {
+        const q = questions[currentQuestion];
+        const buttons = document.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => btn.disabled = true);
+
+        if (selected === q.answer) {
+            // 正解
+            combo++;
+            correctCount++;
+            const damage = 20 + (combo > 1 ? combo * 5 : 0); // コンボボーナス
+            enemyHp = Math.max(0, enemyHp - damage);
+
+            buttons[selected].classList.add('correct');
+            document.getElementById('playerSprite').classList.add('attack');
+            document.getElementById('enemySprite').classList.add('shake');
+
+            document.getElementById('enemyHp').textContent = enemyHp;
+            document.getElementById('enemyHpBar').style.width = enemyHp + '%';
+
+            let msg = `正解！ ${damage} ダメージ！`;
+            if (combo > 1) {
+                msg += ` (${combo} COMBO!)`;
+                document.getElementById('comboDisplay').textContent = `🔥 ${combo} COMBO!`;
+                document.getElementById('comboDisplay').classList.add('show');
+            }
+            document.getElementById('battleMessage').textContent = msg;
+            document.getElementById('battleMessage').className = 'battle-message success';
+
+        } else {
+            // 不正解
+            combo = 0;
+            const damage = 25;
+            playerHp = Math.max(0, playerHp - damage);
+
+            buttons[selected].classList.add('wrong');
+            buttons[q.answer].classList.add('correct');
+            document.getElementById('enemySprite').classList.add('attack');
+            document.getElementById('playerSprite').classList.add('shake');
+
+            document.getElementById('playerHp').textContent = playerHp;
+            document.getElementById('playerHpBar').style.width = playerHp + '%';
+
+            document.getElementById('battleMessage').textContent = `不正解... ${damage} ダメージを受けた！`;
+            document.getElementById('battleMessage').className = 'battle-message damage';
+            document.getElementById('comboDisplay').classList.remove('show');
+        }
+
+        // アニメーションリセット
+        setTimeout(() => {
+            document.getElementById('playerSprite').classList.remove('attack', 'shake');
+            document.getElementById('enemySprite').classList.remove('attack', 'shake');
+        }, 500);
+
+        // 次へ
+        setTimeout(() => {
+            if (enemyHp <= 0) {
+                showResult(true);
+            } else if (playerHp <= 0) {
+                showResult(false);
+            } else {
+                currentQuestion++;
+                if (currentQuestion >= questions.length) {
+                    // 問題終了時の判定
+                    showResult(enemyHp < playerHp);
+                } else {
+                    showQuestion();
+                }
+            }
+        }, 1200);
+    }
+
+    // 結果表示
+    function showResult(won) {
+        document.getElementById('questionArea').style.display = 'none';
+        document.getElementById('choices').style.display = 'none';
+        document.getElementById('comboDisplay').classList.remove('show');
+
+        const resultTitle = document.getElementById('resultTitle');
+        if (won) {
+            resultTitle.textContent = '🎉 勝利！';
+            resultTitle.className = 'result-title win';
+        } else {
+            resultTitle.textContent = '💀 敗北...';
+            resultTitle.className = 'result-title lose';
+        }
+
+        document.getElementById('resultStats').innerHTML =
+            `正解数: ${correctCount} / 5<br>残りHP: あなた ${playerHp} / 敵 ${enemyHp}`;
+
+        document.getElementById('battleResult').style.display = 'block';
+        document.getElementById('battleMessage').textContent =
+            won ? 'おめでとう！累乗と平方根をマスターした！' : 'もう一度復習して再挑戦しよう！';
+    }
+
+    // ページ読み込み時にゲーム開始
+    document.addEventListener('DOMContentLoaded', startGame);
+</script>

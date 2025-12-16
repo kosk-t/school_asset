@@ -1,6 +1,108 @@
 <style>
     /* トップページ専用スタイル */
 
+    /* =========================================
+       学校レベル切り替えタブ
+       ========================================= */
+    .school-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 0;
+        margin-bottom: 30px;
+        background: #f0f4f8;
+        border-radius: 16px;
+        padding: 6px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .school-tab {
+        flex: 1;
+        padding: 14px 24px;
+        border: none;
+        background: transparent;
+        font-size: 1em;
+        font-weight: 700;
+        color: #666;
+        cursor: pointer;
+        border-radius: 12px;
+        transition: all 0.25s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .school-tab:hover {
+        color: #333;
+        background: rgba(255,255,255,0.5);
+    }
+
+    .school-tab.active {
+        background: #fff;
+        color: var(--primary-color);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .school-tab .tab-icon {
+        font-size: 1.2em;
+    }
+
+    .school-tab .tab-count {
+        font-size: 0.75em;
+        background: #e0e0e0;
+        color: #666;
+        padding: 2px 8px;
+        border-radius: 10px;
+        margin-left: 4px;
+    }
+
+    .school-tab.active .tab-count {
+        background: var(--primary-color);
+        color: #fff;
+    }
+
+    /* コンテンツ切り替え */
+    .school-content {
+        display: none;
+    }
+
+    .school-content.active {
+        display: block;
+        animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 高校数学（準備中）のプレースホルダー */
+    .coming-soon-placeholder {
+        text-align: center;
+        padding: 80px 20px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-radius: 20px;
+        border: 3px dashed #dee2e6;
+    }
+
+    .coming-soon-placeholder .placeholder-icon {
+        font-size: 4em;
+        margin-bottom: 20px;
+    }
+
+    .coming-soon-placeholder h3 {
+        font-size: 1.5em;
+        color: #495057;
+        margin-bottom: 10px;
+    }
+
+    .coming-soon-placeholder p {
+        color: #6c757d;
+        font-size: 1em;
+    }
+
     /* セクション周り */
     .category-section {
         margin-bottom: 60px;
@@ -191,6 +293,16 @@
 
     /* タブレット (768px以下) */
     @media (max-width: 768px) {
+        .school-tabs {
+            max-width: 100%;
+            margin-bottom: 25px;
+        }
+
+        .school-tab {
+            padding: 12px 16px;
+            font-size: 0.95em;
+        }
+
         .hero-area {
             margin-bottom: 30px;
             border-radius: 12px;
@@ -214,6 +326,38 @@
 
     /* スマートフォン (480px以下) */
     @media (max-width: 480px) {
+        .school-tabs {
+            padding: 4px;
+            border-radius: 12px;
+        }
+
+        .school-tab {
+            padding: 10px 12px;
+            font-size: 0.85em;
+            gap: 4px;
+        }
+
+        .school-tab .tab-icon {
+            font-size: 1em;
+        }
+
+        .school-tab .tab-count {
+            font-size: 0.7em;
+            padding: 1px 6px;
+        }
+
+        .coming-soon-placeholder {
+            padding: 50px 15px;
+        }
+
+        .coming-soon-placeholder .placeholder-icon {
+            font-size: 3em;
+        }
+
+        .coming-soon-placeholder h3 {
+            font-size: 1.2em;
+        }
+
         .hero-area {
             margin-bottom: 20px;
             border-radius: 10px;

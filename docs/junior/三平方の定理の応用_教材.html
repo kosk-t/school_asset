@@ -1,0 +1,461 @@
+---
+layout: material-raw
+title: 三平方の定理の応用
+icon: "📏"
+description: 三平方の定理を平面図形・空間図形・座標平面に応用する方法を学ぶ。対角線の長さ、立体の高さや対角線、2点間の距離などを求める実践的なスキルを身につける。
+level: 標準
+level_num: 2
+category: geometry
+order: 7
+keywords:
+  - 三平方の定理
+  - 対角線
+  - 空間図形
+  - 座標平面
+  - 2点間の距離
+  - 直方体の対角線
+cover_image: /images/noimage.jpg
+cover_description: 長方形の対角線、直方体の対角線、座標平面上の2点間の距離
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「4000年前のピラミッド建設現場」"
+related:
+  - url: /三平方の定理_教材.html
+    title: 三平方の定理
+    note: 基本の定理を先に学ぶ
+    type: prerequisite
+  - url: /累乗と平方根_教材.html
+    title: 累乗と平方根
+    note: 平方根の計算に必要
+    type: prerequisite
+  - url: /座標平面上の直線_教材.html
+    title: 座標平面上の直線
+    note: 座標平面での距離計算に関連
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「部屋の対角線に家具が収まるか？」「坂道の斜面の長さは？」「地図上の2地点間の距離は？」——三平方の定理は、日常のあらゆる場面で活躍します。</p>
+
+        <p>このページでは、<strong>三平方の定理の応用</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>平面図形への応用</strong>：長方形の対角線、正三角形の高さ</li>
+            <li><strong>空間図形への応用</strong>：直方体の対角線、円錐の母線</li>
+            <li><strong>座標平面への応用</strong>：2点間の距離</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要：「直角三角形を見つける」→「三平方の定理を使う」
+        </div>
+
+        <p>応用問題のコツは、<strong>図形の中に直角三角形を見つけること</strong>。直角三角形さえ見つかれば、三平方の定理 \(a^2 + b^2 = c^2\) が使えます。</p>
+
+        <div class="rule-box" id="rule-rectangle-diagonal">
+            <strong>📌 ルール1：長方形の対角線</strong> <a href="#ex-rectangle" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ d = \sqrt{a^2 + b^2} \]
+            </div>
+            <p>縦 \(a\)、横 \(b\) の長方形の対角線 \(d\) は、直角三角形の斜辺と同じ。</p>
+        </div>
+
+        <!-- 長方形の対角線の図解 -->
+        <div class="svg-container">
+            <svg width="400" height="200" viewBox="0 0 400 200">
+                <!-- 長方形 -->
+                <rect x="50" y="30" width="200" height="120" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <!-- 対角線 -->
+                <line x1="50" y1="150" x2="250" y2="30" stroke="#e53935" stroke-width="3" stroke-dasharray="8,4"/>
+                <!-- 直角マーク -->
+                <path d="M 50,130 L 70,130 L 70,150" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- ラベル -->
+                <text x="30" y="95" font-size="16" font-weight="bold" fill="#1976d2">a</text>
+                <text x="145" y="170" font-size="16" font-weight="bold" fill="#1976d2">b</text>
+                <text x="160" y="80" font-size="16" font-weight="bold" fill="#e53935">d</text>
+                <!-- 公式 -->
+                <text x="320" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">d = √(a² + b²)</text>
+            </svg>
+            <div class="svg-caption">長方形の対角線：縦と横から斜辺（対角線）を求める</div>
+        </div>
+
+        <div class="rule-box" id="rule-equilateral-height">
+            <strong>📌 ルール2：正三角形の高さ</strong> <a href="#ex-equilateral" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ h = \frac{\sqrt{3}}{2} a \]
+            </div>
+            <p>1辺が \(a\) の正三角形の高さ \(h\)。30°-60°-90°の比 \(1:\sqrt{3}:2\) から導出。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>正三角形に高さを引くと、30°-60°-90°の直角三角形ができる。底辺は \(\frac{a}{2}\)、斜辺は \(a\)。比 \(1:\sqrt{3}:2\) より、高さは \(\frac{a}{2} \times \sqrt{3} = \frac{\sqrt{3}}{2}a\)。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-cuboid-diagonal">
+            <strong>📌 ルール3：直方体の対角線</strong> <a href="#ex-cuboid" class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ d = \sqrt{a^2 + b^2 + c^2} \]
+            </div>
+            <p>縦 \(a\)、横 \(b\)、高さ \(c\) の直方体の対角線 \(d\)。<strong>三平方の定理を2回使う</strong>。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>まず底面の対角線 \(\sqrt{a^2 + b^2}\) を求め、次にこれを底辺として高さ \(c\) との三平方の定理を使う。</p>
+            </details>
+        </div>
+
+        <!-- 直方体の対角線の図解 -->
+        <div class="svg-container">
+            <svg width="500" height="280" viewBox="0 0 500 280">
+                <!-- 直方体（3D風） -->
+                <!-- 背面 -->
+                <polygon points="100,50 280,50 280,180 100,180" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" opacity="0.5"/>
+                <!-- 底面 -->
+                <polygon points="100,180 280,180 330,230 150,230" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <!-- 前面 -->
+                <polygon points="150,100 330,100 330,230 150,230" fill="#fff3e0" stroke="#ff9800" stroke-width="2" opacity="0.7"/>
+                <!-- 左側面 -->
+                <polygon points="100,50 150,100 150,230 100,180" fill="#fce4ec" stroke="#e91e63" stroke-width="2" opacity="0.7"/>
+                <!-- 右側面 -->
+                <polygon points="280,50 330,100 330,230 280,180" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2" opacity="0.7"/>
+                <!-- 上面 -->
+                <polygon points="100,50 150,100 330,100 280,50" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" opacity="0.7"/>
+
+                <!-- 対角線 -->
+                <line x1="100" y1="180" x2="330" y2="100" stroke="#e53935" stroke-width="3" stroke-dasharray="8,4"/>
+                <!-- 底面の対角線（補助） -->
+                <line x1="100" y1="180" x2="330" y2="230" stroke="#1976d2" stroke-width="2" stroke-dasharray="5,3" opacity="0.6"/>
+
+                <!-- ラベル -->
+                <text x="75" y="120" font-size="14" font-weight="bold" fill="#e91e63">c</text>
+                <text x="190" y="250" font-size="14" font-weight="bold" fill="#1976d2">a</text>
+                <text x="340" y="170" font-size="14" font-weight="bold" fill="#9c27b0">b</text>
+                <text x="200" y="120" font-size="16" font-weight="bold" fill="#e53935">d</text>
+
+                <!-- 公式 -->
+                <text x="420" y="140" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">d = √(a² + b² + c²)</text>
+            </svg>
+            <div class="svg-caption">直方体の対角線：3辺の2乗の和のルート</div>
+        </div>
+
+        <div class="rule-box" id="rule-distance-formula">
+            <strong>📌 ルール4：2点間の距離（座標平面）</strong> <a href="#ex-distance" class="example-link">→ 例4</a>
+            <div class="formula">
+                \[ AB = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} \]
+            </div>
+            <p>点 \(A(x_1, y_1)\) と点 \(B(x_2, y_2)\) の距離。x方向の差とy方向の差を使う。</p>
+        </div>
+
+        <!-- 2点間の距離の図解 -->
+        <div class="svg-container">
+            <svg width="400" height="280" viewBox="0 0 400 280">
+                <!-- 座標軸 -->
+                <line x1="50" y1="230" x2="350" y2="230" stroke="#333" stroke-width="2"/>
+                <line x1="50" y1="230" x2="50" y2="30" stroke="#333" stroke-width="2"/>
+                <!-- 軸ラベル -->
+                <text x="360" y="235" font-size="14" fill="#333">x</text>
+                <text x="45" y="20" font-size="14" fill="#333">y</text>
+
+                <!-- 点A -->
+                <circle cx="100" cy="180" r="6" fill="#1976d2"/>
+                <text x="85" y="200" font-size="14" font-weight="bold" fill="#1976d2">A(x₁, y₁)</text>
+
+                <!-- 点B -->
+                <circle cx="280" cy="80" r="6" fill="#e53935"/>
+                <text x="265" y="65" font-size="14" font-weight="bold" fill="#e53935">B(x₂, y₂)</text>
+
+                <!-- 直角三角形 -->
+                <line x1="100" y1="180" x2="280" y2="180" stroke="#4caf50" stroke-width="2" stroke-dasharray="5,3"/>
+                <line x1="280" y1="180" x2="280" y2="80" stroke="#4caf50" stroke-width="2" stroke-dasharray="5,3"/>
+                <line x1="100" y1="180" x2="280" y2="80" stroke="#e53935" stroke-width="3"/>
+
+                <!-- 直角マーク -->
+                <path d="M 260,180 L 260,160 L 280,160" fill="none" stroke="#333" stroke-width="2"/>
+
+                <!-- ラベル -->
+                <text x="180" y="200" font-size="14" fill="#4caf50">x₂ − x₁</text>
+                <text x="290" y="140" font-size="14" fill="#4caf50">y₂ − y₁</text>
+                <text x="170" y="115" font-size="14" font-weight="bold" fill="#e53935">AB</text>
+            </svg>
+            <div class="svg-caption">2点間の距離：x方向とy方向の差から斜辺を求める</div>
+        </div>
+
+        <div class="rule-box" id="rule-cone-slant-height">
+            <strong>📌 ルール5：円錐の母線</strong> <a href="#ex-cone" class="example-link">→ 例5</a>
+            <div class="formula">
+                \[ l = \sqrt{r^2 + h^2} \]
+            </div>
+            <p>底面の半径 \(r\)、高さ \(h\) の円錐の母線 \(l\)。円錐を切ると直角三角形が現れる。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>三平方の定理を使って、さまざまな図形の長さを求めてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 平面図形への応用</h3>
+
+        <div class="example-box" id="ex-rectangle">
+            <div class="example-title">
+                <span class="number-badge">例1</span>長方形の対角線
+            </div>
+            <p>縦 3cm、横 4cm の長方形の対角線の長さを求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>対角線は直角三角形の斜辺</li>
+                <li>\(d = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5\)</li>
+            </ol>
+            <div class="formula">
+                \[ d = \sqrt{3^2 + 4^2} = \sqrt{25} = \boxed{5 \text{ cm}} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-equilateral">
+            <div class="example-title">
+                <span class="number-badge">例2</span>正三角形の高さ
+            </div>
+            <p>1辺が 6cm の正三角形の高さを求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>高さを引くと、底辺は \(6 \div 2 = 3\) cm</li>
+                <li>斜辺は 6cm（正三角形の1辺）</li>
+                <li>\(h = \sqrt{6^2 - 3^2} = \sqrt{36 - 9} = \sqrt{27} = 3\sqrt{3}\)</li>
+            </ol>
+            <div class="formula">
+                \[ h = \sqrt{6^2 - 3^2} = \sqrt{27} = \boxed{3\sqrt{3} \text{ cm}} \]
+            </div>
+            <p style="color: #666; font-size: 0.9em;">※公式 \(h = \frac{\sqrt{3}}{2} \times 6 = 3\sqrt{3}\) でも同じ結果</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 空間図形への応用</h3>
+
+        <div class="example-box" id="ex-cuboid">
+            <div class="example-title">
+                <span class="number-badge">例3</span>直方体の対角線
+            </div>
+            <p>縦 3cm、横 4cm、高さ 12cm の直方体の対角線の長さを求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>まず底面の対角線：\(\sqrt{3^2 + 4^2} = \sqrt{25} = 5\)</li>
+                <li>次に立体の対角線：\(\sqrt{5^2 + 12^2} = \sqrt{25 + 144} = \sqrt{169} = 13\)</li>
+            </ol>
+            <div class="formula">
+                \[ d = \sqrt{3^2 + 4^2 + 12^2} = \sqrt{9 + 16 + 144} = \sqrt{169} = \boxed{13 \text{ cm}} \]
+            </div>
+            <p style="color: #666; font-size: 0.9em;">※3-4-5 と 5-12-13 という有名なピタゴラス数の組み合わせ</p>
+        </div>
+
+        <div class="example-box" id="ex-cone">
+            <div class="example-title">
+                <span class="number-badge">例4</span>円錐の母線
+            </div>
+            <p>底面の半径が 3cm、高さが 4cm の円錐の母線の長さを求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>円錐を縦に切ると直角三角形が見える</li>
+                <li>底辺 = 半径 = 3、高さ = 4、斜辺 = 母線</li>
+                <li>\(l = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5\)</li>
+            </ol>
+            <div class="formula">
+                \[ l = \sqrt{3^2 + 4^2} = \sqrt{25} = \boxed{5 \text{ cm}} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 座標平面への応用</h3>
+
+        <div class="example-box" id="ex-distance">
+            <div class="example-title">
+                <span class="number-badge">例5</span>2点間の距離
+            </div>
+            <p>点 \(A(1, 2)\) と点 \(B(4, 6)\) の距離を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>x方向の差：\(4 - 1 = 3\)</li>
+                <li>y方向の差：\(6 - 2 = 4\)</li>
+                <li>\(AB = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5\)</li>
+            </ol>
+            <div class="formula">
+                \[ AB = \sqrt{(4-1)^2 + (6-2)^2} = \sqrt{9 + 16} = \boxed{5} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-distance-2">
+            <div class="example-title">
+                <span class="number-badge">例6</span>原点からの距離
+            </div>
+            <p>点 \(P(3, -4)\) と原点 \(O(0, 0)\) の距離を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>x方向の差：\(3 - 0 = 3\)</li>
+                <li>y方向の差：\(-4 - 0 = -4\)（2乗するので符号は関係なし）</li>
+                <li>\(OP = \sqrt{3^2 + (-4)^2} = \sqrt{9 + 16} = 5\)</li>
+            </ol>
+            <div class="formula">
+                \[ OP = \sqrt{3^2 + (-4)^2} = \sqrt{25} = \boxed{5} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box" id="tip-auxiliary-line">
+            <strong>✏️ コツ1：補助線で直角三角形を作る</strong><br>
+            図形に直角三角形が見えないときは、<strong>補助線（高さ、対角線など）を引く</strong>。すると直角三角形が現れることが多い。
+        </div>
+
+        <div class="tip-box" id="tip-double-pythagorean">
+            <strong>✏️ コツ2：空間図形は「2回三平方」</strong><br>
+            直方体の対角線などは、<strong>まず平面で1回、次に立体で1回</strong>、計2回三平方の定理を使う。公式 \(\sqrt{a^2 + b^2 + c^2}\) を覚えておくと速い。
+        </div>
+
+        <div class="tip-box" id="tip-sign-ignored">
+            <strong>✏️ コツ3：座標の符号は気にしない</strong><br>
+            2点間の距離で差が負になっても、<strong>2乗するので正になる</strong>。\((−3)^2 = 9\) なので、符号を気にせず計算してOK。
+        </div>
+
+        <div class="tip-box" id="tip-famous-triples">
+            <strong>✏️ コツ4：有名な組を見つける</strong><br>
+            3-4-5、5-12-13、8-15-17 などのピタゴラス数が出てきたら、計算せずに答えがわかる。倍数（6-8-10など）にも注意。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：直角三角形を見つけられない</div>
+            <p><strong>ダメな例：</strong> 三角形がないからと諦める</p>
+            <p><strong>対策：</strong> <strong>補助線を引く</strong>。対角線、高さ、垂線などを引くと直角三角形が現れる。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：底面の対角線を忘れる</div>
+            <p><strong>ダメな例：</strong> 直方体で縦・横・高さを直接使う</p>
+            <p><strong>対策：</strong> 直方体の対角線は<strong>2段階</strong>。まず底面で \(\sqrt{a^2 + b^2}\) → 次に高さと合わせる。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：座標の差の順番を間違える</div>
+            <p><strong>ダメな例：</strong> \(\sqrt{x_1^2 + y_1^2 + x_2^2 + y_2^2}\) と計算</p>
+            <p><strong>対策：</strong> 必ず<strong>「差」を取ってから2乗</strong>。\((x_2 - x_1)^2\) と \((y_2 - y_1)^2\) を足す。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：円錐で直径を使ってしまう</div>
+            <p><strong>ダメな例：</strong> 底面の直径を使って計算</p>
+            <p><strong>対策：</strong> 円錐の母線を求めるときは<strong>半径</strong>を使う。直径が与えられたら2で割る。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">直角三角形を正しく見つけたか</div>
+            <div class="checklist-item">斜辺がどれか確認したか</div>
+            <div class="checklist-item">空間図形で2回三平方を使ったか</div>
+            <div class="checklist-item">座標で「差」を取ってから2乗したか</div>
+            <div class="checklist-item">単位を書いたか</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>1辺が 10cm の正方形の対角線の長さを求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(d = \sqrt{10^2 + 10^2} = \sqrt{200} = \sqrt{100 \times 2} = 10\sqrt{2}\)</p>
+                    <p>答え：\(\boxed{10\sqrt{2} \text{ cm}}\)</p>
+                    <p>（45°-45°-90°の比 \(1:1:\sqrt{2}\) を使えば、\(10 \times \sqrt{2} = 10\sqrt{2}\) でも求まる）</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>点 \(A(-2, 3)\) と点 \(B(4, -5)\) の距離を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>x方向の差：\(4 - (-2) = 6\)</p>
+                    <p>y方向の差：\(-5 - 3 = -8\)</p>
+                    <p>\(AB = \sqrt{6^2 + (-8)^2} = \sqrt{36 + 64} = \sqrt{100} = 10\)</p>
+                    <p>答え：\(\boxed{10}\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：「直角三角形を見つける」→「三平方の定理を使う」、空間は2回使う
+</div>
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「4000年前のピラミッド建設現場」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 古代エジプトの「縄張り師」</div>
+
+            <p>紀元前2500年頃の古代エジプト。巨大なピラミッドを建設するには、<strong>正確な直角</strong>が必要だった。土台が歪んでいたら、ピラミッドは傾いてしまう。</p>
+
+            <p>当時、直角を作る専門家がいた。彼らは「<strong>縄張り師（ハルペドナプタイ）</strong>」と呼ばれていた。</p>
+
+            <p>彼らの道具はシンプル。<strong>12個の等間隔の結び目がある縄</strong>だけだ。</p>
+
+            <p>この縄を使って、3つの結び目・4つの結び目・5つの結び目で三角形を作る。すると——</p>
+
+            <div class="formula" style="margin: 15px 0;">
+                \[ 3^2 + 4^2 = 9 + 16 = 25 = 5^2 \]
+            </div>
+
+            <p>三平方の定理により、これは<strong>直角三角形</strong>になる！</p>
+
+            <p>ピタゴラスが生まれる2000年以上前から、エジプト人はこの「3-4-5の法則」を知っていた。理論は知らなくても、<strong>実用的に使いこなしていた</strong>のだ。</p>
+
+            <p>ピラミッドの土台は驚くほど正確で、230メートルの辺の誤差はわずか数センチ。現代の測量技術と比べても遜色ない精度だという。</p>
+
+            <p style="font-style: italic; color: #666; margin-top: 20px;">...縄1本で世界遺産を作った古代人。「シンプルな道具でも、数学の知識があれば何でもできる」という好例かもしれない。</p>
+
+            <p style="font-size: 0.9em; color: #888; margin-top: 15px;">※「縄張り師」についてはギリシャの歴史家による記録が残っています（<a href="https://ja.wikipedia.org/wiki/%E3%82%AE%E3%82%B6%E3%81%AE%E5%A4%A7%E3%83%94%E3%83%A9%E3%83%9F%E3%83%83%E3%83%89" target="_blank" style="color: #1976d2;">ギザの大ピラミッド - Wikipedia</a>）。</p>
+        </div>
+    </div>
+</section>

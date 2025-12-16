@@ -1,0 +1,472 @@
+---
+layout: material-raw
+title: 三角比
+icon: "📐"
+description: 直角三角形の辺の比から角度の情報を取り出す三角比（sin, cos, tan）を学ぶ。定義、特別な角の値、相互関係をマスターする。
+level: 基礎
+level_num: 1
+category: geometry
+school_level: senior
+order: 1
+keywords:
+  - 三角比
+  - サイン
+  - コサイン
+  - タンジェント
+  - 特別な角
+cover_image: /images/noimage.jpg
+cover_description: 直角三角形とsin, cos, tanの定義、特別な角の三角比の表
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「ピラミッドの高さを測った男」"
+related:
+  - url: /junior/三平方の定理_教材.html
+    title: 三平方の定理
+    note: 直角三角形の辺の関係の基礎
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「あの木の高さは何メートル？」「この坂道の傾斜は何度？」——直接測れないものでも、<strong>角度と辺の関係</strong>を使えば計算で求められます。</p>
+
+        <p>このページでは、<strong>三角比</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>三角比の定義</strong>：sin（サイン）、cos（コサイン）、tan（タンジェント）の3つ</li>
+            <li><strong>特別な角の値</strong>：30°、45°、60°は暗記必須</li>
+            <li><strong>相互関係</strong>：sin、cos、tanの間に成り立つ便利な公式</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要：SOH-CAH-TOA（ソー・カー・トア）で覚える！ sin = 対/斜、cos = 隣/斜、tan = 対/隣
+        </div>
+
+        <!-- 三角比の定義の図解（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="340" viewBox="0 0 700 340">
+                <!-- タイトル -->
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">三角比の定義</text>
+
+                <!-- 直角三角形 -->
+                <polygon points="80,280 320,280 80,100" fill="#e3f2fd" stroke="#1976d2" stroke-width="3"/>
+
+                <!-- 直角マーク -->
+                <path d="M 80,260 L 100,260 L 100,280" fill="none" stroke="#1976d2" stroke-width="2"/>
+
+                <!-- 角度θ -->
+                <path d="M 290,280 A 30 30 0 0 1 280,260" fill="none" stroke="#e53935" stroke-width="2"/>
+                <text x="260" y="268" font-size="18" font-weight="bold" fill="#e53935">θ</text>
+
+                <!-- 辺のラベル -->
+                <text x="45" y="180" font-size="16" font-weight="bold" fill="#4caf50">対辺</text>
+                <text x="35" y="200" font-size="14" fill="#4caf50">(O)pposite</text>
+                <text x="180" y="300" font-size="16" font-weight="bold" fill="#9c27b0">隣辺</text>
+                <text x="170" y="320" font-size="14" fill="#9c27b0">(A)djacent</text>
+                <text x="200" y="165" font-size="16" font-weight="bold" fill="#ff9800">斜辺</text>
+                <text x="185" y="185" font-size="14" fill="#ff9800">(H)ypotenuse</text>
+
+                <!-- 公式ボックス -->
+                <rect x="380" y="50" width="260" height="220" fill="#fff8e1" stroke="#ff9800" stroke-width="2" rx="10"/>
+
+                <text x="510" y="85" font-size="18" font-weight="bold" fill="#e65100" text-anchor="middle">ソー・カー・トア</text>
+
+                <text x="400" y="125" font-size="20" font-weight="bold" fill="#4caf50">S</text>
+                <text x="420" y="125" font-size="16" fill="#333">in = </text>
+                <text x="460" y="125" font-size="20" font-weight="bold" fill="#4caf50">O</text>
+                <text x="478" y="125" font-size="16" fill="#333">対 ÷ </text>
+                <text x="530" y="125" font-size="20" font-weight="bold" fill="#ff9800">H</text>
+                <text x="548" y="125" font-size="16" fill="#333">斜</text>
+
+                <text x="400" y="170" font-size="20" font-weight="bold" fill="#9c27b0">C</text>
+                <text x="420" y="170" font-size="16" fill="#333">os = </text>
+                <text x="465" y="170" font-size="20" font-weight="bold" fill="#9c27b0">A</text>
+                <text x="483" y="170" font-size="16" fill="#333">隣 ÷ </text>
+                <text x="535" y="170" font-size="20" font-weight="bold" fill="#ff9800">H</text>
+                <text x="553" y="170" font-size="16" fill="#333">斜</text>
+
+                <text x="400" y="215" font-size="20" font-weight="bold" fill="#e53935">T</text>
+                <text x="418" y="215" font-size="16" fill="#333">an = </text>
+                <text x="462" y="215" font-size="20" font-weight="bold" fill="#4caf50">O</text>
+                <text x="480" y="215" font-size="16" fill="#333">対 ÷ </text>
+                <text x="532" y="215" font-size="20" font-weight="bold" fill="#9c27b0">A</text>
+                <text x="550" y="215" font-size="16" fill="#333">隣</text>
+
+                <text x="510" y="255" font-size="14" fill="#666" text-anchor="middle">O=対辺 A=隣辺 H=斜辺</text>
+            </svg>
+            <div class="svg-caption">三角比の定義：角θから見て「対辺」「隣辺」「斜辺」を使い分ける</div>
+        </div>
+
+        <div class="rule-box" id="rule-definition">
+            <strong>📌 ルール1：三角比の定義（SOH-CAH-TOA）</strong> <a href="#ex-definition" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ \sin\theta = \frac{\text{対辺}}{\text{斜辺}}, \quad \cos\theta = \frac{\text{隣辺}}{\text{斜辺}}, \quad \tan\theta = \frac{\text{対辺}}{\text{隣辺}} \]
+            </div>
+            <p>直角三角形で、注目する角θから見て：</p>
+            <ul>
+                <li><strong>対辺（opposite）</strong>：θの向かい側にある辺</li>
+                <li><strong>隣辺（adjacent）</strong>：θのとなりにある辺（斜辺ではない方）</li>
+                <li><strong>斜辺（hypotenuse）</strong>：直角の向かい側、一番長い辺</li>
+            </ul>
+            <p><strong>→ だから結果は：</strong> 辺の比を計算すれば、角度の情報が数値で得られる</p>
+            <details class="thinking"><summary>💡 覚え方を見る</summary>
+            <p><strong>SOH-CAH-TOA</strong>（ソー・カー・トア）で覚える！英語の頭文字を取った語呂合わせ：</p>
+            <ul>
+                <li><strong>SOH</strong>：<strong>S</strong>in = <strong>O</strong>pposite / <strong>H</strong>ypotenuse（対辺÷斜辺）</li>
+                <li><strong>CAH</strong>：<strong>C</strong>os = <strong>A</strong>djacent / <strong>H</strong>ypotenuse（隣辺÷斜辺）</li>
+                <li><strong>TOA</strong>：<strong>T</strong>an = <strong>O</strong>pposite / <strong>A</strong>djacent（対辺÷隣辺）</li>
+            </ul>
+            <p>「ソー・カー・トア」と3回唱えれば覚えられる！</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-special-angles">
+            <strong>📌 ルール2：特別な角の三角比（暗記必須！）</strong> <a href="#ex-special" class="example-link">→ 例2・3</a>
+            <p>30°、45°、60°の三角比は頻出なので<strong>必ず暗記</strong>：</p>
+        </div>
+
+        <!-- 特別な角の三角比の表 -->
+        <table class="material-table">
+            <tr>
+                <th>θ</th>
+                <th>sin θ</th>
+                <th>cos θ</th>
+                <th>tan θ</th>
+            </tr>
+            <tr>
+                <td><strong>30°</strong></td>
+                <td>\(\dfrac{1}{2}\)</td>
+                <td>\(\dfrac{\sqrt{3}}{2}\)</td>
+                <td>\(\dfrac{1}{\sqrt{3}} = \dfrac{\sqrt{3}}{3}\)</td>
+            </tr>
+            <tr>
+                <td><strong>45°</strong></td>
+                <td>\(\dfrac{1}{\sqrt{2}} = \dfrac{\sqrt{2}}{2}\)</td>
+                <td>\(\dfrac{1}{\sqrt{2}} = \dfrac{\sqrt{2}}{2}\)</td>
+                <td>\(1\)</td>
+            </tr>
+            <tr>
+                <td><strong>60°</strong></td>
+                <td>\(\dfrac{\sqrt{3}}{2}\)</td>
+                <td>\(\dfrac{1}{2}\)</td>
+                <td>\(\sqrt{3}\)</td>
+            </tr>
+        </table>
+
+        <div class="svg-container">
+            <svg width="700" height="220" viewBox="0 0 700 220">
+                <!-- 45-45-90の三角形 -->
+                <text x="150" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">45°-45°-90°</text>
+                <polygon points="50,180 200,180 50,30" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <path d="M 50,160 L 70,160 L 70,180" fill="none" stroke="#1976d2" stroke-width="2"/>
+                <text x="75" y="50" font-size="14" fill="#1565c0">45°</text>
+                <text x="165" y="175" font-size="14" fill="#1565c0">45°</text>
+                <text x="25" y="110" font-size="16" font-weight="bold" fill="#e53935">1</text>
+                <text x="115" y="200" font-size="16" font-weight="bold" fill="#e53935">1</text>
+                <text x="135" y="95" font-size="16" font-weight="bold" fill="#4caf50">√2</text>
+
+                <!-- 30-60-90の三角形 -->
+                <text x="480" y="20" font-size="14" font-weight="bold" fill="#9c27b0" text-anchor="middle">30°-60°-90°</text>
+                <polygon points="350,180 610,180 350,50" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"/>
+                <path d="M 350,160 L 370,160 L 370,180" fill="none" stroke="#9c27b0" stroke-width="2"/>
+                <text x="380" y="65" font-size="14" fill="#7b1fa2">30°</text>
+                <text x="560" y="175" font-size="14" fill="#7b1fa2">60°</text>
+                <text x="320" y="120" font-size="16" font-weight="bold" fill="#e53935">√3</text>
+                <text x="470" y="200" font-size="16" font-weight="bold" fill="#1976d2">1</text>
+                <text x="495" y="100" font-size="16" font-weight="bold" fill="#4caf50">2</text>
+            </svg>
+            <div class="svg-caption">特別な直角三角形の辺の比：これを使えば三角比の値が出る</div>
+        </div>
+
+        <details class="thinking"><summary>💡 覚え方を見る</summary>
+        <p><strong>「1, 2, 3, √」の法則</strong>で覚える：</p>
+        <ul>
+            <li>sin：分子は 30° → 1、45° → √2、60° → √3（1, √2, √3 と増える）</li>
+            <li>cos：分子は 30° → √3、45° → √2、60° → 1（√3, √2, 1 と減る）</li>
+            <li>分母は sin, cos ともに <strong>2</strong>（45°のときは √2 だが、有理化すると分母2）</li>
+        </ul>
+        <p>または<strong>図で覚える</strong>：45°-45°-90°の比「1:1:√2」、30°-60°-90°の比「1:√3:2」を図で暗記して、定義に当てはめる。</p>
+        </details>
+
+        <div class="rule-box" id="rule-relations">
+            <strong>📌 ルール3：三角比の相互関係</strong> <a href="#ex-relation" class="example-link">→ 例4</a>
+            <div class="formula">
+                \[ \tan\theta = \frac{\sin\theta}{\cos\theta}, \quad \sin^2\theta + \cos^2\theta = 1 \]
+            </div>
+            <p>\(\sin^2\theta\)（「サイン二乗シータ」と読む）は \((\sin\theta)^2\) のこと。</p>
+            <p><strong>→ だから結果は：</strong> sin と cos がわかれば tan も計算できる。また、片方がわかればもう片方も求まる。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>tanの公式は定義から：\(\tan\theta = \dfrac{\text{対辺}}{\text{隣辺}} = \dfrac{\text{対辺}/\text{斜辺}}{\text{隣辺}/\text{斜辺}} = \dfrac{\sin\theta}{\cos\theta}\)</p>
+            <p>sin² + cos² = 1 は三平方の定理から：\(\left(\dfrac{\text{対辺}}{\text{斜辺}}\right)^2 + \left(\dfrac{\text{隣辺}}{\text{斜辺}}\right)^2 = \dfrac{\text{対辺}^2 + \text{隣辺}^2}{\text{斜辺}^2} = \dfrac{\text{斜辺}^2}{\text{斜辺}^2} = 1\)</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-90-theta">
+            <strong>📌 ルール4：90° - θ の関係</strong> <a href="#ex-90" class="example-link">→ 例5</a>
+            <div class="formula">
+                \[ \sin(90° - \theta) = \cos\theta, \quad \cos(90° - \theta) = \sin\theta \]
+            </div>
+            <p><strong>→ だから結果は：</strong> sin 30° = cos 60°、cos 45° = sin 45° など、足して90°になる角のsinとcosは入れ替わる</p>
+            <p><strong>✅ メリット：</strong> 覚える値が半分で済む！</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>三角比の定義と特別な角の値を使って、実際に計算してみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 定義から三角比を求める</h3>
+
+        <div class="example-box" id="ex-definition">
+            <div class="example-title">
+                <span class="number-badge">例1</span>辺の長さから三角比を求める
+            </div>
+            <p>直角三角形ABCで、∠C = 90°、AB = 5、BC = 3、CA = 4 のとき、sin A、cos A、tan A を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>∠Aから見て、対辺 = BC = 3、隣辺 = CA = 4、斜辺 = AB = 5</li>
+                <li>定義に当てはめる</li>
+            </ol>
+            <div class="formula">
+                \[ \sin A = \frac{3}{5}, \quad \cos A = \frac{4}{5}, \quad \tan A = \frac{3}{4} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 特別な角の三角比</h3>
+
+        <div class="example-box" id="ex-special">
+            <div class="example-title">
+                <span class="number-badge">例2</span>45°の三角比
+            </div>
+            <p>\(\sin 45°\)、\(\cos 45°\)、\(\tan 45°\) の値を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>45°-45°-90°の直角三角形の辺の比は 1 : 1 : √2</li>
+                <li>対辺 = 1、隣辺 = 1、斜辺 = √2 として定義に代入</li>
+            </ol>
+            <div class="formula">
+                \[ \sin 45° = \frac{1}{\sqrt{2}} = \frac{\sqrt{2}}{2}, \quad \cos 45° = \frac{1}{\sqrt{2}} = \frac{\sqrt{2}}{2}, \quad \tan 45° = \frac{1}{1} = 1 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-special-2">
+            <div class="example-title">
+                <span class="number-badge">例3</span>30°と60°の三角比
+            </div>
+            <p>\(\sin 30°\)、\(\cos 60°\) の値を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>30°-60°-90°の直角三角形の辺の比は 1 : √3 : 2（30°の向かいが1、60°の向かいが√3、斜辺が2）</li>
+                <li>sin 30° → 対辺(30°の向かい) = 1、斜辺 = 2</li>
+                <li>cos 60° → 隣辺(60°のとなり) = 1、斜辺 = 2</li>
+            </ol>
+            <div class="formula">
+                \[ \sin 30° = \frac{1}{2}, \quad \cos 60° = \frac{1}{2} \]
+            </div>
+            <p>（sin 30° = cos 60° になっている！これは90° - θの関係）</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 相互関係を使う</h3>
+
+        <div class="example-box" id="ex-relation">
+            <div class="example-title">
+                <span class="number-badge">例4</span>sin から cos を求める
+            </div>
+            <p>\(\sin\theta = \dfrac{3}{5}\) のとき、\(\cos\theta\) を求めよ（0° < θ < 90°）。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(\sin^2\theta + \cos^2\theta = 1\) を使う</li>
+                <li>\(\left(\dfrac{3}{5}\right)^2 + \cos^2\theta = 1\)</li>
+                <li>\(\dfrac{9}{25} + \cos^2\theta = 1\)</li>
+                <li>\(\cos^2\theta = 1 - \dfrac{9}{25} = \dfrac{16}{25}\)</li>
+                <li>0° < θ < 90° では cos θ > 0 なので、\(\cos\theta = \dfrac{4}{5}\)</li>
+            </ol>
+            <div class="formula">
+                \[ \cos\theta = \sqrt{1 - \sin^2\theta} = \sqrt{1 - \frac{9}{25}} = \sqrt{\frac{16}{25}} = \boxed{\frac{4}{5}} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-90">
+            <div class="example-title">
+                <span class="number-badge">例5</span>90° - θ の関係を使う
+            </div>
+            <p>\(\sin 70°\) を cos を使って表せ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>90° - 70° = 20° に注目</li>
+                <li>\(\sin(90° - 20°) = \cos 20°\) より、\(\sin 70° = \cos 20°\)</li>
+            </ol>
+            <div class="formula">
+                \[ \sin 70° = \sin(90° - 20°) = \boxed{\cos 20°} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：まず「どの角から見るか」を決める</strong><br>
+            三角比は「角θから見た辺の比」なので、まず注目する角を確認。その角の<strong>向かい側が対辺</strong>、<strong>となりが隣辺</strong>、<strong>直角の向かいが斜辺</strong>。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：特別な角は「図」で覚える</strong><br>
+            30°-60°-90°と45°-45°-90°の三角形を図で暗記しておけば、定義に当てはめるだけ。表を丸暗記するより応用が利く。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：有理化は最後でOK</strong><br>
+            \(\dfrac{1}{\sqrt{2}}\) のままでも間違いではない。最終的な答えで有理化を求められたら \(\dfrac{\sqrt{2}}{2}\) に直す。計算途中は分母にルートがあっても気にしない。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：sin と cos の大小関係</strong><br>
+            0° < θ < 45° なら sin θ < cos θ、θ = 45° なら sin θ = cos θ、45° < θ < 90° なら sin θ > cos θ。検算に使える。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：対辺と隣辺を間違える</div>
+            <p><strong>ダメな例：</strong> 角θのとなりにある辺を「対辺」としてしまう</p>
+            <p><strong>対策：</strong> 「対辺」は文字通り<strong>対面（向かい側）</strong>にある辺。θの頂点から向かいを見て、ぶつかる辺が対辺。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：sin と cos を逆にする</div>
+            <p><strong>ダメな例：</strong> sin 30° = √3/2 としてしまう（正しくは 1/2）</p>
+            <p><strong>対策：</strong> 「SOH-CAH-TOA」を3回唱えて覚える。迷ったら図を描いて定義に戻る。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：√2 と √3 を混同する</div>
+            <p><strong>ダメな例：</strong> sin 60° = √2/2 としてしまう（正しくは √3/2）</p>
+            <p><strong>対策：</strong> 45°のときだけ √2 が登場、30°と60°のときは √3 が登場。角度と√の数字を対応させて覚える。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：sin²θ の計算ミス</div>
+            <p><strong>ダメな例：</strong> sin²30° = sin 60° としてしまう</p>
+            <p><strong>対策：</strong> sin²θ は「sinθを2回かける」という意味。sin²30° = (1/2)² = 1/4 であり、sin 60° = √3/2 とは全く別物。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">注目する角を正しく特定したか</div>
+            <div class="checklist-item">対辺・隣辺・斜辺を正しく見分けたか</div>
+            <div class="checklist-item">sin, cos, tan の定義を正しく適用したか</div>
+            <div class="checklist-item">必要なら有理化したか</div>
+            <div class="checklist-item">特別な角の値を正しく覚えているか</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>次の値を求めよ：\(\sin 60° + \cos 30°\)</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(\sin 60° = \dfrac{\sqrt{3}}{2}\)、\(\cos 30° = \dfrac{\sqrt{3}}{2}\)</p>
+                    <p>\(\sin 60° + \cos 30° = \dfrac{\sqrt{3}}{2} + \dfrac{\sqrt{3}}{2} = \boxed{\sqrt{3}}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\(\cos\theta = \dfrac{5}{13}\) のとき、\(\sin\theta\) と \(\tan\theta\) を求めよ（0° < θ < 90°）。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(\sin^2\theta + \cos^2\theta = 1\) より</p>
+                    <p>\(\sin^2\theta = 1 - \dfrac{25}{169} = \dfrac{144}{169}\)</p>
+                    <p>\(\sin\theta = \dfrac{12}{13}\)（θは鋭角なので正）</p>
+                    <p>\(\tan\theta = \dfrac{\sin\theta}{\cos\theta} = \dfrac{12/13}{5/13} = \boxed{\dfrac{12}{5}}\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：sin = 対/斜、cos = 隣/斜、tan = 対/隣。「SOH-CAH-TOA」（ソー・カー・トア）で覚えよう！
+</div>
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「ピラミッドの高さを測った男」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 タレスとピラミッド（紀元前600年頃・エジプト）</div>
+
+            <p>古代ギリシャの哲学者<strong>タレス</strong>がエジプトを訪れたとき、現地の人々からこう言われた。</p>
+
+            <p>「あのピラミッドの高さを知りたいのだが、登るわけにもいかないし、測る方法がない」</p>
+
+            <p>タレスは笑って答えた。「簡単なことさ」</p>
+
+            <p>彼は自分の<strong>影の長さ</strong>を測った。身長と影の長さが同じになる瞬間——つまり太陽が45°の角度にある時間を待ったのだ。</p>
+
+            <p>「今だ！」</p>
+
+            <p>タレスはピラミッドの影の長さを測った。太陽が45°なら、<strong>物体の高さ = 影の長さ</strong>。つまり tan 45° = 1 を使ったのだ。</p>
+
+            <div class="formula">
+                \[ \tan 45° = \frac{\text{高さ}}{\text{影の長さ}} = 1 \quad \therefore \text{高さ} = \text{影の長さ} \]
+            </div>
+
+            <p>エジプト人たちは驚いた。「登らずに高さがわかるのか！」</p>
+
+            <p>タレスは肩をすくめた。「角度と比があれば、見えないものも測れる。それが数学だ」</p>
+
+            <p style="font-style: italic; color: #666; margin-top: 20px;">...ちなみにこのタレス、「万物の根源は水である」と主張した人物でもある。三角比の先駆者が、同時に哲学の祖でもあったというのは面白い話だ。</p>
+
+            <p style="font-size: 0.9em; color: #888; margin-top: 15px;">※このエピソードは古代の伝承であり、細部は史実と異なる可能性があります（<a href="https://ja.wikipedia.org/wiki/%E3%82%BF%E3%83%AC%E3%82%B9" target="_blank" style="color: #1976d2;">タレス - Wikipedia</a>）。</p>
+        </div>
+    </div>
+</section>

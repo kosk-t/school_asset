@@ -1,0 +1,508 @@
+---
+layout: material-raw
+title: 式の計算
+icon: "📝"
+description: 単項式・多項式の計算と等式の変形をマスターしよう！中2数学の式の計算の基本を身につける。
+level: 標準
+level_num: 2
+category: numbers
+order: 2
+keywords:
+  - 単項式
+  - 多項式
+  - 次数
+  - 等式変形
+  - 式の計算
+cover_image: /images/noimage.jpg
+cover_description: 単項式と多項式の計算、等式変形の図解
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学雑学「次元の話」"
+related:
+  - url: /文字式の基本_教材.html
+    title: 文字式の基本
+    note: 一次式の基礎
+    type: prerequisite
+  - url: /乗法公式_教材.html
+    title: 乗法公式
+    note: 式の展開の発展
+    type: related
+  - url: /連立方程式_教材.html
+    title: 連立方程式
+    note: 式の計算を方程式で使う
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「\(3x^2y\)」と「\(2x^2y\)」を足すとどうなる？「\(S = \frac{1}{2}ah\)」を \(h\) について解くとどうなる？中2の式の計算では、中1で学んだ文字式をさらに発展させ、より複雑な式を扱います。</p>
+        <p>このページでは、式の計算の基本を学びます：</p>
+        <ul>
+            <li><strong>単項式と多項式</strong>：項・次数・係数の理解</li>
+            <li><strong>多項式の加減</strong>：同類項をまとめる</li>
+            <li><strong>単項式の乗除</strong>：指数法則を使う</li>
+            <li><strong>等式の変形</strong>：ある文字について解く</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】同類項のまとめ方：<br>
+            文字の部分が同じ項だけをまとめる。係数を足し引きする。
+        </div>
+
+        <!-- 用語の図解 -->
+        <div class="svg-container">
+            <svg width="600" height="180" viewBox="0 0 600 180">
+                <text x="300" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">単項式と多項式の用語</text>
+
+                <!-- 単項式の例 -->
+                <rect x="30" y="50" width="250" height="110" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="155" y="75" text-anchor="middle" font-size="14" font-weight="bold" fill="#1976d2">単項式の例</text>
+                <text x="155" y="105" text-anchor="middle" font-size="24" fill="#333">3x²y</text>
+                <text x="80" y="145" font-size="12" fill="#666">係数: 3</text>
+                <text x="155" y="145" font-size="12" fill="#666">次数: 3</text>
+                <text x="220" y="145" font-size="12" fill="#666">(x²とyの和)</text>
+
+                <!-- 多項式の例 -->
+                <rect x="320" y="50" width="250" height="110" rx="8" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+                <text x="445" y="75" text-anchor="middle" font-size="14" font-weight="bold" fill="#388e3c">多項式の例</text>
+                <text x="445" y="105" text-anchor="middle" font-size="24" fill="#333">2x² + 3x − 5</text>
+                <text x="350" y="145" font-size="12" fill="#666">項: 3つ</text>
+                <text x="420" y="145" font-size="12" fill="#666">次数: 2</text>
+                <text x="500" y="145" font-size="12" fill="#666">(最高次数)</text>
+            </svg>
+            <div class="svg-caption">単項式と多項式の用語</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 単項式と多項式</strong>
+            <ul>
+                <li><strong>単項式</strong>：数や文字の積だけでできた式（例：\(5x\)、\(-3ab\)、\(7\)）</li>
+                <li><strong>多項式</strong>：単項式の和でできた式（例：\(2x + 3\)、\(x^2 - 5x + 6\)）</li>
+                <li><strong>項</strong>：多項式を構成する各単項式</li>
+                <li><strong>係数</strong>：文字にかかっている数</li>
+            </ul>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 次数</strong>
+            <ul>
+                <li><strong>単項式の次数</strong>：かけ合わされている文字の個数（\(3x^2y\) は次数3）</li>
+                <li><strong>多項式の次数</strong>：各項の次数のうち最大のもの</li>
+            </ul>
+            <p><strong>例：</strong> \(5x^3 + 2x^2 - x + 4\) の次数は3（最高次の項 \(5x^3\) が3次）</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 多項式の加法・減法</strong> <a href="#ex-add1" class="example-link">→ 例1</a>
+            <ol>
+                <li>かっこを外す（減法の場合は符号を変える）</li>
+                <li>同類項をまとめる</li>
+            </ol>
+            <div class="formula">
+                \[ (3x^2 + 2x) + (x^2 - 5x) = 3x^2 + 2x + x^2 - 5x = 4x^2 - 3x \]
+            </div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 単項式の乗法</strong> <a href="#ex-mul1" class="example-link">→ 例3</a>
+            <ol>
+                <li>係数同士をかける</li>
+                <li>同じ文字は指数を足す（\(x^a \times x^b = x^{a+b}\)）</li>
+            </ol>
+            <div class="formula">
+                \[ 3x^2 \times 2x^3 = 6x^{2+3} = 6x^5 \]
+            </div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 単項式の除法</strong> <a href="#ex-div1" class="example-link">→ 例4</a>
+            <ol>
+                <li>係数同士を割る</li>
+                <li>同じ文字は指数を引く（\(x^a \div x^b = x^{a-b}\)）</li>
+            </ol>
+            <div class="formula">
+                \[ 12x^5 \div 4x^2 = 3x^{5-2} = 3x^3 \]
+            </div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 等式の変形</strong> <a href="#ex-eq1" class="example-link">→ 例5</a>
+            <p>等式をある文字について解く（その文字 = の形にする）</p>
+            <ol>
+                <li>目的の文字を含む項を一方に集める</li>
+                <li>目的の文字の係数で両辺を割る</li>
+            </ol>
+            <div class="formula">
+                \[ 2x + 3y = 6 \text{ を } x \text{ について解く} \]
+                \[ 2x = 6 - 3y \]
+                \[ x = \frac{6 - 3y}{2} = 3 - \frac{3y}{2} \]
+            </div>
+            <p><strong>✅ メリット：</strong> 公式を変形できれば、求めたい量に合わせて使い分けられる</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>式の計算の基本操作を練習しましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 多項式の加法・減法</h3>
+
+        <div class="example-box" id="ex-add1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>多項式の加法
+            </div>
+            <p>\((5x^2 + 3x - 2) + (2x^2 - 4x + 7)\) を計算せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>かっこを外す：\(5x^2 + 3x - 2 + 2x^2 - 4x + 7\)</li>
+                <li>\(x^2\) の項：\(5x^2 + 2x^2 = 7x^2\)</li>
+                <li>\(x\) の項：\(3x - 4x = -x\)</li>
+                <li>定数項：\(-2 + 7 = 5\)</li>
+            </ol>
+            <div class="formula">
+                \[ (5x^2 + 3x - 2) + (2x^2 - 4x + 7) = 7x^2 - x + 5 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-sub1">
+            <div class="example-title">
+                <span class="number-badge">例2</span>多項式の減法
+            </div>
+            <p>\((4x^2 + 2x - 3) - (x^2 - 5x + 1)\) を計算せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>引くかっこ内の符号を反転：\(4x^2 + 2x - 3 - x^2 + 5x - 1\)</li>
+                <li>\(x^2\) の項：\(4x^2 - x^2 = 3x^2\)</li>
+                <li>\(x\) の項：\(2x + 5x = 7x\)</li>
+                <li>定数項：\(-3 - 1 = -4\)</li>
+            </ol>
+            <div class="formula">
+                \[ (4x^2 + 2x - 3) - (x^2 - 5x + 1) = 3x^2 + 7x - 4 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 単項式の乗法・除法</h3>
+
+        <div class="example-box" id="ex-mul1">
+            <div class="example-title">
+                <span class="number-badge">例3</span>単項式の乗法
+            </div>
+            <p>\(4x^2y \times 3xy^2\) を計算せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>係数：\(4 \times 3 = 12\)</li>
+                <li>\(x\) の指数：\(2 + 1 = 3\)</li>
+                <li>\(y\) の指数：\(1 + 2 = 3\)</li>
+            </ol>
+            <div class="formula">
+                \[ 4x^2y \times 3xy^2 = 12x^3y^3 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-div1">
+            <div class="example-title">
+                <span class="number-badge">例4</span>単項式の除法
+            </div>
+            <p>\(18a^3b^2 \div 6ab\) を計算せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>係数：\(18 \div 6 = 3\)</li>
+                <li>\(a\) の指数：\(3 - 1 = 2\)</li>
+                <li>\(b\) の指数：\(2 - 1 = 1\)</li>
+            </ol>
+            <div class="formula">
+                \[ 18a^3b^2 \div 6ab = 3a^2b \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 等式の変形</h3>
+
+        <div class="example-box" id="ex-eq1">
+            <div class="example-title">
+                <span class="number-badge">例5</span>等式を変形する（基本）
+            </div>
+            <p>\(y = 3x - 6\) を \(x\) について解け。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(x\) を含む項を左辺に移動：\(y + 6 = 3x\)</li>
+                <li>両辺を3で割る：\(x = \frac{y + 6}{3}\)</li>
+            </ol>
+            <div class="formula">
+                \[ x = \frac{y + 6}{3} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-eq2">
+            <div class="example-title">
+                <span class="number-badge">例6</span>公式の変形
+            </div>
+            <p>三角形の面積の公式 \(S = \frac{1}{2}ah\) を \(h\) について解け。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>両辺に2をかける：\(2S = ah\)</li>
+                <li>両辺を \(a\) で割る：\(h = \frac{2S}{a}\)</li>
+            </ol>
+            <div class="formula">
+                \[ h = \frac{2S}{a} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-eq3">
+            <div class="example-title">
+                <span class="number-badge">例7</span>速さの公式の変形
+            </div>
+            <p>速さの公式 \(v = \frac{d}{t}\) を \(t\) について解け。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>両辺に \(t\) をかける：\(vt = d\)</li>
+                <li>両辺を \(v\) で割る：\(t = \frac{d}{v}\)</li>
+            </ol>
+            <div class="formula">
+                \[ t = \frac{d}{v} \]
+            </div>
+            <p><strong>確認：</strong> 「時間 = 距離 ÷ 速さ」で意味も合っている！</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 式の値</h3>
+
+        <div class="example-box" id="ex-val1">
+            <div class="example-title">
+                <span class="number-badge">例8</span>式の値を求める
+            </div>
+            <p>\(a = 2, b = -3\) のとき、\(a^2 - 2ab + b^2\) の値を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(a^2 = 2^2 = 4\)</li>
+                <li>\(-2ab = -2 \times 2 \times (-3) = 12\)</li>
+                <li>\(b^2 = (-3)^2 = 9\)</li>
+                <li>合計：\(4 + 12 + 9 = 25\)</li>
+            </ol>
+            <div class="formula">
+                \[ a^2 - 2ab + b^2 = 4 + 12 + 9 = 25 \]
+            </div>
+            <p><strong>別解：</strong> \(a^2 - 2ab + b^2 = (a - b)^2 = (2 - (-3))^2 = 5^2 = 25\)</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：同類項は縦に揃えて計算</strong><br>
+            複雑な多項式は、同じ次数の項を縦に揃えて書くと間違いにくい。
+            <pre style="background: #f5f5f5; padding: 10px; border-radius: 5px;">
+  3x² + 2x - 5
++ x² - 4x + 3
+─────────────
+  4x² - 2x - 2</pre>
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：指数法則を暗記</strong><br>
+            <ul>
+                <li>乗法：\(x^a \times x^b = x^{a+b}\)（指数を足す）</li>
+                <li>除法：\(x^a \div x^b = x^{a-b}\)（指数を引く）</li>
+                <li>累乗：\((x^a)^b = x^{ab}\)（指数をかける）</li>
+            </ul>
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：等式変形は「逆算」で考える</strong><br>
+            「\(y = 3x + 5\) を \(x\) について解く」なら：<br>
+            「\(x\) に何をしたら \(y\) になるか」を逆にたどる。
+            <ol>
+                <li>\(x\) に3をかけた → 3で割る</li>
+                <li>5を足した → 5を引く</li>
+            </ol>
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：式の値は「先に簡単化」できないか確認</strong><br>
+            \(a^2 - 2ab + b^2\) は \((a-b)^2\) と変形できる。<br>
+            先に因数分解や公式を使うと、計算が楽になることがある。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：減法で符号変換を忘れる</div>
+            <p><strong>ダメな例：</strong> \((3x + 2) - (x - 5) = 3x + 2 - x - 5 = 2x - 3\)</p>
+            <p><strong>対策：</strong> 引くかっこ内は<strong>すべての符号</strong>を変える！</p>
+            <div class="formula">
+                \[ (3x + 2) - (x - 5) = 3x + 2 - x + 5 = 2x + 7 \]
+            </div>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：指数の計算ミス</div>
+            <p><strong>ダメな例：</strong> \(x^2 \times x^3 = x^6\)（指数をかけてしまう）</p>
+            <p><strong>対策：</strong></p>
+            <ul>
+                <li>乗法：指数を<strong>足す</strong>（\(x^2 \times x^3 = x^5\)）</li>
+                <li>累乗の累乗：指数を<strong>かける</strong>（\((x^2)^3 = x^6\)）</li>
+            </ul>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：異なる文字をまとめる</div>
+            <p><strong>ダメな例：</strong> \(3xy + 2x^2 = 5x^3y\)</p>
+            <p><strong>対策：</strong> \(xy\) と \(x^2\) は同類項ではない。まとめられない！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：等式変形で分母を忘れる</div>
+            <p><strong>ダメな例：</strong> \(ax = b\) を \(x\) について解いて \(x = b - a\)</p>
+            <p><strong>対策：</strong> かけ算を外すには<strong>割り算</strong>！</p>
+            <div class="formula">
+                \[ ax = b \Rightarrow x = \frac{b}{a} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">単項式・多項式・項・係数・次数を説明できる</div>
+            <div class="checklist-item">多項式の加法・減法ができる</div>
+            <div class="checklist-item">単項式の乗法・除法ができる</div>
+            <div class="checklist-item">等式をある文字について解ける</div>
+            <div class="checklist-item">文字に値を代入して式の値を求められる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>次の計算をせよ。</p>
+            <p>(1) \((3x^2 - 4x + 5) + (2x^2 + x - 3)\)</p>
+            <p>(2) \((5a - 2b) - (3a - 4b)\)</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>(1) \(5x^2 - 3x + 2\)</p>
+                    <p>(2) \(5a - 2b - 3a + 4b = 2a + 2b\)（符号変換に注意）</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>次の計算をせよ。</p>
+            <p>(1) \(5x^2y \times 2xy^3\)</p>
+            <p>(2) \(24a^4b^3 \div 8a^2b\)</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>(1) \(10x^3y^4\)　（係数：5×2=10、x：2+1=3、y：1+3=4）</p>
+                    <p>(2) \(3a^2b^2\)　（係数：24÷8=3、a：4-2=2、b：3-1=2）</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>次の等式を [ ] 内の文字について解け。</p>
+            <p>(1) \(y = 2x - 8\) [\(x\)]</p>
+            <p>(2) \(S = \pi r^2\) [\(r^2\)]</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>(1) \(x = \frac{y + 8}{2}\)</p>
+                    <p>(2) \(r^2 = \frac{S}{\pi}\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：同類項をまとめ、指数法則を使い、等式は「逆算」で変形！
+</div>
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「次元の話」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📏 なぜ「次数」は大事なのか？</div>
+
+            <p>「次数」という言葉、なんだか難しそうに聞こえるけど、実は<strong>物理の世界</strong>と深くつながっている。</p>
+
+            <hr style="margin: 20px 0; border: none; border-top: 1px dashed #ccc;">
+
+            <p><strong>【長さ × 長さ = 面積】</strong></p>
+
+            <p>縦3m、横5mの長方形の面積は？</p>
+            <div class="formula">
+                \[ 3\text{m} \times 5\text{m} = 15\text{m}^2 \]
+            </div>
+            <p>答えは「15平方メートル」。単位に「2乗」がついた！</p>
+
+            <p><strong>【長さ × 長さ × 長さ = 体積】</strong></p>
+
+            <p>一辺2mの立方体の体積は？</p>
+            <div class="formula">
+                \[ 2\text{m} \times 2\text{m} \times 2\text{m} = 8\text{m}^3 \]
+            </div>
+            <p>答えは「8立方メートル」。単位に「3乗」がついた！</p>
+
+            <hr style="margin: 20px 0; border: none; border-top: 1px dashed #ccc;">
+
+            <p>このように、次数は「<strong>次元</strong>」を表している。</p>
+
+            <table class="material-table" style="max-width: 350px; margin: 15px auto;">
+                <tr><th>次数</th><th>物理的意味</th><th>単位の例</th></tr>
+                <tr><td>1次</td><td>長さ</td><td>m</td></tr>
+                <tr><td>2次</td><td>面積</td><td>m²</td></tr>
+                <tr><td>3次</td><td>体積</td><td>m³</td></tr>
+            </table>
+
+            <p>だから、「\(x^2\) と \(x^3\) は足せない」というルールは、「面積と体積は足せない」と同じ意味なのだ。</p>
+
+            <p style="margin-top: 20px; text-align: center; font-size: 1.1em;">
+                <strong>結論：次数を合わせるルールは、物理世界の「次元」を反映している！</strong>
+            </p>
+        </div>
+    </div>
+</section>

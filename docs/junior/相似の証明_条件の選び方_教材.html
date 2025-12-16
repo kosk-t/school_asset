@@ -1,0 +1,466 @@
+---
+layout: material-raw
+title: 相似の証明：条件の選び方
+icon: "🔍"
+description: 三角形の相似条件（AA・SSS・SAS）のどれを使うか、与えられた情報から一瞬で判断できるようになろう。
+level: 標準
+level_num: 2
+category: geometry
+order: 9
+keywords:
+  - 相似
+  - 相似条件
+  - 証明
+  - 三角形
+cover_image: /images/noimage.jpg
+cover_description: 3つの相似条件を比較した図
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「ピラミッドの高さを測った男」"
+related:
+  - url: /証明問題_合同条件の選び方_教材.html
+    title: 証明問題：合同条件の選び方
+    note: 合同と相似は条件の構造が似ている
+    type: related
+  - url: /三平方の定理_教材.html
+    title: 三平方の定理
+    note: 相似と組み合わせた問題がよく出る
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「合同」は図形が完全に同じ形・同じ大きさ。「相似」は同じ形だけど大きさが違う。地図は実際の土地の相似図形だし、写真の拡大コピーも相似。この「相似」を証明するための3つの条件、どれを使えばいいか迷っていないかな？</p>
+        <p>このページでは、相似条件の選び方を学びます：</p>
+        <ul>
+            <li><strong>3つの相似条件</strong>：AA（2角）・SSS（3辺の比）・SAS（2辺の比+間の角）</li>
+            <li><strong>判断のポイント</strong>：与えられた情報から最速で条件を選ぶ</li>
+            <li><strong>証明の書き方</strong>：「どの条件で相似か」を明示する</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】相似の証明は、まず「角」の情報を探せ！ → 2つの角が見つかればAA条件でゴール
+        </div>
+
+        <!-- 相似条件の図解 -->
+        <div class="svg-container">
+            <svg width="700" height="350" viewBox="0 0 700 350">
+                <!-- AA条件 -->
+                <rect x="20" y="20" width="200" height="150" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="120" y="50" text-anchor="middle" fill="#1976d2" font-weight="bold" font-size="18">AA</text>
+                <text x="120" y="75" text-anchor="middle" fill="#333" font-size="14">2組の角が</text>
+                <text x="120" y="95" text-anchor="middle" fill="#333" font-size="14">それぞれ等しい</text>
+                <!-- 三角形の図 -->
+                <polygon points="70,140 170,140 120,100" fill="none" stroke="#1976d2" stroke-width="2"/>
+                <path d="M 80 140 A 10 10 0 0 1 85 130" stroke="#e91e63" stroke-width="2" fill="none"/>
+                <path d="M 160 140 A 10 10 0 0 0 155 130" stroke="#4caf50" stroke-width="2" fill="none"/>
+                <text x="75" y="155" fill="#e91e63" font-size="12">∠A</text>
+                <text x="155" y="155" fill="#4caf50" font-size="12">∠B</text>
+
+                <!-- SSS条件 -->
+                <rect x="250" y="20" width="200" height="150" rx="10" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+                <text x="350" y="50" text-anchor="middle" fill="#4caf50" font-weight="bold" font-size="18">SSS</text>
+                <text x="350" y="75" text-anchor="middle" fill="#333" font-size="14">3組の辺の比が</text>
+                <text x="350" y="95" text-anchor="middle" fill="#333" font-size="14">すべて等しい</text>
+                <!-- 三角形の図 -->
+                <polygon points="300,140 400,140 350,100" fill="none" stroke="#4caf50" stroke-width="2"/>
+                <text x="350" y="155" fill="#4caf50" font-size="11">a:a' = b:b' = c:c'</text>
+
+                <!-- SAS条件 -->
+                <rect x="480" y="20" width="200" height="150" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                <text x="580" y="50" text-anchor="middle" fill="#ff9800" font-weight="bold" font-size="18">SAS</text>
+                <text x="580" y="75" text-anchor="middle" fill="#333" font-size="14">2組の辺の比が等しく</text>
+                <text x="580" y="95" text-anchor="middle" fill="#333" font-size="14">その間の角が等しい</text>
+                <!-- 三角形の図 -->
+                <polygon points="530,140 630,140 580,100" fill="none" stroke="#ff9800" stroke-width="2"/>
+                <path d="M 575 115 A 8 8 0 0 1 585 115" stroke="#e91e63" stroke-width="2" fill="none"/>
+                <line x1="530" y1="140" x2="580" y2="100" stroke="#9c27b0" stroke-width="3"/>
+                <line x1="630" y1="140" x2="580" y2="100" stroke="#9c27b0" stroke-width="3"/>
+
+                <!-- 判断フロー -->
+                <rect x="100" y="200" width="500" height="130" rx="10" fill="#fafafa" stroke="#666" stroke-width="1"/>
+                <text x="350" y="225" text-anchor="middle" fill="#333" font-weight="bold" font-size="16">判断フロー</text>
+
+                <text x="130" y="255" fill="#1976d2" font-weight="bold" font-size="14">角の情報がある？</text>
+                <text x="130" y="280" fill="#333" font-size="13">→ 2つの角 → AA</text>
+                <text x="130" y="300" fill="#333" font-size="13">→ 1つの角 + 2辺の比 → SAS</text>
+
+                <line x1="350" y1="240" x2="350" y2="320" stroke="#ddd" stroke-width="1"/>
+
+                <text x="400" y="255" fill="#4caf50" font-weight="bold" font-size="14">辺の比だけ？</text>
+                <text x="400" y="280" fill="#333" font-size="13">→ 3組の辺の比 → SSS</text>
+                <text x="400" y="300" fill="#666" font-size="12">（使う場面は少ない）</text>
+            </svg>
+            <div class="svg-caption">三角形の相似条件と判断フロー</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 相似条件1：AA（2組の角がそれぞれ等しい）</strong> <a href="#ex-aa" class="example-link">→ 例1</a>
+            <p>2つの角が等しければ、残りの角も自動的に等しい（三角形の内角の和は180°）。</p>
+            <p><strong>✅ メリット：</strong> 最も使いやすい！ 平行線の錯角・同位角、対頂角、共通な角など、角の等しさは見つけやすい。</p>
+            <p><strong>→ こんなとき：</strong> 平行線がある、対頂角がある、共通の角がある</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 相似条件2：SSS（3組の辺の比がすべて等しい）</strong> <a href="#ex-sss" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ \frac{AB}{A'B'} = \frac{BC}{B'C'} = \frac{CA}{C'A'} \]
+            </div>
+            <p><strong>→ こんなとき：</strong> 3辺すべての長さがわかっている（珍しいケース）</p>
+            <p><strong>注意：</strong> 実際の証明問題ではあまり使わない。3辺の比を計算するのは手間がかかる。</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 相似条件3：SAS（2組の辺の比が等しく、その間の角が等しい）</strong> <a href="#ex-sas" class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ \frac{AB}{A'B'} = \frac{AC}{A'C'} \text{　かつ　} \angle A = \angle A' \]
+            </div>
+            <p><strong>→ こんなとき：</strong> 2辺の比が等しいことがわかり、その間の角も等しい</p>
+            <p><strong>注意：</strong> 「間の角」でないとダメ！ 辺ABとBCの比がわかるなら、間の角は∠B。</p>
+        </div>
+
+        <details class="thinking"><summary>💡 合同条件との比較</summary>
+        <p>合同条件は「SSS・SAS・ASA」だったね。相似条件は「SSS・SAS・AA」。</p>
+        <p>違いは「ASA → AA」に変わったこと。相似は大きさが違ってもOKなので、辺の長さは「比」で考える。角が2つわかれば、辺の情報なしでOK（AA）。</p>
+        </details>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>相似条件ごとに証明の書き方を練習しよう。「どの条件を使うか」を最初に見極めるのがポイント！</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ AA条件を使う証明</h3>
+
+        <div class="example-box" id="ex-aa">
+            <div class="example-title">
+                <span class="number-badge">例1</span>平行線と相似
+            </div>
+            <p>下の図で、DE // BC のとき、△ADE ∽ △ABC を証明せよ。</p>
+            <!-- 図 -->
+            <div class="svg-container">
+                <svg width="300" height="180" viewBox="0 0 300 180">
+                    <polygon points="150,20 50,160 250,160" fill="none" stroke="#333" stroke-width="2"/>
+                    <line x1="80" y1="100" x2="220" y2="100" stroke="#1976d2" stroke-width="2"/>
+                    <text x="145" y="15" font-size="14">A</text>
+                    <text x="35" y="170" font-size="14">B</text>
+                    <text x="255" y="170" font-size="14">C</text>
+                    <text x="65" y="95" font-size="14">D</text>
+                    <text x="225" y="95" font-size="14">E</text>
+                    <text x="150" y="85" fill="#1976d2" font-size="12">DE // BC</text>
+                </svg>
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>共通な角を見つける：</strong>∠DAE = ∠BAC（共通）</li>
+                <li><strong>平行線の同位角：</strong>DE // BC より ∠ADE = ∠ABC</li>
+                <li><strong>AA条件で結論：</strong>2組の角がそれぞれ等しいので、△ADE ∽ △ABC</li>
+            </ol>
+            <div style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                <strong>【証明】</strong><br>
+                △ADEと△ABCにおいて<br>
+                ∠DAE = ∠BAC（共通）…①<br>
+                DE // BC より、同位角は等しいから<br>
+                ∠ADE = ∠ABC…②<br>
+                ①、②より、2組の角がそれぞれ等しいから<br>
+                <strong>△ADE ∽ △ABC（AA）</strong>
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ SSS条件を使う証明</h3>
+
+        <div class="example-box" id="ex-sss">
+            <div class="example-title">
+                <span class="number-badge">例2</span>辺の比が与えられた場合
+            </div>
+            <p>△ABCで AB = 6, BC = 8, CA = 10、△DEFで DE = 3, EF = 4, FD = 5 のとき、△ABC ∽ △DEF を証明せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>対応する辺の比を計算：</strong>
+                    <ul>
+                        <li>AB : DE = 6 : 3 = 2 : 1</li>
+                        <li>BC : EF = 8 : 4 = 2 : 1</li>
+                        <li>CA : FD = 10 : 5 = 2 : 1</li>
+                    </ul>
+                </li>
+                <li><strong>3組の比がすべて等しい：</strong>SSS条件で相似</li>
+            </ol>
+            <div style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                <strong>【証明】</strong><br>
+                △ABCと△DEFにおいて<br>
+                AB : DE = 6 : 3 = 2 : 1<br>
+                BC : EF = 8 : 4 = 2 : 1<br>
+                CA : FD = 10 : 5 = 2 : 1<br>
+                3組の辺の比がすべて等しいから<br>
+                <strong>△ABC ∽ △DEF（SSS）</strong>
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ SAS条件を使う証明</h3>
+
+        <div class="example-box" id="ex-sas">
+            <div class="example-title">
+                <span class="number-badge">例3</span>2辺の比と間の角
+            </div>
+            <p>△ABCで、辺AB上に点D、辺AC上に点Eがあり、AD = 4, AB = 8, AE = 3, AC = 6 のとき、△ADE ∽ △ABC を証明せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>辺の比を計算：</strong>
+                    <ul>
+                        <li>AD : AB = 4 : 8 = 1 : 2</li>
+                        <li>AE : AC = 3 : 6 = 1 : 2</li>
+                    </ul>
+                </li>
+                <li><strong>間の角を確認：</strong>∠DAE = ∠BAC（共通）</li>
+                <li><strong>SAS条件で結論：</strong></li>
+            </ol>
+            <div style="background: #fff3e0; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                <strong>【証明】</strong><br>
+                △ADEと△ABCにおいて<br>
+                AD : AB = 4 : 8 = 1 : 2…①<br>
+                AE : AC = 3 : 6 = 1 : 2…②<br>
+                ∠DAE = ∠BAC（共通）…③<br>
+                ①、②、③より、2組の辺の比が等しく、その間の角が等しいから<br>
+                <strong>△ADE ∽ △ABC（SAS）</strong>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：まず「角」を探す（AA優先）</strong><br>
+            平行線があれば同位角・錯角、頂点が共通なら対頂角、同じ頂点を共有するなら共通角。2つの角が見つかればAAでOK！
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：対応する頂点の順番を揃える</strong><br>
+            △ABC ∽ △DEF と書いたら、A↔D、B↔E、C↔F が対応。順番を間違えると証明が成り立たない。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：「間の角」かどうかを確認</strong><br>
+            SAS条件は「間の角」が必須。AB, AC の比がわかるなら、間の角は ∠A。ABとBCなら ∠B。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：図に印をつける</strong><br>
+            等しい角には同じ印（●や〇）、等しい辺の比には同じ記号。視覚的に整理すると、使うべき条件が見えてくる。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：頂点の対応を間違える</div>
+            <p><strong>ダメな例：</strong> △ABC ∽ △EDF と書いてしまう（対応がずれる）</p>
+            <p><strong>対策：</strong> 図を見て、同じ位置にある頂点を順番に対応させる。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：「間の角」でない角を使う</div>
+            <p><strong>ダメな例：</strong> AB:DE = AC:DF で、∠B = ∠E を使ってSASと主張</p>
+            <p><strong>対策：</strong> 2辺 AB, AC の間の角は ∠A。∠Bは間の角ではない！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：AAなのに3つの角を証明しようとする</div>
+            <p><strong>ダメな例：</strong> ∠A = ∠D, ∠B = ∠E, ∠C = ∠F を全部証明</p>
+            <p><strong>対策：</strong> AA条件は2組の角でOK。3つ目は自動的に決まる。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：相似と合同を混同</div>
+            <p><strong>ダメな例：</strong> 相似の証明なのに「3辺が等しい」と書く</p>
+            <p><strong>対策：</strong> 相似は「比」、合同は「等しい」。SSS相似は「3組の辺の比が等しい」。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">与えられた情報から、使う相似条件を正しく選べた</div>
+            <div class="checklist-item">頂点の対応を正しく書けた（△ABC ∽ △DEF など）</div>
+            <div class="checklist-item">AA条件のとき、2つの角の等しさを示せた</div>
+            <div class="checklist-item">SAS条件のとき、「間の角」を正しく指定できた</div>
+            <div class="checklist-item">最後に「〜条件より相似」と結論を書けた</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>△ABCの辺BCの中点をM、辺ACの中点をNとする。△AMN ∽ △ABC を証明せよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>【証明】</strong></p>
+                    <p>△AMNと△ABCにおいて</p>
+                    <p>中点連結定理より MN // BC</p>
+                    <p>∠ANM = ∠ACB（同位角）…①</p>
+                    <p>∠MAN = ∠BAC（共通）…②</p>
+                    <p>①、②より、2組の角がそれぞれ等しいから</p>
+                    <p><strong>△AMN ∽ △ABC（AA）</strong></p>
+                    <p>※または、AM:AB = AN:AC = 1:2、∠A共通 で SAS でもOK</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>下の図で、∠BAC = 90° で、点Hは頂点Aから辺BCに下ろした垂線の足である。△ABH ∽ △CBA を証明せよ。</p>
+            <div class="svg-container" style="margin: 10px 0;">
+                <svg width="300" height="180" viewBox="0 0 300 180">
+                    <!-- 三角形ABC -->
+                    <polygon points="80,40 40,150 260,150" fill="none" stroke="#333" stroke-width="2"/>
+                    <!-- 垂線AH -->
+                    <line x1="80" y1="40" x2="80" y2="150" stroke="#1976d2" stroke-width="2"/>
+                    <!-- 頂点ラベル -->
+                    <text x="75" y="30" font-size="14">A</text>
+                    <text x="25" y="160" font-size="14">B</text>
+                    <text x="265" y="160" font-size="14">C</text>
+                    <text x="85" y="165" font-size="14">H</text>
+                    <!-- 直角マーク -->
+                    <rect x="70" y="40" width="10" height="10" fill="none" stroke="#666"/>
+                    <rect x="80" y="140" width="10" height="10" fill="none" stroke="#666"/>
+                </svg>
+            </div>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>【証明】</strong></p>
+                    <p>△ABHと△CBAにおいて</p>
+                    <p>∠AHB = 90°（AHは垂線）</p>
+                    <p>∠BAC = 90°（仮定）</p>
+                    <p>よって ∠AHB = ∠BAC = 90°…①</p>
+                    <p>∠ABH = ∠CBA（共通）…②</p>
+                    <p>①、②より、2組の角がそれぞれ等しいから</p>
+                    <p><strong>△ABH ∽ △CBA（AA）</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：相似条件は「まず角を探す → 2つ見つかればAA、なければSASかSSS」の順で判断！
+</div>
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「ピラミッドの高さを測った男」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 タレスとピラミッド（紀元前6世紀、エジプト）</div>
+
+            <p>紀元前6世紀のギリシャに、<strong>タレス</strong>という哲学者がいた。「万物の根源は水である」と唱えた人物で、「ギリシャ七賢人」の一人にも数えられる超有名人だ。</p>
+
+            <p>ある日、タレスはエジプトを旅行中、ファラオにこう聞かれた。</p>
+
+            <blockquote style="background: #f5f5f5; padding: 15px; border-left: 4px solid #ff9800; margin: 15px 0;">
+                「あの大ピラミッドの高さを測れるか？」
+            </blockquote>
+
+            <p>当時、ピラミッドに登ることは禁じられていた。巻き尺を垂らすこともできない。さて、どうする？</p>
+
+            <p>タレスの答えはこうだった：</p>
+
+            <p>「自分の身長と自分の影の長さが<strong>同じになる瞬間</strong>を待つ。そのとき、ピラミッドの影の長さを測れば、それがピラミッドの高さだ」</p>
+
+            <div class="svg-container">
+                <svg width="500" height="200" viewBox="0 0 500 200">
+                    <!-- 太陽光線 -->
+                    <line x1="50" y1="20" x2="150" y2="150" stroke="#ff9800" stroke-width="1" stroke-dasharray="5,3"/>
+                    <line x1="150" y1="20" x2="250" y2="150" stroke="#ff9800" stroke-width="1" stroke-dasharray="5,3"/>
+                    <line x1="250" y1="20" x2="350" y2="150" stroke="#ff9800" stroke-width="1" stroke-dasharray="5,3"/>
+
+                    <!-- 人 -->
+                    <line x1="100" y1="150" x2="100" y2="110" stroke="#333" stroke-width="3"/>
+                    <circle cx="100" cy="105" r="5" fill="#333"/>
+                    <text x="85" y="100" font-size="11">タレス</text>
+
+                    <!-- 人の影 -->
+                    <line x1="100" y1="150" x2="140" y2="150" stroke="#666" stroke-width="3"/>
+                    <text x="105" y="165" font-size="10">影40cm</text>
+
+                    <!-- 身長 -->
+                    <line x1="70" y1="110" x2="70" y2="150" stroke="#1976d2" stroke-width="1"/>
+                    <text x="45" y="135" font-size="10" fill="#1976d2">40cm</text>
+
+                    <!-- ピラミッド -->
+                    <polygon points="300,150 400,150 350,50" fill="#ddd" stroke="#333" stroke-width="2"/>
+                    <text x="340" y="45" font-size="12">ピラミッド</text>
+
+                    <!-- ピラミッドの影 -->
+                    <line x1="400" y1="150" x2="480" y2="150" stroke="#666" stroke-width="3"/>
+                    <text x="420" y="165" font-size="10">影146m</text>
+
+                    <!-- 高さ -->
+                    <line x1="350" y1="50" x2="350" y2="150" stroke="#e91e63" stroke-width="1" stroke-dasharray="3,2"/>
+                    <text x="355" y="100" font-size="10" fill="#e91e63">高さ=146m</text>
+                </svg>
+                <div class="svg-caption">相似を使った測量</div>
+            </div>
+
+            <p>これ、<strong>相似</strong>の考え方だ！</p>
+
+            <p>タレス（身長）: タレスの影 = ピラミッドの高さ : ピラミッドの影</p>
+
+            <p>影の長さが身長と同じになる瞬間（太陽が45°の角度のとき）なら、</p>
+
+            <div class="formula">
+                \[ \text{タレスの身長} : \text{タレスの影} = 1 : 1 \]
+            </div>
+
+            <p>つまり、ピラミッドの高さ : ピラミッドの影も 1 : 1。影を測れば高さがわかる！</p>
+
+            <p>ファラオは大いに感心したという。...ただし、この話の真偽は定かではない。「哲学者の伝説」として語り継がれているエピソードだ。</p>
+
+            <p>でも確かなことは、<strong>相似の考え方は紀元前から実用されていた</strong>ということ。測量、建築、地図作成...「相似」は古代から人類の知恵を支えてきたのだ。</p>
+
+            <p style="font-size: 0.9em; color: #666; margin-top: 20px;">
+                ※このエピソードは古代ギリシャの歴史家たちによって伝えられています（<a href="https://ja.wikipedia.org/wiki/%E3%82%BF%E3%83%AC%E3%82%B9" target="_blank" style="color: #1976d2;">Wikipedia: タレス</a>）。
+            </p>
+        </div>
+    </div>
+</section>

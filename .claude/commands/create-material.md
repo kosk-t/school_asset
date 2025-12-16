@@ -2,6 +2,19 @@
 
 引数: $ARGUMENTS
 
+## 引数の形式
+
+```
+/create-material <テーマ名> [junior|senior]
+```
+
+- **テーマ名**: 必須。教材のテーマ（例：二次方程式の平方完成）
+- **学校レベル**: 任意。`junior`（中学、デフォルト）または `senior`（高校）
+
+**例**:
+- `/create-material 一次方程式` → 中学数学教材として作成
+- `/create-material 二次関数の最大最小 senior` → 高校数学教材として作成
+
 ## 指示
 
 **⚠️ 最初に必ず実行してください**:
@@ -9,6 +22,7 @@
 node scripts/list-stories.js
 ```
 既存ストーリーの一覧が表示されます。**既存のストーリーと重複しないテーマ・内容**を選んでください。
+`documents/MATERIALS.md` で教材の一覧を管理しているので、その中から作るか、指示されたものが存在しない場合は教材一覧として追加してください。作成したら作成状況をアップデートしてください。
 
 ---
 
@@ -17,13 +31,18 @@ node scripts/list-stories.js
 ### Jekyll構成について
 このプロジェクトはJekyllを使用しています。教材ファイルは以下の構成で作成します：
 - **テンプレート**: `assets/education-template.html`（Front Matter付き）
-- **出力先**: `docs/<テーマ名>_教材.html`
-- **メタデータ**: `docs/_data/materials.yml` に追加
+- **出力先**:
+  - 中学: `docs/junior/<テーマ名>_教材.html`
+  - 高校: `docs/senior/<テーマ名>_教材.html`
+- **メタデータ**: `docs/_data/materials.yml` に追加（`school_level` と `slug` に注意）
 - **レイアウト**: `docs/_layouts/material-raw.html` が自動適用
 
 ### 基本設定
 - **テーマ**: 引数で指定（例：二次方程式の平方完成、一次方程式、比例と反比例）
-- **対象**: 指定がなければ中学生・基礎〜標準レベル
+- **学校レベル**: 引数で指定（デフォルト: junior）
+- **対象**:
+  - junior: 中学生・基礎〜標準レベル
+  - senior: 高校生・基礎〜標準レベル
 - **文体**: やさしく、手順は箇条書き、数式はLaTeX
 - **禁止**: 個別の長い問題解説に偏らない（"考え方の道具箱"が主）
 
@@ -507,7 +526,9 @@ related:
 ### テンプレートと出力
 1. `assets/education-template.html` をベースに使用（Front Matter付き）
 2. レイアウト `material-raw` が自動でhead部分（CSS, KaTeX）を挿入
-3. 出力先: `docs/<テーマ名>_教材.html`
+3. 出力先:
+   - 中学: `docs/junior/<テーマ名>_教材.html`
+   - 高校: `docs/senior/<テーマ名>_教材.html`
 
 ### Front Matter（必須）
 ファイル先頭に以下のYAML Front Matterを含めてください：
@@ -521,6 +542,7 @@ description: このテーマで学ぶ内容を2〜3文で説明
 level: 標準
 level_num: 2
 category: numbers/equations/functions/geometry/data
+school_level: junior  # または senior
 order: カテゴリ内の表示順（1〜）
 keywords:
   - キーワード1
@@ -537,7 +559,7 @@ toc:
   # ... 以下続く
 # 関連教材がある場合のみ追加（任意）
 related:
-  - url: /前提教材_教材.html
+  - url: /junior/前提教材_教材.html  # パスにjunior/またはsenior/を含める
     title: 前提教材名
     note: なぜこの教材が前提なのか
     type: prerequisite
@@ -558,16 +580,34 @@ related:
 代わりに `docs/_data/materials.yml` に教材情報を追加してください：
 
 ```yaml
-- slug: テーマ名_教材
+# 中学数学の場合
+- slug: junior/テーマ名_教材    # slugにjunior/プレフィックス
   title: テーマ名
   icon: "絵文字"
   description: 簡潔な説明（キーワード3つ程度）
   level: 標準
   level_num: 2
   category: equations
+  school_level: junior           # 学校レベルを指定
+  order: 1
+  cover_image: images/noimage.jpg
+
+# 高校数学の場合
+- slug: senior/テーマ名_教材    # slugにsenior/プレフィックス
+  title: テーマ名
+  icon: "絵文字"
+  description: 簡潔な説明
+  level: 標準
+  level_num: 2
+  category: functions
+  school_level: senior           # 学校レベルを指定
   order: 1
   cover_image: images/noimage.jpg
 ```
+
+**重要**: `slug` と `school_level` の整合性
+- `school_level: junior` なら `slug: junior/...`
+- `school_level: senior` なら `slug: senior/...`
 
 **levelとlevel_numの対応**:
 - `level_num: 1` / `level: 基礎`

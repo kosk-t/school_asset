@@ -1,0 +1,529 @@
+---
+layout: material-raw
+title: おうぎ形の弧と面積
+icon: "🥧"
+description: おうぎ形（扇形）の弧の長さと面積を求める公式を学ぶ。円全体に対する割合（中心角÷360°）を使って計算する方法を習得する。
+level: 標準
+level_num: 2
+category: geometry
+order: 3
+keywords:
+- おうぎ形
+- 扇形
+- 弧の長さ
+- 面積
+- 中心角
+- 円周
+- 360度
+cover_image: /images/おうぎ形の弧と面積_教材.png
+cover_description: おうぎ形の図、中心角θ、弧の長さℓ、半径r、ピザやケーキの切り分けイメージ
+toc:
+- id: section1
+  title: "テーマの定義"
+- id: section2
+  title: "覚えるルール"
+- id: section3
+  title: "例題と解き方"
+- id: section4
+  title: "簡単にするコツ"
+- id: section5
+  title: "よくあるつまづき"
+- id: section6
+  title: "仕上げチェックリスト"
+- id: section7
+  title: "練習問題"
+- id: story
+  title: "おまけ：歴史ストーリー「地球を測った男」"
+related:
+- url: /円と球の性質_教材.html
+  title: 円と球の性質
+  note: 円周・円の面積の公式を使う
+  type: prerequisite
+- url: /立体図形の体積と表面積_教材.html
+  title: 立体図形の体積と表面積
+  note: 円錐の側面積はおうぎ形
+  type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>ピザを切り分けたり、扇子を広げたりするとき、「おうぎ形（扇形）」ができます。円の一部分であるおうぎ形の大きさを計算できると、材料の量や塗る面積がわかります。</p>
+        <p>このページでは、おうぎ形に関する以下の内容を学びます：</p>
+        <ul>
+            <li><strong>おうぎ形とは</strong>：円を切り取った形、中心角と半径で決まる</li>
+            <li><strong>弧の長さ</strong>：おうぎ形の曲線部分の長さ</li>
+            <li><strong>おうぎ形の面積</strong>：おうぎ形が占める広さ</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】おうぎ形は円の一部 → 中心角の割合（\(\frac{\theta}{360°}\)）を掛ければOK！
+        </div>
+
+        <!-- おうぎ形の基本図 -->
+        <div class="svg-container">
+            <svg width="700" height="280" viewBox="0 0 700 280">
+                <defs>
+                    <marker id="arrow-arc" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#9c27b0" />
+                    </marker>
+                </defs>
+
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
+                    text-anchor="middle">おうぎ形の各部の名前</text>
+
+                <!-- 円全体（薄いグレー） -->
+                <circle cx="200" cy="160" r="110" fill="#f5f5f5" stroke="#ccc" stroke-width="1"
+                    stroke-dasharray="5,5" />
+
+                <!-- おうぎ形 -->
+                <path d="M 200 160 L 310 160 A 110 110 0 0 0 255 68 Z" fill="#e3f2fd" stroke="#1976d2"
+                    stroke-width="3" />
+
+                <!-- 半径 -->
+                <line x1="200" y1="160" x2="310" y2="160" stroke="#4caf50" stroke-width="3" />
+                <text x="255" y="180" font-size="14" font-weight="bold" fill="#4caf50">半径 r</text>
+
+                <line x1="200" y1="160" x2="255" y2="68" stroke="#4caf50" stroke-width="3" />
+
+                <!-- 中心点 -->
+                <circle cx="200" cy="160" r="5" fill="#e65100" />
+                <text x="185" y="175" font-size="14" font-weight="bold" fill="#e65100">O</text>
+
+                <!-- 中心角 -->
+                <path d="M 230 160 A 30 30 0 0 0 218 138" fill="none" stroke="#ff9800" stroke-width="2" />
+                <text x="235" y="145" font-size="14" font-weight="bold" fill="#ff9800">θ</text>
+                <text x="220" y="125" font-size="14" fill="#ff9800">中心角</text>
+
+                <!-- 弧 -->
+                <path d="M 310 160 A 110 110 0 0 0 255 68" fill="none" stroke="#9c27b0" stroke-width="4" />
+                <text x="305" y="100" font-size="14" font-weight="bold" fill="#9c27b0">弧 ℓ</text>
+
+                <!-- 右側の説明 -->
+                <rect x="400" y="50" width="270" height="200" fill="#fff9f0" stroke="#ff9800" stroke-width="2"
+                    rx="10" />
+                <text x="535" y="80" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">おうぎ形のポイント</text>
+
+                <text x="420" y="110" font-size="14" fill="#333">・中心角 θ（シータ）：</text>
+                <text x="430" y="130" font-size="14" fill="#666">円の中心でできる角度</text>
+
+                <text x="420" y="160" font-size="14" fill="#333">・弧 ℓ（エル）：</text>
+                <text x="430" y="180" font-size="14" fill="#666">曲線部分の長さ</text>
+
+                <text x="420" y="210" font-size="14" fill="#333">・円全体は360°</text>
+                <text x="430" y="230" font-size="14" fill="#e65100">→ θ/360 が円に占める割合</text>
+            </svg>
+            <div class="svg-caption">おうぎ形は円の一部分。中心角θが大きいほど大きなおうぎ形になる</div>
+        </div>
+
+        <div class="rule-box" id="rule-arc-length">
+            <strong>📌 弧の長さの公式</strong> <a href="#ex-arc" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ \ell = \frac{\theta}{360°} \times 2\pi r \]
+                \(\ell\)：弧の長さ、\(\theta\)：中心角（度）、\(r\)：半径
+            </div>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>円周全体は \(2\pi r\)。おうぎ形の弧は円周の一部なので、中心角の割合（\(\frac{\theta}{360°}\)）を掛けると弧の長さが出ます。</p>
+            </details>
+
+            <!-- 弧の長さの図解 -->
+            <div class="svg-container">
+                <svg width="700" height="160" viewBox="0 0 700 160">
+                    <text x="350" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">弧の長さ = 円周
+                        × 中心角の割合</text>
+
+                    <!-- 円周 -->
+                    <circle cx="120" cy="95" r="55" fill="none" stroke="#1976d2" stroke-width="3" />
+                    <text x="120" y="95" font-size="14" fill="#1976d2" text-anchor="middle">円周</text>
+                    <text x="120" y="115" font-size="14" fill="#1976d2" text-anchor="middle">2πr</text>
+
+                    <!-- × -->
+                    <text x="200" y="100" font-size="20" font-weight="bold" fill="#333">×</text>
+
+                    <!-- 割合 -->
+                    <rect x="230" y="60" width="80" height="70" fill="#fff3e0" stroke="#ff9800" stroke-width="2"
+                        rx="8" />
+                    <text x="270" y="85" font-size="14" fill="#ff9800" text-anchor="middle">θ</text>
+                    <line x1="245" y1="95" x2="295" y2="95" stroke="#333" stroke-width="2" />
+                    <text x="270" y="115" font-size="14" fill="#333" text-anchor="middle">360°</text>
+
+                    <!-- = -->
+                    <text x="340" y="100" font-size="20" font-weight="bold" fill="#333">=</text>
+
+                    <!-- おうぎ形 -->
+                    <path d="M 430 95 L 485 95 A 55 55 0 0 0 468 52 Z" fill="#e8f5e9" stroke="#4caf50"
+                        stroke-width="3" />
+                    <text x="475" y="140" font-size="14" font-weight="bold" fill="#4caf50">弧の長さ ℓ</text>
+
+                    <!-- 結果 -->
+                    <text x="580" y="90" font-size="14" fill="#333" text-anchor="middle">つまり</text>
+                    <text x="580" y="115" font-size="16" font-weight="bold" fill="#4caf50" text-anchor="middle">ℓ =
+                        θ/360 × 2πr</text>
+                </svg>
+                <div class="svg-caption">円周に中心角の割合を掛けると弧の長さになる</div>
+            </div>
+        </div>
+
+        <div class="rule-box" id="rule-sector-area">
+            <strong>📌 おうぎ形の面積の公式</strong> <a href="#ex-area" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ A = \frac{\theta}{360°} \times \pi r^2 \]
+                \(A\)：面積、\(\theta\)：中心角（度）、\(r\)：半径
+            </div>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>円の面積全体は \(\pi r^2\)。おうぎ形は円の一部なので、中心角の割合を掛けると面積が出ます。</p>
+            </details>
+
+            <!-- 面積の図解 -->
+            <div class="svg-container">
+                <svg width="700" height="160" viewBox="0 0 700 160">
+                    <text x="350" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">おうぎ形の面積 =
+                        円の面積 × 中心角の割合</text>
+
+                    <!-- 円 -->
+                    <circle cx="120" cy="95" r="55" fill="#e3f2fd" stroke="#1976d2" stroke-width="3" />
+                    <text x="120" y="95" font-size="14" fill="#1976d2" text-anchor="middle">円の面積</text>
+                    <text x="120" y="115" font-size="14" fill="#1976d2" text-anchor="middle">πr²</text>
+
+                    <!-- × -->
+                    <text x="200" y="100" font-size="20" font-weight="bold" fill="#333">×</text>
+
+                    <!-- 割合 -->
+                    <rect x="230" y="60" width="80" height="70" fill="#fff3e0" stroke="#ff9800" stroke-width="2"
+                        rx="8" />
+                    <text x="270" y="85" font-size="14" fill="#ff9800" text-anchor="middle">θ</text>
+                    <line x1="245" y1="95" x2="295" y2="95" stroke="#333" stroke-width="2" />
+                    <text x="270" y="115" font-size="14" fill="#333" text-anchor="middle">360°</text>
+
+                    <!-- = -->
+                    <text x="340" y="100" font-size="20" font-weight="bold" fill="#333">=</text>
+
+                    <!-- おうぎ形 -->
+                    <path d="M 430 95 L 485 95 A 55 55 0 0 0 468 52 Z" fill="#e8f5e9" stroke="#4caf50"
+                        stroke-width="3" />
+                    <text x="455" y="140" font-size="14" font-weight="bold" fill="#4caf50">おうぎ形の面積 A</text>
+
+                    <!-- 結果 -->
+                    <text x="580" y="90" font-size="14" fill="#333" text-anchor="middle">つまり</text>
+                    <text x="580" y="115" font-size="16" font-weight="bold" fill="#4caf50" text-anchor="middle">A =
+                        θ/360 × πr²</text>
+                </svg>
+                <div class="svg-caption">円の面積に中心角の割合を掛けるとおうぎ形の面積になる</div>
+            </div>
+        </div>
+
+        <div class="rule-box" id="rule-area-from-arc">
+            <strong>📌 便利な公式（弧の長さから面積を求める）</strong> <a href="#ex-from-arc" class="example-link">→ 例4</a>
+            <div class="formula">
+                \[ A = \frac{1}{2}\ell r \]
+                \(A\)：面積、\(\ell\)：弧の長さ、\(r\)：半径
+            </div>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>おうぎ形を細かく切って並べると、底辺が弧の長さ \(\ell\)、高さが半径 \(r\) の三角形に近づきます。だから「底辺×高さ÷2」と同じ形になります。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-common-angles">
+            <strong>📌 よく使う中心角の割合</strong>
+            <table class="material-table">
+                <tr>
+                    <th>中心角 θ</th>
+                    <th>割合 θ/360°</th>
+                    <th>イメージ</th>
+                </tr>
+                <tr>
+                    <td>180°</td>
+                    <td>\(\frac{1}{2}\)</td>
+                    <td>半円</td>
+                </tr>
+                <tr>
+                    <td>90°</td>
+                    <td>\(\frac{1}{4}\)</td>
+                    <td>4分の1（ピザ1/4）</td>
+                </tr>
+                <tr>
+                    <td>60°</td>
+                    <td>\(\frac{1}{6}\)</td>
+                    <td>6等分の1つ</td>
+                </tr>
+                <tr>
+                    <td>45°</td>
+                    <td>\(\frac{1}{8}\)</td>
+                    <td>8等分の1つ</td>
+                </tr>
+                <tr>
+                    <td>120°</td>
+                    <td>\(\frac{1}{3}\)</td>
+                    <td>3等分の1つ</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>公式を使って実際に計算してみましょう。ポイントは「中心角の割合」を先に計算することです。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 弧の長さを求める</h3>
+
+        <div class="example-box" id="ex-arc">
+            <div class="example-title">
+                <span class="number-badge">例1</span>弧の長さを求める
+            </div>
+            <p>半径 6 cm、中心角 60° のおうぎ形の弧の長さを求めよ。（\(\pi\) のまま）</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>中心角の割合を計算 → \(\frac{60}{360} = \frac{1}{6}\)</li>
+                <li>弧の長さの公式に代入する</li>
+                <li>計算を進める（\(\pi\) はそのまま残す）</li>
+            </ol>
+            <div class="formula">
+                \[ \ell = \frac{60}{360} \times 2\pi \times 6 = \frac{1}{6} \times 12\pi = 2\pi \text{ cm} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 面積を求める</h3>
+
+        <div class="example-box" id="ex-area">
+            <div class="example-title">
+                <span class="number-badge">例2</span>おうぎ形の面積を求める
+            </div>
+            <p>半径 9 cm、中心角 40° のおうぎ形の面積を求めよ。（\(\pi\) のまま）</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>中心角の割合を計算 → \(\frac{40}{360} = \frac{1}{9}\)</li>
+                <li>面積の公式に代入する</li>
+                <li>先に \(r^2\) を計算してから割合を掛ける</li>
+            </ol>
+            <div class="formula">
+                \[ A = \frac{40}{360} \times \pi \times 9^2 = \frac{1}{9} \times 81\pi = 9\pi \text{ cm}^2 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-area2">
+            <div class="example-title">
+                <span class="number-badge">例3</span>小数で答える場合
+            </div>
+            <p>半径 10 cm、中心角 72° のおうぎ形の面積を求めよ。（\(\pi = 3.14\)）</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>中心角の割合を計算 → \(\frac{72}{360} = \frac{1}{5}\)</li>
+                <li>公式に代入し、最後に \(\pi = 3.14\) を代入する</li>
+            </ol>
+            <div class="formula">
+                \[ A = \frac{72}{360} \times \pi \times 10^2 = \frac{1}{5} \times 100\pi = 20\pi \]
+            </div>
+            <div class="formula">
+                \[ = 20 \times 3.14 = 62.8 \text{ cm}^2 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 弧の長さから面積を求める</h3>
+
+        <div class="example-box" id="ex-from-arc">
+            <div class="example-title">
+                <span class="number-badge">例4</span>弧の長さと半径から面積を求める
+            </div>
+            <p>弧の長さ \(4\pi\) cm、半径 6 cm のおうぎ形の面積を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>公式 \(A = \frac{1}{2}\ell r\) を使う（中心角を求めなくてもOK）</li>
+                <li>弧の長さと半径を代入する</li>
+            </ol>
+            <div class="formula">
+                \[ A = \frac{1}{2} \times 4\pi \times 6 = 12\pi \text{ cm}^2 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 逆算（中心角を求める）</h3>
+
+        <div class="example-box" id="ex-angle">
+            <div class="example-title">
+                <span class="number-badge">例5</span>中心角を求める
+            </div>
+            <p>半径 12 cm、弧の長さ \(8\pi\) cm のおうぎ形の中心角を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>弧の長さの公式を変形 → \(\theta = \frac{\ell \times 360}{2\pi r}\)</li>
+                <li>値を代入して計算する</li>
+            </ol>
+            <div class="formula">
+                \[ \theta = \frac{8\pi \times 360}{2\pi \times 12} = \frac{8\pi \times 360}{24\pi} = \frac{8 \times
+                360}{24} = 120° \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：まず「中心角の割合」を約分する</strong><br>
+            \(\frac{60}{360} = \frac{1}{6}\)、\(\frac{90}{360} = \frac{1}{4}\) のように、先に分数を簡単にすると計算が楽。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：\(\pi\) は最後まで残す</strong><br>
+            途中は \(\pi\) をそのまま文字として計算し、「\(\pi = 3.14\)」を代入するのは最後の1回だけ。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：弧の長さが分かっているなら \(A = \frac{1}{2}\ell r\) が速い</strong><br>
+            中心角を使わなくても、弧の長さと半径だけで面積が求まる便利な公式。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：よく使う割合を覚えておく</strong><br>
+            180°は1/2、90°は1/4、60°は1/6、120°は1/3。これを覚えておくと計算が速くなる。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ5：円全体と比較して検算</strong><br>
+            60°のおうぎ形は円の1/6。円の面積 \(\pi r^2\) を6で割った値と合っているか確認。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：360で割り忘れる</div>
+            <p><strong>ダメな例：</strong> 中心角60°のとき、いきなり \(60 \times 2\pi r\) を計算</p>
+            <p><strong>対策：</strong> 必ず \(\frac{\theta}{360°}\) の形で割合を出してから掛ける。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：弧の長さと面積の公式を混同</div>
+            <p><strong>ダメな例：</strong> 弧の長さを \(\frac{\theta}{360} \times \pi r^2\) で計算（これは面積）</p>
+            <p><strong>対策：</strong> 弧は「円周 \(2\pi r\)」、面積は「円の面積 \(\pi r^2\)」に割合を掛ける。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：約分を忘れる</div>
+            <p><strong>ダメな例：</strong> \(\frac{90}{360}\) をそのまま使って計算が複雑に</p>
+            <p><strong>対策：</strong> 先に \(\frac{90}{360} = \frac{1}{4}\) と約分してから代入。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：半径を2乗し忘れる（面積）</div>
+            <p><strong>ダメな例：</strong> 面積を \(\frac{\theta}{360} \times \pi r\) で計算（\(r^2\) が必要）</p>
+            <p><strong>対策：</strong> 面積は \(\pi r^2\) なので必ず半径を2乗する。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき5：単位の付け忘れ</div>
+            <p><strong>ダメな例：</strong> 弧の長さを「\(6\pi\) cm²」、面積を「\(9\pi\) cm」と書く</p>
+            <p><strong>対策：</strong> 弧の長さは cm（長さ）、面積は cm²（広さ）。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">中心角を360°で割って割合を出したか</div>
+            <div class="checklist-item">弧の長さは \(2\pi r\)、面積は \(\pi r^2\) に掛けたか</div>
+            <div class="checklist-item">面積で \(r^2\) を忘れていないか</div>
+            <div class="checklist-item">約分できるところは約分したか</div>
+            <div class="checklist-item">単位は弧の長さがcm、面積がcm²になっているか</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>半径 8 cm、中心角 45° のおうぎ形の弧の長さを求めよ。（\(\pi\) のまま）</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(\frac{45}{360} = \frac{1}{8}\)</p>
+                    <p>\(\ell = \frac{1}{8} \times 2\pi \times 8 = \frac{1}{8} \times 16\pi = 2\pi\) cm</p>
+                    <p><strong>答え：\(2\pi\) cm</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>半径 15 cm、中心角 120° のおうぎ形の面積を求めよ。（\(\pi\) のまま）</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(\frac{120}{360} = \frac{1}{3}\)</p>
+                    <p>\(A = \frac{1}{3} \times \pi \times 15^2 = \frac{1}{3} \times 225\pi = 75\pi\) cm²</p>
+                    <p><strong>答え：\(75\pi\) cm²</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：おうぎ形は「円 × 中心角の割合」で計算！弧は円周に、面積は円の面積に掛ける
+</div>
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「地球を測った男」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 地球を測った男（紀元前3世紀・エジプト）</div>
+
+            <p>紀元前3世紀、エジプトのアレクサンドリア図書館に、エラトステネスという学者がいた。ある日、彼は不思議な話を聞いた。</p>
+
+            <p
+                style="background: #fff9e6; padding: 15px; border-left: 4px solid #ff9800; margin: 15px 0; font-style: italic;">
+                「シエネ（現在のアスワン）では、夏至の日に井戸の底まで太陽の光が届くらしい」
+            </p>
+
+            <p>「つまり太陽が真上にあるってことか...でもアレクサンドリアでは影ができるぞ？」</p>
+
+            <p>エラトステネスは気づいた。<strong>これ、地球が丸いからじゃね？</strong></p>
+
+            <p>彼は夏至の日、アレクサンドリアで棒を立てて影の角度を測った。結果は約7.2°。そして2つの都市間の距離は約5000スタディア（約800km）。</p>
+
+            <p>「7.2°は360°の何分の1だ？...1/50だ！つまり2つの都市の距離は、<strong>地球一周の1/50</strong>ってことか！」</p>
+
+            <p>これはまさに「弧の長さ = 円周 × 中心角の割合」の逆算だ。</p>
+            <div class="formula">
+                \[ \text{地球の円周} = \text{2都市間の距離} \times \frac{360°}{7.2°} = 5000 \times 50 = 250000 \text{ スタディア} \]
+            </div>
+
+            <p>現代の単位に換算すると約40,000km。実際の地球の円周は約40,075km。<strong>誤差わずか0.2%</strong>という驚異的な精度だった。</p>
+
+            <p style="background: #e8f5e9; padding: 15px; border-left: 4px solid #4caf50; margin: 15px 0;">
+                2200年前、人工衛星もGPSもない時代に、棒と影だけで地球の大きさを測った男がいた。使ったのは「おうぎ形の弧と中心角の関係」という、まさにこの教材で学んだ知識だ。
+            </p>
+
+            <p>ちなみにエラトステネスは「地理学の父」と呼ばれ、素数を見つける「エラトステネスの篩（ふるい）」でも有名。天才は一つじゃ飽き足らないらしい。</p>
+
+            <p style="font-size: 14px; color: #666; margin-top: 20px;">
+                ※エラトステネスの地球測定は実際に行われた記録が残っています。彼の著作『地理学』は失われましたが、後世の文献に引用されています（<a
+                    href="https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%A9%E3%83%88%E3%82%B9%E3%83%86%E3%83%8D%E3%82%B9"
+                    target="_blank" style="color: #1976d2;">エラトステネス</a>）。
+            </p>
+        </div>
+    </div>
+</section>

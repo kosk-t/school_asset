@@ -1,0 +1,474 @@
+---
+layout: material-raw
+title: 一次関数：問題タイプ別攻略
+icon: "🎯"
+description: 一次関数の問題を5つのタイプに分類。「式を求める」「交点」「変域」など、問題を見た瞬間に解法がわかる判断力を身につけよう。
+level: 標準
+level_num: 2
+category: functions
+order: 3
+keywords:
+  - 一次関数
+  - グラフ
+  - 傾き
+  - 切片
+  - 交点
+cover_image: /images/noimage.jpg
+cover_description: 一次関数のグラフと問題タイプ分類図
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学雑学「−40度の奇跡」"
+related:
+  - url: /座標平面上の直線_教材.html
+    title: 座標平面上の直線
+    note: 直線の式・傾きの基本（前提知識）
+    type: prerequisite
+  - url: /連立方程式_教材.html
+    title: 連立方程式
+    note: 交点を求めるときに使う
+    type: related
+  - url: /二次関数のグラフと性質_教材.html
+    title: 二次関数のグラフと性質
+    note: 二次関数との融合問題へ発展
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>一次関数は \(y = ax + b\) という式で表されるシンプルな関数。でもテストでは「式を求めよ」「交点を求めよ」「変域を求めよ」など、いろんな聞き方をされる。問題を見た瞬間に「これはこのタイプだ！」とわかれば、迷わず解ける。</p>
+        <p>このページでは、一次関数の問題を5つのタイプに分類し、それぞれの攻略法を学びます：</p>
+        <ul>
+            <li><strong>タイプ1：式を求める</strong>：傾き・切片・通る点から式を決定</li>
+            <li><strong>タイプ2：グラフを描く/読む</strong>：式からグラフ、グラフから式</li>
+            <li><strong>タイプ3：交点を求める</strong>：2直線の連立方程式</li>
+            <li><strong>タイプ4：変域を求める</strong>：xの範囲からyの範囲</li>
+            <li><strong>タイプ5：利用問題</strong>：実生活の状況を一次関数で表す</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】問題文のキーワードで解法を判断せよ！
+        </div>
+
+        <!-- 判断フロー図解 -->
+        <div class="svg-container">
+            <svg width="700" height="400" viewBox="0 0 700 400">
+                <defs>
+                    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#1976d2"/>
+                    </marker>
+                </defs>
+
+                <!-- 中央：問題文 -->
+                <rect x="250" y="20" width="200" height="50" rx="25" fill="#1976d2"/>
+                <text x="350" y="52" text-anchor="middle" fill="white" font-weight="bold" font-size="16">問題文を読む</text>
+
+                <!-- 分岐の矢印 -->
+                <path d="M 250 45 L 100 100" stroke="#1976d2" stroke-width="2" marker-end="url(#arrow-blue)"/>
+                <path d="M 300 70 L 200 120" stroke="#1976d2" stroke-width="2" marker-end="url(#arrow-blue)"/>
+                <path d="M 350 70 L 350 120" stroke="#1976d2" stroke-width="2" marker-end="url(#arrow-blue)"/>
+                <path d="M 400 70 L 500 120" stroke="#1976d2" stroke-width="2" marker-end="url(#arrow-blue)"/>
+                <path d="M 450 45 L 600 100" stroke="#1976d2" stroke-width="2" marker-end="url(#arrow-blue)"/>
+
+                <!-- タイプ1 -->
+                <rect x="20" y="100" width="160" height="90" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="100" y="125" text-anchor="middle" fill="#1976d2" font-weight="bold" font-size="14">タイプ1</text>
+                <text x="100" y="145" text-anchor="middle" fill="#333" font-size="13">式を求める</text>
+                <text x="100" y="170" text-anchor="middle" fill="#666" font-size="11">「傾き○、点を通る」</text>
+                <text x="100" y="185" text-anchor="middle" fill="#666" font-size="11">「2点を通る直線」</text>
+
+                <!-- タイプ2 -->
+                <rect x="120" y="120" width="160" height="90" rx="8" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+                <text x="200" y="145" text-anchor="middle" fill="#4caf50" font-weight="bold" font-size="14">タイプ2</text>
+                <text x="200" y="165" text-anchor="middle" fill="#333" font-size="13">グラフを描く/読む</text>
+                <text x="200" y="190" text-anchor="middle" fill="#666" font-size="11">「グラフをかけ」</text>
+                <text x="200" y="205" text-anchor="middle" fill="#666" font-size="11">「グラフから式を」</text>
+
+                <!-- タイプ3 -->
+                <rect x="270" y="120" width="160" height="90" rx="8" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                <text x="350" y="145" text-anchor="middle" fill="#ff9800" font-weight="bold" font-size="14">タイプ3</text>
+                <text x="350" y="165" text-anchor="middle" fill="#333" font-size="13">交点を求める</text>
+                <text x="350" y="190" text-anchor="middle" fill="#666" font-size="11">「交点の座標」</text>
+                <text x="350" y="205" text-anchor="middle" fill="#666" font-size="11">「2直線の交わる点」</text>
+
+                <!-- タイプ4 -->
+                <rect x="420" y="120" width="160" height="90" rx="8" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
+                <text x="500" y="145" text-anchor="middle" fill="#e91e63" font-weight="bold" font-size="14">タイプ4</text>
+                <text x="500" y="165" text-anchor="middle" fill="#333" font-size="13">変域を求める</text>
+                <text x="500" y="190" text-anchor="middle" fill="#666" font-size="11">「xが○以上△以下」</text>
+                <text x="500" y="205" text-anchor="middle" fill="#666" font-size="11">「yの範囲を求めよ」</text>
+
+                <!-- タイプ5 -->
+                <rect x="520" y="100" width="160" height="90" rx="8" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"/>
+                <text x="600" y="125" text-anchor="middle" fill="#9c27b0" font-weight="bold" font-size="14">タイプ5</text>
+                <text x="600" y="145" text-anchor="middle" fill="#333" font-size="13">利用問題</text>
+                <text x="600" y="170" text-anchor="middle" fill="#666" font-size="11">「速さ」「料金」</text>
+                <text x="600" y="185" text-anchor="middle" fill="#666" font-size="11">「時間と温度」など</text>
+
+                <!-- 下部の解法ボックス -->
+                <rect x="20" y="220" width="160" height="80" rx="5" fill="#fafafa" stroke="#1976d2"/>
+                <text x="100" y="245" text-anchor="middle" fill="#1976d2" font-size="12" font-weight="bold">解法</text>
+                <text x="100" y="265" text-anchor="middle" fill="#333" font-size="11">① y = ax + b に代入</text>
+                <text x="100" y="285" text-anchor="middle" fill="#333" font-size="11">② a, b を求める</text>
+
+                <rect x="270" y="240" width="160" height="80" rx="5" fill="#fafafa" stroke="#ff9800"/>
+                <text x="350" y="265" text-anchor="middle" fill="#ff9800" font-size="12" font-weight="bold">解法</text>
+                <text x="350" y="285" text-anchor="middle" fill="#333" font-size="11">連立方程式を解く</text>
+                <text x="350" y="305" text-anchor="middle" fill="#333" font-size="11">（2つの式を=で結ぶ）</text>
+
+                <rect x="520" y="220" width="160" height="80" rx="5" fill="#fafafa" stroke="#9c27b0"/>
+                <text x="600" y="245" text-anchor="middle" fill="#9c27b0" font-size="12" font-weight="bold">解法</text>
+                <text x="600" y="265" text-anchor="middle" fill="#333" font-size="11">① 何がx、何がyか決定</text>
+                <text x="600" y="285" text-anchor="middle" fill="#333" font-size="11">② 式を立てて利用</text>
+
+                <!-- 変域の補足 -->
+                <rect x="420" y="240" width="90" height="60" rx="5" fill="#fafafa" stroke="#e91e63"/>
+                <text x="465" y="260" text-anchor="middle" fill="#e91e63" font-size="11" font-weight="bold">a &gt; 0</text>
+                <text x="465" y="280" text-anchor="middle" fill="#333" font-size="10">右上がり</text>
+                <text x="465" y="295" text-anchor="middle" fill="#333" font-size="10">x増→y増</text>
+
+                <rect x="150" y="240" width="90" height="60" rx="5" fill="#fafafa" stroke="#e91e63"/>
+                <text x="195" y="260" text-anchor="middle" fill="#e91e63" font-size="11" font-weight="bold">a &lt; 0</text>
+                <text x="195" y="280" text-anchor="middle" fill="#333" font-size="10">右下がり</text>
+                <text x="195" y="295" text-anchor="middle" fill="#333" font-size="10">x増→y減</text>
+            </svg>
+            <div class="svg-caption">問題タイプの判断フロー</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 一次関数の基本式</strong>
+            <div class="formula">
+                \[ y = ax + b \]
+            </div>
+            <p><strong>a</strong>：傾き（変化の割合）= \(\frac{\text{yの増加量}}{\text{xの増加量}}\)　<strong>b</strong>：切片（x=0のときのy）</p>
+            <p><strong>✅ メリット：</strong> aとbさえわかれば、どんな問題も解ける！</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 タイプ1：式を求める</strong> <a href="#ex-formula" class="example-link">→ 例1</a>
+            <table class="material-table">
+                <tr>
+                    <th>条件</th>
+                    <th>解法</th>
+                </tr>
+                <tr>
+                    <td>傾きaと切片bがわかる</td>
+                    <td>そのまま \(y = ax + b\) に代入</td>
+                </tr>
+                <tr>
+                    <td>傾きaと1点(p, q)がわかる</td>
+                    <td>\(q = ap + b\) を解いてbを求める</td>
+                </tr>
+                <tr>
+                    <td>2点(x₁, y₁)と(x₂, y₂)がわかる</td>
+                    <td>① \(a = \frac{y_2 - y_1}{x_2 - x_1}\) でaを求める<br>② 1点を代入してbを求める</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 タイプ3：交点を求める</strong> <a href="#ex-intersection" class="example-link">→ 例3</a>
+            <p>2つの直線 \(y = a_1x + b_1\) と \(y = a_2x + b_2\) の交点は、連立方程式を解けばOK！</p>
+            <div class="formula">
+                \[ a_1x + b_1 = a_2x + b_2 \]
+            </div>
+            <p>これを解いてxを求め、どちらかの式に代入してyを求める。</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 タイプ4：変域を求める</strong> <a href="#ex-range" class="example-link">→ 例4</a>
+            <p><strong>ポイント：</strong>傾きaの符号でyの増減が決まる！</p>
+            <ul>
+                <li>\(a > 0\)（右上がり）：xが増えるとyも増える → yの最小はx最小のとき、yの最大はx最大のとき</li>
+                <li>\(a < 0\)（右下がり）：xが増えるとyは減る → yの最大はx最小のとき、yの最小はx最大のとき</li>
+            </ul>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 タイプ5：利用問題</strong> <a href="#ex-application" class="example-link">→ 例5</a>
+            <p><strong>立式のコツ：</strong>「変わらないもの」を傾きa、「最初の値」を切片bにする</p>
+            <ul>
+                <li>速さの問題：\(y = (\text{速さ}) \times x + (\text{初期位置})\)</li>
+                <li>料金の問題：\(y = (\text{単価}) \times x + (\text{基本料金})\)</li>
+                <li>温度の問題：\(y = (\text{変化率}) \times x + (\text{初期温度})\)</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>5つのタイプを実際の問題で練習しよう。「このタイプだからこう解く」という流れを意識！</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ タイプ1：式を求める</h3>
+
+        <div class="example-box" id="ex-formula">
+            <div class="example-title">
+                <span class="number-badge">例1</span>2点を通る直線の式
+            </div>
+            <p>2点 (1, 3) と (4, 9) を通る直線の式を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>傾きaを求める：</strong>\(a = \frac{9 - 3}{4 - 1} = \frac{6}{3} = 2\)</li>
+                <li><strong>式に1点を代入：</strong>\(y = 2x + b\) に (1, 3) を代入</li>
+                <li>\(3 = 2 \times 1 + b\) より \(b = 1\)</li>
+            </ol>
+            <div class="formula">
+                \[ y = 2x + 1 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ タイプ2：グラフを読み取る</h3>
+
+        <div class="example-box" id="ex-graph">
+            <div class="example-title">
+                <span class="number-badge">例2</span>グラフから式を読み取る
+            </div>
+            <p>下のグラフが表す一次関数の式を求めよ。（グラフは点(0, 2)を通り、傾きが-1の直線）</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>切片を読み取る：</strong>y軸との交点は (0, 2) → b = 2</li>
+                <li><strong>傾きを読み取る：</strong>xが1増えるとyが1減る → a = -1</li>
+            </ol>
+            <div class="formula">
+                \[ y = -x + 2 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ タイプ3：交点を求める</h3>
+
+        <div class="example-box" id="ex-intersection">
+            <div class="example-title">
+                <span class="number-badge">例3</span>2直線の交点
+            </div>
+            <p>\(y = 2x - 1\) と \(y = -x + 5\) の交点の座標を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>2つの式を等しくおく：</strong>交点では両方のyが等しい</li>
+                <li>\(2x - 1 = -x + 5\)</li>
+                <li>\(3x = 6\) より \(x = 2\)</li>
+                <li>\(y = 2 \times 2 - 1 = 3\)</li>
+            </ol>
+            <div class="formula">
+                \[ \text{交点} = (2, 3) \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ タイプ4：変域を求める</h3>
+
+        <div class="example-box" id="ex-range">
+            <div class="example-title">
+                <span class="number-badge">例4</span>yの変域
+            </div>
+            <p>\(y = -2x + 5\) で、xの変域が \(-1 \leq x \leq 3\) のとき、yの変域を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>傾きを確認：</strong>\(a = -2 < 0\) → 右下がり（xが増えるとyは減る）</li>
+                <li><strong>x = -1 のとき：</strong>\(y = -2 \times (-1) + 5 = 7\)（yの最大値）</li>
+                <li><strong>x = 3 のとき：</strong>\(y = -2 \times 3 + 5 = -1\)（yの最小値）</li>
+            </ol>
+            <div class="formula">
+                \[ -1 \leq y \leq 7 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ タイプ5：利用問題</h3>
+
+        <div class="example-box" id="ex-application">
+            <div class="example-title">
+                <span class="number-badge">例5</span>携帯電話の料金
+            </div>
+            <p>ある携帯プランは基本料金1000円で、通話1分あたり20円かかる。x分通話したときの料金y円を一次関数で表せ。また、40分通話したときの料金を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>傾きa：</strong>1分あたり20円 → a = 20</li>
+                <li><strong>切片b：</strong>基本料金1000円 → b = 1000</li>
+                <li><strong>x = 40 を代入：</strong>\(y = 20 \times 40 + 1000 = 1800\)</li>
+            </ol>
+            <div class="formula">
+                \[ y = 20x + 1000 \]
+            </div>
+            <p>40分通話したときの料金は<strong>1800円</strong></p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：まずキーワードでタイプを判別</strong><br>
+            「式を求めよ」→ タイプ1、「交点」→ タイプ3、「変域」→ タイプ4。問題文のキーワードで解法が決まる！
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：2点から傾きは「たて÷よこ」</strong><br>
+            傾き = (yの増加量) ÷ (xの増加量) = 「たて÷よこ」と覚える。グラフを見て「右に3、上に6」なら傾きは 6÷3 = 2。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：変域は端点を代入</strong><br>
+            yの変域を求めるときは、xの変域の両端を代入するだけ。傾きの符号で最大・最小が入れ替わることだけ注意。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：利用問題は「単価」と「初期値」を探す</strong><br>
+            「1分あたり○円」「1個あたり○g」→ これが傾き。「最初に○円」「出発時に○m」→ これが切片。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：傾きの符号を間違える</div>
+            <p><strong>ダメな例：</strong> (1, 5) と (3, 1) の傾きを \(\frac{5-1}{3-1} = 2\) としてしまう</p>
+            <p><strong>対策：</strong> 引く順番を揃える！ \(\frac{1-5}{3-1} = \frac{-4}{2} = -2\) が正解。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：変域の最大・最小を逆にする</div>
+            <p><strong>ダメな例：</strong> 傾きがマイナスなのに「xが大きいときyも大きい」と考える</p>
+            <p><strong>対策：</strong> \(a < 0\) なら右下がり！ グラフをざっくり描いて確認しよう。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：交点でyを求め忘れる</div>
+            <p><strong>ダメな例：</strong> xだけ求めて「交点は (2, ?)」で終わる</p>
+            <p><strong>対策：</strong> 交点の座標は (x, y) のペア。xを求めたら必ずyも求める！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：切片をx軸との交点と勘違い</div>
+            <p><strong>ダメな例：</strong> 「切片が3」を「(3, 0)を通る」と解釈</p>
+            <p><strong>対策：</strong> 切片はy軸との交点のy座標。「b = 3」は「(0, 3)を通る」という意味。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">問題文から5つのタイプのどれかを判別できた</div>
+            <div class="checklist-item">2点から傾きを正しく計算できた</div>
+            <div class="checklist-item">交点を求めるとき、xとyの両方を答えた</div>
+            <div class="checklist-item">変域を求めるとき、傾きの符号を確認した</div>
+            <div class="checklist-item">利用問題で「傾き＝単価」「切片＝初期値」を使えた</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1（タイプ1）</strong>
+            <p>傾きが3で、点(2, 5)を通る直線の式を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(y = 3x + b\) に (2, 5) を代入</p>
+                    <p>\(5 = 3 \times 2 + b\)</p>
+                    <p>\(b = -1\)</p>
+                    <p><strong>答え：\(y = 3x - 1\)</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2（タイプ3 + タイプ4）</strong>
+            <p>\(y = x + 2\) と \(y = -2x + 8\) の交点を求め、さらに \(y = x + 2\) でxの変域が \(0 \leq x \leq 4\) のときのyの変域を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>交点：</strong></p>
+                    <p>\(x + 2 = -2x + 8\) より \(3x = 6\)、\(x = 2\)</p>
+                    <p>\(y = 2 + 2 = 4\)</p>
+                    <p><strong>交点：(2, 4)</strong></p>
+                    <p><strong>変域：</strong></p>
+                    <p>\(y = x + 2\) は傾き \(a = 1 > 0\)（右上がり）</p>
+                    <p>x = 0 のとき y = 2、x = 4 のとき y = 6</p>
+                    <p><strong>yの変域：\(2 \leq y \leq 6\)</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：問題文のキーワードで「式を求める・交点・変域・利用」のどのタイプか見抜け！
+</div>
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「−40度の奇跡」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">🌡️ 華氏と摂氏が一致する温度</div>
+
+            <p>日本では温度を「摂氏（せっし）」で表す。水が0°Cで凍り、100°Cで沸騰。</p>
+
+            <p>一方、アメリカでは「華氏（かし）」を使う。水が32°Fで凍り、212°Fで沸騰。</p>
+
+            <p>この2つの温度、実は<strong>一次関数</strong>で変換できる：</p>
+
+            <div class="formula">
+                \[ F = \frac{9}{5}C + 32 \]
+            </div>
+
+            <p>（Fは華氏、Cは摂氏）</p>
+
+            <p>ここで問題。<strong>「華氏と摂氏が同じ数字になる温度はあるか？」</strong></p>
+
+            <p>直感的には「ないでしょ、だって単位が違うし...」と思うかもしれない。</p>
+
+            <p>でも、F = C として方程式を解いてみると...</p>
+
+            <div class="formula">
+                \[ C = \frac{9}{5}C + 32 \]
+            </div>
+
+            <p>\(C - \frac{9}{5}C = 32\) より \(-\frac{4}{5}C = 32\)、つまり \(C = -40\)</p>
+
+            <p><strong>−40°C = −40°F</strong></p>
+
+            <p>なんと、マイナス40度のとき、摂氏と華氏は<strong>ぴったり同じ数字</strong>になる！</p>
+
+            <p>カナダやアラスカの真冬、「今日は−40度だよ」と言えば、摂氏でも華氏でも同じ。変換不要だ。...まあ、どっちにしても極寒だけど。</p>
+
+            <p>一次関数のグラフで考えると、\(y = \frac{9}{5}x + 32\) と \(y = x\) の交点が (−40, −40) というわけ。<strong>2直線の交点を求める問題</strong>そのものだ！</p>
+        </div>
+    </div>
+</section>

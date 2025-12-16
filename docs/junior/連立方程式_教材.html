@@ -1,0 +1,473 @@
+---
+layout: material-raw
+title: 連立方程式
+icon: "🔗"
+description: 加減法と代入法を使って、2つの未知数を含む方程式を解く方法をマスターしよう！
+level: 標準
+level_num: 2
+category: equations
+order: 4
+keywords:
+  - 連立方程式
+  - 加減法
+  - 代入法
+  - 二元一次方程式
+cover_image: /images/noimage.jpg
+cover_description: 2つの直線が交わる点を求める様子、加減法と代入法のフローチャート
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「方程式の語源」"
+related:
+  - url: /一次方程式_教材.html
+    title: 一次方程式
+    note: 移項・等式の性質の復習に
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>買い物でりんごとみかんを合わせて10個買って、合計金額が1000円だったとき、「それぞれ何個買ったか？」を知りたいことがあります。このように<strong>2つの未知数</strong>を同時に求めるのが連立方程式です。</p>
+        <p>このページでは、以下の内容を学びます：</p>
+        <ul>
+            <li><strong>二元一次方程式</strong>：2つの文字（未知数）を含む一次方程式</li>
+            <li><strong>加減法</strong>：式を足したり引いたりして1つの文字を消す方法</li>
+            <li><strong>代入法</strong>：1つの式を他の式に代入して解く方法</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】連立方程式を解く = 2つの式から1つの文字を消して、一次方程式に帰着させる
+        </div>
+
+        <!-- 加減法と代入法の図解 -->
+        <div class="svg-container">
+            <svg width="700" height="280" viewBox="0 0 700 280">
+                <!-- 背景 -->
+                <rect x="10" y="10" width="680" height="260" fill="#f5f5f5" rx="10"/>
+
+                <!-- 連立方程式 -->
+                <text x="50" y="50" font-size="18" font-weight="bold" fill="#333">連立方程式</text>
+                <rect x="30" y="60" width="150" height="70" fill="#fff" stroke="#1976d2" stroke-width="2" rx="5"/>
+                <text x="55" y="85" font-size="16" fill="#333">{ x + y = 5</text>
+                <text x="55" y="110" font-size="16" fill="#333">{ 2x − y = 4</text>
+
+                <!-- 矢印と方法 -->
+                <defs>
+                    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#1976d2"/>
+                    </marker>
+                    <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#4caf50"/>
+                    </marker>
+                </defs>
+
+                <!-- 加減法の流れ（上） -->
+                <path d="M 180 75 L 250 50" stroke="#1976d2" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+                <rect x="255" y="25" width="140" height="50" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                <text x="280" y="45" font-size="14" font-weight="bold" fill="#1976d2">加減法</text>
+                <text x="270" y="65" font-size="12" fill="#333">式を足すor引く</text>
+
+                <path d="M 395 50 L 450 50" stroke="#1976d2" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+                <rect x="455" y="25" width="130" height="50" fill="#fff" stroke="#1976d2" stroke-width="2" rx="5"/>
+                <text x="475" y="45" font-size="14" fill="#333">3x = 9</text>
+                <text x="475" y="65" font-size="12" fill="#666">yが消えた！</text>
+
+                <path d="M 585 50 L 640 50" stroke="#1976d2" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+                <text x="610" y="45" font-size="14" fill="#333">x = 3</text>
+
+                <!-- 代入法の流れ（下） -->
+                <path d="M 180 115 L 250 140" stroke="#4caf50" stroke-width="2" fill="none" marker-end="url(#arrow-green)"/>
+                <rect x="255" y="115" width="140" height="50" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                <text x="280" y="135" font-size="14" font-weight="bold" fill="#4caf50">代入法</text>
+                <text x="265" y="155" font-size="12" fill="#333">y = 5 − x を代入</text>
+
+                <path d="M 395 140 L 450 140" stroke="#4caf50" stroke-width="2" fill="none" marker-end="url(#arrow-green)"/>
+                <rect x="455" y="115" width="150" height="50" fill="#fff" stroke="#4caf50" stroke-width="2" rx="5"/>
+                <text x="465" y="135" font-size="14" fill="#333">2x−(5−x) = 4</text>
+                <text x="475" y="155" font-size="12" fill="#666">xだけの式に！</text>
+
+                <path d="M 605 140 L 640 140" stroke="#4caf50" stroke-width="2" fill="none" marker-end="url(#arrow-green)"/>
+                <text x="610" y="135" font-size="14" fill="#333">x = 3</text>
+
+                <!-- 最終結果 -->
+                <rect x="250" y="200" width="200" height="60" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="5"/>
+                <text x="280" y="225" font-size="16" font-weight="bold" fill="#e65100">答え</text>
+                <text x="280" y="248" font-size="18" fill="#333">x = 3, y = 2</text>
+
+                <!-- 矢印を答えに -->
+                <path d="M 610 65 Q 550 150 450 210" stroke="#1976d2" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrow-blue)"/>
+                <path d="M 610 155 Q 550 180 450 210" stroke="#4caf50" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrow-green)"/>
+            </svg>
+            <div class="svg-caption">加減法と代入法：どちらも「1つの文字を消す」のが目標</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 加減法（たしざん・ひきざん法）</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <p>2つの式を足したり引いたりして、<strong>一方の文字を消す</strong>方法。</p>
+            <p><strong>→ だから結果は：</strong>消えた文字がなくなり、残った文字だけの一次方程式になる。</p>
+            <p><strong>✅ メリット：</strong>係数をそろえれば機械的に計算できる。計算ミスが少ない。</p>
+            <details class="thinking"><summary><strong>💡 考え方を見る</strong></summary>
+            <p>なぜ式を足し引きしていいの？</p>
+            <p>等式の両辺に同じものを足しても引いても、等式は成り立ちます。連立方程式では「2つの式が同時に成り立つ」ので、一方の式の両辺を他方に足し引きできるのです。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 代入法</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <p>一方の式を「\(y = \)〜」や「\(x = \)〜」の形に変形し、<strong>もう一方の式に代入</strong>する方法。</p>
+            <p><strong>→ だから結果は：</strong>1つの文字だけの一次方程式になる。</p>
+            <p><strong>✅ メリット：</strong>すでに「\(y = \)〜」の形があれば、そのまま代入するだけでラク。</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 加減法の手順</strong>
+            <ol>
+                <li><strong>係数をそろえる</strong>：消したい文字の係数の絶対値を同じにする</li>
+                <li><strong>足すか引くか決める</strong>：
+                    <ul>
+                        <li>符号が<strong>同じ</strong>（両方+、両方−）→ <strong>引く</strong></li>
+                        <li>符号が<strong>逆</strong>（+と−）→ <strong>足す</strong></li>
+                    </ul>
+                </li>
+                <li><strong>一次方程式を解く</strong></li>
+                <li><strong>もう一方の文字を求める</strong>：求めた値を元の式に代入</li>
+            </ol>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 どちらの方法を使う？</strong>
+            <table class="material-table">
+                <tr>
+                    <th>こんなとき</th>
+                    <th>使う方法</th>
+                </tr>
+                <tr>
+                    <td>係数がそろっている or そろえやすい</td>
+                    <td><strong>加減法</strong></td>
+                </tr>
+                <tr>
+                    <td>\(y = \)〜 や \(x = \)〜 の形がある</td>
+                    <td><strong>代入法</strong></td>
+                </tr>
+                <tr>
+                    <td>係数が1の文字がある</td>
+                    <td>どちらでもOK（代入法が楽なことも）</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>加減法と代入法の両方を練習しましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 加減法</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>係数がそろっているパターン
+            </div>
+            <p>次の連立方程式を解きなさい。</p>
+            <div class="formula">
+                \[ \begin{cases} x + y = 7 \\ x - y = 3 \end{cases} \]
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(y\) の係数を見ると、上の式は \(+1\)、下の式は \(-1\) → <strong>符号が逆なので足す</strong></li>
+                <li>2つの式を足す：\((x + y) + (x - y) = 7 + 3\)</li>
+                <li>\(2x = 10\) より \(x = 5\)</li>
+                <li>\(x = 5\) を \(x + y = 7\) に代入：\(5 + y = 7\) より \(y = 2\)</li>
+            </ol>
+            <div class="formula">
+                \[ \therefore x = 5, \quad y = 2 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>係数をそろえるパターン
+            </div>
+            <p>次の連立方程式を解きなさい。</p>
+            <div class="formula">
+                \[ \begin{cases} 2x + 3y = 12 \\ 4x - y = 2 \end{cases} \]
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(x\) を消すために、上の式を2倍して \(x\) の係数をそろえる</li>
+                <li>上の式 \(\times 2\)：\(4x + 6y = 24\)</li>
+                <li>下の式と引く：\((4x + 6y) - (4x - y) = 24 - 2\)</li>
+                <li>\(7y = 22\) より \(y = \dfrac{22}{7}\)...計算が複雑に！</li>
+                <li>→ <strong>\(y\) を消す方法に変更</strong>：下の式を3倍して \(y\) の係数をそろえる</li>
+                <li>下の式 \(\times 3\)：\(12x - 3y = 6\)</li>
+                <li>上の式と足す：\((2x + 3y) + (12x - 3y) = 12 + 6\)</li>
+                <li>\(14x = 18\) より \(x = \dfrac{18}{14} = \dfrac{9}{7}\)...これも複雑</li>
+            </ol>
+            <p><strong>別解：</strong>この問題は計算しやすい消し方を選ぶのがポイント。</p>
+            <ol>
+                <li>下の式 \(\times 3\)：\(12x - 3y = 6\)</li>
+                <li>上の式と足す：\(2x + 3y + 12x - 3y = 12 + 6\) → \(14x = 18\)</li>
+                <li>\(x = \dfrac{9}{7}\)、これを代入して \(y = \dfrac{22}{7}\)</li>
+            </ol>
+            <div class="formula">
+                \[ \therefore x = \frac{9}{7}, \quad y = \frac{22}{7} \]
+            </div>
+            <p><em>※ 分数が出てきても慌てずに計算しよう。</em></p>
+        </div>
+
+        <h3 style="color: #4caf50; margin: 25px 0 10px 0;">▶ 代入法</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>y = の形があるパターン
+            </div>
+            <p>次の連立方程式を解きなさい。</p>
+            <div class="formula">
+                \[ \begin{cases} y = 2x - 1 \\ 3x + 2y = 12 \end{cases} \]
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>上の式が \(y = 2x - 1\) の形 → <strong>そのまま代入</strong></li>
+                <li>下の式の \(y\) に代入：\(3x + 2(2x - 1) = 12\)</li>
+                <li>展開：\(3x + 4x - 2 = 12\)</li>
+                <li>\(7x = 14\) より \(x = 2\)</li>
+                <li>\(x = 2\) を \(y = 2x - 1\) に代入：\(y = 2 \times 2 - 1 = 3\)</li>
+            </ol>
+            <div class="formula">
+                \[ \therefore x = 2, \quad y = 3 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>x = の形に変形するパターン
+            </div>
+            <p>次の連立方程式を解きなさい。</p>
+            <div class="formula">
+                \[ \begin{cases} x + 2y = 5 \\ 3x - y = 1 \end{cases} \]
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>上の式を変形：\(x = 5 - 2y\)</li>
+                <li>下の式に代入：\(3(5 - 2y) - y = 1\)</li>
+                <li>展開：\(15 - 6y - y = 1\)</li>
+                <li>\(-7y = -14\) より \(y = 2\)</li>
+                <li>\(y = 2\) を \(x = 5 - 2y\) に代入：\(x = 5 - 4 = 1\)</li>
+            </ol>
+            <div class="formula">
+                \[ \therefore x = 1, \quad y = 2 \]
+            </div>
+        </div>
+
+        <h3 style="color: #ff9800; margin: 25px 0 10px 0;">▶ 特殊なケース</h3>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>分数・小数を含む連立方程式
+            </div>
+            <p>次の連立方程式を解きなさい。</p>
+            <div class="formula">
+                \[ \begin{cases} 0.2x + 0.3y = 1.3 \\ \dfrac{x}{2} + \dfrac{y}{3} = 2 \end{cases} \]
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>小数は10倍</strong>して整数に：\(2x + 3y = 13\) ...①</li>
+                <li><strong>分数は分母の最小公倍数（6）をかけて</strong>整数に：\(3x + 2y = 12\) ...②</li>
+                <li>①\(\times 2\) − ②\(\times 3\)で \(y\) を消す</li>
+                <li>\(4x + 6y - 9x - 6y = 26 - 36\) → \(-5x = -10\) → \(x = 2\)</li>
+                <li>\(x = 2\) を①に代入：\(4 + 3y = 13\) → \(y = 3\)</li>
+            </ol>
+            <div class="formula">
+                \[ \therefore x = 2, \quad y = 3 \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：係数が1の文字を狙え！</strong><br>
+            \(x + 2y = 5\) のように係数が1の文字があれば、その式を変形して代入法が楽。
+            \(x = 5 - 2y\) とすぐに変形できる。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：小数・分数は最初に消す</strong><br>
+            <ul>
+                <li>小数 → 10倍や100倍して整数に</li>
+                <li>分数 → 分母の最小公倍数をかけて整数に</li>
+            </ul>
+            整数だけの式にしてから解く方が、計算ミスが減る。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：検算は両方の式で！</strong><br>
+            答えが \(x = 2, y = 3\) なら、<strong>2つの式の両方</strong>に代入して成り立つか確認。
+            1つの式だけで確認すると、その式の計算ミスに気づけない。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：符号を意識して「足すか引くか」を決める</strong><br>
+            <ul>
+                <li>消したい文字の係数が <strong>+3 と +3</strong> → 引く</li>
+                <li>消したい文字の係数が <strong>+3 と −3</strong> → 足す</li>
+            </ul>
+            「同符号なら引く、異符号なら足す」と覚えよう。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：引き算で符号を間違える</div>
+            <p><strong>ダメな例：</strong>\((2x + 3y) - (4x + 3y) = 2x + 3y - 4x + 3y\)（\(-3y\) が \(+3y\) に）</p>
+            <p><strong>対策：</strong>引く式全体にカッコをつけて、<strong>カッコ内の全ての符号を変える</strong>。<br>
+            \((2x + 3y) - (4x + 3y) = 2x + 3y - 4x - 3y = -2x\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：代入するときカッコを忘れる</div>
+            <p><strong>ダメな例：</strong>\(y = 2x - 1\) を代入して \(3x + 2 \cdot 2x - 1 = 12\)</p>
+            <p><strong>対策：</strong>代入するときは必ず<strong>カッコで囲む</strong>。<br>
+            \(3x + 2(2x - 1) = 12\) → \(3x + 4x - 2 = 12\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：係数をそろえるとき片方だけ変える</div>
+            <p><strong>ダメな例：</strong>\(2x + 3y = 12\) の両辺を2倍して \(4x + 3y = 24\)（\(y\) の係数も2倍が必要）</p>
+            <p><strong>対策：</strong>式を何倍かするときは、<strong>全ての項を同じ数でかける</strong>。<br>
+            \(2x + 3y = 12\) を2倍 → \(4x + 6y = 24\)</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">加減法で「同符号は引く、異符号は足す」を使えるか？</div>
+            <div class="checklist-item">代入するときカッコをつけているか？</div>
+            <div class="checklist-item">小数・分数を整数に直してから解けるか？</div>
+            <div class="checklist-item">式を何倍かするとき、全ての項に同じ数をかけているか？</div>
+            <div class="checklist-item">答えを両方の式に代入して検算したか？</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>次の連立方程式を解きなさい。</p>
+            <div class="formula">
+                \[ \begin{cases} 3x + 2y = 16 \\ x - 2y = 0 \end{cases} \]
+            </div>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>解き方（加減法）：</strong></p>
+                    <ol>
+                        <li>\(y\) の係数が \(+2\) と \(-2\)（異符号）なので、<strong>足す</strong></li>
+                        <li>\((3x + 2y) + (x - 2y) = 16 + 0\)</li>
+                        <li>\(4x = 16\) より \(x = 4\)</li>
+                        <li>\(x = 4\) を下の式に代入：\(4 - 2y = 0\) → \(y = 2\)</li>
+                    </ol>
+                    <p><strong>答え：</strong>\(x = 4, \quad y = 2\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>次の連立方程式を解きなさい。</p>
+            <div class="formula">
+                \[ \begin{cases} y = 3x + 1 \\ 2x + y = 11 \end{cases} \]
+            </div>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>解き方（代入法）：</strong></p>
+                    <ol>
+                        <li>上の式が \(y = 3x + 1\) の形なので、そのまま代入</li>
+                        <li>下の式に代入：\(2x + (3x + 1) = 11\)</li>
+                        <li>\(5x + 1 = 11\) → \(5x = 10\) → \(x = 2\)</li>
+                        <li>\(x = 2\) を上の式に代入：\(y = 3 \times 2 + 1 = 7\)</li>
+                    </ol>
+                    <p><strong>答え：</strong>\(x = 2, \quad y = 7\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：連立方程式は「1つの文字を消して一次方程式に帰着」。加減法は係数をそろえて足し引き、代入法は式を代入！
+</div>
+
+<!-- ========== 関連教材 ========== -->
+<!-- Front Matterのrelatedで指定すればレイアウトが自動生成します -->
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「方程式の語源」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 「方程」の誕生（紀元前2世紀・中国）</div>
+
+            <p>今から2200年以上前、中国の漢の時代。この頃の数学者たちは、すでに連立方程式をスラスラ解いていた。</p>
+
+            <p>その方法は「<strong>方程</strong>」と呼ばれていた。現代の「方程式」という言葉の語源だ。</p>
+
+            <p>彼らは算木（さんぎ）という棒を並べて計算した。今でいう行列のような表を作り、縦に並んだ数を消していく。これは19世紀のドイツ人数学者ガウスが「発明した」とされる消去法と、まったく同じ方法だった。</p>
+
+            <p><strong>つまり、中国人はガウスより2000年も早く消去法を使っていた！</strong></p>
+
+            <p>この方法は『<strong>九章算術</strong>（きゅうしょうさんじゅつ）』という本に記されている。第8章のタイトルが「方程」。連立方程式を解く章だ。</p>
+
+            <div class="formula">
+                \[ \begin{cases} 3x + 2y = 39 \\ 2x + 3y = 34 \end{cases} \]
+            </div>
+
+            <p>こんな問題を、紀元前の人々が棒を並べ替えながら解いていた。算木を「方形（四角形）」に並べて「程（はかる）」から「方程」という名前になったとも言われている。</p>
+
+            <p>今日、数学の授業で連立方程式を解くたび、2000年以上前の中国人たちと同じことをしているのだ。</p>
+
+            <p style="font-size: 0.9em; color: #666; margin-top: 15px;">※『九章算術』は中国の古代数学書で、紀元前1世紀頃に現在の形にまとめられたとされています（<a href="https://ja.wikipedia.org/wiki/%E4%B9%9D%E7%AB%A0%E7%AE%97%E8%A1%93" target="_blank" style="color: #1976d2;">Wikipedia: 九章算術</a>）。</p>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,893 @@
+---
+layout: material-raw
+title: 二次方程式の解き方
+icon: "📐"
+description: 二次方程式 ax²+bx+c=0 を因数分解・平方完成・解の公式の3つの方法で解く技術を学ぶ。それぞれの方法の特徴と使い分け、判別式による解の個数判定、グラフとの関係も理解する。
+level: 標準
+level_num: 2
+category: equations
+order: 1
+keywords:
+- 二次方程式
+- 因数分解
+- 平方完成
+- 解の公式
+- 判別式
+- 零積の法則
+- 放物線
+- 重解
+cover_image: /images/二次方程式の解き方_教材.png
+cover_description: 放物線とx軸の交点、因数分解の矢印図、平方完成の変形図、解の公式の数式
+toc:
+- id: section1
+  title: "テーマの定義"
+- id: section2
+  title: "覚えるルール"
+- id: section3
+  title: "例題と解き方"
+- id: section4
+  title: "簡単にするコツ"
+- id: section5
+  title: "よくあるつまづき"
+- id: section6
+  title: "仕上げチェックリスト"
+- id: section7
+  title: "練習問題"
+- id: story
+  title: "おまけ：歴史ストーリー「4000年前の数学者たち」"
+subtitle: "因数分解・平方完成・解の公式"
+related:
+- url: /累乗と平方根_教材.html
+  title: 累乗と平方根
+  note: 平方根を使った解法・解の公式に必要
+  type: prerequisite
+---
+<!-- 1. テーマの定義 -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「面積が12㎡の長方形の花壇を作りたい」「ボールを投げ上げたとき何秒後に地面に落ちるか」——こうした問題を解くには、2乗を含む方程式を解く必要があります。</p>
+
+        <p>このページでは、<strong>二次方程式の解き方</strong>を学びます。</p>
+
+        <p><strong>なぜ「二次」と呼ぶ？</strong> \(x^2\)（xの<strong>2</strong>乗）が含まれる方程式だから「<strong>二</strong>次方程式」。ちなみに \(x\)（1乗）だけなら一次方程式、\(x^3\) があれば三次方程式です。</p>
+
+        <ul>
+            <li><strong>二次方程式の形</strong>：\(ax^2 + bx + c = 0\)（\(x^2\) が最高次）</li>
+            <li><strong>3つの解法</strong>：因数分解・平方完成・解の公式</li>
+            <li><strong>使い分けの基準</strong>：どの方法をいつ使うか</li>
+        </ul>
+    </div>
+</section>
+
+<!-- 2. 覚えるルール -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <p><strong>二次方程式</strong>とは、\(x\) の2乗を含む方程式です：</p>
+        <div class="formula">
+            \[ ax^2 + bx + c = 0 \quad (a \neq 0) \]
+        </div>
+
+        <div class="important-rule">
+            🎯 最重要：どの方法でも「=0」の形にして左辺を変形する！
+        </div>
+
+        <!-- 3つの方法の概要図 -->
+        <div class="svg-container">
+            <svg width="700" height="220" viewBox="0 0 700 220">
+                <!-- タイトル -->
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2"
+                    text-anchor="middle">3つの解き方の選び方</text>
+
+                <!-- 因数分解 -->
+                <rect x="30" y="50" width="200" height="140" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="10" />
+                <text x="130" y="80" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">因数分解</text>
+                <text x="130" y="105" font-size="14" fill="#333" text-anchor="middle">簡単な係数のとき</text>
+                <text x="130" y="125" font-size="14" fill="#333" text-anchor="middle">きれいに因数分解できる</text>
+                <text x="130" y="155" font-size="14" fill="#666" text-anchor="middle">例: x² - 5x + 6 = 0</text>
+                <text x="130" y="175" font-size="14" fill="#4caf50" text-anchor="middle">→ (x-2)(x-3) = 0</text>
+
+                <!-- 平方完成 -->
+                <rect x="250" y="50" width="200" height="140" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"
+                    rx="10" />
+                <text x="350" y="80" font-size="14" font-weight="bold" fill="#1565c0" text-anchor="middle">平方完成</text>
+                <text x="350" y="105" font-size="14" fill="#333" text-anchor="middle">グラフの頂点も知りたい</text>
+                <text x="350" y="125" font-size="14" fill="#333" text-anchor="middle">仕組みを理解したい</text>
+                <text x="350" y="155" font-size="14" fill="#666" text-anchor="middle">例: x² + 4x - 5 = 0</text>
+                <text x="350" y="175" font-size="14" fill="#1976d2" text-anchor="middle">→ (x+2)² = 9</text>
+
+                <!-- 解の公式 -->
+                <rect x="470" y="50" width="200" height="140" fill="#fff3e0" stroke="#ff9800" stroke-width="2"
+                    rx="10" />
+                <text x="570" y="80" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">解の公式</text>
+                <text x="570" y="105" font-size="14" fill="#333" text-anchor="middle">どんな問題でもOK</text>
+                <text x="570" y="125" font-size="14" fill="#333" text-anchor="middle">因数分解できないとき</text>
+                <text x="570" y="155" font-size="14" fill="#666" text-anchor="middle">例: 2x² + 3x - 1 = 0</text>
+                <text x="570" y="175" font-size="14" fill="#ff9800" text-anchor="middle">→ 公式に代入！</text>
+            </svg>
+            <div class="svg-caption">状況に応じて使い分けよう</div>
+        </div>
+
+        <div class="rule-box" id="rule-zero-product">
+            <strong>📌 零積の法則（因数分解の基本）</strong>
+            <div class="formula">
+                \[ A \times B = 0 \quad \Rightarrow \quad A = 0 \ \text{または} \ B = 0 \]
+            </div>
+            <p>積が0なら、どちらかが0。因数分解で解くときに使う！</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>0でない数どうしをかけると、必ず0以外の答えになる（例：\(2 \times 3 = 6\)）。だから積が0になるには、少なくとも一方が0でなければならない。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="method-factoring-patterns">
+            <strong>📌 因数分解のパターン（まず共通因数をチェック！）</strong>
+            <ul>
+                <li><strong>共通因数でくくる</strong>：\(2x^2 + 4x = 2x(x + 2)\) <a href="#ex-common" class="example-link">→
+                        例2</a></li>
+                <li><strong>完全平方</strong>：\(x^2 \pm 2ax + a^2 = (x \pm a)^2\)</li>
+                <li><strong>和と差の積</strong>：\(a^2 - b^2 = (a + b)(a - b)\) <a href="#ex-difference"
+                        class="example-link">→ 例3</a></li>
+            </ul>
+            <p style="margin-top: 10px;">共通因数がなければ、<strong>x²の係数で方法が変わる</strong>：</p>
+
+            <!-- 分岐図 -->
+            <div class="svg-container">
+                <svg width="600" height="140" viewBox="0 0 600 140">
+                    <!-- 起点 -->
+                    <rect x="200" y="10" width="200" height="35" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"
+                        rx="5" />
+                    <text x="300" y="33" font-size="14" font-weight="bold" fill="#1565c0" text-anchor="middle">ax² + bx
+                        + c を因数分解</text>
+
+                    <!-- 分岐線 -->
+                    <path d="M 300 45 L 300 60 L 150 60 L 150 75" stroke="#666" stroke-width="2" fill="none" />
+                    <path d="M 300 45 L 300 60 L 450 60 L 450 75" stroke="#666" stroke-width="2" fill="none" />
+
+                    <!-- a = 1 -->
+                    <rect x="50" y="75" width="200" height="55" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"
+                        rx="8" />
+                    <text x="150" y="95" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">a = 1
+                        のとき</text>
+                    <text x="150" y="115" font-size="14" fill="#333" text-anchor="middle">→ 和と積（足して・かけて）</text>
+
+                    <!-- a ≠ 1 -->
+                    <rect x="350" y="75" width="200" height="55" fill="#fff3e0" stroke="#ff9800" stroke-width="2"
+                        rx="8" />
+                    <text x="450" y="95" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">a ≠ 1
+                        のとき</text>
+                    <text x="450" y="115" font-size="14" fill="#333" text-anchor="middle">→ たすき掛け</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- 和と積（a = 1） -->
+        <div class="rule-box" id="method-sum-product">
+            <strong>📌 和と積で因数分解（a = 1 のとき）</strong> <a href="#ex-basic" class="example-link">→ 例1</a>
+            <p>\(x^2 + bx + c\) の形なら、「<strong>足して b、かけて c</strong>」になる2数を探す</p>
+            <div class="formula">
+                \[ x^2 + bx + c = (x+p)(x+q) \quad \text{のとき} \quad p+q=b,\ pq=c \]
+            </div>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>\((x+p)(x+q)\) を展開すると \(x^2 + (p+q)x + pq\) になる。これが \(x^2 + bx + c\) と一致するには、\(p+q=b\) かつ \(pq=c\) であればよい。</p>
+            </details>
+
+            <div class="svg-container">
+                <svg width="500" height="180" viewBox="0 0 500 180">
+                    <text x="250" y="25" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">例：x² + 5x
+                        + 6</text>
+
+                    <!-- 問題 -->
+                    <text x="80" y="60" font-size="14" fill="#333" text-anchor="middle">x² + 5x + 6</text>
+
+                    <!-- 矢印 -->
+                    <path d="M 130 55 L 180 55" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+
+                    <!-- 和と積の条件 -->
+                    <rect x="190" y="40" width="130" height="50" fill="#fff3e0" stroke="#ff9800" stroke-width="2"
+                        rx="5" />
+                    <text x="255" y="60" font-size="14" fill="#333" text-anchor="middle">足して 5</text>
+                    <text x="255" y="78" font-size="14" fill="#333" text-anchor="middle">かけて 6</text>
+
+                    <!-- 矢印 -->
+                    <path d="M 330 55 L 370 55" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+
+                    <!-- 答え -->
+                    <rect x="380" y="40" width="100" height="35" fill="#c8e6c9" stroke="#4caf50" stroke-width="2"
+                        rx="5" />
+                    <text x="430" y="63" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">2 と
+                        3</text>
+
+                    <!-- 検算 -->
+                    <text x="130" y="120" font-size="14" fill="#666" text-anchor="middle">検算：</text>
+                    <text x="250" y="120" font-size="14" fill="#333" text-anchor="middle">2 + 3 = 5 ✓</text>
+                    <text x="380" y="120" font-size="14" fill="#333" text-anchor="middle">2 × 3 = 6 ✓</text>
+
+                    <!-- 結果 -->
+                    <text x="250" y="160" font-size="15" font-weight="bold" fill="#4caf50" text-anchor="middle">x² + 5x
+                        + 6 = (x + 2)(x + 3)</text>
+
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#666" />
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+
+        <!-- たすき掛け（a ≠ 1） -->
+        <div class="rule-box" id="method-tasukigake">
+            <strong>📌 たすき掛けで因数分解（a ≠ 1 のとき）</strong> <a href="#ex-cross" class="example-link">→ 例4</a>
+            <p>\(ax^2 + bx + c\) で \(a \neq 1\) なら、<strong>たすき掛け</strong>で組み合わせを探す</p>
+            <div class="formula">
+                \[ ax^2 + bx + c = (px + q)(rx + s) \quad \text{のとき} \quad pr = a,\ qs = c,\ ps + qr = b \]
+            </div>
+
+            <div class="svg-container">
+                <svg width="650" height="200" viewBox="0 0 650 200">
+                    <text x="325" y="25" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">例：2x² +
+                        5x + 3</text>
+
+                    <!-- 左側：分解の候補 -->
+                    <text x="60" y="55" font-size="14" fill="#333" text-anchor="middle">x²の係数 2</text>
+                    <text x="180" y="55" font-size="14" fill="#333" text-anchor="middle">定数項 3</text>
+                    <text x="60" y="80" font-size="14" fill="#1976d2" text-anchor="middle">2 × 1</text>
+                    <text x="180" y="80" font-size="14" fill="#e65100" text-anchor="middle">3 × 1</text>
+
+                    <!-- たすき掛けの図 -->
+                    <g transform="translate(280, 45)">
+                        <rect x="0" y="0" width="200" height="100" fill="#f5f5f5" stroke="#999" stroke-width="1"
+                            rx="8" />
+                        <text x="100" y="22" font-size="14" font-weight="bold" fill="#333"
+                            text-anchor="middle">たすき掛け</text>
+
+                        <text x="40" y="50" font-size="16" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">2</text>
+                        <text x="40" y="85" font-size="16" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">1</text>
+                        <text x="100" y="50" font-size="16" font-weight="bold" fill="#e65100"
+                            text-anchor="middle">3</text>
+                        <text x="100" y="85" font-size="16" font-weight="bold" fill="#e65100"
+                            text-anchor="middle">1</text>
+
+                        <line x1="52" y1="45" x2="88" y2="80" stroke="#4caf50" stroke-width="2" />
+                        <line x1="52" y1="80" x2="88" y2="45" stroke="#4caf50" stroke-width="2" />
+
+                        <text x="145" y="50" font-size="14" fill="#333" text-anchor="middle">→ 2</text>
+                        <text x="145" y="85" font-size="14" fill="#333" text-anchor="middle">→ 3</text>
+                        <line x1="130" y1="90" x2="160" y2="90" stroke="#333" stroke-width="1" />
+                        <text x="180" y="90" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">5
+                            ✓</text>
+                    </g>
+
+                    <!-- 計算の説明 -->
+                    <g transform="translate(500, 50)">
+                        <text x="0" y="20" font-size="14" fill="#666">2 × 1 = 2</text>
+                        <text x="0" y="40" font-size="14" fill="#666">1 × 3 = 3</text>
+                        <text x="0" y="65" font-size="14" fill="#333">足すと 5</text>
+                        <text x="0" y="85" font-size="14" fill="#4caf50">（xの係数と一致!）</text>
+                    </g>
+
+                    <!-- 結果 -->
+                    <rect x="100" y="155" width="450" height="35" fill="#c8e6c9" stroke="#4caf50" stroke-width="2"
+                        rx="8" />
+                    <text x="325" y="178" font-size="15" font-weight="bold" fill="#2e7d32" text-anchor="middle">2x² + 5x
+                        + 3 = (2x + 3)(x + 1)</text>
+                </svg>
+            </div>
+
+            <div class="tip-box" style="margin-top: 15px;">
+                <strong>たすき掛けの手順</strong>
+                <ol style="margin: 10px 0 0 20px;">
+                    <li>\(a\)（x²の係数）と \(c\)（定数項）をそれぞれ2数の積に分解</li>
+                    <li>斜めに掛けて足す（たすき掛け）</li>
+                    <li>足した結果が \(b\)（xの係数）になる組み合わせを選ぶ</li>
+                    <li>\((px + q)(rx + s)\) の形に書く</li>
+                </ol>
+            </div>
+
+            <!-- 試行錯誤の流れ -->
+            <div class="svg-container" style="margin-top: 20px;">
+                <svg width="700" height="320" viewBox="0 0 700 320">
+                    <text x="350" y="25" font-size="14" font-weight="bold" fill="#1976d2"
+                        text-anchor="middle">試行錯誤の流れ（3x² + 7x + 2 の場合）</text>
+
+                    <!-- 分解の候補 -->
+                    <text x="80" y="55" font-size="14" fill="#333" text-anchor="middle">3 = 3 × 1</text>
+                    <text x="200" y="55" font-size="14" fill="#333" text-anchor="middle">2 = 2 × 1 or 1 × 2</text>
+
+                    <!-- 試行1：失敗 -->
+                    <g transform="translate(30, 70)">
+                        <rect x="0" y="0" width="300" height="100" fill="#ffebee" stroke="#f44336" stroke-width="2"
+                            rx="8" />
+                        <text x="150" y="25" font-size="14" font-weight="bold" fill="#c62828"
+                            text-anchor="middle">試行1：ダメだった...</text>
+
+                        <text x="40" y="55" font-size="15" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">3</text>
+                        <text x="40" y="85" font-size="15" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">1</text>
+                        <text x="100" y="55" font-size="15" font-weight="bold" fill="#e65100"
+                            text-anchor="middle">2</text>
+                        <text x="100" y="85" font-size="15" font-weight="bold" fill="#e65100"
+                            text-anchor="middle">1</text>
+
+                        <line x1="52" y1="50" x2="88" y2="80" stroke="#999" stroke-width="2" />
+                        <line x1="52" y1="80" x2="88" y2="50" stroke="#999" stroke-width="2" />
+
+                        <text x="150" y="55" font-size="14" fill="#333" text-anchor="start">3×1 = 3</text>
+                        <text x="150" y="75" font-size="14" fill="#333" text-anchor="start">1×2 = 2</text>
+                        <text x="230" y="65" font-size="14" font-weight="bold" fill="#c62828" text-anchor="start">→ 5
+                            ✗</text>
+                        <text x="230" y="88" font-size="14" fill="#c62828" text-anchor="start">7じゃない!</text>
+                    </g>
+
+                    <!-- 矢印 -->
+                    <path d="M 350 130 L 350 160" stroke="#666" stroke-width="2" marker-end="url(#arrowhead3)" />
+                    <text x="380" y="150" font-size="14" fill="#666">別の組み合わせを試す</text>
+
+                    <!-- 試行2：成功 -->
+                    <g transform="translate(30, 175)">
+                        <rect x="0" y="0" width="300" height="100" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"
+                            rx="8" />
+                        <text x="150" y="25" font-size="14" font-weight="bold" fill="#2e7d32"
+                            text-anchor="middle">試行2：これだ！</text>
+
+                        <text x="40" y="55" font-size="15" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">3</text>
+                        <text x="40" y="85" font-size="15" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">1</text>
+                        <text x="100" y="55" font-size="15" font-weight="bold" fill="#e65100"
+                            text-anchor="middle">1</text>
+                        <text x="100" y="85" font-size="15" font-weight="bold" fill="#e65100"
+                            text-anchor="middle">2</text>
+
+                        <line x1="52" y1="50" x2="88" y2="80" stroke="#4caf50" stroke-width="2" />
+                        <line x1="52" y1="80" x2="88" y2="50" stroke="#4caf50" stroke-width="2" />
+
+                        <text x="150" y="55" font-size="14" fill="#333" text-anchor="start">3×2 = 6</text>
+                        <text x="150" y="75" font-size="14" fill="#333" text-anchor="start">1×1 = 1</text>
+                        <text x="230" y="65" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="start">→ 7
+                            ✓</text>
+                        <text x="230" y="88" font-size="14" fill="#4caf50" text-anchor="start">正解!</text>
+                    </g>
+
+                    <!-- ポイント説明 -->
+                    <g transform="translate(370, 90)">
+                        <rect x="0" y="0" width="290" height="150" fill="#fff3e0" stroke="#ff9800" stroke-width="2"
+                            rx="8" />
+                        <text x="145" y="25" font-size="14" font-weight="bold" fill="#e65100"
+                            text-anchor="middle">ポイント</text>
+                        <text x="15" y="50" font-size="14" fill="#333">• 定数項の分解（2×1 か 1×2）を</text>
+                        <text x="25" y="68" font-size="14" fill="#333">入れ替えて試す</text>
+                        <text x="15" y="95" font-size="14" fill="#333">• 合わなければ次の組み合わせへ</text>
+                        <text x="15" y="120" font-size="14" fill="#333">• xの係数（今回は7）になれば正解</text>
+                    </g>
+
+                    <!-- 結果 -->
+                    <rect x="150" y="285" width="400" height="30" fill="#c8e6c9" stroke="#4caf50" stroke-width="2"
+                        rx="5" />
+                    <text x="350" y="305" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">3x² + 7x
+                        + 2 = (3x + 1)(x + 2)</text>
+
+                    <defs>
+                        <marker id="arrowhead3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#666" />
+                        </marker>
+                    </defs>
+                </svg>
+                <div class="svg-caption">合わなければ別の組み合わせを試す！</div>
+            </div>
+        </div>
+
+        <div class="rule-box" id="rule-completing-square">
+            <strong>📌 平方完成の公式</strong> <a href="#ex-completing" class="example-link">→ 例5</a>
+            <div class="formula">
+                \[ x^2 + ax = \left(x + \frac{a}{2}\right)^2 - \left(\frac{a}{2}\right)^2 \]
+            </div>
+            <p>ポイント：\(x\) の係数を半分にして2乗を作り、足した分を引く</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>\((x+p)^2\) を展開すると \(x^2 + 2px + p^2\) になる。\(x\)の係数は\(2p\)なので、元の式の\(x\)の係数\(a\)と比べると \(a = 2p\)、つまり \(p = \frac{a}{2}\)（半分）になる。</p>
+            </details>
+
+            <!-- 平方完成の変形図 -->
+            <div class="svg-container">
+                <svg width="600" height="160" viewBox="0 0 600 160">
+                    <text x="300" y="25" font-size="14" font-weight="bold" fill="#1976d2"
+                        text-anchor="middle">平方完成のイメージ（x² + 6x の場合）</text>
+
+                    <!-- 元の式 -->
+                    <rect x="30" y="50" width="130" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"
+                        rx="5" />
+                    <text x="95" y="75" font-size="14" fill="#333" text-anchor="middle">x² + 6x</text>
+
+                    <!-- 矢印 -->
+                    <path d="M 170 70 L 200 70" stroke="#666" stroke-width="2" marker-end="url(#arrowhead2)" />
+                    <text x="185" y="55" font-size="14" fill="#666" text-anchor="middle">6÷2=3</text>
+
+                    <!-- 平方完成 -->
+                    <rect x="210" y="50" width="180" height="40" fill="#fff3e0" stroke="#ff9800" stroke-width="2"
+                        rx="5" />
+                    <text x="300" y="75" font-size="14" fill="#333" text-anchor="middle">(x + 3)² − 9</text>
+
+                    <!-- 説明 -->
+                    <text x="300" y="120" font-size="14" fill="#666" text-anchor="middle">(x + 3)² = x² + 6x + 9
+                        だから</text>
+                    <text x="300" y="140" font-size="14" fill="#666" text-anchor="middle">9を引いて調整する</text>
+
+                    <defs>
+                        <marker id="arrowhead2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#666" />
+                        </marker>
+                    </defs>
+                </svg>
+                <div class="svg-caption">\(x\) の係数（6）を半分（3）にして完成させる</div>
+            </div>
+        </div>
+
+        <div class="rule-box" id="rule-quadratic-formula">
+            <strong>📌 解の公式</strong> <a href="#ex-formula" class="example-link">→ 例6</a>
+            <div class="formula">
+                \[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \]
+            </div>
+            <p>覚え方：「マイナス b、プラスマイナス、ルートの中は b² 引く 4ac、割る 2a」</p>
+        </div>
+
+        <div class="rule-box" id="rule-discriminant">
+            <strong>📌 判別式 \(D = b^2 - 4ac\)</strong> <a href="#ex-discriminant" class="example-link">→ 例7</a>
+            <ul>
+                <li>\(D > 0\)：異なる2つの実数解</li>
+                <li>\(D = 0\)：1つの実数解（重解）</li>
+                <li>\(D < 0\)：実数解なし</li>
+            </ul>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>解の公式 \(x = \frac{-b \pm \sqrt{D}}{2a}\) でルートの中身が\(D\)。\(D > 0\)ならルートが計算でき±で2つの解、\(D = 0\)なら\(\pm 0\)で解は1つ、\(D < 0\)なら負の数のルートは実数にないので解なし。</p>
+            </details>
+
+                    <!-- 判別式とグラフの関係 -->
+                    <div class="svg-container">
+                        <svg width="700" height="200" viewBox="0 0 700 200">
+                            <text x="350" y="25" font-size="14" font-weight="bold" fill="#1976d2"
+                                text-anchor="middle">判別式とグラフ（x軸との交点）の関係</text>
+
+                            <!-- D > 0 -->
+                            <g transform="translate(50, 40)">
+                                <rect x="0" y="0" width="180" height="140" fill="#e8f5e9" stroke="#4caf50"
+                                    stroke-width="2" rx="8" />
+                                <text x="90" y="25" font-size="14" font-weight="bold" fill="#2e7d32"
+                                    text-anchor="middle">D > 0</text>
+
+                                <!-- 座標軸 -->
+                                <line x1="20" y1="100" x2="160" y2="100" stroke="#999" stroke-width="1" />
+                                <line x1="90" y1="40" x2="90" y2="130" stroke="#999" stroke-width="1" />
+
+                                <!-- 放物線（2点で交わる）- 正確な放物線 -->
+                                <path d="M 50 100 Q 70 45 90 45 Q 110 45 130 100" stroke="#4caf50" stroke-width="3"
+                                    fill="none" />
+
+                                <!-- 交点 -->
+                                <circle cx="50" cy="100" r="5" fill="#e65100" />
+                                <circle cx="130" cy="100" r="5" fill="#e65100" />
+
+                                <text x="90" y="135" font-size="14" fill="#333" text-anchor="middle">2つの解</text>
+                            </g>
+
+                            <!-- D = 0 -->
+                            <g transform="translate(260, 40)">
+                                <rect x="0" y="0" width="180" height="140" fill="#fff3e0" stroke="#ff9800"
+                                    stroke-width="2" rx="8" />
+                                <text x="90" y="25" font-size="14" font-weight="bold" fill="#e65100"
+                                    text-anchor="middle">D = 0</text>
+
+                                <!-- 座標軸 -->
+                                <line x1="20" y1="100" x2="160" y2="100" stroke="#999" stroke-width="1" />
+                                <line x1="90" y1="40" x2="90" y2="130" stroke="#999" stroke-width="1" />
+
+                                <!-- 放物線（接する）- 正確な放物線、頂点がx軸上 -->
+                                <path d="M 30 45 Q 60 100 90 100 Q 120 100 150 45" stroke="#ff9800" stroke-width="3"
+                                    fill="none" />
+
+                                <!-- 接点 -->
+                                <circle cx="90" cy="100" r="5" fill="#e65100" />
+
+                                <text x="90" y="135" font-size="14" fill="#333" text-anchor="middle">1つの解（重解）</text>
+                            </g>
+
+                            <!-- D < 0 -->
+                            <g transform="translate(470, 40)">
+                                <rect x="0" y="0" width="180" height="140" fill="#ffebee" stroke="#f44336"
+                                    stroke-width="2" rx="8" />
+                                <text x="90" y="25" font-size="14" font-weight="bold" fill="#c62828"
+                                    text-anchor="middle">D &lt; 0</text>
+
+                                <!-- 座標軸 -->
+                                <line x1="20" y1="100" x2="160" y2="100" stroke="#999" stroke-width="1" />
+                                <line x1="90" y1="40" x2="90" y2="130" stroke="#999" stroke-width="1" />
+
+                                <!-- 放物線（交わらない）- 正確な放物線、下に凸でx軸より上 -->
+                                <path d="M 30 60 Q 60 85 90 85 Q 120 85 150 60" stroke="#f44336" stroke-width="3"
+                                    fill="none" />
+
+                                <text x="90" y="135" font-size="14" fill="#333" text-anchor="middle">実数解なし</text>
+                            </g>
+                        </svg>
+                        <div class="svg-caption">放物線とx軸の交点の数が解の個数</div>
+                    </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. 例題と解き方 -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>ルールを使って実際に解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 因数分解で解く</h3>
+
+        <div class="example-box" id="ex-basic">
+            <div class="example-title">
+                <span class="number-badge">例1</span>因数分解で解く（基本パターン）
+            </div>
+            <p>\(x^2 - 5x + 6 = 0\) を解く</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>すでに \(=0\) の形なので、左辺を因数分解する</li>
+                <li>「足して -5、かけて 6」になる2数を探す → <strong>-2 と -3</strong></li>
+                <li>因数分解して零積の法則を使う</li>
+            </ol>
+            <div class="formula">
+                \[ x^2 - 5x + 6 = (x - 2)(x - 3) = 0 \]
+                \[ x - 2 = 0 \ \text{または} \ x - 3 = 0 \]
+                \[ x = 2, \ 3 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-common">
+            <div class="example-title">
+                <span class="number-badge">例2</span>因数分解で解く（共通因数あり）
+            </div>
+            <p>\(x^2 + 4x = 0\) を解く</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>定数項がない → 共通因数 \(x\) があるのでくくり出す</li>
+                <li>零積の法則で、各因数 = 0 とする</li>
+            </ol>
+            <div class="formula">
+                \[ x^2 + 4x = x(x + 4) = 0 \]
+                \[ x = 0 \ \text{または} \ x + 4 = 0 \]
+                \[ x = 0, \ -4 \]
+            </div>
+            <p style="color: #e65100;"><strong>注意：</strong> \(x = 0\) を忘れやすい！両辺を \(x\) で割ると \(x = 0\)
+                が消えてしまうので、必ず因数分解で解くこと。</p>
+        </div>
+
+        <div class="example-box" id="ex-difference">
+            <div class="example-title">
+                <span class="number-badge">例3</span>因数分解で解く（和と差の積）
+            </div>
+            <p>\(x^2 - 16 = 0\) を解く</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(x\) の1次の項がない → \(a^2 - b^2\) の形を探す</li>
+                <li>\(x^2 - 16 = x^2 - 4^2\) なので「和と差の積」\((a+b)(a-b)\) を使う</li>
+                <li>零積の法則を適用</li>
+            </ol>
+            <div class="formula">
+                \[ x^2 - 16 = (x + 4)(x - 4) = 0 \]
+                \[ x + 4 = 0 \ \text{または} \ x - 4 = 0 \]
+                \[ x = \pm 4 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-cross">
+            <div class="example-title">
+                <span class="number-badge">例4</span>たすき掛けで因数分解して解く
+            </div>
+            <p>\(2x^2 + 5x + 3 = 0\) を解く</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(x^2\) の係数が1でない → たすき掛けで因数分解</li>
+                <li>\(x^2\) の係数 2 を「2×1」、定数項 3 を「3×1」に分解</li>
+                <li>斜めに掛けて足した結果が \(x\) の係数（5）になる組み合わせを探す</li>
+                <li>零積の法則を適用</li>
+            </ol>
+            <!-- たすき掛けの計算図 -->
+            <div class="svg-container">
+                <svg width="400" height="120" viewBox="0 0 400 120">
+                    <g transform="translate(50, 10)">
+                        <!-- 左の数（x²の係数の分解） -->
+                        <text x="30" y="30" font-size="16" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">2</text>
+                        <text x="30" y="70" font-size="16" font-weight="bold" fill="#1976d2"
+                            text-anchor="middle">1</text>
+
+                        <!-- 右の数（定数項の分解） -->
+                        <text x="100" y="30" font-size="16" font-weight="bold" fill="#e65100"
+                            text-anchor="middle">3</text>
+                        <text x="100" y="70" font-size="16" font-weight="bold" fill="#e65100"
+                            text-anchor="middle">1</text>
+
+                        <!-- たすき掛けの線 -->
+                        <line x1="45" y1="25" x2="85" y2="65" stroke="#4caf50" stroke-width="2" />
+                        <line x1="45" y1="65" x2="85" y2="25" stroke="#4caf50" stroke-width="2" />
+
+                        <!-- 計算結果 -->
+                        <text x="140" y="30" font-size="14" fill="#333" text-anchor="start">2 × 1 = 2</text>
+                        <text x="140" y="70" font-size="14" fill="#333" text-anchor="start">1 × 3 = 3</text>
+                        <line x1="140" y1="80" x2="210" y2="80" stroke="#333" stroke-width="1" />
+                        <text x="175" y="100" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">足して
+                            5 ✓</text>
+
+                        <!-- 結果 -->
+                        <text x="280" y="50" font-size="14" fill="#333" text-anchor="middle">→ (2x + 3)(x + 1)</text>
+                    </g>
+                </svg>
+            </div>
+            <div class="formula">
+                \[ (2x + 3)(x + 1) = 0 \]
+                \[ 2x + 3 = 0 \ \text{または} \ x + 1 = 0 \]
+                \[ x = -\frac{3}{2}, \ -1 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 平方完成で解く</h3>
+
+        <div class="example-box" id="ex-completing">
+            <div class="example-title">
+                <span class="number-badge">例5</span>平方完成で解く
+            </div>
+            <p>\(x^2 + 4x - 5 = 0\) を解く</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>定数項を右辺に移動</li>
+                <li>\(x\) の係数（4）を半分にして2乗 → \(2^2 = 4\) を両辺に足す</li>
+                <li>左辺を \((x + 2)^2\) の形にまとめる</li>
+                <li>両辺の平方根をとる（±を忘れずに）</li>
+                <li>\(x\) について解く</li>
+            </ol>
+            <div class="formula">
+                \[ x^2 + 4x = 5 \quad \text{（定数項を右辺へ）} \]
+                \[ x^2 + 4x + 4 = 5 + 4 \quad \text{（両辺に } 2^2 = 4 \text{ を足す）} \]
+                \[ (x + 2)^2 = 9 \]
+                \[ x + 2 = \pm 3 \quad \text{（平方根をとる）} \]
+                \[ x = -2 + 3 = 1, \quad x = -2 - 3 = -5 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 解の公式で解く</h3>
+
+        <div class="example-box" id="ex-formula">
+            <div class="example-title">
+                <span class="number-badge">例6</span>解の公式で解く
+            </div>
+            <p>\(2x^2 + 3x - 2 = 0\) を解く</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>係数を読み取る：\(a = 2, b = 3, c = -2\)</li>
+                <li>判別式 \(D = b^2 - 4ac\) を計算</li>
+                <li>解の公式 \(x = \frac{-b \pm \sqrt{D}}{2a}\) に代入</li>
+                <li>計算して約分</li>
+            </ol>
+            <div class="formula">
+                \[ D = 3^2 - 4 \cdot 2 \cdot (-2) = 9 + 16 = 25 \]
+                \[ x = \frac{-3 \pm \sqrt{25}}{2 \cdot 2} = \frac{-3 \pm 5}{4} \]
+                \[ x = \frac{-3 + 5}{4} = \frac{1}{2}, \quad x = \frac{-3 - 5}{4} = -2 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-discriminant">
+            <div class="example-title">
+                <span class="number-badge">例7</span>判別式で解の個数を判定
+            </div>
+            <p>\(x^2 - 4x + 4 = 0\) の解の個数を調べ、解を求める</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>係数を読み取る：\(a = 1, b = -4, c = 4\)</li>
+                <li>判別式 \(D = b^2 - 4ac\) を計算して解の個数を判定</li>
+                <li>\(D = 0\) なら重解、解の公式で求める</li>
+            </ol>
+            <div class="formula">
+                \[ D = (-4)^2 - 4 \cdot 1 \cdot 4 = 16 - 16 = 0 \]
+            </div>
+            <p>\(D = 0\) なので<strong>解は1つ（重解）</strong></p>
+            <div class="formula">
+                \[ x = \frac{-(-4)}{2 \cdot 1} = \frac{4}{2} = 2 \]
+            </div>
+            <p>（検算：\((x-2)^2 = x^2 - 4x + 4 = 0\) ✓）</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- 4. 簡単にするコツ -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：まず共通因数をくくる</strong><br>
+            \(2x^2 + 6x = 0\) → \(2x(x + 3) = 0\) のように、最初に共通因数を出す。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：係数が小さいときは因数分解を試す</strong><br>
+            係数が小さい整数なら、因数分解が一番早い。「足して・かけて」で2数を探す。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：因数分解できないときは解の公式</strong><br>
+            無理に因数分解しようとせず、解の公式を使う。どんな問題でも解ける万能ツール。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：右辺を0にしてから解く</strong><br>
+            \(x^2 = 5x + 6\) → \(x^2 - 5x - 6 = 0\) のように、まず右辺を0にする。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ5：平方完成は頂点も分かる一石二鳥</strong><br>
+            グラフの頂点座標も求めたいときは平方完成。\(y = a(x-p)^2 + q\) の頂点は \((p, q)\)。
+        </div>
+    </div>
+</section>
+
+<!-- 5. よくあるつまづき -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：共通因数の \(x = 0\) を忘れる</div>
+            <p><strong>ダメな例：</strong> \(x^2 + 3x = 0\) で \(x = -3\) だけ答える</p>
+            <p><strong>対策：</strong> \(x(x+3) = 0\) なので \(x = 0\) と \(x = -3\) の2つ！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：符号のミス</div>
+            <p><strong>ダメな例：</strong> \((x-2)(x+3) = 0\) から \(x = -2, 3\) と答える</p>
+            <p><strong>対策：</strong> \(x - 2 = 0\) なら \(x = 2\)、\(x + 3 = 0\) なら \(x = -3\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：解の公式で分母を忘れる</div>
+            <p><strong>ダメな例：</strong> \(x = -b \pm \sqrt{b^2-4ac}\) と書いて \(2a\) で割り忘れる</p>
+            <p><strong>対策：</strong> 分母 \(2a\) は分子全体（\(-b\) も \(\pm\sqrt{}\) も）にかかる</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：右辺を0にしていない</div>
+            <p><strong>ダメな例：</strong> \(x^2 = 3x + 10\) のまま因数分解しようとする</p>
+            <p><strong>対策：</strong> まず \(x^2 - 3x - 10 = 0\) にしてから因数分解</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき5：判別式で4acの符号ミス</div>
+            <p><strong>ダメな例：</strong> \(c\) が負のとき、\(-4ac\) が正になることを忘れる</p>
+            <p><strong>対策：</strong> \(D = b^2 - 4 \times a \times c\) で符号も込みで代入</p>
+        </div>
+    </div>
+</section>
+
+<!-- 6. 仕上げチェックリスト -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">右辺を0にしてから解いたか</div>
+            <div class="checklist-item">共通因数があるときは \(x = 0\) の解を忘れていないか</div>
+            <div class="checklist-item">符号（＋と−）は正しいか</div>
+            <div class="checklist-item">解の公式で分母 \(2a\) を忘れていないか</div>
+            <div class="checklist-item">答えを元の方程式に代入して検算したか</div>
+        </div>
+    </div>
+</section>
+
+<!-- 7. 練習問題 -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>次の二次方程式を因数分解で解きなさい：\(x^2 - 7x + 12 = 0\)</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>足して -7、かけて 12 → -3 と -4</p>
+                    <p>\((x - 3)(x - 4) = 0\)</p>
+                    <p><strong>答え：\(x = 3, 4\)</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>次の二次方程式を解の公式で解きなさい：\(x^2 + 2x - 5 = 0\)</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(a = 1, b = 2, c = -5\)</p>
+                    <p>\(D = 4 - 4 \cdot 1 \cdot (-5) = 4 + 20 = 24\)</p>
+                    <p>\(x = \frac{-2 \pm \sqrt{24}}{2} = \frac{-2 \pm 2\sqrt{6}}{2} = -1 \pm \sqrt{6}\)</p>
+                    <p><strong>答え：\(x = -1 + \sqrt{6}, -1 - \sqrt{6}\)</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- まとめ -->
+<div class="summary">
+    📌 まとめ：「=0」にして因数分解、ダメなら解の公式！
+</div>
+
+<!-- おまけ：歴史ストーリー -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「4000年前の数学者たち」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 4000年前の数学者たち（紀元前2000年バビロニア）</div>
+
+            <p>1930年、イラクの遺跡から発掘された古い粘土板。解読してみると...</p>
+
+            <p style="background: #fff9c4; padding: 10px; border-radius: 8px; margin: 15px 0;">
+                <strong>考古学者：</strong>「は？これ...二次方程式じゃん」<br>
+                <strong>数学史家：</strong>「しかも解き方まで書いてある。紀元前2000年の粘土板に」<br>
+                <strong>全員：</strong>「...マジか」
+            </p>
+
+            <p>バビロニア（現在のイラク）では、<strong>4000年も前に既に二次方程式を解いていた</strong>のだ！</p>
+
+            <p><strong>【粘土板に書かれていた問題】</strong></p>
+            <p>「長方形の畑がある。縦と横を足すと14メートル、面積は45平方メートル。縦と横の長さを求めよ」</p>
+
+            <p>現代風に書くと：</p>
+            <div class="formula">
+                \[ x + y = 14 \]
+                \[ xy = 45 \]
+            </div>
+
+            <p>これを解くと...\(y = 14 - x\) を代入して：</p>
+            <div class="formula">
+                \[ x(14 - x) = 45 \]
+                \[ x^2 - 14x + 45 = 0 \]
+            </div>
+
+            <p><strong>二次方程式だ！</strong></p>
+
+            <p><strong>【バビロニア人の解き方】</strong></p>
+            <p>彼らは解の公式を知らなかった。でも<strong>「平方完成」に似た方法</strong>で解いていた：</p>
+
+            <ol>
+                <li>\(x + y\) の半分（7）を計算</li>
+                <li>\(7^2 = 49\) を計算</li>
+                <li>\(49 - 45 = 4\) を計算</li>
+                <li>\(\sqrt{4} = 2\) を計算</li>
+                <li>\(7 + 2 = 9\) と \(7 - 2 = 5\) が答え</li>
+            </ol>
+
+            <p>検算：\(9 + 5 = 14\) ✓、\(9 \times 5 = 45\) ✓</p>
+
+            <p style="background: #e3f2fd; padding: 10px; border-radius: 8px; margin: 15px 0;">
+                <strong>驚くべき事実：</strong><br>
+                • 彼らは<strong>位置記数法（桁の概念）</strong>も持っていた（エジプトより進んでいた）<br>
+                • 60進法を使っていた（今の時間・角度の60分、60秒はここから！）<br>
+                • \(\sqrt{2}\) の近似値を小数点以下5桁まで正確に計算していた
+            </p>
+
+            <p><strong>【でも、なぜ失われた？】</strong></p>
+            <p>バビロニア文明が衰退すると、この知識は長い間忘れ去られた。ヨーロッパで二次方程式が再発見されるのは、<strong>なんと3000年後の中世</strong>。</p>
+
+            <p>もしバビロニアの知識が途切れなかったら、人類の数学はもっと早く進歩していたかもしれない。</p>
+
+            <p><strong>教訓：</strong>君が今、教科書で学んでいる「解の公式」。その原型は4000年前、粘土板に刻まれていた。数学は時代を超える。そして、知識を記録し継承することの大切さを、この粘土板は教えてくれる。
+            </p>
+
+            <p style="font-size: 14px; color: #666; margin-top: 20px;">
+                ※この粘土板は現在、イェール大学のバビロニアコレクションに保管されています（<a href="https://ja.wikipedia.org/wiki/YBC_7289" target="_blank"
+                    style="color: #1976d2;">YBC 7289</a>）。実物の写真も公開されています。
+            </p>
+        </div>
+    </div>
+</section>

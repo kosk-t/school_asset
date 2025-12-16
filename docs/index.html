@@ -53,7 +53,7 @@ title: トップページ
             display: none;
         }
 
-        /* 統計バー */
+        /* 統計バー（フィルター機能付き） */
         .stats-bar {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -69,6 +69,22 @@ title: トップページ
 
         .stat-item {
             text-align: center;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .stat-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .stat-item.active {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
         }
 
         .stat-number {
@@ -82,10 +98,48 @@ title: トップページ
             opacity: 0.9;
         }
 
+        /* フィルター適用時のアニメーション */
+        .level-section {
+            transition: opacity 0.3s ease, max-height 0.4s ease;
+            overflow: hidden;
+        }
+
+        .level-section.filtered-out {
+            opacity: 0;
+            max-height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* フィルター解除ボタン */
+        .filter-clear {
+            display: none;
+            margin-bottom: 20px;
+            padding: 8px 20px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #666;
+            transition: all 0.2s ease;
+        }
+
+        .filter-clear:hover {
+            background: #e0e0e0;
+        }
+
+        .filter-clear.visible {
+            display: inline-block;
+        }
+
         @media (max-width: 480px) {
             .stats-bar {
                 padding: 15px 20px;
-                gap: 15px;
+                gap: 10px;
+            }
+            .stat-item {
+                padding: 8px 10px;
             }
             .stat-number {
                 font-size: 1.5em;
@@ -103,155 +157,390 @@ title: トップページ
     <div class="container">
 
         <div class="hero-area">
-            <img src="{{ '/images/cover.jpg' | relative_url }}" alt="中学数学クエスト - さあ、数学の冒険へ！" class="hero-image">
+            <img src="{{ '/images/cover.png' | relative_url }}" alt="中学数学クエスト - さあ、数学の冒険へ！" class="hero-image">
         </div>
 
         <div class="guide-area">
             <p class="guide-text">
-                ここは<strong>中学数学</strong>の学習教材を集めたライブラリです。<br>
+                ここは<strong>中学・高校数学</strong>の学習教材を集めたライブラリです。<br>
                 下のカードから学びたいテーマを選んで、学習を始めましょう。
             </p>
         </div>
 
-        <!-- 統計バー -->
-        {% assign total_materials = site.data.materials | size %}
-        {% assign basic_count = site.data.materials | where: "level_num", 1 | size %}
-        {% assign standard_count = site.data.materials | where: "level_num", 2 | size %}
-        {% assign advanced_count = site.data.materials | where: "level_num", 3 | size %}
+        <!-- 学校レベル集計 -->
+        {% assign junior_materials = site.data.materials | where: "school_level", "junior" %}
+        {% assign senior_materials = site.data.materials | where: "school_level", "senior" %}
+        {% assign junior_count = junior_materials | size %}
+        {% assign senior_count = senior_materials | size %}
 
-        <div class="stats-bar">
-            <div class="stat-item">
-                <span class="stat-number">{{ total_materials }}</span>
-                <span class="stat-label">教材数</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">🌱 {{ basic_count }}</span>
-                <span class="stat-label">基礎</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">📘 {{ standard_count }}</span>
-                <span class="stat-label">標準</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">🎯 {{ advanced_count }}</span>
-                <span class="stat-label">発展</span>
-            </div>
+        <!-- 学校レベル切り替えタブ -->
+        <div class="school-tabs">
+            <button class="school-tab active" data-target="junior" onclick="switchSchoolLevel('junior')">
+                <span class="tab-icon">🏫</span>
+                <span>中学数学</span>
+                <span class="tab-count">{{ junior_count }}</span>
+            </button>
+            <button class="school-tab" data-target="senior" onclick="switchSchoolLevel('senior')">
+                <span class="tab-icon">🎓</span>
+                <span>高校数学</span>
+                <span class="tab-count">{{ senior_count }}</span>
+            </button>
         </div>
 
-        {% for category in site.data.categories %}
-        <div class="category-section">
-            <h2>{{ category.icon }} {{ category.name }}</h2>
+        <!-- ==================== 中学数学コンテンツ ==================== -->
+        <div id="junior-content" class="school-content active">
 
-            {% assign cat_materials = site.data.materials | where: "category", category.id | sort: "order" %}
+            <!-- 統計バー（中学） -->
+            {% assign jr_basic = junior_materials | where: "level_num", 1 | size %}
+            {% assign jr_standard = junior_materials | where: "level_num", 2 | size %}
+            {% assign jr_advanced = junior_materials | where: "level_num", 3 | size %}
 
-            <!-- 基礎レベル -->
-            {% assign basic_materials = cat_materials | where: "level_num", 1 %}
-            {% if basic_materials.size > 0 %}
-            <div class="level-section">
-                <div class="level-header lvl-basic">
-                    <span class="level-icon">🌱</span>
-                    <span class="level-name">基礎（中1レベル）</span>
-                    <span class="level-count">{{ basic_materials.size }}教材</span>
+            <div class="stats-bar" id="junior-stats">
+                <div class="stat-item active" data-level="all" onclick="filterByLevel('junior', 'all')">
+                    <span class="stat-number">{{ junior_count }}</span>
+                    <span class="stat-label">すべて</span>
                 </div>
-                <div class="material-grid">
-                    {% for material in basic_materials %}
-                    <a href="{{ material.slug | append: '.html' | relative_url }}" class="quest-card">
-                        <div class="quest-icon">{{ material.icon }}</div>
-                        <div class="quest-content">
-                            <div class="quest-title">{{ material.title }}</div>
-                            <div class="quest-desc">{{ material.description }}</div>
-                            <div class="quest-meta">
-                                <span class="level-badge lvl-basic">Lv.1</span>
-                                <div class="play-btn">▶</div>
-                            </div>
-                        </div>
-                    </a>
-                    {% endfor %}
+                <div class="stat-item" data-level="1" onclick="filterByLevel('junior', '1')">
+                    <span class="stat-number">🌱 {{ jr_basic }}</span>
+                    <span class="stat-label">基礎</span>
+                </div>
+                <div class="stat-item" data-level="2" onclick="filterByLevel('junior', '2')">
+                    <span class="stat-number">📘 {{ jr_standard }}</span>
+                    <span class="stat-label">標準</span>
+                </div>
+                <div class="stat-item" data-level="3" onclick="filterByLevel('junior', '3')">
+                    <span class="stat-number">🎯 {{ jr_advanced }}</span>
+                    <span class="stat-label">発展</span>
                 </div>
             </div>
-            {% endif %}
+            <button class="filter-clear" id="junior-filter-clear" onclick="filterByLevel('junior', 'all')">✕ フィルター解除</button>
 
-            <!-- 標準レベル -->
-            {% assign standard_materials = cat_materials | where: "level_num", 2 %}
-            {% if standard_materials.size > 0 %}
-            <div class="level-section">
-                <div class="level-header lvl-standard">
-                    <span class="level-icon">📘</span>
-                    <span class="level-name">標準（中2-3レベル）</span>
-                    <span class="level-count">{{ standard_materials.size }}教材</span>
-                </div>
-                <div class="material-grid">
-                    {% for material in standard_materials %}
-                    <a href="{{ material.slug | append: '.html' | relative_url }}" class="quest-card">
-                        <div class="quest-icon">{{ material.icon }}</div>
-                        <div class="quest-content">
-                            <div class="quest-title">{{ material.title }}</div>
-                            <div class="quest-desc">{{ material.description }}</div>
-                            <div class="quest-meta">
-                                <span class="level-badge lvl-standard">Lv.2</span>
-                                <div class="play-btn">▶</div>
-                            </div>
-                        </div>
-                    </a>
-                    {% endfor %}
-                </div>
-            </div>
-            {% endif %}
+            {% for category in site.data.categories %}
+            {% assign cat_jr_materials = junior_materials | where: "category", category.id | sort: "order" %}
+            {% if cat_jr_materials.size > 0 %}
+            <div class="category-section">
+                <h2>{{ category.icon }} {{ category.name }}</h2>
 
-            <!-- 発展レベル -->
-            {% assign advanced_materials = cat_materials | where: "level_num", 3 %}
-            {% if advanced_materials.size > 0 %}
-            <div class="level-section">
-                <div class="level-header lvl-advanced">
-                    <span class="level-icon">🎯</span>
-                    <span class="level-name">発展（入試レベル）</span>
-                    <span class="level-count">{{ advanced_materials.size }}教材</span>
-                </div>
-                <div class="material-grid">
-                    {% for material in advanced_materials %}
-                    <a href="{{ material.slug | append: '.html' | relative_url }}" class="quest-card">
-                        <div class="quest-icon">{{ material.icon }}</div>
-                        <div class="quest-content">
-                            <div class="quest-title">{{ material.title }}</div>
-                            <div class="quest-desc">{{ material.description }}</div>
-                            <div class="quest-meta">
-                                <span class="level-badge lvl-advanced">Lv.3</span>
-                                <div class="play-btn">▶</div>
-                            </div>
-                        </div>
-                    </a>
-                    {% endfor %}
-                </div>
-            </div>
-            {% endif %}
-
-            <!-- 準備中の教材 -->
-            {% assign coming = site.data.coming_soon | where: "category", category.id %}
-            {% if coming.size > 0 %}
-            <div class="level-section">
-                <div class="level-header" style="border-bottom-color: #ddd;">
-                    <span class="level-icon">🔒</span>
-                    <span class="level-name" style="color: #999;">準備中</span>
-                </div>
-                <div class="material-grid">
-                    {% for item in coming %}
-                    <div class="quest-card locked">
-                        <div class="quest-icon">🔒</div>
-                        <div class="quest-content">
-                            <div class="quest-title">{{ item.title }}</div>
-                            <div class="quest-desc">{{ item.description }}</div>
-                            <div class="quest-meta">
-                                <span class="level-badge" style="background:#eee; color:#999;">Soon</span>
-                            </div>
-                        </div>
+                <!-- 基礎レベル -->
+                {% assign basic_materials = cat_jr_materials | where: "level_num", 1 %}
+                {% if basic_materials.size > 0 %}
+                <div class="level-section" data-level="1">
+                    <div class="level-header lvl-basic">
+                        <span class="level-icon">🌱</span>
+                        <span class="level-name">基礎（中1レベル）</span>
+                        <span class="level-count">{{ basic_materials.size }}教材</span>
                     </div>
-                    {% endfor %}
+                    <div class="material-grid">
+                        {% for material in basic_materials %}
+                        <a href="{{ material.slug | append: '.html' | relative_url }}" class="quest-card">
+                            <div class="quest-icon">{{ material.icon }}</div>
+                            <div class="quest-content">
+                                <div class="quest-title">{{ material.title }}</div>
+                                <div class="quest-desc">{{ material.description }}</div>
+                                <div class="quest-meta">
+                                    <span class="level-badge lvl-basic">Lv.1</span>
+                                    <div class="play-btn">▶</div>
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
                 </div>
+                {% endif %}
+
+                <!-- 標準レベル -->
+                {% assign standard_materials = cat_jr_materials | where: "level_num", 2 %}
+                {% if standard_materials.size > 0 %}
+                <div class="level-section" data-level="2">
+                    <div class="level-header lvl-standard">
+                        <span class="level-icon">📘</span>
+                        <span class="level-name">標準（中2-3レベル）</span>
+                        <span class="level-count">{{ standard_materials.size }}教材</span>
+                    </div>
+                    <div class="material-grid">
+                        {% for material in standard_materials %}
+                        <a href="{{ material.slug | append: '.html' | relative_url }}" class="quest-card">
+                            <div class="quest-icon">{{ material.icon }}</div>
+                            <div class="quest-content">
+                                <div class="quest-title">{{ material.title }}</div>
+                                <div class="quest-desc">{{ material.description }}</div>
+                                <div class="quest-meta">
+                                    <span class="level-badge lvl-standard">Lv.2</span>
+                                    <div class="play-btn">▶</div>
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- 発展レベル -->
+                {% assign advanced_materials = cat_jr_materials | where: "level_num", 3 %}
+                {% if advanced_materials.size > 0 %}
+                <div class="level-section" data-level="3">
+                    <div class="level-header lvl-advanced">
+                        <span class="level-icon">🎯</span>
+                        <span class="level-name">発展（入試レベル）</span>
+                        <span class="level-count">{{ advanced_materials.size }}教材</span>
+                    </div>
+                    <div class="material-grid">
+                        {% for material in advanced_materials %}
+                        <a href="{{ material.slug | append: '.html' | relative_url }}" class="quest-card">
+                            <div class="quest-icon">{{ material.icon }}</div>
+                            <div class="quest-content">
+                                <div class="quest-title">{{ material.title }}</div>
+                                <div class="quest-desc">{{ material.description }}</div>
+                                <div class="quest-meta">
+                                    <span class="level-badge lvl-advanced">Lv.3</span>
+                                    <div class="play-btn">▶</div>
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- 準備中の教材 -->
+                {% assign coming = site.data.coming_soon | where: "category", category.id %}
+                {% if coming.size > 0 %}
+                <div class="level-section">
+                    <div class="level-header" style="border-bottom-color: #ddd;">
+                        <span class="level-icon">🔒</span>
+                        <span class="level-name" style="color: #999;">準備中</span>
+                    </div>
+                    <div class="material-grid">
+                        {% for item in coming %}
+                        <div class="quest-card locked">
+                            <div class="quest-icon">🔒</div>
+                            <div class="quest-content">
+                                <div class="quest-title">{{ item.title }}</div>
+                                <div class="quest-desc">{{ item.description }}</div>
+                                <div class="quest-meta">
+                                    <span class="level-badge" style="background:#eee; color:#999;">Soon</span>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
             </div>
             {% endif %}
-        </div>
-        {% endfor %}
+            {% endfor %}
+
+        </div><!-- /junior-content -->
+
+        <!-- ==================== 高校数学コンテンツ ==================== -->
+        <div id="senior-content" class="school-content">
+
+            {% if senior_count > 0 %}
+            <!-- 統計バー（高校） -->
+            {% assign sr_basic = senior_materials | where: "level_num", 1 | size %}
+            {% assign sr_standard = senior_materials | where: "level_num", 2 | size %}
+            {% assign sr_advanced = senior_materials | where: "level_num", 3 | size %}
+
+            <div class="stats-bar" id="senior-stats">
+                <div class="stat-item active" data-level="all" onclick="filterByLevel('senior', 'all')">
+                    <span class="stat-number">{{ senior_count }}</span>
+                    <span class="stat-label">すべて</span>
+                </div>
+                <div class="stat-item" data-level="1" onclick="filterByLevel('senior', '1')">
+                    <span class="stat-number">🌱 {{ sr_basic }}</span>
+                    <span class="stat-label">基礎</span>
+                </div>
+                <div class="stat-item" data-level="2" onclick="filterByLevel('senior', '2')">
+                    <span class="stat-number">📘 {{ sr_standard }}</span>
+                    <span class="stat-label">標準</span>
+                </div>
+                <div class="stat-item" data-level="3" onclick="filterByLevel('senior', '3')">
+                    <span class="stat-number">🎯 {{ sr_advanced }}</span>
+                    <span class="stat-label">発展</span>
+                </div>
+            </div>
+            <button class="filter-clear" id="senior-filter-clear" onclick="filterByLevel('senior', 'all')">✕ フィルター解除</button>
+
+            {% for category in site.data.categories %}
+            {% assign cat_sr_materials = senior_materials | where: "category", category.id | sort: "order" %}
+            {% if cat_sr_materials.size > 0 %}
+            <div class="category-section">
+                <h2>{{ category.icon }} {{ category.name }}</h2>
+
+                <!-- 基礎レベル -->
+                {% assign basic_materials = cat_sr_materials | where: "level_num", 1 %}
+                {% if basic_materials.size > 0 %}
+                <div class="level-section" data-level="1">
+                    <div class="level-header lvl-basic">
+                        <span class="level-icon">🌱</span>
+                        <span class="level-name">基礎</span>
+                        <span class="level-count">{{ basic_materials.size }}教材</span>
+                    </div>
+                    <div class="material-grid">
+                        {% for material in basic_materials %}
+                        <a href="{{ material.slug | append: '.html' | relative_url }}" class="quest-card">
+                            <div class="quest-icon">{{ material.icon }}</div>
+                            <div class="quest-content">
+                                <div class="quest-title">{{ material.title }}</div>
+                                <div class="quest-desc">{{ material.description }}</div>
+                                <div class="quest-meta">
+                                    <span class="level-badge lvl-basic">Lv.1</span>
+                                    <div class="play-btn">▶</div>
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- 標準レベル -->
+                {% assign standard_materials = cat_sr_materials | where: "level_num", 2 %}
+                {% if standard_materials.size > 0 %}
+                <div class="level-section" data-level="2">
+                    <div class="level-header lvl-standard">
+                        <span class="level-icon">📘</span>
+                        <span class="level-name">標準</span>
+                        <span class="level-count">{{ standard_materials.size }}教材</span>
+                    </div>
+                    <div class="material-grid">
+                        {% for material in standard_materials %}
+                        <a href="{{ material.slug | append: '.html' | relative_url }}" class="quest-card">
+                            <div class="quest-icon">{{ material.icon }}</div>
+                            <div class="quest-content">
+                                <div class="quest-title">{{ material.title }}</div>
+                                <div class="quest-desc">{{ material.description }}</div>
+                                <div class="quest-meta">
+                                    <span class="level-badge lvl-standard">Lv.2</span>
+                                    <div class="play-btn">▶</div>
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- 発展レベル -->
+                {% assign advanced_materials = cat_sr_materials | where: "level_num", 3 %}
+                {% if advanced_materials.size > 0 %}
+                <div class="level-section" data-level="3">
+                    <div class="level-header lvl-advanced">
+                        <span class="level-icon">🎯</span>
+                        <span class="level-name">発展</span>
+                        <span class="level-count">{{ advanced_materials.size }}教材</span>
+                    </div>
+                    <div class="material-grid">
+                        {% for material in advanced_materials %}
+                        <a href="{{ material.slug | append: '.html' | relative_url }}" class="quest-card">
+                            <div class="quest-icon">{{ material.icon }}</div>
+                            <div class="quest-content">
+                                <div class="quest-title">{{ material.title }}</div>
+                                <div class="quest-desc">{{ material.description }}</div>
+                                <div class="quest-meta">
+                                    <span class="level-badge lvl-advanced">Lv.3</span>
+                                    <div class="play-btn">▶</div>
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+            {% endfor %}
+
+            {% else %}
+            <!-- 高校数学がまだない場合のプレースホルダー -->
+            <div class="coming-soon-placeholder">
+                <div class="placeholder-icon">🎓</div>
+                <h3>高校数学 準備中</h3>
+                <p>高校数学の教材は現在準備中です。<br>もうしばらくお待ちください。</p>
+            </div>
+            {% endif %}
+
+        </div><!-- /senior-content -->
 
     </div>
+
+    <script>
+    // タブ切り替え機能
+    function switchSchoolLevel(level) {
+        // タブのアクティブ状態を切り替え
+        document.querySelectorAll('.school-tab').forEach(tab => {
+            tab.classList.remove('active');
+            if (tab.dataset.target === level) {
+                tab.classList.add('active');
+            }
+        });
+
+        // コンテンツの表示/非表示を切り替え
+        document.querySelectorAll('.school-content').forEach(content => {
+            content.classList.remove('active');
+        });
+        document.getElementById(level + '-content').classList.add('active');
+
+        // URLハッシュを更新（ブラウザの戻るボタン対応）
+        history.replaceState(null, null, '#' + level);
+    }
+
+    // レベル別フィルター機能
+    function filterByLevel(schoolLevel, level) {
+        const container = document.getElementById(schoolLevel + '-content');
+        const statsBar = document.getElementById(schoolLevel + '-stats');
+        const clearBtn = document.getElementById(schoolLevel + '-filter-clear');
+
+        // 統計バーのアクティブ状態を更新
+        statsBar.querySelectorAll('.stat-item').forEach(item => {
+            item.classList.remove('active');
+            if (item.dataset.level === level) {
+                item.classList.add('active');
+            }
+        });
+
+        // フィルター解除ボタンの表示/非表示
+        if (level === 'all') {
+            clearBtn.classList.remove('visible');
+        } else {
+            clearBtn.classList.add('visible');
+        }
+
+        // レベルセクションのフィルタリング
+        container.querySelectorAll('.level-section[data-level]').forEach(section => {
+            if (level === 'all' || section.dataset.level === level) {
+                section.classList.remove('filtered-out');
+            } else {
+                section.classList.add('filtered-out');
+            }
+        });
+
+        // カテゴリセクションの表示制御（中身がすべて非表示なら非表示）
+        container.querySelectorAll('.category-section').forEach(category => {
+            const visibleSections = category.querySelectorAll('.level-section[data-level]:not(.filtered-out)');
+            if (visibleSections.length === 0) {
+                category.style.display = 'none';
+            } else {
+                category.style.display = '';
+            }
+        });
+    }
+
+    // ページ読み込み時にURLハッシュをチェック
+    document.addEventListener('DOMContentLoaded', function() {
+        const hash = window.location.hash.replace('#', '');
+        if (hash === 'senior' || hash === 'junior') {
+            switchSchoolLevel(hash);
+        }
+    });
+
+    // ブラウザの戻る/進むボタン対応
+    window.addEventListener('hashchange', function() {
+        const hash = window.location.hash.replace('#', '');
+        if (hash === 'senior' || hash === 'junior') {
+            switchSchoolLevel(hash);
+        }
+    });
+    </script>
 </body>
 </html>

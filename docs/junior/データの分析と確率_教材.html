@@ -1,0 +1,1054 @@
+---
+layout: material-raw
+title: データの分析と確率
+icon: "🎲"
+description: データを整理して代表値（中央値・最頻値）や四分位数を求める方法と、外れ値の判定方法、経験的確率の計算を学ぶ。データは必ず小さい順に並べ替えてから計算するのが最重要ポイント。
+level: 標準
+level_num: 2
+category: data
+order: 1
+keywords:
+  - 中央値
+  - 最頻値
+  - 四分位数
+  - Q1
+  - Q2
+  - Q3
+  - 箱ひげ図
+  - 四分位範囲
+  - IQR
+  - 外れ値
+  - 経験的確率
+  - 代表値
+  - 並べ替え
+cover_image: /images/データの分析と確率_教材.jpg
+cover_description: 数値が並んだデータカード、棒グラフ、箱ひげ図、サイコロや確率のイメージ
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「パスカルとフェルマーの賭け問題」"
+---
+<!-- 1. テーマの定義 -->
+        <section id="section1">
+            <h2>1. テーマの定義</h2>
+            <div class="section">
+                <p>テストの点数やゲームのスコアなど、たくさんの数字があるとき「みんなの実力ってどのくらい？」「自分は上位？下位？」を知りたくなりますよね。</p>
+                <p>このページでは、データを整理して特徴をつかむ方法を学びます：</p>
+                <ul>
+                    <li><strong>代表値</strong>：データを1つの数値で特徴づける（中央値・最頻値）</li>
+                    <li><strong>四分位数</strong>：データを4等分する区切りの値</li>
+                    <li><strong>箱ひげ図</strong>：四分位数を使ってデータの散らばりを図で表す</li>
+                    <li><strong>経験的確率</strong>：実際のデータから確率を求める</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2. 覚えるルール -->
+        <section id="section2">
+            <h2>2. 覚えるルール</h2>
+            <div class="section">
+                <div class="important-rule">
+                    【最重要】データを必ず小さい順に並べ替えてから計算する
+                </div>
+
+                <!-- 並べ替えの図 -->
+                <div class="svg-container">
+                    <svg width="700" height="210" viewBox="0 0 700 210">
+                        <!-- タイトル -->
+                        <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">並べ替えの重要性</text>
+
+                        <!-- Before: バラバラのデータ -->
+                        <text x="30" y="55" font-size="14" font-weight="bold" fill="#666">元のデータ（バラバラ）</text>
+                        <rect x="50" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
+                        <text x="75" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">3</text>
+
+                        <rect x="110" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
+                        <text x="135" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">5</text>
+
+                        <rect x="170" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
+                        <text x="195" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">6</text>
+
+                        <rect x="230" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
+                        <text x="255" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">2</text>
+
+                        <rect x="290" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
+                        <text x="315" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">4</text>
+
+                        <rect x="350" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
+                        <text x="375" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">7</text>
+
+                        <rect x="410" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
+                        <text x="435" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">4</text>
+
+                        <rect x="470" y="65" width="50" height="40" fill="#ffcdd2" stroke="#e57373" stroke-width="2" rx="5"/>
+                        <text x="495" y="90" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">9</text>
+
+                        <!-- 矢印と説明 -->
+                        <path d="M 285 110 L 285 140" stroke="#ff9800" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                        <text x="310" y="128" font-size="14" font-weight="bold" fill="#ff9800">並べ替え！</text>
+
+                        <!-- After: 並べたデータ -->
+                        <text x="30" y="145" font-size="14" font-weight="bold" fill="#2e7d32">小さい順に並べた！</text>
+                        <rect x="50" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
+                        <text x="75" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">2</text>
+
+                        <rect x="110" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
+                        <text x="135" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">3</text>
+
+                        <rect x="170" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
+                        <text x="195" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">4</text>
+
+                        <rect x="230" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
+                        <text x="255" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">4</text>
+
+                        <rect x="290" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
+                        <text x="315" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">5</text>
+
+                        <rect x="350" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
+                        <text x="375" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">6</text>
+
+                        <rect x="410" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
+                        <text x="435" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">7</text>
+
+                        <rect x="470" y="155" width="50" height="40" fill="#c8e6c9" stroke="#66bb6a" stroke-width="2" rx="5"/>
+                        <text x="495" y="180" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">9</text>
+
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                <polygon points="0 0, 10 3, 0 6" fill="#ff9800"/>
+                            </marker>
+                        </defs>
+                    </svg>
+                    <div class="svg-caption">必ず並べ替えてから計算する！</div>
+                </div>
+
+                <div class="rule-box" id="rule-median">
+                    <strong>📌 中央値の求め方</strong> <a href="#ex-median" class="example-link">→ 例1</a>
+                    <ul>
+                        <li><strong>データの個数が奇数のとき</strong>：真ん中の値がそのまま中央値<br>
+                            例）5個なら3番目、7個なら4番目</li>
+                        <li><strong>データの個数が偶数のとき</strong>：真ん中の2つの平均が中央値<br>
+                            例）8個なら4番目と5番目の平均</li>
+                    </ul>
+                    <div class="formula">
+                        \[ \text{中央値の位置} = \frac{n+1}{2} \text{ 番目} \quad (n:\text{データ個数}) \]
+                    </div>
+                    
+                    <!-- 中央値の位置の図 -->
+                    <div class="svg-container">
+                        <svg width="700" height="280" viewBox="0 0 700 280">
+                            <!-- 奇数個の場合 -->
+                            <text x="50" y="25" font-size="15" font-weight="bold" fill="#1976d2">奇数個（5個）の場合</text>
+                            
+                            <rect x="80" y="40" width="50" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                            <text x="105" y="65" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">2</text>
+                            <text x="105" y="95" font-size="14" fill="#666" text-anchor="middle">1番目</text>
+                            
+                            <rect x="140" y="40" width="50" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                            <text x="165" y="65" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">3</text>
+                            <text x="165" y="95" font-size="14" fill="#666" text-anchor="middle">2番目</text>
+                            
+                            <rect x="200" y="40" width="50" height="40" fill="#fff3e0" stroke="#ff9800" stroke-width="3" rx="5"/>
+                            <text x="225" y="65" font-size="16" font-weight="bold" fill="#e65100" text-anchor="middle">5</text>
+                            <text x="225" y="95" font-size="14" font-weight="bold" fill="#ff9800" text-anchor="middle">3番目</text>
+                            
+                            <rect x="260" y="40" width="50" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                            <text x="285" y="65" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">7</text>
+                            <text x="285" y="95" font-size="14" fill="#666" text-anchor="middle">4番目</text>
+                            
+                            <rect x="320" y="40" width="50" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                            <text x="345" y="65" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">8</text>
+                            <text x="345" y="95" font-size="14" fill="#666" text-anchor="middle">5番目</text>
+                            
+                            <path d="M 225 105 L 225 120" stroke="#ff9800" stroke-width="2" marker-end="url(#arrowhead2)"/>
+                            <text x="225" y="135" font-size="14" font-weight="bold" fill="#ff9800" text-anchor="middle">中央値 = 5</text>
+                            
+                            <!-- 偶数個の場合 -->
+                            <text x="50" y="160" font-size="15" font-weight="bold" fill="#1976d2">偶数個（8個）の場合</text>
+
+                            <rect x="50" y="175" width="50" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                            <text x="75" y="200" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">2</text>
+
+                            <rect x="110" y="175" width="50" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                            <text x="135" y="200" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">3</text>
+
+                            <rect x="170" y="175" width="50" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                            <text x="195" y="200" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">4</text>
+
+                            <rect x="230" y="175" width="50" height="40" fill="#fff3e0" stroke="#ff9800" stroke-width="3" rx="5"/>
+                            <text x="255" y="200" font-size="16" font-weight="bold" fill="#e65100" text-anchor="middle">4</text>
+                            <text x="255" y="230" font-size="14" font-weight="bold" fill="#ff9800" text-anchor="middle">4番目</text>
+
+                            <rect x="290" y="175" width="50" height="40" fill="#fff3e0" stroke="#ff9800" stroke-width="3" rx="5"/>
+                            <text x="315" y="200" font-size="16" font-weight="bold" fill="#e65100" text-anchor="middle">5</text>
+                            <text x="315" y="230" font-size="14" font-weight="bold" fill="#ff9800" text-anchor="middle">5番目</text>
+
+                            <rect x="350" y="175" width="50" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                            <text x="375" y="200" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">6</text>
+
+                            <rect x="410" y="175" width="50" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                            <text x="435" y="200" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">7</text>
+
+                            <rect x="470" y="175" width="50" height="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                            <text x="495" y="200" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">9</text>
+
+                            <!-- 平均を示す -->
+                            <path d="M 285 240 L 285 250" stroke="#ff9800" stroke-width="2" marker-end="url(#arrowhead2)"/>
+                            <text x="290" y="265" font-size="14" font-weight="bold" fill="#e65100">(4+5)÷2 = 4.5</text>
+                            <text x="290" y="278" font-size="14" font-weight="bold" fill="#ff9800">中央値 = 4.5</text>
+                            
+                            <defs>
+                                <marker id="arrowhead2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                    <polygon points="0 0, 10 3, 0 6" fill="#ff9800"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                        <div class="svg-caption">奇数個なら真ん中1つ、偶数個なら真ん中2つの平均</div>
+                    </div>
+                </div>
+                
+                <div class="rule-box" id="rule-mode">
+                    <strong>📌 最頻値の求め方</strong> <a href="#ex-mode" class="example-link">→ 例2</a>
+                    <p>データの中で最も多く現れる値を探す。複数ある場合はすべて最頻値になる。</p>
+                </div>
+                
+                <div class="rule-box" id="rule-quartiles">
+                    <strong>📌 四分位数の求め方</strong> <a href="#ex-quartile" class="example-link">→ 例3</a>
+                    <ul>
+                        <li><strong>第2四分位数（Q₂）</strong>：中央値そのもの</li>
+                        <li><strong>第1四分位数（Q₁）</strong>：データの前半（中央値より小さい方）の中央値</li>
+                        <li><strong>第3四分位数（Q₃）</strong>：データの後半（中央値より大きい方）の中央値</li>
+                    </ul>
+                    
+                    <!-- 四分位数の図 -->
+                    <div class="svg-container">
+                        <svg width="700" height="240" viewBox="0 0 700 240">
+                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">四分位数の求め方（前半・後半で分ける）</text>
+                            
+                            <!-- 前半グループの背景 -->
+                            <rect x="40" y="45" width="250" height="90" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="8" stroke-dasharray="5,5"/>
+                            <text x="165" y="60" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">【前半グループ】</text>
+                            
+                            <!-- 前半データ -->
+                            <rect x="50" y="70" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="75" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">2</text>
+                            
+                            <rect x="110" y="70" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="135" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">3</text>
+                            
+                            <rect x="170" y="70" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="195" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">4</text>
+                            
+                            <rect x="230" y="70" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="255" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">4</text>
+                            
+                            <!-- 中央値の区切り線 -->
+                            <line x1="305" y1="45" x2="305" y2="135" stroke="#ff9800" stroke-width="4"/>
+                            <text x="305" y="150" font-size="14" font-weight="bold" fill="#ff9800" text-anchor="middle">中央値 = 4.5</text>
+                            <text x="305" y="165" font-size="14" fill="#ff9800" text-anchor="middle">（ここで前半・後半を分ける）</text>
+                            
+                            <!-- 後半グループの背景 -->
+                            <rect x="320" y="45" width="250" height="90" fill="#e3f2fd" stroke="#2196f3" stroke-width="2" rx="8" stroke-dasharray="5,5"/>
+                            <text x="445" y="60" font-size="14" font-weight="bold" fill="#2196f3" text-anchor="middle">【後半グループ】</text>
+                            
+                            <!-- 後半データ -->
+                            <rect x="330" y="70" width="50" height="40" fill="#bbdefb" stroke="#2196f3" stroke-width="2" rx="5"/>
+                            <text x="355" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">5</text>
+                            
+                            <rect x="390" y="70" width="50" height="40" fill="#bbdefb" stroke="#2196f3" stroke-width="2" rx="5"/>
+                            <text x="415" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">6</text>
+                            
+                            <rect x="450" y="70" width="50" height="40" fill="#bbdefb" stroke="#2196f3" stroke-width="2" rx="5"/>
+                            <text x="475" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">7</text>
+                            
+                            <rect x="510" y="70" width="50" height="40" fill="#bbdefb" stroke="#2196f3" stroke-width="2" rx="5"/>
+                            <text x="535" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">9</text>
+                            
+                            <!-- Q1の矢印 -->
+                            <path d="M 140 115 L 140 130" stroke="#4caf50" stroke-width="2" marker-end="url(#arrowhead3)"/>
+                            <text x="140" y="148" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">前半の中央値</text>
+                            <text x="140" y="163" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">Q₁ = 3.5</text>
+                            <text x="140" y="176" font-size="14" fill="#4caf50" text-anchor="middle">(3と4の平均)</text>
+
+                            <!-- Q3の矢印 -->
+                            <path d="M 420 115 L 420 130" stroke="#2196f3" stroke-width="2" marker-end="url(#arrowhead5)"/>
+                            <text x="420" y="148" font-size="14" font-weight="bold" fill="#2196f3" text-anchor="middle">後半の中央値</text>
+                            <text x="420" y="163" font-size="14" font-weight="bold" fill="#2196f3" text-anchor="middle">Q₃ = 6.5</text>
+                            <text x="420" y="176" font-size="14" fill="#2196f3" text-anchor="middle">(6と7の平均)</text>
+                            
+                            <!-- まとめ -->
+                            <rect x="80" y="185" width="540" height="45" fill="#fff9f0" stroke="#ff9800" stroke-width="2" rx="8"/>
+                            <text x="350" y="203" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">💡 ポイント：中央値より小さい方が「前半」、大きい方が「後半」</text>
+                            <text x="350" y="220" font-size="14" fill="#666" text-anchor="middle">Q₁は前半だけの中央値、Q₃は後半だけの中央値を求める！</text>
+                            
+                            <defs>
+                                <marker id="arrowhead3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                    <polygon points="0 0, 10 3, 0 6" fill="#4caf50"/>
+                                </marker>
+                                <marker id="arrowhead5" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                    <polygon points="0 0, 10 3, 0 6" fill="#2196f3"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                        <div class="svg-caption">中央値で前半・後半に分けて、それぞれの中央値を求める（偶数個の場合）</div>
+                    </div>
+
+                    <p style="margin-top: 20px;"><strong>【奇数個の場合】中央値を除いて前半・後半に分ける</strong></p>
+
+                    <!-- 奇数個の四分位数の図 -->
+                    <div class="svg-container">
+                        <svg width="700" height="240" viewBox="0 0 700 240">
+                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">四分位数の求め方（奇数個：7個の場合）</text>
+
+                            <!-- 前半グループの背景 -->
+                            <rect x="55" y="45" width="190" height="90" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="8" stroke-dasharray="5,5"/>
+                            <text x="150" y="60" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">【前半グループ】</text>
+
+                            <!-- 前半データ -->
+                            <rect x="65" y="70" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="90" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">2</text>
+
+                            <rect x="125" y="70" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="150" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">3</text>
+
+                            <rect x="185" y="70" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="210" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">4</text>
+
+                            <!-- 中央値（除外される） -->
+                            <rect x="280" y="70" width="50" height="40" fill="#fff3e0" stroke="#ff9800" stroke-width="3" rx="5"/>
+                            <text x="305" y="95" font-size="16" font-weight="bold" fill="#e65100" text-anchor="middle">5</text>
+                            <text x="305" y="150" font-size="14" font-weight="bold" fill="#ff9800" text-anchor="middle">中央値 = 5</text>
+                            <text x="305" y="165" font-size="14" fill="#e65100" text-anchor="middle">（前半・後半に含めない）</text>
+
+                            <!-- 後半グループの背景 -->
+                            <rect x="365" y="45" width="190" height="90" fill="#e3f2fd" stroke="#2196f3" stroke-width="2" rx="8" stroke-dasharray="5,5"/>
+                            <text x="460" y="60" font-size="14" font-weight="bold" fill="#2196f3" text-anchor="middle">【後半グループ】</text>
+
+                            <!-- 後半データ -->
+                            <rect x="375" y="70" width="50" height="40" fill="#bbdefb" stroke="#2196f3" stroke-width="2" rx="5"/>
+                            <text x="400" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">6</text>
+
+                            <rect x="435" y="70" width="50" height="40" fill="#bbdefb" stroke="#2196f3" stroke-width="2" rx="5"/>
+                            <text x="460" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">7</text>
+
+                            <rect x="495" y="70" width="50" height="40" fill="#bbdefb" stroke="#2196f3" stroke-width="2" rx="5"/>
+                            <text x="520" y="95" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">8</text>
+
+                            <!-- Q1の矢印 -->
+                            <path d="M 150 115 L 150 130" stroke="#4caf50" stroke-width="2" marker-end="url(#arrowhead3)"/>
+                            <text x="150" y="148" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">前半の中央値</text>
+                            <text x="150" y="163" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">Q₁ = 3</text>
+                            <text x="150" y="176" font-size="14" fill="#4caf50" text-anchor="middle">(3個の真ん中)</text>
+
+                            <!-- Q3の矢印 -->
+                            <path d="M 460 115 L 460 130" stroke="#2196f3" stroke-width="2" marker-end="url(#arrowhead5)"/>
+                            <text x="460" y="148" font-size="14" font-weight="bold" fill="#2196f3" text-anchor="middle">後半の中央値</text>
+                            <text x="460" y="163" font-size="14" font-weight="bold" fill="#2196f3" text-anchor="middle">Q₃ = 7</text>
+                            <text x="460" y="176" font-size="14" fill="#2196f3" text-anchor="middle">(3個の真ん中)</text>
+
+                            <!-- まとめ -->
+                            <rect x="80" y="185" width="540" height="45" fill="#fff9f0" stroke="#ff9800" stroke-width="2" rx="8"/>
+                            <text x="350" y="203" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">💡 奇数個のポイント：中央値そのものは前半にも後半にも含めない！</text>
+                            <text x="350" y="220" font-size="14" fill="#666" text-anchor="middle">中央値より小さいデータだけが前半、大きいデータだけが後半</text>
+                        </svg>
+                        <div class="svg-caption">奇数個の場合、中央値を除外して前半・後半に分ける</div>
+                    </div>
+                </div>
+
+                <div class="rule-box" id="rule-boxplot">
+                    <strong>📌 箱ひげ図の描き方</strong> <a href="#ex-boxplot" class="example-link">→ 例4</a>
+                    <p>箱ひげ図は、データの散らばりを視覚的に表すグラフ。四分位数を使って描く。</p>
+                    <ul>
+                        <li><strong>最小値</strong>：データの中で最も小さい値</li>
+                        <li><strong>Q₁（第1四分位数）</strong>：箱の左端</li>
+                        <li><strong>Q₂（中央値）</strong>：箱の中の線</li>
+                        <li><strong>Q₃（第3四分位数）</strong>：箱の右端</li>
+                        <li><strong>最大値</strong>：データの中で最も大きい値</li>
+                        <li><strong>四分位範囲（IQR）</strong>：Q₃ − Q₁（箱の幅）</li>
+                    </ul>
+
+                    <!-- 箱ひげ図の構成要素の図 -->
+                    <div class="svg-container">
+                        <svg width="700" height="220" viewBox="0 0 700 220">
+                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">箱ひげ図の構成要素</text>
+
+                            <!-- 数直線 -->
+                            <line x1="50" y1="100" x2="650" y2="100" stroke="#999" stroke-width="2"/>
+
+                            <!-- 目盛り -->
+                            <line x1="80" y1="95" x2="80" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="80" y="120" font-size="14" fill="#666" text-anchor="middle">2</text>
+
+                            <line x1="170" y1="95" x2="170" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="170" y="120" font-size="14" fill="#666" text-anchor="middle">3.5</text>
+
+                            <line x1="290" y1="95" x2="290" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="290" y="120" font-size="14" fill="#666" text-anchor="middle">4.5</text>
+
+                            <line x1="440" y1="95" x2="440" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="440" y="120" font-size="14" fill="#666" text-anchor="middle">6.5</text>
+
+                            <line x1="620" y1="95" x2="620" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="620" y="120" font-size="14" fill="#666" text-anchor="middle">9</text>
+
+                            <!-- 左のひげ -->
+                            <line x1="80" y1="70" x2="170" y2="70" stroke="#4caf50" stroke-width="3"/>
+                            <line x1="80" y1="60" x2="80" y2="80" stroke="#4caf50" stroke-width="3"/>
+                            <text x="80" y="50" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">最小値</text>
+
+                            <!-- 箱 -->
+                            <rect x="170" y="55" width="270" height="30" fill="#e3f2fd" stroke="#1976d2" stroke-width="3"/>
+
+                            <!-- 中央値の線 -->
+                            <line x1="290" y1="55" x2="290" y2="85" stroke="#ff9800" stroke-width="4"/>
+                            <text x="290" y="45" font-size="14" font-weight="bold" fill="#ff9800" text-anchor="middle">中央値(Q₂)</text>
+
+                            <!-- Q1のラベル -->
+                            <path d="M 170 90 L 170 140" stroke="#4caf50" stroke-width="2" stroke-dasharray="4,2"/>
+                            <text x="170" y="155" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">Q₁</text>
+
+                            <!-- Q3のラベル -->
+                            <path d="M 440 90 L 440 140" stroke="#2196f3" stroke-width="2" stroke-dasharray="4,2"/>
+                            <text x="440" y="155" font-size="14" font-weight="bold" fill="#2196f3" text-anchor="middle">Q₃</text>
+
+                            <!-- 右のひげ -->
+                            <line x1="440" y1="70" x2="620" y2="70" stroke="#2196f3" stroke-width="3"/>
+                            <line x1="620" y1="60" x2="620" y2="80" stroke="#2196f3" stroke-width="3"/>
+                            <text x="620" y="50" font-size="14" font-weight="bold" fill="#2196f3" text-anchor="middle">最大値</text>
+
+                            <!-- 四分位範囲の説明 -->
+                            <line x1="170" y1="175" x2="440" y2="175" stroke="#9c27b0" stroke-width="2"/>
+                            <line x1="170" y1="170" x2="170" y2="180" stroke="#9c27b0" stroke-width="2"/>
+                            <line x1="440" y1="170" x2="440" y2="180" stroke="#9c27b0" stroke-width="2"/>
+                            <text x="305" y="195" font-size="14" font-weight="bold" fill="#9c27b0" text-anchor="middle">四分位範囲（IQR）= Q₃ − Q₁ = 6.5 − 3.5 = 3</text>
+                        </svg>
+                        <div class="svg-caption">箱ひげ図は「最小値・Q₁・中央値・Q₃・最大値」の5つの値で描く</div>
+                    </div>
+
+                    <div class="formula">
+                        \[ \text{四分位範囲（IQR）} = Q_3 - Q_1 \]
+                    </div>
+
+                    <p style="margin-top: 15px;"><strong>【箱ひげ図から分かること】</strong></p>
+                    <ul>
+                        <li>箱の幅（四分位範囲）が広い → データの散らばりが大きい</li>
+                        <li>中央値の線が箱の中央にない → データが左右非対称</li>
+                        <li>ひげの長さが違う → データの端の方に偏りがある</li>
+                    </ul>
+                </div>
+
+                <div class="rule-box" id="rule-outlier">
+                    <strong>📌 外れ値の判定</strong> <a href="#ex-outlier" class="example-link">→ 例5</a>
+                    <p><strong>外れ値</strong>とは、他のデータから極端にかけ離れた値のこと。四分位範囲（IQR）を使って判定できる。</p>
+                    <ul>
+                        <li><strong>外れ値の基準</strong>：以下の範囲から外れた値</li>
+                    </ul>
+                    <div class="formula">
+                        \[ Q_1 - 1.5 \times \text{IQR} \quad \text{〜} \quad Q_3 + 1.5 \times \text{IQR} \]
+                    </div>
+                    <ul>
+                        <li>この範囲より<strong>小さい値</strong> → 下側の外れ値</li>
+                        <li>この範囲より<strong>大きい値</strong> → 上側の外れ値</li>
+                    </ul>
+
+                    <details><summary><strong>💡 なぜ1.5倍なの？</strong></summary>
+                    <p style="margin-top: 10px;">1.5という数値は統計学者が経験的に決めたもの。正規分布（釣り鐘型のデータ分布）を仮定すると、この範囲の外に出る確率は約0.7%（1000個に7個程度）。つまり「めったに起きないこと」を外れ値と判断している。</p>
+                    </details>
+
+                    <!-- 外れ値の判定の図 -->
+                    <div class="svg-container">
+                        <svg width="700" height="260" viewBox="0 0 700 260">
+                            <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">外れ値の判定範囲</text>
+
+                            <!-- 数直線 -->
+                            <line x1="30" y1="110" x2="670" y2="110" stroke="#999" stroke-width="2"/>
+
+                            <!-- 目盛り -->
+                            <line x1="50" y1="105" x2="50" y2="115" stroke="#999" stroke-width="1"/>
+                            <text x="50" y="130" font-size="14" fill="#666" text-anchor="middle">0</text>
+
+                            <line x1="150" y1="105" x2="150" y2="115" stroke="#999" stroke-width="1"/>
+                            <text x="150" y="130" font-size="14" fill="#666" text-anchor="middle">2</text>
+
+                            <line x1="250" y1="105" x2="250" y2="115" stroke="#999" stroke-width="1"/>
+                            <text x="250" y="130" font-size="14" fill="#666" text-anchor="middle">4</text>
+
+                            <line x1="350" y1="105" x2="350" y2="115" stroke="#999" stroke-width="1"/>
+                            <text x="350" y="130" font-size="14" fill="#666" text-anchor="middle">6</text>
+
+                            <line x1="450" y1="105" x2="450" y2="115" stroke="#999" stroke-width="1"/>
+                            <text x="450" y="130" font-size="14" fill="#666" text-anchor="middle">8</text>
+
+                            <line x1="550" y1="105" x2="550" y2="115" stroke="#999" stroke-width="1"/>
+                            <text x="550" y="130" font-size="14" fill="#666" text-anchor="middle">10</text>
+
+                            <line x1="650" y1="105" x2="650" y2="115" stroke="#999" stroke-width="1"/>
+                            <text x="650" y="130" font-size="14" fill="#666" text-anchor="middle">12</text>
+
+                            <!-- 箱ひげ図（Q1=3, Q2=5, Q3=7, IQR=4） -->
+                            <!-- Q1 - 1.5×IQR = 3 - 6 = -3 → 0より左なので範囲外 -->
+                            <!-- Q3 + 1.5×IQR = 7 + 6 = 13 → 12より右 -->
+
+                            <!-- 正常範囲の背景 -->
+                            <rect x="50" y="55" width="550" height="45" fill="#e8f5e9" fill-opacity="0.5" rx="5"/>
+                            <text x="325" y="48" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">正常範囲（外れ値でない）</text>
+
+                            <!-- 箱 -->
+                            <rect x="200" y="70" width="200" height="30" fill="#e3f2fd" stroke="#1976d2" stroke-width="3"/>
+
+                            <!-- Q1, Q2, Q3 -->
+                            <line x1="200" y1="70" x2="200" y2="100" stroke="#4caf50" stroke-width="3"/>
+                            <text x="200" y="145" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">Q₁=3</text>
+
+                            <line x1="300" y1="70" x2="300" y2="100" stroke="#ff9800" stroke-width="4"/>
+                            <text x="300" y="145" font-size="14" font-weight="bold" fill="#ff9800" text-anchor="middle">Q₂=5</text>
+
+                            <line x1="400" y1="70" x2="400" y2="100" stroke="#2196f3" stroke-width="3"/>
+                            <text x="400" y="145" font-size="14" font-weight="bold" fill="#2196f3" text-anchor="middle">Q₃=7</text>
+
+                            <!-- IQR表示 -->
+                            <line x1="200" y1="165" x2="400" y2="165" stroke="#9c27b0" stroke-width="2"/>
+                            <line x1="200" y1="160" x2="200" y2="170" stroke="#9c27b0" stroke-width="2"/>
+                            <line x1="400" y1="160" x2="400" y2="170" stroke="#9c27b0" stroke-width="2"/>
+                            <text x="300" y="180" font-size="14" font-weight="bold" fill="#9c27b0" text-anchor="middle">IQR = 7 - 3 = 4</text>
+
+                            <!-- 外れ値の判定線 -->
+                            <!-- Q1 - 1.5×IQR = 3 - 6 = -3 (画面外なので0に) -->
+                            <line x1="50" y1="55" x2="50" y2="100" stroke="#e53935" stroke-width="2" stroke-dasharray="4,2"/>
+                            <text x="50" y="200" font-size="14" fill="#e53935" text-anchor="middle">下限</text>
+                            <text x="50" y="215" font-size="14" fill="#e53935" text-anchor="middle">-3</text>
+
+                            <!-- Q3 + 1.5×IQR = 7 + 6 = 13 -->
+                            <line x1="600" y1="55" x2="600" y2="100" stroke="#e53935" stroke-width="2" stroke-dasharray="4,2"/>
+                            <text x="600" y="200" font-size="14" fill="#e53935" text-anchor="middle">上限</text>
+                            <text x="600" y="215" font-size="14" fill="#e53935" text-anchor="middle">13</text>
+
+                            <!-- 計算式 -->
+                            <rect x="100" y="225" width="500" height="30" fill="#fff3e0" stroke="#ff9800" stroke-width="1" rx="5"/>
+                            <text x="350" y="245" font-size="14" fill="#e65100" text-anchor="middle">下限 = Q₁ - 1.5×IQR = 3 - 6 = -3　　上限 = Q₃ + 1.5×IQR = 7 + 6 = 13</text>
+                        </svg>
+                        <div class="svg-caption">外れ値は「Q₁ - 1.5×IQR」より小さいか「Q₃ + 1.5×IQR」より大きい値</div>
+                    </div>
+
+                    <p style="margin-top: 15px;"><strong>【箱ひげ図での外れ値の表示】</strong></p>
+                    <ul>
+                        <li>外れ値がある場合、ひげは外れ値を除いた最小値・最大値まで伸ばす</li>
+                        <li>外れ値は「○」や「●」で個別に表示する</li>
+                    </ul>
+                </div>
+
+                <div class="rule-box" id="rule-empirical-probability">
+                    <strong>📌 経験的確率</strong> <a href="#ex-probability" class="example-link">→ 例6</a>
+                    <div class="formula">
+                        \[ P = \frac{a}{n} \]
+                        \( a \)：条件を満たすデータの個数、\( n \)：全データの個数
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 3. 例題と解き方 -->
+        <section id="section3">
+            <h2>3. 例題と解き方</h2>
+            <div class="section">
+                <p>ルールを使って実際に解いてみましょう。どの例題も「並べ替え → 位置を確認 → 値を求める」の流れです。</p>
+
+                <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 代表値を求める</h3>
+
+                <div class="data-example">
+                    元のデータ：3, 5, 6, 2, 4, 7, 4, 9
+                </div>
+
+                <div class="example-box" id="ex-median">
+                    <div class="example-title">
+                        <span class="number-badge">例1</span>中央値を求める
+                    </div>
+                    <p>元のデータ 3, 5, 6, 2, 4, 7, 4, 9 の中央値を求める</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>データを小さい順に並べ替える → 2, 3, 4, 4, 5, 6, 7, 9</li>
+                        <li>データの個数を数える → <strong>8個（偶数）</strong></li>
+                        <li>偶数個なので、真ん中2つ（4番目と5番目）を見つける → 4 と 5</li>
+                        <li>2つの平均を計算する</li>
+                    </ol>
+                    <div class="formula">
+                        \[ \text{中央値} = \frac{4 + 5}{2} = 4.5 \]
+                    </div>
+                </div>
+                
+                <div class="example-box" id="ex-mode">
+                    <div class="example-title">
+                        <span class="number-badge">例2</span>最頻値を求める
+                    </div>
+                    <p>同じデータ 2, 3, 4, 4, 5, 6, 7, 9 の最頻値を求める</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>各値の出現回数を数える</li>
+                        <li>最も多く現れる値を探す → <strong style="color: #ff6f00;">4 が2回</strong>で最多</li>
+                    </ol>
+                    <p><strong>最頻値 = 4</strong></p>
+                    
+                    <!-- 最頻値の図 -->
+                    <div class="svg-container">
+                        <svg width="600" height="150" viewBox="0 0 600 150">
+                            <text x="300" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">各値の出現回数</text>
+                            
+                            <!-- 2 -->
+                            <rect x="40" y="110" width="40" height="20" fill="#e3f2fd" stroke="#1976d2" stroke-width="1" rx="3"/>
+                            <text x="60" y="140" font-size="14" fill="#333" text-anchor="middle">2</text>
+                            
+                            <!-- 3 -->
+                            <rect x="100" y="110" width="40" height="20" fill="#e3f2fd" stroke="#1976d2" stroke-width="1" rx="3"/>
+                            <text x="120" y="140" font-size="14" fill="#333" text-anchor="middle">3</text>
+                            
+                            <!-- 4 (最頻値) -->
+                            <rect x="160" y="90" width="40" height="20" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="3"/>
+                            <rect x="160" y="110" width="40" height="20" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="3"/>
+                            <text x="180" y="140" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">4</text>
+                            <text x="180" y="55" font-size="14" font-weight="bold" fill="#ff9800" text-anchor="middle">2回！</text>
+                            
+                            <!-- 5 -->
+                            <rect x="220" y="110" width="40" height="20" fill="#e3f2fd" stroke="#1976d2" stroke-width="1" rx="3"/>
+                            <text x="240" y="140" font-size="14" fill="#333" text-anchor="middle">5</text>
+                            
+                            <!-- 6 -->
+                            <rect x="280" y="110" width="40" height="20" fill="#e3f2fd" stroke="#1976d2" stroke-width="1" rx="3"/>
+                            <text x="300" y="140" font-size="14" fill="#333" text-anchor="middle">6</text>
+                            
+                            <!-- 7 -->
+                            <rect x="340" y="110" width="40" height="20" fill="#e3f2fd" stroke="#1976d2" stroke-width="1" rx="3"/>
+                            <text x="360" y="140" font-size="14" fill="#333" text-anchor="middle">7</text>
+                            
+                            <!-- 9 -->
+                            <rect x="400" y="110" width="40" height="20" fill="#e3f2fd" stroke="#1976d2" stroke-width="1" rx="3"/>
+                            <text x="420" y="140" font-size="14" fill="#333" text-anchor="middle">9</text>
+                            
+                            <!-- 矢印 -->
+                            <path d="M 180 62 L 180 85" stroke="#ff9800" stroke-width="2" marker-end="url(#arrowhead6)"/>
+                            
+                            <defs>
+                                <marker id="arrowhead6" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                    <polygon points="0 0, 10 3, 0 6" fill="#ff9800"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                        <div class="svg-caption">4が最も多く現れる → 最頻値 = 4</div>
+                    </div>
+                </div>
+                
+                <div class="example-box" id="ex-quartile">
+                    <div class="example-title">
+                        <span class="number-badge">例3</span>第3四分位数（Q₃）を求める
+                    </div>
+                    <p>同じデータ 2, 3, 4, 4, 5, 6, 7, 9 の Q₃ を求める</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>中央値（4.5）でデータを前半・後半に分ける</li>
+                        <li>後半のデータ（中央値より大きい方）を取り出す → <strong>5, 6, 7, 9</strong></li>
+                        <li>後半データの中央値を求める → 4個なので2番目と3番目の平均</li>
+                    </ol>
+                    <div class="formula">
+                        \[ Q_3 = \frac{6 + 7}{2} = 6.5 \]
+                    </div>
+                </div>
+
+                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 箱ひげ図を描く</h3>
+
+                <div class="example-box" id="ex-boxplot">
+                    <div class="example-title">
+                        <span class="number-badge">例4</span>箱ひげ図を描く
+                    </div>
+                    <p>同じデータ 2, 3, 4, 4, 5, 6, 7, 9 の箱ひげ図を描く</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>5つの値を求める：
+                            <ul>
+                                <li>最小値 = <strong>2</strong></li>
+                                <li>Q₁ = <strong>3.5</strong>（前半 2,3,4,4 の中央値）</li>
+                                <li>中央値 = <strong>4.5</strong></li>
+                                <li>Q₃ = <strong>6.5</strong>（後半 5,6,7,9 の中央値）</li>
+                                <li>最大値 = <strong>9</strong></li>
+                            </ul>
+                        </li>
+                        <li>数直線上に箱ひげ図を描く</li>
+                    </ol>
+
+                    <!-- 箱ひげ図の描き方 -->
+                    <div class="svg-container">
+                        <svg width="650" height="200" viewBox="0 0 650 200">
+                            <text x="325" y="25" font-size="15" font-weight="bold" fill="#1976d2" text-anchor="middle">データ 2, 3, 4, 4, 5, 6, 7, 9 の箱ひげ図</text>
+
+                            <!-- 数直線 -->
+                            <line x1="50" y1="100" x2="600" y2="100" stroke="#999" stroke-width="2"/>
+
+                            <!-- 目盛り（0から10まで） -->
+                            <line x1="50" y1="95" x2="50" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="50" y="120" font-size="14" fill="#666" text-anchor="middle">0</text>
+
+                            <line x1="105" y1="95" x2="105" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="105" y="120" font-size="14" fill="#666" text-anchor="middle">1</text>
+
+                            <line x1="160" y1="95" x2="160" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="160" y="120" font-size="14" fill="#666" text-anchor="middle">2</text>
+
+                            <line x1="215" y1="95" x2="215" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="215" y="120" font-size="14" fill="#666" text-anchor="middle">3</text>
+
+                            <line x1="270" y1="95" x2="270" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="270" y="120" font-size="14" fill="#666" text-anchor="middle">4</text>
+
+                            <line x1="325" y1="95" x2="325" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="325" y="120" font-size="14" fill="#666" text-anchor="middle">5</text>
+
+                            <line x1="380" y1="95" x2="380" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="380" y="120" font-size="14" fill="#666" text-anchor="middle">6</text>
+
+                            <line x1="435" y1="95" x2="435" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="435" y="120" font-size="14" fill="#666" text-anchor="middle">7</text>
+
+                            <line x1="490" y1="95" x2="490" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="490" y="120" font-size="14" fill="#666" text-anchor="middle">8</text>
+
+                            <line x1="545" y1="95" x2="545" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="545" y="120" font-size="14" fill="#666" text-anchor="middle">9</text>
+
+                            <line x1="600" y1="95" x2="600" y2="105" stroke="#999" stroke-width="2"/>
+                            <text x="600" y="120" font-size="14" fill="#666" text-anchor="middle">10</text>
+
+                            <!-- 最小値 = 2 (x = 160) -->
+                            <!-- Q₁ = 3.5 (x = 242.5) -->
+                            <!-- 中央値 = 4.5 (x = 297.5) -->
+                            <!-- Q₃ = 6.5 (x = 407.5) -->
+                            <!-- 最大値 = 9 (x = 545) -->
+
+                            <!-- 左のひげ（最小値からQ₁まで） -->
+                            <line x1="160" y1="60" x2="242" y2="60" stroke="#4caf50" stroke-width="3"/>
+                            <line x1="160" y1="50" x2="160" y2="70" stroke="#4caf50" stroke-width="3"/>
+                            <text x="160" y="45" font-size="14" fill="#4caf50" text-anchor="middle">2</text>
+
+                            <!-- 箱（Q₁からQ₃まで） -->
+                            <rect x="242" y="45" width="166" height="30" fill="#e3f2fd" stroke="#1976d2" stroke-width="3"/>
+
+                            <!-- 中央値の線 -->
+                            <line x1="297" y1="45" x2="297" y2="75" stroke="#ff9800" stroke-width="4"/>
+                            <text x="297" y="170" font-size="14" font-weight="bold" fill="#ff9800" text-anchor="middle">4.5</text>
+
+                            <!-- Q₁のラベル -->
+                            <text x="242" y="170" font-size="14" fill="#4caf50" text-anchor="middle">3.5</text>
+
+                            <!-- Q₃のラベル -->
+                            <text x="408" y="170" font-size="14" fill="#2196f3" text-anchor="middle">6.5</text>
+
+                            <!-- 右のひげ（Q₃から最大値まで） -->
+                            <line x1="408" y1="60" x2="545" y2="60" stroke="#2196f3" stroke-width="3"/>
+                            <line x1="545" y1="50" x2="545" y2="70" stroke="#2196f3" stroke-width="3"/>
+                            <text x="545" y="45" font-size="14" fill="#2196f3" text-anchor="middle">9</text>
+
+                            <!-- 四分位範囲 -->
+                            <text x="325" y="185" font-size="14" font-weight="bold" fill="#9c27b0" text-anchor="middle">四分位範囲 = 6.5 − 3.5 = 3</text>
+                        </svg>
+                        <div class="svg-caption">5つの値（最小値・Q₁・中央値・Q₃・最大値）を数直線上に描く</div>
+                    </div>
+                </div>
+
+                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 外れ値を判定する</h3>
+
+                <div class="example-box" id="ex-outlier">
+                    <div class="example-title">
+                        <span class="number-badge">例5</span>外れ値の判定
+                    </div>
+                    <p>あるクラスの数学テストの点数：</p>
+                    <p style="text-align: center; font-weight: bold; color: #1976d2;">45, 52, 55, 60, 62, 65, 68, 70, 72, 75, 98</p>
+                    <p>98点は外れ値かどうか判定する</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>データを並べ替える（すでに昇順）→ 11個</li>
+                        <li>四分位数を求める：
+                            <ul>
+                                <li>Q₂（中央値）= 6番目 = <strong>65</strong></li>
+                                <li>Q₁ = 前半5個（45,52,55,60,62）の中央値 = <strong>55</strong></li>
+                                <li>Q₃ = 後半5個（68,70,72,75,98）の中央値 = <strong>72</strong></li>
+                            </ul>
+                        </li>
+                        <li>四分位範囲を計算：IQR = Q₃ − Q₁ = 72 − 55 = <strong>17</strong></li>
+                        <li>外れ値の上限を計算：Q₃ + 1.5×IQR = 72 + 1.5×17 = 72 + 25.5 = <strong>97.5</strong></li>
+                        <li>98 > 97.5 なので、<strong>98は外れ値</strong></li>
+                    </ol>
+                    <div class="formula">
+                        \[ \text{上限} = Q_3 + 1.5 \times \text{IQR} = 72 + 1.5 \times 17 = 97.5 \]
+                        \[ 98 > 97.5 \quad \Rightarrow \quad \text{外れ値！} \]
+                    </div>
+                    <p style="background: #fff3e0; padding: 10px; border-radius: 5px; margin-top: 15px;">
+                        <strong>💡 解釈：</strong>98点は他の生徒と比べて極端に高い。カンニング？...ではなく、その生徒が本当に優秀なだけかもしれない。外れ値＝異常値とは限らないことに注意！
+                    </p>
+                </div>
+
+                <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 経験的確率を求める</h3>
+
+                <div class="example-box" id="ex-probability">
+                    <div class="example-title">
+                        <span class="number-badge">例6</span>5以下になる確率
+                    </div>
+                    <p>データ 2, 3, 4, 4, 5, 6, 7, 9 から無作為に1つ選ぶとき、5以下になる確率を求める</p>
+                    <p><strong>解き方：</strong></p>
+                    <ol>
+                        <li>条件を満たすデータ（5以下）を数える → 2, 3, 4, 4, 5 の <strong>5個</strong></li>
+                        <li>全データの個数を確認 → <strong>8個</strong></li>
+                        <li>経験的確率 = 条件を満たす個数 ÷ 全体の個数</li>
+                    </ol>
+                    <div class="formula">
+                        \[ P = \frac{5}{8} \]
+                    </div>
+                    
+                    <!-- 確率の視覚化 -->
+                    <div class="svg-container">
+                        <svg width="600" height="160" viewBox="0 0 600 160">
+                            <text x="300" y="25" font-size="15" font-weight="bold" fill="#1976d2" text-anchor="middle">「5以下」の確率の視覚化</text>
+                            
+                            <!-- 5以下（緑） -->
+                            <rect x="50" y="50" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="75" y="75" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">2</text>
+                            <text x="75" y="105" font-size="14" fill="#4caf50" text-anchor="middle">✓ 5以下</text>
+                            
+                            <rect x="110" y="50" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="135" y="75" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">3</text>
+                            <text x="135" y="105" font-size="14" fill="#4caf50" text-anchor="middle">✓ 5以下</text>
+                            
+                            <rect x="170" y="50" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="195" y="75" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">4</text>
+                            <text x="195" y="105" font-size="14" fill="#4caf50" text-anchor="middle">✓ 5以下</text>
+                            
+                            <rect x="230" y="50" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="255" y="75" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">4</text>
+                            <text x="255" y="105" font-size="14" fill="#4caf50" text-anchor="middle">✓ 5以下</text>
+                            
+                            <rect x="290" y="50" width="50" height="40" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                            <text x="315" y="75" font-size="16" font-weight="bold" fill="#2e7d32" text-anchor="middle">5</text>
+                            <text x="315" y="105" font-size="14" fill="#4caf50" text-anchor="middle">✓ 5以下</text>
+                            
+                            <!-- 6以上（グレー） -->
+                            <rect x="350" y="50" width="50" height="40" fill="#f5f5f5" stroke="#999" stroke-width="2" rx="5"/>
+                            <text x="375" y="75" font-size="16" font-weight="bold" fill="#666" text-anchor="middle">6</text>
+                            <text x="375" y="105" font-size="14" fill="#999" text-anchor="middle">✗ 6以上</text>
+                            
+                            <rect x="410" y="50" width="50" height="40" fill="#f5f5f5" stroke="#999" stroke-width="2" rx="5"/>
+                            <text x="435" y="75" font-size="16" font-weight="bold" fill="#666" text-anchor="middle">7</text>
+                            <text x="435" y="105" font-size="14" fill="#999" text-anchor="middle">✗ 6以上</text>
+                            
+                            <rect x="470" y="50" width="50" height="40" fill="#f5f5f5" stroke="#999" stroke-width="2" rx="5"/>
+                            <text x="495" y="75" font-size="16" font-weight="bold" fill="#666" text-anchor="middle">9</text>
+                            <text x="495" y="105" font-size="14" fill="#999" text-anchor="middle">✗ 6以上</text>
+                            
+                            <!-- 計算 -->
+                            <text x="300" y="140" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">5以下：5個 ÷ 全体：8個 = 5/8</text>
+                        </svg>
+                        <div class="svg-caption">条件を満たすデータ（緑）の個数 ÷ 全データ個数</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 簡単にするコツ -->
+        <section id="section4">
+            <h2>4. 簡単にするコツ</h2>
+            <div class="section">
+                <div class="tip-box">
+                    <strong>✏️ コツ1：並べ替えを最初に</strong><br>
+                    バラバラのデータを見ても何も分からない。まず小さい順に並べ替える。
+                </div>
+
+                <div class="tip-box">
+                    <strong>✏️ コツ2：個数を数えて位置を計算</strong><br>
+                    データが何個あるか数え、中央値や四分位数の位置を式で計算する。
+                </div>
+
+                <div class="tip-box">
+                    <strong>✏️ コツ3：前半・後半に分けて考える</strong><br>
+                    四分位数は、中央値で分けた前半と後半それぞれの中央値を求めるだけ。
+                </div>
+
+                <div class="tip-box">
+                    <strong>✏️ コツ4：確率は約分を忘れずに</strong><br>
+                    \(\frac{6}{8} = \frac{3}{4}\) のように、必ず最も簡単な分数にする。
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. よくあるつまづき -->
+        <section id="section5">
+            <h2>5. よくあるつまづき</h2>
+            <div class="section">
+                <div class="caution-box">
+                    <div class="caution-title">⚠️ つまづき1：並べ替えを忘れる</div>
+                    <p><strong>ダメな例：</strong> 3, 5, 6, 2, 4, 7 のまま「真ん中は6と2」と考える</p>
+                    <p><strong>対策：</strong> 最初に必ず並べ替える。これをしないとすべて間違う！</p>
+                </div>
+                
+                <div class="caution-box">
+                    <div class="caution-title">⚠️ つまづき2：個数の数え間違い</div>
+                    <p><strong>ダメな例：</strong> 重複する数を1個としか数えない</p>
+                    <p><strong>対策：</strong> 2, 3, 4, 4, 5 は「5個」。4が2回あることに注意。</p>
+                </div>
+                
+                <div class="caution-box">
+                    <div class="caution-title">⚠️ つまづき3：偶数個の中央値で平均を忘れる</div>
+                    <p><strong>ダメな例：</strong> 8個のデータで4番目だけを答える</p>
+                    <p><strong>対策：</strong> 偶数個なら真ん中2つの平均を取る。4番目と5番目を足して2で割る。</p>
+                </div>
+                
+                <div class="caution-box">
+                    <div class="caution-title">⚠️ つまづき4：四分位数で中央値を含めてしまう</div>
+                    <p><strong>ダメな例：</strong> Q₁を求めるとき中央値まで含めて計算</p>
+                    <p><strong>対策：</strong> 前半・後半は中央値を含めない。中央値より小さい/大きいデータだけで考える。</p>
+                </div>
+                
+                <div class="caution-box">
+                    <div class="caution-title">⚠️ つまづき5：確率の分母を間違える</div>
+                    <p><strong>ダメな例：</strong> 「5以下」の個数を分母にする</p>
+                    <p><strong>対策：</strong> 分母は常に全データの個数。分子が条件を満たす個数。</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 6. 仕上げチェックリスト -->
+        <section id="section6">
+            <h2>6. 仕上げチェックリスト</h2>
+            <div class="section">
+                <div class="checklist">
+                    <div class="checklist-item">データを小さい順に正しく並べ替えたか</div>
+                    <div class="checklist-item">データの個数を正確に数えたか（重複も含めて）</div>
+                    <div class="checklist-item">中央値や四分位数の位置計算は正しいか</div>
+                    <div class="checklist-item">確率の分母は全データの個数になっているか</div>
+                    <div class="checklist-item">確率の答えは約分して最も簡単な形にしたか</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 練習問題 -->
+        <section id="section7">
+            <h2>7. 練習問題</h2>
+            <div class="section">
+                <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+                <div class="rule-box" style="background: #f5f5f5;">
+                    <strong>練習1</strong>
+                    <p>次のデータの中央値と最頻値を求めなさい。</p>
+                    <p style="text-align: center; font-weight: bold; color: #1976d2;">12, 8, 15, 8, 10, 14, 8</p>
+                    <details style="margin-top: 15px;">
+                        <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                        <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                            <p><strong>並べ替え：</strong>8, 8, 8, 10, 12, 14, 15（7個）</p>
+                            <p><strong>中央値：</strong>7個なので4番目 → <strong>10</strong></p>
+                            <p><strong>最頻値：</strong>8が3回で最多 → <strong>8</strong></p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+                    <strong>練習2</strong>
+                    <p>次のデータで、10以上になる確率を求めなさい。</p>
+                    <p style="text-align: center; font-weight: bold; color: #1976d2;">5, 12, 8, 15, 10, 7, 11, 9</p>
+                    <details style="margin-top: 15px;">
+                        <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                        <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                            <p><strong>10以上のデータ：</strong>12, 15, 10, 11 → 4個</p>
+                            <p><strong>全データ：</strong>8個</p>
+                            <p><strong>確率：</strong>\(\frac{4}{8} = \frac{1}{2}\)</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- まとめ -->
+        <div class="summary">
+            📌 まとめ：データは並べて、個数を数えて、位置を計算！
+        </div>
+
+        <!-- おまけ：歴史ストーリー -->
+        <section id="story">
+            <h2>おまけ：歴史ストーリー「パスカルとフェルマーの賭け問題」</h2>
+            <div class="section">
+                <div class="story-box">
+                    <div class="story-title">📖 パスカルとフェルマーの賭け問題（1654年・フランス）</div>
+
+                    <p>1654年、フランスの貴族シュヴァリエ・ド・メレは、賭け事が大好きだった。ある日、彼は数学者パスカルにこんな相談をした：</p>
+
+                    <p style="background: #fff9c4; padding: 10px; border-radius: 8px; margin: 15px 0;">
+                        「友人と賭けをしていた。先に3勝した方が賞金64ピストル（金貨）を総取りするルール。<br>
+                        ところが、私が2勝1敗のところで中断になってしまった。<br>
+                        <strong>賞金はどう分けるのが公平だろうか？</strong>」
+                    </p>
+
+                    <p>パスカルは友人の数学者フェルマーに手紙を書き、二人でこの問題を考えた。</p>
+
+                    <p><strong>【パスカルの考え方：未来の場合を数える】</strong></p>
+                    <p>現在の状況：パスカル側 2勝、相手 1勝。あと最大2回で決着がつく。</p>
+                    <p>起こりうる全ての場合を書き出すと：</p>
+
+                    <table class="material-table" style="margin: 15px 0;">
+                        <tr>
+                            <th>1回目</th>
+                            <th>2回目</th>
+                            <th>勝者</th>
+                        </tr>
+                        <tr>
+                            <td>パスカル勝ち</td>
+                            <td>—</td>
+                            <td>パスカル（3勝）</td>
+                        </tr>
+                        <tr>
+                            <td>相手勝ち</td>
+                            <td>パスカル勝ち</td>
+                            <td>パスカル（3勝）</td>
+                        </tr>
+                        <tr>
+                            <td>相手勝ち</td>
+                            <td>相手勝ち</td>
+                            <td>相手（3勝）</td>
+                        </tr>
+                    </table>
+
+                    <p><strong>確率を計算：</strong></p>
+                    <div class="formula">
+                        \[ P(\text{パスカル勝ち}) = \frac{1}{2} + \frac{1}{2} \times \frac{1}{2} = \frac{1}{2} + \frac{1}{4} = \frac{3}{4} \]
+                    </div>
+                    <div class="formula">
+                        \[ P(\text{相手勝ち}) = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4} \]
+                    </div>
+
+                    <p><strong>【公平な分配】</strong></p>
+                    <p>賞金64ピストルを確率に応じて分けると：</p>
+                    <div class="formula">
+                        \[ \text{パスカルの取り分} = 64 \times \frac{3}{4} = 48 \text{ピストル} \]
+                    </div>
+                    <div class="formula">
+                        \[ \text{相手の取り分} = 64 \times \frac{1}{4} = 16 \text{ピストル} \]
+                    </div>
+
+                    <p style="background: #e8f5e9; padding: 10px; border-radius: 8px; margin: 15px 0;">
+                        この手紙のやり取りが、<strong>確率論の誕生</strong>とされている。<br>
+                        「賭け事をどう分けるか」という俗っぽい問題が、数学の新しい分野を生み出したのだ。
+                    </p>
+
+                    <p>教訓：<strong>賭け事の相談が数学史を変えることもある</strong>。ただし、賭け事そのものはおすすめしない。パスカルもフェルマーも、計算はしたが実際に賭けたわけではない（たぶん）。</p>
+
+                    <p style="font-size: 14px; color: #666; margin-top: 20px;">
+                        ※パスカルとフェルマーの往復書簡は実際に残っており、確率論の起源とされています。この問題は「分配問題」として知られ、現代では期待値の概念で解かれます（<a href="https://ja.wikipedia.org/wiki/%E7%A2%BA%E7%8E%87%E8%AB%96" target="_blank" style="color: #1976d2;">確率論</a>、<a href="https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%AC%E3%83%BC%E3%82%BA%E3%83%BB%E3%83%91%E3%82%B9%E3%82%AB%E3%83%AB" target="_blank" style="color: #1976d2;">ブレーズ・パスカル</a>）。
+                    </p>
+                </div>
+            </div>
+        </section>

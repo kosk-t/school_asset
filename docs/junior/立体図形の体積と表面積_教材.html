@@ -1,0 +1,628 @@
+---
+layout: material-raw
+title: 立体図形の体積と表面積
+icon: "📦"
+description: 直方体・角柱・円柱・円錐・角錐の体積と表面積を求める公式を学ぶ。柱体は「底面積×高さ」、錐体は「底面積×高さ×1/3」という基本パターンを習得する。
+level: 標準
+level_num: 2
+category: geometry
+order: 4
+keywords:
+- 体積
+- 表面積
+- 側面積
+- 直方体
+- 角柱
+- 円柱
+- 円錐
+- 角錐
+- 母線
+cover_image: /images/立体図形の体積と表面積_教材.png
+cover_description: 直方体・円柱・円錐が並んだ図、展開図、底面積と高さの矢印
+toc:
+- id: section1
+  title: "テーマの定義"
+- id: section2
+  title: "覚えるルール"
+- id: section3
+  title: "例題と解き方"
+- id: section4
+  title: "簡単にするコツ"
+- id: section5
+  title: "よくあるつまづき"
+- id: section6
+  title: "仕上げチェックリスト"
+- id: section7
+  title: "練習問題"
+- id: story
+  title: "おまけ：歴史ストーリー「アルキメデスと王冠の謎」"
+related:
+- url: /平面図形の面積公式_教材.html
+  title: 平面図形の面積公式
+  note: 底面積の計算に必要
+  type: prerequisite
+- url: /円と球の性質_教材.html
+  title: 円と球の性質
+  note: 円柱・円錐・球の計算に使う
+  type: prerequisite
+- url: /おうぎ形の弧と面積_教材.html
+  title: おうぎ形の弧と面積
+  note: 円錐の展開図に必要
+  type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>箱にどれだけ物が入るか、缶に何リットル入るか、テントに必要な布の量は？これらを計算するには立体の体積や表面積が必要です。</p>
+        <p>このページでは、さまざまな立体図形の体積と表面積を学びます：</p>
+        <ul>
+            <li><strong>柱体</strong>：直方体・角柱・円柱（底面が同じ形でまっすぐ伸びた立体）</li>
+            <li><strong>錐体</strong>：円錐・角錐（底面から頂点に向かって尖った立体）</li>
+            <li><strong>表面積と側面積</strong>：立体の表面全体の面積、側面だけの面積</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】柱体は「底面積×高さ」、錐体は「底面積×高さ×\(\frac{1}{3}\)」
+        </div>
+
+        <!-- 柱体と錐体の比較図 -->
+        <div class="svg-container">
+            <svg width="700" height="250" viewBox="0 0 700 250">
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">柱体 vs
+                    錐体</text>
+
+                <!-- 柱体（円柱） -->
+                <text x="175" y="55" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">柱体（円柱）</text>
+
+                <!-- 円柱の上面 -->
+                <ellipse cx="175" cy="80" rx="60" ry="20" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" />
+
+                <!-- 円柱の側面 -->
+                <line x1="115" y1="80" x2="115" y2="180" stroke="#4caf50" stroke-width="2" />
+                <line x1="235" y1="80" x2="235" y2="180" stroke="#4caf50" stroke-width="2" />
+
+                <!-- 円柱の底面 -->
+                <ellipse cx="175" cy="180" rx="60" ry="20" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" />
+
+                <!-- 高さ -->
+                <line x1="250" y1="80" x2="250" y2="180" stroke="#ff9800" stroke-width="2" />
+                <text x="265" y="135" font-size="14" font-weight="bold" fill="#ff9800">h</text>
+
+                <!-- 公式 -->
+                <text x="175" y="220" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">V =
+                    Ah</text>
+                <text x="175" y="240" font-size="14" fill="#666" text-anchor="middle">（底面積 × 高さ）</text>
+
+                <!-- 錐体（円錐） -->
+                <text x="525" y="55" font-size="14" font-weight="bold" fill="#e53935" text-anchor="middle">錐体（円錐）</text>
+
+                <!-- 円錐 -->
+                <ellipse cx="525" cy="180" rx="60" ry="20" fill="#ffcdd2" stroke="#e53935" stroke-width="2" />
+                <line x1="465" y1="180" x2="525" y2="80" stroke="#e53935" stroke-width="2" />
+                <line x1="585" y1="180" x2="525" y2="80" stroke="#e53935" stroke-width="2" />
+
+                <!-- 頂点 -->
+                <circle cx="525" cy="80" r="4" fill="#e53935" />
+
+                <!-- 高さ -->
+                <line x1="525" y1="80" x2="525" y2="180" stroke="#ff9800" stroke-width="2" stroke-dasharray="5,3" />
+                <text x="540" y="135" font-size="14" font-weight="bold" fill="#ff9800">h</text>
+
+                <!-- 公式 -->
+                <text x="525" y="220" font-size="14" font-weight="bold" fill="#e53935" text-anchor="middle">V =
+                    ⅓Ah</text>
+                <text x="525" y="240" font-size="14" fill="#666" text-anchor="middle">（底面積 × 高さ × ⅓）</text>
+            </svg>
+            <div class="svg-caption">柱体と錐体の体積公式の違い：錐体は柱体の3分の1</div>
+        </div>
+
+        <div class="rule-box" id="rule-cuboid-volume">
+            <strong>📌 直方体の体積と表面積</strong> <a href="#ex-cuboid" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ V = \ell wh \]
+                \(\ell\)：たて、\(w\)：よこ、\(h\)：高さ
+            </div>
+            <div class="formula">
+                \[ S = 2(\ell w + wh + h\ell) \]
+                表面積は6つの面の面積の合計
+            </div>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>直方体には3種類の長方形が2枚ずつあります。(たて×よこ)×2 + (よこ×高さ)×2 + (高さ×たて)×2 をまとめると上の式になります。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-prism-volume">
+            <strong>📌 角柱・円柱の体積</strong> <a href="#ex-prism" class="example-link">→ 例2</a> <a href="#ex-cylinder"
+                class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ V = Ah \]
+                \(A\)：底面積、\(h\)：高さ
+            </div>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>底面を高さの分だけ積み重ねたものが柱体です。「1段の面積」×「段数（高さ）」で体積が出ます。</p>
+            </details>
+
+            <p><strong>特に円柱の場合：</strong></p>
+            <div class="formula">
+                \[ V = \pi r^2 h \]
+                （底面積 \(\pi r^2\) × 高さ \(h\)）
+            </div>
+        </div>
+
+        <div class="rule-box" id="rule-cylinder-surface-area">
+            <strong>📌 円柱の側面積</strong> <a href="#ex-cylinder-surface" class="example-link">→ 例4</a>
+            <div class="formula">
+                \[ S_{\text{側面}} = 2\pi rh \]
+                \(r\)：底面の半径、\(h\)：高さ
+            </div>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>円柱の側面を展開すると長方形になります。横は底面の円周 \(2\pi r\)、縦は高さ \(h\) なので、面積は \(2\pi r \times h\) です。</p>
+            </details>
+
+            <!-- 円柱の展開図 -->
+            <div class="svg-container">
+                <svg width="700" height="200" viewBox="0 0 700 200">
+                    <defs>
+                        <marker id="arrow-unfold" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#ff9800" />
+                        </marker>
+                    </defs>
+
+                    <text x="350" y="20" font-size="14" font-weight="bold" fill="#1976d2"
+                        text-anchor="middle">円柱の側面を展開すると...</text>
+
+                    <!-- 円柱 -->
+                    <ellipse cx="120" cy="60" rx="40" ry="15" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" />
+                    <line x1="80" y1="60" x2="80" y2="150" stroke="#1976d2" stroke-width="2" />
+                    <line x1="160" y1="60" x2="160" y2="150" stroke="#1976d2" stroke-width="2" />
+                    <ellipse cx="120" cy="150" rx="40" ry="15" fill="#bbdefb" stroke="#1976d2" stroke-width="2" />
+
+                    <text x="175" y="110" font-size="14" fill="#ff9800">h</text>
+
+                    <!-- 矢印 -->
+                    <path d="M 200 100 L 280 100" stroke="#ff9800" stroke-width="3" marker-end="url(#arrow-unfold)" />
+                    <text x="240" y="90" font-size="14" fill="#ff9800" text-anchor="middle">展開</text>
+
+                    <!-- 長方形 -->
+                    <rect x="320" y="50" width="180" height="100" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" />
+
+                    <!-- 寸法 -->
+                    <text x="410" y="40" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">横
+                        = 円周 = 2πr</text>
+                    <text x="520" y="105" font-size="14" font-weight="bold" fill="#ff9800">縦 = h</text>
+
+                    <!-- 結果 -->
+                    <text x="560" y="100" font-size="14" fill="#333" text-anchor="middle">→</text>
+                    <text x="630" y="90" font-size="14" fill="#333" text-anchor="middle">側面積 =</text>
+                    <text x="630" y="115" font-size="16" font-weight="bold" fill="#4caf50"
+                        text-anchor="middle">2πrh</text>
+                </svg>
+                <div class="svg-caption">円柱の側面を広げると長方形（横=円周、縦=高さ）</div>
+            </div>
+        </div>
+
+        <div class="rule-box" id="rule-pyramid-volume">
+            <strong>📌 角錐・円錐の体積</strong> <a href="#ex-pyramid" class="example-link">→ 例5</a> <a href="#ex-cone"
+                class="example-link">→ 例6</a>
+            <div class="formula">
+                \[ V = \frac{1}{3}Ah \]
+                \(A\)：底面積、\(h\)：高さ
+            </div>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>同じ底面積・高さの柱体と比べると、錐体は尖っている分だけ中身が少ない。実際に計算すると、ちょうど3分の1になります。</p>
+            </details>
+
+            <p><strong>特に円錐の場合：</strong></p>
+            <div class="formula">
+                \[ V = \frac{1}{3}\pi r^2 h \]
+            </div>
+        </div>
+
+        <div class="rule-box" id="rule-cone-surface-area">
+            <strong>📌 円錐の側面積</strong> <a href="#ex-cone-surface" class="example-link">→ 例7</a>
+            <div class="formula">
+                \[ S_{\text{側面}} = \pi r \ell \]
+                \(r\)：底面の半径、\(\ell\)：母線（斜めの長さ）
+            </div>
+            <p><strong>💡 母線とは？</strong> 円錐の頂点から底面の円周上の点を結んだ線。円錐の「斜めの辺」のこと。</p>
+
+            <!-- 円錐の母線の図 -->
+            <div class="svg-container">
+                <svg width="700" height="180" viewBox="0 0 700 180">
+                    <text x="350" y="20" font-size="14" font-weight="bold" fill="#1976d2"
+                        text-anchor="middle">円錐の各部の名前</text>
+
+                    <!-- 円錐 -->
+                    <ellipse cx="200" cy="150" rx="80" ry="25" fill="#ffebee" stroke="#e53935" stroke-width="2" />
+                    <line x1="120" y1="150" x2="200" y2="50" stroke="#e53935" stroke-width="2" />
+                    <line x1="280" y1="150" x2="200" y2="50" stroke="#e53935" stroke-width="2" />
+
+                    <!-- 頂点 -->
+                    <circle cx="200" cy="50" r="4" fill="#e53935" />
+                    <text x="210" y="45" font-size="14" fill="#e53935">頂点</text>
+
+                    <!-- 高さ -->
+                    <line x1="200" y1="50" x2="200" y2="150" stroke="#ff9800" stroke-width="2" stroke-dasharray="5,3" />
+                    <text x="210" y="105" font-size="14" font-weight="bold" fill="#ff9800">h（高さ）</text>
+
+                    <!-- 母線 -->
+                    <line x1="200" y1="50" x2="280" y2="150" stroke="#9c27b0" stroke-width="3" />
+                    <text x="255" y="90" font-size="14" font-weight="bold" fill="#9c27b0">ℓ（母線）</text>
+
+                    <!-- 半径 -->
+                    <line x1="200" y1="150" x2="280" y2="150" stroke="#4caf50" stroke-width="2" />
+                    <text x="240" y="170" font-size="14" font-weight="bold" fill="#4caf50">r（半径）</text>
+
+                    <!-- 説明 -->
+                    <rect x="400" y="40" width="270" height="120" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"
+                        rx="10" />
+                    <text x="535" y="70" font-size="15" font-weight="bold" fill="#9c27b0"
+                        text-anchor="middle">ポイント</text>
+                    <text x="420" y="100" font-size="14" fill="#333">・母線 ℓ は「斜めの辺」の長さ</text>
+                    <text x="420" y="125" font-size="14" fill="#333">・高さ h とは違う！</text>
+                    <text x="420" y="150" font-size="14" fill="#e53935">・側面積 = πrℓ（母線を使う）</text>
+                </svg>
+                <div class="svg-caption">母線（ℓ）は斜めの長さ。高さ（h）と間違えないこと</div>
+            </div>
+        </div>
+
+        <div class="rule-box" id="rule-solid-formulas-summary">
+            <strong>📌 公式まとめ</strong>
+            <table class="material-table">
+                <tr>
+                    <th>立体</th>
+                    <th>体積</th>
+                    <th>側面積</th>
+                </tr>
+                <tr>
+                    <td>直方体</td>
+                    <td>\(V = \ell wh\)</td>
+                    <td>4面の合計</td>
+                </tr>
+                <tr>
+                    <td>角柱</td>
+                    <td>\(V = Ah\)</td>
+                    <td>底面の周 × 高さ</td>
+                </tr>
+                <tr>
+                    <td>円柱</td>
+                    <td>\(V = \pi r^2 h\)</td>
+                    <td>\(S = 2\pi rh\)</td>
+                </tr>
+                <tr>
+                    <td>角錐</td>
+                    <td>\(V = \frac{1}{3}Ah\)</td>
+                    <td>三角形の合計</td>
+                </tr>
+                <tr>
+                    <td>円錐</td>
+                    <td>\(V = \frac{1}{3}\pi r^2 h\)</td>
+                    <td>\(S = \pi r\ell\)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>各立体の体積と表面積を求める問題を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 直方体・角柱</h3>
+
+        <div class="example-box" id="ex-cuboid">
+            <div class="example-title">
+                <span class="number-badge">例1</span>直方体の体積と表面積
+            </div>
+            <p>たて 4 cm、よこ 5 cm、高さ 3 cm の直方体の体積と表面積を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>体積は「たて×よこ×高さ」</li>
+                <li>表面積は3種類の面の面積を2倍して足す</li>
+            </ol>
+            <div class="formula">
+                \[ V = 4 \times 5 \times 3 = 60 \text{ cm}^3 \]
+            </div>
+            <div class="formula">
+                \[ S = 2(4 \times 5 + 5 \times 3 + 3 \times 4) = 2(20 + 15 + 12) = 2 \times 47 = 94 \text{ cm}^2
+                \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-prism">
+            <div class="example-title">
+                <span class="number-badge">例2</span>三角柱の体積
+            </div>
+            <p>底面が底辺 6 cm、高さ 4 cm の三角形で、柱の高さが 10 cm の三角柱の体積を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>まず底面積（三角形の面積）を求める</li>
+                <li>底面積 × 柱の高さ で体積を求める</li>
+            </ol>
+            <div class="formula">
+                \[ A = \frac{1}{2} \times 6 \times 4 = 12 \text{ cm}^2 \]
+            </div>
+            <div class="formula">
+                \[ V = 12 \times 10 = 120 \text{ cm}^3 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 円柱</h3>
+
+        <div class="example-box" id="ex-cylinder">
+            <div class="example-title">
+                <span class="number-badge">例3</span>円柱の体積
+            </div>
+            <p>底面の半径 5 cm、高さ 8 cm の円柱の体積を求めよ。（\(\pi\) のまま）</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>円柱の体積公式 \(V = \pi r^2 h\) を使う</li>
+                <li>半径と高さを代入する</li>
+            </ol>
+            <div class="formula">
+                \[ V = \pi \times 5^2 \times 8 = \pi \times 25 \times 8 = 200\pi \text{ cm}^3 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-cylinder-surface">
+            <div class="example-title">
+                <span class="number-badge">例4</span>円柱の側面積
+            </div>
+            <p>底面の半径 3 cm、高さ 7 cm の円柱の側面積を求めよ。（\(\pi\) のまま）</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>側面積の公式 \(S = 2\pi rh\) を使う</li>
+                <li>半径と高さを代入する</li>
+            </ol>
+            <div class="formula">
+                \[ S = 2\pi \times 3 \times 7 = 42\pi \text{ cm}^2 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 角錐・円錐</h3>
+
+        <div class="example-box" id="ex-pyramid">
+            <div class="example-title">
+                <span class="number-badge">例5</span>四角錐の体積
+            </div>
+            <p>底面が 1辺 6 cm の正方形、高さ 9 cm の四角錐の体積を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>底面積（正方形の面積）を求める</li>
+                <li>錐体なので「底面積 × 高さ × \(\frac{1}{3}\)」</li>
+            </ol>
+            <div class="formula">
+                \[ A = 6 \times 6 = 36 \text{ cm}^2 \]
+            </div>
+            <div class="formula">
+                \[ V = \frac{1}{3} \times 36 \times 9 = \frac{1}{3} \times 324 = 108 \text{ cm}^3 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-cone">
+            <div class="example-title">
+                <span class="number-badge">例6</span>円錐の体積
+            </div>
+            <p>底面の半径 4 cm、高さ 6 cm の円錐の体積を求めよ。（\(\pi\) のまま）</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>円錐の体積公式 \(V = \frac{1}{3}\pi r^2 h\) を使う</li>
+                <li>半径と高さを代入する</li>
+            </ol>
+            <div class="formula">
+                \[ V = \frac{1}{3} \times \pi \times 4^2 \times 6 = \frac{1}{3} \times 16\pi \times 6 =
+                \frac{96\pi}{3} = 32\pi \text{ cm}^3 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-cone-surface">
+            <div class="example-title">
+                <span class="number-badge">例7</span>円錐の側面積
+            </div>
+            <p>底面の半径 3 cm、母線 5 cm の円錐の側面積を求めよ。（\(\pi\) のまま）</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>側面積の公式 \(S = \pi r\ell\) を使う（\(\ell\) は母線）</li>
+                <li>半径と母線を代入する（高さではない！）</li>
+            </ol>
+            <div class="formula">
+                \[ S = \pi \times 3 \times 5 = 15\pi \text{ cm}^2 \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：柱か錐かを最初に判断</strong><br>
+            先が尖っていれば錐体（×1/3）、まっすぐなら柱体。これで公式が決まる。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：底面積を先に計算してメモ</strong><br>
+            複雑な底面（三角形や多角形）は、まず底面積を計算してから体積の式に代入。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：×1/3 は最後にやると約分しやすい</strong><br>
+            先に底面積×高さを計算してから3で割ると、計算ミスが減る。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：円錐の側面積は「母線」を使う</strong><br>
+            高さ \(h\) ではなく母線 \(\ell\) を使う。問題文で何が与えられているか確認。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ5：表面積 = 側面積 + 底面積（×2 の場合も）</strong><br>
+            円柱の全表面積は「側面積 + 上の円 + 下の円」= \(2\pi rh + 2\pi r^2\)。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：錐体で ×1/3 を忘れる</div>
+            <p><strong>ダメな例：</strong> 円錐の体積を \(\pi r^2 h\) で計算（これは円柱）</p>
+            <p><strong>対策：</strong> 尖っている → 錐体 → ×1/3 が必要！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：円錐の側面積で高さを使う</div>
+            <p><strong>ダメな例：</strong> 側面積を \(\pi r h\) で計算（正しくは \(\pi r\ell\)）</p>
+            <p><strong>対策：</strong> 円錐の側面積は「母線（斜めの長さ）」を使う。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：柱と錐を取り違える</div>
+            <p><strong>ダメな例：</strong> 円柱を円錐と間違えて ×1/3 してしまう</p>
+            <p><strong>対策：</strong> 図をよく見る。まっすぐなら柱、尖っていれば錐。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：底面積の計算ミス</div>
+            <p><strong>ダメな例：</strong> 円柱の底面積を \(2\pi r\) と計算（これは円周）</p>
+            <p><strong>対策：</strong> 底面積（円）は \(\pi r^2\)。円周と混同しない。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき5：単位の³を忘れる</div>
+            <p><strong>ダメな例：</strong> 体積を「60 cm²」と答える</p>
+            <p><strong>対策：</strong> 体積は cm³ や m³（長さの3乗）、表面積は cm²。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">柱体か錐体かを正しく判断したか（錐体なら ×1/3）</div>
+            <div class="checklist-item">底面積を正しく計算したか（円なら \(\pi r^2\)）</div>
+            <div class="checklist-item">円錐の側面積で「母線」を使ったか（高さではない）</div>
+            <div class="checklist-item">体積の単位は cm³ になっているか</div>
+            <div class="checklist-item">表面積の単位は cm² になっているか</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>底面の半径 6 cm、高さ 10 cm の円柱の体積を求めよ。（\(\pi\) のまま）</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(V = \pi r^2 h = \pi \times 6^2 \times 10 = \pi \times 36 \times 10 = 360\pi\) cm³</p>
+                    <p><strong>答え：\(360\pi\) cm³</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>底面の半径 5 cm、高さ 12 cm の円錐の体積を求めよ。（\(\pi\) のまま）</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(V = \frac{1}{3}\pi r^2 h = \frac{1}{3} \times \pi \times 5^2 \times 12 = \frac{1}{3}
+                        \times 25\pi \times 12 = \frac{300\pi}{3} = 100\pi\) cm³</p>
+                    <p><strong>答え：\(100\pi\) cm³</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：柱体は「底面積×高さ」、錐体は「×1/3」を忘れずに！
+</div>
+
+<!-- ========== おまけ：実践ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「アルキメデスと王冠の謎」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 アルキメデスと王冠の謎（紀元前3世紀・古代ギリシャ）</div>
+
+            <p>紀元前3世紀、シラクサ（現在のイタリア・シチリア島）の王ヒエロン2世は、神殿に捧げる王冠を金細工師に作らせた。しかし「あの職人、金の一部を銀にすり替えて、残りを懐に入れたのでは...？」と疑いを持った。
+            </p>
+
+            <p>王は天才数学者アルキメデスに命じた。「<strong>王冠を傷つけずに、純金かどうか調べよ</strong>」</p>
+
+            <p>アルキメデスは困った。重さを測るだけでは分からない。金と銀を混ぜても、同じ重さにすることはできる。形を変えずに中身を調べる方法は...？</p>
+
+            <p style="text-align: center; font-size: 1.2em; color: #ff9800; margin: 20px 0;">💡
+                ある日、風呂に入った瞬間、ひらめいた！</p>
+
+            <p>湯船に体を沈めると水があふれる。これは<strong>体が水を押しのけた分だけ水が溢れる</strong>ということ。つまり、<strong>物体を水に沈めれば体積が測れる</strong>！
+            </p>
+
+            <p>「ユーレカ！ユーレカ！（分かった！分かった！）」と叫びながら、<strong>裸のまま街を走った</strong>という伝説が残っている。シラクサ市民はさぞ驚いたことだろう。「天才と変人は紙一重」とはこのことか。
+            </p>
+
+            <div class="important-rule" style="margin: 20px 0;">
+                【アルキメデスの発見】物体を水に沈めると、溢れた水の体積 ＝ 物体の体積
+            </div>
+
+            <p><strong>🔬 実際に王冠を調べてみよう（数値は例）</strong></p>
+
+            <p>王冠の重さ：1000 g</p>
+            <p>王冠を水に沈めて溢れた水の量から測った体積：<strong>60 cm³</strong></p>
+
+            <p><strong>もし純金なら？</strong></p>
+            <p>金の密度は 19.3 g/cm³ なので、1000g の純金の体積は：</p>
+            <div class="formula">
+                \[ V_{\text{純金}} = \frac{1000}{19.3} \approx 51.8 \text{ cm}^3 \]
+            </div>
+
+            <p><strong>もし純銀なら？</strong></p>
+            <p>銀の密度は 10.5 g/cm³ なので、1000g の純銀の体積は：</p>
+            <div class="formula">
+                \[ V_{\text{純銀}} = \frac{1000}{10.5} \approx 95.2 \text{ cm}^3 \]
+            </div>
+
+            <p><strong>結果</strong></p>
+            <p>王冠の体積 60 cm³ は、純金（51.8 cm³）より大きく、純銀（95.2 cm³）より小さい。</p>
+            <p>→ <strong style="color: #e53935;">銀が混ざっている！</strong></p>
+
+            <p>こうして金細工師の不正が暴かれた。体積を測ることで、物の「密度」が分かり、中身の正体を見破ることができたのだ。金細工師がその後どうなったかは...想像にお任せする。（古代ギリシャの王様を怒らせると、だいたいロクなことにならない）
+            </p>
+
+            <div class="tip-box" style="margin-top: 20px;">
+                <strong>💡 この話のポイント</strong><br>
+                ・同じ重さでも、材質が違えば体積が違う（密度の違い）<br>
+                ・複雑な形の物体でも、水に沈めれば体積が測れる<br>
+                ・体積の測定は、2200年以上前から実用的に使われていた！
+            </div>
+
+            <p style="font-size: 14px; color: #666; margin-top: 20px;">
+                ※この「王冠の謎」は有名なエピソードですが、実際にこの方法で調べたかどうかは史料では確認できません。ただし、アルキメデスが浮力の原理を発見したことは事実です（<a
+                    href="https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%82%AD%E3%83%A1%E3%83%87%E3%82%B9%E3%81%AE%E5%8E%9F%E7%90%86"
+                    target="_blank" style="color: #1976d2;">アルキメデスの原理</a>）。
+            </p>
+        </div>
+    </div>
+</section>

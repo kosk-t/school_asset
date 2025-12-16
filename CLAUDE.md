@@ -47,17 +47,22 @@ docs/
 ├── css/
 │   └── education-template.css
 ├── images/
-├── index.html               # トップページ（Liquid自動生成）
-├── *_教材.html              # 各教材
+├── index.html               # トップページ（タブ切り替え付き）
+├── junior/                  # 中学数学教材
+│   └── *_教材.html
+├── senior/                  # 高校数学教材
+│   └── *_教材.html
 └── Gemfile
 assets/
 └── education-template.html  # 教材テンプレート（Front Matter付き）
 ```
 
 ### 教材作成フロー
-1. `/create-material <テーマ名>` コマンドで新規教材を作成
-2. `docs/_data/materials.yml` に教材メタデータを追加
-3. 目次ページ（index.html）は自動生成されるため編集不要
+1. `/create-material <テーマ名> [junior|senior]` コマンドで新規教材を作成
+   - 中学: `/create-material 一次方程式` または `/create-material 一次方程式 junior`
+   - 高校: `/create-material 二次関数の最大最小 senior`
+2. `docs/_data/materials.yml` に教材メタデータを追加（`school_level` と `slug` プレフィックスに注意）
+3. 目次ページ（index.html）はタブ切り替えで中学・高校を自動表示
 
 ### Jekyllビルド
 ```bash
@@ -84,6 +89,7 @@ description: 説明
 level: 標準
 level_num: 2
 category: numbers/equations/functions/geometry/data
+school_level: junior  # または senior
 order: 1
 keywords: [...]
 cover_image: /images/noimage.jpg
