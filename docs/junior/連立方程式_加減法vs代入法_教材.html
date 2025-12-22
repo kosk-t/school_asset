@@ -129,7 +129,7 @@ related:
             <div class="svg-caption">解法選択フローチャート：まず式の形、次に係数をチェック</div>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="rule-substitution-signs">
             <strong>📌 代入法を選ぶ3つのサイン</strong> <a href="#ex-dainyuu" class="example-link">→ 例1〜2</a>
             <ol>
                 <li><strong>「y = 〜」「x = 〜」の形がすでにある</strong> → 即代入！</li>
@@ -139,7 +139,7 @@ related:
             <p><strong>✅ メリット：</strong>式を変形する手間が省ける。カッコ計算に注意すれば確実。</p>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="rule-addition-subtraction-signs">
             <strong>📌 加減法を選ぶ3つのサイン</strong> <a href="#ex-kagen" class="example-link">→ 例3〜4</a>
             <ol>
                 <li><strong>同じ文字の係数が「+と−」で逆符号</strong>（例：\(+2y\) と \(-2y\)）→ 足すだけで消える！</li>
@@ -149,7 +149,7 @@ related:
             <p><strong>✅ メリット：</strong>機械的に計算できる。符号ミスに注意すればスピーディ。</p>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="rule-method-decision-table">
             <strong>📌 迷ったときの最終判断</strong>
             <table class="material-table">
                 <tr>
@@ -355,13 +355,13 @@ related:
 <section id="section4">
     <h2>4. 簡単にするコツ</h2>
     <div class="section">
-        <div class="tip-box">
+        <div class="tip-box" id="tip-three-second-rule">
             <strong>✏️ コツ1：3秒ルールで判断</strong><br>
             問題を見て3秒以内に「y = 〜」「x = 〜」を探す。あれば即代入法。なければ係数チェック。<br>
             迷う時間が長いと、その分計算時間が減ってしまう。
         </div>
 
-        <div class="tip-box">
+        <div class="tip-box" id="tip-opposite-same-sign">
             <strong>✏️ コツ2：係数が「逆符号」なら足す、「同符号」なら引く</strong><br>
             <ul>
                 <li>\(+2y\) と \(-2y\) → <strong>足す</strong>と \(0y\) で消える</li>
@@ -370,13 +370,13 @@ related:
             「逆は足す、同は引く」と覚えよう。
         </div>
 
-        <div class="tip-box">
+        <div class="tip-box" id="tip-coefficient-one-substitution">
             <strong>✏️ コツ3：係数1は代入法のチャンス</strong><br>
             \(x + 2y = 5\) のように係数が1の文字があれば、\(x = 5 - 2y\) とすぐに変形できる。<br>
             加減法より代入法の方が楽なことが多い。
         </div>
 
-        <div class="tip-box">
+        <div class="tip-box" id="tip-predict-integer-answer">
             <strong>✏️ コツ4：「簡単な整数」で終わりそうか予想する</strong><br>
             定数項や係数が小さな整数だけなら、答えも整数になりやすい。<br>
             計算の途中で分数が出てきたら、見直しより先に計算を続けて答えを出そう。<br>

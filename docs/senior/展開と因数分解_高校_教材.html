@@ -1,0 +1,454 @@
+---
+layout: material-raw
+title: 展開と因数分解（高校）
+icon: "🔢"
+description: 3乗公式・複雑なたすき掛け・置き換えなど、高校数学で使う発展的な展開・因数分解をマスターする。
+level: 基礎
+level_num: 1
+category: numbers
+school_level: senior
+order: 1
+keywords:
+  - 3乗公式
+  - 立方和
+  - 立方差
+  - たすき掛け
+  - 因数分解
+cover_image: /images/noimage.jpg
+cover_description: 3乗公式の展開図と因数分解のパターン分岐
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「3次方程式を巡る数学決闘」"
+related:
+  - url: /junior/因数分解_教材.html
+    title: 因数分解
+    note: 中学範囲の因数分解の復習
+    type: prerequisite
+  - url: /junior/乗法公式_教材.html
+    title: 乗法公式
+    note: 2乗公式の基礎
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>中学で学んだ乗法公式や因数分解は「2乗」が中心でした。高校では<strong>3乗公式</strong>が登場し、より複雑な式も扱えるようになります。</p>
+
+        <p>このページでは、<strong>高校数学の展開と因数分解</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>3乗公式（展開）</strong>：\((a+b)^3\) や \((a-b)^3\) を展開する</li>
+            <li><strong>立方和・立方差の因数分解</strong>：\(a^3 + b^3\) や \(a^3 - b^3\) を因数分解する</li>
+            <li><strong>複雑な因数分解</strong>：置き換えや低次整理で複雑な式を分解する</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要：3乗公式は「係数が1-3-3-1」「符号パターン」で覚える！
+        </div>
+
+        <!-- 3乗公式の図解（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="280" viewBox="0 0 700 280">
+                <!-- タイトル -->
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">3乗公式の係数パターン（パスカルの三角形）</text>
+
+                <!-- パスカルの三角形 -->
+                <text x="350" y="60" font-size="18" fill="#333" text-anchor="middle">1</text>
+                <text x="320" y="90" font-size="18" fill="#333" text-anchor="middle">1</text>
+                <text x="380" y="90" font-size="18" fill="#333" text-anchor="middle">1</text>
+                <text x="290" y="120" font-size="18" fill="#333" text-anchor="middle">1</text>
+                <text x="350" y="120" font-size="18" fill="#333" text-anchor="middle">2</text>
+                <text x="410" y="120" font-size="18" fill="#333" text-anchor="middle">1</text>
+
+                <!-- 3乗の行（強調） -->
+                <rect x="230" y="135" width="240" height="35" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="5"/>
+                <text x="260" y="160" font-size="20" font-weight="bold" fill="#e65100" text-anchor="middle">1</text>
+                <text x="320" y="160" font-size="20" font-weight="bold" fill="#e65100" text-anchor="middle">3</text>
+                <text x="380" y="160" font-size="20" font-weight="bold" fill="#e65100" text-anchor="middle">3</text>
+                <text x="440" y="160" font-size="20" font-weight="bold" fill="#e65100" text-anchor="middle">1</text>
+
+                <!-- 矢印と説明 -->
+                <path d="M 480 155 L 520 155" stroke="#e65100" stroke-width="2" marker-end="url(#arrow-orange)"/>
+                <text x="530" y="160" font-size="14" fill="#e65100">3乗の係数</text>
+
+                <!-- 公式ボックス -->
+                <rect x="80" y="195" width="540" height="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="10"/>
+                <text x="350" y="225" font-size="16" fill="#1976d2" text-anchor="middle">(a+b)³ = a³ + 3a²b + 3ab² + b³</text>
+                <text x="350" y="255" font-size="16" fill="#9c27b0" text-anchor="middle">(a−b)³ = a³ − 3a²b + 3ab² − b³</text>
+
+                <!-- 矢印マーカー定義 -->
+                <defs>
+                    <marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#e65100"/>
+                    </marker>
+                </defs>
+            </svg>
+            <div class="svg-caption">3乗の係数は「1-3-3-1」パスカルの三角形の4段目</div>
+        </div>
+
+        <div class="rule-box" id="rule-expand-cube">
+            <strong>📌 ルール1：3乗の展開公式</strong> <a href="#ex-expand" class="example-link">→ 例1・2</a>
+            <div class="formula">
+                \[ (a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3 \]
+                \[ (a-b)^3 = a^3 - 3a^2b + 3ab^2 - b^3 \]
+            </div>
+            <p><strong>覚え方：</strong></p>
+            <ul>
+                <li>係数は <strong>1-3-3-1</strong>（パスカルの三角形の4段目）</li>
+                <li>\(a\) の指数は 3→2→1→0 と下がる</li>
+                <li>\(b\) の指数は 0→1→2→3 と上がる</li>
+                <li>\((a-b)^3\) は <strong>符号が交互</strong>（＋ − ＋ −）</li>
+            </ul>
+            <p><strong>→ だから結果は：</strong> 4項の式になる</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>\((a+b)^3 = (a+b)(a+b)(a+b)\) を順に展開すると：</p>
+            <p>\((a+b)^2 = a^2 + 2ab + b^2\) に \((a+b)\) をかけると4項になる。</p>
+            <p>組み合わせで考えると、\(a\) を3個、2個、1個、0個選ぶ場合の数が 1, 3, 3, 1 通りになる。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-factor-cube">
+            <strong>📌 ルール2：立方和・立方差の因数分解</strong> <a href="#ex-factor-cube" class="example-link">→ 例3・4</a>
+            <div class="formula">
+                \[ a^3 + b^3 = (a + b)(a^2 - ab + b^2) \]
+                \[ a^3 - b^3 = (a - b)(a^2 + ab + b^2) \]
+            </div>
+            <p><strong>覚え方（符号のパターン）：</strong></p>
+            <ul>
+                <li>\(a^3 + b^3\)：<strong>＋ → ＋ − ＋</strong>（和 → 和の中は「引く」）</li>
+                <li>\(a^3 - b^3\)：<strong>− → − ＋ ＋</strong>（差 → 差の中は「足す」）</li>
+            </ul>
+            <p><strong>→ だから結果は：</strong> 1次式 × 2次式 に分解される</p>
+            <p><strong>✅ メリット：</strong> \(x^3 + 8\) のような式が因数分解できるようになる</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>右辺を展開して確認してみよう：</p>
+            <p>\((a+b)(a^2 - ab + b^2) = a^3 - a^2b + ab^2 + a^2b - ab^2 + b^3 = a^3 + b^3\)</p>
+            <p>真ん中の項が打ち消し合って、両端だけ残る！</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-tasukigake">
+            <strong>📌 ルール3：3次式のたすき掛け</strong> <a href="#ex-tasuki" class="example-link">→ 例5</a>
+            <p>\(acx^3 + (ad+bc)x^2 + (ae+bd)x + be\) の形の3次式を因数分解するには：</p>
+            <div class="formula">
+                \[ acx^3 + \cdots + be = (ax^2 + bx + c)(dx + e) \]
+            </div>
+            <p>の形を探す。手順は2次のたすき掛けと同様。</p>
+            <p><strong>→ だから結果は：</strong> 2次式 × 1次式 に分解される</p>
+        </div>
+
+        <div class="rule-box" id="rule-substitution">
+            <strong>📌 ルール4：置き換えを使う因数分解</strong> <a href="#ex-sub" class="example-link">→ 例6</a>
+            <p>複雑な式は、共通部分を1文字に置き換えると見やすくなる。</p>
+            <div class="formula">
+                \[ (x+1)^2 + 5(x+1) + 6 \quad \xrightarrow{t = x+1} \quad t^2 + 5t + 6 \]
+            </div>
+            <p><strong>→ だから結果は：</strong> 見慣れた形になり、普通の因数分解が使える</p>
+        </div>
+
+        <div class="rule-box" id="rule-lowest">
+            <strong>📌 ルール5：最低次の文字で整理</strong> <a href="#ex-lowest" class="example-link">→ 例7</a>
+            <p>複数の文字がある式は、<strong>次数が最も低い文字</strong>について整理する。</p>
+            <p>例：\(x^2 + xy - 2y^2 + x + 5y - 2\) → \(x\) について整理</p>
+            <p><strong>→ だから結果は：</strong> 普通のたすき掛けが使える形になる</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>ルールを使って実際に展開・因数分解してみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 3乗の展開</h3>
+
+        <div class="example-box" id="ex-expand">
+            <div class="example-title">
+                <span class="number-badge">例1</span>\((2x + 3)^3\) を展開する
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(a = 2x\)、\(b = 3\) として公式に当てはめる</li>
+                <li>係数 1-3-3-1 で各項を計算する</li>
+                <li>まとめる</li>
+            </ol>
+            <div class="formula">
+                \[ (2x + 3)^3 = (2x)^3 + 3(2x)^2(3) + 3(2x)(3)^2 + 3^3 \]
+                \[ = 8x^3 + 36x^2 + 54x + 27 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-expand2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>\((3x - 2)^3\) を展開する
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(a = 3x\)、\(b = 2\) として \((a-b)^3\) の公式を使う</li>
+                <li>符号は交互（＋ − ＋ −）になる</li>
+            </ol>
+            <div class="formula">
+                \[ (3x - 2)^3 = (3x)^3 - 3(3x)^2(2) + 3(3x)(2)^2 - 2^3 \]
+                \[ = 27x^3 - 54x^2 + 36x - 8 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 立方和・立方差の因数分解</h3>
+
+        <div class="example-box" id="ex-factor-cube">
+            <div class="example-title">
+                <span class="number-badge">例3</span>\(x^3 + 27\) を因数分解する
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(27 = 3^3\) なので、\(a^3 + b^3\) の形</li>
+                <li>\(a = x\)、\(b = 3\) として公式を使う</li>
+                <li>符号は「和 → ＋ − ＋」</li>
+            </ol>
+            <div class="formula">
+                \[ x^3 + 27 = x^3 + 3^3 = (x + 3)(x^2 - 3x + 9) \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-factor-cube2">
+            <div class="example-title">
+                <span class="number-badge">例4</span>\(8x^3 - 125\) を因数分解する
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(8x^3 = (2x)^3\)、\(125 = 5^3\) なので、\(a^3 - b^3\) の形</li>
+                <li>\(a = 2x\)、\(b = 5\) として公式を使う</li>
+                <li>符号は「差 → − ＋ ＋」</li>
+            </ol>
+            <div class="formula">
+                \[ 8x^3 - 125 = (2x)^3 - 5^3 = (2x - 5)((2x)^2 + (2x)(5) + 5^2) \]
+                \[ = (2x - 5)(4x^2 + 10x + 25) \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ たすき掛け（3次式）</h3>
+
+        <div class="example-box" id="ex-tasuki">
+            <div class="example-title">
+                <span class="number-badge">例5</span>\(2x^3 + 5x^2 - x - 6\) を因数分解する
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>因数定理で1次因子を探す：\(f(1) = 2 + 5 - 1 - 6 = 0\) → \((x-1)\) が因子</li>
+                <li>組立除法または展開して係数比較で商を求める</li>
+                <li>商の2次式をさらに因数分解</li>
+            </ol>
+            <div class="formula">
+                \[ 2x^3 + 5x^2 - x - 6 = (x - 1)(2x^2 + 7x + 6) \]
+                \[ = (x - 1)(2x + 3)(x + 2) \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 置き換えを使う因数分解</h3>
+
+        <div class="example-box" id="ex-sub">
+            <div class="example-title">
+                <span class="number-badge">例6</span>\((x + 2)^2 - 5(x + 2) + 6\) を因数分解する
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(t = x + 2\) と置く</li>
+                <li>\(t^2 - 5t + 6\) を因数分解</li>
+                <li>\(t\) を \(x + 2\) に戻す</li>
+            </ol>
+            <div class="formula">
+                \[ t^2 - 5t + 6 = (t - 2)(t - 3) \]
+                \[ = (x + 2 - 2)(x + 2 - 3) = x(x - 1) \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 最低次の文字で整理</h3>
+
+        <div class="example-box" id="ex-lowest">
+            <div class="example-title">
+                <span class="number-badge">例7</span>\(x^2 + xy - 2y^2 + x + 5y - 2\) を因数分解する
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(x\) について整理：\(x^2 + (y+1)x + (-2y^2 + 5y - 2)\)</li>
+                <li>定数項を因数分解：\(-2y^2 + 5y - 2 = -(2y-1)(y-2)\)</li>
+                <li>たすき掛けで \(x\) の1次式に分解</li>
+            </ol>
+            <div class="formula">
+                \[ x^2 + (y+1)x - (2y-1)(y-2) \]
+                \[ = (x + 2y - 1)(x - y + 2) \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box" id="tip-recognize-cube">
+            <strong>✏️ コツ1：3乗かどうかを見抜く</strong><br>
+            よく出る立方数を覚えておく：\(1, 8, 27, 64, 125, 216, ...\)（つまり \(1^3, 2^3, 3^3, 4^3, 5^3, 6^3\)）。\(x^3 + 8\) を見たら「\(8 = 2^3\) だ！」とピンとくる。
+        </div>
+
+        <div class="tip-box" id="tip-factor-theorem">
+            <strong>✏️ コツ2：因数定理で1次因子を探す</strong><br>
+            3次式の因数分解は、まず \(f(1), f(-1), f(2), f(-2)\) などを試して \(f(a) = 0\) になる値を探す。見つかれば \((x - a)\) が因子。
+        </div>
+
+        <div class="tip-box" id="tip-substitution-back">
+            <strong>✏️ コツ3：置き換えは「元に戻す」を忘れない</strong><br>
+            \(t = x + 1\) などと置き換えたら、最後に必ず元に戻す。戻し忘れは減点対象！
+        </div>
+
+        <div class="tip-box" id="tip-expand-check">
+            <strong>✏️ コツ4：展開して確かめる</strong><br>
+            因数分解の答えに自信がないときは、展開して元に戻るか確認。計算量は増えるが確実。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：立方和・差の符号ミス</div>
+            <p><strong>ダメな例：</strong> \(a^3 + b^3 = (a + b)(a^2 + ab + b^2)\) ← 真ん中の符号が違う！</p>
+            <p><strong>対策：</strong> 「和 → ＋ − ＋」「差 → − ＋ ＋」の語呂で覚える。第2因子の真ん中の符号は第1因子と<strong>逆</strong>になる。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：係数の計算ミス</div>
+            <p><strong>ダメな例：</strong> \((2x)^3 = 2x^3\) ← 係数も3乗する！</p>
+            <p><strong>対策：</strong> \((2x)^3 = 2^3 \cdot x^3 = 8x^3\) と、係数と変数を分けて計算する。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：因数定理を使わず無理にたすき掛け</div>
+            <p><strong>ダメな例：</strong> 3次式を最初から2次式×1次式のたすき掛けで強引に解こうとする</p>
+            <p><strong>対策：</strong> まず因数定理（\(f(a) = 0\) になる \(a\) を探す）を試す方が速い。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">3乗の展開公式を書ける（係数 1-3-3-1）</div>
+            <div class="checklist-item">立方和・立方差の因数分解の符号パターンを言える</div>
+            <div class="checklist-item">\(8, 27, 64, 125\) が何の3乗かすぐ分かる</div>
+            <div class="checklist-item">因数定理を使って3次式の因子を探せる</div>
+            <div class="checklist-item">置き換え後に元に戻すことを忘れない</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>\((x + 4)^3\) を展開せよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\((x + 4)^3 = x^3 + 3 \cdot x^2 \cdot 4 + 3 \cdot x \cdot 16 + 64\)</p>
+                    <p>\(= x^3 + 12x^2 + 48x + 64\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\(27x^3 - 64\) を因数分解せよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(27x^3 = (3x)^3\)、\(64 = 4^3\) より \(a^3 - b^3\) の形</p>
+                    <p>\(27x^3 - 64 = (3x - 4)((3x)^2 + (3x)(4) + 4^2)\)</p>
+                    <p>\(= (3x - 4)(9x^2 + 12x + 16)\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>\((x - 1)^2 + 3(x - 1) - 10\) を因数分解せよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(t = x - 1\) と置くと \(t^2 + 3t - 10 = (t + 5)(t - 2)\)</p>
+                    <p>\(t\) を戻して \((x - 1 + 5)(x - 1 - 2) = (x + 4)(x - 3)\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：3乗公式は「係数1-3-3-1」「符号パターン」で覚える！立方和・差は1次式×2次式に分解！
+</div>
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「3次方程式を巡る数学決闘」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 タルタリアとカルダノの数学決闘（16世紀イタリア）</div>
+
+            <p>16世紀のイタリア。当時の数学者たちは「3次方程式の解き方」を<strong>人生をかけて探していた</strong>。なぜなら、解法を知っていれば「数学決闘」で大金を稼げたからだ。</p>
+
+            <p>1535年、ニコロ・タルタリア（本名フォンターナ）という数学者が、ついに3次方程式の解法を発見。「数学決闘」で連戦連勝し、一躍スターになった。</p>
+
+            <p>その噂を聞きつけたのが、ミラノの医師・数学者<strong>ジェロラモ・カルダノ</strong>。</p>
+
+            <p><strong>カルダノ：</strong>「解法を教えてくれ！絶対に誰にも言わないと誓う！」</p>
+
+            <p>タルタリアは渋々、<strong>暗号のような詩</strong>の形で解法を教えた。</p>
+
+            <p>ところが8年後の1545年、カルダノは著書『アルス・マグナ』で3次方程式の解法を堂々と発表。</p>
+
+            <p><strong>タルタリア：</strong>「は？？？ 誓いを破りやがった！！！」</p>
+
+            <p>大激怒したタルタリアは、カルダノの弟子フェラーリに数学決闘を挑む。しかし結果は惨敗。タルタリアは名誉を失い、失意のうちに世を去った。</p>
+
+            <p>一方、カルダノの言い分は「先に発見していた人がいたから、秘密じゃなくなった」というもの。</p>
+
+            <p>結局、3次方程式の解法は今でも「<strong>カルダノの公式</strong>」と呼ばれている。</p>
+
+            <p><strong>教訓：契約書は文書で残しましょう。</strong></p>
+
+            <p style="font-size: 0.9em; color: #666; margin-top: 15px;">※この話は実際の歴史的事実に基づいています。詳しくは<a href="https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%AB%E3%83%80%E3%83%8E%E3%81%AE%E5%85%AC%E5%BC%8F" target="_blank" style="color: #1976d2;">カルダノの公式 - Wikipedia</a>を参照。</p>
+        </div>
+    </div>
+</section>

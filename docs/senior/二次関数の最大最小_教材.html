@@ -1,0 +1,423 @@
+---
+layout: material-raw
+title: 二次関数の最大最小
+icon: "🎯"
+description: 定義域の制限がある二次関数の最大値・最小値を、場合分けを使って正確に求める。
+level: 標準
+level_num: 2
+category: functions
+school_level: senior
+order: 2
+keywords:
+  - 二次関数
+  - 最大値
+  - 最小値
+  - 定義域
+  - 場合分け
+cover_image: /images/noimage.jpg
+cover_description: 定義域と軸の位置関係で変わる最大最小
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学と社会「利益を最大化する数学」"
+related:
+  - url: /senior/二次関数のグラフ_教材.html
+    title: 二次関数のグラフ
+    note: 平方完成と頂点の求め方
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「ボールを投げたとき、最も高くなるのは何秒後？」「利益を最大にする価格設定は？」——こうした問題は<strong>二次関数の最大・最小</strong>で解けます。</p>
+
+        <p>このページでは、<strong>二次関数の最大最小</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>定義域がない場合</strong>：頂点が最大または最小になる</li>
+            <li><strong>定義域がある場合</strong>：軸と定義域の位置関係で場合分け</li>
+            <li><strong>軸が動く問題</strong>：パラメータを含む最大最小</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要：最大・最小は「軸が定義域の中にあるかどうか」で決まる！
+        </div>
+
+        <!-- 場合分けの図解（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="280" viewBox="0 0 700 280">
+                <!-- タイトル -->
+                <text x="350" y="20" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">下に凸（a > 0）の場合の最小値</text>
+
+                <!-- ケース1: 軸が左側 -->
+                <rect x="20" y="40" width="200" height="220" fill="#f5f5f5" stroke="#ccc" rx="5"/>
+                <text x="120" y="65" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">軸が定義域の左</text>
+
+                <!-- 放物線と定義域 -->
+                <path d="M 40 200 Q 70 100 100 200" stroke="#e53935" stroke-width="2" fill="none"/>
+                <line x1="100" y1="80" x2="100" y2="220" stroke="#9c27b0" stroke-width="1" stroke-dasharray="3,3"/>
+                <text x="100" y="75" font-size="10" fill="#9c27b0" text-anchor="middle">軸</text>
+
+                <!-- 定義域 -->
+                <line x1="130" y1="200" x2="200" y2="200" stroke="#4caf50" stroke-width="4"/>
+                <circle cx="130" cy="165" r="5" fill="#4caf50"/>
+                <text x="165" y="230" font-size="11" fill="#4caf50" text-anchor="middle">[a, b]</text>
+                <text x="120" y="255" font-size="12" fill="#333" text-anchor="middle">最小: x=aで</text>
+
+                <!-- ケース2: 軸が中央 -->
+                <rect x="250" y="40" width="200" height="220" fill="#e3f2fd" stroke="#1976d2" rx="5"/>
+                <text x="350" y="65" font-size="12" font-weight="bold" fill="#1976d2" text-anchor="middle">軸が定義域の中</text>
+
+                <!-- 放物線と定義域 -->
+                <path d="M 280 200 Q 350 100 420 200" stroke="#e53935" stroke-width="2" fill="none"/>
+                <line x1="350" y1="80" x2="350" y2="220" stroke="#9c27b0" stroke-width="1" stroke-dasharray="3,3"/>
+                <text x="350" y="75" font-size="10" fill="#9c27b0" text-anchor="middle">軸</text>
+
+                <!-- 定義域 -->
+                <line x1="300" y1="200" x2="400" y2="200" stroke="#4caf50" stroke-width="4"/>
+                <circle cx="350" cy="100" r="5" fill="#4caf50"/>
+                <text x="350" y="230" font-size="11" fill="#4caf50" text-anchor="middle">[a, b]</text>
+                <text x="350" y="255" font-size="12" fill="#333" text-anchor="middle">最小: 頂点で</text>
+
+                <!-- ケース3: 軸が右側 -->
+                <rect x="480" y="40" width="200" height="220" fill="#f5f5f5" stroke="#ccc" rx="5"/>
+                <text x="580" y="65" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">軸が定義域の右</text>
+
+                <!-- 放物線と定義域 -->
+                <path d="M 580 200 Q 610 100 640 200" stroke="#e53935" stroke-width="2" fill="none"/>
+                <line x1="610" y1="80" x2="610" y2="220" stroke="#9c27b0" stroke-width="1" stroke-dasharray="3,3"/>
+                <text x="610" y="75" font-size="10" fill="#9c27b0" text-anchor="middle">軸</text>
+
+                <!-- 定義域 -->
+                <line x1="500" y1="200" x2="560" y2="200" stroke="#4caf50" stroke-width="4"/>
+                <circle cx="560" cy="150" r="5" fill="#4caf50"/>
+                <text x="530" y="230" font-size="11" fill="#4caf50" text-anchor="middle">[a, b]</text>
+                <text x="580" y="255" font-size="12" fill="#333" text-anchor="middle">最小: x=bで</text>
+            </svg>
+            <div class="svg-caption">軸と定義域の位置関係で最小値の場所が変わる</div>
+        </div>
+
+        <div class="rule-box" id="rule-no-domain">
+            <strong>📌 ルール1：定義域がない場合</strong> <a href="#ex-no-domain" class="example-link">→ 例1</a>
+            <p>\(y = a(x - p)^2 + q\) で定義域が全実数のとき：</p>
+            <ul>
+                <li>\(a > 0\)（下に凸）：<strong>最小値 \(q\)</strong>（\(x = p\) で）、最大値なし</li>
+                <li>\(a < 0\)（上に凸）：<strong>最大値 \(q\)</strong>（\(x = p\) で）、最小値なし</li>
+            </ul>
+            <p><strong>→ だから結果は：</strong> 頂点の \(y\) 座標が最大または最小になる</p>
+        </div>
+
+        <div class="rule-box" id="rule-with-domain">
+            <strong>📌 ルール2：定義域がある場合（下に凸）</strong> <a href="#ex-with-domain" class="example-link">→ 例2・3</a>
+            <p>定義域 \([a, b]\) で \(y = f(x)\)（\(a > 0\)、下に凸）の最大・最小：</p>
+
+            <p><strong>【最小値】軸が定義域の中にあるかで判定</strong></p>
+            <ul>
+                <li>軸 \(x = p\) が \([a, b]\) 内 → 最小値は<strong>頂点</strong></li>
+                <li>軸が \(a\) より左 → 最小値は \(f(a)\)</li>
+                <li>軸が \(b\) より右 → 最小値は \(f(b)\)</li>
+            </ul>
+
+            <p><strong>【最大値】端点で比較</strong></p>
+            <ul>
+                <li>最大値は \(f(a)\) と \(f(b)\) の<strong>大きい方</strong></li>
+            </ul>
+        </div>
+
+        <div class="rule-box" id="rule-convex-up">
+            <strong>📌 ルール3：定義域がある場合（上に凸）</strong>
+            <p>上に凸（\(a < 0\)）の場合は、最大と最小が逆になる：</p>
+            <ul>
+                <li>軸が定義域内 → <strong>最大値</strong>が頂点</li>
+                <li>最小値は端点 \(f(a)\) と \(f(b)\) の<strong>小さい方</strong></li>
+            </ul>
+        </div>
+
+        <div class="rule-box" id="rule-moving-axis">
+            <strong>📌 ルール4：軸が動く問題</strong> <a href="#ex-moving" class="example-link">→ 例4</a>
+            <p>軸にパラメータ（文字）が含まれる場合、軸の位置で場合分け：</p>
+            <ol>
+                <li>軸が定義域の左端より左のとき</li>
+                <li>軸が定義域の中にあるとき</li>
+                <li>軸が定義域の右端より右のとき</li>
+            </ol>
+            <p><strong>✅ メリット：</strong> どんな問題でも、場合分けで確実に解ける</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>ルールを使って実際に問題を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 定義域がない場合</h3>
+
+        <div class="example-box" id="ex-no-domain">
+            <div class="example-title">
+                <span class="number-badge">例1</span>\(y = 2x^2 - 4x + 5\) の最大値・最小値を求める
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>平方完成：\(y = 2(x^2 - 2x) + 5 = 2(x - 1)^2 - 2 + 5 = 2(x - 1)^2 + 3\)</li>
+                <li>頂点 \((1, 3)\)、\(a = 2 > 0\) で下に凸</li>
+                <li>定義域がないので、頂点で最小</li>
+            </ol>
+            <div class="formula">
+                \[ \text{最小値}：3 \quad (x = 1 \text{ のとき}), \quad \text{最大値}：\text{なし} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 定義域がある場合</h3>
+
+        <div class="example-box" id="ex-with-domain">
+            <div class="example-title">
+                <span class="number-badge">例2</span>\(y = x^2 - 4x + 3\)（\(0 \leq x \leq 3\)）の最大値・最小値を求める
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>平方完成：\(y = (x - 2)^2 - 1\)、頂点 \((2, -1)\)</li>
+                <li>軸 \(x = 2\) は定義域 \([0, 3]\) の中にある</li>
+                <li>最小値は頂点で \(-1\)</li>
+                <li>最大値は端点で比較：\(f(0) = 3\)、\(f(3) = 0\) → 大きい方は \(3\)</li>
+            </ol>
+            <div class="formula">
+                \[ \text{最小値}：-1 \quad (x = 2), \quad \text{最大値}：3 \quad (x = 0) \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-with-domain2">
+            <div class="example-title">
+                <span class="number-badge">例3</span>\(y = x^2 - 4x + 3\)（\(3 \leq x \leq 5\)）の最大値・最小値を求める
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>平方完成：\(y = (x - 2)^2 - 1\)、軸 \(x = 2\)</li>
+                <li>軸 \(x = 2\) は定義域 \([3, 5]\) の<strong>左</strong>にある</li>
+                <li>下に凸なので、定義域内では右に行くほど増加</li>
+                <li>最小値は左端 \(f(3) = 0\)、最大値は右端 \(f(5) = 8\)</li>
+            </ol>
+            <div class="formula">
+                \[ \text{最小値}：0 \quad (x = 3), \quad \text{最大値}：8 \quad (x = 5) \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 軸が動く問題</h3>
+
+        <div class="example-box" id="ex-moving">
+            <div class="example-title">
+                <span class="number-badge">例4</span>\(y = x^2 - 2ax + 1\)（\(0 \leq x \leq 2\)）の最小値を \(a\) で表す
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>平方完成：\(y = (x - a)^2 - a^2 + 1\)、軸 \(x = a\)</li>
+                <li>軸 \(x = a\) と定義域 \([0, 2]\) の関係で場合分け</li>
+            </ol>
+
+            <p><strong>場合分け：</strong></p>
+            <p><strong>(i) \(a < 0\) のとき</strong>：軸が定義域の左 → 最小値は \(f(0) = 1\)</p>
+            <p><strong>(ii) \(0 \leq a \leq 2\) のとき</strong>：軸が定義域の中 → 最小値は頂点で \(-a^2 + 1\)</p>
+            <p><strong>(iii) \(a > 2\) のとき</strong>：軸が定義域の右 → 最小値は \(f(2) = 5 - 4a\)</p>
+
+            <div class="formula">
+                \[ \text{最小値} = \begin{cases} 1 & (a < 0) \\ -a^2 + 1 & (0 \leq a \leq 2) \\ 5 - 4a & (a > 2) \end{cases} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 上に凸の場合</h3>
+
+        <div class="example-box" id="ex-convex-up">
+            <div class="example-title">
+                <span class="number-badge">例5</span>\(y = -x^2 + 4x + 1\)（\(0 \leq x \leq 3\)）の最大値・最小値を求める
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>平方完成：\(y = -(x^2 - 4x) + 1 = -(x - 2)^2 + 5\)</li>
+                <li>\(a = -1 < 0\) で<strong>上に凸</strong>、軸 \(x = 2\) は \([0, 3]\) 内</li>
+                <li>最大値は頂点で \(5\)</li>
+                <li>最小値は端点比較：\(f(0) = 1\)、\(f(3) = 4\) → 小さい方は \(1\)</li>
+            </ol>
+            <div class="formula">
+                \[ \text{最大値}：5 \quad (x = 2), \quad \text{最小値}：1 \quad (x = 0) \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box" id="tip-vertex-form-first">
+            <strong>✏️ コツ1：まず平方完成で軸を出す</strong><br>
+            どんな問題でも、まず \(y = a(x - p)^2 + q\) の形にして軸 \(x = p\) を求める。軸が分かれば場合分けができる。
+        </div>
+
+        <div class="tip-box" id="tip-sketch-graph">
+            <strong>✏️ コツ2：グラフの概形を描く</strong><br>
+            放物線の概形と定義域を図示すると、どこで最大・最小になるか一目で分かる。
+        </div>
+
+        <div class="tip-box" id="tip-inside-outside">
+            <strong>✏️ コツ3：「中か外か」で判定</strong><br>
+            軸が定義域の「中」→ 頂点で最小（下に凸）または最大（上に凸）。軸が「外」→ 端点で最小・最大。
+        </div>
+
+        <div class="tip-box" id="tip-boundary-values">
+            <strong>✏️ コツ4：場合分けは「境界値」を確認</strong><br>
+            軸 \(x = a\) が定義域 \([0, 2]\) を通過する境界は \(a = 0\) と \(a = 2\)。これを基準に場合分け。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：軸が定義域外なのに頂点を答える</div>
+            <p><strong>ダメな例：</strong> \(y = (x-5)^2 + 1\)（\(0 \leq x \leq 3\)）の最小値を \(1\) と答える</p>
+            <p><strong>対策：</strong> 軸 \(x = 5\) は \([0, 3]\) の外。最小値は \(f(3) = 5\) が正解。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：最大値と最小値を逆にする</div>
+            <p><strong>ダメな例：</strong> 上に凸なのに「頂点で最小値」と答える</p>
+            <p><strong>対策：</strong> 上に凸→頂点で<strong>最大</strong>。下に凸→頂点で<strong>最小</strong>。グラフを描いて確認！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：場合分けの境界を間違える</div>
+            <p><strong>ダメな例：</strong> 定義域 \([0, 3]\) で軸 \(x = a\) の場合分けを「\(a < 0, 0 < a < 3, a > 3\)」とする</p>
+            <p><strong>対策：</strong> \(a = 0\) や \(a = 3\) を含める！「\(a \leq 0\)」「\(0 \leq a \leq 3\)」「\(a \geq 3\)」のように、等号の位置に注意。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">定義域がない場合、頂点で最大または最小になることを理解している</div>
+            <div class="checklist-item">軸と定義域の位置関係で場合分けができる</div>
+            <div class="checklist-item">下に凸・上に凸で最大最小が逆になることを覚えている</div>
+            <div class="checklist-item">端点の値を正確に計算できる</div>
+            <div class="checklist-item">パラメータを含む問題で正しく場合分けできる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>\(y = x^2 - 6x + 5\)（\(1 \leq x \leq 5\)）の最大値と最小値を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(y = (x - 3)^2 - 4\)、軸 \(x = 3\) は \([1, 5]\) の中</p>
+                    <p>最小値：\(-4\)（\(x = 3\)）</p>
+                    <p>\(f(1) = 0\)、\(f(5) = 0\) より最大値：\(0\)（\(x = 1, 5\)）</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\(y = -x^2 + 2x + 3\)（\(-1 \leq x \leq 2\)）の最大値と最小値を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(y = -(x - 1)^2 + 4\)、上に凸、軸 \(x = 1\) は \([-1, 2]\) の中</p>
+                    <p>最大値：\(4\)（\(x = 1\)）</p>
+                    <p>\(f(-1) = 0\)、\(f(2) = 3\) より最小値：\(0\)（\(x = -1\)）</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>\(y = x^2 - 4x + 5\)（\(0 \leq x \leq a\)）の最小値が \(1\) となる \(a\) の範囲を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(y = (x - 2)^2 + 1\)、軸 \(x = 2\)、頂点の \(y\) 座標は \(1\)</p>
+                    <p>最小値 \(1\) になるのは、軸 \(x = 2\) が定義域に含まれるとき</p>
+                    <p>よって \(a \geq 2\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：軸が定義域の中なら頂点で最大or最小！外なら端点で比較！
+</div>
+
+<!-- ========== おまけ：数学と社会 ========== -->
+<section id="story">
+    <h2>おまけ：数学と社会「利益を最大化する数学」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 価格設定と二次関数</div>
+
+            <p>ある会社が新商品を売り出すことになった。価格を決めなければならない。</p>
+
+            <p>高く売れば1個あたりの利益は増えるが、買う人は減る。安く売れば多く売れるが、1個あたりの利益は減る。</p>
+
+            <p><strong>「いくらで売れば、利益が最大になるか？」</strong></p>
+
+            <p>マーケティング調査の結果、こんな関係が分かった：</p>
+            <ul>
+                <li>価格を \(x\) 円上げると、販売数が \(100 - 2x\) 個になる</li>
+                <li>1個あたりの利益は \(x\) 円増える</li>
+            </ul>
+
+            <p>すると、総利益 \(y\) は：</p>
+
+            <div class="formula">
+                \[ y = x(100 - 2x) = -2x^2 + 100x \]
+            </div>
+
+            <p>これは<strong>上に凸の二次関数</strong>！頂点で最大値を取る。</p>
+
+            <div class="formula">
+                \[ y = -2(x^2 - 50x) = -2(x - 25)^2 + 1250 \]
+            </div>
+
+            <p>軸は \(x = 25\)。つまり<strong>25円値上げしたとき、利益が最大</strong>になる。</p>
+
+            <p>このような考え方は「<strong>最適化問題</strong>」と呼ばれ、企業の経営戦略から資源配分まで、あらゆる場面で使われている。</p>
+
+            <p><strong>二次関数の最大最小は、ビジネスを動かす数学だった。</strong></p>
+        </div>
+    </div>
+</section>

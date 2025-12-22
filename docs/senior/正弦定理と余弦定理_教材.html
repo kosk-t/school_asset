@@ -1,0 +1,529 @@
+---
+layout: material-raw
+title: 正弦定理と余弦定理
+icon: "📐"
+description: 三角形の辺と角の関係を表す正弦定理・余弦定理を学ぶ。外接円の半径を求めたり、辺の長さや角度を計算したりできるようになる。
+level: 標準
+level_num: 2
+category: geometry
+school_level: senior
+order: 2
+keywords:
+  - 正弦定理
+  - 余弦定理
+  - 外接円
+  - 三角形の面積
+  - 図形と計量
+cover_image: /images/noimage.jpg
+cover_description: 三角形ABCと外接円、正弦定理・余弦定理の公式
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「星の距離を測った男」"
+related:
+  - url: /senior/三角比_教材.html
+    title: 三角比
+    note: sin, cos, tanの定義と特別な角
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「直角三角形でなくても辺の長さを求めたい」「外接円の半径は？」——三角比を一般の三角形に拡張するのが<strong>正弦定理・余弦定理</strong>です。</p>
+
+        <p>このページでは、<strong>三角形の辺と角の関係</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>正弦定理</strong>：辺と対角のsinの比は外接円の直径に等しい</li>
+            <li><strong>余弦定理</strong>：三平方の定理を一般の三角形に拡張した公式</li>
+            <li><strong>三角形の面積公式</strong>：2辺とその間の角から面積を求める</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要：正弦定理は「辺÷sin = 直径」、余弦定理は「三平方＋cosの補正」！
+        </div>
+
+        <!-- 正弦定理の図解（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="300" viewBox="0 0 700 300">
+                <!-- タイトル -->
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">正弦定理のイメージ</text>
+
+                <!-- 外接円 -->
+                <circle cx="200" cy="170" r="100" fill="none" stroke="#9c27b0" stroke-width="2" stroke-dasharray="5,5"/>
+
+                <!-- 三角形 -->
+                <polygon points="130,250 300,200 170,80" fill="#e3f2fd" stroke="#1976d2" stroke-width="3"/>
+
+                <!-- 頂点ラベル -->
+                <text x="115" y="265" font-size="16" font-weight="bold" fill="#1976d2">A</text>
+                <text x="310" y="210" font-size="16" font-weight="bold" fill="#1976d2">B</text>
+                <text x="160" y="70" font-size="16" font-weight="bold" fill="#1976d2">C</text>
+
+                <!-- 辺のラベル -->
+                <text x="240" y="245" font-size="14" font-weight="bold" fill="#e53935">c</text>
+                <text x="250" y="130" font-size="14" font-weight="bold" fill="#4caf50">a</text>
+                <text x="125" y="160" font-size="14" font-weight="bold" fill="#ff9800">b</text>
+
+                <!-- 外接円の半径 -->
+                <line x1="200" y1="170" x2="200" y2="70" stroke="#9c27b0" stroke-width="2"/>
+                <text x="210" y="120" font-size="14" font-weight="bold" fill="#9c27b0">R</text>
+                <text x="200" y="55" font-size="12" fill="#9c27b0">外接円</text>
+
+                <!-- 公式ボックス -->
+                <rect x="400" y="50" width="280" height="200" fill="#fff8e1" stroke="#ff9800" stroke-width="2" rx="10"/>
+
+                <text x="540" y="85" font-size="18" font-weight="bold" fill="#e65100" text-anchor="middle">正弦定理</text>
+
+                <text x="540" y="130" font-size="18" fill="#333" text-anchor="middle">a/sin A = b/sin B = c/sin C</text>
+
+                <text x="540" y="170" font-size="20" font-weight="bold" fill="#9c27b0" text-anchor="middle">= 2R</text>
+
+                <text x="540" y="210" font-size="14" fill="#666" text-anchor="middle">R：外接円の半径</text>
+
+                <text x="540" y="235" font-size="12" fill="#888" text-anchor="middle">「辺をsinで割ると直径」</text>
+            </svg>
+            <div class="svg-caption">正弦定理：辺と対角のsinの比はすべて等しく、外接円の直径2Rに等しい</div>
+        </div>
+
+        <div class="rule-box" id="rule-sine">
+            <strong>📌 ルール1：正弦定理</strong> <a href="#ex-sine" class="example-link">→ 例1・2</a>
+            <div class="formula">
+                \[ \frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R \]
+            </div>
+            <p>三角形ABCで、a, b, c は各頂点の対辺の長さ、Rは外接円の半径。</p>
+            <p><strong>→ だから結果は：</strong></p>
+            <ul>
+                <li><strong>辺を求める</strong>：\(a = 2R \sin A\)</li>
+                <li><strong>角を求める</strong>：\(\sin A = \dfrac{a}{2R}\)</li>
+                <li><strong>外接円の半径を求める</strong>：\(R = \dfrac{a}{2\sin A}\)</li>
+            </ul>
+            <p><strong>✅ メリット：</strong> 1つの辺と対角がわかれば、他の辺や角も芋づる式に求まる</p>
+            <details class="thinking"><summary>💡 どんなときに使う？</summary>
+            <p><strong>正弦定理が有効な場面</strong>：</p>
+            <ul>
+                <li>「角度と<strong>その対辺</strong>」のペアが1組わかっている</li>
+                <li>外接円の半径Rを求めたい</li>
+                <li>辺の長さから角度（のsin）を求めたい</li>
+            </ul>
+            </details>
+        </div>
+
+        <!-- 余弦定理の図解（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="280" viewBox="0 0 700 280">
+                <!-- タイトル -->
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#4caf50" text-anchor="middle">余弦定理のイメージ</text>
+
+                <!-- 三角形 -->
+                <polygon points="80,230 350,230 200,60" fill="#e8f5e9" stroke="#4caf50" stroke-width="3"/>
+
+                <!-- 頂点ラベル -->
+                <text x="60" y="245" font-size="16" font-weight="bold" fill="#4caf50">A</text>
+                <text x="360" y="245" font-size="16" font-weight="bold" fill="#4caf50">B</text>
+                <text x="200" y="45" font-size="16" font-weight="bold" fill="#4caf50">C</text>
+
+                <!-- 辺のラベル -->
+                <text x="205" y="255" font-size="14" font-weight="bold" fill="#e53935">c</text>
+                <text x="285" y="140" font-size="14" font-weight="bold" fill="#1976d2">a</text>
+                <text x="115" y="140" font-size="14" font-weight="bold" fill="#ff9800">b</text>
+
+                <!-- 角Cのマーク -->
+                <path d="M 185,80 A 25 25 0 0 1 215,80" fill="none" stroke="#9c27b0" stroke-width="2"/>
+                <text x="200" y="100" font-size="14" font-weight="bold" fill="#9c27b0">C</text>
+
+                <!-- 公式ボックス -->
+                <rect x="400" y="50" width="280" height="200" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="10"/>
+
+                <text x="540" y="85" font-size="18" font-weight="bold" fill="#2e7d32" text-anchor="middle">余弦定理</text>
+
+                <text x="540" y="135" font-size="16" fill="#333" text-anchor="middle">c² = a² + b² − 2ab cos C</text>
+
+                <line x1="420" y1="160" x2="660" y2="160" stroke="#ccc" stroke-width="1"/>
+
+                <text x="540" y="190" font-size="14" fill="#666" text-anchor="middle">三平方の定理 ＋ cosによる補正</text>
+
+                <text x="540" y="230" font-size="12" fill="#888" text-anchor="middle">C = 90°なら cos C = 0 で三平方と一致！</text>
+            </svg>
+            <div class="svg-caption">余弦定理：2辺とその間の角から、残りの辺の長さを求められる</div>
+        </div>
+
+        <div class="rule-box" id="rule-cosine">
+            <strong>📌 ルール2：余弦定理</strong> <a href="#ex-cosine" class="example-link">→ 例3・4</a>
+            <div class="formula">
+                \[ c^2 = a^2 + b^2 - 2ab\cos C \]
+            </div>
+            <p>他の辺についても同様に：</p>
+            <div class="formula">
+                \[ a^2 = b^2 + c^2 - 2bc\cos A, \quad b^2 = c^2 + a^2 - 2ca\cos B \]
+            </div>
+            <p><strong>→ だから結果は：</strong></p>
+            <ul>
+                <li><strong>辺を求める</strong>：2辺とその間の角がわかれば、残りの1辺が求まる</li>
+                <li><strong>角を求める</strong>：3辺がわかれば、\(\cos C = \dfrac{a^2 + b^2 - c^2}{2ab}\) で角が求まる</li>
+            </ul>
+            <p><strong>✅ メリット：</strong> 三平方の定理の拡張版！直角三角形でなくても使える</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p><strong>三平方の定理との関係</strong>：</p>
+            <p>C = 90° のとき cos C = 0 なので、余弦定理は c² = a² + b² となり、三平方の定理と一致する。</p>
+            <p>C < 90°（鋭角）のとき cos C > 0 なので、c² < a² + b²（引き算される）</p>
+            <p>C > 90°（鈍角）のとき cos C < 0 なので、c² > a² + b²（足し算される）</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-area">
+            <strong>📌 ルール3：三角形の面積公式</strong> <a href="#ex-area" class="example-link">→ 例5</a>
+            <div class="formula">
+                \[ S = \frac{1}{2}ab\sin C = \frac{1}{2}bc\sin A = \frac{1}{2}ca\sin B \]
+            </div>
+            <p>S は三角形ABCの面積。</p>
+            <p><strong>→ だから結果は：</strong> 2辺とその間の角がわかれば面積が求まる</p>
+            <p><strong>✅ メリット：</strong> 高さを求めなくても面積が計算できる！</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>「底辺×高さ÷2」の公式で、高さ = b × sin C として代入したもの。</p>
+            <p>底辺を a、高さを h とすると、h = b sin C なので S = (1/2) × a × b sin C</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-choose">
+            <strong>📌 ルール4：正弦定理と余弦定理の使い分け</strong>
+            <table class="material-table">
+                <tr>
+                    <th>与えられた条件</th>
+                    <th>使う定理</th>
+                    <th>求められるもの</th>
+                </tr>
+                <tr>
+                    <td>1辺と2角</td>
+                    <td><strong>正弦定理</strong></td>
+                    <td>他の辺</td>
+                </tr>
+                <tr>
+                    <td>2辺と対角</td>
+                    <td><strong>正弦定理</strong></td>
+                    <td>他の角</td>
+                </tr>
+                <tr>
+                    <td>外接円の半径が絡む</td>
+                    <td><strong>正弦定理</strong></td>
+                    <td>R、または辺・角</td>
+                </tr>
+                <tr>
+                    <td>2辺とその間の角</td>
+                    <td><strong>余弦定理</strong></td>
+                    <td>残りの1辺</td>
+                </tr>
+                <tr>
+                    <td>3辺</td>
+                    <td><strong>余弦定理</strong></td>
+                    <td>角（のcos）</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>正弦定理・余弦定理を使って、三角形の辺や角を求めてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 正弦定理を使う</h3>
+
+        <div class="example-box" id="ex-sine">
+            <div class="example-title">
+                <span class="number-badge">例1</span>辺の長さを求める
+            </div>
+            <p>△ABCで、A = 45°、B = 60°、a = 4 のとき、辺 b の長さを求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>正弦定理 \(\dfrac{a}{\sin A} = \dfrac{b}{\sin B}\) を使う</li>
+                <li>値を代入：\(\dfrac{4}{\sin 45°} = \dfrac{b}{\sin 60°}\)</li>
+                <li>sin 45° = √2/2、sin 60° = √3/2 を代入</li>
+                <li>b について解く</li>
+            </ol>
+            <div class="formula">
+                \[ \frac{4}{\frac{\sqrt{2}}{2}} = \frac{b}{\frac{\sqrt{3}}{2}} \]
+                \[ \frac{4 \times 2}{\sqrt{2}} = \frac{b \times 2}{\sqrt{3}} \]
+                \[ b = \frac{4\sqrt{3}}{\sqrt{2}} = \frac{4\sqrt{3} \times \sqrt{2}}{2} = 2\sqrt{6} \]
+            </div>
+            <p><strong>答え：</strong> \(b = 2\sqrt{6}\)</p>
+        </div>
+
+        <div class="example-box" id="ex-sine-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>外接円の半径を求める
+            </div>
+            <p>△ABCで、a = 6、A = 30° のとき、外接円の半径 R を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>正弦定理 \(\dfrac{a}{\sin A} = 2R\) を使う</li>
+                <li>値を代入：\(\dfrac{6}{\sin 30°} = 2R\)</li>
+                <li>sin 30° = 1/2 を代入</li>
+            </ol>
+            <div class="formula">
+                \[ \frac{6}{\frac{1}{2}} = 2R \]
+                \[ 12 = 2R \]
+                \[ R = 6 \]
+            </div>
+            <p><strong>答え：</strong> R = 6</p>
+        </div>
+
+        <h3 style="color: #4caf50; margin: 25px 0 10px 0;">▶ 余弦定理を使う</h3>
+
+        <div class="example-box" id="ex-cosine">
+            <div class="example-title">
+                <span class="number-badge">例3</span>辺の長さを求める（2辺とその間の角）
+            </div>
+            <p>△ABCで、b = 5、c = 7、A = 60° のとき、辺 a の長さを求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>求めたい辺 a の対角が A なので、余弦定理 \(a^2 = b^2 + c^2 - 2bc\cos A\) を使う</li>
+                <li>値を代入：\(a^2 = 5^2 + 7^2 - 2 \cdot 5 \cdot 7 \cdot \cos 60°\)</li>
+                <li>cos 60° = 1/2 を代入して計算</li>
+            </ol>
+            <div class="formula">
+                \[ a^2 = 25 + 49 - 2 \cdot 5 \cdot 7 \cdot \frac{1}{2} \]
+                \[ a^2 = 74 - 35 = 39 \]
+                \[ a = \sqrt{39} \]
+            </div>
+            <p><strong>答え：</strong> \(a = \sqrt{39}\)</p>
+        </div>
+
+        <div class="example-box" id="ex-cosine-2">
+            <div class="example-title">
+                <span class="number-badge">例4</span>角度を求める（3辺がわかっている）
+            </div>
+            <p>△ABCで、a = 7、b = 5、c = 3 のとき、角 A を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>余弦定理を変形：\(\cos A = \dfrac{b^2 + c^2 - a^2}{2bc}\)</li>
+                <li>値を代入して cos A を計算</li>
+                <li>cos A の値から角 A を特定</li>
+            </ol>
+            <div class="formula">
+                \[ \cos A = \frac{5^2 + 3^2 - 7^2}{2 \cdot 5 \cdot 3} = \frac{25 + 9 - 49}{30} = \frac{-15}{30} = -\frac{1}{2} \]
+            </div>
+            <p>cos A = −1/2 より、<strong>A = 120°</strong></p>
+            <p><strong>答え：</strong> A = 120°</p>
+        </div>
+
+        <h3 style="color: #9c27b0; margin: 25px 0 10px 0;">▶ 面積公式を使う</h3>
+
+        <div class="example-box" id="ex-area">
+            <div class="example-title">
+                <span class="number-badge">例5</span>三角形の面積を求める
+            </div>
+            <p>△ABCで、b = 6、c = 8、A = 30° のとき、面積 S を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>面積公式 \(S = \dfrac{1}{2}bc\sin A\) を使う</li>
+                <li>値を代入：\(S = \dfrac{1}{2} \cdot 6 \cdot 8 \cdot \sin 30°\)</li>
+                <li>sin 30° = 1/2 を代入</li>
+            </ol>
+            <div class="formula">
+                \[ S = \frac{1}{2} \cdot 6 \cdot 8 \cdot \frac{1}{2} = \frac{48}{4} = 12 \]
+            </div>
+            <p><strong>答え：</strong> S = 12</p>
+        </div>
+
+        <h3 style="color: #e53935; margin: 25px 0 10px 0;">▶ 複合問題</h3>
+
+        <div class="example-box" id="ex-combined">
+            <div class="example-title">
+                <span class="number-badge">例6</span>辺と面積を両方求める
+            </div>
+            <p>△ABCで、a = 8、B = 60°、C = 45° のとき、辺 b と面積 S を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>A = 180° − 60° − 45° = 75° を求める</li>
+                <li>正弦定理で b を求める：\(\dfrac{a}{\sin A} = \dfrac{b}{\sin B}\)</li>
+                <li>面積公式で S を求める</li>
+            </ol>
+            <div class="formula">
+                \[ \frac{8}{\sin 75°} = \frac{b}{\sin 60°} \]
+            </div>
+            <p>※ sin 75° = sin(45° + 30°) = (√6 + √2)/4（加法定理）を使うか、電卓で約0.966</p>
+            <div class="formula">
+                \[ b = \frac{8 \sin 60°}{\sin 75°} = \frac{8 \cdot \frac{\sqrt{3}}{2}}{\frac{\sqrt{6}+\sqrt{2}}{4}} = \frac{4\sqrt{3} \cdot 4}{\sqrt{6}+\sqrt{2}} = \frac{16\sqrt{3}}{\sqrt{6}+\sqrt{2}} \]
+            </div>
+            <p>有理化すると \(b = \frac{16\sqrt{3}(\sqrt{6}-\sqrt{2})}{4} = 4\sqrt{3}(\sqrt{6}-\sqrt{2}) = 4\sqrt{18} - 4\sqrt{6} = 12\sqrt{2} - 4\sqrt{6}\)</p>
+            <p>面積は正弦定理の結果を使わず、\(S = \dfrac{1}{2}ab\sin C\) で求める（bの式を代入して計算）</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box" id="tip-choose-theorem">
+            <strong>✏️ コツ1：「どの定理を使うか」を最初に決める</strong><br>
+            <ul>
+                <li><strong>辺と対角のペア</strong>がある → <strong>正弦定理</strong></li>
+                <li><strong>外接円</strong>が出てくる → <strong>正弦定理</strong></li>
+                <li><strong>2辺とその間の角</strong>または<strong>3辺</strong>がわかっている → <strong>余弦定理</strong></li>
+            </ul>
+        </div>
+
+        <div class="tip-box" id="tip-cosine-opposite">
+            <strong>✏️ コツ2：余弦定理の公式は「左辺の対角」で覚える</strong><br>
+            \(c^2 = a^2 + b^2 - 2ab\cos C\) で、左辺の c の対角が C。<br>
+            「求めたい辺を左辺に、その対角のcosを右辺に」と覚えれば迷わない。
+        </div>
+
+        <div class="tip-box" id="tip-cos-sign">
+            <strong>✏️ コツ3：cosが負なら鈍角</strong><br>
+            余弦定理で cos A を計算したとき：
+            <ul>
+                <li>cos A > 0 → A は鋭角（0° < A < 90°）</li>
+                <li>cos A = 0 → A = 90°</li>
+                <li>cos A < 0 → A は鈍角（90° < A < 180°）</li>
+            </ul>
+        </div>
+
+        <div class="tip-box" id="tip-area-included">
+            <strong>✏️ コツ4：面積公式は「挟まれた角」</strong><br>
+            \(S = \dfrac{1}{2}bc\sin A\) で使う角 A は、辺 b と辺 c に<strong>挟まれた角</strong>。<br>
+            「2辺をかけて、間の角のsinをかけて、2で割る」と覚える。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：正弦定理と余弦定理を混同する</div>
+            <p><strong>ダメな例：</strong> 3辺がわかっているのに正弦定理を使おうとする</p>
+            <p><strong>対策：</strong> 「辺と対角のペア」があるかどうかで判断。ペアがあれば正弦定理、なければ余弦定理。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：余弦定理の符号を間違える</div>
+            <p><strong>ダメな例：</strong> \(c^2 = a^2 + b^2 \textcolor{red}{+} 2ab\cos C\) と書いてしまう</p>
+            <p><strong>対策：</strong> 必ず<strong>マイナス</strong>！「三平方から引き算する」と覚える。C = 90°で確認すると、cos 90° = 0 で三平方と一致する。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：面積公式で「対角」を使ってしまう</div>
+            <p><strong>ダメな例：</strong> a = 5, b = 6, C = 60° で S = (1/2) × 5 × 6 × sin A としてしまう</p>
+            <p><strong>対策：</strong> 面積公式は「2辺に<strong>挟まれた角</strong>」のsinを使う。上の例では \(S = \dfrac{1}{2} \cdot 5 \cdot 6 \cdot \sin 60°\) ではなく、辺aと辺bが角Cに挟まれていないので注意。a = BC, b = CA なら、A が挟まれた角。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：sinの値から角度を求めるとき、鋭角・鈍角を間違える</div>
+            <p><strong>ダメな例：</strong> sin A = 1/2 から「A = 30°」とだけ答える</p>
+            <p><strong>対策：</strong> sin A = 1/2 を満たす角は 30° と 150° の2つ。三角形の他の角との関係から、鋭角か鈍角かを判断する必要がある。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">正弦定理と余弦定理のどちらを使うか正しく選んだか</div>
+            <div class="checklist-item">辺と角の対応関係（aとA、bとB、cとC）を正しく把握したか</div>
+            <div class="checklist-item">余弦定理の符号（マイナス）を間違えていないか</div>
+            <div class="checklist-item">面積公式で「挟まれた角」のsinを使ったか</div>
+            <div class="checklist-item">答えが三角形として成り立つか（辺の長さが正、角の和が180°）</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>△ABCで、a = 10、A = 30°、B = 45° のとき、辺 b と外接円の半径 R を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>正弦定理より \(\dfrac{a}{\sin A} = \dfrac{b}{\sin B} = 2R\)</p>
+                    <p>\(\dfrac{10}{\sin 30°} = \dfrac{10}{1/2} = 20 = 2R\) より <strong>R = 10</strong></p>
+                    <p>\(\dfrac{b}{\sin 45°} = 20\) より \(b = 20 \cdot \dfrac{\sqrt{2}}{2} = \boxed{10\sqrt{2}}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>△ABCで、a = 5、b = 7、c = 8 のとき、角 C と面積 S を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>余弦定理より \(\cos C = \dfrac{a^2 + b^2 - c^2}{2ab} = \dfrac{25 + 49 - 64}{70} = \dfrac{10}{70} = \dfrac{1}{7}\)</p>
+                    <p>\(\sin^2 C = 1 - \cos^2 C = 1 - \dfrac{1}{49} = \dfrac{48}{49}\)</p>
+                    <p>\(\sin C = \dfrac{4\sqrt{3}}{7}\)（Cは鋭角なので正）</p>
+                    <p>\(S = \dfrac{1}{2}ab\sin C = \dfrac{1}{2} \cdot 5 \cdot 7 \cdot \dfrac{4\sqrt{3}}{7} = \boxed{10\sqrt{3}}\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：正弦定理は「辺/sin = 2R」、余弦定理は「c² = a² + b² − 2ab cos C」。ペアがあれば正弦、なければ余弦！
+</div>
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「星の距離を測った男」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 ヒッパルコスと月への距離（紀元前150年頃・ギリシャ）</div>
+
+            <p>古代ギリシャの天文学者<strong>ヒッパルコス</strong>は、夜空を見上げてこう考えた。</p>
+
+            <p>「あの月は一体どれくらい遠いのだろう？」</p>
+
+            <p>当時、宇宙に出かける方法など存在しない。しかしヒッパルコスには<strong>三角比</strong>があった。</p>
+
+            <p>彼は日食を利用した。ある日食が、ある場所では「皆既日食」（太陽が完全に隠れる）だったが、別の場所では「部分日食」だった。この<strong>見え方の違い</strong>を使えば、月までの距離が計算できると気づいたのだ。</p>
+
+            <p>2地点から月を見たときの角度の差（視差）を測定し、三角形を作る。地球上の2点間の距離はわかっている。あとは正弦定理を応用すれば...</p>
+
+            <div class="formula">
+                \[ \text{月への距離} = \frac{\text{2地点間の距離}}{\sin(\text{視差})} \times \sin(\text{別の角}) \]
+            </div>
+
+            <p>ヒッパルコスの計算結果は「月は地球の約30倍の距離にある」。現代の測定では約30.2倍なので、<strong>2000年以上前にほぼ正解を出していた</strong>のだ！</p>
+
+            <p>彼はさらに、星の位置を記録した「星表」を作成。これは近代天文学の基礎となった。</p>
+
+            <p style="font-style: italic; color: #666; margin-top: 20px;">...三角比だけで月までの距離を当てるとは、古代ギリシャ人、恐るべし。ちなみにヒッパルコスは「三角法の父」とも呼ばれている。正弦定理・余弦定理の原型を作った人物だ。</p>
+
+            <p style="font-size: 0.9em; color: #888; margin-top: 15px;">※ヒッパルコスの業績については、プトレマイオスの『アルマゲスト』に記録が残されています（<a href="https://ja.wikipedia.org/wiki/%E3%83%92%E3%83%83%E3%83%91%E3%83%AB%E3%82%B3%E3%82%B9" target="_blank" style="color: #1976d2;">ヒッパルコス - Wikipedia</a>）。</p>
+        </div>
+    </div>
+</section>

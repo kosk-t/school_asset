@@ -1,0 +1,423 @@
+---
+layout: material-raw
+title: 二次関数のグラフ
+icon: "📈"
+description: 平方完成で頂点・軸を求め、二次関数のグラフを正確に描く技術をマスターする。
+level: 標準
+level_num: 2
+category: functions
+school_level: senior
+order: 1
+keywords:
+  - 二次関数
+  - 平方完成
+  - 頂点
+  - 対称軸
+  - 放物線
+cover_image: /images/noimage.jpg
+cover_description: 二次関数のグラフと頂点・軸の関係
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「ガリレオと放物線」"
+related:
+  - url: /junior/二次関数のグラフと性質_教材.html
+    title: 二次関数のグラフと性質
+    note: 中学範囲のy=ax²の復習
+    type: prerequisite
+  - url: /senior/展開と因数分解_高校_教材.html
+    title: 展開と因数分解（高校）
+    note: 平方完成に必要な計算力
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>中学では \(y = ax^2\) という原点を頂点とする放物線を学びました。高校では<strong>頂点がずれた</strong>二次関数を扱い、どんな二次関数でもグラフを描けるようになります。</p>
+
+        <p>このページでは、<strong>二次関数のグラフ</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>標準形</strong>：\(y = a(x - p)^2 + q\) から頂点と軸を読み取る</li>
+            <li><strong>平方完成</strong>：一般形 \(y = ax^2 + bx + c\) を標準形に変形する</li>
+            <li><strong>グラフの移動</strong>：平行移動の仕組みを理解する</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要：\(y = a(x - p)^2 + q\) の頂点は \((p, q)\)、軸は \(x = p\)
+        </div>
+
+        <!-- 二次関数のグラフの図解（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="320" viewBox="0 0 700 320">
+                <!-- タイトル -->
+                <text x="350" y="20" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">二次関数 y = a(x − p)² + q のグラフ</text>
+
+                <!-- 座標軸 -->
+                <line x1="50" y1="260" x2="350" y2="260" stroke="#333" stroke-width="2"/>
+                <line x1="100" y1="50" x2="100" y2="290" stroke="#333" stroke-width="2"/>
+                <text x="360" y="265" font-size="14" fill="#333">x</text>
+                <text x="105" y="45" font-size="14" fill="#333">y</text>
+                <text x="95" y="275" font-size="12" fill="#333">O</text>
+
+                <!-- 放物線（上に凸） -->
+                <path d="M 50 80 Q 200 280 350 80" stroke="#e53935" stroke-width="3" fill="none"/>
+
+                <!-- 頂点 -->
+                <circle cx="200" cy="260" r="6" fill="#4caf50"/>
+                <text x="210" y="280" font-size="14" font-weight="bold" fill="#4caf50">(p, q)</text>
+
+                <!-- 対称軸 -->
+                <line x1="200" y1="50" x2="200" y2="280" stroke="#9c27b0" stroke-width="2" stroke-dasharray="5,5"/>
+                <text x="205" y="65" font-size="14" fill="#9c27b0">x = p</text>
+
+                <!-- 凡例 -->
+                <rect x="400" y="50" width="280" height="200" fill="#f5f5f5" stroke="#ccc" stroke-width="1" rx="10"/>
+                <text x="540" y="80" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">ポイント</text>
+
+                <circle cx="420" cy="110" r="5" fill="#4caf50"/>
+                <text x="435" y="115" font-size="14" fill="#333">頂点：(p, q)</text>
+
+                <line x1="415" y1="140" x2="425" y2="140" stroke="#9c27b0" stroke-width="2" stroke-dasharray="3,3"/>
+                <text x="435" y="145" font-size="14" fill="#333">軸：x = p</text>
+
+                <text x="420" y="180" font-size="14" fill="#333">a > 0 → 下に凸（∪型）</text>
+                <text x="420" y="205" font-size="14" fill="#333">a < 0 → 上に凸（∩型）</text>
+                <text x="420" y="235" font-size="14" fill="#333">|a| 大 → 細い　|a| 小 → 広い</text>
+            </svg>
+            <div class="svg-caption">二次関数の標準形：頂点と軸が一目で分かる</div>
+        </div>
+
+        <div class="rule-box" id="rule-standard">
+            <strong>📌 ルール1：標準形と頂点・軸</strong> <a href="#ex-standard" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ y = a(x - p)^2 + q \]
+            </div>
+            <ul>
+                <li><strong>頂点</strong>：\((p, q)\)</li>
+                <li><strong>軸（対称軸）</strong>：\(x = p\)</li>
+                <li>\(a > 0\)：下に凸（∪型）</li>
+                <li>\(a < 0\)：上に凸（∩型）</li>
+            </ul>
+            <p><strong>→ だから結果は：</strong> 標準形を見れば、グラフの形が分かる</p>
+            <details class="thinking"><summary>💡 符号の覚え方</summary>
+            <p>\(y = a(x - p)^2 + q\) の \(p\) の前は<strong>マイナス</strong>であることに注意！</p>
+            <p>\(y = (x - 3)^2\) の頂点は \((3, 0)\)（マイナスの後ろの数がそのまま \(x\) 座標）</p>
+            <p>\(y = (x + 2)^2 = (x - (-2))^2\) の頂点は \((-2, 0)\)</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-complete">
+            <strong>📌 ルール2：平方完成のやり方</strong> <a href="#ex-complete" class="example-link">→ 例2・3</a>
+            <p>\(y = ax^2 + bx + c\) を標準形に変形する手順：</p>
+            <ol>
+                <li>\(x^2\) と \(x\) の項を \(a\) でくくる</li>
+                <li>カッコ内で「\((x + \text{〇})^2\)」の形を作る</li>
+                <li>調整した分を外で引く</li>
+            </ol>
+            <div class="formula">
+                \[ y = ax^2 + bx + c = a\left(x + \frac{b}{2a}\right)^2 - \frac{b^2 - 4ac}{4a} \]
+            </div>
+            <p><strong>頂点の公式（覚えてもOK）：</strong></p>
+            <div class="formula">
+                \[ \text{頂点} = \left(-\frac{b}{2a}, -\frac{b^2 - 4ac}{4a}\right) \]
+            </div>
+            <p><strong>✅ メリット：</strong> どんな二次関数でも頂点と軸が求まる</p>
+        </div>
+
+        <div class="rule-box" id="rule-shift">
+            <strong>📌 ルール3：グラフの平行移動</strong> <a href="#ex-shift" class="example-link">→ 例4</a>
+            <p>\(y = f(x)\) のグラフを平行移動すると：</p>
+            <div class="formula">
+                \[ \text{x軸方向に } p \text{ 移動} \Rightarrow y = f(x - p) \]
+                \[ \text{y軸方向に } q \text{ 移動} \Rightarrow y = f(x) + q \]
+            </div>
+            <p><strong>覚え方：</strong>「xの方向は符号が逆」「yの方向は符号そのまま」</p>
+            <p>例：\(y = x^2\) を x軸方向に3、y軸方向に2移動 → \(y = (x-3)^2 + 2\)</p>
+        </div>
+
+        <div class="rule-box" id="rule-shape">
+            <strong>📌 ルール4：aの値とグラフの形</strong>
+            <table class="material-table">
+                <tr>
+                    <th>\(a\) の値</th>
+                    <th>グラフの形</th>
+                    <th>開き具合</th>
+                </tr>
+                <tr>
+                    <td>\(a > 0\)</td>
+                    <td>下に凸（∪型）</td>
+                    <td rowspan="2">\(|a|\) が大きいほど細い</td>
+                </tr>
+                <tr>
+                    <td>\(a < 0\)</td>
+                    <td>上に凸（∩型）</td>
+                </tr>
+            </table>
+            <p>\(|a| = 1\) が基準。\(|a| > 1\) で細く、\(|a| < 1\) で広くなる。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>ルールを使って実際に問題を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 標準形から頂点・軸を読む</h3>
+
+        <div class="example-box" id="ex-standard">
+            <div class="example-title">
+                <span class="number-badge">例1</span>\(y = 2(x - 3)^2 + 5\) の頂点と軸を求める
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>標準形 \(y = a(x - p)^2 + q\) と比較</li>
+                <li>\(p = 3\)、\(q = 5\)</li>
+            </ol>
+            <div class="formula">
+                \[ \text{頂点}：(3, 5), \quad \text{軸}：x = 3 \]
+            </div>
+            <p>※ \(a = 2 > 0\) なので下に凸（∪型）</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 平方完成</h3>
+
+        <div class="example-box" id="ex-complete">
+            <div class="example-title">
+                <span class="number-badge">例2</span>\(y = x^2 - 6x + 5\) を標準形に変形し、頂点と軸を求める
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(x^2 - 6x\) の部分で平方完成</li>
+                <li>\(x^2 - 6x = (x - 3)^2 - 9\)</li>
+                <li>元の式に代入して整理</li>
+            </ol>
+            <div class="formula">
+                \[ y = x^2 - 6x + 5 = (x - 3)^2 - 9 + 5 = (x - 3)^2 - 4 \]
+                \[ \text{頂点}：(3, -4), \quad \text{軸}：x = 3 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-complete2">
+            <div class="example-title">
+                <span class="number-badge">例3</span>\(y = 2x^2 + 8x + 3\) を標準形に変形する
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(x^2\) の係数2でくくる：\(y = 2(x^2 + 4x) + 3\)</li>
+                <li>カッコ内で平方完成：\(x^2 + 4x = (x + 2)^2 - 4\)</li>
+                <li>展開して整理</li>
+            </ol>
+            <div class="formula">
+                \[ y = 2(x^2 + 4x) + 3 = 2\{(x + 2)^2 - 4\} + 3 \]
+                \[ = 2(x + 2)^2 - 8 + 3 = 2(x + 2)^2 - 5 \]
+                \[ \text{頂点}：(-2, -5), \quad \text{軸}：x = -2 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ グラフの平行移動</h3>
+
+        <div class="example-box" id="ex-shift">
+            <div class="example-title">
+                <span class="number-badge">例4</span>\(y = x^2\) を x軸方向に \(-2\)、y軸方向に \(3\) 平行移動した式を求める
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>x軸方向に \(-2\) → \(x\) を \(x - (-2) = x + 2\) に置き換え</li>
+                <li>y軸方向に \(3\) → 全体に \(+3\)</li>
+            </ol>
+            <div class="formula">
+                \[ y = (x + 2)^2 + 3 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ グラフを描く</h3>
+
+        <div class="example-box" id="ex-draw">
+            <div class="example-title">
+                <span class="number-badge">例5</span>\(y = -x^2 + 4x - 3\) のグラフの概形を描く
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>平方完成：\(y = -(x^2 - 4x) - 3 = -\{(x-2)^2 - 4\} - 3 = -(x-2)^2 + 1\)</li>
+                <li>頂点 \((2, 1)\)、軸 \(x = 2\)</li>
+                <li>\(a = -1 < 0\) なので上に凸（∩型）</li>
+                <li>y切片：\(x = 0\) を代入 → \(y = -3\)</li>
+            </ol>
+            <div class="formula">
+                \[ \text{頂点}：(2, 1), \quad \text{軸}：x = 2, \quad \text{上に凸} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box" id="tip-half-square">
+            <strong>✏️ コツ1：平方完成は「半分の2乗」</strong><br>
+            \(x^2 + bx\) を平方完成するとき、\(b\) を半分にして2乗した \(\left(\dfrac{b}{2}\right)^2\) を足して引く。例：\(x^2 + 6x = (x + 3)^2 - 9\)
+        </div>
+
+        <div class="tip-box" id="tip-factor-out">
+            <strong>✏️ コツ2：係数をくくるのを忘れない</strong><br>
+            \(2x^2 + 8x\) のような場合、まず係数2をくくってから平方完成。\(2(x^2 + 4x) = 2\{(x+2)^2 - 4\} = 2(x+2)^2 - 8\)
+        </div>
+
+        <div class="tip-box" id="tip-vertex-sign">
+            <strong>✏️ コツ3：頂点の符号に注意</strong><br>
+            \(y = (x - 3)^2\) の頂点は \((3, 0)\)、\(y = (x + 2)^2\) の頂点は \((-2, 0)\)。「マイナスの後ろの数」がx座標になる。
+        </div>
+
+        <div class="tip-box" id="tip-three-points">
+            <strong>✏️ コツ4：グラフは3点で描く</strong><br>
+            頂点 + 軸に対称な2点を取れば、放物線の形が決まる。y切片も追加すると確実。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：頂点の符号を逆にする</div>
+            <p><strong>ダメな例：</strong> \(y = (x - 3)^2 + 2\) の頂点を \((-3, 2)\) と答える</p>
+            <p><strong>対策：</strong> 標準形は \(y = a(x - p)^2 + q\) で \(p\) の前はマイナス。頂点は \((3, 2)\) が正解。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：係数をくくり忘れる</div>
+            <p><strong>ダメな例：</strong> \(y = 2x^2 + 4x + 1\) を \(y = 2(x + 1)^2 + 1\) と変形</p>
+            <p><strong>対策：</strong> くくった後の調整を忘れない。\(2(x+1)^2 = 2x^2 + 4x + 2\) なので、\(-2 + 1 = -1\)。正解は \(y = 2(x+1)^2 - 1\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：平行移動の符号ミス</div>
+            <p><strong>ダメな例：</strong> x軸方向に3移動を \(y = (x + 3)^2\) と書く</p>
+            <p><strong>対策：</strong> x軸方向は「符号逆」。右に3移動なら \(y = (x - 3)^2\)。「xの後ろにマイナス3」=「右に3移動」と覚える。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">標準形から頂点と軸をすぐに読み取れる</div>
+            <div class="checklist-item">一般形から平方完成で標準形に変形できる</div>
+            <div class="checklist-item">係数をくくる場合の平方完成ができる</div>
+            <div class="checklist-item">平行移動の式を正しく書ける（x方向は符号逆）</div>
+            <div class="checklist-item">aの符号からグラフの向き（凸の向き）を判断できる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>\(y = 3(x + 1)^2 - 4\) の頂点と軸を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(y = 3(x - (-1))^2 + (-4)\) と考えて</p>
+                    <p>頂点：\((-1, -4)\)、軸：\(x = -1\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\(y = x^2 + 4x + 1\) を標準形に変形せよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(y = x^2 + 4x + 1 = (x + 2)^2 - 4 + 1 = (x + 2)^2 - 3\)</p>
+                    <p>頂点：\((-2, -3)\)、軸：\(x = -2\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>\(y = -2x^2 + 8x - 5\) の頂点を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(y = -2(x^2 - 4x) - 5 = -2\{(x-2)^2 - 4\} - 5\)</p>
+                    <p>\(= -2(x-2)^2 + 8 - 5 = -2(x-2)^2 + 3\)</p>
+                    <p>頂点：\((2, 3)\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：\(y = a(x-p)^2 + q\) の頂点は \((p, q)\)！平方完成で「半分の2乗」を使う！
+</div>
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「ガリレオと放物線」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 大砲の弾はどう飛ぶ？（17世紀イタリア）</div>
+
+            <p>17世紀初頭、イタリアの科学者<strong>ガリレオ・ガリレイ</strong>は、ある問題に取り組んでいた。</p>
+
+            <p><strong>「大砲の弾は、どんな軌道を描いて飛ぶのか？」</strong></p>
+
+            <p>当時の常識では、「弾は斜めに上がり、力が尽きたら真下に落ちる」と考えられていた。しかしガリレオは実験と数学で、全く違う結論に達した。</p>
+
+            <p><strong>「弾道は放物線を描く」</strong></p>
+
+            <p>横方向の運動（等速）と縦方向の運動（重力で加速）を分けて考えると、組み合わせた軌道は<strong>二次関数のグラフ</strong>になる。</p>
+
+            <div class="formula">
+                \[ y = -\frac{g}{2v_0^2 \cos^2\theta}x^2 + (\tan\theta)x \]
+            </div>
+
+            <p>これは \(y = ax^2 + bx\) の形——まさに放物線！</p>
+
+            <p>この発見は軍事的にも重要だった。「どの角度で撃てば最も遠くに飛ぶか」が計算できるようになったのだ。答えは<strong>45度</strong>（空気抵抗がない場合）。</p>
+
+            <p>ガリレオは後に地動説を支持したことで教会と対立し、軟禁生活を送ることになる。しかし彼が発見した放物線の法則は、今でもスポーツ（ボールの軌道）から宇宙開発（ロケットの打ち上げ）まで使われている。</p>
+
+            <p><strong>二次関数のグラフは、世界を動かす曲線だった。</strong></p>
+
+            <p style="font-size: 0.9em; color: #666; margin-top: 15px;">※詳しくは<a href="https://ja.wikipedia.org/wiki/%E6%94%BE%E7%89%A9%E7%B7%9A" target="_blank" style="color: #1976d2;">放物線 - Wikipedia</a>を参照。</p>
+        </div>
+    </div>
+</section>

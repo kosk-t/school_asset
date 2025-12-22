@@ -1,0 +1,436 @@
+---
+layout: material-raw
+title: 実数と絶対値
+icon: "📏"
+description: 有理数・無理数の分類、絶対値の性質、二重根号の外し方など、実数の基本をマスターする。
+level: 基礎
+level_num: 1
+category: numbers
+school_level: senior
+order: 2
+keywords:
+  - 有理数
+  - 無理数
+  - 実数
+  - 絶対値
+  - 二重根号
+cover_image: /images/noimage.jpg
+cover_description: 数の分類図（自然数・整数・有理数・無理数・実数）と絶対値のイメージ
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「√2を発見した男の悲劇」"
+related:
+  - url: /junior/累乗と平方根_教材.html
+    title: 累乗と平方根
+    note: 中学範囲の平方根の復習
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「\(\sqrt{2}\) は分数で表せない」——この事実は、古代ギリシャの数学者たちを震撼させました。高校では、数をより厳密に分類し、<strong>絶対値</strong>や<strong>二重根号</strong>などの扱いを学びます。</p>
+
+        <p>このページでは、<strong>実数と絶対値</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>数の分類</strong>：有理数と無理数、実数の体系を理解する</li>
+            <li><strong>絶対値</strong>：\(|x|\) の定義と性質、方程式・不等式での扱い</li>
+            <li><strong>二重根号</strong>：\(\sqrt{a + \sqrt{b}}\) の形を外す技術</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要：絶対値は「場合分け」で外す！ \(|x| = x\)（\(x \geq 0\)のとき）、\(|x| = -x\)（\(x < 0\)のとき）
+        </div>
+
+        <!-- 数の分類図（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="300" viewBox="0 0 700 300">
+                <!-- タイトル -->
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">数の分類</text>
+
+                <!-- 実数の大枠 -->
+                <rect x="50" y="45" width="600" height="240" fill="#e3f2fd" stroke="#1976d2" stroke-width="3" rx="15"/>
+                <text x="70" y="70" font-size="14" font-weight="bold" fill="#1976d2">実数</text>
+
+                <!-- 有理数 -->
+                <rect x="70" y="85" width="350" height="180" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="10"/>
+                <text x="90" y="110" font-size="14" font-weight="bold" fill="#e65100">有理数（分数で表せる）</text>
+
+                <!-- 整数 -->
+                <rect x="90" y="125" width="200" height="120" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="8"/>
+                <text x="110" y="150" font-size="14" font-weight="bold" fill="#2e7d32">整数</text>
+
+                <!-- 自然数 -->
+                <rect x="110" y="165" width="100" height="60" fill="#c8e6c9" stroke="#388e3c" stroke-width="2" rx="5"/>
+                <text x="125" y="185" font-size="12" font-weight="bold" fill="#1b5e20">自然数</text>
+                <text x="125" y="210" font-size="14" fill="#333">1, 2, 3, ...</text>
+
+                <!-- 整数の例 -->
+                <text x="225" y="200" font-size="14" fill="#333">0, −1, −2, ...</text>
+
+                <!-- 有理数の例（整数以外） -->
+                <text x="310" y="180" font-size="14" fill="#333">1/2, −3/4</text>
+                <text x="310" y="210" font-size="14" fill="#333">0.25, 0.333...</text>
+
+                <!-- 無理数 -->
+                <rect x="440" y="85" width="190" height="180" fill="#fce4ec" stroke="#e91e63" stroke-width="2" rx="10"/>
+                <text x="460" y="110" font-size="14" font-weight="bold" fill="#c2185b">無理数</text>
+                <text x="460" y="140" font-size="12" fill="#333">（分数で表せない）</text>
+                <text x="460" y="180" font-size="16" fill="#333">√2, √3, √5</text>
+                <text x="460" y="210" font-size="16" fill="#333">π, e</text>
+                <text x="460" y="240" font-size="14" fill="#666">循環しない無限小数</text>
+            </svg>
+            <div class="svg-caption">数の分類：実数 = 有理数 + 無理数</div>
+        </div>
+
+        <div class="rule-box" id="def-real-number-classification">
+            <strong>📌 ルール1：数の分類</strong>
+            <p><strong>有理数</strong>：整数 \(a, b\)（\(b \neq 0\)）を使って \(\dfrac{a}{b}\) と表せる数</p>
+            <ul>
+                <li>整数（\(\cdots, -2, -1, 0, 1, 2, \cdots\)）</li>
+                <li>有限小数（例：\(0.25 = \dfrac{1}{4}\)）</li>
+                <li>循環小数（例：\(0.333\cdots = \dfrac{1}{3}\)）</li>
+            </ul>
+            <p><strong>無理数</strong>：分数で表せない数（循環しない無限小数）</p>
+            <ul>
+                <li>例：\(\sqrt{2}, \sqrt{3}, \sqrt{5}, \pi, e\)</li>
+            </ul>
+            <p><strong>実数</strong>：有理数と無理数をあわせたもの（数直線上のすべての点）</p>
+        </div>
+
+        <div class="rule-box" id="def-absolute-value">
+            <strong>📌 ルール2：絶対値の定義</strong> <a href="#ex-abs" class="example-link">→ 例1・2</a>
+            <div class="formula">
+                \[ |x| = \begin{cases} x & (x \geq 0 \text{ のとき}) \\ -x & (x < 0 \text{ のとき}) \end{cases} \]
+            </div>
+            <p><strong>意味：</strong>「原点からの距離」。マイナスを取り除いて非負にする。</p>
+            <p><strong>→ だから結果は：</strong> \(|x| \geq 0\) が常に成り立つ</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>\(x = -3\) のとき、\(|x| = |-3| = -(-3) = 3\)</p>
+            <p>「マイナスにマイナスをつけてプラスにする」という操作。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-absolute-value-properties">
+            <strong>📌 ルール3：絶対値の性質</strong> <a href="#ex-abs-eq" class="example-link">→ 例3・4</a>
+            <div class="formula">
+                \[ |a|^2 = a^2, \quad |ab| = |a||b|, \quad \left|\frac{a}{b}\right| = \frac{|a|}{|b|}\ (b \neq 0) \]
+            </div>
+            <p><strong>重要な関係式：</strong></p>
+            <ul>
+                <li>\(\sqrt{a^2} = |a|\)（平方根を外すと絶対値がつく！）</li>
+                <li>\(-|a| \leq a \leq |a|\)</li>
+            </ul>
+        </div>
+
+        <div class="rule-box" id="method-nested-radical">
+            <strong>📌 ルール4：二重根号の外し方</strong> <a href="#ex-double" class="example-link">→ 例5・6</a>
+            <div class="formula">
+                \[ \sqrt{a + b + 2\sqrt{ab}} = \sqrt{a} + \sqrt{b} \quad (a, b > 0) \]
+                \[ \sqrt{a + b - 2\sqrt{ab}} = |\sqrt{a} - \sqrt{b}| \quad (a, b > 0) \]
+            </div>
+            <p><strong>手順：</strong></p>
+            <ol>
+                <li>\(\sqrt{\ }\) の中を「\((\sqrt{a} \pm \sqrt{b})^2\)」の形に変形</li>
+                <li>足して \(a+b\)、掛けて \(ab\) になる2数を探す</li>
+                <li>二重根号を外す（マイナスの場合は絶対値に注意）</li>
+            </ol>
+            <p><strong>✅ メリット：</strong> 複雑な根号を簡単な形に変形できる</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>ルールを使って実際に問題を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 絶対値の計算</h3>
+
+        <div class="example-box" id="ex-abs">
+            <div class="example-title">
+                <span class="number-badge">例1</span>\(|3 - \pi|\) の値を求める
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(\pi \approx 3.14\) なので、\(3 - \pi < 0\)</li>
+                <li>中身が負なので、\(|3 - \pi| = -(3 - \pi)\)</li>
+            </ol>
+            <div class="formula">
+                \[ |3 - \pi| = -(3 - \pi) = \pi - 3 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-abs2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>\(\sqrt{(x-2)^2}\) を簡単にする
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(\sqrt{a^2} = |a|\) の公式を使う</li>
+                <li>\(\sqrt{(x-2)^2} = |x-2|\)</li>
+                <li>\(x\) の値で場合分けが必要な場合は分ける</li>
+            </ol>
+            <div class="formula">
+                \[ \sqrt{(x-2)^2} = |x-2| = \begin{cases} x-2 & (x \geq 2) \\ -(x-2) = 2-x & (x < 2) \end{cases} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 絶対値を含む方程式・不等式</h3>
+
+        <div class="example-box" id="ex-abs-eq">
+            <div class="example-title">
+                <span class="number-badge">例3</span>\(|x - 3| = 5\) を解く
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>絶対値が5 → 「中身が5 または −5」</li>
+                <li>\(x - 3 = 5\) または \(x - 3 = -5\)</li>
+            </ol>
+            <div class="formula">
+                \[ x - 3 = 5 \Rightarrow x = 8, \quad x - 3 = -5 \Rightarrow x = -2 \]
+                \[ \therefore x = 8, -2 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-abs-ineq">
+            <div class="example-title">
+                <span class="number-badge">例4</span>\(|x - 1| < 3\) を解く
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>「原点からの距離が3未満」→ はさみうちの形に変形</li>
+                <li>\(-3 < x - 1 < 3\)</li>
+                <li>各辺に1を足す</li>
+            </ol>
+            <div class="formula">
+                \[ -3 < x - 1 < 3 \Rightarrow -2 < x < 4 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 二重根号</h3>
+
+        <div class="example-box" id="ex-double">
+            <div class="example-title">
+                <span class="number-badge">例5</span>\(\sqrt{5 + 2\sqrt{6}}\) を簡単にする
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(2\sqrt{6} = 2\sqrt{ab}\) より、\(ab = 6\) となる2数を探す</li>
+                <li>足して5、掛けて6 → \(a = 3, b = 2\)</li>
+                <li>\(\sqrt{3} + \sqrt{2}\) の形になる</li>
+            </ol>
+            <div class="formula">
+                \[ \sqrt{5 + 2\sqrt{6}} = \sqrt{3 + 2 + 2\sqrt{3 \cdot 2}} = \sqrt{(\sqrt{3} + \sqrt{2})^2} = \sqrt{3} + \sqrt{2} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-double2">
+            <div class="example-title">
+                <span class="number-badge">例6</span>\(\sqrt{7 - 4\sqrt{3}}\) を簡単にする
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(4\sqrt{3} = 2\sqrt{12} = 2\sqrt{4 \cdot 3}\) と変形</li>
+                <li>足して7、掛けて12 → \(a = 4, b = 3\)</li>
+                <li>マイナスなので \(|\sqrt{4} - \sqrt{3}| = |2 - \sqrt{3}|\)</li>
+                <li>\(2 > \sqrt{3}\) なので絶対値を外せる</li>
+            </ol>
+            <div class="formula">
+                \[ \sqrt{7 - 4\sqrt{3}} = \sqrt{4 + 3 - 2\sqrt{4 \cdot 3}} = |2 - \sqrt{3}| = 2 - \sqrt{3} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 有理数・無理数の判定</h3>
+
+        <div class="example-box" id="ex-rational">
+            <div class="example-title">
+                <span class="number-badge">例7</span>\(\sqrt{12}\) は有理数か無理数か
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(\sqrt{12} = \sqrt{4 \cdot 3} = 2\sqrt{3}\)</li>
+                <li>\(\sqrt{3}\) は無理数</li>
+                <li>有理数 × 無理数 = 無理数</li>
+            </ol>
+            <div class="formula">
+                \[ \sqrt{12} = 2\sqrt{3} \quad \text{（無理数）} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box" id="tip-abs-sign">
+            <strong>✏️ コツ1：絶対値は「中身の符号」で判断</strong><br>
+            \(|x-a|\) を外すとき、\(x\) と \(a\) の大小関係を考える。\(x \geq a\) なら \(x-a\)、\(x < a\) なら \(a-x\)。
+        </div>
+
+        <div class="tip-box" id="tip-nested-radical-pattern">
+            <strong>✏️ コツ2：二重根号は「足してa+b、掛けてab」</strong><br>
+            \(\sqrt{a+b \pm 2\sqrt{ab}}\) の形を見たら、「足して○、掛けて△」になる2数を探す。よく出るパターン：(3,2), (5,2), (4,3), (5,3) など。
+        </div>
+
+        <div class="tip-box" id="tip-sqrt-squared">
+            <strong>✏️ コツ3：\(\sqrt{a^2} = |a|\) を忘れない</strong><br>
+            \(\sqrt{x^2} = x\) ではない！常に \(\sqrt{x^2} = |x|\)。特に \(x\) が負になりうる場合は重要。
+        </div>
+
+        <div class="tip-box" id="tip-abs-equation">
+            <strong>✏️ コツ4：絶対値の方程式は「±」で分解</strong><br>
+            \(|A| = B\) は \(A = B\) または \(A = -B\) に分解。ただし \(B < 0\) なら解なし。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：\(\sqrt{x^2} = x\) と思い込む</div>
+            <p><strong>ダメな例：</strong> \(\sqrt{(-3)^2} = -3\) ← 間違い！</p>
+            <p><strong>対策：</strong> \(\sqrt{x^2} = |x|\) が正しい。\(\sqrt{(-3)^2} = \sqrt{9} = 3 = |-3|\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：二重根号のマイナスで絶対値を忘れる</div>
+            <p><strong>ダメな例：</strong> \(\sqrt{5 - 2\sqrt{6}} = \sqrt{3} - \sqrt{2}\) ← 大小関係を確認してない！</p>
+            <p><strong>対策：</strong> マイナスの場合は \(|\sqrt{a} - \sqrt{b}|\) になる。\(\sqrt{3} > \sqrt{2}\) なので OK だが、常に確認する。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：絶対値不等式の向きミス</div>
+            <p><strong>ダメな例：</strong> \(|x| > 3\) を \(-3 < x < 3\) と解く</p>
+            <p><strong>対策：</strong> \(|x| < 3\) は「挟む」→ \(-3 < x < 3\)。\(|x| > 3\) は「外側」→ \(x < -3\) または \(x > 3\)。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">有理数と無理数の違いを説明できる</div>
+            <div class="checklist-item">\(\sqrt{x^2} = |x|\) を使いこなせる</div>
+            <div class="checklist-item">絶対値を含む方程式・不等式を場合分けで解ける</div>
+            <div class="checklist-item">二重根号を「足して○、掛けて△」で外せる</div>
+            <div class="checklist-item">\(\sqrt{2}, \sqrt{3}, \sqrt{5}\) などが無理数であることを知っている</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>\(|2 - \sqrt{5}|\) の値を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(\sqrt{5} \approx 2.236\) より \(2 - \sqrt{5} < 0\)</p>
+                    <p>\(|2 - \sqrt{5}| = -(2 - \sqrt{5}) = \sqrt{5} - 2\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\(|2x - 1| \leq 5\) を解け。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(-5 \leq 2x - 1 \leq 5\)</p>
+                    <p>\(-4 \leq 2x \leq 6\)</p>
+                    <p>\(-2 \leq x \leq 3\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>\(\sqrt{6 + 2\sqrt{5}}\) を簡単にせよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>足して6、掛けて5 → \(a = 5, b = 1\)</p>
+                    <p>\(\sqrt{6 + 2\sqrt{5}} = \sqrt{5 + 1 + 2\sqrt{5 \cdot 1}} = \sqrt{(\sqrt{5} + 1)^2} = \sqrt{5} + 1\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：絶対値は「中身の符号で場合分け」！二重根号は「足して○、掛けて△」で外す！
+</div>
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「√2を発見した男の悲劇」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 ヒッパソスとピタゴラス学派の秘密（紀元前5世紀 古代ギリシャ）</div>
+
+            <p>紀元前500年頃、古代ギリシャに<strong>ピタゴラス学派</strong>という数学者集団がいた。彼らの信条は「<strong>万物は整数の比で表せる</strong>」。</p>
+
+            <p>世界の全ては、\(\dfrac{1}{2}\) とか \(\dfrac{3}{4}\) のような「きれいな分数」で表現できる——それが宇宙の真理だと信じていた。</p>
+
+            <p>ところがある日、学派のメンバー<strong>ヒッパソス</strong>が、1辺が1の正方形の対角線の長さを計算していた。</p>
+
+            <div class="formula">
+                \[ \text{対角線} = \sqrt{1^2 + 1^2} = \sqrt{2} \]
+            </div>
+
+            <p>「この \(\sqrt{2}\) を分数で表すと...」</p>
+
+            <p>彼は何度計算しても、\(\sqrt{2}\) を分数で表すことができなかった。そして<strong>背理法</strong>で、「\(\sqrt{2}\) は絶対に分数で表せない」ことを証明してしまった。</p>
+
+            <p><strong>ピタゴラス学派のリーダー：</strong>「は？ そんなわけないだろ。全ては整数比で表せるはずだ」</p>
+
+            <p><strong>ヒッパソス：</strong>「でも、証明できちゃったんですけど...」</p>
+
+            <p>学派の信条が根底から崩れる大発見。しかし、これは学派にとって<strong>絶対に公開してはならない秘密</strong>だった。</p>
+
+            <p>伝説によると、ヒッパソスはその後、航海中に<strong>海に突き落とされた</strong>という。</p>
+
+            <p>「秘密を漏らした罰」なのか「事故」なのか、真相は今も分からない。ただ一つ確かなのは、\(\sqrt{2}\) が分数で表せないという事実は、数学の歴史を変える大発見だったということ。</p>
+
+            <p><strong>教訓：上司の信念を覆す発見をしたときは、発表のタイミングに気をつけよう。</strong></p>
+
+            <p style="font-size: 0.9em; color: #666; margin-top: 15px;">※この話は古代の伝承に基づいています。詳しくは<a href="https://ja.wikipedia.org/wiki/%E3%83%92%E3%83%83%E3%83%91%E3%82%BD%E3%82%B9" target="_blank" style="color: #1976d2;">ヒッパソス - Wikipedia</a>を参照。</p>
+        </div>
+    </div>
+</section>

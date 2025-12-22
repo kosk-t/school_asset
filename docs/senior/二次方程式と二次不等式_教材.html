@@ -1,0 +1,444 @@
+---
+layout: material-raw
+title: 二次方程式と二次不等式
+icon: "📊"
+description: 判別式で解の個数を判定し、グラフを使って二次不等式を解く方法をマスターする。
+level: 標準
+level_num: 2
+category: equations
+school_level: senior
+order: 2
+keywords:
+  - 二次方程式
+  - 判別式
+  - 二次不等式
+  - 解と係数の関係
+  - グラフ
+cover_image: /images/noimage.jpg
+cover_description: 判別式と二次不等式のグラフ
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学雑学「判別式の正体」"
+related:
+  - url: /junior/二次方程式の解き方_教材.html
+    title: 二次方程式の解き方
+    note: 中学範囲の解法（因数分解・解の公式）
+    type: prerequisite
+  - url: /senior/二次関数のグラフ_教材.html
+    title: 二次関数のグラフ
+    note: 放物線とx軸の関係
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>中学で学んだ二次方程式を発展させ、「<strong>解が何個あるか</strong>」を判定したり、「<strong>不等式</strong>」を解いたりする方法を学びます。</p>
+
+        <p>このページでは、<strong>二次方程式と二次不等式</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>判別式</strong>：解の個数（2個・1個・0個）を判定する</li>
+            <li><strong>解と係数の関係</strong>：解を求めずに和・積を計算する</li>
+            <li><strong>二次不等式</strong>：グラフを使って不等式を解く</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要：判別式 \(D = b^2 - 4ac\) の符号で解の個数が決まる！
+        </div>
+
+        <!-- 判別式と解の個数の図解（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="220" viewBox="0 0 700 220">
+                <!-- タイトル -->
+                <text x="350" y="20" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">判別式と放物線の位置関係</text>
+
+                <!-- ケース1: D > 0 -->
+                <rect x="30" y="40" width="200" height="160" fill="#e8f5e9" stroke="#4caf50" rx="5"/>
+                <text x="130" y="65" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">D > 0</text>
+
+                <!-- x軸 -->
+                <line x1="50" y1="150" x2="210" y2="150" stroke="#333" stroke-width="1"/>
+                <!-- 放物線（2点で交わる） -->
+                <path d="M 60 60 Q 130 200 200 60" stroke="#e53935" stroke-width="2" fill="none"/>
+                <circle cx="85" cy="150" r="4" fill="#4caf50"/>
+                <circle cx="175" cy="150" r="4" fill="#4caf50"/>
+                <text x="130" y="190" font-size="12" fill="#333" text-anchor="middle">異なる2つの実数解</text>
+
+                <!-- ケース2: D = 0 -->
+                <rect x="250" y="40" width="200" height="160" fill="#fff3e0" stroke="#ff9800" rx="5"/>
+                <text x="350" y="65" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">D = 0</text>
+
+                <!-- x軸 -->
+                <line x1="270" y1="150" x2="430" y2="150" stroke="#333" stroke-width="1"/>
+                <!-- 放物線（1点で接する） -->
+                <path d="M 280 60 Q 350 150 420 60" stroke="#e53935" stroke-width="2" fill="none"/>
+                <circle cx="350" cy="150" r="4" fill="#ff9800"/>
+                <text x="350" y="190" font-size="12" fill="#333" text-anchor="middle">重解（1つの実数解）</text>
+
+                <!-- ケース3: D < 0 -->
+                <rect x="470" y="40" width="200" height="160" fill="#ffebee" stroke="#e53935" rx="5"/>
+                <text x="570" y="65" font-size="14" font-weight="bold" fill="#c62828" text-anchor="middle">D < 0</text>
+
+                <!-- x軸 -->
+                <line x1="490" y1="150" x2="650" y2="150" stroke="#333" stroke-width="1"/>
+                <!-- 放物線（交わらない） -->
+                <path d="M 500 80 Q 570 140 640 80" stroke="#e53935" stroke-width="2" fill="none"/>
+                <text x="570" y="190" font-size="12" fill="#333" text-anchor="middle">実数解なし</text>
+            </svg>
+            <div class="svg-caption">判別式 D の符号と放物線の x 軸との交点の関係</div>
+        </div>
+
+        <div class="rule-box" id="rule-discriminant">
+            <strong>📌 ルール1：判別式</strong> <a href="#ex-discriminant" class="example-link">→ 例1</a>
+            <p>二次方程式 \(ax^2 + bx + c = 0\) の<strong>判別式</strong>：</p>
+            <div class="formula">
+                \[ D = b^2 - 4ac \]
+            </div>
+            <ul>
+                <li>\(D > 0\)：<strong>異なる2つの実数解</strong></li>
+                <li>\(D = 0\)：<strong>重解</strong>（1つの実数解）</li>
+                <li>\(D < 0\)：<strong>実数解なし</strong>（虚数解のみ）</li>
+            </ul>
+            <p><strong>→ だから結果は：</strong> 解を求めなくても、解の個数が分かる</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>解の公式 \(x = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a}\) の \(\sqrt{\ }\) の中身が \(D\)。</p>
+            <p>\(D > 0\) なら \(\pm\) で2つの解、\(D = 0\) なら \(\pm 0\) で1つ、\(D < 0\) なら \(\sqrt{\text{負}}\) で実数解なし。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-vieta">
+            <strong>📌 ルール2：解と係数の関係</strong> <a href="#ex-vieta" class="example-link">→ 例2</a>
+            <p>\(ax^2 + bx + c = 0\) の2つの解を \(\alpha, \beta\) とすると：</p>
+            <div class="formula">
+                \[ \alpha + \beta = -\frac{b}{a}, \quad \alpha\beta = \frac{c}{a} \]
+            </div>
+            <p><strong>✅ メリット：</strong> 解を求めなくても、解の和・積が分かる</p>
+            <details class="thinking"><summary>💡 覚え方を見る</summary>
+            <p>\((x - \alpha)(x - \beta) = x^2 - (\alpha + \beta)x + \alpha\beta\) と展開。</p>
+            <p>\(ax^2 + bx + c = a(x^2 + \frac{b}{a}x + \frac{c}{a})\) と比較すれば導ける。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-ineq">
+            <strong>📌 ルール3：二次不等式の解き方</strong> <a href="#ex-ineq" class="example-link">→ 例3・4</a>
+            <p>\(ax^2 + bx + c > 0\)（または \(< 0\)）の解き方：</p>
+            <ol>
+                <li>\(y = ax^2 + bx + c\) のグラフを考える</li>
+                <li>\(y = 0\) となる点（x軸との交点）を求める</li>
+                <li>グラフが x軸より<strong>上</strong>（\(> 0\)）か<strong>下</strong>（\(< 0\)）かで判断</li>
+            </ol>
+        </div>
+
+        <!-- 二次不等式のパターン表 -->
+        <div class="rule-box" id="rule-ineq-table">
+            <strong>📌 ルール4：二次不等式の解のパターン（\(a > 0\) の場合）</strong>
+            <p>\(ax^2 + bx + c = 0\) の解を \(\alpha, \beta\)（\(\alpha < \beta\)）とすると：</p>
+            <table class="material-table">
+                <tr>
+                    <th>不等式</th>
+                    <th>\(D > 0\)（2解）</th>
+                    <th>\(D = 0\)（重解）</th>
+                    <th>\(D < 0\)（解なし）</th>
+                </tr>
+                <tr>
+                    <td>\(ax^2 + bx + c > 0\)</td>
+                    <td>\(x < \alpha, \beta < x\)</td>
+                    <td>\(x \neq \alpha\) の全実数</td>
+                    <td>すべての実数</td>
+                </tr>
+                <tr>
+                    <td>\(ax^2 + bx + c < 0\)</td>
+                    <td>\(\alpha < x < \beta\)</td>
+                    <td>解なし</td>
+                    <td>解なし</td>
+                </tr>
+            </table>
+            <p>※ \(a < 0\) の場合は不等号の向きが逆になる</p>
+        </div>
+
+        <div class="rule-box" id="rule-always">
+            <strong>📌 ルール5：常に正・常に負の条件</strong> <a href="#ex-always" class="example-link">→ 例5</a>
+            <p>\(ax^2 + bx + c\) が<strong>すべての実数 \(x\) で正</strong>になる条件：</p>
+            <div class="formula">
+                \[ a > 0 \text{ かつ } D < 0 \]
+            </div>
+            <p>\(ax^2 + bx + c\) が<strong>すべての実数 \(x\) で負</strong>になる条件：</p>
+            <div class="formula">
+                \[ a < 0 \text{ かつ } D < 0 \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>ルールを使って実際に問題を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 判別式</h3>
+
+        <div class="example-box" id="ex-discriminant">
+            <div class="example-title">
+                <span class="number-badge">例1</span>\(x^2 - 4x + k = 0\) が異なる2つの実数解を持つ \(k\) の範囲
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>判別式 \(D = b^2 - 4ac = (-4)^2 - 4 \cdot 1 \cdot k = 16 - 4k\)</li>
+                <li>異なる2つの実数解 → \(D > 0\)</li>
+                <li>\(16 - 4k > 0\) を解く</li>
+            </ol>
+            <div class="formula">
+                \[ 16 - 4k > 0 \Rightarrow k < 4 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 解と係数の関係</h3>
+
+        <div class="example-box" id="ex-vieta">
+            <div class="example-title">
+                <span class="number-badge">例2</span>\(x^2 - 5x + 3 = 0\) の2解を \(\alpha, \beta\) とするとき、\(\alpha^2 + \beta^2\) の値
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>解と係数の関係：\(\alpha + \beta = 5\)、\(\alpha\beta = 3\)</li>
+                <li>\(\alpha^2 + \beta^2 = (\alpha + \beta)^2 - 2\alpha\beta\) に代入</li>
+            </ol>
+            <div class="formula">
+                \[ \alpha^2 + \beta^2 = 5^2 - 2 \cdot 3 = 25 - 6 = 19 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 二次不等式</h3>
+
+        <div class="example-box" id="ex-ineq">
+            <div class="example-title">
+                <span class="number-badge">例3</span>\(x^2 - 5x + 6 > 0\) を解く
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(x^2 - 5x + 6 = 0\) を解く → \((x-2)(x-3) = 0\) → \(x = 2, 3\)</li>
+                <li>\(a = 1 > 0\) なので下に凸の放物線</li>
+                <li>「> 0」は x軸より<strong>上</strong>の部分 → 2つの解の<strong>外側</strong></li>
+            </ol>
+            <div class="formula">
+                \[ x < 2 \text{ または } x > 3 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-ineq2">
+            <div class="example-title">
+                <span class="number-badge">例4</span>\(x^2 - 5x + 6 < 0\) を解く
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>例3と同じく、\(x = 2, 3\) で x軸と交わる</li>
+                <li>「< 0」は x軸より<strong>下</strong>の部分 → 2つの解の<strong>内側</strong></li>
+            </ol>
+            <div class="formula">
+                \[ 2 < x < 3 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-always">
+            <div class="example-title">
+                <span class="number-badge">例5</span>\(x^2 + 2x + k > 0\) がすべての実数 \(x\) で成り立つ \(k\) の範囲
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(a = 1 > 0\) なので「常に正」の条件は \(D < 0\)</li>
+                <li>\(D = 4 - 4k < 0\)</li>
+                <li>\(4 - 4k < 0\) を解く</li>
+            </ol>
+            <div class="formula">
+                \[ k > 1 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 解がない場合</h3>
+
+        <div class="example-box" id="ex-no-sol">
+            <div class="example-title">
+                <span class="number-badge">例6</span>\(x^2 + 2x + 5 < 0\) を解く
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>判別式：\(D = 4 - 20 = -16 < 0\) → 実数解なし</li>
+                <li>\(a = 1 > 0\) で下に凸、かつ x軸と交わらない → 常に正</li>
+                <li>「< 0」を満たす \(x\) は存在しない</li>
+            </ol>
+            <div class="formula">
+                \[ \text{解なし} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box" id="tip-draw-graph">
+            <strong>✏️ コツ1：グラフを描く</strong><br>
+            二次不等式は必ずグラフを描く。下に凸なら「∪」、上に凸なら「∩」。x軸との交点を求めれば、どこが正・負か一目瞭然。
+        </div>
+
+        <div class="tip-box" id="tip-outside-inside">
+            <strong>✏️ コツ2：「外側・内側」で覚える</strong><br>
+            下に凸（\(a > 0\)）の場合：「> 0」は外側、「< 0」は内側。上に凸は逆。
+        </div>
+
+        <div class="tip-box" id="tip-vieta-transform">
+            <strong>✏️ コツ3：解と係数の関係で式変形</strong><br>
+            \(\alpha^2 + \beta^2 = (\alpha + \beta)^2 - 2\alpha\beta\) など、和・積だけで表せる形に変形する。
+        </div>
+
+        <div class="tip-box" id="tip-always-positive">
+            <strong>✏️ コツ4：「常に正」は D < 0 と a > 0</strong><br>
+            x軸と交わらず（\(D < 0\)）、下に凸（\(a > 0\)）なら常に正。両方の条件を確認！
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：不等式の向きとグラフの対応ミス</div>
+            <p><strong>ダメな例：</strong> \(x^2 - 4 > 0\) の解を「\(-2 < x < 2\)」と答える</p>
+            <p><strong>対策：</strong> 「> 0」は x軸より<strong>上</strong>。下に凸なら<strong>外側</strong>。正解は「\(x < -2, x > 2\)」。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：判別式の計算ミス</div>
+            <p><strong>ダメな例：</strong> \(D = b^2 - 4ac\) で \(b\) を2倍してしまう（\(2bx\) の場合）</p>
+            <p><strong>対策：</strong> \(ax^2 + bx + c\) の形にそろえてから \(D\) を計算。\(x^2 - 4x + 3\) なら \(b = -4\)。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：「常に正」で a の符号を忘れる</div>
+            <p><strong>ダメな例：</strong> \(D < 0\) だけで「常に正」と判断</p>
+            <p><strong>対策：</strong> \(D < 0\) かつ \(a > 0\) が必要。\(a < 0\) なら常に負になってしまう。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">判別式 \(D = b^2 - 4ac\) を正確に計算できる</div>
+            <div class="checklist-item">\(D\) の符号と解の個数の関係を覚えている</div>
+            <div class="checklist-item">解と係数の関係（和と積）を使える</div>
+            <div class="checklist-item">二次不等式をグラフで解ける</div>
+            <div class="checklist-item">「常に正」の条件（\(a > 0\) かつ \(D < 0\)）を理解している</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>\(x^2 + 6x + k = 0\) が重解を持つとき、\(k\) の値を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>重解 → \(D = 0\)</p>
+                    <p>\(D = 36 - 4k = 0\)</p>
+                    <p>\(k = 9\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\(x^2 - 3x - 10 < 0\) を解け。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(x^2 - 3x - 10 = 0\) → \((x-5)(x+2) = 0\) → \(x = -2, 5\)</p>
+                    <p>下に凸で「< 0」なので内側</p>
+                    <p>\(-2 < x < 5\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>\(2x^2 - 3x + 1 = 0\) の2解を \(\alpha, \beta\) とするとき、\(\dfrac{1}{\alpha} + \dfrac{1}{\beta}\) の値を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>解と係数の関係：\(\alpha + \beta = \dfrac{3}{2}\)、\(\alpha\beta = \dfrac{1}{2}\)</p>
+                    <p>\(\dfrac{1}{\alpha} + \dfrac{1}{\beta} = \dfrac{\alpha + \beta}{\alpha\beta} = \dfrac{3/2}{1/2} = 3\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：判別式 D で解の個数を判定！二次不等式はグラフで「外側・内側」を見る！
+</div>
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「判別式の正体」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">🔍 なぜ \(b^2 - 4ac\) なのか？</div>
+
+            <p>判別式 \(D = b^2 - 4ac\)。この式、どこから来たのか？</p>
+
+            <p>実は、解の公式の<strong>ルートの中身</strong>がそのまま判別式だ：</p>
+
+            <div class="formula">
+                \[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \]
+            </div>
+
+            <p>\(\pm\sqrt{D}\) の部分を見れば、すべてが分かる：</p>
+
+            <ul>
+                <li>\(D > 0\) → \(\sqrt{D}\) は正の数 → \(\pm\) で2つの解</li>
+                <li>\(D = 0\) → \(\sqrt{0} = 0\) → \(\pm 0\) は同じ → 重解</li>
+                <li>\(D < 0\) → \(\sqrt{\text{負}}\) は実数にならない → 実数解なし</li>
+            </ul>
+
+            <p>つまり判別式とは、「<strong>解の公式が実数を出力できるかどうか</strong>」を判定しているのだ。</p>
+
+            <p>ちなみに、\(D < 0\) のときに出てくる「虚数解」は、高校数学IIで学ぶ。\(\sqrt{-1} = i\)（虚数単位）を使えば、\(D < 0\) でも解が求まる。</p>
+
+            <p><strong>判別式は、解の公式の「門番」だった。</strong></p>
+        </div>
+    </div>
+</section>

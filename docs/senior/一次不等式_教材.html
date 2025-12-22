@@ -1,0 +1,451 @@
+---
+layout: material-raw
+title: 一次不等式
+icon: "⚖️"
+description: 一次不等式の解き方、連立不等式、絶対値を含む不等式など、不等式の基本をマスターする。
+level: 基礎
+level_num: 1
+category: equations
+school_level: senior
+order: 1
+keywords:
+  - 一次不等式
+  - 連立不等式
+  - 絶対値
+  - 不等号
+  - 解の範囲
+cover_image: /images/noimage.jpg
+cover_description: 数直線上の不等式の解と連立不等式の共通範囲
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学と社会「不等式で最適解を見つける」"
+related:
+  - url: /junior/一次方程式_教材.html
+    title: 一次方程式
+    note: 方程式の解き方の基礎
+    type: prerequisite
+  - url: /senior/実数と絶対値_教材.html
+    title: 実数と絶対値
+    note: 絶対値の扱い方
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「80点以上で合格」「予算は1万円以下」——日常でも「以上」「以下」「未満」といった<strong>不等号</strong>をよく使います。高校では、これを数式で扱う<strong>不等式</strong>を学びます。</p>
+
+        <p>このページでは、<strong>一次不等式</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>一次不等式の解き方</strong>：不等号の向きに注意しながら解く</li>
+            <li><strong>連立不等式</strong>：複数の不等式を同時に満たす範囲を求める</li>
+            <li><strong>絶対値を含む不等式</strong>：場合分けまたは定型パターンで解く</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要：負の数を掛けたり割ったりすると、不等号の向きが逆になる！
+        </div>
+
+        <!-- 不等式の性質の図解（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="220" viewBox="0 0 700 220">
+                <!-- タイトル -->
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">負の数で割ると不等号が逆転！</text>
+
+                <!-- 例1：正の数で割る -->
+                <rect x="50" y="50" width="280" height="80" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="10"/>
+                <text x="190" y="75" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">正の数で割る</text>
+                <text x="190" y="105" font-size="18" fill="#333" text-anchor="middle">2x > 6</text>
+                <text x="190" y="130" font-size="18" fill="#4caf50" text-anchor="middle">x > 3 ✓ 向き同じ</text>
+
+                <!-- 例2：負の数で割る -->
+                <rect x="370" y="50" width="280" height="80" fill="#ffebee" stroke="#e53935" stroke-width="2" rx="10"/>
+                <text x="510" y="75" font-size="14" font-weight="bold" fill="#c62828" text-anchor="middle">負の数で割る</text>
+                <text x="510" y="105" font-size="18" fill="#333" text-anchor="middle">−2x > 6</text>
+                <text x="510" y="130" font-size="18" fill="#e53935" text-anchor="middle">x < −3 ⚠️ 向き逆転！</text>
+
+                <!-- 注意書き -->
+                <rect x="150" y="155" width="400" height="50" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="8"/>
+                <text x="350" y="185" font-size="16" font-weight="bold" fill="#e65100" text-anchor="middle">マイナスを掛ける・割る → 不等号をひっくり返す</text>
+            </svg>
+            <div class="svg-caption">負の数で割ると不等号の向きが逆になる</div>
+        </div>
+
+        <div class="rule-box" id="rule-inequality-properties">
+            <strong>📌 ルール1：不等式の性質</strong> <a href="#ex-basic" class="example-link">→ 例1</a>
+            <p>\(a < b\) のとき、以下が成り立つ：</p>
+            <div class="formula">
+                \[ a + c < b + c, \quad a - c < b - c \]
+                \[ ac < bc, \quad \frac{a}{c} < \frac{b}{c} \quad (c > 0 \text{ のとき}) \]
+                \[ ac > bc, \quad \frac{a}{c} > \frac{b}{c} \quad (c < 0 \text{ のとき：向き逆転！}) \]
+            </div>
+            <p><strong>ポイント：</strong>足し算・引き算は向き変わらない。掛け算・割り算は<strong>負の数なら逆転</strong>。</p>
+        </div>
+
+        <div class="rule-box" id="rule-linear-inequality-solve">
+            <strong>📌 ルール2：一次不等式の解き方</strong> <a href="#ex-basic" class="example-link">→ 例1・2</a>
+            <p>一次方程式と同じ手順で解く。ただし<strong>負の数で割るときは向き逆転</strong>。</p>
+            <ol>
+                <li>カッコを外す・分数を払う</li>
+                <li>\(x\) の項を左辺に、定数項を右辺に移項</li>
+                <li>\(x\) の係数で割る（負なら不等号逆転）</li>
+            </ol>
+            <p><strong>→ だから結果は：</strong> \(x > a\) や \(x \leq b\) の形になる</p>
+        </div>
+
+        <div class="rule-box" id="rule-compound-inequality">
+            <strong>📌 ルール3：連立不等式</strong> <a href="#ex-compound" class="example-link">→ 例3・4</a>
+            <p>複数の不等式を同時に満たす \(x\) の範囲を求める。</p>
+            <div class="formula">
+                \[ \begin{cases} x > 2 \\ x < 5 \end{cases} \Rightarrow 2 < x < 5 \]
+            </div>
+            <p><strong>手順：</strong></p>
+            <ol>
+                <li>各不等式を個別に解く</li>
+                <li>数直線に図示する</li>
+                <li><strong>共通部分</strong>（重なっている部分）を求める</li>
+            </ol>
+            <p><strong>✅ メリット：</strong> 数直線を使うと共通部分が一目で分かる</p>
+        </div>
+
+        <div class="rule-box" id="rule-absolute-value-inequality">
+            <strong>📌 ルール4：絶対値を含む不等式</strong> <a href="#ex-abs" class="example-link">→ 例5・6</a>
+            <div class="formula">
+                \[ |x| < a \Leftrightarrow -a < x < a \quad (a > 0) \]
+                \[ |x| > a \Leftrightarrow x < -a \text{ または } x > a \quad (a > 0) \]
+            </div>
+            <p><strong>覚え方：</strong></p>
+            <ul>
+                <li>\(|x| < a\)：原点からの距離が \(a\) <strong>未満</strong> → 「挟まれる」形</li>
+                <li>\(|x| > a\)：原点からの距離が \(a\) <strong>より大きい</strong> → 「外側」に飛び出す</li>
+            </ul>
+        </div>
+
+        <div class="rule-box" id="rule-inequality-symbols">
+            <strong>📌 ルール5：不等号の記号と意味</strong>
+            <table class="material-table">
+                <tr>
+                    <th>記号</th>
+                    <th>意味</th>
+                    <th>端点を含む？</th>
+                </tr>
+                <tr>
+                    <td>\(<\)</td>
+                    <td>より小さい（未満）</td>
+                    <td>含まない（○）</td>
+                </tr>
+                <tr>
+                    <td>\(\leq\)</td>
+                    <td>以下</td>
+                    <td>含む（●）</td>
+                </tr>
+                <tr>
+                    <td>\(>\)</td>
+                    <td>より大きい</td>
+                    <td>含まない（○）</td>
+                </tr>
+                <tr>
+                    <td>\(\geq\)</td>
+                    <td>以上</td>
+                    <td>含む（●）</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>ルールを使って実際に不等式を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 一次不等式の基本</h3>
+
+        <div class="example-box" id="ex-basic">
+            <div class="example-title">
+                <span class="number-badge">例1</span>\(3x - 5 > 7\) を解く
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(-5\) を右辺に移項</li>
+                <li>3で割る（正の数なので向き変わらず）</li>
+            </ol>
+            <div class="formula">
+                \[ 3x - 5 > 7 \Rightarrow 3x > 12 \Rightarrow x > 4 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-negative">
+            <div class="example-title">
+                <span class="number-badge">例2</span>\(-2x + 3 \leq 9\) を解く
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>3を右辺に移項</li>
+                <li>\(-2\) で割る（<strong>負の数なので向き逆転！</strong>）</li>
+            </ol>
+            <div class="formula">
+                \[ -2x + 3 \leq 9 \Rightarrow -2x \leq 6 \Rightarrow x \geq -3 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 連立不等式</h3>
+
+        <div class="example-box" id="ex-compound">
+            <div class="example-title">
+                <span class="number-badge">例3</span>\(\begin{cases} 2x - 1 > 3 \\ x + 4 \leq 10 \end{cases}\) を解く
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>1つ目：\(2x - 1 > 3 \Rightarrow 2x > 4 \Rightarrow x > 2\)</li>
+                <li>2つ目：\(x + 4 \leq 10 \Rightarrow x \leq 6\)</li>
+                <li>共通部分を求める</li>
+            </ol>
+            <div class="formula">
+                \[ 2 < x \leq 6 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-no-solution">
+            <div class="example-title">
+                <span class="number-badge">例4</span>\(\begin{cases} x > 5 \\ x < 2 \end{cases}\) を解く
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(x > 5\) と \(x < 2\) を数直線に図示</li>
+                <li>共通部分がない！</li>
+            </ol>
+            <div class="formula">
+                \[ \text{解なし} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 絶対値を含む不等式</h3>
+
+        <div class="example-box" id="ex-abs">
+            <div class="example-title">
+                <span class="number-badge">例5</span>\(|x - 2| < 3\) を解く
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(|A| < a \Leftrightarrow -a < A < a\) を使う</li>
+                <li>\(-3 < x - 2 < 3\)</li>
+                <li>各辺に2を足す</li>
+            </ol>
+            <div class="formula">
+                \[ -3 < x - 2 < 3 \Rightarrow -1 < x < 5 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-abs2">
+            <div class="example-title">
+                <span class="number-badge">例6</span>\(|2x + 1| \geq 5\) を解く
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(|A| \geq a \Leftrightarrow A \leq -a\) または \(A \geq a\) を使う</li>
+                <li>\(2x + 1 \leq -5\) または \(2x + 1 \geq 5\)</li>
+                <li>各不等式を解く</li>
+            </ol>
+            <div class="formula">
+                \[ 2x + 1 \leq -5 \Rightarrow x \leq -3 \]
+                \[ 2x + 1 \geq 5 \Rightarrow x \geq 2 \]
+                \[ \therefore x \leq -3 \text{ または } x \geq 2 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 分数・小数を含む不等式</h3>
+
+        <div class="example-box" id="ex-fraction">
+            <div class="example-title">
+                <span class="number-badge">例7</span>\(\dfrac{x-1}{3} > \dfrac{2x+1}{4}\) を解く
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>両辺に12（分母の最小公倍数）を掛ける</li>
+                <li>整理して解く</li>
+            </ol>
+            <div class="formula">
+                \[ 4(x-1) > 3(2x+1) \]
+                \[ 4x - 4 > 6x + 3 \]
+                \[ -2x > 7 \]
+                \[ x < -\frac{7}{2} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box" id="tip-positive-coefficient">
+            <strong>✏️ コツ1：xの係数を正にしてから割る</strong><br>
+            \(-3x > 6\) を解くとき、「\(-3\) で割って向き逆転」と考えるより、先に両辺に \(-1\) を掛けて \(3x < -6\) にする方が間違えにくい。
+        </div>
+
+        <div class="tip-box" id="tip-number-line">
+            <strong>✏️ コツ2：連立不等式は数直線を描く</strong><br>
+            2つ以上の不等式があるときは、必ず数直線を描いて共通部分を確認する。頭の中だけで考えると間違えにくい。
+        </div>
+
+        <div class="tip-box" id="tip-absolute-value-pattern">
+            <strong>✏️ コツ3：絶対値は「挟む or 外側」で覚える</strong><br>
+            \(|x| < a\) は「挟まれる」（\(-a\) と \(a\) の間）。\(|x| > a\) は「外側に飛び出す」（\(-a\) より左、または \(a\) より右）。
+        </div>
+
+        <div class="tip-box" id="tip-endpoint-check">
+            <strong>✏️ コツ4：端点の確認を忘れない</strong><br>
+            \(<\) と \(\leq\) の違いは重要。「等号を含むか」を常に確認し、数直線では ○（含まない）と ●（含む）を使い分ける。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：負の数で割って向き逆転を忘れる</div>
+            <p><strong>ダメな例：</strong> \(-2x > 4\) を \(x > -2\) と解く</p>
+            <p><strong>対策：</strong> 負の数で割ったら必ず不等号をひっくり返す。正解は \(x < -2\)。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：連立不等式で「または」と「かつ」を混同</div>
+            <p><strong>ダメな例：</strong> \(\begin{cases} x > 2 \\ x < 5 \end{cases}\) を「\(x > 2\) または \(x < 5\)」と解釈</p>
+            <p><strong>対策：</strong> 連立不等式は「かつ」（同時に満たす）。答えは \(2 < x < 5\)。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：絶対値不等式の向きを逆に覚える</div>
+            <p><strong>ダメな例：</strong> \(|x| > 3\) を \(-3 < x < 3\) と解く</p>
+            <p><strong>対策：</strong> \(|x| > a\) は「外側」。\(x < -3\) または \(x > 3\) が正解。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">負の数で割ると不等号が逆転することを覚えている</div>
+            <div class="checklist-item">連立不等式を数直線で解ける</div>
+            <div class="checklist-item">\(|x| < a\) と \(|x| > a\) の違いを説明できる</div>
+            <div class="checklist-item">\(<\) と \(\leq\) の違い（端点を含むか）を意識している</div>
+            <div class="checklist-item">分数を含む不等式を分母を払って解ける</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>\(-4x + 5 > 1\) を解け。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(-4x + 5 > 1 \Rightarrow -4x > -4 \Rightarrow x < 1\)</p>
+                    <p>（負の数で割ったので向き逆転）</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\(\begin{cases} 3x - 2 \geq 4 \\ 2x + 1 < 9 \end{cases}\) を解け。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>1つ目：\(3x - 2 \geq 4 \Rightarrow 3x \geq 6 \Rightarrow x \geq 2\)</p>
+                    <p>2つ目：\(2x + 1 < 9 \Rightarrow 2x < 8 \Rightarrow x < 4\)</p>
+                    <p>共通部分：\(2 \leq x < 4\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>\(|x + 3| > 2\) を解け。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(|A| > a \Leftrightarrow A < -a\) または \(A > a\)</p>
+                    <p>\(x + 3 < -2\) または \(x + 3 > 2\)</p>
+                    <p>\(x < -5\) または \(x > -1\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：負の数で割ったら不等号逆転！絶対値は「挟む or 外側」で覚える！
+</div>
+
+<!-- ========== おまけ：数学と社会 ========== -->
+<section id="story">
+    <h2>おまけ：数学と社会「不等式で最適解を見つける」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 第二次世界大戦と線形計画法</div>
+
+            <p>1940年代、第二次世界大戦中のアメリカ軍は深刻な問題を抱えていた。</p>
+
+            <p><strong>「限られた資源で、どうやって効率よく物資を運ぶか？」</strong></p>
+
+            <p>船の数、燃料、人員、時間——すべてに<strong>制限（不等式）</strong>がある。その制限の中で「最も効率的な方法」を見つけなければならない。</p>
+
+            <p>この問題を数学的に解決したのが、数学者<strong>ジョージ・ダンツィグ</strong>。彼が開発した「<strong>線形計画法</strong>」は、複数の不等式の条件を満たしながら、目的（コスト最小化や効率最大化）を達成する方法だった。</p>
+
+            <div class="formula">
+                \[ \text{制約条件：} \begin{cases} x + y \leq 100 \\ 2x + y \leq 150 \\ x, y \geq 0 \end{cases} \]
+                \[ \text{この範囲で「}3x + 2y\text{」を最大にする}(x, y)\text{を見つける} \]
+            </div>
+
+            <p>戦後、この技術は<strong>企業の経営</strong>にも応用された。</p>
+
+            <ul>
+                <li>航空会社：パイロットのシフトを最適化</li>
+                <li>物流会社：配送ルートの最短化</li>
+                <li>工場：生産計画の効率化</li>
+            </ul>
+
+            <p>今でもAmazonの倉庫、Googleの広告配信、Uberの配車システムなど、私たちの生活を支える裏側で<strong>不等式の数学</strong>が働いている。</p>
+
+            <p><strong>高校の不等式は、実は世界を動かす数学の入り口だった。</strong></p>
+
+            <p style="font-size: 0.9em; color: #666; margin-top: 15px;">※線形計画法について詳しくは<a href="https://ja.wikipedia.org/wiki/%E7%B7%9A%E5%BD%A2%E8%A8%88%E7%94%BB%E6%B3%95" target="_blank" style="color: #1976d2;">線形計画法 - Wikipedia</a>を参照。</p>
+        </div>
+    </div>
+</section>

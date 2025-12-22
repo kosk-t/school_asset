@@ -345,6 +345,109 @@
 # ============================================
 
 # ============================================
+# 数と式 (numbers) - 高校
+# ============================================
+
+# --- 基礎 ---
+- slug: senior/展開と因数分解_高校_教材
+  title: 展開と因数分解（高校）
+  icon: "🔢"
+  description: 3乗公式・複雑なたすき掛け・置き換えをマスター！
+  level: 基礎
+  level_num: 1
+  category: numbers
+  school_level: senior
+  order: 1
+  cover_image: images/noimage.jpg
+
+- slug: senior/実数と絶対値_教材
+  title: 実数と絶対値
+  icon: "📏"
+  description: 有理数・無理数・絶対値・二重根号をマスター！
+  level: 基礎
+  level_num: 1
+  category: numbers
+  school_level: senior
+  order: 2
+  cover_image: images/noimage.jpg
+
+- slug: senior/集合と命題_教材
+  title: 集合と命題
+  icon: "🔵"
+  description: 必要条件・十分条件・対偶をマスター！
+  level: 基礎
+  level_num: 1
+  category: numbers
+  school_level: senior
+  order: 3
+  cover_image: images/noimage.jpg
+
+# ============================================
+# 方程式 (equations) - 高校
+# ============================================
+
+# --- 基礎 ---
+- slug: senior/一次不等式_教材
+  title: 一次不等式
+  icon: "⚖️"
+  description: 連立不等式・絶対値を含む不等式をマスター！
+  level: 基礎
+  level_num: 1
+  category: equations
+  school_level: senior
+  order: 1
+  cover_image: images/noimage.jpg
+
+- slug: senior/二次方程式と二次不等式_教材
+  title: 二次方程式と二次不等式
+  icon: "📊"
+  description: 判別式・解と係数の関係・二次不等式をマスター！
+  level: 標準
+  level_num: 2
+  category: equations
+  school_level: senior
+  order: 2
+  cover_image: images/noimage.jpg
+
+# ============================================
+# 関数 (functions) - 高校
+# ============================================
+
+# --- 標準 ---
+- slug: senior/二次関数のグラフ_教材
+  title: 二次関数のグラフ
+  icon: "📈"
+  description: 平方完成で頂点・軸を求めてグラフを描く！
+  level: 標準
+  level_num: 2
+  category: functions
+  school_level: senior
+  order: 1
+  cover_image: images/noimage.jpg
+
+- slug: senior/二次関数の最大最小_教材
+  title: 二次関数の最大最小
+  icon: "🎯"
+  description: 定義域と場合分けで最大値・最小値を求める！
+  level: 標準
+  level_num: 2
+  category: functions
+  school_level: senior
+  order: 2
+  cover_image: images/noimage.jpg
+
+- slug: senior/二次関数_最大最小の場合分け_教材
+  title: 二次関数：最大最小の場合分け
+  icon: "🔀"
+  description: 場合分けが必要か？何で分けるか？を瞬時に判断！
+  level: 標準
+  level_num: 2
+  category: functions
+  school_level: senior
+  order: 3
+  cover_image: images/noimage.jpg
+
+# ============================================
 # 図形 (geometry) - 高校
 # ============================================
 
@@ -356,6 +459,43 @@
   level: 基礎
   level_num: 1
   category: geometry
+  school_level: senior
+  order: 1
+  cover_image: images/noimage.jpg
+
+- slug: senior/正弦定理と余弦定理_教材
+  title: 正弦定理と余弦定理
+  icon: "📐"
+  description: 正弦定理・余弦定理・面積公式で三角形を完全攻略！
+  level: 標準
+  level_num: 2
+  category: geometry
+  school_level: senior
+  order: 2
+  cover_image: images/noimage.jpg
+
+- slug: senior/正弦定理vs余弦定理_教材
+  title: 正弦定理 vs 余弦定理
+  icon: "⚖️"
+  description: どちらを使う？を瞬時に判断する力を身につける！
+  level: 標準
+  level_num: 2
+  category: geometry
+  school_level: senior
+  order: 3
+  cover_image: images/noimage.jpg
+
+# ============================================
+# データの活用 (data) - 高校
+# ============================================
+
+- slug: senior/データの分析_教材
+  title: データの分析
+  icon: "📊"
+  description: 分散・標準偏差・相関係数で統計的に考える力を！
+  level: 標準
+  level_num: 2
+  category: data
   school_level: senior
   order: 1
   cover_image: images/noimage.jpg

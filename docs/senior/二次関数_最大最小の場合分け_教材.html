@@ -1,0 +1,490 @@
+---
+layout: material-raw
+title: 二次関数：最大最小の場合分け
+icon: "🔀"
+description: 二次関数の最大最小問題で「場合分けが必要か」「何で場合分けするか」を瞬時に判断する力を身につける。
+level: 標準
+level_num: 2
+category: functions
+school_level: senior
+order: 3
+keywords:
+  - 二次関数
+  - 場合分け
+  - 最大値
+  - 最小値
+  - 判断
+cover_image: /images/noimage.jpg
+cover_description: 場合分けの判断フローチャート
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "判断フロー"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学雑学「ロケット軌道と場合分け」"
+related:
+  - url: /senior/二次関数の最大最小_教材.html
+    title: 二次関数の最大最小
+    note: 最大最小の基本的な求め方
+    type: prerequisite
+  - url: /senior/二次関数のグラフ_教材.html
+    title: 二次関数のグラフ
+    note: 平方完成と頂点の求め方
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>二次関数の最大最小問題で一番の悩みは<strong>「場合分けがいるの？」「何で分けるの？」</strong>という判断。この教材で迷わず判断できるようになろう。</p>
+
+        <p>このページでは、<strong>場合分けの判断力</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>場合分けが必要か</strong>：問題文に文字があるか？どこに文字があるか？</li>
+            <li><strong>何で場合分けするか</strong>：軸の位置？定義域の端点？</li>
+            <li><strong>場合分けの境界</strong>：等号はどこにつける？</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 判断フロー ========== -->
+<section id="section2">
+    <h2>2. 判断フロー</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要：「文字がどこにあるか」で場合分けの必要性が決まる！
+        </div>
+
+        <!-- 判断フローチャート（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="450" viewBox="0 0 700 450">
+                <!-- タイトル -->
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">場合分けが必要かどうかの判断フロー</text>
+
+                <!-- スタート -->
+                <ellipse cx="350" cy="60" rx="80" ry="25" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="350" y="65" font-size="14" fill="#1976d2" text-anchor="middle">問題を読む</text>
+
+                <!-- 矢印1 -->
+                <line x1="350" y1="85" x2="350" y2="110" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+
+                <!-- 判断1: 文字があるか -->
+                <polygon points="350,110 450,150 350,190 250,150" fill="#fff8e1" stroke="#ff9800" stroke-width="2"/>
+                <text x="350" y="145" font-size="12" fill="#e65100" text-anchor="middle">問題文に</text>
+                <text x="350" y="160" font-size="12" fill="#e65100" text-anchor="middle">文字がある？</text>
+
+                <!-- 左分岐: 文字なし -->
+                <line x1="250" y1="150" x2="120" y2="150" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+                <text x="185" y="140" font-size="11" fill="#666">No</text>
+                <rect x="30" y="130" width="90" height="40" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                <text x="75" y="155" font-size="12" fill="#2e7d32" text-anchor="middle">場合分け不要</text>
+
+                <!-- 右分岐: 文字あり -->
+                <line x1="450" y1="150" x2="520" y2="150" stroke="#333" stroke-width="2"/>
+                <text x="485" y="140" font-size="11" fill="#666">Yes</text>
+                <line x1="520" y1="150" x2="520" y2="220" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+
+                <!-- 判断2: どこに文字 -->
+                <polygon points="520,220 620,260 520,300 420,260" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
+                <text x="520" y="255" font-size="12" fill="#c2185b" text-anchor="middle">文字は</text>
+                <text x="520" y="270" font-size="12" fill="#c2185b" text-anchor="middle">どこにある？</text>
+
+                <!-- 分岐: 軸に文字 -->
+                <line x1="420" y1="260" x2="200" y2="260" stroke="#333" stroke-width="2"/>
+                <line x1="200" y1="260" x2="200" y2="320" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+                <text x="310" y="250" font-size="11" fill="#666">軸に文字</text>
+                <rect x="120" y="320" width="160" height="50" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                <text x="200" y="340" font-size="11" fill="#1565c0" text-anchor="middle">軸の位置で場合分け</text>
+                <text x="200" y="358" font-size="10" fill="#1565c0" text-anchor="middle">境界：軸=左端、軸=右端</text>
+
+                <!-- 分岐: 定義域に文字 -->
+                <line x1="620" y1="260" x2="680" y2="260" stroke="#333" stroke-width="2"/>
+                <line x1="680" y1="260" x2="680" y2="320" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+                <text x="650" y="250" font-size="11" fill="#666">定義域</text>
+                <rect x="600" y="320" width="160" height="50" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                <text x="680" y="340" font-size="11" fill="#2e7d32" text-anchor="middle">定義域の端で場合分け</text>
+                <text x="680" y="358" font-size="10" fill="#2e7d32" text-anchor="middle">境界：端=軸</text>
+
+                <!-- 分岐: 両方に文字 -->
+                <line x1="520" y1="300" x2="520" y2="350" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+                <text x="530" y="330" font-size="11" fill="#666">両方</text>
+                <rect x="400" y="350" width="240" height="50" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="5"/>
+                <text x="520" y="370" font-size="11" fill="#e65100" text-anchor="middle">軸と定義域の位置関係で場合分け</text>
+                <text x="520" y="388" font-size="10" fill="#e65100" text-anchor="middle">（複雑なので慎重に！）</text>
+
+                <!-- 矢印マーカー -->
+                <defs>
+                    <marker id="arrow-black" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+                    </marker>
+                </defs>
+            </svg>
+            <div class="svg-caption">まず「文字がどこにあるか」を確認！</div>
+        </div>
+
+        <div class="rule-box" id="rule-no-letter">
+            <strong>📌 パターン1：文字なし → 場合分け不要</strong> <a href="#ex-no-letter" class="example-link">→ 例1</a>
+            <p>問題文に文字（パラメータ）がなければ、場合分けは不要。</p>
+            <p>例：\(y = x^2 - 4x + 3\)（\(0 \leq x \leq 5\)）の最大最小</p>
+            <p><strong>→ やること：</strong></p>
+            <ol>
+                <li>平方完成して軸と頂点を出す</li>
+                <li>軸が定義域の中か外かを確認</li>
+                <li>最大最小を求める</li>
+            </ol>
+        </div>
+
+        <div class="rule-box" id="rule-axis-letter">
+            <strong>📌 パターン2：軸に文字 → 軸の位置で場合分け</strong> <a href="#ex-axis-letter" class="example-link">→ 例2</a>
+            <p>軸にパラメータがある場合、軸が定義域のどこにあるかで場合分け。</p>
+            <p>例：\(y = x^2 - 2ax + 1\)（\(0 \leq x \leq 2\)）の最小値</p>
+            <p><strong>→ 場合分けの境界：</strong></p>
+            <ul>
+                <li>軸 = 定義域の左端（この例では \(a = 0\)）</li>
+                <li>軸 = 定義域の右端（この例では \(a = 2\)）</li>
+            </ul>
+            <div class="formula">
+                \[ \text{場合分け：} \begin{cases} a < 0 & \text{（軸が左端の左）} \\ 0 \leq a \leq 2 & \text{（軸が定義域内）} \\ a > 2 & \text{（軸が右端の右）} \end{cases} \]
+            </div>
+        </div>
+
+        <div class="rule-box" id="rule-domain-letter">
+            <strong>📌 パターン3：定義域に文字 → 端点の位置で場合分け</strong> <a href="#ex-domain-letter" class="example-link">→ 例3</a>
+            <p>定義域の端点にパラメータがある場合、端点が軸のどこにあるかで場合分け。</p>
+            <p>例：\(y = x^2 - 4x + 3\)（\(0 \leq x \leq a\)）の最小値</p>
+            <p><strong>→ 場合分けの境界：</strong></p>
+            <ul>
+                <li>右端 = 軸（この例では \(a = 2\)）</li>
+            </ul>
+            <div class="formula">
+                \[ \text{場合分け：} \begin{cases} 0 < a < 2 & \text{（軸が定義域の右）} \\ a \geq 2 & \text{（軸が定義域内）} \end{cases} \]
+            </div>
+        </div>
+
+        <div class="rule-box" id="rule-both-letter">
+            <strong>📌 パターン4：軸と定義域の両方に文字 → 複合的に場合分け</strong> <a href="#ex-both-letter" class="example-link">→ 例4</a>
+            <p>軸と定義域の両方にパラメータがある場合、両方の関係で場合分け。</p>
+            <p>例：\(y = x^2 - 2ax\)（\(0 \leq x \leq 1\)）の最大値を \(a\) で表す</p>
+            <p><strong>→ やること：</strong></p>
+            <ol>
+                <li>軸の位置を確認（この例では \(x = a\)）</li>
+                <li>軸と定義域の位置関係で場合分け</li>
+                <li>各場合で端点の値を比較</li>
+            </ol>
+        </div>
+
+        <!-- 場合分けの境界値の決め方 -->
+        <div class="svg-container">
+            <svg width="700" height="200" viewBox="0 0 700 200">
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#4caf50" text-anchor="middle">境界値の見つけ方</text>
+
+                <!-- 数直線 -->
+                <line x1="50" y1="100" x2="650" y2="100" stroke="#333" stroke-width="2"/>
+
+                <!-- 定義域 -->
+                <line x1="150" y1="85" x2="150" y2="115" stroke="#1976d2" stroke-width="3"/>
+                <text x="150" y="75" font-size="12" fill="#1976d2" text-anchor="middle">左端</text>
+                <line x1="550" y1="85" x2="550" y2="115" stroke="#1976d2" stroke-width="3"/>
+                <text x="550" y="75" font-size="12" fill="#1976d2" text-anchor="middle">右端</text>
+
+                <!-- 定義域の範囲 -->
+                <line x1="150" y1="100" x2="550" y2="100" stroke="#4caf50" stroke-width="6" opacity="0.5"/>
+                <text x="350" y="130" font-size="12" fill="#4caf50" text-anchor="middle">定義域</text>
+
+                <!-- 境界の説明 -->
+                <rect x="100" y="145" width="200" height="40" fill="#e3f2fd" stroke="#1976d2" rx="5"/>
+                <text x="200" y="170" font-size="11" fill="#1565c0" text-anchor="middle">境界1: 軸 = 左端</text>
+
+                <rect x="400" y="145" width="200" height="40" fill="#e3f2fd" stroke="#1976d2" rx="5"/>
+                <text x="500" y="170" font-size="11" fill="#1565c0" text-anchor="middle">境界2: 軸 = 右端</text>
+            </svg>
+            <div class="svg-caption">境界値は「軸が定義域の端に来るとき」</div>
+        </div>
+
+        <div class="rule-box" id="rule-boundary">
+            <strong>📌 境界値の決め方まとめ</strong>
+            <table class="material-table">
+                <tr>
+                    <th>文字の場所</th>
+                    <th>境界の条件</th>
+                    <th>例（定義域 [0, 2]）</th>
+                </tr>
+                <tr>
+                    <td>軸に文字 \(x = a\)</td>
+                    <td>軸 = 左端、軸 = 右端</td>
+                    <td>\(a = 0, a = 2\)</td>
+                </tr>
+                <tr>
+                    <td>右端に文字（〜a）</td>
+                    <td>右端 = 軸</td>
+                    <td>\(a = \text{軸の値}\)</td>
+                </tr>
+                <tr>
+                    <td>左端に文字（a〜）</td>
+                    <td>左端 = 軸</td>
+                    <td>\(a = \text{軸の値}\)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>パターンごとに例題を解いてみましょう。</p>
+
+        <h3 style="color: #4caf50; margin: 15px 0 10px 0;">▶ パターン1：文字なし</h3>
+
+        <div class="example-box" id="ex-no-letter">
+            <div class="example-title">
+                <span class="number-badge">例1</span>\(y = x^2 - 6x + 5\)（\(1 \leq x \leq 4\)）の最大最小
+            </div>
+            <p><strong>判断：</strong> 文字なし → 場合分け不要</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>平方完成：\(y = (x - 3)^2 - 4\)、軸 \(x = 3\)</li>
+                <li>軸 \(x = 3\) は \([1, 4]\) の中にある</li>
+                <li>最小値：頂点で \(-4\)（\(x = 3\)）</li>
+                <li>最大値：\(f(1) = 0\)、\(f(4) = -3\) → 大きい方は \(0\)（\(x = 1\)）</li>
+            </ol>
+            <div class="formula">
+                \[ \text{最小値}：-4 \;(x=3), \quad \text{最大値}：0 \;(x=1) \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ パターン2：軸に文字</h3>
+
+        <div class="example-box" id="ex-axis-letter">
+            <div class="example-title">
+                <span class="number-badge">例2</span>\(y = x^2 - 2ax + 3\)（\(0 \leq x \leq 2\)）の最小値を \(a\) で表す
+            </div>
+            <p><strong>判断：</strong> 軸 \(x = a\) に文字あり → 軸の位置で場合分け</p>
+            <p><strong>境界値：</strong> \(a = 0\)（軸 = 左端）、\(a = 2\)（軸 = 右端）</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>平方完成：\(y = (x - a)^2 - a^2 + 3\)、軸 \(x = a\)、頂点の \(y\) 座標は \(-a^2 + 3\)</li>
+                <li>3つに場合分け</li>
+            </ol>
+            <p><strong>(i) \(a < 0\) のとき：</strong>軸が左端の左</p>
+            <p>　→ 定義域内で増加、最小は左端 \(f(0) = 3\)</p>
+
+            <p><strong>(ii) \(0 \leq a \leq 2\) のとき：</strong>軸が定義域内</p>
+            <p>　→ 最小は頂点で \(-a^2 + 3\)</p>
+
+            <p><strong>(iii) \(a > 2\) のとき：</strong>軸が右端の右</p>
+            <p>　→ 定義域内で減少、最小は右端 \(f(2) = 7 - 4a\)</p>
+
+            <div class="formula">
+                \[ \text{最小値} = \begin{cases} 3 & (a < 0) \\ -a^2 + 3 & (0 \leq a \leq 2) \\ 7 - 4a & (a > 2) \end{cases} \]
+            </div>
+        </div>
+
+        <h3 style="color: #9c27b0; margin: 25px 0 10px 0;">▶ パターン3：定義域に文字</h3>
+
+        <div class="example-box" id="ex-domain-letter">
+            <div class="example-title">
+                <span class="number-badge">例3</span>\(y = x^2 - 4x + 5\)（\(0 \leq x \leq a\)、\(a > 0\)）の最小値を \(a\) で表す
+            </div>
+            <p><strong>判断：</strong> 定義域の右端に文字 \(a\) あり → 右端の位置で場合分け</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>平方完成：\(y = (x - 2)^2 + 1\)、軸 \(x = 2\)、頂点 \((2, 1)\)</li>
+                <li>境界値は「右端 = 軸」つまり \(a = 2\)</li>
+            </ol>
+            <p><strong>(i) \(0 < a < 2\) のとき：</strong>軸が定義域の右側</p>
+            <p>　→ 定義域内で減少、最小は右端 \(f(a) = a^2 - 4a + 5\)</p>
+
+            <p><strong>(ii) \(a \geq 2\) のとき：</strong>軸が定義域内</p>
+            <p>　→ 最小は頂点で \(1\)</p>
+
+            <div class="formula">
+                \[ \text{最小値} = \begin{cases} a^2 - 4a + 5 & (0 < a < 2) \\ 1 & (a \geq 2) \end{cases} \]
+            </div>
+        </div>
+
+        <h3 style="color: #e53935; margin: 25px 0 10px 0;">▶ パターン4：両方に文字</h3>
+
+        <div class="example-box" id="ex-both-letter">
+            <div class="example-title">
+                <span class="number-badge">例4</span>\(y = x^2 - 2ax\)（\(0 \leq x \leq 1\)）の最大値を \(a\) で表す
+            </div>
+            <p><strong>判断：</strong> 軸に文字 \(a\)、定義域は固定だが最大値なので端点比較が必要 → 場合分け</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>平方完成：\(y = (x - a)^2 - a^2\)、軸 \(x = a\)</li>
+                <li>下に凸なので、最大値は端点 \(f(0)\) と \(f(1)\) の比較</li>
+                <li>\(f(0) = 0\)、\(f(1) = 1 - 2a\)</li>
+                <li>\(f(0) = f(1)\) となるのは \(0 = 1 - 2a\)、つまり \(a = \dfrac{1}{2}\)</li>
+            </ol>
+            <p><strong>(i) \(a < \dfrac{1}{2}\) のとき：</strong>\(f(1) = 1 - 2a > 0\)</p>
+            <p>　→ 最大値は \(f(1) = 1 - 2a\)</p>
+
+            <p><strong>(ii) \(a \geq \dfrac{1}{2}\) のとき：</strong>\(f(1) = 1 - 2a \leq 0\)</p>
+            <p>　→ 最大値は \(f(0) = 0\)</p>
+
+            <div class="formula">
+                \[ \text{最大値} = \begin{cases} 1 - 2a & \left(a < \dfrac{1}{2}\right) \\ 0 & \left(a \geq \dfrac{1}{2}\right) \end{cases} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box" id="tip-check-letter-location">
+            <strong>✏️ コツ1：「文字がどこにあるか」を最初にチェック</strong><br>
+            問題を読んだら、すぐに「軸に文字？」「定義域に文字？」を確認。これで場合分けの必要性がわかる。
+        </div>
+
+        <div class="tip-box" id="tip-boundary-first">
+            <strong>✏️ コツ2：境界値を先に計算</strong><br>
+            「軸 = 左端」「軸 = 右端」を解いて境界値を出しておく。場合分けの式を書くのが楽になる。
+        </div>
+
+        <div class="tip-box" id="tip-draw-three-graphs">
+            <strong>✏️ コツ3：グラフを3つ描く</strong><br>
+            場合分けが3つなら、3つのグラフを並べて描く。視覚的に確認すると間違いが減る。
+        </div>
+
+        <div class="tip-box" id="tip-equal-sign">
+            <strong>✏️ コツ4：等号はどちらでもOK</strong><br>
+            境界で \(a < 2\) と \(a \leq 2\) のどちらにするか迷うなら、実際に代入してどちらのケースでも答えが一致することを確認。等号は片方に入れればOK。
+        </div>
+
+        <div class="tip-box" id="tip-maximum-endpoint-comparison">
+            <strong>✏️ コツ5：最大値は「端点比較」を忘れずに</strong><br>
+            下に凸の最大値（上に凸の最小値）は、軸の位置に関係なく<strong>端点の比較</strong>。\(f(\text{左端})\) と \(f(\text{右端})\) が等しくなる条件で場合分け。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：場合分けの必要性を見落とす</div>
+            <p><strong>ダメな例：</strong> \(y = x^2 - 2ax + 1\) で「軸は \(x = a\) だから頂点で最小」と即答</p>
+            <p><strong>対策：</strong> 軸にパラメータがあったら場合分けが必要！定義域との位置関係を確認。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：境界値を間違える</div>
+            <p><strong>ダメな例：</strong> 定義域 \([0, 3]\) で「\(a < 0, 0 < a < 3, a > 3\)」と場合分け（\(a = 0, 3\) を忘れている）</p>
+            <p><strong>対策：</strong> 境界は「軸 = 端点」。その値を含めて「\(a \leq 0\)」「\(0 < a < 3\)」「\(a \geq 3\)」のように書く。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：最大値なのに「頂点で最大」と答える</div>
+            <p><strong>ダメな例：</strong> 下に凸の関数で「軸が定義域内だから最大値は頂点」</p>
+            <p><strong>対策：</strong> 下に凸 → 頂点は<strong>最小</strong>。最大値は<strong>端点のどちらか</strong>。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：場合分けの結果を統合し忘れる</div>
+            <p><strong>ダメな例：</strong> 3つの場合について別々に答えを書くが、最終的な答えとしてまとめない</p>
+            <p><strong>対策：</strong> 最後に「よって最小値は〜」と場合分けの結果を統合して書く。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">問題文の「どこに文字があるか」を確認したか</div>
+            <div class="checklist-item">場合分けの境界値（軸 = 端点）を正しく計算したか</div>
+            <div class="checklist-item">すべてのケースについて答えを出したか</div>
+            <div class="checklist-item">最大値と最小値を混同していないか</div>
+            <div class="checklist-item">場合分けの結果を最終的にまとめたか</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>まず「場合分けが必要か」「何で分けるか」を判断してから解こう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>\(y = x^2 + 2x - 3\)（\(-2 \leq x \leq 1\)）の最大値と最小値を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong>文字なし → 場合分け不要</p>
+                    <p>\(y = (x + 1)^2 - 4\)、軸 \(x = -1\) は \([-2, 1]\) の中</p>
+                    <p>最小値：\(-4\)（\(x = -1\)）</p>
+                    <p>\(f(-2) = -3\)、\(f(1) = 0\) → 最大値：\(0\)（\(x = 1\)）</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\(y = x^2 - 4ax + 2\)（\(0 \leq x \leq 1\)）の最小値を \(a\) で表せ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong>軸 \(x = 2a\) に文字 → 軸の位置で場合分け</p>
+                    <p>境界：\(2a = 0\) → \(a = 0\)、\(2a = 1\) → \(a = \dfrac{1}{2}\)</p>
+                    <p>(i) \(a \leq 0\)：最小 = \(f(0) = 2\)</p>
+                    <p>(ii) \(0 < a < \dfrac{1}{2}\)：最小 = 頂点 \(= -4a^2 + 2\)</p>
+                    <p>(iii) \(a \geq \dfrac{1}{2}\)：最小 = \(f(1) = 3 - 4a\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：文字が軸にあれば「軸の位置」、定義域にあれば「端点の位置」で場合分け！
+</div>
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「ロケット軌道と場合分け」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">🚀 アポロ計画と二次関数</div>
+
+            <p>1969年、NASAは人類初の月面着陸を目指していた。ロケットの軌道計算は、まさに<strong>二次関数の最大最小問題</strong>だった。</p>
+
+            <p>ロケットは打ち上げ後、放物線を描いて飛んでいく。燃料を使い切るタイミング、地球の重力から逃れる速度、月に到達するための軌道修正...すべてが計算だ。</p>
+
+            <p>特に重要なのは<strong>「場合分け」</strong>の発想。</p>
+
+            <ul>
+                <li>打ち上げ角度が<strong>浅すぎる</strong> → 大気圏を抜けられない</li>
+                <li>打ち上げ角度が<strong>深すぎる</strong> → 燃料が足りなくなる</li>
+                <li>打ち上げ角度が<strong>ちょうどいい</strong> → 月に到達できる</li>
+            </ul>
+
+            <p>この「ちょうどいい範囲」を見つけるのが、まさに<strong>定義域と軸の位置関係</strong>の問題だった。</p>
+
+            <p>アポロ11号の成功は、こうした計算の積み重ねの結果。アームストロングが月面に降り立つ前に、何百人もの数学者が<strong>二次関数と場合分け</strong>と格闘していたのだ。</p>
+
+            <p style="font-style: italic; color: #666; margin-top: 20px;">...ちなみにアポロ計画当時のコンピュータは、今のスマホよりはるかに性能が低かった。それでも月に行けたのは、正確な数学があったからこそ。</p>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,498 @@
+---
+layout: material-raw
+title: 正弦定理 vs 余弦定理
+icon: "⚖️"
+description: 三角形の問題で「正弦定理と余弦定理のどちらを使うか」を瞬時に判断する力を身につける。
+level: 標準
+level_num: 2
+category: geometry
+school_level: senior
+order: 3
+keywords:
+  - 正弦定理
+  - 余弦定理
+  - 判断
+  - 三角形
+  - 図形と計量
+cover_image: /images/noimage.jpg
+cover_description: 正弦定理と余弦定理の使い分けフローチャート
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "判断フロー"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学雑学「測量士の二刀流」"
+related:
+  - url: /senior/正弦定理と余弦定理_教材.html
+    title: 正弦定理と余弦定理
+    note: 公式と基本的な使い方
+    type: prerequisite
+  - url: /senior/三角比_教材.html
+    title: 三角比
+    note: sin, cos, tanの定義
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「正弦定理と余弦定理、どっちを使えばいい？」——三角形の問題で一番の悩みはこれ。この教材で迷わず判断できるようになろう。</p>
+
+        <p>このページでは、<strong>定理の選び方</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>与えられた情報から判断</strong>：辺と角のペア？3辺？2辺と間の角？</li>
+            <li><strong>求めるものから判断</strong>：外接円の半径？残りの辺？角度？</li>
+            <li><strong>パターン別の解法</strong>：どの情報でどの定理を使うか</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 判断フロー ========== -->
+<section id="section2">
+    <h2>2. 判断フロー</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要：「辺と対角のペア」があれば正弦定理、なければ余弦定理！
+        </div>
+
+        <!-- 判断フローチャート（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="420" viewBox="0 0 700 420">
+                <!-- タイトル -->
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">正弦定理 vs 余弦定理 判断フロー</text>
+
+                <!-- スタート -->
+                <ellipse cx="350" cy="60" rx="100" ry="25" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="350" y="65" font-size="14" fill="#1976d2" text-anchor="middle">何がわかっている？</text>
+
+                <!-- 矢印1 -->
+                <line x1="350" y1="85" x2="350" y2="120" stroke="#333" stroke-width="2" marker-end="url(#arrow-black2)"/>
+
+                <!-- 判断1: 外接円の半径R -->
+                <polygon points="350,120 450,160 350,200 250,160" fill="#fff8e1" stroke="#ff9800" stroke-width="2"/>
+                <text x="350" y="155" font-size="12" fill="#e65100" text-anchor="middle">外接円の半径R</text>
+                <text x="350" y="170" font-size="12" fill="#e65100" text-anchor="middle">が絡む？</text>
+
+                <!-- 左分岐: Rが絡む -->
+                <line x1="250" y1="160" x2="120" y2="160" stroke="#333" stroke-width="2"/>
+                <text x="185" y="150" font-size="11" fill="#666">Yes</text>
+                <line x1="120" y1="160" x2="120" y2="200" stroke="#333" stroke-width="2" marker-end="url(#arrow-black2)"/>
+                <rect x="40" y="200" width="160" height="50" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                <text x="120" y="220" font-size="14" font-weight="bold" fill="#1565c0" text-anchor="middle">正弦定理</text>
+                <text x="120" y="238" font-size="11" fill="#1565c0" text-anchor="middle">a/sin A = 2R</text>
+
+                <!-- 右分岐: Rが絡まない -->
+                <line x1="450" y1="160" x2="520" y2="160" stroke="#333" stroke-width="2"/>
+                <text x="485" y="150" font-size="11" fill="#666">No</text>
+                <line x1="520" y1="160" x2="520" y2="220" stroke="#333" stroke-width="2" marker-end="url(#arrow-black2)"/>
+
+                <!-- 判断2: 辺と対角のペア -->
+                <polygon points="520,220 620,260 520,300 420,260" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
+                <text x="520" y="250" font-size="12" fill="#c2185b" text-anchor="middle">辺と対角の</text>
+                <text x="520" y="268" font-size="12" fill="#c2185b" text-anchor="middle">ペアがある？</text>
+
+                <!-- ペアあり -->
+                <line x1="420" y1="260" x2="300" y2="260" stroke="#333" stroke-width="2"/>
+                <text x="360" y="250" font-size="11" fill="#666">Yes</text>
+                <line x1="300" y1="260" x2="300" y2="320" stroke="#333" stroke-width="2" marker-end="url(#arrow-black2)"/>
+                <rect x="220" y="320" width="160" height="50" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                <text x="300" y="340" font-size="14" font-weight="bold" fill="#1565c0" text-anchor="middle">正弦定理</text>
+                <text x="300" y="358" font-size="11" fill="#1565c0" text-anchor="middle">a/sin A = b/sin B</text>
+
+                <!-- ペアなし -->
+                <line x1="620" y1="260" x2="680" y2="260" stroke="#333" stroke-width="2"/>
+                <text x="650" y="250" font-size="11" fill="#666">No</text>
+                <line x1="680" y1="260" x2="680" y2="320" stroke="#333" stroke-width="2" marker-end="url(#arrow-black2)"/>
+                <rect x="580" y="320" width="200" height="50" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                <text x="680" y="340" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">余弦定理</text>
+                <text x="680" y="358" font-size="11" fill="#2e7d32" text-anchor="middle">c² = a² + b² − 2ab cos C</text>
+
+                <!-- 補足 -->
+                <rect x="40" y="380" width="620" height="30" fill="#f5f5f5" stroke="#ccc" rx="5"/>
+                <text x="350" y="400" font-size="12" fill="#666" text-anchor="middle">ポイント：「辺と対角のペア」＝ a と A、b と B、c と C のような組み合わせ</text>
+
+                <!-- 矢印マーカー -->
+                <defs>
+                    <marker id="arrow-black2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+                    </marker>
+                </defs>
+            </svg>
+            <div class="svg-caption">外接円R → 正弦定理、ペアあり → 正弦定理、それ以外 → 余弦定理</div>
+        </div>
+
+        <div class="rule-box" id="rule-condition-table">
+            <strong>📌 条件別・使う定理まとめ</strong>
+            <table class="material-table">
+                <tr>
+                    <th>与えられた条件</th>
+                    <th>使う定理</th>
+                    <th>理由</th>
+                </tr>
+                <tr>
+                    <td><strong>1辺と2角</strong></td>
+                    <td style="color: #1976d2; font-weight: bold;">正弦定理</td>
+                    <td>辺と対角のペアができる</td>
+                </tr>
+                <tr>
+                    <td><strong>2辺と対角</strong>（2辺の向かいの角）</td>
+                    <td style="color: #1976d2; font-weight: bold;">正弦定理</td>
+                    <td>辺と対角のペアがある</td>
+                </tr>
+                <tr>
+                    <td><strong>外接円の半径R</strong>が絡む</td>
+                    <td style="color: #1976d2; font-weight: bold;">正弦定理</td>
+                    <td>a/sin A = 2R を使う</td>
+                </tr>
+                <tr>
+                    <td><strong>2辺とその間の角</strong></td>
+                    <td style="color: #4caf50; font-weight: bold;">余弦定理</td>
+                    <td>残りの1辺を直接求められる</td>
+                </tr>
+                <tr>
+                    <td><strong>3辺</strong></td>
+                    <td style="color: #4caf50; font-weight: bold;">余弦定理</td>
+                    <td>cos を求めて角度を出す</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="rule-box" id="def-side-angle-pair">
+            <strong>📌 「辺と対角のペア」とは？</strong>
+            <p>三角形ABCで、各辺と向かい合う角の組み合わせ：</p>
+            <ul>
+                <li><strong>辺 a</strong>（BCの長さ）と<strong>角 A</strong>（頂点Aの角）</li>
+                <li><strong>辺 b</strong>（CAの長さ）と<strong>角 B</strong>（頂点Bの角）</li>
+                <li><strong>辺 c</strong>（ABの長さ）と<strong>角 C</strong>（頂点Cの角）</li>
+            </ul>
+            <p><strong>ペアがある例：</strong> a = 5, A = 30° がわかっている → ペア(a, A)あり → 正弦定理</p>
+            <p><strong>ペアがない例：</strong> a = 5, b = 7, C = 60° → aとAのペアなし、bとBのペアなし → 余弦定理</p>
+        </div>
+
+        <!-- よくあるパターン -->
+        <div class="svg-container">
+            <svg width="700" height="220" viewBox="0 0 700 220">
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#9c27b0" text-anchor="middle">よくある問題パターン</text>
+
+                <!-- パターン1: 1辺2角 -->
+                <rect x="30" y="50" width="200" height="150" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                <text x="130" y="75" font-size="14" font-weight="bold" fill="#1565c0" text-anchor="middle">1辺と2角</text>
+                <polygon points="60,180 180,180 120,100" fill="none" stroke="#1976d2" stroke-width="2"/>
+                <text x="120" y="195" font-size="12" fill="#1976d2" text-anchor="middle">c = 既知</text>
+                <text x="75" y="130" font-size="12" fill="#e53935">A = ?°</text>
+                <text x="165" y="130" font-size="12" fill="#e53935">B = ?°</text>
+                <text x="130" y="115" font-size="11" fill="#666" text-anchor="middle">→ 正弦定理</text>
+
+                <!-- パターン2: 2辺と間の角 -->
+                <rect x="250" y="50" width="200" height="150" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                <text x="350" y="75" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">2辺とその間の角</text>
+                <polygon points="280,180 400,180 340,100" fill="none" stroke="#4caf50" stroke-width="2"/>
+                <text x="310" y="145" font-size="12" fill="#4caf50">b</text>
+                <text x="380" y="145" font-size="12" fill="#4caf50">a</text>
+                <text x="340" y="195" font-size="12" fill="#e53935">C = ?°</text>
+                <text x="350" y="115" font-size="11" fill="#666" text-anchor="middle">→ 余弦定理</text>
+
+                <!-- パターン3: 3辺 -->
+                <rect x="470" y="50" width="200" height="150" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                <text x="570" y="75" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">3辺</text>
+                <polygon points="500,180 620,180 560,100" fill="none" stroke="#4caf50" stroke-width="2"/>
+                <text x="530" y="145" font-size="12" fill="#4caf50">b</text>
+                <text x="600" y="145" font-size="12" fill="#4caf50">a</text>
+                <text x="560" y="195" font-size="12" fill="#4caf50">c</text>
+                <text x="570" y="115" font-size="11" fill="#666" text-anchor="middle">→ 余弦定理</text>
+            </svg>
+            <div class="svg-caption">問題を見たらまず図を描いて、何がわかっているか確認！</div>
+        </div>
+
+        <div class="rule-box" id="rule-combination-pattern">
+            <strong>📌 複合パターン：両方使うこともある！</strong>
+            <p>複雑な問題では、正弦定理と余弦定理を<strong>両方</strong>使うことがある。</p>
+            <p><strong>例：</strong> 2辺と1角（間の角ではない）が与えられた場合</p>
+            <ol>
+                <li>まず<strong>余弦定理</strong>で残りの1辺を求める</li>
+                <li>次に<strong>正弦定理</strong>で残りの角を求める</li>
+            </ol>
+            <p>または逆に、正弦定理で角を求めてから余弦定理で辺を求めることも。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>パターンごとに「どちらを使うか」を判断しながら解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ パターン：1辺と2角 → 正弦定理</h3>
+
+        <div class="example-box" id="ex-1side2angles">
+            <div class="example-title">
+                <span class="number-badge">例1</span>△ABCで A = 45°, B = 60°, c = 4 のとき、辺 a を求める
+            </div>
+            <p><strong>判断：</strong> cとCのペア（C = 180° − 45° − 60° = 75°）がある → <span style="color: #1976d2; font-weight: bold;">正弦定理</span></p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>C = 75° を求める</li>
+                <li>正弦定理 \(\dfrac{a}{\sin A} = \dfrac{c}{\sin C}\) を使う</li>
+                <li>\(\dfrac{a}{\sin 45°} = \dfrac{4}{\sin 75°}\)</li>
+            </ol>
+            <div class="formula">
+                \[ a = \frac{4 \sin 45°}{\sin 75°} = \frac{4 \cdot \frac{\sqrt{2}}{2}}{\frac{\sqrt{6}+\sqrt{2}}{4}} = \frac{2\sqrt{2} \cdot 4}{\sqrt{6}+\sqrt{2}} \]
+            </div>
+            <p>有理化して \(a = \sqrt{6} - \sqrt{2}\) または約2.05</p>
+        </div>
+
+        <h3 style="color: #4caf50; margin: 25px 0 10px 0;">▶ パターン：2辺とその間の角 → 余弦定理</h3>
+
+        <div class="example-box" id="ex-2sides1angle">
+            <div class="example-title">
+                <span class="number-badge">例2</span>△ABCで b = 5, c = 8, A = 60° のとき、辺 a を求める
+            </div>
+            <p><strong>判断：</strong> bとc、その間の角A → 辺と対角のペアなし → <span style="color: #4caf50; font-weight: bold;">余弦定理</span></p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>余弦定理 \(a^2 = b^2 + c^2 - 2bc\cos A\) を使う</li>
+                <li>\(a^2 = 25 + 64 - 2 \cdot 5 \cdot 8 \cdot \cos 60°\)</li>
+                <li>\(a^2 = 89 - 80 \cdot \dfrac{1}{2} = 89 - 40 = 49\)</li>
+            </ol>
+            <div class="formula">
+                \[ a = 7 \]
+            </div>
+        </div>
+
+        <h3 style="color: #4caf50; margin: 25px 0 10px 0;">▶ パターン：3辺 → 余弦定理</h3>
+
+        <div class="example-box" id="ex-3sides">
+            <div class="example-title">
+                <span class="number-badge">例3</span>△ABCで a = 7, b = 5, c = 8 のとき、角 B を求める
+            </div>
+            <p><strong>判断：</strong> 3辺のみ、角の情報なし → <span style="color: #4caf50; font-weight: bold;">余弦定理</span></p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>余弦定理を変形：\(\cos B = \dfrac{c^2 + a^2 - b^2}{2ca}\)</li>
+                <li>\(\cos B = \dfrac{64 + 49 - 25}{2 \cdot 8 \cdot 7} = \dfrac{88}{112} = \dfrac{11}{14}\)</li>
+            </ol>
+            <div class="formula">
+                \[ \cos B = \frac{11}{14} \approx 0.786 \quad \therefore B \approx 38.2° \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ パターン：外接円の半径 → 正弦定理</h3>
+
+        <div class="example-box" id="ex-circumradius">
+            <div class="example-title">
+                <span class="number-badge">例4</span>△ABCで a = 6, A = 30° のとき、外接円の半径 R を求める
+            </div>
+            <p><strong>判断：</strong> 外接円の半径R を求める → <span style="color: #1976d2; font-weight: bold;">正弦定理</span></p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(\dfrac{a}{\sin A} = 2R\) を使う</li>
+                <li>\(\dfrac{6}{\sin 30°} = 2R\)</li>
+                <li>\(\dfrac{6}{1/2} = 2R\) → \(12 = 2R\)</li>
+            </ol>
+            <div class="formula">
+                \[ R = 6 \]
+            </div>
+        </div>
+
+        <h3 style="color: #9c27b0; margin: 25px 0 10px 0;">▶ 複合パターン：両方使う</h3>
+
+        <div class="example-box" id="ex-combo">
+            <div class="example-title">
+                <span class="number-badge">例5</span>△ABCで a = 7, b = 5, C = 60° のとき、角 A を求める
+            </div>
+            <p><strong>判断：</strong></p>
+            <ul>
+                <li>辺aと角Aのペア？ → Aはまだ不明なのでペアなし</li>
+                <li>2辺(a, b)とその間の角(C)がある → まず余弦定理で辺cを求める</li>
+                <li>その後、正弦定理で角Aを求める</li>
+            </ul>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>Step 1（余弦定理）：</strong>辺 c を求める
+                    <div class="formula">
+                        \[ c^2 = a^2 + b^2 - 2ab\cos C = 49 + 25 - 70 \cdot \frac{1}{2} = 39 \]
+                        \[ c = \sqrt{39} \]
+                    </div>
+                </li>
+                <li><strong>Step 2（正弦定理）：</strong>角 A を求める
+                    <div class="formula">
+                        \[ \frac{a}{\sin A} = \frac{c}{\sin C} \]
+                        \[ \sin A = \frac{a \sin C}{c} = \frac{7 \cdot \frac{\sqrt{3}}{2}}{\sqrt{39}} = \frac{7\sqrt{3}}{2\sqrt{39}} \]
+                    </div>
+                </li>
+            </ol>
+            <p>計算すると \(\sin A \approx 0.972\)、よって \(A \approx 76.3°\)</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box" id="tip-find-pair">
+            <strong>✏️ コツ1：まず「ペア」を探す</strong><br>
+            問題を読んだら、「辺aと角A」「辺bと角B」のようなペアがあるか確認。ペアがあれば正弦定理が使える可能性大。
+        </div>
+
+        <div class="tip-box" id="tip-draw-diagram">
+            <strong>✏️ コツ2：図を描いて情報を整理</strong><br>
+            三角形を描いて、わかっている辺と角を書き込む。視覚的に「何がわかっていて何を求めるか」を確認。
+        </div>
+
+        <div class="tip-box" id="tip-circumcircle">
+            <strong>✏️ コツ3：外接円が出たら正弦定理一択</strong><br>
+            「外接円の半径」「外接円」というキーワードが出たら、迷わず正弦定理。余弦定理では外接円は扱えない。
+        </div>
+
+        <div class="tip-box" id="tip-focus-on-goal">
+            <strong>✏️ コツ4：「〜を求めよ」に注目</strong><br>
+            <ul>
+                <li>「辺を求めよ」で2辺と間の角がある → 余弦定理</li>
+                <li>「角を求めよ」で3辺がある → 余弦定理</li>
+                <li>「外接円の半径を求めよ」 → 正弦定理</li>
+            </ul>
+        </div>
+
+        <div class="tip-box" id="tip-try-both">
+            <strong>✏️ コツ5：迷ったら両方試す</strong><br>
+            どちらを使うか迷う問題は、実際に式を立ててみる。立式できなければ別の定理を試す。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：2辺と1角で正弦定理を使う（間の角でないとき）</div>
+            <p><strong>ダメな例：</strong> a = 5, b = 7, A = 30° で「ペア(a, A)があるから正弦定理」</p>
+            <p><strong>問題点：</strong> 正弦定理で b/sin B = a/sin A から sin B を求めると、B が鋭角か鈍角か2通りある</p>
+            <p><strong>対策：</strong> 「2辺と対角でない角」のときは、余弦定理で先に辺を求める方が安全</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：3辺で正弦定理を使おうとする</div>
+            <p><strong>ダメな例：</strong> a = 5, b = 7, c = 8 で正弦定理を使おうとする</p>
+            <p><strong>問題点：</strong> 角が1つもわからないので、a/sin A = b/sin B が立てられない</p>
+            <p><strong>対策：</strong> 3辺のみなら余弦定理一択。cos を求めて角度を出す。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：sinから角度を求めるとき、2通りを忘れる</div>
+            <p><strong>ダメな例：</strong> sin A = 1/2 から「A = 30°」とだけ答える</p>
+            <p><strong>問題点：</strong> sin 150° = 1/2 もあるので、A = 30° または 150° の可能性</p>
+            <p><strong>対策：</strong> 三角形の角の和が180°になるか、他の条件から絞り込む</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：余弦定理の公式を間違える</div>
+            <p><strong>ダメな例：</strong> \(a^2 = b^2 + c^2 - 2bc\cos \textcolor{red}{B}\) とする（Aでなく）</p>
+            <p><strong>対策：</strong> 「求める辺の対角」のcosを使う。a²なら cos A、c²なら cos C。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">与えられた条件（辺と角）を正しく把握したか</div>
+            <div class="checklist-item">辺と対角のペアがあるか確認したか</div>
+            <div class="checklist-item">正弦定理と余弦定理のどちらを使うか正しく選んだか</div>
+            <div class="checklist-item">sin から角を求めるとき、2通りの可能性を考えたか</div>
+            <div class="checklist-item">答えが三角形として成り立つか確認したか</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>まず「どちらの定理を使うか」を判断してから解こう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>△ABCで a = 8, B = 45°, C = 75° のとき、辺 b を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong>1辺と2角 → A = 180° − 45° − 75° = 60°、ペア(a, A)あり → <strong>正弦定理</strong></p>
+                    <p>\(\dfrac{a}{\sin A} = \dfrac{b}{\sin B}\)</p>
+                    <p>\(\dfrac{8}{\sin 60°} = \dfrac{b}{\sin 45°}\)</p>
+                    <p>\(b = \dfrac{8 \sin 45°}{\sin 60°} = \dfrac{8 \cdot \frac{\sqrt{2}}{2}}{\frac{\sqrt{3}}{2}} = \dfrac{4\sqrt{2} \cdot 2}{\sqrt{3}} = \dfrac{8\sqrt{2}}{\sqrt{3}} = \boxed{\dfrac{8\sqrt{6}}{3}}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>△ABCで a = 5, b = 6, c = 7 のとき、最大の角を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong>3辺のみ → <strong>余弦定理</strong></p>
+                    <p>最大の辺 c = 7 の対角 C が最大角</p>
+                    <p>\(\cos C = \dfrac{a^2 + b^2 - c^2}{2ab} = \dfrac{25 + 36 - 49}{60} = \dfrac{12}{60} = \dfrac{1}{5}\)</p>
+                    <p>\(C = \arccos\left(\dfrac{1}{5}\right) \approx \boxed{78.5°}\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：外接円R → 正弦定理、辺と対角のペアあり → 正弦定理、それ以外 → 余弦定理！
+</div>
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「測量士の二刀流」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📐 エベレストの高さはどうやって測った？</div>
+
+            <p>世界最高峰エベレスト（8,848m）の高さは、<strong>誰も山頂に登らずに</strong>初めて測定された。</p>
+
+            <p>1856年、イギリスの測量士たちは、インドの平地から約200km離れた場所でエベレストを見上げた。</p>
+
+            <p>「あの山の高さを測りたい」</p>
+
+            <p>しかし登るのは不可能。彼らが使ったのは<strong>三角測量</strong>——まさに正弦定理と余弦定理だった。</p>
+
+            <p><strong>Step 1：</strong>まず地上で2地点を選び、その間の距離を正確に測る（これが「基線」）</p>
+
+            <p><strong>Step 2：</strong>2地点それぞれから山頂を見上げる角度を測定</p>
+
+            <p><strong>Step 3：</strong>三角形ができる！基線の長さと2つの角がわかれば、<strong>正弦定理</strong>で山頂までの距離がわかる</p>
+
+            <p><strong>Step 4：</strong>さらに仰角（見上げる角度）を使って、<strong>三角比</strong>で高さを計算</p>
+
+            <div class="formula">
+                \[ \text{高さ} = \text{距離} \times \sin(\text{仰角}) \]
+            </div>
+
+            <p>200km以上離れた場所から測定して、誤差はわずか数メートル。現代のGPS測定とほぼ一致している。</p>
+
+            <p style="font-style: italic; color: #666; margin-top: 20px;">...ちなみに、このときエベレストは「Peak XV（15号峰）」と呼ばれていた。測量責任者ジョージ・エベレストの名前がつけられたのは、彼の引退後のこと。本人は「現地の名前を使うべき」と反対していたという。</p>
+        </div>
+    </div>
+</section>

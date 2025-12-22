@@ -107,7 +107,7 @@ related:
             <div class="svg-caption">因数分解の5パターン：この順番でチェック！</div>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="rule-common-factor">
             <strong>📌 パターン①：共通因数でくくる</strong> <a href="#ex-1" class="example-link">→ 例1</a>
             <div class="formula">
                 \[ ab + ac = a(b + c) \]
@@ -119,7 +119,7 @@ related:
             </details>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="rule-difference-of-squares">
             <strong>📌 パターン②：和と差の積（差の2乗）</strong> <a href="#ex-2" class="example-link">→ 例2</a>
             <div class="formula">
                 \[ a^2 - b^2 = (a + b)(a - b) \]
@@ -128,7 +128,7 @@ related:
             <p><strong>✅ メリット：</strong>\(x^2 - 9\) のような式が一瞬で因数分解できる。</p>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="rule-perfect-square">
             <strong>📌 パターン③：完全平方式</strong> <a href="#ex-3" class="example-link">→ 例3</a>
             <div class="formula">
                 \[ a^2 + 2ab + b^2 = (a + b)^2 \]
@@ -138,7 +138,7 @@ related:
             <p><strong>→ だから結果は：</strong>同じ式の2乗 \((a \pm b)^2\) になる。</p>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="rule-sum-product">
             <strong>📌 パターン④：和と積のパターン</strong> <a href="#ex-4" class="example-link">→ 例4</a>
             <div class="formula">
                 \[ x^2 + (a + b)x + ab = (x + a)(x + b) \]
@@ -147,7 +147,7 @@ related:
             <p><strong>✅ メリット：</strong>\(x^2 + 5x + 6 = (x+2)(x+3)\) のように、足して5、かけて6になる2と3を見つければOK。</p>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="method-cross-multiplication">
             <strong>📌 パターン⑤：たすき掛け</strong> <a href="#ex-5" class="example-link">→ 例5</a>
             <div class="formula">
                 \[ ax^2 + bx + c = (px + q)(rx + s) \]
@@ -336,7 +336,7 @@ related:
 <section id="section4">
     <h2>4. 簡単にするコツ</h2>
     <div class="section">
-        <div class="tip-box">
+        <div class="tip-box" id="tip-common-factor-first">
             <strong>✏️ コツ1：共通因数を必ず最初にチェック！</strong><br>
             共通因数を先に出すと、残りの式が簡単になることが多い。
             <ul>
@@ -344,7 +344,7 @@ related:
             </ul>
         </div>
 
-        <div class="tip-box">
+        <div class="tip-box" id="tip-recognize-squares">
             <strong>✏️ コツ2：「2乗の形」を見つける目を養う</strong><br>
             <table class="material-table">
                 <tr><th>数</th><th>2乗</th></tr>
@@ -354,7 +354,7 @@ related:
             これらを暗記しておくと、「\(x^2 - 49\)」を見た瞬間に \((x+7)(x-7)\) と分かる。
         </div>
 
-        <div class="tip-box">
+        <div class="tip-box" id="tip-verify-by-expansion">
             <strong>✏️ コツ3：展開して検算する</strong><br>
             答えが正しいか不安なら、因数分解した結果を展開して元に戻るか確認。
             <ul>
@@ -362,7 +362,7 @@ related:
             </ul>
         </div>
 
-        <div class="tip-box">
+        <div class="tip-box" id="tip-sign-patterns">
             <strong>✏️ コツ4：符号のパターンを覚える</strong><br>
             \(x^2 + bx + c\) の形で：
             <ul>

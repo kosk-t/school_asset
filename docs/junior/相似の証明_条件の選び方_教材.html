@@ -116,14 +116,14 @@ related:
             <div class="svg-caption">三角形の相似条件と判断フロー</div>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="rule-aa-similarity">
             <strong>📌 相似条件1：AA（2組の角がそれぞれ等しい）</strong> <a href="#ex-aa" class="example-link">→ 例1</a>
             <p>2つの角が等しければ、残りの角も自動的に等しい（三角形の内角の和は180°）。</p>
             <p><strong>✅ メリット：</strong> 最も使いやすい！ 平行線の錯角・同位角、対頂角、共通な角など、角の等しさは見つけやすい。</p>
             <p><strong>→ こんなとき：</strong> 平行線がある、対頂角がある、共通の角がある</p>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="rule-sss-similarity">
             <strong>📌 相似条件2：SSS（3組の辺の比がすべて等しい）</strong> <a href="#ex-sss" class="example-link">→ 例2</a>
             <div class="formula">
                 \[ \frac{AB}{A'B'} = \frac{BC}{B'C'} = \frac{CA}{C'A'} \]
@@ -132,7 +132,7 @@ related:
             <p><strong>注意：</strong> 実際の証明問題ではあまり使わない。3辺の比を計算するのは手間がかかる。</p>
         </div>
 
-        <div class="rule-box">
+        <div class="rule-box" id="rule-sas-similarity">
             <strong>📌 相似条件3：SAS（2組の辺の比が等しく、その間の角が等しい）</strong> <a href="#ex-sas" class="example-link">→ 例3</a>
             <div class="formula">
                 \[ \frac{AB}{A'B'} = \frac{AC}{A'C'} \text{　かつ　} \angle A = \angle A' \]
@@ -255,22 +255,22 @@ related:
 <section id="section4">
     <h2>4. 簡単にするコツ</h2>
     <div class="section">
-        <div class="tip-box">
+        <div class="tip-box" id="tip-find-angles-first">
             <strong>✏️ コツ1：まず「角」を探す（AA優先）</strong><br>
             平行線があれば同位角・錯角、頂点が共通なら対頂角、同じ頂点を共有するなら共通角。2つの角が見つかればAAでOK！
         </div>
 
-        <div class="tip-box">
+        <div class="tip-box" id="tip-match-vertex-order">
             <strong>✏️ コツ2：対応する頂点の順番を揃える</strong><br>
             △ABC ∽ △DEF と書いたら、A↔D、B↔E、C↔F が対応。順番を間違えると証明が成り立たない。
         </div>
 
-        <div class="tip-box">
+        <div class="tip-box" id="tip-check-included-angle">
             <strong>✏️ コツ3：「間の角」かどうかを確認</strong><br>
             SAS条件は「間の角」が必須。AB, AC の比がわかるなら、間の角は ∠A。ABとBCなら ∠B。
         </div>
 
-        <div class="tip-box">
+        <div class="tip-box" id="tip-mark-on-figure">
             <strong>✏️ コツ4：図に印をつける</strong><br>
             等しい角には同じ印（●や〇）、等しい辺の比には同じ記号。視覚的に整理すると、使うべき条件が見えてくる。
         </div>
