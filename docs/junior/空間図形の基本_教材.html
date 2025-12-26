@@ -1,0 +1,575 @@
+---
+layout: material-raw
+title: 空間図形の基本
+icon: "📦"
+description: 立体の種類（角柱・円柱・角錐・円錐・球）と、直線と平面の位置関係を学びます。投影図の読み方もマスターしよう！
+level: 基礎
+level_num: 1
+category: geometry
+school_level: junior
+order: 4
+keywords:
+  - 空間図形
+  - 角柱
+  - 円柱
+  - 角錐
+  - 円錐
+  - 直線と平面
+  - 投影図
+cover_image: /images/noimage.jpg
+cover_description: 様々な立体図形（角柱・円柱・角錐・円錐・球）
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学雑学「サッカーボールの秘密」"
+related:
+  - url: /junior/平面図形の基本_教材.html
+    title: 平面図形の基本
+    note: 垂直・平行の基礎知識
+    type: prerequisite
+  - url: /junior/立体図形の体積と表面積_教材.html
+    title: 立体図形の体積と表面積
+    note: 立体の体積・表面積の計算
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>私たちの周りには立体があふれています。ペットボトルは円柱、ピラミッドは四角錐、サッカーボールは球...。これらの立体を正しく分類し、特徴を理解することが空間図形の第一歩です。</p>
+        <p>このページでは、<strong>空間図形の基本</strong>を学びます：</p>
+        <ul>
+            <li><strong>立体の種類</strong>：角柱・円柱・角錐・円錐・球の特徴と見分け方</li>
+            <li><strong>位置関係</strong>：直線と直線、直線と平面の関係（平行・垂直・ねじれ）</li>
+            <li><strong>投影図</strong>：正面・真上・真横から見た図で立体を表す方法</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】空間では、2直線が「交わらない」だけでは平行とは限らない（ねじれの位置）
+        </div>
+
+        <p>平面では「交わらない2直線 = 平行」でしたが、空間ではそうとは限りません。<strong>ねじれの位置</strong>という第三の関係があるのです。</p>
+
+        <div class="rule-box" id="def-solid-types">
+            <strong>📌 ルール1：立体の種類</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <p>立体は大きく<strong>多面体</strong>（平面だけで囲まれた立体）と<strong>そうでないもの</strong>（曲面を含む立体）に分けられます。</p>
+
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="600" height="200" viewBox="0 0 600 200">
+                    <!-- 三角柱 -->
+                    <polygon points="50,150 100,150 75,120" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                    <polygon points="50,150 50,80 75,50 75,120" fill="#bbdefb" stroke="#1976d2" stroke-width="2"/>
+                    <polygon points="100,150 100,80 75,50 75,120" fill="#90caf9" stroke="#1976d2" stroke-width="2"/>
+                    <line x1="50" y1="80" x2="100" y2="80" stroke="#1976d2" stroke-width="2"/>
+                    <text x="75" y="180" font-size="14" text-anchor="middle">三角柱</text>
+
+                    <!-- 四角錐 -->
+                    <polygon points="180,150 230,150 230,110 180,110" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                    <polygon points="180,150 205,60 180,110" fill="#bbdefb" stroke="#1976d2" stroke-width="2"/>
+                    <polygon points="230,150 205,60 230,110" fill="#90caf9" stroke="#1976d2" stroke-width="2"/>
+                    <polygon points="180,110 205,60 230,110" fill="#64b5f6" stroke="#1976d2" stroke-width="2"/>
+                    <line x1="230" y1="110" x2="205" y2="60" stroke="#1976d2" stroke-width="2"/>
+                    <text x="205" y="180" font-size="14" text-anchor="middle">四角錐</text>
+
+                    <!-- 円柱 -->
+                    <ellipse cx="310" cy="140" rx="35" ry="15" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+                    <rect x="275" y="70" width="70" height="70" fill="#c8e6c9" stroke="none"/>
+                    <line x1="275" y1="70" x2="275" y2="140" stroke="#4caf50" stroke-width="2"/>
+                    <line x1="345" y1="70" x2="345" y2="140" stroke="#4caf50" stroke-width="2"/>
+                    <ellipse cx="310" cy="70" rx="35" ry="15" fill="#a5d6a7" stroke="#4caf50" stroke-width="2"/>
+                    <text x="310" y="180" font-size="14" text-anchor="middle">円柱</text>
+
+                    <!-- 円錐 -->
+                    <ellipse cx="420" cy="150" rx="35" ry="12" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                    <line x1="385" y1="150" x2="420" y2="60" stroke="#ff9800" stroke-width="2"/>
+                    <line x1="455" y1="150" x2="420" y2="60" stroke="#ff9800" stroke-width="2"/>
+                    <circle cx="420" cy="60" r="3" fill="#ff9800"/>
+                    <text x="420" y="180" font-size="14" text-anchor="middle">円錐</text>
+
+                    <!-- 球 -->
+                    <circle cx="530" cy="110" r="45" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
+                    <ellipse cx="530" cy="110" rx="45" ry="15" fill="none" stroke="#e91e63" stroke-width="1" stroke-dasharray="5,3"/>
+                    <text x="530" y="180" font-size="14" text-anchor="middle">球</text>
+                </svg>
+                <div class="svg-caption">代表的な立体図形</div>
+            </div>
+
+            <table class="material-table">
+                <tr>
+                    <th>分類</th>
+                    <th>立体名</th>
+                    <th>特徴</th>
+                </tr>
+                <tr>
+                    <td rowspan="2">柱体</td>
+                    <td>角柱（三角柱、四角柱など）</td>
+                    <td>2つの合同な多角形を底面とし、側面は長方形</td>
+                </tr>
+                <tr>
+                    <td>円柱</td>
+                    <td>2つの合同な円を底面とし、側面は曲面</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">錐体</td>
+                    <td>角錐（三角錐、四角錐など）</td>
+                    <td>多角形を底面とし、1つの頂点に集まる</td>
+                </tr>
+                <tr>
+                    <td>円錐</td>
+                    <td>円を底面とし、1つの頂点に集まる</td>
+                </tr>
+                <tr>
+                    <td>球</td>
+                    <td>球</td>
+                    <td>中心から等距離の点の集まり（底面なし）</td>
+                </tr>
+            </table>
+
+            <p><strong>→ 「柱」は底面が2つ、「錐」は底面が1つ＋頂点</strong></p>
+        </div>
+
+        <div class="rule-box" id="rule-euler">
+            <strong>📌 ルール2：多面体の面・辺・頂点の関係（オイラーの多面体定理）</strong>
+            <div class="formula">
+                \[ \text{頂点の数} - \text{辺の数} + \text{面の数} = 2 \]
+            </div>
+            <p>すべての多面体（角柱・角錐など）でこの関係が成り立ちます。</p>
+            <table class="material-table">
+                <tr>
+                    <th>立体</th>
+                    <th>頂点</th>
+                    <th>辺</th>
+                    <th>面</th>
+                    <th>計算</th>
+                </tr>
+                <tr>
+                    <td>三角柱</td>
+                    <td>6</td>
+                    <td>9</td>
+                    <td>5</td>
+                    <td>6 - 9 + 5 = 2 ✓</td>
+                </tr>
+                <tr>
+                    <td>四角錐</td>
+                    <td>5</td>
+                    <td>8</td>
+                    <td>5</td>
+                    <td>5 - 8 + 5 = 2 ✓</td>
+                </tr>
+                <tr>
+                    <td>立方体</td>
+                    <td>8</td>
+                    <td>12</td>
+                    <td>6</td>
+                    <td>8 - 12 + 6 = 2 ✓</td>
+                </tr>
+            </table>
+            <details class="thinking"><summary>💡 なぜこの公式が成り立つのか</summary>
+            <p>多面体を「ふくらませて」球のようにしても、頂点・辺・面の数は変わりません。どんな形でも「2」になるのは、多面体の基本的な性質なのです。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-line-positions">
+            <strong>📌 ルール3：直線と直線の位置関係</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="500" height="150" viewBox="0 0 500 150">
+                    <!-- 交わる -->
+                    <line x1="30" y1="120" x2="130" y2="40" stroke="#333" stroke-width="2"/>
+                    <line x1="30" y1="40" x2="130" y2="120" stroke="#333" stroke-width="2"/>
+                    <circle cx="80" cy="80" r="4" fill="#e53935"/>
+                    <text x="80" y="140" font-size="14" text-anchor="middle">交わる</text>
+
+                    <!-- 平行 -->
+                    <line x1="180" y1="50" x2="280" y2="50" stroke="#333" stroke-width="2"/>
+                    <line x1="180" y1="100" x2="280" y2="100" stroke="#333" stroke-width="2"/>
+                    <text x="230" y="140" font-size="14" text-anchor="middle">平行</text>
+
+                    <!-- ねじれ -->
+                    <line x1="330" y1="60" x2="430" y2="60" stroke="#333" stroke-width="2"/>
+                    <line x1="360" y1="100" x2="360" y2="40" stroke="#1976d2" stroke-width="2" transform="rotate(30, 360, 70)"/>
+                    <text x="380" y="140" font-size="14" text-anchor="middle">ねじれの位置</text>
+                    <text x="380" y="20" font-size="12" fill="#666">（同一平面上にない）</text>
+                </svg>
+                <div class="svg-caption">空間における2直線の位置関係</div>
+            </div>
+            <table class="material-table">
+                <tr>
+                    <th>位置関係</th>
+                    <th>特徴</th>
+                    <th>同一平面上？</th>
+                </tr>
+                <tr>
+                    <td>交わる</td>
+                    <td>1点で交わる</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>平行</td>
+                    <td>交わらない（どこまで伸ばしても）</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>ねじれの位置</td>
+                    <td>交わらないし、平行でもない</td>
+                    <td><strong>No</strong></td>
+                </tr>
+            </table>
+            <p><strong>→ ねじれの位置は「同一平面上にない」がポイント！</strong></p>
+        </div>
+
+        <div class="rule-box" id="rule-line-plane">
+            <strong>📌 ルール4：直線と平面の位置関係</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="500" height="150" viewBox="0 0 500 150">
+                    <!-- 平面を表す平行四辺形 -->
+                    <!-- 含まれる -->
+                    <polygon points="20,100 80,130 140,100 80,70" fill="#e3f2fd" stroke="#1976d2" stroke-width="1"/>
+                    <line x1="40" y1="95" x2="120" y2="95" stroke="#e53935" stroke-width="2"/>
+                    <text x="80" y="145" font-size="14" text-anchor="middle">含まれる</text>
+
+                    <!-- 交わる -->
+                    <polygon points="180,100 240,130 300,100 240,70" fill="#e3f2fd" stroke="#1976d2" stroke-width="1"/>
+                    <line x1="240" y1="40" x2="240" y2="120" stroke="#e53935" stroke-width="2"/>
+                    <circle cx="240" cy="95" r="4" fill="#333"/>
+                    <text x="240" y="145" font-size="14" text-anchor="middle">交わる（1点）</text>
+
+                    <!-- 平行 -->
+                    <polygon points="340,110 400,140 460,110 400,80" fill="#e3f2fd" stroke="#1976d2" stroke-width="1"/>
+                    <line x1="360" y1="50" x2="440" y2="50" stroke="#e53935" stroke-width="2"/>
+                    <text x="400" y="145" font-size="14" text-anchor="middle">平行</text>
+                </svg>
+                <div class="svg-caption">直線と平面の位置関係</div>
+            </div>
+            <table class="material-table">
+                <tr>
+                    <th>位置関係</th>
+                    <th>特徴</th>
+                </tr>
+                <tr>
+                    <td>含まれる</td>
+                    <td>直線が平面上にある（無数の点で接する）</td>
+                </tr>
+                <tr>
+                    <td>交わる</td>
+                    <td>1点で交わる</td>
+                </tr>
+                <tr>
+                    <td>平行</td>
+                    <td>交わらない（含まれないが共有点なし）</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="rule-box" id="def-projection">
+            <strong>📌 ルール5：投影図</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <p>立体を<strong>正面から見た図（立面図）</strong>と<strong>真上から見た図（平面図）</strong>で表したものを<strong>投影図</strong>といいます。</p>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="450" height="200" viewBox="0 0 450 200">
+                    <!-- 円柱の投影図 -->
+                    <!-- 立体 -->
+                    <ellipse cx="80" cy="140" rx="30" ry="10" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+                    <rect x="50" y="70" width="60" height="70" fill="#c8e6c9" stroke="none"/>
+                    <line x1="50" y1="70" x2="50" y2="140" stroke="#4caf50" stroke-width="2"/>
+                    <line x1="110" y1="70" x2="110" y2="140" stroke="#4caf50" stroke-width="2"/>
+                    <ellipse cx="80" cy="70" rx="30" ry="10" fill="#a5d6a7" stroke="#4caf50" stroke-width="2"/>
+                    <text x="80" y="175" font-size="14" text-anchor="middle">円柱</text>
+
+                    <!-- 矢印 -->
+                    <text x="150" y="105" font-size="20">→</text>
+
+                    <!-- 立面図 -->
+                    <rect x="200" y="60" width="60" height="70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                    <text x="230" y="155" font-size="12" text-anchor="middle">立面図</text>
+                    <text x="230" y="170" font-size="12" text-anchor="middle">（正面）</text>
+
+                    <!-- 平面図 -->
+                    <circle cx="350" cy="95" r="30" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                    <text x="350" y="155" font-size="12" text-anchor="middle">平面図</text>
+                    <text x="350" y="170" font-size="12" text-anchor="middle">（真上）</text>
+                </svg>
+                <div class="svg-caption">円柱の投影図</div>
+            </div>
+            <p><strong>→ 立面図と平面図の2つで立体の形がわかる！</strong></p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>空間図形の問題を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 立体の分類</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>立体の名前と特徴
+            </div>
+            <p>次の立体の名前を答え、底面と側面の形を答えなさい。</p>
+            <p>（1）底面が正六角形で、側面が6つの長方形からなる立体</p>
+            <p>（2）底面が正方形で、4つの三角形が1点に集まる立体</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>「側面が長方形」→ 柱体 → 底面が六角形 → <strong>六角柱</strong></li>
+                <li>「1点に集まる」→ 錐体 → 底面が正方形 → <strong>四角錐（正四角錐）</strong></li>
+            </ol>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 位置関係</h3>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>直方体での2直線の位置関係
+            </div>
+            <p>直方体ABCD-EFGHにおいて、次の2直線の位置関係を答えなさい。</p>
+            <div class="svg-container" style="margin: 10px 0;">
+                <svg width="250" height="180" viewBox="0 0 250 180">
+                    <!-- 直方体 -->
+                    <polygon points="50,130 150,130 180,100 80,100" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                    <polygon points="50,130 50,60 80,30 80,100" fill="#bbdefb" stroke="#1976d2" stroke-width="2"/>
+                    <polygon points="150,130 150,60 180,30 180,100" fill="#90caf9" stroke="#1976d2" stroke-width="2"/>
+                    <line x1="50" y1="60" x2="150" y2="60" stroke="#1976d2" stroke-width="2"/>
+                    <line x1="80" y1="30" x2="180" y2="30" stroke="#1976d2" stroke-width="2"/>
+                    <line x1="150" y1="60" x2="180" y2="30" stroke="#1976d2" stroke-width="2"/>
+
+                    <!-- 頂点ラベル -->
+                    <text x="40" y="145" font-size="12">A</text>
+                    <text x="155" y="145" font-size="12">B</text>
+                    <text x="185" y="105" font-size="12">C</text>
+                    <text x="70" y="105" font-size="12">D</text>
+                    <text x="40" y="55" font-size="12">E</text>
+                    <text x="155" y="55" font-size="12">F</text>
+                    <text x="185" y="25" font-size="12">G</text>
+                    <text x="70" y="25" font-size="12">H</text>
+                </svg>
+            </div>
+            <p>（1）辺ABと辺EF　（2）辺ABと辺CG　（3）辺ABと辺DH</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>ABとEF：向かい合う面にあり、同じ方向 → <strong>平行</strong></li>
+                <li>ABとCG：ABを伸ばしてもCGと交わらない、平行でもない → <strong>ねじれの位置</strong></li>
+                <li>ABとDH：ABを伸ばしてもDHと交わらない、平行でもない → <strong>ねじれの位置</strong></li>
+            </ol>
+        </div>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>直線と平面の位置関係
+            </div>
+            <p>直方体ABCD-EFGHにおいて、辺AEと次の平面の位置関係を答えなさい。</p>
+            <p>（1）平面ABCD　（2）平面EFGH　（3）平面ABFE</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>AEと平面ABCD：点Aで交わる → <strong>交わる（1点で）</strong></li>
+                <li>AEと平面EFGH：点Eで交わる → <strong>交わる（1点で）</strong></li>
+                <li>AEと平面ABFE：AEは平面ABFE上にある → <strong>含まれる</strong></li>
+            </ol>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 投影図</h3>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>投影図から立体を特定する
+            </div>
+            <p>次の投影図が表す立体を答えなさい。</p>
+            <p>立面図：長方形　/　平面図：円</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>平面図（真上から見た図）が円 → 底面が円の立体</li>
+                <li>立面図（正面から見た図）が長方形 → 側面がまっすぐ</li>
+                <li>底面が円で側面がまっすぐ → <strong>円柱</strong></li>
+            </ol>
+            <p><strong>補足：</strong>もし立面図が三角形なら円錐になる。</p>
+        </div>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>オイラーの公式を使う
+            </div>
+            <p>ある多面体は面が10個、辺が24本あります。頂点はいくつですか？</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>オイラーの公式：頂点 - 辺 + 面 = 2</li>
+                <li>\(V - 24 + 10 = 2\)</li>
+                <li>\(V = 2 + 24 - 10 = 16\)</li>
+            </ol>
+            <div class="formula">
+                \[ \text{頂点} = 16 \text{個} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：「ねじれ」は同一平面上にないかで判断</strong><br>
+            2直線を含む平面が1つも見つからない → ねじれの位置。直方体の対角線どうしなどはねじれになりやすい。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：柱と錐は「底面の数」で見分ける</strong><br>
+            底面が2つ（上下）→ 柱体（角柱・円柱）。底面が1つ + 頂点 → 錐体（角錐・円錐）。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：投影図は「影」をイメージ</strong><br>
+            真上から光を当てたときの影が平面図、正面から光を当てたときの影が立面図。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：直方体を基準に考える</strong><br>
+            空間図形の位置関係は、まず直方体で練習。慣れたら他の立体に応用できる。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：「交わらない = 平行」と思い込む</div>
+            <p><strong>ダメな例：</strong> 2直線が交わらないから平行だと答える</p>
+            <p><strong>対策：</strong> 空間では「ねじれの位置」がある！同一平面上かどうかをチェック。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：角柱と角錐を混同</div>
+            <p><strong>ダメな例：</strong> 三角錐を「三角柱」と呼ぶ</p>
+            <p><strong>対策：</strong> 「柱」は底面が2つ、「錐」は底面が1つ＋頂点。形で覚える。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：投影図で立体を想像できない</div>
+            <p><strong>ダメな例：</strong> 立面図と平面図から立体が思い浮かばない</p>
+            <p><strong>対策：</strong> まず基本の立体（円柱・角柱・円錐・球など）の投影図を覚えておく。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：「含まれる」と「平行」を間違える</div>
+            <p><strong>ダメな例：</strong> 直線が平面上にあるのに「平行」と答える</p>
+            <p><strong>対策：</strong> 直線が平面と共有点を持つかどうか確認。無数の点で接する→含まれる。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">角柱・円柱・角錐・円錐・球の違いを説明できるか？</div>
+            <div class="checklist-item">「ねじれの位置」の意味を説明できるか？</div>
+            <div class="checklist-item">直方体で、ねじれの位置にある辺を見つけられるか？</div>
+            <div class="checklist-item">投影図（立面図・平面図）から立体を特定できるか？</div>
+            <div class="checklist-item">オイラーの多面体定理を使えるか？</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>直方体ABCD-EFGHにおいて、辺BCとねじれの位置にある辺をすべて答えなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>答え：AE、DH、EH、FG</strong></p>
+                    <p>BCと交わる辺（AB、CDなど）やBCと平行な辺（EF、HG、AD）は除外。残りがねじれの位置。</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>次の投影図が表す立体を答えなさい。</p>
+            <p>（1）立面図：三角形　/　平面図：円</p>
+            <p>（2）立面図：長方形　/　平面図：長方形</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>（1）円錐</strong>（底面が円で、頂点に向かって細くなる）</p>
+                    <p><strong>（2）四角柱</strong>（底面が長方形で、側面も長方形）</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：空間では「ねじれの位置」がある！柱は底面2つ、錐は底面1つ+頂点で覚えよう。
+</div>
+
+<!-- ========== 関連教材 ========== -->
+<!-- Front Matterのrelatedで指定すればレイアウトが自動生成します -->
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「サッカーボールの秘密」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">⚽ 五角形と六角形の完璧な組み合わせ</div>
+
+            <p>サッカーボールをよく見たことがありますか？白い六角形と黒い五角形が組み合わさったあの模様。実はあれ、<strong>数学的に完璧な立体</strong>なんです。</p>
+
+            <p>まず質問。「サッカーボールには五角形がいくつある？」</p>
+
+            <p>答えは<strong>12個</strong>。では六角形は？<strong>20個</strong>。</p>
+
+            <p>なぜこの数なのか？オイラーの多面体定理を使って確かめてみましょう。</p>
+
+            <p>サッカーボール（切頂二十面体）の頂点・辺・面を数えると：</p>
+            <ul>
+                <li>面：12（五角形） + 20（六角形） = <strong>32面</strong></li>
+                <li>頂点：各頂点に3つの面が集まる → <strong>60頂点</strong></li>
+                <li>辺：(12×5 + 20×6) ÷ 2 = <strong>90辺</strong></li>
+            </ul>
+
+            <p>オイラーの公式で検証：</p>
+            <div class="formula">
+                \[ 60 - 90 + 32 = 2 \quad \checkmark \]
+            </div>
+
+            <p>ぴったり！実はこの形、古代ギリシャのアルキメデスが発見した「アルキメデスの立体」の一つなんです。</p>
+
+            <p>ところで、なぜサッカーボールはこの形なのか？</p>
+
+            <p><strong>球に最も近い多面体</strong>だからです。五角形と六角形を組み合わせると、かなり丸い形になる。しかもすべての辺が同じ長さで、製造しやすい。</p>
+
+            <p>ちなみに、2006年のワールドカップから「+Team geist」という新デザインが登場し、今では14枚のパネルで作られるボールもあります。でも数学的な美しさでは、やっぱり32面体が王者です。</p>
+
+            <p style="color: #666; font-size: 0.95em;">...というわけで、次にサッカーボールを見たら「オイラーの公式が成り立ってるな」と確認してみてください。友達にドン引きされるかもしれませんが。</p>
+        </div>
+    </div>
+</section>

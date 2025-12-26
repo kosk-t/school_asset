@@ -1,0 +1,541 @@
+---
+layout: material-raw
+title: 組合せ
+icon: "🎯"
+description: nCrの公式を理解し、「選ぶだけで順番は関係ない」場合の数を計算できるようになる。
+level: 基礎
+level_num: 1
+category: data
+school_level: senior
+order: 4
+keywords:
+  - 組合せ
+  - nCr
+  - 二項係数
+  - 重複組合せ
+  - 同じものを含む順列
+cover_image: /images/noimage.jpg
+cover_description: 組合せの公式とパスカルの三角形
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学雑学「宝くじの当選確率」"
+related:
+  - url: /senior/場合の数_教材.html
+    title: 場合の数
+    note: 和の法則・積の法則の復習に
+    type: prerequisite
+  - url: /senior/順列_教材.html
+    title: 順列
+    note: nPrとの違いを理解するために
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>10人から5人のチームを選ぶ方法は？ くじ引きで3本当たりを引く確率は？ 「選ぶだけで順番は関係ない」ときに使うのが<strong>組合せ</strong>です。</p>
+
+        <p>このページでは、<strong>組合せ</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>組合せの公式 \(_nC_r\)</strong>：n個からr個を選ぶ方法</li>
+            <li><strong>順列との違い</strong>：なぜ \(r!\) で割るのか</li>
+            <li><strong>同じものを含む順列</strong>：区別できないものがあるとき</li>
+            <li><strong>重複組合せ</strong>：同じものを何度も選べるとき</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要：組合せ \(_nC_r = \frac{_nP_r}{r!} = \frac{n!}{r!(n-r)!}\)（n個からr個を選ぶ）
+        </div>
+
+        <!-- 順列と組合せの違い（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="220" viewBox="0 0 700 220">
+                <!-- タイトル -->
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">順列 vs 組合せ：3人から2人を選ぶ</text>
+
+                <!-- 順列 -->
+                <text x="175" y="55" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">順列 ₃P₂ = 6通り</text>
+                <text x="175" y="75" font-size="12" fill="#666" text-anchor="middle">（順番を区別する）</text>
+
+                <!-- 順列の6通り -->
+                <rect x="30" y="90" width="70" height="35" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                <text x="65" y="113" font-size="14" fill="#1976d2" text-anchor="middle">AB</text>
+
+                <rect x="110" y="90" width="70" height="35" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                <text x="145" y="113" font-size="14" fill="#1976d2" text-anchor="middle">BA</text>
+
+                <rect x="190" y="90" width="70" height="35" fill="#fce4ec" stroke="#e91e63" stroke-width="2" rx="5"/>
+                <text x="225" y="113" font-size="14" fill="#e91e63" text-anchor="middle">AC</text>
+
+                <rect x="30" y="135" width="70" height="35" fill="#fce4ec" stroke="#e91e63" stroke-width="2" rx="5"/>
+                <text x="65" y="158" font-size="14" fill="#e91e63" text-anchor="middle">CA</text>
+
+                <rect x="110" y="135" width="70" height="35" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                <text x="145" y="158" font-size="14" fill="#4caf50" text-anchor="middle">BC</text>
+
+                <rect x="190" y="135" width="70" height="35" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                <text x="225" y="158" font-size="14" fill="#4caf50" text-anchor="middle">CB</text>
+
+                <!-- 矢印 -->
+                <path d="M 290 120 L 360 120" stroke="#333" stroke-width="2" marker-end="url(#arrow2)"/>
+                <text x="325" y="110" font-size="12" fill="#666" text-anchor="middle">÷ 2!</text>
+                <defs>
+                    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+                    </marker>
+                </defs>
+
+                <!-- 組合せ -->
+                <text x="525" y="55" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">組合せ ₃C₂ = 3通り</text>
+                <text x="525" y="75" font-size="12" fill="#666" text-anchor="middle">（順番を区別しない）</text>
+
+                <!-- 組合せの3通り -->
+                <rect x="400" y="100" width="70" height="45" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                <text x="435" y="128" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">{A,B}</text>
+
+                <rect x="490" y="100" width="70" height="45" fill="#fce4ec" stroke="#e91e63" stroke-width="2" rx="5"/>
+                <text x="525" y="128" font-size="16" font-weight="bold" fill="#e91e63" text-anchor="middle">{A,C}</text>
+
+                <rect x="580" y="100" width="70" height="45" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                <text x="615" y="128" font-size="16" font-weight="bold" fill="#4caf50" text-anchor="middle">{B,C}</text>
+
+                <!-- 説明 -->
+                <text x="350" y="195" font-size="14" fill="#333" text-anchor="middle">ABとBAは「同じ2人を選んだ」→ 組合せでは1通り</text>
+                <text x="350" y="215" font-size="12" fill="#666" text-anchor="middle">₃C₂ = ₃P₂ ÷ 2! = 6 ÷ 2 = 3</text>
+            </svg>
+            <div class="svg-caption">組合せは順列を「重複分で割る」</div>
+        </div>
+
+        <div class="rule-box" id="rule-combination">
+            <strong>📌 ルール1：組合せの公式</strong> <a href="#ex-basic" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ _nC_r = \frac{_nP_r}{r!} = \frac{n!}{r!(n-r)!} \]
+            </div>
+            <p>\(_nC_r\)：<strong>n</strong>個の中から<strong>r</strong>個を<strong>選ぶ</strong>方法の数（順番は関係なし）</p>
+            <p><strong>読み方：</strong>「nコンビネーションr」または「n個からr個取る組合せ」</p>
+            <p><strong>→ だから結果は：</strong> 順列 \(_nP_r\) を「並べ方の数 \(r!\)」で割る</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>順列はABとBAを別物として数える。でも「2人を選ぶ」だけなら、ABもBAも同じ。</p>
+            <p>r個を選んだとき、その並べ方は \(r!\) 通りあるので、順列を \(r!\) で割れば組合せになる。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-properties">
+            <strong>📌 ルール2：組合せの性質</strong> <a href="#ex-properties" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ _nC_r = _nC_{n-r} \]
+            </div>
+            <p><strong>意味：</strong>「n個からr個を選ぶ」=「n個から選ばないn-r個を決める」</p>
+            <p><strong>例：</strong>\(_5C_2 = _5C_3 = 10\)（5人から2人選ぶ = 3人除外する）</p>
+            <p><strong>✅ メリット：</strong> rが大きいとき、n-rで計算した方が楽な場合がある</p>
+        </div>
+
+        <div class="rule-box" id="rule-special">
+            <strong>📌 ルール3：特別な値</strong>
+            <div class="formula">
+                \[ _nC_0 = 1, \quad _nC_1 = n, \quad _nC_n = 1 \]
+            </div>
+            <p><strong>\(_nC_0 = 1\)</strong>：0個選ぶ方法は「何も選ばない」の1通り</p>
+            <p><strong>\(_nC_1 = n\)</strong>：1個選ぶ方法はn通り</p>
+            <p><strong>\(_nC_n = 1\)</strong>：全部選ぶ方法は1通り</p>
+        </div>
+
+        <!-- パスカルの三角形（SVG） -->
+        <div class="svg-container">
+            <svg width="500" height="200" viewBox="0 0 500 200">
+                <!-- タイトル -->
+                <text x="250" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">パスカルの三角形と組合せ</text>
+
+                <!-- 行0 -->
+                <circle cx="250" cy="50" r="16" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="250" y="55" font-size="12" font-weight="bold" fill="#1976d2" text-anchor="middle">1</text>
+                <text x="320" y="55" font-size="10" fill="#666">₀C₀</text>
+
+                <!-- 行1 -->
+                <circle cx="220" cy="85" r="16" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="220" y="90" font-size="12" font-weight="bold" fill="#1976d2" text-anchor="middle">1</text>
+                <circle cx="280" cy="85" r="16" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="280" y="90" font-size="12" font-weight="bold" fill="#1976d2" text-anchor="middle">1</text>
+                <text x="340" y="90" font-size="10" fill="#666">₁C₀, ₁C₁</text>
+
+                <!-- 行2 -->
+                <circle cx="190" cy="120" r="16" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="190" y="125" font-size="12" font-weight="bold" fill="#1976d2" text-anchor="middle">1</text>
+                <circle cx="250" cy="120" r="16" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                <text x="250" y="125" font-size="12" font-weight="bold" fill="#ff9800" text-anchor="middle">2</text>
+                <circle cx="310" cy="120" r="16" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="310" y="125" font-size="12" font-weight="bold" fill="#1976d2" text-anchor="middle">1</text>
+                <text x="370" y="125" font-size="10" fill="#666">₂C₀, ₂C₁, ₂C₂</text>
+
+                <!-- 行3 -->
+                <circle cx="160" cy="155" r="16" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="160" y="160" font-size="12" font-weight="bold" fill="#1976d2" text-anchor="middle">1</text>
+                <circle cx="220" cy="155" r="16" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                <text x="220" y="160" font-size="12" font-weight="bold" fill="#ff9800" text-anchor="middle">3</text>
+                <circle cx="280" cy="155" r="16" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                <text x="280" y="160" font-size="12" font-weight="bold" fill="#ff9800" text-anchor="middle">3</text>
+                <circle cx="340" cy="155" r="16" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="340" y="160" font-size="12" font-weight="bold" fill="#1976d2" text-anchor="middle">1</text>
+                <text x="400" y="160" font-size="10" fill="#666">₃C₀〜₃C₃</text>
+
+                <!-- 行4 -->
+                <circle cx="130" cy="190" r="16" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="130" y="195" font-size="12" font-weight="bold" fill="#1976d2" text-anchor="middle">1</text>
+                <circle cx="190" cy="190" r="16" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                <text x="190" y="195" font-size="12" font-weight="bold" fill="#ff9800" text-anchor="middle">4</text>
+                <circle cx="250" cy="190" r="16" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
+                <text x="250" y="195" font-size="12" font-weight="bold" fill="#e91e63" text-anchor="middle">6</text>
+                <circle cx="310" cy="190" r="16" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                <text x="310" y="195" font-size="12" font-weight="bold" fill="#ff9800" text-anchor="middle">4</text>
+                <circle cx="370" cy="190" r="16" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="370" y="195" font-size="12" font-weight="bold" fill="#1976d2" text-anchor="middle">1</text>
+                <text x="430" y="195" font-size="10" fill="#666">₄C₀〜₄C₄</text>
+            </svg>
+            <div class="svg-caption">パスカルの三角形：上の2つの数を足すと下の数になる</div>
+        </div>
+
+        <div class="rule-box" id="rule-pascal">
+            <strong>📌 ルール4：パスカルの三角形（加法公式）</strong>
+            <div class="formula">
+                \[ _nC_r = _{n-1}C_{r-1} + _{n-1}C_r \]
+            </div>
+            <p><strong>意味：</strong>特定の1つを「選ぶ」か「選ばない」かで場合分け</p>
+            <p><strong>例：</strong>\(_4C_2 = _3C_1 + _3C_2 = 3 + 3 = 6\)</p>
+        </div>
+
+        <div class="rule-box" id="rule-same">
+            <strong>📌 ルール5：同じものを含む順列</strong> <a href="#ex-same" class="example-link">→ 例4</a>
+            <div class="formula">
+                \[ \text{n個のうち、同じものがそれぞれ} p, q, r, \ldots \text{個あるとき} \]
+                \[ \text{並べ方} = \frac{n!}{p! \cdot q! \cdot r! \cdots} \]
+            </div>
+            <p><strong>例：</strong>「あああいい」の5文字の並べ方 = \(\frac{5!}{3! \cdot 2!} = \frac{120}{6 \cdot 2} = 10\) 通り</p>
+        </div>
+
+        <div class="rule-box" id="rule-repetition">
+            <strong>📌 ルール6：重複組合せ</strong> <a href="#ex-repetition" class="example-link">→ 例5</a>
+            <div class="formula">
+                \[ \text{n種類からr個を選ぶ（重複OK）} = _{n+r-1}C_r = _{ n+r-1}C_{n-1} \]
+            </div>
+            <p><strong>重複組合せ</strong>：同じものを何度でも選べる場合の選び方</p>
+            <p><strong>例：</strong>3種類のお菓子から5個選ぶ = \(_{3+5-1}C_5 = _7C_5 = 21\) 通り</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>「○○○|○○」のように、5個の○と2本の仕切り（|）を並べる問題に変換できる。</p>
+            <p>7個の位置から仕切り2本の位置を選ぶ = \(_7C_2 = 21\) 通り。</p>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>公式を使って実際に問題を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 基本の組合せ</h3>
+
+        <div class="example-box" id="ex-basic">
+            <div class="example-title">
+                <span class="number-badge">例1</span>10人から3人のグループを作る
+            </div>
+            <p>10人の生徒から3人を選んでグループを作る方法は何通りか。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>「選ぶだけ」で順番は関係ない → 組合せ</li>
+                <li>公式 \(_nC_r\) を使う（n=10, r=3）</li>
+            </ol>
+            <div class="formula">
+                \[ _{10}C_3 = \frac{10 \times 9 \times 8}{3 \times 2 \times 1} = \frac{720}{6} = 120 \text{通り} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-properties">
+            <div class="example-title">
+                <span class="number-badge">例2</span>対称性を使った計算
+            </div>
+            <p>\(_{12}C_{10}\) を計算せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>対称性 \(_nC_r = _nC_{n-r}\) を使う</li>
+                <li>\(_{12}C_{10} = _{12}C_2\) と変形（計算が楽になる）</li>
+            </ol>
+            <div class="formula">
+                \[ _{12}C_{10} = _{12}C_2 = \frac{12 \times 11}{2 \times 1} = 66 \text{通り} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 組合せの応用</h3>
+
+        <div class="example-box" id="ex-multiple">
+            <div class="example-title">
+                <span class="number-badge">例3</span>複数グループへの分け方
+            </div>
+            <p>8人を4人ずつ2つのグループA, Bに分ける方法は何通りか。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>グループAに入る4人を選ぶ → \(_8C_4\) 通り</li>
+                <li>残りの4人は自動的にグループBに決まる</li>
+            </ol>
+            <div class="formula">
+                \[ _8C_4 = \frac{8 \times 7 \times 6 \times 5}{4 \times 3 \times 2 \times 1} = \frac{1680}{24} = 70 \text{通り} \]
+            </div>
+            <p><strong>注意：</strong>もしA, Bの区別がなく「単に2組に分ける」なら、\(\frac{70}{2!} = 35\) 通り</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 同じものを含む順列</h3>
+
+        <div class="example-box" id="ex-same">
+            <div class="example-title">
+                <span class="number-badge">例4</span>MISSISSIPPIの並べ替え
+            </div>
+            <p>MISSISSIPPIの11文字を並べ替える方法は何通りか。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>各文字の個数を数える：M=1, I=4, S=4, P=2</li>
+                <li>同じものを含む順列の公式を適用</li>
+            </ol>
+            <div class="formula">
+                \[ \frac{11!}{1! \cdot 4! \cdot 4! \cdot 2!} = \frac{39916800}{1 \cdot 24 \cdot 24 \cdot 2} = \frac{39916800}{1152} = 34650 \text{通り} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 重複組合せ</h3>
+
+        <div class="example-box" id="ex-repetition">
+            <div class="example-title">
+                <span class="number-badge">例5</span>同じお菓子を何度も選べる
+            </div>
+            <p>りんご、みかん、ぶどうの3種類のお菓子から、合計5個を選ぶ方法は何通りか（同じ種類を何個選んでもよい）。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>同じものを何度も選べる → 重複組合せ</li>
+                <li>公式 \(_{n+r-1}C_r\) を使う（n=3種類, r=5個）</li>
+            </ol>
+            <div class="formula">
+                \[ _{3+5-1}C_5 = _7C_5 = _7C_2 = \frac{7 \times 6}{2 \times 1} = 21 \text{通り} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-equation">
+            <div class="example-title">
+                <span class="number-badge">例6</span>方程式の非負整数解
+            </div>
+            <p>\(x + y + z = 10\) を満たす非負整数 \((x, y, z)\) の組は何通りか。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>3種類（x, y, z）から合計10個を選ぶ重複組合せと同じ</li>
+                <li>公式を適用</li>
+            </ol>
+            <div class="formula">
+                \[ _{3+10-1}C_{10} = _{12}C_{10} = _{12}C_2 = \frac{12 \times 11}{2} = 66 \text{通り} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：「順番が大事か？」で判断</strong><br>
+            委員長・副委員長を決める（役職あり）→ 順列<br>
+            グループを作る（選ぶだけ）→ 組合せ
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：\(_nC_r = _nC_{n-r}\) を活用</strong><br>
+            \(_{10}C_8\) を計算するより \(_{10}C_2\) の方が楽。<br>
+            rが大きいときは n-r で計算しよう。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：分子と分母を先に約分</strong><br>
+            \(\frac{10 \times 9 \times 8}{3 \times 2 \times 1}\) では、10と2、9と3を先に約分すると \(\frac{5 \times 3 \times 8}{1} = 120\) と楽。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：重複組合せは「仕切り」で考える</strong><br>
+            n種類からr個選ぶ（重複OK）= ○がr個と仕切り（|）がn-1本を並べる<br>
+            = \(_{n+r-1}C_{r}\) または \(_{n+r-1}C_{n-1}\)
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：順列と組合せの混同</div>
+            <p><strong>ダメな例：</strong>「10人から3人を選ぶ」で \(_{10}P_3\) を使う</p>
+            <p><strong>対策：</strong>役職・順位がある → 順列。単に選ぶだけ → 組合せ</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：計算で約分を忘れる</div>
+            <p><strong>ダメな例：</strong>\(_6C_3 = \frac{6!}{3!3!}\) で \(\frac{720}{36} = 20\) と計算（正しい）のに、途中で計算ミス</p>
+            <p><strong>対策：</strong>分子・分母を先に約分してから計算。\(\frac{6 \times 5 \times 4}{3 \times 2 \times 1} = \frac{6}{6} \times 5 \times \frac{4}{2} = 1 \times 5 \times 2 = 20\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：グループ分けで区別を忘れる/二重に数える</div>
+            <p><strong>ダメな例：</strong>8人を4人ずつ「2組に分ける」とき \(_8C_4 = 70\) で終わる</p>
+            <p><strong>対策：</strong>A組・B組と区別があれば70通り。区別がなければ \(\frac{70}{2!} = 35\) 通り</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：重複組合せの公式を間違える</div>
+            <p><strong>ダメな例：</strong>3種類から5個選ぶ（重複OK）で \(_3C_5\) を使おうとする（定義できない）</p>
+            <p><strong>対策：</strong>重複組合せは \(_{n+r-1}C_r\)。n=3, r=5 なら \(_7C_5 = 21\)</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">\(_nC_r\) の計算ができる（\(\frac{n \times (n-1) \times \cdots}{r!}\)）</div>
+            <div class="checklist-item">順列と組合せを正しく使い分けられる</div>
+            <div class="checklist-item">\(_nC_r = _nC_{n-r}\) を活用できる</div>
+            <div class="checklist-item">同じものを含む順列の公式が使える</div>
+            <div class="checklist-item">重複組合せの公式 \(_{n+r-1}C_r\) が使える</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>15人から5人を選んで委員会を作る方法は何通りか。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(_{15}C_5 = \frac{15 \times 14 \times 13 \times 12 \times 11}{5 \times 4 \times 3 \times 2 \times 1} = 3003\) 通り</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>「BANANA」の6文字を並べ替える方法は何通りか。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>B=1, A=3, N=2 なので</p>
+                    <p>\(\frac{6!}{1! \cdot 3! \cdot 2!} = \frac{720}{1 \cdot 6 \cdot 2} = \frac{720}{12} = 60\) 通り</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>4種類のドーナツから8個を買う方法は何通りか（同じ種類を何個買ってもよい）。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>重複組合せ：n=4種類, r=8個</p>
+                    <p>\(_{4+8-1}C_8 = _{11}C_8 = _{11}C_3 = \frac{11 \times 10 \times 9}{3 \times 2 \times 1} = 165\) 通り</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：組合せは「選ぶだけ」→ \(_nC_r = \frac{_nP_r}{r!}\)。順番なしなら組合せ！
+</div>
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「宝くじの当選確率」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">🎰 6億円を当てる確率</div>
+
+            <p>ロト6は、1〜43の数字から<strong>6つを選ぶ</strong>宝くじ。1等賞金は約2億〜6億円。</p>
+
+            <p>さて、1等が当たる確率は？</p>
+
+            <p>これは「43個から6個を選ぶ組合せ」で計算できる：</p>
+
+            <div class="formula">
+                \[ _{43}C_6 = \frac{43 \times 42 \times 41 \times 40 \times 39 \times 38}{6 \times 5 \times 4 \times 3 \times 2 \times 1} = 6,096,454 \]
+            </div>
+
+            <p>つまり、<strong>約609万通り</strong>。1等の確率は<strong>約609万分の1</strong>だ。</p>
+
+            <p><strong>これがどれくらい「無理ゲー」か？</strong></p>
+
+            <table class="material-table">
+                <tr>
+                    <th>比較対象</th>
+                    <th>確率</th>
+                </tr>
+                <tr>
+                    <td>コイン20回連続で表</td>
+                    <td>約100万分の1</td>
+                </tr>
+                <tr>
+                    <td>年間で雷に打たれる</td>
+                    <td>約100万分の1</td>
+                </tr>
+                <tr>
+                    <td><strong>ロト6の1等</strong></td>
+                    <td><strong>約609万分の1</strong></td>
+                </tr>
+                <tr>
+                    <td>飛行機事故で死亡</td>
+                    <td>約1100万分の1</td>
+                </tr>
+            </table>
+
+            <p>コイン20回連続で表を出すより難しい。毎週1回買い続けて、平均で<strong>約11万7000年</strong>かかる計算だ。</p>
+
+            <p>ちなみに、日本の人口は約1.2億人。全員が1枚ずつ買うと、1等は平均で<strong>約20人</strong>出る。</p>
+
+            <p>でも「自分がその20人に入る」確率を考えると...</p>
+
+            <div class="formula">
+                \[ \frac{20}{120,000,000} = \frac{1}{6,000,000} \]
+            </div>
+
+            <p>やっぱり600万分の1。数学は嘘をつかない。</p>
+
+            <p><strong>教訓：宝くじは「夢を買う」もの。期待値で考えると、買えば買うほど損をする。</strong></p>
+
+            <p style="font-size: 0.9em; color: #666; margin-top: 15px;">※ロト6の仕組みは変更される場合があります。詳しくは<a href="https://ja.wikipedia.org/wiki/%E3%83%AD%E3%83%886" target="_blank" style="color: #1976d2;">ロト6 - Wikipedia</a>を参照。</p>
+        </div>
+    </div>
+</section>

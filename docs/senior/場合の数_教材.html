@@ -1,0 +1,525 @@
+---
+layout: material-raw
+title: 場合の数
+icon: "🎲"
+description: 和の法則・積の法則を理解し、樹形図を使って「全部で何通り？」を正確に数える方法をマスターする。
+level: 基礎
+level_num: 1
+category: data
+school_level: senior
+order: 1
+keywords:
+  - 場合の数
+  - 和の法則
+  - 積の法則
+  - 樹形図
+  - 数え上げ
+cover_image: /images/noimage.jpg
+cover_description: 樹形図と場合の数の計算
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学雑学「トランプを混ぜると宇宙が始まる」"
+related:
+  - url: /junior/確率の基本法則_教材.html
+    title: 確率の基本法則
+    note: 中学で学んだ確率の復習に
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>じゃんけんで勝てる確率は？ パスワードは何通り？ こうした問題を解くには、まず「全部で何通りあるか」を正確に数える必要があります。</p>
+
+        <p>このページでは、<strong>場合の数</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>和の法則</strong>：「どちらか一方」を選ぶときの数え方</li>
+            <li><strong>積の法則</strong>：「両方とも」選ぶときの数え方</li>
+            <li><strong>樹形図</strong>：すべての場合を漏れなく・重複なく整理する方法</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要：「または」は足し算、「かつ」は掛け算
+        </div>
+
+        <!-- 和の法則と積の法則の図解（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="220" viewBox="0 0 700 220">
+                <!-- タイトル -->
+                <text x="350" y="20" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">和の法則 vs 積の法則</text>
+
+                <!-- 和の法則 -->
+                <text x="175" y="50" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">和の法則（または）</text>
+
+                <!-- グループA -->
+                <rect x="50" y="70" width="100" height="60" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                <text x="100" y="95" font-size="12" fill="#1976d2" text-anchor="middle">グループA</text>
+                <text x="100" y="115" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">m 通り</text>
+
+                <!-- または -->
+                <text x="175" y="105" font-size="16" font-weight="bold" fill="#e53935" text-anchor="middle">or</text>
+
+                <!-- グループB -->
+                <rect x="200" y="70" width="100" height="60" fill="#fce4ec" stroke="#e53935" stroke-width="2" rx="5"/>
+                <text x="250" y="95" font-size="12" fill="#e53935" text-anchor="middle">グループB</text>
+                <text x="250" y="115" font-size="14" font-weight="bold" fill="#e53935" text-anchor="middle">n 通り</text>
+
+                <!-- 結果 -->
+                <text x="175" y="160" font-size="14" fill="#333" text-anchor="middle">↓</text>
+                <rect x="100" y="170" width="150" height="35" fill="#f5f5f5" stroke="#333" stroke-width="2" rx="5"/>
+                <text x="175" y="195" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">m + n 通り</text>
+
+                <!-- 積の法則 -->
+                <text x="525" y="50" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">積の法則（かつ）</text>
+
+                <!-- ステップ1 -->
+                <rect x="400" y="70" width="100" height="60" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                <text x="450" y="95" font-size="12" fill="#1976d2" text-anchor="middle">ステップ1</text>
+                <text x="450" y="115" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">m 通り</text>
+
+                <!-- かつ -->
+                <text x="525" y="105" font-size="16" font-weight="bold" fill="#4caf50" text-anchor="middle">×</text>
+
+                <!-- ステップ2 -->
+                <rect x="550" y="70" width="100" height="60" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                <text x="600" y="95" font-size="12" fill="#4caf50" text-anchor="middle">ステップ2</text>
+                <text x="600" y="115" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">n 通り</text>
+
+                <!-- 結果 -->
+                <text x="525" y="160" font-size="14" fill="#333" text-anchor="middle">↓</text>
+                <rect x="450" y="170" width="150" height="35" fill="#f5f5f5" stroke="#333" stroke-width="2" rx="5"/>
+                <text x="525" y="195" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">m × n 通り</text>
+            </svg>
+            <div class="svg-caption">和の法則は「どちらか」で足す、積の法則は「両方」で掛ける</div>
+        </div>
+
+        <div class="rule-box" id="rule-addition">
+            <strong>📌 ルール1：和の法則（加法定理）</strong> <a href="#ex-addition" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ \text{2つの事柄A, Bが同時に起こらないとき、AまたはBが起こる場合の数} \]
+                \[ = (\text{Aの場合の数}) + (\text{Bの場合の数}) \]
+            </div>
+            <p><strong>ポイント：</strong>「どちらか一方を選ぶ」ときに使う</p>
+            <p><strong>→ だから結果は：</strong> 選択肢が増えるので、場合の数は「足し算」で増える</p>
+            <p><strong>⚠️ 注意：</strong>AとBが同時に起こる可能性がある場合は、重複分を引く必要がある</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>たとえば、赤いボール3個と青いボール5個から「どちらか1個」を選ぶ場合：</p>
+            <p>赤を選ぶ：3通り、青を選ぶ：5通り。同時に赤と青は選べないので、3 + 5 = 8通り。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-multiplication">
+            <strong>📌 ルール2：積の法則（乗法定理）</strong> <a href="#ex-multiplication" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ \text{事柄Aが} m \text{通り、そのおのおのに対してBが} n \text{通りあるとき} \]
+                \[ \text{AかつBが起こる場合の数} = m \times n \]
+            </div>
+            <p><strong>ポイント：</strong>「両方とも決める」ときに使う</p>
+            <p><strong>→ だから結果は：</strong> 組み合わせが増えるので、場合の数は「掛け算」で爆発的に増える</p>
+            <p><strong>✅ メリット：</strong> 複雑な問題も「1つずつ決める」に分解すれば掛け算で計算できる</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>上着3種類、ズボン4種類から「上着もズボンも選ぶ」場合：</p>
+            <p>上着を決めると、それぞれに対してズボンが4通りある。だから 3 × 4 = 12通り。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-tree">
+            <strong>📌 ルール3：樹形図の使い方</strong> <a href="#ex-tree" class="example-link">→ 例3</a>
+            <p><strong>樹形図</strong>とは、場合を木の枝のように分岐させて書き出す図。</p>
+            <p><strong>使い方：</strong></p>
+            <ol>
+                <li>最初の選択肢を横に並べる</li>
+                <li>各選択肢から次の選択肢を枝分かれさせる</li>
+                <li>末端（葉）の数を数える = 場合の数</li>
+            </ol>
+            <p><strong>✅ メリット：</strong> 漏れや重複を防げる。複雑な条件も整理しやすい。</p>
+        </div>
+
+        <!-- 樹形図の例（SVG） -->
+        <div class="svg-container">
+            <svg width="500" height="200" viewBox="0 0 500 200">
+                <!-- タイトル -->
+                <text x="250" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">樹形図の例：コイン2回投げ</text>
+
+                <!-- 開始点 -->
+                <circle cx="50" cy="100" r="8" fill="#333"/>
+                <text x="30" y="105" font-size="12" fill="#333">開始</text>
+
+                <!-- 1回目の分岐 -->
+                <line x1="58" y1="100" x2="150" y2="60" stroke="#1976d2" stroke-width="2"/>
+                <line x1="58" y1="100" x2="150" y2="140" stroke="#e53935" stroke-width="2"/>
+
+                <circle cx="150" cy="60" r="20" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="150" y="65" font-size="14" fill="#1976d2" text-anchor="middle">表</text>
+
+                <circle cx="150" cy="140" r="20" fill="#fce4ec" stroke="#e53935" stroke-width="2"/>
+                <text x="150" y="145" font-size="14" fill="#e53935" text-anchor="middle">裏</text>
+
+                <!-- 2回目の分岐（表から） -->
+                <line x1="170" y1="60" x2="280" y2="35" stroke="#1976d2" stroke-width="2"/>
+                <line x1="170" y1="60" x2="280" y2="85" stroke="#e53935" stroke-width="2"/>
+
+                <circle cx="280" cy="35" r="20" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="280" y="40" font-size="14" fill="#1976d2" text-anchor="middle">表</text>
+
+                <circle cx="280" cy="85" r="20" fill="#fce4ec" stroke="#e53935" stroke-width="2"/>
+                <text x="280" y="90" font-size="14" fill="#e53935" text-anchor="middle">裏</text>
+
+                <!-- 2回目の分岐（裏から） -->
+                <line x1="170" y1="140" x2="280" y2="115" stroke="#1976d2" stroke-width="2"/>
+                <line x1="170" y1="140" x2="280" y2="165" stroke="#e53935" stroke-width="2"/>
+
+                <circle cx="280" cy="115" r="20" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="280" y="120" font-size="14" fill="#1976d2" text-anchor="middle">表</text>
+
+                <circle cx="280" cy="165" r="20" fill="#fce4ec" stroke="#e53935" stroke-width="2"/>
+                <text x="280" y="170" font-size="14" fill="#e53935" text-anchor="middle">裏</text>
+
+                <!-- 結果 -->
+                <text x="340" y="40" font-size="12" fill="#333">→ (表, 表)</text>
+                <text x="340" y="90" font-size="12" fill="#333">→ (表, 裏)</text>
+                <text x="340" y="120" font-size="12" fill="#333">→ (裏, 表)</text>
+                <text x="340" y="170" font-size="12" fill="#333">→ (裏, 裏)</text>
+
+                <!-- 合計 -->
+                <text x="450" y="100" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">4通り</text>
+            </svg>
+            <div class="svg-caption">樹形図：末端（葉）の数が場合の数</div>
+        </div>
+
+        <div class="rule-box" id="rule-complement">
+            <strong>📌 ルール4：余事象を使う数え方</strong> <a href="#ex-complement" class="example-link">→ 例5</a>
+            <div class="formula">
+                \[ (\text{「少なくとも〜」の場合の数}) = (\text{全体}) - (\text{「1つも〜ない」の場合の数}) \]
+            </div>
+            <p><strong>ポイント：</strong>「少なくとも1つ」「〜を含む」など、直接数えにくいときに有効</p>
+            <p><strong>→ だから結果は：</strong> 全体から「ダメなパターン」を引けば「OKなパターン」が求まる</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>ルールを使って実際に問題を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 和の法則</h3>
+
+        <div class="example-box" id="ex-addition">
+            <div class="example-title">
+                <span class="number-badge">例1</span>りんご4種類とみかん3種類から、どちらか1つを選ぶ
+            </div>
+            <p>りんご4種類、みかん3種類の果物がある。この中から1つを選ぶ方法は何通りか。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>りんごを選ぶ：4通り</li>
+                <li>みかんを選ぶ：3通り</li>
+                <li>「りんごまたはみかん」を選ぶ → 同時に両方は選ばないので<strong>和の法則</strong></li>
+            </ol>
+            <div class="formula">
+                \[ 4 + 3 = 7 \text{通り} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 積の法則</h3>
+
+        <div class="example-box" id="ex-multiplication">
+            <div class="example-title">
+                <span class="number-badge">例2</span>メニューから主菜とデザートを選ぶ
+            </div>
+            <p>主菜5種類、デザート3種類から、それぞれ1つずつ選ぶ方法は何通りか。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>主菜を選ぶ：5通り</li>
+                <li>各主菜に対して、デザートを選ぶ：3通り</li>
+                <li>「主菜かつデザート」を両方決める → <strong>積の法則</strong></li>
+            </ol>
+            <div class="formula">
+                \[ 5 \times 3 = 15 \text{通り} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 樹形図</h3>
+
+        <div class="example-box" id="ex-tree">
+            <div class="example-title">
+                <span class="number-badge">例3</span>サイコロを2回振る（樹形図）
+            </div>
+            <p>サイコロを2回振るとき、出る目の組み合わせは何通りか。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>1回目：1〜6の6通り</li>
+                <li>各目に対して、2回目：1〜6の6通り</li>
+                <li>積の法則で計算</li>
+            </ol>
+            <div class="formula">
+                \[ 6 \times 6 = 36 \text{通り} \]
+            </div>
+            <p><strong>補足：</strong> 樹形図を描くと、1回目の各目から6本の枝が出て、合計36個の葉ができる。</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 複合問題</h3>
+
+        <div class="example-box" id="ex-mixed">
+            <div class="example-title">
+                <span class="number-badge">例4</span>3桁の整数を作る
+            </div>
+            <p>1, 2, 3, 4, 5 の5つの数字を使って、3桁の整数を作る。同じ数字は使わないとき、何通りできるか。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>百の位：5通り（1〜5のどれか）</li>
+                <li>十の位：4通り（百の位で使った数字以外）</li>
+                <li>一の位：3通り（百・十の位で使った数字以外）</li>
+                <li>積の法則で計算</li>
+            </ol>
+            <div class="formula">
+                \[ 5 \times 4 \times 3 = 60 \text{通り} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-complement">
+            <div class="example-title">
+                <span class="number-badge">例5</span>少なくとも1回は表が出る
+            </div>
+            <p>コインを3回投げるとき、少なくとも1回は表が出る場合の数は？</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>全体の場合の数：\(2 \times 2 \times 2 = 8\) 通り</li>
+                <li>「1回も表が出ない」= 3回とも裏 = 1通り</li>
+                <li>余事象を使う：全体 − ダメなパターン</li>
+            </ol>
+            <div class="formula">
+                \[ 8 - 1 = 7 \text{通り} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-condition">
+            <div class="example-title">
+                <span class="number-badge">例6</span>条件付きの数え上げ
+            </div>
+            <p>0, 1, 2, 3, 4 の5つの数字から異なる3つを使って3桁の整数を作る。何通りできるか。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>百の位：<strong>0は使えない</strong>（3桁にならない）ので4通り</li>
+                <li>十の位：百の位で使った数字以外の4通り（0も使える）</li>
+                <li>一の位：百・十の位で使った数字以外の3通り</li>
+            </ol>
+            <div class="formula">
+                \[ 4 \times 4 \times 3 = 48 \text{通り} \]
+            </div>
+            <p><strong>ポイント：</strong> 0を含む問題では、最上位の桁に0が来ない条件に注意！</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：「または」か「かつ」かを見極める</strong><br>
+            「どちらか一方」「〜か〜」→ 和の法則（足し算）<br>
+            「両方とも」「〜して〜」「続けて」→ 積の法則（掛け算）
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：制限のある桁から先に決める</strong><br>
+            例6のように「0は百の位に使えない」など制限があるとき、制限のある桁から考える。
+            そうしないと場合分けが複雑になる。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：「少なくとも」は余事象</strong><br>
+            「少なくとも1つ〜」は直接数えると大変。<br>
+            「全体 − 1つも〜ない」で計算する方が楽。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：迷ったら小さい例で確認</strong><br>
+            計算結果が正しいか不安なときは、数を小さくして樹形図で確かめる。<br>
+            例：「3桁」を「2桁」に減らして計算し、樹形図と照合。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：和と積を逆に使う</div>
+            <p><strong>ダメな例：</strong> 「主菜5種類とデザート3種類から1つずつ選ぶ」で \(5 + 3 = 8\) としてしまう</p>
+            <p><strong>対策：</strong> 「両方決める」なら掛け算。「どちらか一方」なら足し算。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：0を含む整数問題で最上位を忘れる</div>
+            <p><strong>ダメな例：</strong> 0〜4で3桁の整数を作るとき、すべての位を5通りと計算</p>
+            <p><strong>対策：</strong> 最上位（百の位）には0が来れないので4通り。制限のある桁から考える。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：重複を忘れる（和の法則）</div>
+            <p><strong>ダメな例：</strong> 「6の倍数または8の倍数」を単純に足す</p>
+            <p><strong>対策：</strong> 同時に起こる場合（24の倍数）があれば、重複分を引く。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：「使わない」の減らし忘れ</div>
+            <p><strong>ダメな例：</strong> 「異なる数字で3桁」なのに、すべての位を同じ数で計算</p>
+            <p><strong>対策：</strong> 「異なる」なら使うたびに選択肢が1つ減る。5 × 4 × 3 のように。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">「または」と「かつ」で和・積の法則を使い分けられる</div>
+            <div class="checklist-item">樹形図を描いて場合を漏れなく数えられる</div>
+            <div class="checklist-item">0を含む整数問題で、最上位の制限に注意できる</div>
+            <div class="checklist-item">「少なくとも〜」の問題で余事象を使える</div>
+            <div class="checklist-item">「異なる」条件で選択肢を正しく減らせる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>ハンバーガー4種類、ドリンク5種類、サイドメニュー3種類から、それぞれ1つずつ選ぶ方法は何通りか。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>3つとも決めるので積の法則：</p>
+                    <p>\(4 \times 5 \times 3 = 60\) 通り</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>1, 2, 3, 4 の4つの数字から異なる3つを選んで3桁の整数を作る。何通りできるか。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>百の位：4通り（0がないので制限なし）</p>
+                    <p>十の位：3通り（百の位で使った数字以外）</p>
+                    <p>一の位：2通り</p>
+                    <p>\(4 \times 3 \times 2 = 24\) 通り</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>サイコロを2回振るとき、少なくとも1回は6が出る場合の数は？</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>全体：\(6 \times 6 = 36\) 通り</p>
+                    <p>1回も6が出ない：\(5 \times 5 = 25\) 通り</p>
+                    <p>少なくとも1回6が出る：\(36 - 25 = 11\) 通り</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：「または」は足す、「かつ」は掛ける。迷ったら樹形図！
+</div>
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「トランプを混ぜると宇宙が始まる」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">🃏 52枚のカードが作る宇宙</div>
+
+            <p>トランプを1組（52枚）、よ〜くシャッフルして並べる。</p>
+
+            <p><strong>さて、その並び順と全く同じ順番が、宇宙のどこかで再現されたことはあるだろうか？</strong></p>
+
+            <p>直感的には「52枚くらいなら、いつか同じ順番になりそう」と思うかもしれない。でも実は...</p>
+
+            <p><strong>答え：まず100%ない。</strong></p>
+
+            <p>52枚のカードの並べ方は、積の法則で計算できる：</p>
+
+            <div class="formula">
+                \[ 52 \times 51 \times 50 \times \cdots \times 2 \times 1 = 52! \]
+            </div>
+
+            <p>この \(52!\)（52の階乗）は、とてつもなく巨大な数だ：</p>
+
+            <div class="formula">
+                \[ 52! \approx 8 \times 10^{67} \]
+            </div>
+
+            <p><strong>これがどれくらい大きいか？</strong></p>
+
+            <table class="material-table">
+                <tr>
+                    <th>比較対象</th>
+                    <th>数値</th>
+                </tr>
+                <tr>
+                    <td>地球上の砂粒の数</td>
+                    <td>約 \(10^{18}\)</td>
+                </tr>
+                <tr>
+                    <td>宇宙の原子の数</td>
+                    <td>約 \(10^{80}\)</td>
+                </tr>
+                <tr>
+                    <td><strong>52枚の並べ方</strong></td>
+                    <td>\(8 \times 10^{67}\)</td>
+                </tr>
+            </table>
+
+            <p>宇宙の原子の数より少し少ない程度。つまり、宇宙の全原子に番号を振っても、52枚の並べ方には追いつかないレベルだ。</p>
+
+            <p>仮に地球上の全人類80億人が、毎秒1回シャッフルしたとして...</p>
+
+            <p>宇宙が始まってから今まで（約138億年）ずっと続けても、全パターンの \(0.000000001\%\) すら試せない。</p>
+
+            <p><strong>つまり、あなたが今シャッフルしたその並び順は、宇宙の歴史で初めて、そしておそらく最後の出現なのだ。</strong></p>
+
+            <p>たった52枚のカードでこれ。「場合の数」の掛け算の威力、恐るべし。</p>
+
+            <p style="font-size: 0.9em; color: #666; margin-top: 15px;">※階乗 \(n!\) は順列の計算で詳しく学びます。詳しくは<a href="https://ja.wikipedia.org/wiki/%E9%9A%8E%E4%B9%97" target="_blank" style="color: #1976d2;">階乗 - Wikipedia</a>を参照。</p>
+        </div>
+    </div>
+</section>

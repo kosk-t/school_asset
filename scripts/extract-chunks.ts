@@ -429,8 +429,19 @@ async function main(): Promise<void> {
   // Load learns.yml if available
   learnsData = loadLearnsData();
 
-  // Find all material files
-  const files = fs.readdirSync(DOCS_DIR).filter((f) => f.endsWith("_教材.html"));
+  // Find all material files (recursively in junior and senior directories)
+  const materialDirs = ["junior", "senior"];
+  const files: string[] = [];
+
+  for (const dir of materialDirs) {
+    const dirPath = path.join(DOCS_DIR, dir);
+    if (fs.existsSync(dirPath)) {
+      const dirFiles = fs.readdirSync(dirPath)
+        .filter((f) => f.endsWith("_教材.html"))
+        .map((f) => path.join(dir, f));
+      files.push(...dirFiles);
+    }
+  }
   console.log(`Found ${files.length} material files`);
 
   // Process each file

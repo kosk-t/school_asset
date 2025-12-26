@@ -1,0 +1,549 @@
+---
+layout: material-raw
+title: 相似の基本
+icon: "🔍"
+description: 図形の相似の意味と相似比、三角形の相似条件を学ぶ。拡大・縮小の関係を理解し、相似な図形を見抜く力を身につける。
+level: 標準
+level_num: 2
+category: geometry
+school_level: junior
+order: 7
+keywords:
+  - 相似
+  - 相似比
+  - 相似条件
+  - 拡大
+  - 縮小
+  - AA相似
+cover_image: /images/noimage.jpg
+cover_description: 相似な三角形と相似比、3つの相似条件の図解
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「影でピラミッドを測った男」"
+related:
+  - url: /junior/証明問題_合同条件の選び方_教材.html
+    title: 証明問題：合同条件の選び方
+    note: 合同と相似は証明の書き方が同じ
+    type: prerequisite
+  - url: /junior/三平方の定理_教材.html
+    title: 三平方の定理
+    note: 相似と組み合わせて辺の長さを求める
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>地図やコピー機の「拡大・縮小」、写真の引き伸ばし——これらは形を変えずにサイズだけを変えています。数学ではこのような関係を<strong>相似</strong>と呼びます。</p>
+
+        <p>このページでは、<strong>相似の基本</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>相似の意味</strong>：形は同じでサイズが違う図形の関係</li>
+            <li><strong>相似比</strong>：対応する辺の比（何倍になっているか）</li>
+            <li><strong>三角形の相似条件</strong>：相似を証明するための3つの条件</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要：相似な図形では「対応する辺の比がすべて等しい」かつ「対応する角がすべて等しい」
+        </div>
+
+        <!-- 相似の図解（SVG） -->
+        <div class="svg-container">
+            <svg width="650" height="280" viewBox="0 0 650 280">
+                <!-- タイトル -->
+                <text x="325" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">相似な図形の性質</text>
+
+                <!-- 小さい三角形ABC -->
+                <polygon points="80,200 180,200 130,100" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="70" y="215" font-size="14" fill="#1565c0" font-weight="bold">A</text>
+                <text x="185" y="215" font-size="14" fill="#1565c0" font-weight="bold">B</text>
+                <text x="125" y="90" font-size="14" fill="#1565c0" font-weight="bold">C</text>
+                <!-- 辺の長さ -->
+                <text x="125" y="220" font-size="14" fill="#333">3</text>
+                <text x="60" y="150" font-size="14" fill="#333">4</text>
+                <text x="165" y="150" font-size="14" fill="#333">5</text>
+
+                <!-- 相似記号 -->
+                <text x="250" y="155" font-size="24" fill="#e53935" font-weight="bold">∽</text>
+                <text x="230" y="180" font-size="14" fill="#666">（相似）</text>
+
+                <!-- 大きい三角形DEF（2倍） -->
+                <polygon points="320,230 520,230 420,50" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                <text x="305" y="245" font-size="14" fill="#e65100" font-weight="bold">D</text>
+                <text x="525" y="245" font-size="14" fill="#e65100" font-weight="bold">E</text>
+                <text x="415" y="40" font-size="14" fill="#e65100" font-weight="bold">F</text>
+                <!-- 辺の長さ -->
+                <text x="415" y="255" font-size="14" fill="#333">6</text>
+                <text x="345" y="140" font-size="14" fill="#333">8</text>
+                <text x="485" y="140" font-size="14" fill="#333">10</text>
+
+                <!-- 相似比の説明 -->
+                <rect x="540" y="80" width="100" height="100" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="10"/>
+                <text x="590" y="105" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">相似比</text>
+                <text x="590" y="135" font-size="18" fill="#333" text-anchor="middle">1 : 2</text>
+                <text x="590" y="165" font-size="12" fill="#666" text-anchor="middle">（すべての辺が2倍）</text>
+            </svg>
+            <div class="svg-caption">相似な図形：形は同じで、対応する辺の比がすべて等しい</div>
+        </div>
+
+        <div class="rule-box" id="rule-similar">
+            <strong>📌 ルール1：相似の定義と記号</strong> <a href="#ex-ratio" class="example-link">→ 例1</a>
+            <p><strong>相似</strong>とは、形は同じでサイズが違う図形の関係。</p>
+            <ul>
+                <li>対応する角がすべて等しい</li>
+                <li>対応する辺の比がすべて等しい</li>
+            </ul>
+            <p>記号 \(\triangle ABC \sim \triangle DEF\)（「AかつDが対応、BかつEが対応...」の意味）</p>
+            <p><strong>→ だから結果は：</strong> 相似な図形では、対応する部分を見つければ角度や辺の比がわかる</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>「合同」は「形もサイズも同じ」だったが、「相似」は「形だけ同じ」。拡大コピーや縮小コピーのイメージ。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-ratio">
+            <strong>📌 ルール2：相似比</strong> <a href="#ex-ratio" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ \text{相似比} = m : n \quad \Rightarrow \quad \text{対応する辺の比がすべて } m : n \]
+            </div>
+            <p><strong>相似比</strong>とは、対応する辺の長さの比。相似比が \(1 : 2\) なら、すべての辺が2倍。</p>
+            <p><strong>→ だから結果は：</strong> 1辺の比がわかれば、他の辺の長さも計算できる</p>
+            <p><strong>✅ メリット：</strong> 直接測れない長さも、相似比から計算できる（地図、縮尺模型など）</p>
+        </div>
+
+        <!-- 三角形の相似条件の図解 -->
+        <div class="svg-container">
+            <svg width="700" height="400" viewBox="0 0 700 400">
+                <!-- タイトル -->
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">三角形の相似条件（3つ覚える！）</text>
+
+                <!-- 条件1: AA相似 -->
+                <rect x="20" y="50" width="200" height="160" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="10"/>
+                <text x="120" y="75" font-size="14" font-weight="bold" fill="#1565c0" text-anchor="middle">① 2組の角が等しい</text>
+                <text x="120" y="95" font-size="14" font-weight="bold" fill="#e53935" text-anchor="middle">(AA相似)</text>
+                <!-- 図 -->
+                <polygon points="50,180 150,180 100,120" fill="none" stroke="#333" stroke-width="2"/>
+                <path d="M 65,180 A 15,15 0 0 1 72,168" fill="none" stroke="#e53935" stroke-width="2"/>
+                <path d="M 135,180 A 15,15 0 0 0 128,168" fill="none" stroke="#4caf50" stroke-width="2"/>
+                <text x="120" y="200" font-size="12" fill="#666" text-anchor="middle">2角が等しい</text>
+
+                <!-- 条件2: SSS相似 -->
+                <rect x="250" y="50" width="200" height="160" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="10"/>
+                <text x="350" y="75" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">② 3辺の比が等しい</text>
+                <text x="350" y="95" font-size="14" font-weight="bold" fill="#e53935" text-anchor="middle">(SSS相似)</text>
+                <!-- 図 -->
+                <polygon points="280,180 380,180 330,120" fill="none" stroke="#333" stroke-width="2"/>
+                <text x="330" y="198" font-size="14" fill="#e53935">a</text>
+                <text x="290" y="150" font-size="14" fill="#4caf50">b</text>
+                <text x="365" y="150" font-size="14" fill="#1976d2">c</text>
+
+                <!-- 条件3: SAS相似 -->
+                <rect x="480" y="50" width="200" height="160" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2" rx="10"/>
+                <text x="580" y="75" font-size="14" font-weight="bold" fill="#7b1fa2" text-anchor="middle">③ 2辺の比とその間の角</text>
+                <text x="580" y="95" font-size="14" font-weight="bold" fill="#e53935" text-anchor="middle">(SAS相似)</text>
+                <!-- 図 -->
+                <polygon points="510,180 610,180 560,120" fill="none" stroke="#333" stroke-width="2"/>
+                <path d="M 525,180 A 15,15 0 0 1 532,168" fill="none" stroke="#e53935" stroke-width="2"/>
+                <text x="540" y="150" font-size="14" fill="#4caf50">m</text>
+                <text x="550" y="195" font-size="14" fill="#1976d2">n</text>
+                <text x="580" y="200" font-size="12" fill="#666" text-anchor="middle">比が等しい+間の角</text>
+
+                <!-- 比較表 -->
+                <rect x="50" y="240" width="600" height="140" fill="#fafafa" stroke="#ccc" stroke-width="1" rx="5"/>
+                <text x="350" y="265" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">相似条件の覚え方</text>
+
+                <text x="80" y="295" font-size="14" fill="#1565c0" font-weight="bold">AA相似</text>
+                <text x="200" y="295" font-size="14" fill="#333">2つの角が等しければ相似（残り1角は自動的に決まる）</text>
+
+                <text x="80" y="325" font-size="14" fill="#e65100" font-weight="bold">SSS相似</text>
+                <text x="200" y="325" font-size="14" fill="#333">3辺の比が m:n:p で等しければ相似</text>
+
+                <text x="80" y="355" font-size="14" fill="#7b1fa2" font-weight="bold">SAS相似</text>
+                <text x="200" y="355" font-size="14" fill="#333">2辺の比が等しく、その間の角が等しければ相似</text>
+            </svg>
+            <div class="svg-caption">三角形の相似条件：AA・SSS・SASの3つを覚えよう</div>
+        </div>
+
+        <div class="rule-box" id="rule-aa">
+            <strong>📌 ルール3：AA相似（2組の角が等しい）</strong> <a href="#ex-aa" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ \angle A = \angle D, \quad \angle B = \angle E \quad \Rightarrow \quad \triangle ABC \sim \triangle DEF \]
+            </div>
+            <p>2つの角がそれぞれ等しければ、残り1つの角も自動的に等しくなる（三角形の内角の和は180°）。</p>
+            <p><strong>→ だから結果は：</strong> 2角だけ調べれば相似を証明できる</p>
+            <p><strong>✅ メリット：</strong> 最もよく使う条件。角度の情報だけで相似が言える</p>
+        </div>
+
+        <div class="rule-box" id="rule-sss">
+            <strong>📌 ルール4：SSS相似（3辺の比が等しい）</strong> <a href="#ex-sss" class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ \frac{AB}{DE} = \frac{BC}{EF} = \frac{CA}{FD} \quad \Rightarrow \quad \triangle ABC \sim \triangle DEF \]
+            </div>
+            <p>3辺の比がすべて等しければ相似。</p>
+            <p><strong>→ だから結果は：</strong> 3辺の長さがわかっていれば相似を判定できる</p>
+        </div>
+
+        <div class="rule-box" id="rule-sas">
+            <strong>📌 ルール5：SAS相似（2辺の比とその間の角が等しい）</strong> <a href="#ex-sas" class="example-link">→ 例4</a>
+            <div class="formula">
+                \[ \frac{AB}{DE} = \frac{AC}{DF}, \quad \angle A = \angle D \quad \Rightarrow \quad \triangle ABC \sim \triangle DEF \]
+            </div>
+            <p>2辺の比が等しく、<strong>その間の角</strong>（はさむ角）が等しければ相似。</p>
+            <p><strong>→ だから結果は：</strong> 「間の角」を忘れないこと！</p>
+        </div>
+
+        <table class="material-table">
+            <tr>
+                <th>条件</th>
+                <th>何が等しい？</th>
+                <th>合同との違い</th>
+            </tr>
+            <tr>
+                <td>AA相似</td>
+                <td>2組の角</td>
+                <td>合同にはない（相似専用）</td>
+            </tr>
+            <tr>
+                <td>SSS相似</td>
+                <td>3辺の「比」</td>
+                <td>合同は「長さが等しい」、相似は「比が等しい」</td>
+            </tr>
+            <tr>
+                <td>SAS相似</td>
+                <td>2辺の「比」と間の角</td>
+                <td>合同は「長さが等しい」、相似は「比が等しい」</td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>相似比の計算と、3つの相似条件を使った証明を練習しましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 相似比と辺の長さ</h3>
+
+        <div class="example-box" id="ex-ratio">
+            <div class="example-title">
+                <span class="number-badge">例1</span>相似比から辺の長さを求める
+            </div>
+            <p>\(\triangle ABC \sim \triangle DEF\) で相似比が \(2:3\)。\(AB = 6\) cm のとき、\(DE\) の長さを求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>対応する辺を確認：\(AB\) と \(DE\) が対応</li>
+                <li>相似比 \(2:3\) を使う → \(AB : DE = 2 : 3\)</li>
+                <li>\(6 : DE = 2 : 3\) を解く → \(DE = 6 \times \frac{3}{2} = 9\)</li>
+            </ol>
+            <div class="formula">
+                \[ AB : DE = 2 : 3 \]
+                \[ 6 : DE = 2 : 3 \]
+                \[ DE = 6 \times \frac{3}{2} = \boxed{9 \text{ cm}} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-find-ratio">
+            <div class="example-title">
+                <span class="number-badge">例2</span>辺の長さから相似比を求める
+            </div>
+            <p>\(\triangle ABC \sim \triangle DEF\) で \(BC = 4\) cm, \(EF = 10\) cm。相似比を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>対応する辺の比を求める：\(BC : EF = 4 : 10\)</li>
+                <li>最も簡単な整数比にする：\(4 : 10 = 2 : 5\)</li>
+            </ol>
+            <div class="formula">
+                \[ BC : EF = 4 : 10 = \boxed{2 : 5} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ AA相似で証明する</h3>
+
+        <div class="example-box" id="ex-aa">
+            <div class="example-title">
+                <span class="number-badge">例3</span>2組の角が等しいことを示す
+            </div>
+            <p>下図で、\(\angle ACB = \angle DCE\)（対頂角）のとき、\(\triangle ABC \sim \triangle DEC\) を証明せよ。</p>
+            <!-- 図を追加 -->
+            <div class="svg-container">
+                <svg width="400" height="200" viewBox="0 0 400 200">
+                    <polygon points="50,150 200,150 125,50" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                    <polygon points="350,150 200,150 275,50" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                    <text x="40" y="165" font-size="14" fill="#1565c0" font-weight="bold">A</text>
+                    <text x="115" y="40" font-size="14" fill="#1565c0" font-weight="bold">B</text>
+                    <text x="195" y="165" font-size="14" fill="#333" font-weight="bold">C</text>
+                    <text x="355" y="165" font-size="14" fill="#e65100" font-weight="bold">D</text>
+                    <text x="275" y="40" font-size="14" fill="#e65100" font-weight="bold">E</text>
+                    <!-- 平行記号 -->
+                    <text x="80" y="100" font-size="12" fill="#666">AB // DE</text>
+                </svg>
+                <div class="svg-caption">対頂角と平行線による相似</div>
+            </div>
+            <p><strong>証明：</strong></p>
+            <ol>
+                <li>\(\angle ACB = \angle DCE\)（対頂角）...①</li>
+                <li>\(AB // DE\) より、\(\angle ABC = \angle DEC\)（錯角）...②</li>
+                <li>①②より、2組の角がそれぞれ等しいので<br>
+                    \(\triangle ABC \sim \triangle DEC\)（AA相似）</li>
+            </ol>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ SSS相似で判定する</h3>
+
+        <div class="example-box" id="ex-sss">
+            <div class="example-title">
+                <span class="number-badge">例4</span>3辺の比で相似を判定
+            </div>
+            <p>\(\triangle ABC\) で \(AB = 3\), \(BC = 4\), \(CA = 5\)。\(\triangle DEF\) で \(DE = 6\), \(EF = 8\), \(FD = 10\)。この2つは相似か。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>対応する辺の比を計算：
+                    <ul>
+                        <li>\(AB : DE = 3 : 6 = 1 : 2\)</li>
+                        <li>\(BC : EF = 4 : 8 = 1 : 2\)</li>
+                        <li>\(CA : FD = 5 : 10 = 1 : 2\)</li>
+                    </ul>
+                </li>
+                <li>3辺の比がすべて \(1 : 2\) で等しい</li>
+                <li>よって、SSS相似より \(\triangle ABC \sim \triangle DEF\)</li>
+            </ol>
+            <div class="formula">
+                \[ \frac{AB}{DE} = \frac{BC}{EF} = \frac{CA}{FD} = \frac{1}{2} \quad \therefore \boxed{\text{相似}} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ SAS相似で証明する</h3>
+
+        <div class="example-box" id="ex-sas">
+            <div class="example-title">
+                <span class="number-badge">例5</span>2辺の比と間の角で証明
+            </div>
+            <p>\(\triangle ABC\) で \(AB = 4\), \(AC = 6\), \(\angle A = 50°\)。\(\triangle DEF\) で \(DE = 6\), \(DF = 9\), \(\angle D = 50°\)。相似であることを証明せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(\angle A = \angle D = 50°\)（間の角が等しい）...①</li>
+                <li>\(AB : DE = 4 : 6 = 2 : 3\)</li>
+                <li>\(AC : DF = 6 : 9 = 2 : 3\)</li>
+                <li>\(AB : DE = AC : DF = 2 : 3\)（2辺の比が等しい）...②</li>
+                <li>①②より、\(\triangle ABC \sim \triangle DEF\)（SAS相似）</li>
+            </ol>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 相似を使って長さを求める</h3>
+
+        <div class="example-box" id="ex-use-similar">
+            <div class="example-title">
+                <span class="number-badge">例6</span>相似を使って未知の辺を求める
+            </div>
+            <p>下図で \(\triangle ABC \sim \triangle ADE\)、\(AB = 6\), \(AD = 9\), \(BC = 4\) のとき、\(DE\) の長さを求めよ。</p>
+            <div class="svg-container">
+                <svg width="350" height="220" viewBox="0 0 350 220">
+                    <!-- 大きい三角形 -->
+                    <polygon points="50,200 300,200 175,30" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"/>
+                    <!-- 小さい三角形 -->
+                    <polygon points="90,200 260,200 175,70" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                    <!-- 頂点ラベル -->
+                    <text x="165" y="20" font-size="14" font-weight="bold" fill="#333">A</text>
+                    <text x="40" y="215" font-size="14" font-weight="bold" fill="#9c27b0">D</text>
+                    <text x="305" y="215" font-size="14" font-weight="bold" fill="#9c27b0">E</text>
+                    <text x="80" y="215" font-size="14" font-weight="bold" fill="#1565c0">B</text>
+                    <text x="265" y="215" font-size="14" font-weight="bold" fill="#1565c0">C</text>
+                    <!-- 辺の長さ -->
+                    <text x="100" y="130" font-size="14" fill="#333">6</text>
+                    <text x="65" y="100" font-size="14" fill="#666">9</text>
+                    <text x="170" y="195" font-size="14" fill="#1565c0">4</text>
+                    <text x="170" y="215" font-size="14" fill="#9c27b0">?</text>
+                </svg>
+                <div class="svg-caption">相似な三角形で辺の長さを求める</div>
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>相似比を求める：\(AB : AD = 6 : 9 = 2 : 3\)</li>
+                <li>\(BC\) と \(DE\) は対応する辺なので、\(BC : DE = 2 : 3\)</li>
+                <li>\(4 : DE = 2 : 3\) より、\(DE = 4 \times \frac{3}{2} = 6\)</li>
+            </ol>
+            <div class="formula">
+                \[ BC : DE = 2 : 3 \]
+                \[ 4 : DE = 2 : 3 \]
+                \[ DE = \boxed{6} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：対応する頂点の順番に注意</strong><br>
+            \(\triangle ABC \sim \triangle DEF\) と書いたら、「AとD、BとE、CとF」が対応。証明で書く順番を間違えると減点されることも。図に対応を書き込んでから解こう。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：AA相似を最優先で考える</strong><br>
+            相似条件の中で<strong>最もよく使う</strong>のがAA相似。角度の情報（平行線、対頂角、共通な角など）があれば、まずAA相似を疑おう。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：比は約分して揃える</strong><br>
+            \(4:6\) と \(6:9\) が等しいか？ → どちらも約分して \(2:3\) にすれば比較しやすい。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：「間の角」を忘れない（SAS相似）</strong><br>
+            SAS相似では、2辺の比が等しいだけではダメ。<strong>その間の角</strong>が等しいことが必要。「間の角」を見落とすミスが多い。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：対応を間違える</div>
+            <p><strong>ダメな例：</strong> \(\triangle ABC \sim \triangle DEF\) で、\(AB\) と \(EF\) が対応すると思ってしまう</p>
+            <p><strong>対策：</strong> 記号の順番で対応が決まる。\(\triangle ABC \sim \triangle DEF\) なら、<strong>A↔D、B↔E、C↔F</strong>。だから \(AB\) と \(DE\) が対応。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：合同条件と相似条件を混同</div>
+            <p><strong>ダメな例：</strong> 「3辺が等しいからSSS相似」と書いてしまう</p>
+            <p><strong>対策：</strong> 相似は「比が等しい」、合同は「長さが等しい」。SSS相似は「3辺の<strong>比</strong>が等しい」こと。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：SAS相似で「間の角」を忘れる</div>
+            <p><strong>ダメな例：</strong> 2辺の比が等しいだけでSAS相似と判断</p>
+            <p><strong>対策：</strong> SAS相似は「<strong>S（辺）A（角）S（辺）</strong>」の順。「間の角」（はさまれた角）が等しいことを必ず確認。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：AA相似なのにAAA相似と書く</div>
+            <p><strong>ダメな例：</strong> 「3つの角がすべて等しいからAAA相似」と書く</p>
+            <p><strong>対策：</strong> 2組の角が等しければ、残り1組は自動的に等しい。正式名称は「<strong>AA相似</strong>」（2組の角）。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">対応する頂点の順番は正しいか（A↔D、B↔E、C↔F）</div>
+            <div class="checklist-item">相似条件（AA・SSS・SAS）を正しく選んだか</div>
+            <div class="checklist-item">SAS相似なら「間の角」を確認したか</div>
+            <div class="checklist-item">比を約分して最も簡単な整数比にしたか</div>
+            <div class="checklist-item">証明では理由（対頂角、錯角など）を書いたか</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>\(\triangle ABC \sim \triangle DEF\) で相似比が \(3:5\)。\(BC = 12\) cm のとき、対応する辺 \(EF\) の長さを求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(BC : EF = 3 : 5\) より</p>
+                    <p>\(12 : EF = 3 : 5\)</p>
+                    <p>\(EF = 12 \times \frac{5}{3} = \boxed{20 \text{ cm}}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\(\triangle ABC\) で \(AB = 8\), \(BC = 6\), \(CA = 10\)。\(\triangle DEF\) で \(DE = 12\), \(EF = 9\), \(FD = 15\)。この2つは相似か。相似ならば相似比を答えよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>3辺の比を調べる：</p>
+                    <p>\(AB : DE = 8 : 12 = 2 : 3\)</p>
+                    <p>\(BC : EF = 6 : 9 = 2 : 3\)</p>
+                    <p>\(CA : FD = 10 : 15 = 2 : 3\)</p>
+                    <p>3辺の比がすべて \(2:3\) で等しいので、SSS相似より</p>
+                    <p>\(\boxed{\text{相似である。相似比は } 2:3}\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：相似条件は「AA（2角）、SSS（3辺の比）、SAS（2辺の比と間の角）」の3つ。まずAAを疑え！
+</div>
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「影でピラミッドを測った男」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 タレスとピラミッドの謎（紀元前6世紀・エジプト）</div>
+
+            <p>紀元前6世紀、ギリシャの哲学者<strong>タレス</strong>がエジプトを訪れた。そこで彼はギザの大ピラミッドを見上げて、こう聞かれた。</p>
+
+            <p>「この巨大なピラミッドの高さ、あなたには測れますか？」</p>
+
+            <p>ピラミッドは高さ約140メートル。直接登るのは危険だし、そもそも斜面を測っても本当の高さにはならない。どうする？</p>
+
+            <p>タレスは笑って言った。<strong>「影を使えばいい」</strong></p>
+
+            <p>彼がやったことはシンプルだった：</p>
+
+            <ol style="margin: 15px 0;">
+                <li>自分の身長と、自分の影の長さを測る（例：身長180cm、影の長さ200cm）</li>
+                <li>同じ時刻にピラミッドの影の長さを測る（例：160m）</li>
+                <li>「身長：影の長さ」と「ピラミッドの高さ：ピラミッドの影の長さ」は同じ比！</li>
+            </ol>
+
+            <div class="formula">
+                \[ \frac{\text{身長}}{\text{自分の影}} = \frac{\text{ピラミッドの高さ}}{\text{ピラミッドの影}} \]
+            </div>
+
+            <p>これは<strong>AA相似</strong>だ。太陽光線は平行だから、自分の影を作る三角形と、ピラミッドの影を作る三角形は相似になる。</p>
+
+            <div class="formula">
+                \[ \frac{180}{200} = \frac{x}{160} \]
+                \[ x = 180 \times \frac{160}{200} = 144 \text{ m} \]
+            </div>
+
+            <p>タレスは定規1本とロープだけで、140メートル級のピラミッドの高さを言い当てた。</p>
+
+            <p style="font-style: italic; color: #666; margin-top: 20px;">これが人類が「相似」を実用的に使った最古の記録の一つ。2600年経った今でも、測量や地図作りの基本原理は変わっていない。タレスは「最初の科学者」とも呼ばれている。</p>
+
+            <p style="font-size: 0.9em; color: #888; margin-top: 15px;">※タレスのピラミッド測量については、古代ギリシャの歴史家プルタルコスや哲学者ディオゲネス・ラエルティオスが記録を残しています。</p>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,509 @@
+---
+layout: material-raw
+title: 基本の作図
+icon: "📏"
+description: コンパスと定規だけを使って、垂直二等分線・角の二等分線・垂線を作図する方法を学びます。作図の基本をマスターしよう！
+level: 基礎
+level_num: 1
+category: geometry
+school_level: junior
+order: 3
+keywords:
+  - 作図
+  - コンパス
+  - 垂直二等分線
+  - 角の二等分線
+  - 垂線
+  - 円の中心
+cover_image: /images/noimage.jpg
+cover_description: コンパスと定規を使った作図の様子
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「ユークリッドの挑戦状」"
+related:
+  - url: /junior/平面図形の基本_教材.html
+    title: 平面図形の基本
+    note: 直線・垂直・平行の基礎知識
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>定規で線を引いたり、コンパスで円を描いたりするのは簡単。でも「目盛りを使わずに」正確な図形を描くことはできる？これが<strong>作図</strong>の世界です。たった2つの道具で、驚くほど正確な図形が描けるようになります。</p>
+        <p>このページでは、<strong>基本の作図</strong>を学びます：</p>
+        <ul>
+            <li><strong>垂直二等分線</strong>：線分を真ん中で垂直に切る直線</li>
+            <li><strong>角の二等分線</strong>：角をちょうど半分に分ける直線</li>
+            <li><strong>垂線</strong>：直線に対して垂直な線（90°で交わる）</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】作図は「コンパス」と「目盛りのない定規」だけで行う
+        </div>
+
+        <p>作図では、定規の目盛りは使いません。定規は「まっすぐな線を引く」ためだけに使います。長さを測るときは、必ずコンパスで「長さを写し取る」方法を使います。</p>
+
+        <div class="rule-box" id="method-perpendicular-bisector">
+            <strong>📌 ルール1：垂直二等分線の作図</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <p>線分ABの<strong>垂直二等分線</strong>とは、ABの中点を通り、ABに垂直な直線のこと。</p>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="400" height="280" viewBox="0 0 400 280">
+                    <!-- 線分AB -->
+                    <line x1="100" y1="140" x2="300" y2="140" stroke="#333" stroke-width="2"/>
+                    <circle cx="100" cy="140" r="4" fill="#333"/>
+                    <circle cx="300" cy="140" r="4" fill="#333"/>
+                    <text x="90" y="160" font-size="16">A</text>
+                    <text x="300" y="160" font-size="16">B</text>
+
+                    <!-- コンパスの弧（点Aから） -->
+                    <path d="M 200 60 A 120 120 0 0 0 200 220" stroke="#1976d2" stroke-width="1.5" fill="none" stroke-dasharray="5,3"/>
+
+                    <!-- コンパスの弧（点Bから） -->
+                    <path d="M 200 60 A 120 120 0 0 1 200 220" stroke="#e53935" stroke-width="1.5" fill="none" stroke-dasharray="5,3"/>
+
+                    <!-- 交点 -->
+                    <circle cx="200" cy="60" r="4" fill="#4caf50"/>
+                    <circle cx="200" cy="220" r="4" fill="#4caf50"/>
+                    <text x="205" y="50" font-size="14" fill="#4caf50">P</text>
+                    <text x="205" y="240" font-size="14" fill="#4caf50">Q</text>
+
+                    <!-- 垂直二等分線 -->
+                    <line x1="200" y1="30" x2="200" y2="260" stroke="#4caf50" stroke-width="2"/>
+
+                    <!-- 中点 -->
+                    <circle cx="200" cy="140" r="4" fill="#4caf50"/>
+                    <text x="205" y="130" font-size="14" fill="#4caf50">M</text>
+
+                    <!-- 直角マーク -->
+                    <rect x="200" y="140" width="10" height="10" fill="none" stroke="#4caf50" stroke-width="1.5"/>
+                </svg>
+                <div class="svg-caption">垂直二等分線の作図（青弧：Aから、赤弧：Bから）</div>
+            </div>
+            <p><strong>作図手順：</strong></p>
+            <ol>
+                <li>点Aを中心に、ABの半分より長い半径の円弧を描く</li>
+                <li>点Bを中心に、同じ半径の円弧を描く</li>
+                <li>2つの円弧の交点P、Qを結ぶ</li>
+            </ol>
+            <p><strong>→ 直線PQが垂直二等分線！</strong></p>
+            <details class="thinking"><summary>💡 なぜこれで垂直二等分線が描けるのか</summary>
+            <p>点Pと点Qは、AからもBからも同じ距離にあります。「2点から等しい距離にある点」を結んだ線が垂直二等分線になるのです。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="method-angle-bisector">
+            <strong>📌 ルール2：角の二等分線の作図</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <p>角AOBの<strong>角の二等分線</strong>とは、角を2等分する直線のこと。</p>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="400" height="220" viewBox="0 0 400 220">
+                    <!-- 角を作る2直線 -->
+                    <line x1="80" y1="180" x2="320" y2="180" stroke="#333" stroke-width="2"/>
+                    <line x1="80" y1="180" x2="280" y2="50" stroke="#333" stroke-width="2"/>
+                    <circle cx="80" cy="180" r="4" fill="#333"/>
+                    <text x="65" y="190" font-size="16">O</text>
+                    <text x="310" y="200" font-size="16">A</text>
+                    <text x="280" y="45" font-size="16">B</text>
+
+                    <!-- 最初の円弧（Oを中心） -->
+                    <path d="M 180 180 A 100 100 0 0 0 150 95" stroke="#1976d2" stroke-width="1.5" fill="none" stroke-dasharray="5,3"/>
+                    <circle cx="180" cy="180" r="4" fill="#1976d2"/>
+                    <circle cx="150" cy="95" r="4" fill="#1976d2"/>
+                    <text x="185" y="200" font-size="14" fill="#1976d2">P</text>
+                    <text x="155" y="85" font-size="14" fill="#1976d2">Q</text>
+
+                    <!-- PとQからの円弧 -->
+                    <path d="M 215 125 A 60 60 0 0 0 215 125" stroke="#e53935" stroke-width="1.5" fill="none"/>
+                    <path d="M 180 180 A 50 50 0 0 0 215 125" stroke="#e53935" stroke-width="1.5" fill="none" stroke-dasharray="5,3"/>
+                    <path d="M 150 95 A 50 50 0 0 1 215 125" stroke="#e53935" stroke-width="1.5" fill="none" stroke-dasharray="5,3"/>
+                    <circle cx="215" cy="125" r="4" fill="#4caf50"/>
+                    <text x="220" y="120" font-size="14" fill="#4caf50">R</text>
+
+                    <!-- 二等分線 -->
+                    <line x1="80" y1="180" x2="280" y2="95" stroke="#4caf50" stroke-width="2"/>
+                </svg>
+                <div class="svg-caption">角の二等分線の作図</div>
+            </div>
+            <p><strong>作図手順：</strong></p>
+            <ol>
+                <li>点Oを中心に円弧を描き、2辺との交点P、Qをとる</li>
+                <li>点Pを中心に円弧を描く</li>
+                <li>点Qを中心に同じ半径で円弧を描く</li>
+                <li>2つの円弧の交点Rと点Oを結ぶ</li>
+            </ol>
+            <p><strong>→ 直線ORが角の二等分線！</strong></p>
+        </div>
+
+        <div class="rule-box" id="method-perpendicular-line">
+            <strong>📌 ルール3：点を通る垂線の作図</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <p>直線ℓ上の点P、または直線ℓの外の点Pを通り、ℓに垂直な直線を描く。</p>
+
+            <p><strong>【直線上の点Pを通る垂線】</strong></p>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="400" height="180" viewBox="0 0 400 180">
+                    <!-- 直線ℓ -->
+                    <line x1="30" y1="120" x2="370" y2="120" stroke="#333" stroke-width="2"/>
+                    <text x="25" y="140" font-size="14">ℓ</text>
+
+                    <!-- 点P -->
+                    <circle cx="200" cy="120" r="4" fill="#333"/>
+                    <text x="195" y="145" font-size="14">P</text>
+
+                    <!-- Pから等距離の点 -->
+                    <path d="M 130 120 A 70 70 0 0 1 270 120" stroke="#1976d2" stroke-width="1.5" fill="none" stroke-dasharray="5,3"/>
+                    <circle cx="130" cy="120" r="4" fill="#1976d2"/>
+                    <circle cx="270" cy="120" r="4" fill="#1976d2"/>
+                    <text x="125" y="140" font-size="14" fill="#1976d2">A</text>
+                    <text x="265" y="140" font-size="14" fill="#1976d2">B</text>
+
+                    <!-- AとBから円弧 -->
+                    <path d="M 200 40 A 80 80 0 0 0 130 120" stroke="#e53935" stroke-width="1.5" fill="none" stroke-dasharray="5,3"/>
+                    <path d="M 200 40 A 80 80 0 0 1 270 120" stroke="#e53935" stroke-width="1.5" fill="none" stroke-dasharray="5,3"/>
+                    <circle cx="200" cy="40" r="4" fill="#4caf50"/>
+                    <text x="205" y="35" font-size="14" fill="#4caf50">Q</text>
+
+                    <!-- 垂線 -->
+                    <line x1="200" y1="20" x2="200" y2="160" stroke="#4caf50" stroke-width="2"/>
+
+                    <!-- 直角マーク -->
+                    <rect x="200" y="110" width="10" height="10" fill="none" stroke="#4caf50" stroke-width="1.5"/>
+                </svg>
+                <div class="svg-caption">直線上の点Pを通る垂線</div>
+            </div>
+            <p><strong>作図手順：</strong></p>
+            <ol>
+                <li>点Pを中心に円弧を描き、ℓとの交点A、Bをとる</li>
+                <li>ABの垂直二等分線を作図する（Pを通る）</li>
+            </ol>
+
+            <p><strong>【直線外の点Pを通る垂線】</strong></p>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="400" height="200" viewBox="0 0 400 200">
+                    <!-- 直線ℓ -->
+                    <line x1="30" y1="150" x2="370" y2="150" stroke="#333" stroke-width="2"/>
+                    <text x="25" y="170" font-size="14">ℓ</text>
+
+                    <!-- 点P -->
+                    <circle cx="200" cy="50" r="4" fill="#333"/>
+                    <text x="205" y="45" font-size="14">P</text>
+
+                    <!-- Pから円弧 -->
+                    <path d="M 100 150 A 120 120 0 0 1 300 150" stroke="#1976d2" stroke-width="1.5" fill="none" stroke-dasharray="5,3"/>
+                    <circle cx="100" cy="150" r="4" fill="#1976d2"/>
+                    <circle cx="300" cy="150" r="4" fill="#1976d2"/>
+                    <text x="90" y="170" font-size="14" fill="#1976d2">A</text>
+                    <text x="300" y="170" font-size="14" fill="#1976d2">B</text>
+
+                    <!-- 垂直二等分線の弧（省略表示） -->
+                    <circle cx="200" cy="150" r="4" fill="#4caf50"/>
+                    <text x="205" y="145" font-size="14" fill="#4caf50">H</text>
+
+                    <!-- 垂線 -->
+                    <line x1="200" y1="30" x2="200" y2="180" stroke="#4caf50" stroke-width="2"/>
+
+                    <!-- 直角マーク -->
+                    <rect x="200" y="140" width="10" height="10" fill="none" stroke="#4caf50" stroke-width="1.5"/>
+                </svg>
+                <div class="svg-caption">直線外の点Pを通る垂線</div>
+            </div>
+            <p><strong>作図手順：</strong></p>
+            <ol>
+                <li>点Pを中心に、ℓと2点で交わる円弧を描き、交点A、Bをとる</li>
+                <li>ABの垂直二等分線を作図する</li>
+            </ol>
+        </div>
+
+        <div class="rule-box" id="method-construction-applications">
+            <strong>📌 ルール4：よく使う作図の応用</strong>
+            <table class="material-table">
+                <tr>
+                    <th>作図したいもの</th>
+                    <th>使う基本作図</th>
+                </tr>
+                <tr>
+                    <td>線分の中点</td>
+                    <td>垂直二等分線を作図し、交点が中点</td>
+                </tr>
+                <tr>
+                    <td>60°の角</td>
+                    <td>正三角形を作図（3辺が等しい）</td>
+                </tr>
+                <tr>
+                    <td>30°の角</td>
+                    <td>60°の角の二等分線</td>
+                </tr>
+                <tr>
+                    <td>45°の角</td>
+                    <td>90°（垂線）の角の二等分線</td>
+                </tr>
+                <tr>
+                    <td>円の中心</td>
+                    <td>2本の弦の垂直二等分線の交点</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>基本の作図を実際にやってみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 垂直二等分線</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>線分ABの垂直二等分線を作図する
+            </div>
+            <p>線分AB（長さ6cm）の垂直二等分線を作図しなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>コンパスの幅を<strong>ABの半分より大きく</strong>開く（例：4cm）</li>
+                <li>点Aに針を刺し、上下に円弧を描く</li>
+                <li>コンパスの幅を<strong>変えずに</strong>、点Bに針を刺して同様に円弧を描く</li>
+                <li>2つの円弧の交点P、Qを直線で結ぶ</li>
+            </ol>
+            <p><strong>完成！</strong> 直線PQが垂直二等分線。ABとの交点Mが中点（Mから3cm）。</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 角の二等分線</h3>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>角AOBの二等分線を作図する
+            </div>
+            <p>角AOB（60°）の二等分線を作図しなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>点Oを中心に円弧を描き、OA上の点P、OB上の点Qをとる</li>
+                <li>点Pを中心に円弧を描く</li>
+                <li>コンパスの幅を<strong>変えずに</strong>、点Qを中心に円弧を描く</li>
+                <li>2つの円弧の交点Rと点Oを結ぶ</li>
+            </ol>
+            <p><strong>完成！</strong> 直線ORが角の二等分線。角AOR = 角BOR = 30°。</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 垂線</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>直線ℓ上の点Pを通る垂線を作図する
+            </div>
+            <p>直線ℓ上の点Pを通り、ℓに垂直な直線を作図しなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>点Pを中心に円弧を描き、ℓとの交点A、Bをとる</li>
+                <li>点Aを中心に、ABの半分より長い半径で円弧を描く</li>
+                <li>点Bを中心に、同じ半径で円弧を描く</li>
+                <li>2つの円弧の交点Qと点Pを結ぶ</li>
+            </ol>
+            <p><strong>完成！</strong> 直線PQが垂線（ℓと90°で交わる）。</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 応用</h3>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>45°の角を作図する
+            </div>
+            <p>線分ABに対して、点Aで45°の角を作図しなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>まず点Aで<strong>90°（垂線）</strong>を作図する</li>
+                <li>90°の角の<strong>二等分線</strong>を作図する</li>
+            </ol>
+            <p><strong>完成！</strong> 90° ÷ 2 = 45°の角ができる。</p>
+        </div>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>円の中心を見つける
+            </div>
+            <p>円周の一部だけが描かれています。この円の中心を作図で求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>円周上に3点A、B、Cをとる</li>
+                <li>線分ABの<strong>垂直二等分線ℓ</strong>を作図する</li>
+                <li>線分BCの<strong>垂直二等分線m</strong>を作図する</li>
+                <li>ℓとmの<strong>交点O</strong>が円の中心</li>
+            </ol>
+            <p><strong>なぜ？</strong> 弦の垂直二等分線は必ず中心を通るから。2本引けば交点が1つに決まる。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：コンパスの幅は「ちょっと大きめ」に</strong><br>
+            垂直二等分線を描くとき、コンパスの幅が小さすぎると円弧が交わらない。線分の長さの半分＋αくらいにしておくと安全。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：「幅を変えない」ときは指で押さえる</strong><br>
+            同じ半径で複数の円弧を描くとき、コンパスの幅が変わると作図が狂う。移動するときは両足をしっかり押さえて。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：作図の線は「薄く・細く」</strong><br>
+            作図中の補助線（円弧など）は薄く描いておく。最後に答えとなる線だけを濃くすると見やすい。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：迷ったら「垂直二等分線」から</strong><br>
+            多くの作図問題は垂直二等分線が基本。「中点を求める」「垂線を引く」「円の中心を見つける」、すべて垂直二等分線の応用。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：定規で長さを測ってしまう</div>
+            <p><strong>ダメな例：</strong> 「中点だから半分の長さを定規で測ろう」</p>
+            <p><strong>対策：</strong> 作図では定規の目盛りは使わない！長さは必ずコンパスで「写し取る」こと。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：コンパスの幅を途中で変える</div>
+            <p><strong>ダメな例：</strong> 点Aからと点Bからの円弧で、コンパスの幅が違う</p>
+            <p><strong>対策：</strong> 「同じ半径」と指定されたら、コンパスを動かすとき幅を変えないこと。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：円弧が交わらない</div>
+            <p><strong>ダメな例：</strong> コンパスの幅が小さすぎて、2つの円弧が届かない</p>
+            <p><strong>対策：</strong> コンパスの幅は「線分の長さの半分より大きく」設定する。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：作図の線をどこまで延ばすかわからない</div>
+            <p><strong>ダメな例：</strong> 垂直二等分線をどこまで描けばいいかわからない</p>
+            <p><strong>対策：</strong> 問題で指定がなければ、必要な範囲＋少し余裕を持って描く。答えの線ははっきりわかるようにする。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">垂直二等分線を作図する手順を説明できるか？</div>
+            <div class="checklist-item">角の二等分線を作図する手順を説明できるか？</div>
+            <div class="checklist-item">直線上の点を通る垂線を作図できるか？</div>
+            <div class="checklist-item">45°、60°、30°の角を作図できるか？</div>
+            <div class="checklist-item">円の中心を作図で見つけられるか？</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>線分AB（長さ8cm）の中点Mを作図で求めなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>手順：</strong></p>
+                    <ol>
+                        <li>ABの垂直二等分線を作図する</li>
+                        <li>ABと垂直二等分線の交点Mが中点</li>
+                    </ol>
+                    <p>AM = MB = 4cm になる。</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>次の角を作図しなさい。</p>
+            <p>（1）90°　（2）60°　（3）30°　（4）45°</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>（1）90°：</strong>垂線を作図する</p>
+                    <p><strong>（2）60°：</strong>正三角形を作図（1辺の長さをコンパスで取り、両端から円弧を描いて交点を結ぶ）</p>
+                    <p><strong>（3）30°：</strong>60°を作図し、その二等分線を引く</p>
+                    <p><strong>（4）45°：</strong>90°を作図し、その二等分線を引く</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：作図は「コンパスと目盛りなし定規」の2つだけ。垂直二等分線をマスターすれば応用は無限大！
+</div>
+
+<!-- ========== 関連教材 ========== -->
+<!-- Front Matterのrelatedで指定すればレイアウトが自動生成します -->
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「ユークリッドの挑戦状」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 2000年解けなかった問題（紀元前300年〜1837年）</div>
+
+            <p>紀元前300年ごろ、古代ギリシャの数学者ユークリッドは『原論』という本を書いた。この本には「コンパスと定規だけで作図できる図形」がたくさん載っていた。</p>
+
+            <p>しかしユークリッドは、3つの問題だけは解かなかった：</p>
+
+            <ol>
+                <li><strong>角の三等分問題</strong>：任意の角を3等分せよ</li>
+                <li><strong>円積問題</strong>：円と同じ面積の正方形を作図せよ</li>
+                <li><strong>立方体倍積問題</strong>：体積が2倍の立方体を作図せよ</li>
+            </ol>
+
+            <p>「ユークリッド先生でも解けないなら、俺が解いてやる！」</p>
+
+            <p>そう思った数学者は2000年以上の間、何百人もいた。古代ギリシャ、アラビア、ルネサンス期のヨーロッパ...天才たちが挑戦しては敗れていった。</p>
+
+            <p>そして1837年、ついに答えが出た。フランスの数学者ピエール・ヴァンツェルが証明したのだ：</p>
+
+            <p style="font-weight: bold; color: #e53935;">「これらの問題は、コンパスと定規だけでは絶対に解けない」</p>
+
+            <p>そう、<strong>「解けない」ことを証明した</strong>のだ。2000年間、誰も解けなかったのは当然だった。数学的に不可能だったのだから。</p>
+
+            <p>ちなみに、なぜ不可能か？その理由は「代数」という全く違う分野から証明された。「作図可能な長さは有理数と二次方程式の根だけ」という法則があり、3等分や \(\sqrt[3]{2}\) はそこに含まれないのだ。</p>
+
+            <p style="color: #666; font-size: 0.95em;">...2000年かかって「不可能」がわかったって、数学ってすごいやら残酷やら。でも「できないことを証明する」のも立派な数学の成果なのです。</p>
+
+            <p style="font-size: 0.9em; color: #888; margin-top: 15px;">※ユークリッドの『原論』と三大作図問題については、数学史の文献に詳しい記録があります（<a href="https://ja.wikipedia.org/wiki/%E3%83%A6%E3%83%BC%E3%82%AF%E3%83%AA%E3%83%83%E3%83%89%E5%8E%9F%E8%AB%96" target="_blank" style="color: #1976d2;">ユークリッド原論 - Wikipedia</a>）。</p>
+        </div>
+    </div>
+</section>

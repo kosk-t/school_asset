@@ -174,6 +174,17 @@
   cover_image: images/noimage.jpg
 
 # --- 標準 (中2-3) ---
+- slug: junior/一次関数の基本_教材
+  title: 一次関数の基本
+  icon: "📈"
+  description: 一次関数の式・グラフ・傾きと切片をマスター！
+  level: 標準
+  level_num: 2
+  category: functions
+  school_level: junior
+  order: 5
+  cover_image: images/noimage.jpg
+
 - slug: junior/座標平面上の直線_教材
   title: 座標平面上の直線
   icon: "📐"
@@ -212,6 +223,39 @@
 # ============================================
 
 # --- 基礎 (中1) ---
+- slug: junior/平面図形の基本_教材
+  title: 平面図形の基本
+  icon: "📐"
+  description: 直線・角・垂直・平行と3つの移動をマスター！
+  level: 基礎
+  level_num: 1
+  category: geometry
+  school_level: junior
+  order: 1
+  cover_image: images/noimage.jpg
+
+- slug: junior/基本の作図_教材
+  title: 基本の作図
+  icon: "📏"
+  description: コンパスと定規で垂直二等分線・角の二等分線を作図！
+  level: 基礎
+  level_num: 1
+  category: geometry
+  school_level: junior
+  order: 2
+  cover_image: images/noimage.jpg
+
+- slug: junior/空間図形の基本_教材
+  title: 空間図形の基本
+  icon: "📦"
+  description: 立体の種類と直線・平面の位置関係をマスター！
+  level: 基礎
+  level_num: 1
+  category: geometry
+  school_level: junior
+  order: 3
+  cover_image: images/noimage.jpg
+
 - slug: junior/平面図形の面積公式_教材
   title: 平面図形の面積公式
   icon: "📏"
@@ -268,15 +312,48 @@
   order: 13
   cover_image: images/noimage.jpg
 
-- slug: junior/相似の証明_条件の選び方_教材
-  title: 相似の証明：条件の選び方
+- slug: junior/相似の基本_教材
+  title: 相似の基本
   icon: "🔍"
-  description: AA・SSS・SASの3条件からどれを使うか判断！
+  description: 相似の意味・相似比・3つの相似条件をマスター！
   level: 標準
   level_num: 2
   category: geometry
   school_level: junior
   order: 14
+  cover_image: images/noimage.jpg
+
+- slug: junior/相似の応用_教材
+  title: 相似の応用
+  icon: "📐"
+  description: 平行線と比・中点連結・面積比・体積比をマスター！
+  level: 標準
+  level_num: 2
+  category: geometry
+  school_level: junior
+  order: 15
+  cover_image: images/noimage.jpg
+
+- slug: junior/相似の証明_条件の選び方_教材
+  title: 相似の証明：条件の選び方
+  icon: "🎯"
+  description: AA・SSS・SASの3条件からどれを使うか判断！
+  level: 標準
+  level_num: 2
+  category: geometry
+  school_level: junior
+  order: 16
+  cover_image: images/noimage.jpg
+
+- slug: junior/円周角の定理_教材
+  title: 円周角の定理
+  icon: "⭕"
+  description: 円周角と中心角・円周角の定理・内接四角形！
+  level: 標準
+  level_num: 2
+  category: geometry
+  school_level: junior
+  order: 17
   cover_image: images/noimage.jpg
 
 - slug: junior/三平方の定理_教材
@@ -287,7 +364,7 @@
   level_num: 2
   category: geometry
   school_level: junior
-  order: 15
+  order: 18
   cover_image: images/noimage.jpg
 
 - slug: junior/三平方の定理の応用_教材
@@ -298,7 +375,7 @@
   level_num: 2
   category: geometry
   school_level: junior
-  order: 16
+  order: 19
   cover_image: images/noimage.jpg
 
 # --- 発展 ---
@@ -316,6 +393,18 @@
 # ============================================
 # データの活用 (data)
 # ============================================
+
+# --- 基礎 ---
+- slug: junior/データの整理_教材
+  title: データの整理
+  icon: "📊"
+  description: 度数分布表・ヒストグラム・代表値をマスター！
+  level: 基礎
+  level_num: 1
+  category: data
+  school_level: junior
+  order: 1
+  cover_image: images/noimage.jpg
 
 # --- 標準 ---
 - slug: junior/データの分析と確率_教材
@@ -498,4 +587,37 @@
   category: data
   school_level: senior
   order: 1
+  cover_image: images/noimage.jpg
+
+- slug: senior/場合の数_教材
+  title: 場合の数
+  icon: "🎲"
+  description: 和の法則・積の法則・樹形図で正確に数える！
+  level: 基礎
+  level_num: 1
+  category: data
+  school_level: senior
+  order: 2
+  cover_image: images/noimage.jpg
+
+- slug: senior/順列_教材
+  title: 順列
+  icon: "🔢"
+  description: nPr・階乗・円順列・重複順列をマスター！
+  level: 基礎
+  level_num: 1
+  category: data
+  school_level: senior
+  order: 3
+  cover_image: images/noimage.jpg
+
+- slug: senior/組合せ_教材
+  title: 組合せ
+  icon: "🎯"
+  description: nCr・重複組合せ・同じものを含む順列をマスター！
+  level: 基礎
+  level_num: 1
+  category: data
+  school_level: senior
+  order: 4
   cover_image: images/noimage.jpg

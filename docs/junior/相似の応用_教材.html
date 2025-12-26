@@ -1,0 +1,579 @@
+---
+layout: material-raw
+title: 相似の応用
+icon: "📐"
+description: 平行線と線分の比、中点連結定理、相似な図形の面積比・体積比を学ぶ。相似を使って長さや面積を求める応用力を身につける。
+level: 標準
+level_num: 2
+category: geometry
+school_level: junior
+order: 8
+keywords:
+  - 平行線と比
+  - 中点連結定理
+  - 面積比
+  - 体積比
+  - 相似比
+cover_image: /images/noimage.jpg
+cover_description: 平行線と線分の比、中点連結定理の図解
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学雑学「ピザのサイズの罠」"
+related:
+  - url: /junior/相似の基本_教材.html
+    title: 相似の基本
+    note: 相似の定義と相似条件が前提
+    type: prerequisite
+  - url: /junior/三平方の定理_教材.html
+    title: 三平方の定理
+    note: 長さを求めるときに組み合わせる
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>地図の縮尺、模型の設計、写真の拡大——相似な図形では、辺の比だけでなく<strong>面積や体積の比</strong>にも規則があります。これを知ると、複雑な計算をせずに答えが出せます。</p>
+
+        <p>このページでは、<strong>相似の応用</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>平行線と線分の比</strong>：平行線が作る線分の比の性質</li>
+            <li><strong>中点連結定理</strong>：三角形の中点を結ぶ線分の性質</li>
+            <li><strong>面積比・体積比</strong>：相似比と面積比・体積比の関係</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要：相似比が \(m:n\) なら、面積比は \(m^2:n^2\)、体積比は \(m^3:n^3\)
+        </div>
+
+        <!-- 平行線と線分の比の図解 -->
+        <div class="svg-container">
+            <svg width="650" height="280" viewBox="0 0 650 280">
+                <!-- タイトル -->
+                <text x="325" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">平行線と線分の比</text>
+
+                <!-- 三角形ABC -->
+                <polygon points="100,250 400,250 250,50" fill="none" stroke="#333" stroke-width="2"/>
+
+                <!-- 平行線DE -->
+                <line x1="150" y1="170" x2="350" y2="170" stroke="#e53935" stroke-width="3"/>
+
+                <!-- 頂点ラベル -->
+                <text x="245" y="40" font-size="14" font-weight="bold" fill="#333">A</text>
+                <text x="85" y="265" font-size="14" font-weight="bold" fill="#333">B</text>
+                <text x="405" y="265" font-size="14" font-weight="bold" fill="#333">C</text>
+                <text x="135" y="165" font-size="14" font-weight="bold" fill="#e53935">D</text>
+                <text x="355" y="165" font-size="14" font-weight="bold" fill="#e53935">E</text>
+
+                <!-- 平行記号 -->
+                <text x="250" y="220" font-size="14" fill="#666">DE // BC</text>
+
+                <!-- 比の表示 -->
+                <text x="175" y="110" font-size="14" fill="#1976d2">a</text>
+                <text x="130" y="215" font-size="14" fill="#4caf50">b</text>
+                <text x="315" y="110" font-size="14" fill="#1976d2">a</text>
+                <text x="360" y="215" font-size="14" fill="#4caf50">b</text>
+
+                <!-- 公式ボックス -->
+                <rect x="450" y="80" width="180" height="120" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="10"/>
+                <text x="540" y="110" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">DE // BC のとき</text>
+                <text x="540" y="145" font-size="16" fill="#333" text-anchor="middle">AD : DB = AE : EC</text>
+                <text x="540" y="180" font-size="14" fill="#666" text-anchor="middle">= a : b</text>
+            </svg>
+            <div class="svg-caption">平行線と線分の比：DE // BC なら AD:DB = AE:EC</div>
+        </div>
+
+        <div class="rule-box" id="rule-parallel">
+            <strong>📌 ルール1：平行線と線分の比</strong> <a href="#ex-parallel" class="example-link">→ 例1</a>
+            <p>\(\triangle ABC\) で \(DE // BC\) のとき：</p>
+            <div class="formula">
+                \[ AD : DB = AE : EC \]
+                \[ AD : AB = AE : AC = DE : BC \]
+            </div>
+            <p><strong>→ だから結果は：</strong> 平行線があれば、対応する線分の比が等しくなる</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>DE // BC なら \(\triangle ADE \sim \triangle ABC\)（AA相似）になるため、対応する辺の比が等しくなる。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-converse">
+            <strong>📌 ルール2：平行線と線分の比の逆</strong> <a href="#ex-converse" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ AD : DB = AE : EC \quad \Rightarrow \quad DE // BC \]
+            </div>
+            <p>線分の比が等しければ、その2点を結ぶ線分は底辺に平行。</p>
+            <p><strong>✅ メリット：</strong> 比から平行を証明できる</p>
+        </div>
+
+        <!-- 中点連結定理の図解 -->
+        <div class="svg-container">
+            <svg width="650" height="260" viewBox="0 0 650 260">
+                <!-- タイトル -->
+                <text x="200" y="25" font-size="16" font-weight="bold" fill="#9c27b0" text-anchor="middle">中点連結定理</text>
+
+                <!-- 三角形ABC -->
+                <polygon points="80,220 320,220 200,40" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"/>
+
+                <!-- 中点M, N -->
+                <circle cx="140" cy="130" r="5" fill="#e53935"/>
+                <circle cx="260" cy="130" r="5" fill="#e53935"/>
+
+                <!-- 中点連結線MN -->
+                <line x1="140" y1="130" x2="260" y2="130" stroke="#e53935" stroke-width="3"/>
+
+                <!-- 頂点ラベル -->
+                <text x="195" y="30" font-size="14" font-weight="bold" fill="#333">A</text>
+                <text x="65" y="235" font-size="14" font-weight="bold" fill="#333">B</text>
+                <text x="325" y="235" font-size="14" font-weight="bold" fill="#333">C</text>
+                <text x="120" y="125" font-size="14" font-weight="bold" fill="#e53935">M</text>
+                <text x="265" y="125" font-size="14" font-weight="bold" fill="#e53935">N</text>
+
+                <!-- 中点マーク -->
+                <line x1="135" y1="75" x2="145" y2="85" stroke="#666" stroke-width="2"/>
+                <line x1="135" y1="85" x2="145" y2="75" stroke="#666" stroke-width="2"/>
+                <line x1="105" y1="170" x2="115" y2="180" stroke="#666" stroke-width="2"/>
+                <line x1="105" y1="180" x2="115" y2="170" stroke="#666" stroke-width="2"/>
+
+                <line x1="255" y1="75" x2="265" y2="85" stroke="#666" stroke-width="2"/>
+                <line x1="255" y1="85" x2="265" y2="75" stroke="#666" stroke-width="2"/>
+                <line x1="285" y1="170" x2="295" y2="180" stroke="#666" stroke-width="2"/>
+                <line x1="285" y1="180" x2="295" y2="170" stroke="#666" stroke-width="2"/>
+
+                <!-- 公式ボックス -->
+                <rect x="380" y="60" width="250" height="150" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="10"/>
+                <text x="505" y="90" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">中点連結定理</text>
+                <text x="505" y="120" font-size="14" fill="#333" text-anchor="middle">M, N が中点のとき</text>
+                <text x="505" y="155" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">① MN // BC</text>
+                <text x="505" y="190" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">② MN = ½ BC</text>
+            </svg>
+            <div class="svg-caption">中点連結定理：中点を結ぶ線分は底辺に平行で、長さは半分</div>
+        </div>
+
+        <div class="rule-box" id="rule-midpoint">
+            <strong>📌 ルール3：中点連結定理</strong> <a href="#ex-midpoint" class="example-link">→ 例3</a>
+            <p>\(\triangle ABC\) で M, N がそれぞれ AB, AC の中点のとき：</p>
+            <div class="formula">
+                \[ \text{① } MN // BC \]
+                \[ \text{② } MN = \frac{1}{2} BC \]
+            </div>
+            <p><strong>→ だから結果は：</strong> 中点を結べば「平行」と「半分の長さ」がわかる</p>
+            <p><strong>✅ メリット：</strong> 四角形の対角線の中点を結ぶと平行四辺形になる、などの応用に使える</p>
+        </div>
+
+        <!-- 面積比・体積比の図解 -->
+        <div class="svg-container">
+            <svg width="700" height="220" viewBox="0 0 700 220">
+                <!-- タイトル -->
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">相似比と面積比・体積比</text>
+
+                <!-- 小さい正方形 -->
+                <rect x="50" y="80" width="60" height="60" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="80" y="115" font-size="14" fill="#1565c0" text-anchor="middle">1</text>
+                <text x="80" y="160" font-size="12" fill="#666" text-anchor="middle">面積 1</text>
+
+                <!-- 大きい正方形 -->
+                <rect x="140" y="60" width="120" height="120" fill="#bbdefb" stroke="#1976d2" stroke-width="2"/>
+                <text x="200" y="125" font-size="14" fill="#1565c0" text-anchor="middle">2</text>
+                <text x="200" y="200" font-size="12" fill="#666" text-anchor="middle">面積 4</text>
+
+                <!-- 矢印 -->
+                <text x="115" y="110" font-size="20" fill="#333">→</text>
+
+                <!-- 面積比の公式 -->
+                <rect x="290" y="60" width="180" height="100" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="10"/>
+                <text x="380" y="90" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">面積比</text>
+                <text x="380" y="120" font-size="16" fill="#333" text-anchor="middle">相似比 m : n</text>
+                <text x="380" y="150" font-size="18" font-weight="bold" fill="#e53935" text-anchor="middle">→ 面積比 m² : n²</text>
+
+                <!-- 体積比の公式 -->
+                <rect x="500" y="60" width="180" height="100" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="10"/>
+                <text x="590" y="90" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">体積比</text>
+                <text x="590" y="120" font-size="16" fill="#333" text-anchor="middle">相似比 m : n</text>
+                <text x="590" y="150" font-size="18" font-weight="bold" fill="#e53935" text-anchor="middle">→ 体積比 m³ : n³</text>
+            </svg>
+            <div class="svg-caption">相似比が 1:2 なら、面積比は 1:4、体積比は 1:8</div>
+        </div>
+
+        <div class="rule-box" id="rule-area">
+            <strong>📌 ルール4：面積比</strong> <a href="#ex-area" class="example-link">→ 例4</a>
+            <div class="formula">
+                \[ \text{相似比 } m : n \quad \Rightarrow \quad \text{面積比 } m^2 : n^2 \]
+            </div>
+            <p><strong>→ だから結果は：</strong> 相似比を2乗すれば面積比になる</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>面積は「縦×横」で計算する。相似比が \(m:n\) なら、縦も横も \(m:n\) 倍になるので、面積は \(m \times m : n \times n = m^2 : n^2\) 倍になる。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-volume">
+            <strong>📌 ルール5：体積比</strong> <a href="#ex-volume" class="example-link">→ 例5</a>
+            <div class="formula">
+                \[ \text{相似比 } m : n \quad \Rightarrow \quad \text{体積比 } m^3 : n^3 \]
+            </div>
+            <p><strong>→ だから結果は：</strong> 相似比を3乗すれば体積比になる</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>体積は「縦×横×高さ」で計算する。相似比が \(m:n\) なら、3方向すべて \(m:n\) 倍になるので、体積は \(m^3 : n^3\) 倍になる。</p>
+            </details>
+        </div>
+
+        <table class="material-table">
+            <tr>
+                <th>相似比</th>
+                <th>面積比（2乗）</th>
+                <th>体積比（3乗）</th>
+            </tr>
+            <tr>
+                <td>\(1 : 2\)</td>
+                <td>\(1 : 4\)</td>
+                <td>\(1 : 8\)</td>
+            </tr>
+            <tr>
+                <td>\(1 : 3\)</td>
+                <td>\(1 : 9\)</td>
+                <td>\(1 : 27\)</td>
+            </tr>
+            <tr>
+                <td>\(2 : 3\)</td>
+                <td>\(4 : 9\)</td>
+                <td>\(8 : 27\)</td>
+            </tr>
+            <tr>
+                <td>\(3 : 5\)</td>
+                <td>\(9 : 25\)</td>
+                <td>\(27 : 125\)</td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>平行線と比、中点連結定理、面積比・体積比を使った問題を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 平行線と線分の比</h3>
+
+        <div class="example-box" id="ex-parallel">
+            <div class="example-title">
+                <span class="number-badge">例1</span>平行線を使って線分の長さを求める
+            </div>
+            <p>\(\triangle ABC\) で \(DE // BC\)、\(AD = 4\)、\(DB = 6\)、\(AE = 5\) のとき、\(EC\) を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(DE // BC\) より、\(AD : DB = AE : EC\)</li>
+                <li>\(4 : 6 = 5 : EC\)</li>
+                <li>内項の積 = 外項の積 より、\(4 \times EC = 6 \times 5\)</li>
+                <li>\(EC = \frac{30}{4} = 7.5\)</li>
+            </ol>
+            <div class="formula">
+                \[ 4 : 6 = 5 : EC \]
+                \[ EC = 5 \times \frac{6}{4} = \boxed{7.5} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-converse">
+            <div class="example-title">
+                <span class="number-badge">例2</span>比から平行を判定する
+            </div>
+            <p>\(\triangle ABC\) で、\(AD = 3\)、\(DB = 6\)、\(AE = 2\)、\(EC = 4\) のとき、\(DE // BC\) かどうか判定せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(AD : DB = 3 : 6 = 1 : 2\)</li>
+                <li>\(AE : EC = 2 : 4 = 1 : 2\)</li>
+                <li>\(AD : DB = AE : EC\) が成り立つ</li>
+                <li>よって、\(DE // BC\)</li>
+            </ol>
+            <div class="formula">
+                \[ AD : DB = 1 : 2, \quad AE : EC = 1 : 2 \]
+                \[ \therefore \boxed{DE // BC} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 中点連結定理</h3>
+
+        <div class="example-box" id="ex-midpoint">
+            <div class="example-title">
+                <span class="number-badge">例3</span>中点連結定理で長さを求める
+            </div>
+            <p>\(\triangle ABC\) で M, N がそれぞれ AB, AC の中点。\(BC = 12\) cm のとき、\(MN\) の長さを求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>M, N が中点なので、中点連結定理が使える</li>
+                <li>\(MN = \frac{1}{2} BC\)</li>
+                <li>\(MN = \frac{1}{2} \times 12 = 6\)</li>
+            </ol>
+            <div class="formula">
+                \[ MN = \frac{1}{2} BC = \frac{1}{2} \times 12 = \boxed{6 \text{ cm}} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-midpoint2">
+            <div class="example-title">
+                <span class="number-badge">例4</span>中点連結定理の逆を使う
+            </div>
+            <p>\(\triangle ABC\) で M は AB の中点、MN // BC、\(MN = 5\) cm のとき、BC の長さを求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>M が中点で MN // BC なら、N も AC の中点</li>
+                <li>中点連結定理より \(MN = \frac{1}{2} BC\)</li>
+                <li>\(5 = \frac{1}{2} BC\) より、\(BC = 10\)</li>
+            </ol>
+            <div class="formula">
+                \[ BC = 2 \times MN = 2 \times 5 = \boxed{10 \text{ cm}} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 面積比</h3>
+
+        <div class="example-box" id="ex-area">
+            <div class="example-title">
+                <span class="number-badge">例5</span>相似比から面積比を求める
+            </div>
+            <p>\(\triangle ABC \sim \triangle DEF\) で相似比が \(2:3\)。\(\triangle ABC\) の面積が 20 cm² のとき、\(\triangle DEF\) の面積を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>相似比 \(2:3\) → 面積比 \(2^2 : 3^2 = 4 : 9\)</li>
+                <li>\(\triangle ABC : \triangle DEF = 4 : 9\)</li>
+                <li>\(20 : \triangle DEF = 4 : 9\)</li>
+                <li>\(\triangle DEF = 20 \times \frac{9}{4} = 45\)</li>
+            </ol>
+            <div class="formula">
+                \[ \text{面積比} = 4 : 9 \]
+                \[ \triangle DEF = 20 \times \frac{9}{4} = \boxed{45 \text{ cm}^2} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-area2">
+            <div class="example-title">
+                <span class="number-badge">例6</span>面積比から相似比を求める
+            </div>
+            <p>2つの相似な三角形の面積比が \(16:25\)。相似比を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>面積比 = 相似比の2乗</li>
+                <li>相似比 = 面積比の平方根</li>
+                <li>\(\sqrt{16} : \sqrt{25} = 4 : 5\)</li>
+            </ol>
+            <div class="formula">
+                \[ \text{相似比} = \sqrt{16} : \sqrt{25} = \boxed{4 : 5} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 体積比</h3>
+
+        <div class="example-box" id="ex-volume">
+            <div class="example-title">
+                <span class="number-badge">例7</span>相似比から体積比を求める
+            </div>
+            <p>相似な2つの立体の相似比が \(2:5\)。小さい方の体積が 24 cm³ のとき、大きい方の体積を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>相似比 \(2:5\) → 体積比 \(2^3 : 5^3 = 8 : 125\)</li>
+                <li>小 : 大 = \(8 : 125\)</li>
+                <li>\(24 : V = 8 : 125\)</li>
+                <li>\(V = 24 \times \frac{125}{8} = 375\)</li>
+            </ol>
+            <div class="formula">
+                \[ \text{体積比} = 8 : 125 \]
+                \[ V = 24 \times \frac{125}{8} = \boxed{375 \text{ cm}^3} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：「平行」を見たら比を書く</strong><br>
+            平行線があれば、すぐに線分の比を式にする。\(DE // BC\) なら \(AD:DB = AE:EC\) が自動的に成り立つ。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：中点を見たら中点連結定理</strong><br>
+            「中点」というキーワードが出たら、中点連結定理を疑う。\(MN = \frac{1}{2}BC\) と \(MN // BC\) の2つがセットで使える。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：面積なら2乗、体積なら3乗</strong><br>
+            <ul style="margin: 10px 0;">
+                <li>面積は「平面」→ 2次元 → 2乗</li>
+                <li>体積は「空間」→ 3次元 → 3乗</li>
+            </ul>
+            迷ったら「次元の数」を思い出す。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：よく出る相似比を覚える</strong><br>
+            <table class="material-table" style="margin: 10px 0;">
+                <tr><th>相似比</th><th>面積比</th><th>体積比</th></tr>
+                <tr><td>1:2</td><td>1:4</td><td>1:8</td></tr>
+                <tr><td>2:3</td><td>4:9</td><td>8:27</td></tr>
+                <tr><td>3:4</td><td>9:16</td><td>27:64</td></tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：面積比と相似比を混同</div>
+            <p><strong>ダメな例：</strong> 相似比が 2:3 だから面積比も 2:3 と答える</p>
+            <p><strong>対策：</strong> 面積比は相似比の<strong>2乗</strong>。2:3 なら 4:9 になる。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：中点連結定理の「半分」を忘れる</div>
+            <p><strong>ダメな例：</strong> \(MN = BC\) としてしまう</p>
+            <p><strong>対策：</strong> 中点連結定理は「半分」がポイント。\(MN = \frac{1}{2}BC\) を忘れない。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：比の計算ミス</div>
+            <p><strong>ダメな例：</strong> \(4:6 = 5:x\) で \(x = \frac{4 \times 5}{6}\) としてしまう</p>
+            <p><strong>対策：</strong> 比の計算は「内項の積 = 外項の積」または「\(x = 5 \times \frac{6}{4}\)」。どちらの辺が分母・分子かを確認。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：体積比を2乗してしまう</div>
+            <p><strong>ダメな例：</strong> 立体の相似比が 2:3 で、体積比を 4:9 と答える</p>
+            <p><strong>対策：</strong> 体積は3次元なので<strong>3乗</strong>。2:3 → 8:27 になる。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">平行線があれば線分の比を正しく書いたか</div>
+            <div class="checklist-item">中点連結定理で「半分」を忘れていないか</div>
+            <div class="checklist-item">面積比は相似比の2乗、体積比は3乗になっているか</div>
+            <div class="checklist-item">比の計算で分母・分子を間違えていないか</div>
+            <div class="checklist-item">単位（cm², cm³）を正しく書いたか</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>\(\triangle ABC\) で \(DE // BC\)、\(AD = 6\)、\(AB = 10\)、\(DE = 9\) のとき、\(BC\) の長さを求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(DE // BC\) より \(AD : AB = DE : BC\)</p>
+                    <p>\(6 : 10 = 9 : BC\)</p>
+                    <p>\(BC = 9 \times \frac{10}{6} = 9 \times \frac{5}{3} = \boxed{15}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>相似な2つの円錐の相似比が \(3:4\)。大きい方の体積が 256π cm³ のとき、小さい方の体積を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>体積比 = 相似比の3乗 = \(3^3 : 4^3 = 27 : 64\)</p>
+                    <p>小 : 大 = 27 : 64</p>
+                    <p>小 : 256π = 27 : 64</p>
+                    <p>小 = 256π × \(\frac{27}{64}\) = \(\boxed{108\pi \text{ cm}^3}\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：平行なら比が等しい、中点なら半分、面積は2乗・体積は3乗！
+</div>
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「ピザのサイズの罠」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">🍕 Mサイズ2枚 vs Lサイズ1枚、どっちがお得？</div>
+
+            <p>ピザ屋でこんな会話をしたことはないだろうか？</p>
+
+            <p>「Mサイズ（直径25cm）を2枚頼もうか」<br>
+            「いや、Lサイズ（直径35cm）1枚の方がお得じゃない？」</p>
+
+            <p>直感的には「M2枚 = L1枚くらい」と思うかもしれない。でも、<strong>相似比と面積比</strong>を知っていれば、驚きの事実がわかる。</p>
+
+            <p><strong>計算してみよう：</strong></p>
+
+            <table class="material-table" style="max-width: 400px; margin: 15px auto;">
+                <tr>
+                    <th>サイズ</th>
+                    <th>直径</th>
+                    <th>面積</th>
+                </tr>
+                <tr>
+                    <td>M</td>
+                    <td>25 cm</td>
+                    <td>\(\pi \times 12.5^2 \approx 491 \text{ cm}^2\)</td>
+                </tr>
+                <tr>
+                    <td>L</td>
+                    <td>35 cm</td>
+                    <td>\(\pi \times 17.5^2 \approx 962 \text{ cm}^2\)</td>
+                </tr>
+            </table>
+
+            <p>Mサイズ2枚の合計面積 = \(491 \times 2 = 982 \text{ cm}^2\)</p>
+            <p>Lサイズ1枚の面積 = \(962 \text{ cm}^2\)</p>
+
+            <p>あれ？ <strong>M2枚の方がちょっと多い</strong>！</p>
+
+            <p>でも待って。MサイズとLサイズの価格差を考えてみよう。もしMが1000円、Lが1800円だとしたら？</p>
+
+            <ul>
+                <li>M2枚：2000円で982 cm² → <strong>1cm²あたり約2.04円</strong></li>
+                <li>L1枚：1800円で962 cm² → <strong>1cm²あたり約1.87円</strong></li>
+            </ul>
+
+            <p><strong>Lサイズの方が単価が安い！</strong></p>
+
+            <p>これが「面積は半径の2乗に比例する」という相似の法則。直径が1.4倍（25→35cm）になると、面積は約2倍（\(1.4^2 \approx 1.96\)）になる。</p>
+
+            <p style="font-style: italic; color: #666; margin-top: 20px;">次にピザを注文するときは、「相似比の2乗」を思い出して、1cm²あたりの値段を計算してみよう。数学ができると、お得に食べられる！</p>
+        </div>
+    </div>
+</section>

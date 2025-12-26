@@ -1,0 +1,503 @@
+---
+layout: material-raw
+title: 一次関数の基本
+icon: "📈"
+description: 一次関数の意味とグラフの描き方を学びます。傾きと切片の関係を理解して、グラフから式を読み取れるようになろう！
+level: 標準
+level_num: 2
+category: functions
+school_level: junior
+order: 5
+keywords:
+  - 一次関数
+  - 傾き
+  - 切片
+  - グラフ
+  - 変化の割合
+cover_image: /images/noimage.jpg
+cover_description: 一次関数のグラフ（y=ax+b）と傾き・切片の図解
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学雑学「−40°の奇跡」"
+related:
+  - url: /junior/比例と反比例_教材.html
+    title: 比例と反比例
+    note: 比例は一次関数の特別な場合
+    type: prerequisite
+  - url: /junior/一次関数_問題タイプ別攻略_教材.html
+    title: 一次関数：問題タイプ別攻略
+    note: 一次関数の様々な問題パターン
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>携帯電話の料金プラン「基本料金1000円 + 1分あたり20円」は一次関数です。時間が増えると料金も一定の割合で増える。この「一定の割合で変化する」関係を式とグラフで表すのが一次関数です。</p>
+        <p>このページでは、<strong>一次関数の基本</strong>を学びます：</p>
+        <ul>
+            <li><strong>一次関数とは</strong>：\(y = ax + b\) の形で表される関数</li>
+            <li><strong>傾きと切片</strong>：グラフの傾き（a）とy軸との交点（b）</li>
+            <li><strong>グラフの描き方</strong>：切片と傾きを使って直線を描く方法</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】一次関数の式は \(y = ax + b\)（aは傾き、bは切片）
+        </div>
+
+        <p>一次関数のグラフは必ず<strong>直線</strong>になります。aとbの値でグラフの形が決まります。</p>
+
+        <div class="rule-box" id="def-linear-function">
+            <strong>📌 ルール1：一次関数とは</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ y = ax + b \quad (a \neq 0) \]
+            </div>
+            <table class="material-table">
+                <tr>
+                    <th>記号</th>
+                    <th>名前</th>
+                    <th>意味</th>
+                </tr>
+                <tr>
+                    <td>\(a\)</td>
+                    <td>傾き（変化の割合）</td>
+                    <td>xが1増えたときのyの増加量</td>
+                </tr>
+                <tr>
+                    <td>\(b\)</td>
+                    <td>切片（y切片）</td>
+                    <td>グラフがy軸と交わる点のy座標</td>
+                </tr>
+            </table>
+            <p><strong>→ \(a = 0\) だと \(y = b\)（定数）になり、一次関数ではない！</strong></p>
+            <details class="thinking"><summary>💡 比例との関係</summary>
+            <p>比例 \(y = ax\) は、\(b = 0\) の一次関数です。つまり比例は一次関数の特別な場合。切片が0なので原点を通ります。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-slope">
+            <strong>📌 ルール2：傾きの意味</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ \text{傾き} = a = \frac{\text{yの増加量}}{\text{xの増加量}} = \frac{y_2 - y_1}{x_2 - x_1} \]
+            </div>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="450" height="250" viewBox="0 0 450 250">
+                    <!-- 座標軸 -->
+                    <line x1="50" y1="200" x2="400" y2="200" stroke="#333" stroke-width="2"/>
+                    <line x1="80" y1="230" x2="80" y2="30" stroke="#333" stroke-width="2"/>
+                    <text x="410" y="205" font-size="14">x</text>
+                    <text x="70" y="20" font-size="14">y</text>
+
+                    <!-- 直線 y = 2x + 1 -->
+                    <line x1="80" y1="180" x2="350" y2="45" stroke="#1976d2" stroke-width="3"/>
+
+                    <!-- 2点 -->
+                    <circle cx="130" cy="155" r="5" fill="#e53935"/>
+                    <circle cx="230" cy="105" r="5" fill="#e53935"/>
+
+                    <!-- 増加量を示す線 -->
+                    <line x1="130" y1="155" x2="230" y2="155" stroke="#4caf50" stroke-width="2" stroke-dasharray="5,3"/>
+                    <line x1="230" y1="155" x2="230" y2="105" stroke="#ff9800" stroke-width="2" stroke-dasharray="5,3"/>
+
+                    <!-- ラベル -->
+                    <text x="170" y="170" font-size="14" fill="#4caf50">xの増加量</text>
+                    <text x="235" y="135" font-size="14" fill="#ff9800">yの増加量</text>
+
+                    <text x="115" y="175" font-size="12">(1, 3)</text>
+                    <text x="215" y="95" font-size="12">(3, 7)</text>
+
+                    <!-- 計算式 -->
+                    <text x="280" y="180" font-size="14">傾き = (7-3)÷(3-1)</text>
+                    <text x="280" y="200" font-size="14">= 4÷2 = 2</text>
+                </svg>
+                <div class="svg-caption">傾き = yの増加量 ÷ xの増加量</div>
+            </div>
+            <ul>
+                <li>\(a > 0\) → 右上がり（xが増えるとyも増える）</li>
+                <li>\(a < 0\) → 右下がり（xが増えるとyは減る）</li>
+                <li>\(|a|\) が大きい → 急な直線</li>
+            </ul>
+        </div>
+
+        <div class="rule-box" id="rule-intercept">
+            <strong>📌 ルール3：切片の意味</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <p>切片 \(b\) は、グラフがy軸と交わる点の座標 \((0, b)\)。</p>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="400" height="220" viewBox="0 0 400 220">
+                    <!-- 座標軸 -->
+                    <line x1="50" y1="180" x2="350" y2="180" stroke="#333" stroke-width="2"/>
+                    <line x1="150" y1="210" x2="150" y2="30" stroke="#333" stroke-width="2"/>
+                    <text x="360" y="185" font-size="14">x</text>
+                    <text x="140" y="20" font-size="14">y</text>
+                    <text x="155" y="195" font-size="12">O</text>
+
+                    <!-- 直線 y = x + 3 -->
+                    <line x1="50" y1="160" x2="300" y2="35" stroke="#1976d2" stroke-width="3"/>
+
+                    <!-- 切片 -->
+                    <circle cx="150" cy="110" r="6" fill="#e53935"/>
+                    <text x="160" y="105" font-size="14" fill="#e53935">切片 (0, 3)</text>
+
+                    <!-- 式 -->
+                    <text x="250" y="80" font-size="16" fill="#1976d2">y = x + 3</text>
+                </svg>
+                <div class="svg-caption">切片はy軸との交点</div>
+            </div>
+            <p><strong>→ \(x = 0\) を代入すると \(y = b\) になる！</strong></p>
+        </div>
+
+        <div class="rule-box" id="method-graph-drawing">
+            <strong>📌 ルール4：グラフの描き方</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <p><strong>方法1：切片と傾きから描く</strong></p>
+            <ol>
+                <li>切片 \((0, b)\) をプロット</li>
+                <li>傾き \(a\) を使って次の点を決める（x方向に1、y方向にa進む）</li>
+                <li>2点を結んで直線を引く</li>
+            </ol>
+            <p><strong>方法2：2点から描く</strong></p>
+            <ol>
+                <li>x = 0 を代入 → y切片を求める</li>
+                <li>y = 0 を代入 → x切片を求める</li>
+                <li>2点を結んで直線を引く</li>
+            </ol>
+        </div>
+
+        <div class="rule-box" id="rule-slope-shape">
+            <strong>📌 ルール5：傾きによるグラフの形</strong>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="500" height="200" viewBox="0 0 500 200">
+                    <!-- 座標軸 -->
+                    <line x1="80" y1="180" x2="180" y2="180" stroke="#333" stroke-width="1"/>
+                    <line x1="130" y1="190" x2="130" y2="30" stroke="#333" stroke-width="1"/>
+
+                    <line x1="230" y1="180" x2="330" y2="180" stroke="#333" stroke-width="1"/>
+                    <line x1="280" y1="190" x2="280" y2="30" stroke="#333" stroke-width="1"/>
+
+                    <line x1="380" y1="180" x2="480" y2="180" stroke="#333" stroke-width="1"/>
+                    <line x1="430" y1="190" x2="430" y2="30" stroke="#333" stroke-width="1"/>
+
+                    <!-- a > 0 -->
+                    <line x1="90" y1="150" x2="170" y2="70" stroke="#1976d2" stroke-width="2"/>
+                    <text x="130" y="195" font-size="12" text-anchor="middle">a > 0</text>
+                    <text x="130" y="25" font-size="12" text-anchor="middle" fill="#1976d2">右上がり</text>
+
+                    <!-- a < 0 -->
+                    <line x1="240" y1="70" x2="320" y2="150" stroke="#e53935" stroke-width="2"/>
+                    <text x="280" y="195" font-size="12" text-anchor="middle">a < 0</text>
+                    <text x="280" y="25" font-size="12" text-anchor="middle" fill="#e53935">右下がり</text>
+
+                    <!-- |a| 大小 -->
+                    <line x1="390" y1="160" x2="470" y2="40" stroke="#4caf50" stroke-width="2"/>
+                    <line x1="390" y1="140" x2="470" y2="100" stroke="#9c27b0" stroke-width="2"/>
+                    <text x="430" y="195" font-size="12" text-anchor="middle">|a|の大小</text>
+                    <text x="480" y="50" font-size="11" fill="#4caf50">急</text>
+                    <text x="480" y="110" font-size="11" fill="#9c27b0">ゆるやか</text>
+                </svg>
+                <div class="svg-caption">傾きの符号と大きさによる違い</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>一次関数の問題を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 一次関数の判別</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>一次関数かどうか判別する
+            </div>
+            <p>次の式が一次関数かどうか答えなさい。</p>
+            <p>（1）\(y = 3x + 5\)　（2）\(y = 4x\)　（3）\(y = x^2\)　（4）\(y = 7\)</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>（1）\(y = 3x + 5\) → \(a = 3, b = 5\) の形 → <strong>一次関数 ○</strong></li>
+                <li>（2）\(y = 4x\) → \(a = 4, b = 0\) の形（比例）→ <strong>一次関数 ○</strong></li>
+                <li>（3）\(y = x^2\) → xの2乗がある → <strong>一次関数ではない ×</strong></li>
+                <li>（4）\(y = 7\) → \(a = 0\)（xの項がない）→ <strong>一次関数ではない ×</strong></li>
+            </ol>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 傾きと切片</h3>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>傾きを求める
+            </div>
+            <p>一次関数 \(y = -2x + 3\) について、xが1から4まで増加したとき、yの増加量を求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>傾き \(a = -2\)</li>
+                <li>xの増加量 = \(4 - 1 = 3\)</li>
+                <li>yの増加量 = 傾き × xの増加量 = \(-2 \times 3 = -6\)</li>
+            </ol>
+            <div class="formula">
+                \[ \text{yの増加量} = -6 \]
+            </div>
+            <p><strong>確認：</strong> \(x = 1\) → \(y = 1\)、\(x = 4\) → \(y = -5\)、差は \(-5 - 1 = -6\) ✓</p>
+        </div>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>切片を読み取る
+            </div>
+            <p>一次関数 \(y = \frac{1}{2}x - 3\) のグラフがy軸と交わる点の座標を求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>y軸との交点は \(x = 0\) のとき</li>
+                <li>\(y = \frac{1}{2} \times 0 - 3 = -3\)</li>
+                <li>交点の座標は \((0, -3)\)</li>
+            </ol>
+            <p><strong>→ 切片 \(b = -3\) なので、座標は \((0, -3)\)</strong></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ グラフを描く</h3>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>グラフを描く
+            </div>
+            <p>\(y = 2x - 1\) のグラフを描きなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>切片は \(-1\) → 点 \((0, -1)\) をプロット</li>
+                <li>傾きは \(2\) → x方向に1、y方向に2進む</li>
+                <li>次の点は \((1, 1)\)</li>
+                <li>2点を結んで直線を引く</li>
+            </ol>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="300" height="220" viewBox="0 0 300 220">
+                    <!-- 座標軸 -->
+                    <line x1="30" y1="180" x2="270" y2="180" stroke="#333" stroke-width="2"/>
+                    <line x1="100" y1="210" x2="100" y2="30" stroke="#333" stroke-width="2"/>
+                    <text x="280" y="185" font-size="14">x</text>
+                    <text x="90" y="20" font-size="14">y</text>
+                    <text x="105" y="195" font-size="12">O</text>
+
+                    <!-- 目盛り -->
+                    <line x1="140" y1="175" x2="140" y2="185" stroke="#333" stroke-width="1"/>
+                    <text x="140" y="200" font-size="12" text-anchor="middle">1</text>
+                    <line x1="180" y1="175" x2="180" y2="185" stroke="#333" stroke-width="1"/>
+                    <text x="180" y="200" font-size="12" text-anchor="middle">2</text>
+                    <line x1="95" y1="140" x2="105" y2="140" stroke="#333" stroke-width="1"/>
+                    <text x="80" y="145" font-size="12" text-anchor="end">1</text>
+                    <line x1="95" y1="100" x2="105" y2="100" stroke="#333" stroke-width="1"/>
+                    <text x="80" y="105" font-size="12" text-anchor="end">2</text>
+
+                    <!-- 直線 -->
+                    <line x1="40" y1="200" x2="220" y2="60" stroke="#1976d2" stroke-width="2"/>
+
+                    <!-- 点 -->
+                    <circle cx="100" cy="180" r="4" fill="white" stroke="#e53935" stroke-width="2"/>
+                    <circle cx="100" cy="180" r="1" fill="#e53935"/>
+                    <circle cx="140" cy="140" r="5" fill="#e53935"/>
+
+                    <!-- 矢印で傾きを示す -->
+                    <path d="M 100 175 L 135 175" stroke="#4caf50" stroke-width="2"/>
+                    <path d="M 135 175 L 135 145" stroke="#ff9800" stroke-width="2"/>
+                    <text x="117" y="168" font-size="10" fill="#4caf50">1</text>
+                    <text x="140" y="162" font-size="10" fill="#ff9800">2</text>
+
+                    <!-- ラベル -->
+                    <text x="75" y="175" font-size="11" fill="#e53935">(0,-1)</text>
+                    <text x="145" y="135" font-size="11" fill="#e53935">(1, 1)</text>
+                </svg>
+                <div class="svg-caption">y = 2x - 1 のグラフ</div>
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>グラフから式を読み取る
+            </div>
+            <p>グラフが点 \((0, 2)\) を通り、傾きが \(-3\) の一次関数の式を求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>傾き \(a = -3\)</li>
+                <li>切片 \(b = 2\)（y軸との交点が \((0, 2)\) だから）</li>
+                <li>式に代入</li>
+            </ol>
+            <div class="formula">
+                \[ y = -3x + 2 \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：傾きは「yの増加量 ÷ xの増加量」</strong><br>
+            分数で覚えると間違えにくい。\(a = \frac{\Delta y}{\Delta x}\)（デルタはギリシャ文字で「増加量」を表す）
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：切片は「x = 0 を代入」</strong><br>
+            y切片を求めたいときは、式に \(x = 0\) を代入するだけ。\(y = a \times 0 + b = b\)
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：グラフは「切片から出発」</strong><br>
+            まず切片をプロット、そこから傾きの分だけ進む。傾きが \(\frac{2}{3}\) なら「右に3、上に2」。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：マイナスの傾きは「右下がり」</strong><br>
+            傾きがマイナスなら、右に進むほど下がる。\(y = -2x + 5\) なら「右に1、下に2」。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：傾きと切片を逆に読む</div>
+            <p><strong>ダメな例：</strong> \(y = 3x + 2\) で「傾き2、切片3」と答える</p>
+            <p><strong>対策：</strong> \(y = ax + b\) の形で、xの係数が傾き、定数項が切片！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：比例を一次関数と認識しない</div>
+            <p><strong>ダメな例：</strong> \(y = 5x\) は一次関数ではないと思う</p>
+            <p><strong>対策：</strong> 比例 \(y = ax\) は \(b = 0\) の一次関数！原点を通る一次関数。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：傾きの符号で上下を間違える</div>
+            <p><strong>ダメな例：</strong> 傾きが負なのに右上がりのグラフを描く</p>
+            <p><strong>対策：</strong> 傾き正 → 右上がり、傾き負 → 右下がり。常にチェック！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：分数の傾きでグラフが描けない</div>
+            <p><strong>ダメな例：</strong> 傾き \(\frac{2}{3}\) のとき、どう点を取るかわからない</p>
+            <p><strong>対策：</strong> 分母がxの変化、分子がyの変化。「右に3、上に2」と読む。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">一次関数 \(y = ax + b\) の a（傾き）と b（切片）の意味を説明できるか？</div>
+            <div class="checklist-item">式から傾きと切片を読み取れるか？</div>
+            <div class="checklist-item">傾きが正か負かでグラフの向きがわかるか？</div>
+            <div class="checklist-item">切片と傾きを使ってグラフを描けるか？</div>
+            <div class="checklist-item">2点を通る直線から傾きを計算できるか？</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>次の一次関数について、傾きと切片を答えなさい。</p>
+            <p>（1）\(y = 4x - 7\)　（2）\(y = -\frac{1}{2}x + 3\)　（3）\(y = 6x\)</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>（1）傾き 4、切片 -7</p>
+                    <p>（2）傾き \(-\frac{1}{2}\)、切片 3</p>
+                    <p>（3）傾き 6、切片 0</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>一次関数 \(y = 3x + 1\) について、xが2から5まで増加したとき、yの増加量を求めなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>傾き = 3、xの増加量 = 5 - 2 = 3</p>
+                    <p><strong>yの増加量 = 3 × 3 = 9</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：一次関数は \(y = ax + b\)！aが傾き（変化の割合）、bが切片（y軸との交点）。
+</div>
+
+<!-- ========== 関連教材 ========== -->
+<!-- Front Matterのrelatedで指定すればレイアウトが自動生成します -->
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「−40°の奇跡」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">🌡️ 摂氏と華氏が一致する唯一の温度</div>
+
+            <p>「今日は90°F（華氏）だから暑い」とアメリカ人が言います。日本人は「え、90度？水が沸騰しそう...」と混乱します。</p>
+
+            <p>これは温度の単位が違うから。日本は摂氏（℃）、アメリカは華氏（℉）を使います。</p>
+
+            <p>この2つの単位の変換は、実は<strong>一次関数</strong>で表せます：</p>
+
+            <div class="formula">
+                \[ F = \frac{9}{5}C + 32 \]
+            </div>
+
+            <p>Cが摂氏、Fが華氏。傾きは \(\frac{9}{5}\)、切片は 32 です。</p>
+
+            <p>さて、ここで問題。<strong>摂氏と華氏が同じ値になる温度は何度？</strong></p>
+
+            <p>つまり、\(C = F\) になる温度を求めます。</p>
+
+            <div class="formula">
+                \[ C = \frac{9}{5}C + 32 \]
+                \[ C - \frac{9}{5}C = 32 \]
+                \[ -\frac{4}{5}C = 32 \]
+                \[ C = -40 \]
+            </div>
+
+            <p>答えは<strong>−40°</strong>！</p>
+
+            <p>つまり、−40℃ と −40℉ は同じ温度なのです。地球上でこれより寒い場所（南極や北極の冬）では、「摂氏でも華氏でも同じだから、どっちでもいいや」となります。</p>
+
+            <p>ちなみに、この −40° という温度は「日常で体験できる限界」に近い。カナダやロシアの極寒地域では実際に到達することがあります。</p>
+
+            <p style="color: #666; font-size: 0.95em;">...というわけで、一次関数は温度変換にも使われているのです。次に天気予報を見るとき、「傾き 9/5、切片 32」を思い出してくださいね。</p>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,590 @@
+---
+layout: material-raw
+title: 円周角の定理
+icon: "⭕"
+description: 円周角と中心角の関係、円周角の定理、定理の逆、円に内接する四角形の性質を学ぶ。円の角度問題を解く力を身につける。
+level: 標準
+level_num: 2
+category: geometry
+school_level: junior
+order: 9
+keywords:
+  - 円周角
+  - 中心角
+  - 円周角の定理
+  - 弧
+  - 内接四角形
+cover_image: /images/noimage.jpg
+cover_description: 円周角と中心角の関係、同じ弧に対する円周角
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学雑学「タレスの定理」"
+related:
+  - url: /junior/円と球の性質_教材.html
+    title: 円と球の性質
+    note: 円の基本的な性質が前提
+    type: prerequisite
+  - url: /junior/三平方の定理_教材.html
+    title: 三平方の定理
+    note: 円と直角三角形の組み合わせ
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>時計の針、観覧車、円形の競技場——円の中には角度に関する美しい法則が隠れています。この法則を使うと、見えない角度を計算だけで求められます。</p>
+
+        <p>このページでは、<strong>円周角の定理</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>円周角と中心角</strong>：円周上の点から見た角と、中心から見た角の関係</li>
+            <li><strong>円周角の定理</strong>：同じ弧に対する円周角はすべて等しい</li>
+            <li><strong>定理の逆</strong>：4点が同じ円周上にあることの証明</li>
+            <li><strong>円に内接する四角形</strong>：対角の和が180°になる性質</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要：円周角は中心角の半分！ 同じ弧に対する円周角はすべて等しい！
+        </div>
+
+        <!-- 円周角と中心角の図解 -->
+        <div class="svg-container">
+            <svg width="650" height="300" viewBox="0 0 650 300">
+                <!-- タイトル -->
+                <text x="200" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">円周角と中心角</text>
+
+                <!-- 円 -->
+                <circle cx="200" cy="170" r="120" fill="none" stroke="#333" stroke-width="2"/>
+
+                <!-- 中心 -->
+                <circle cx="200" cy="170" r="4" fill="#333"/>
+                <text x="190" y="185" font-size="14" fill="#333">O</text>
+
+                <!-- 弧AB（下側） -->
+                <path d="M 100 230 A 120 120 0 0 1 300 230" stroke="#4caf50" stroke-width="4" fill="none"/>
+
+                <!-- 点A, B -->
+                <circle cx="100" cy="230" r="5" fill="#e53935"/>
+                <circle cx="300" cy="230" r="5" fill="#e53935"/>
+                <text x="80" y="245" font-size="14" font-weight="bold" fill="#e53935">A</text>
+                <text x="305" y="245" font-size="14" font-weight="bold" fill="#e53935">B</text>
+
+                <!-- 円周上の点P -->
+                <circle cx="200" cy="50" r="5" fill="#1976d2"/>
+                <text x="195" y="40" font-size="14" font-weight="bold" fill="#1976d2">P</text>
+
+                <!-- 中心角 -->
+                <line x1="200" y1="170" x2="100" y2="230" stroke="#ff9800" stroke-width="2"/>
+                <line x1="200" y1="170" x2="300" y2="230" stroke="#ff9800" stroke-width="2"/>
+                <path d="M 150 200 A 60 60 0 0 1 250 200" fill="none" stroke="#ff9800" stroke-width="2"/>
+                <text x="200" y="210" font-size="16" font-weight="bold" fill="#ff9800" text-anchor="middle">2α</text>
+
+                <!-- 円周角 -->
+                <line x1="200" y1="50" x2="100" y2="230" stroke="#1976d2" stroke-width="2"/>
+                <line x1="200" y1="50" x2="300" y2="230" stroke="#1976d2" stroke-width="2"/>
+                <path d="M 170 80 A 40 40 0 0 1 230 80" fill="none" stroke="#1976d2" stroke-width="2"/>
+                <text x="200" y="100" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">α</text>
+
+                <!-- 公式ボックス -->
+                <rect x="400" y="60" width="230" height="180" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="10"/>
+                <text x="515" y="90" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">円周角と中心角の関係</text>
+
+                <text x="515" y="130" font-size="14" fill="#333" text-anchor="middle">同じ弧ABに対して</text>
+                <text x="515" y="165" font-size="18" font-weight="bold" fill="#1976d2" text-anchor="middle">円周角 = 中心角 ÷ 2</text>
+                <text x="515" y="200" font-size="14" fill="#666" text-anchor="middle">∠APB = ½ ∠AOB</text>
+            </svg>
+            <div class="svg-caption">円周角は中心角の半分：∠APB = ½ ∠AOB</div>
+        </div>
+
+        <div class="rule-box" id="rule-central">
+            <strong>📌 ルール1：円周角と中心角の関係</strong> <a href="#ex-central" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ \text{円周角} = \frac{1}{2} \times \text{中心角} \]
+            </div>
+            <p><strong>円周角</strong>：円周上の点Pから弧の両端A, Bを見た角 ∠APB</p>
+            <p><strong>中心角</strong>：中心Oから弧の両端A, Bを見た角 ∠AOB</p>
+            <p><strong>→ だから結果は：</strong> 中心角がわかれば、円周角は半分！</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>円周角が中心角の半分になる理由は、三角形OAPとOBPが二等辺三角形になることから証明できる。どの位置にPがあっても、この関係は変わらない。</p>
+            </details>
+        </div>
+
+        <!-- 同じ弧に対する円周角の図解 -->
+        <div class="svg-container">
+            <svg width="650" height="280" viewBox="0 0 650 280">
+                <!-- タイトル -->
+                <text x="200" y="25" font-size="16" font-weight="bold" fill="#9c27b0" text-anchor="middle">同じ弧に対する円周角</text>
+
+                <!-- 円 -->
+                <circle cx="200" cy="160" r="110" fill="none" stroke="#333" stroke-width="2"/>
+
+                <!-- 弧AB -->
+                <path d="M 110 220 A 110 110 0 0 1 290 220" stroke="#4caf50" stroke-width="4" fill="none"/>
+
+                <!-- 点A, B -->
+                <circle cx="110" cy="220" r="5" fill="#e53935"/>
+                <circle cx="290" cy="220" r="5" fill="#e53935"/>
+                <text x="90" y="235" font-size="14" font-weight="bold" fill="#e53935">A</text>
+                <text x="295" y="235" font-size="14" font-weight="bold" fill="#e53935">B</text>
+
+                <!-- 複数の円周角 -->
+                <circle cx="140" cy="60" r="4" fill="#1976d2"/>
+                <circle cx="200" cy="50" r="4" fill="#1976d2"/>
+                <circle cx="260" cy="60" r="4" fill="#1976d2"/>
+                <text x="130" y="50" font-size="14" fill="#1976d2">P</text>
+                <text x="190" y="40" font-size="14" fill="#1976d2">Q</text>
+                <text x="265" y="50" font-size="14" fill="#1976d2">R</text>
+
+                <!-- P, Q, Rからの線 -->
+                <line x1="140" y1="60" x2="110" y2="220" stroke="#1976d2" stroke-width="1.5" stroke-dasharray="4,2"/>
+                <line x1="140" y1="60" x2="290" y2="220" stroke="#1976d2" stroke-width="1.5" stroke-dasharray="4,2"/>
+                <line x1="200" y1="50" x2="110" y2="220" stroke="#1976d2" stroke-width="1.5" stroke-dasharray="4,2"/>
+                <line x1="200" y1="50" x2="290" y2="220" stroke="#1976d2" stroke-width="1.5" stroke-dasharray="4,2"/>
+                <line x1="260" y1="60" x2="110" y2="220" stroke="#1976d2" stroke-width="1.5" stroke-dasharray="4,2"/>
+                <line x1="260" y1="60" x2="290" y2="220" stroke="#1976d2" stroke-width="1.5" stroke-dasharray="4,2"/>
+
+                <!-- 角度表示 -->
+                <text x="140" y="90" font-size="14" font-weight="bold" fill="#1976d2">α</text>
+                <text x="195" y="80" font-size="14" font-weight="bold" fill="#1976d2">α</text>
+                <text x="250" y="90" font-size="14" font-weight="bold" fill="#1976d2">α</text>
+
+                <!-- 公式ボックス -->
+                <rect x="380" y="60" width="250" height="150" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="10"/>
+                <text x="505" y="90" font-size="14" font-weight="bold" fill="#e65100" text-anchor="middle">円周角の定理</text>
+
+                <text x="505" y="125" font-size="14" fill="#333" text-anchor="middle">同じ弧に対する円周角は</text>
+                <text x="505" y="155" font-size="18" font-weight="bold" fill="#e53935" text-anchor="middle">すべて等しい</text>
+                <text x="505" y="190" font-size="14" fill="#666" text-anchor="middle">∠APB = ∠AQB = ∠ARB</text>
+            </svg>
+            <div class="svg-caption">円周角の定理：どこにPを取っても、同じ弧に対する円周角は等しい</div>
+        </div>
+
+        <div class="rule-box" id="rule-inscribed">
+            <strong>📌 ルール2：円周角の定理</strong> <a href="#ex-inscribed" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ \text{同じ弧に対する円周角はすべて等しい} \]
+            </div>
+            <p>円周上のどこにPを取っても、同じ弧ABに対する円周角 ∠APB は同じ値になる。</p>
+            <p><strong>→ だから結果は：</strong> 弧が同じなら、円周角の大きさも同じ</p>
+            <p><strong>✅ メリット：</strong> 離れた場所にある角度が等しいことを証明できる</p>
+        </div>
+
+        <div class="rule-box" id="rule-semicircle">
+            <strong>📌 ルール3：半円の弧に対する円周角は90°</strong> <a href="#ex-semicircle" class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ \text{直径ABの円周角} = 90° \]
+            </div>
+            <p>直径ABに対する円周角は常に90°（直角）になる。</p>
+            <p><strong>→ だから結果は：</strong> 直径を見たら、円周上のどこから見ても90°</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>直径に対する中心角は180°。円周角はその半分なので、\(\frac{180°}{2} = 90°\) になる。</p>
+            </details>
+        </div>
+
+        <!-- 円に内接する四角形の図解 -->
+        <div class="svg-container">
+            <svg width="650" height="280" viewBox="0 0 650 280">
+                <!-- タイトル -->
+                <text x="200" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">円に内接する四角形</text>
+
+                <!-- 円 -->
+                <circle cx="200" cy="155" r="110" fill="none" stroke="#333" stroke-width="2"/>
+
+                <!-- 四角形ABCD -->
+                <polygon points="120,70 300,100 280,230 100,200" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+
+                <!-- 頂点 -->
+                <circle cx="120" cy="70" r="4" fill="#e53935"/>
+                <circle cx="300" cy="100" r="4" fill="#e53935"/>
+                <circle cx="280" cy="230" r="4" fill="#e53935"/>
+                <circle cx="100" cy="200" r="4" fill="#e53935"/>
+                <text x="110" y="55" font-size="14" font-weight="bold" fill="#e53935">A</text>
+                <text x="310" y="100" font-size="14" font-weight="bold" fill="#e53935">B</text>
+                <text x="290" y="245" font-size="14" font-weight="bold" fill="#e53935">C</text>
+                <text x="80" y="210" font-size="14" font-weight="bold" fill="#e53935">D</text>
+
+                <!-- 角度表示 -->
+                <text x="135" y="85" font-size="16" font-weight="bold" fill="#1976d2">α</text>
+                <text x="260" y="215" font-size="16" font-weight="bold" fill="#9c27b0">β</text>
+
+                <!-- 公式ボックス -->
+                <rect x="380" y="60" width="250" height="160" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2" rx="10"/>
+                <text x="505" y="90" font-size="14" font-weight="bold" fill="#7b1fa2" text-anchor="middle">内接四角形の性質</text>
+
+                <text x="505" y="130" font-size="14" fill="#333" text-anchor="middle">円に内接する四角形では</text>
+                <text x="505" y="165" font-size="18" font-weight="bold" fill="#e53935" text-anchor="middle">対角の和 = 180°</text>
+                <text x="505" y="200" font-size="14" fill="#666" text-anchor="middle">∠A + ∠C = ∠B + ∠D = 180°</text>
+            </svg>
+            <div class="svg-caption">円に内接する四角形：向かい合う角の和は180°</div>
+        </div>
+
+        <div class="rule-box" id="rule-quadrilateral">
+            <strong>📌 ルール4：円に内接する四角形の対角の和</strong> <a href="#ex-quadrilateral" class="example-link">→ 例4</a>
+            <div class="formula">
+                \[ \angle A + \angle C = 180° \]
+                \[ \angle B + \angle D = 180° \]
+            </div>
+            <p>円に内接する四角形では、<strong>向かい合う角の和が180°</strong>になる。</p>
+            <p><strong>→ だから結果は：</strong> 対角の一方がわかれば、もう一方は180°から引くだけ</p>
+        </div>
+
+        <div class="rule-box" id="rule-converse">
+            <strong>📌 ルール5：円周角の定理の逆</strong> <a href="#ex-converse" class="example-link">→ 例5</a>
+            <div class="formula">
+                \[ \angle APB = \angle AQB \quad \Rightarrow \quad \text{4点A, P, Q, Bは同じ円周上} \]
+            </div>
+            <p>2点A, Bを見込む角が等しい点P, Qは、A, Bと同じ円周上にある。</p>
+            <p><strong>→ だから結果は：</strong> 角度が等しければ「同一円周上」と言える</p>
+        </div>
+
+        <table class="material-table">
+            <tr>
+                <th>定理</th>
+                <th>内容</th>
+                <th>使いどころ</th>
+            </tr>
+            <tr>
+                <td>円周角と中心角</td>
+                <td>円周角 = 中心角 ÷ 2</td>
+                <td>中心角 → 円周角、または逆</td>
+            </tr>
+            <tr>
+                <td>円周角の定理</td>
+                <td>同じ弧に対する円周角は等しい</td>
+                <td>離れた角度が等しいことの証明</td>
+            </tr>
+            <tr>
+                <td>半円の円周角</td>
+                <td>直径に対する円周角 = 90°</td>
+                <td>直角を見つける</td>
+            </tr>
+            <tr>
+                <td>内接四角形</td>
+                <td>対角の和 = 180°</td>
+                <td>四角形の角度計算</td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>円周角の定理を使って、さまざまな角度の問題を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 円周角と中心角</h3>
+
+        <div class="example-box" id="ex-central">
+            <div class="example-title">
+                <span class="number-badge">例1</span>中心角から円周角を求める
+            </div>
+            <p>中心角 ∠AOB = 80° のとき、同じ弧に対する円周角 ∠APB を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>円周角 = 中心角 ÷ 2</li>
+                <li>∠APB = 80° ÷ 2 = 40°</li>
+            </ol>
+            <div class="formula">
+                \[ \angle APB = \frac{1}{2} \times 80° = \boxed{40°} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-central2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>円周角から中心角を求める
+            </div>
+            <p>円周角 ∠APB = 35° のとき、同じ弧に対する中心角 ∠AOB を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>中心角 = 円周角 × 2</li>
+                <li>∠AOB = 35° × 2 = 70°</li>
+            </ol>
+            <div class="formula">
+                \[ \angle AOB = 2 \times 35° = \boxed{70°} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 円周角の定理</h3>
+
+        <div class="example-box" id="ex-inscribed">
+            <div class="example-title">
+                <span class="number-badge">例3</span>同じ弧に対する円周角
+            </div>
+            <p>円周上に4点A, B, P, Qがあり、∠APB = 50° のとき、同じ弧ABに対する ∠AQB を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>P, Qは同じ弧ABに対する円周角</li>
+                <li>円周角の定理より、∠APB = ∠AQB</li>
+            </ol>
+            <div class="formula">
+                \[ \angle AQB = \angle APB = \boxed{50°} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 半円の弧に対する円周角</h3>
+
+        <div class="example-box" id="ex-semicircle">
+            <div class="example-title">
+                <span class="number-badge">例4</span>直径に対する円周角
+            </div>
+            <p>ABが円の直径のとき、円周上の点Pにおける ∠APB を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>直径に対する中心角は 180°</li>
+                <li>円周角 = 中心角 ÷ 2 = 180° ÷ 2 = 90°</li>
+            </ol>
+            <div class="formula">
+                \[ \angle APB = \frac{180°}{2} = \boxed{90°} \]
+            </div>
+            <p>（直径を見込む円周角は常に直角！）</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 円に内接する四角形</h3>
+
+        <div class="example-box" id="ex-quadrilateral">
+            <div class="example-title">
+                <span class="number-badge">例5</span>内接四角形の角度
+            </div>
+            <p>四角形ABCDが円に内接し、∠A = 70° のとき、∠C を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>円に内接する四角形では、対角の和 = 180°</li>
+                <li>∠A + ∠C = 180°</li>
+                <li>∠C = 180° - 70° = 110°</li>
+            </ol>
+            <div class="formula">
+                \[ \angle C = 180° - 70° = \boxed{110°} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 定理の逆</h3>
+
+        <div class="example-box" id="ex-converse">
+            <div class="example-title">
+                <span class="number-badge">例6</span>4点が同一円周上にあることを証明
+            </div>
+            <p>∠APB = ∠AQB = 45° のとき、4点A, P, Q, Bが同一円周上にあることを証明せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>A, Bを2点とする</li>
+                <li>∠APB = ∠AQB = 45° より、P, Qから見たABの角度が等しい</li>
+                <li>円周角の定理の逆より、4点A, P, Q, Bは同一円周上にある</li>
+            </ol>
+            <div class="formula">
+                \[ \angle APB = \angle AQB \quad \therefore \boxed{\text{4点は同一円周上}} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 複合問題</h3>
+
+        <div class="example-box" id="ex-complex">
+            <div class="example-title">
+                <span class="number-badge">例7</span>複数の定理を組み合わせる
+            </div>
+            <p>円Oで、中心角 ∠AOB = 100°。四角形APBQが円に内接するとき、∠Q を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>円周角 ∠APB = 中心角 ÷ 2 = 100° ÷ 2 = 50°</li>
+                <li>四角形APBQが内接するので、∠P + ∠Q = 180°</li>
+                <li>∠Q = 180° - 50° = 130°</li>
+            </ol>
+            <div class="formula">
+                \[ \angle APB = \frac{100°}{2} = 50° \]
+                \[ \angle Q = 180° - 50° = \boxed{130°} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：「弧」に注目する</strong><br>
+            円周角は「どの弧を見ているか」で決まる。問題を解くときは、まず弧を色分けしたりマークしたりして、どの弧に対する角かを確認しよう。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：直径を見たら90°</strong><br>
+            「直径」「半円」というキーワードが出たら、円周角は90°。これは暗記しておくと便利。逆に、90°の円周角があれば、それは直径を見ていることになる。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：内接四角形は「対角で180°」</strong><br>
+            四角形が円に内接していたら、向かい合う角の和が180°。片方の角がわかれば、もう片方は引き算だけ。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：中心があるかないか確認</strong><br>
+            <ul style="margin: 10px 0;">
+                <li>中心Oが見えていれば → 中心角を使う（円周角 = 中心角 ÷ 2）</li>
+                <li>中心Oがなければ → 円周角の定理（同じ弧なら等しい）</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：中心角と円周角を逆にする</div>
+            <p><strong>ダメな例：</strong> 円周角が中心角の2倍と答える</p>
+            <p><strong>対策：</strong> 「円周角は中心角の<strong>半分</strong>」。中心は全体を見ているから大きい、円周は遠くから見ているから小さい、と覚える。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：違う弧の円周角を等しいとする</div>
+            <p><strong>ダメな例：</strong> 違う弧に対する円周角を等しいと勘違い</p>
+            <p><strong>対策：</strong> 円周角の定理は「<strong>同じ弧</strong>に対する」が条件。まず「どの弧か」を確認してから、等しいかどうかを判断。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：内接四角形の「隣の角」を180°にする</div>
+            <p><strong>ダメな例：</strong> ∠A + ∠B = 180° と答える</p>
+            <p><strong>対策：</strong> 内接四角形で180°になるのは「<strong>対角</strong>」（向かい合う角）。隣り合う角ではない！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：直径でないのに90°とする</div>
+            <p><strong>ダメな例：</strong> 弦ABに対する円周角を90°と答える</p>
+            <p><strong>対策：</strong> 90°になるのは「<strong>直径</strong>に対する円周角」だけ。普通の弦では90°にならない。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">どの弧に対する角かを確認したか</div>
+            <div class="checklist-item">中心角と円周角を正しく区別したか（円周角は半分）</div>
+            <div class="checklist-item">直径に対する円周角は90°になっているか</div>
+            <div class="checklist-item">内接四角形では「対角」の和が180°になっているか</div>
+            <div class="checklist-item">角度の単位「°」を書いたか</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>円Oで中心角 ∠AOB = 140° のとき、弧ABに対する円周角を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>円周角 = 中心角 ÷ 2</p>
+                    <p>= 140° ÷ 2 = \(\boxed{70°}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>四角形ABCDが円に内接し、∠A = 65°、∠B = 80° のとき、∠C と ∠D を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>対角の和 = 180° より</p>
+                    <p>∠C = 180° - ∠A = 180° - 65° = \(\boxed{115°}\)</p>
+                    <p>∠D = 180° - ∠B = 180° - 80° = \(\boxed{100°}\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：円周角は中心角の半分、同じ弧なら円周角は等しい、直径を見たら90°、内接四角形は対角で180°！
+</div>
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「タレスの定理」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 なぜ半円の上は直角になるのか？（紀元前6世紀）</div>
+
+            <p>「直径に対する円周角は90°」——この事実は<strong>タレスの定理</strong>とも呼ばれる。相似の教材でピラミッドを測った、あのタレスだ。</p>
+
+            <p>古代ギリシャの人々はこの事実に驚いた。「なぜ、円周上のどこに点を取っても、直径を見れば必ず直角になるのか？」</p>
+
+            <p>証明は意外とシンプル。直径の両端をA、B、円の中心をO、円周上の点をPとする。</p>
+
+            <div class="svg-container">
+                <svg width="350" height="220" viewBox="0 0 350 220">
+                    <!-- 円 -->
+                    <circle cx="175" cy="120" r="90" fill="none" stroke="#333" stroke-width="2"/>
+                    <!-- 直径 -->
+                    <line x1="85" y1="120" x2="265" y2="120" stroke="#e53935" stroke-width="3"/>
+                    <!-- 中心 -->
+                    <circle cx="175" cy="120" r="4" fill="#333"/>
+                    <text x="175" y="140" font-size="14" text-anchor="middle" fill="#333">O</text>
+                    <!-- 点A, B, P -->
+                    <circle cx="85" cy="120" r="4" fill="#e53935"/>
+                    <circle cx="265" cy="120" r="4" fill="#e53935"/>
+                    <circle cx="175" cy="30" r="4" fill="#1976d2"/>
+                    <text x="70" y="120" font-size="14" fill="#e53935">A</text>
+                    <text x="275" y="120" font-size="14" fill="#e53935">B</text>
+                    <text x="175" y="20" font-size="14" fill="#1976d2">P</text>
+                    <!-- 線分 -->
+                    <line x1="85" y1="120" x2="175" y2="30" stroke="#1976d2" stroke-width="2"/>
+                    <line x1="265" y1="120" x2="175" y2="30" stroke="#1976d2" stroke-width="2"/>
+                    <line x1="175" y1="120" x2="175" y2="30" stroke="#4caf50" stroke-width="2" stroke-dasharray="5,3"/>
+                    <!-- 二等辺三角形マーク -->
+                    <text x="120" y="80" font-size="12" fill="#666">r</text>
+                    <text x="220" y="80" font-size="12" fill="#666">r</text>
+                    <text x="180" y="80" font-size="12" fill="#4caf50">r</text>
+                </svg>
+                <div class="svg-caption">OA = OB = OP = r（すべて半径）</div>
+            </div>
+
+            <ol style="margin: 15px 0;">
+                <li>OA = OP = r（どちらも半径）→ △OAPは二等辺三角形</li>
+                <li>OB = OP = r（どちらも半径）→ △OBPも二等辺三角形</li>
+                <li>二等辺三角形の底角をそれぞれα、βとすると...</li>
+                <li>∠APB = α + β</li>
+                <li>△APBの内角の和より、2α + 2β = 180°</li>
+                <li>よって α + β = 90°</li>
+            </ol>
+
+            <p>つまり、<strong>直径の両端と円周上の点で作る三角形は、必ず直角三角形になる</strong>！</p>
+
+            <p style="font-style: italic; color: #666; margin-top: 20px;">この発見にタレスは感動し、牛を神に捧げたという伝説がある。紀元前の人々にとって、「どこに点を取っても必ず90°」という規則性は、まるで神の法則のように思えたのだろう。</p>
+
+            <p style="font-size: 0.9em; color: #888; margin-top: 15px;">※タレスの定理については、古代の歴史家ディオゲネス・ラエルティオスが記録を残しています。</p>
+        </div>
+    </div>
+</section>
