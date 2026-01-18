@@ -157,6 +157,17 @@
   order: 14
   cover_image: images/noimage.jpg
 
+- slug: junior/二次方程式の文章題_教材
+  title: 二次方程式の文章題
+  icon: "📝"
+  description: 面積・数・動点など実際の問題で二次方程式を活用！
+  level: 発展
+  level_num: 3
+  category: equations
+  school_level: junior
+  order: 15
+  cover_image: images/noimage.jpg
+
 # ============================================
 # 関数 (functions)
 # ============================================
@@ -183,6 +194,17 @@
   category: functions
   school_level: junior
   order: 5
+  cover_image: images/noimage.jpg
+
+- slug: junior/一次関数の応用_教材
+  title: 一次関数の応用
+  icon: "📊"
+  description: 2点から式を求める・交点・変域・文章題をマスター！
+  level: 標準
+  level_num: 2
+  category: functions
+  school_level: junior
+  order: 6
   cover_image: images/noimage.jpg
 
 - slug: junior/座標平面上の直線_教材
@@ -217,6 +239,29 @@
   school_level: junior
   order: 12
   cover_image: images/二次関数のグラフと性質_教材.png
+
+- slug: junior/関数の総合問題_攻略法_教材
+  title: 関数の総合問題：攻略法
+  icon: "🎯"
+  description: 比例・一次関数・二次関数の使い分けを判断！
+  level: 標準
+  level_num: 2
+  category: functions
+  school_level: junior
+  order: 20
+  cover_image: images/noimage.jpg
+
+# --- 発展 ---
+- slug: junior/図形と関数の融合問題_教材
+  title: 図形と関数の融合問題
+  icon: "🔷"
+  description: 座標平面・交点・面積を組み合わせた総合問題
+  level: 発展
+  level_num: 3
+  category: functions
+  school_level: junior
+  order: 30
+  cover_image: images/noimage.jpg
 
 # ============================================
 # 図形 (geometry)
@@ -268,6 +313,50 @@
   cover_image: images/平面図形の面積公式_教材.png
 
 # --- 標準 (中2-3) ---
+- slug: junior/角と平行線_教材
+  title: 角と平行線
+  icon: "📐"
+  description: 対頂角・同位角・錯角・多角形の角をマスター！
+  level: 標準
+  level_num: 2
+  category: geometry
+  school_level: junior
+  order: 7
+  cover_image: images/noimage.jpg
+
+- slug: junior/三角形の合同条件_教材
+  title: 三角形の合同条件
+  icon: "🔺"
+  description: 3つの合同条件と証明の書き方をマスター！
+  level: 標準
+  level_num: 2
+  category: geometry
+  school_level: junior
+  order: 8
+  cover_image: images/noimage.jpg
+
+- slug: junior/三角形の性質_教材
+  title: 三角形の性質
+  icon: "🔺"
+  description: 二等辺三角形・正三角形・直角三角形の性質をマスター！
+  level: 標準
+  level_num: 2
+  category: geometry
+  school_level: junior
+  order: 9
+  cover_image: images/noimage.jpg
+
+- slug: junior/四角形の性質_教材
+  title: 四角形の性質
+  icon: "🔷"
+  description: 平行四辺形・長方形・ひし形・正方形の性質と分類！
+  level: 標準
+  level_num: 2
+  category: geometry
+  school_level: junior
+  order: 10
+  cover_image: images/noimage.jpg
+
 - slug: junior/円と球の性質_教材
   title: 円と球の性質
   icon: "⚪"
@@ -429,6 +518,17 @@
   order: 11
   cover_image: images/確率の基本法則_教材.png
 
+- slug: junior/標本調査とデータ分析_教材
+  title: 標本調査とデータ分析
+  icon: "📊"
+  description: 母集団・標本・箱ひげ図で推測！
+  level: 標準
+  level_num: 2
+  category: data
+  school_level: junior
+  order: 12
+  cover_image: images/noimage.jpg
+
 # ============================================
 # 高校数学 (senior)
 # ============================================
@@ -498,6 +598,17 @@
   order: 2
   cover_image: images/noimage.jpg
 
+- slug: senior/複素数と高次方程式_教材
+  title: 複素数と高次方程式
+  icon: "i"
+  description: 虚数・解と係数の関係・因数定理・高次方程式をマスター！
+  level: 標準
+  level_num: 2
+  category: equations
+  school_level: senior
+  order: 3
+  cover_image: images/noimage.jpg
+
 # ============================================
 # 関数 (functions) - 高校
 # ============================================
@@ -536,6 +647,17 @@
   order: 3
   cover_image: images/noimage.jpg
 
+- slug: senior/三角関数の応用_教材
+  title: 三角関数の応用
+  icon: "📐"
+  description: 三角関数の合成・三角方程式・三角不等式をマスター！
+  level: 標準
+  level_num: 2
+  category: functions
+  school_level: senior
+  order: 8
+  cover_image: images/noimage.jpg
+
 # ============================================
 # 図形 (geometry) - 高校
 # ============================================
@@ -572,6 +694,61 @@
   category: geometry
   school_level: senior
   order: 3
+  cover_image: images/noimage.jpg
+
+- slug: senior/三角形の性質_高校_教材
+  title: 三角形の性質（高校）
+  icon: "🔺"
+  description: 五心とチェバ・メネラウスの定理をマスター！
+  level: 標準
+  level_num: 2
+  category: geometry
+  school_level: senior
+  order: 4
+  cover_image: images/noimage.jpg
+
+- slug: senior/円の性質_高校_教材
+  title: 円の性質（高校）
+  icon: "⭕"
+  description: 接弦定理・方べきの定理で円を完全攻略！
+  level: 標準
+  level_num: 2
+  category: geometry
+  school_level: senior
+  order: 5
+  cover_image: images/noimage.jpg
+
+- slug: senior/点と直線_教材
+  title: 点と直線
+  icon: "📐"
+  description: 内分外分・直線の方程式・平行垂直・距離公式で座標幾何の基礎を完全攻略！
+  level: 標準
+  level_num: 2
+  category: geometry
+  school_level: senior
+  order: 6
+  cover_image: images/noimage.jpg
+
+- slug: senior/円の方程式_教材
+  title: 円の方程式
+  icon: "O"
+  description: 標準形・一般形・接線・2円の位置関係をマスター！
+  level: 標準
+  level_num: 2
+  category: geometry
+  school_level: senior
+  order: 7
+  cover_image: images/noimage.jpg
+
+- slug: senior/軌跡と領域_教材
+  title: 軌跡と領域
+  icon: "📍"
+  description: 軌跡の求め方・不等式と領域・線形計画法で図形と方程式を完全攻略！
+  level: 標準
+  level_num: 2
+  category: geometry
+  school_level: senior
+  order: 8
   cover_image: images/noimage.jpg
 
 # ============================================
@@ -620,4 +797,279 @@
   category: data
   school_level: senior
   order: 4
+  cover_image: images/noimage.jpg
+
+- slug: senior/確率の計算_教材
+  title: 確率の計算
+  icon: "🎲"
+  description: 余事象・加法定理で確率を正確に求める！
+  level: 基礎
+  level_num: 1
+  category: data
+  school_level: senior
+  order: 5
+  cover_image: images/noimage.jpg
+
+- slug: senior/条件付き確率と独立試行_教材
+  title: 条件付き確率と独立試行
+  icon: "🔗"
+  description: 条件付き確率・乗法定理・反復試行・期待値をマスター！
+  level: 標準
+  level_num: 2
+  category: data
+  school_level: senior
+  order: 6
+  cover_image: images/noimage.jpg
+
+- slug: senior/約数と倍数_教材
+  title: 約数と倍数
+  icon: "🔢"
+  description: 素因数分解でGCD・LCM・約数の個数を求める！
+  level: 基礎
+  level_num: 1
+  category: numbers
+  school_level: senior
+  order: 4
+  cover_image: images/noimage.jpg
+
+- slug: senior/合同式とユークリッド互除法_教材
+  title: 合同式とユークリッド互除法
+  icon: "🔄"
+  description: mod計算と不定方程式をマスター！
+  level: 標準
+  level_num: 2
+  category: numbers
+  school_level: senior
+  order: 5
+  cover_image: images/noimage.jpg
+
+- slug: senior/二項定理と整式の割り算_教材
+  title: 二項定理と整式の割り算
+  icon: "📐"
+  description: 二項定理でべき乗を一発展開、整式の割り算で商と余りを求める！
+  level: 標準
+  level_num: 2
+  category: numbers
+  school_level: senior
+  order: 6
+  cover_image: images/noimage.jpg
+
+- slug: senior/恒等式と等式の証明_教材
+  title: 恒等式と等式の証明
+  icon: "="
+  description: 係数比較・相加相乗・コーシー・シュワルツで証明力UP！
+  level: 標準
+  level_num: 2
+  category: numbers
+  school_level: senior
+  order: 7
+  cover_image: images/noimage.jpg
+
+- slug: senior/順列vs組合せ_教材
+  title: 順列 vs 組合せ
+  icon: "⚖️"
+  description: PかCか瞬時に判断する力を身につける！
+  level: 標準
+  level_num: 2
+  category: data
+  school_level: senior
+  order: 7
+  cover_image: images/noimage.jpg
+
+- slug: senior/確率_直接計算vs余事象_教材
+  title: 確率：直接計算 vs 余事象
+  icon: "🎯"
+  description: 直接数えるか余事象か、最適な方法を選ぶ！
+  level: 標準
+  level_num: 2
+  category: data
+  school_level: senior
+  order: 8
+  cover_image: images/noimage.jpg
+
+- slug: senior/三角関数の基本_教材
+  title: 三角関数の基本
+  icon: "🌊"
+  description: 弧度法・三角関数のグラフ・周期・加法定理をマスター！
+  level: 標準
+  level_num: 2
+  category: functions
+  school_level: senior
+  order: 10
+  cover_image: images/noimage.jpg
+
+- slug: senior/三角関数_公式の選び方_教材
+  title: 三角関数：公式の選び方
+  icon: "🎯"
+  description: 加法定理・倍角・半角・合成、どれを使うか瞬時に判断！
+  level: 発展
+  level_num: 3
+  category: functions
+  school_level: senior
+  order: 11
+  cover_image: images/noimage.jpg
+
+- slug: senior/指数関数_教材
+  title: 指数関数
+  icon: "📈"
+  description: 指数法則・指数関数のグラフ・方程式・不等式をマスター！
+  level: 標準
+  level_num: 2
+  category: functions
+  school_level: senior
+  order: 11
+  cover_image: images/noimage.jpg
+
+- slug: senior/対数関数_教材
+  title: 対数関数
+  icon: "📊"
+  description: 対数の定義・対数法則・グラフ・方程式・常用対数をマスター！
+  level: 標準
+  level_num: 2
+  category: functions
+  school_level: senior
+  order: 11
+  cover_image: images/noimage.jpg
+
+- slug: senior/微分の計算_教材
+  title: 微分の計算
+  icon: "📉"
+  description: 導関数の定義・微分公式・接線の方程式をマスター！
+  level: 標準
+  level_num: 2
+  category: functions
+  school_level: senior
+  order: 11
+  cover_image: images/noimage.jpg
+
+- slug: senior/関数の増減と極値_教材
+  title: 関数の増減と極値
+  icon: "📈"
+  description: 増減表の書き方・極大極小・閉区間での最大最小をマスター！
+  level: 標準
+  level_num: 2
+  category: functions
+  school_level: senior
+  order: 12
+  cover_image: images/noimage.jpg
+
+- slug: senior/微分vs判別式_教材
+  title: 微分 vs 判別式
+  icon: "🔀"
+  description: 二次関数との融合問題で微分か判別式かを瞬時に判断！
+  level: 発展
+  level_num: 3
+  category: functions
+  school_level: senior
+  order: 50
+  cover_image: images/noimage.jpg
+
+- slug: senior/積分の計算_教材
+  title: 積分の計算
+  icon: "∫"
+  description: 不定積分・定積分の計算方法をマスター！
+  level: 標準
+  level_num: 2
+  category: functions
+  school_level: senior
+  order: 13
+  cover_image: images/noimage.jpg
+
+- slug: senior/面積と積分_教材
+  title: 面積と積分
+  icon: "📐"
+  description: 曲線と面積・1/6公式・1/12公式で面積計算を高速化！
+  level: 標準
+  level_num: 2
+  category: functions
+  school_level: senior
+  order: 14
+  cover_image: images/noimage.jpg
+
+- slug: senior/等差数列_教材
+  title: 等差数列
+  icon: "📊"
+  description: 等差数列の一般項・和の公式をマスター！
+  level: 標準
+  level_num: 2
+  category: numbers
+  school_level: senior
+  order: 6
+  cover_image: images/noimage.jpg
+
+- slug: senior/等比数列_教材
+  title: 等比数列
+  icon: "📈"
+  description: 一般項・和の公式・無限等比級数で指数的変化をマスター！
+  level: 標準
+  level_num: 2
+  category: numbers
+  school_level: senior
+  order: 7
+  cover_image: images/noimage.jpg
+
+- slug: senior/数列の和とΣ計算_教材
+  title: 数列の和とΣ計算
+  icon: "Σ"
+  description: Σ記号・自然数/平方/立方の和・階差数列・群数列をマスター！
+  level: 標準
+  level_num: 2
+  category: numbers
+  school_level: senior
+  order: 8
+  cover_image: images/noimage.jpg
+
+- slug: senior/漸化式_教材
+  title: 漸化式
+  icon: "🔄"
+  description: 等差型・等比型・特性方程式・分数型で漸化式を完全攻略！
+  level: 標準
+  level_num: 2
+  category: numbers
+  school_level: senior
+  order: 9
+  cover_image: images/noimage.jpg
+
+- slug: senior/数学的帰納法_教材
+  title: 数学的帰納法
+  icon: "🎯"
+  description: 基底・仮定・帰納の3ステップで等式も不等式も証明！
+  level: 標準
+  level_num: 2
+  category: numbers
+  school_level: senior
+  order: 10
+  cover_image: images/noimage.jpg
+
+- slug: senior/確率分布_教材
+  title: 確率分布
+  icon: "📊"
+  description: 確率変数・期待値・分散・標準偏差・二項分布をマスター！
+  level: 標準
+  level_num: 2
+  category: data
+  school_level: senior
+  order: 10
+  cover_image: images/noimage.jpg
+
+- slug: senior/正規分布_教材
+  title: 正規分布
+  icon: "📊"
+  description: 標準化・z値・正規分布表で確率を求める！
+  level: 標準
+  level_num: 2
+  category: data
+  school_level: senior
+  order: 9
+  cover_image: images/noimage.jpg
+
+- slug: senior/統計的推測_教材
+  title: 統計的推測
+  icon: "📊"
+  description: 母平均の推定・95%信頼区間・仮説検定の基本をマスター！
+  level: 標準
+  level_num: 2
+  category: data
+  school_level: senior
+  order: 11
   cover_image: images/noimage.jpg
