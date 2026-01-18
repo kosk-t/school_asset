@@ -1,0 +1,556 @@
+---
+layout: material-raw
+title: 一次関数の応用
+icon: "📊"
+description: 一次関数の式を求める方法と、グラフの交点・変域を学びます。2点から式を求めたり、交点の座標を計算したりできるようになろう！
+level: 標準
+level_num: 2
+category: functions
+school_level: junior
+order: 6
+keywords:
+  - 一次関数
+  - 式の求め方
+  - 交点
+  - 変域
+  - グラフの利用
+cover_image: /images/noimage.jpg
+cover_description: 2つの一次関数のグラフが交わる図と、式を求める過程
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学雑学「ガリレオと落下の法則」"
+related:
+  - url: /junior/一次関数の基本_教材.html
+    title: 一次関数の基本
+    note: 傾きと切片の意味を先に理解しよう
+    type: prerequisite
+  - url: /junior/連立方程式_教材.html
+    title: 連立方程式
+    note: 交点を求めるときに使う
+    type: prerequisite
+  - url: /junior/一次関数_問題タイプ別攻略_教材.html
+    title: 一次関数：問題タイプ別攻略
+    note: 問題パターン別の解法
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「2点を通る直線の式は？」「2つのグラフはどこで交わる？」これらを解決するのが一次関数の応用です。料金プランの比較や、2つのものが同じになる時点を求めるなど、実生活でも活躍します。</p>
+        <p>このページでは、<strong>一次関数の応用</strong>を学びます：</p>
+        <ul>
+            <li><strong>式の求め方</strong>：2点から、または傾きと1点から式を求める</li>
+            <li><strong>グラフの交点</strong>：2つの直線が交わる点の座標を求める</li>
+            <li><strong>変域</strong>：xやyの取りうる範囲を求める</li>
+            <li><strong>一次関数の利用</strong>：速さ・料金・水量などの問題</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】2点 \((x_1, y_1)\), \((x_2, y_2)\) を通る直線の式は、傾き \(a = \frac{y_2 - y_1}{x_2 - x_1}\) を求めてから \(y = ax + b\) に代入
+        </div>
+
+        <div class="svg-container" style="margin: 15px 0;">
+            <svg width="500" height="280" viewBox="0 0 500 280">
+                <!-- 座標軸 -->
+                <line x1="50" y1="230" x2="450" y2="230" stroke="#333" stroke-width="2"/>
+                <line x1="80" y1="260" x2="80" y2="30" stroke="#333" stroke-width="2"/>
+                <text x="460" y="235" font-size="14">x</text>
+                <text x="70" y="20" font-size="14">y</text>
+                <text x="85" y="245" font-size="12">O</text>
+
+                <!-- 直線 -->
+                <line x1="80" y1="200" x2="400" y2="40" stroke="#1976d2" stroke-width="3"/>
+
+                <!-- 2点 -->
+                <circle cx="160" cy="160" r="6" fill="#e53935"/>
+                <circle cx="320" cy="80" r="6" fill="#e53935"/>
+
+                <!-- ラベル -->
+                <text x="135" y="180" font-size="14">(x₁, y₁)</text>
+                <text x="325" y="70" font-size="14">(x₂, y₂)</text>
+
+                <!-- 増加量 -->
+                <line x1="160" y1="160" x2="320" y2="160" stroke="#4caf50" stroke-width="2" stroke-dasharray="5,3"/>
+                <line x1="320" y1="160" x2="320" y2="80" stroke="#ff9800" stroke-width="2" stroke-dasharray="5,3"/>
+                <text x="230" y="175" font-size="12" fill="#4caf50">x₂ - x₁</text>
+                <text x="330" y="125" font-size="12" fill="#ff9800">y₂ - y₁</text>
+
+                <!-- 公式 -->
+                <text x="250" y="220" font-size="16" fill="#1976d2">傾き a = (y₂ - y₁) ÷ (x₂ - x₁)</text>
+            </svg>
+            <div class="svg-caption">2点から傾きを求める</div>
+        </div>
+
+        <div class="rule-box" id="rule-from-two-points">
+            <strong>📌 ルール1：2点から式を求める手順</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <ol>
+                <li><strong>傾きを求める</strong>：\(a = \frac{y_2 - y_1}{x_2 - x_1}\)</li>
+                <li><strong>切片を求める</strong>：\(y = ax + b\) にどちらかの点を代入して \(b\) を求める</li>
+                <li><strong>式を書く</strong>：\(y = ax + b\)</li>
+            </ol>
+            <p><strong>✅ メリット：</strong> どんな2点からでも直線の式が求まる！</p>
+        </div>
+
+        <div class="rule-box" id="rule-from-slope-point">
+            <strong>📌 ルール2：傾きと1点から式を求める</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <p>傾き \(a\) と点 \((p, q)\) がわかっているとき：</p>
+            <ol>
+                <li>\(y = ax + b\) に傾き \(a\) を入れる</li>
+                <li>点 \((p, q)\) を代入して \(b\) を求める</li>
+            </ol>
+            <p><strong>→ \(q = ap + b\) から \(b = q - ap\)</strong></p>
+        </div>
+
+        <div class="rule-box" id="rule-intersection">
+            <strong>📌 ルール3：2直線の交点の求め方</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <p>2つの一次関数 \(y = a_1x + b_1\) と \(y = a_2x + b_2\) の交点は：</p>
+            <div class="formula">
+                \[ a_1x + b_1 = a_2x + b_2 \]
+            </div>
+            <p>を解いて \(x\) を求め、どちらかの式に代入して \(y\) を求める。</p>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="400" height="220" viewBox="0 0 400 220">
+                    <!-- 座標軸 -->
+                    <line x1="40" y1="180" x2="360" y2="180" stroke="#333" stroke-width="2"/>
+                    <line x1="80" y1="200" x2="80" y2="30" stroke="#333" stroke-width="2"/>
+                    <text x="370" y="185" font-size="14">x</text>
+                    <text x="70" y="20" font-size="14">y</text>
+                    <text x="85" y="195" font-size="12">O</text>
+
+                    <!-- 直線1: y = 2x - 1 -->
+                    <line x1="60" y1="170" x2="300" y2="50" stroke="#1976d2" stroke-width="2"/>
+                    <text x="280" y="45" font-size="12" fill="#1976d2">y = 2x - 1</text>
+
+                    <!-- 直線2: y = -x + 5 -->
+                    <line x1="60" y1="90" x2="320" y2="160" stroke="#e53935" stroke-width="2"/>
+                    <text x="300" y="175" font-size="12" fill="#e53935">y = -x + 5</text>
+
+                    <!-- 交点 -->
+                    <circle cx="180" cy="110" r="6" fill="#4caf50"/>
+                    <text x="185" y="100" font-size="14" fill="#4caf50">交点 (2, 3)</text>
+                </svg>
+                <div class="svg-caption">2直線の交点は連立方程式で求まる</div>
+            </div>
+            <p><strong>→ グラフの交点 ＝ 連立方程式の解！</strong></p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>交点では2つの直線上に同じ点がある、つまり同じ \(x\) に対して \(y\) が等しい。だから2つの式を = で結んで解ける。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-domain">
+            <strong>📌 ルール4：変域の求め方</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <p>\(x\) の変域が \(a \leq x \leq b\) のとき、\(y\) の変域は：</p>
+            <ul>
+                <li><strong>傾きが正</strong>：\(x = a\) で最小、\(x = b\) で最大</li>
+                <li><strong>傾きが負</strong>：\(x = a\) で最大、\(x = b\) で最小</li>
+            </ul>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="500" height="180" viewBox="0 0 500 180">
+                    <!-- 左: 傾き正 -->
+                    <text x="120" y="20" font-size="14" text-anchor="middle">傾き正（右上がり）</text>
+                    <line x1="40" y1="150" x2="200" y2="150" stroke="#333" stroke-width="1"/>
+                    <line x1="60" y1="160" x2="60" y2="40" stroke="#333" stroke-width="1"/>
+                    <line x1="60" y1="130" x2="180" y2="50" stroke="#1976d2" stroke-width="2"/>
+                    <circle cx="80" cy="120" r="5" fill="#e53935"/>
+                    <circle cx="160" cy="60" r="5" fill="#e53935"/>
+                    <text x="75" y="140" font-size="11">最小</text>
+                    <text x="155" y="50" font-size="11">最大</text>
+                    <line x1="80" y1="155" x2="160" y2="155" stroke="#4caf50" stroke-width="3"/>
+                    <text x="120" y="170" font-size="11" text-anchor="middle" fill="#4caf50">xの変域</text>
+
+                    <!-- 右: 傾き負 -->
+                    <text x="380" y="20" font-size="14" text-anchor="middle">傾き負（右下がり）</text>
+                    <line x1="300" y1="150" x2="460" y2="150" stroke="#333" stroke-width="1"/>
+                    <line x1="320" y1="160" x2="320" y2="40" stroke="#333" stroke-width="1"/>
+                    <line x1="320" y1="50" x2="440" y2="130" stroke="#e53935" stroke-width="2"/>
+                    <circle cx="340" cy="60" r="5" fill="#1976d2"/>
+                    <circle cx="420" cy="120" r="5" fill="#1976d2"/>
+                    <text x="335" y="50" font-size="11">最大</text>
+                    <text x="415" y="140" font-size="11">最小</text>
+                    <line x1="340" y1="155" x2="420" y2="155" stroke="#4caf50" stroke-width="3"/>
+                    <text x="380" y="170" font-size="11" text-anchor="middle" fill="#4caf50">xの変域</text>
+                </svg>
+                <div class="svg-caption">傾きの符号と最大・最小の関係</div>
+            </div>
+        </div>
+
+        <div class="rule-box" id="rule-application">
+            <strong>📌 ルール5：一次関数の利用（文章題）</strong> <a href="#ex-5" class="example-link">→ 例5</a>
+            <p>よく出るパターン：</p>
+            <table class="material-table">
+                <tr>
+                    <th>パターン</th>
+                    <th>傾き</th>
+                    <th>切片</th>
+                </tr>
+                <tr>
+                    <td>速さ・距離</td>
+                    <td>速さ（分速、時速）</td>
+                    <td>出発時の位置</td>
+                </tr>
+                <tr>
+                    <td>料金プラン</td>
+                    <td>単価（1個あたり、1分あたり）</td>
+                    <td>基本料金</td>
+                </tr>
+                <tr>
+                    <td>水量</td>
+                    <td>1分あたりの増減量</td>
+                    <td>最初の水量</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>一次関数の応用問題を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 式の求め方</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>2点から式を求める
+            </div>
+            <p>2点 \((1, 3)\), \((4, 9)\) を通る直線の式を求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>傾きを求める</strong>
+                    \[ a = \frac{9 - 3}{4 - 1} = \frac{6}{3} = 2 \]</li>
+                <li><strong>切片を求める</strong>：\(y = 2x + b\) に点 \((1, 3)\) を代入
+                    \[ 3 = 2 \times 1 + b \]
+                    \[ b = 3 - 2 = 1 \]</li>
+                <li><strong>式を書く</strong></li>
+            </ol>
+            <div class="formula">
+                \[ y = 2x + 1 \]
+            </div>
+            <p><strong>確認：</strong> \((4, 9)\) を代入すると \(y = 2 \times 4 + 1 = 9\) ✓</p>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>傾きと1点から式を求める
+            </div>
+            <p>傾きが \(-3\) で、点 \((2, 1)\) を通る直線の式を求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(y = -3x + b\) に点 \((2, 1)\) を代入</li>
+                <li>\(1 = -3 \times 2 + b\)</li>
+                <li>\(1 = -6 + b\) より \(b = 7\)</li>
+            </ol>
+            <div class="formula">
+                \[ y = -3x + 7 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 交点を求める</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>2直線の交点
+            </div>
+            <p>\(y = 2x - 1\) と \(y = -x + 5\) の交点の座標を求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>連立方程式を立てる</strong>：交点では \(y\) が等しいので
+                    \[ 2x - 1 = -x + 5 \]</li>
+                <li><strong>\(x\) を求める</strong>
+                    \[ 2x + x = 5 + 1 \]
+                    \[ 3x = 6 \]
+                    \[ x = 2 \]</li>
+                <li><strong>\(y\) を求める</strong>：\(y = 2 \times 2 - 1 = 3\)</li>
+            </ol>
+            <div class="formula">
+                \[ \text{交点の座標：} (2, 3) \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 変域</h3>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>yの変域を求める
+            </div>
+            <p>\(y = -2x + 5\) で、\(x\) の変域が \(1 \leq x \leq 4\) のとき、\(y\) の変域を求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>傾きを確認</strong>：\(a = -2 < 0\)（右下がり）</li>
+                <li><strong>\(x = 1\) のとき</strong>：\(y = -2 \times 1 + 5 = 3\)（最大）</li>
+                <li><strong>\(x = 4\) のとき</strong>：\(y = -2 \times 4 + 5 = -3\)（最小）</li>
+            </ol>
+            <div class="formula">
+                \[ -3 \leq y \leq 3 \]
+            </div>
+            <p><strong>→ 傾きが負なので、xが増えるとyは減る！</strong></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 一次関数の利用</h3>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>追いつき問題
+            </div>
+            <p>A君は家から毎分80mで歩き始めた。その5分後に、B君が家から毎分200mの自転車で追いかけた。B君がA君に追いつくのは、B君が出発してから何分後か。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>変数を決める</strong>：B君出発からx分後、家からの距離をymとする</li>
+                <li><strong>A君の式</strong>：5分先に出発しているので
+                    \[ y = 80(x + 5) = 80x + 400 \]</li>
+                <li><strong>B君の式</strong>：
+                    \[ y = 200x \]</li>
+                <li><strong>追いつく条件</strong>：距離が等しい
+                    \[ 200x = 80x + 400 \]
+                    \[ 120x = 400 \]
+                    \[ x = \frac{400}{120} = \frac{10}{3} \]</li>
+            </ol>
+            <div class="formula">
+                \[ \frac{10}{3} \text{分後} = 3\text{分}20\text{秒後} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-6">
+            <div class="example-title">
+                <span class="number-badge">例6</span>料金プランの比較
+            </div>
+            <p>プランA：基本料金500円、1分10円。プランB：基本料金200円、1分20円。何分以上使うとプランAがお得か。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>式を立てる</strong>（x分使用したときの料金y円）
+                    <ul>
+                        <li>プランA：\(y = 10x + 500\)</li>
+                        <li>プランB：\(y = 20x + 200\)</li>
+                    </ul>
+                </li>
+                <li><strong>料金が等しくなる点</strong>
+                    \[ 10x + 500 = 20x + 200 \]
+                    \[ 500 - 200 = 20x - 10x \]
+                    \[ 300 = 10x \]
+                    \[ x = 30 \]</li>
+                <li><strong>判断</strong>：30分を超えるとプランAの傾きが小さい（ゆるやか）ので料金が低い</li>
+            </ol>
+            <div class="formula">
+                \[ 30\text{分より多く使うとプランAがお得} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-7">
+            <div class="example-title">
+                <span class="number-badge">例7</span>グラフから式を読み取る
+            </div>
+            <p>グラフが点 \((0, 4)\) と点 \((6, -2)\) を通る一次関数の式を求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>切片は \(4\)</strong>（y軸との交点が \((0, 4)\) だから）</li>
+                <li><strong>傾きを求める</strong>
+                    \[ a = \frac{-2 - 4}{6 - 0} = \frac{-6}{6} = -1 \]</li>
+            </ol>
+            <div class="formula">
+                \[ y = -x + 4 \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：一方の点が \((0, b)\) なら、そこが切片</strong><br>
+            片方の点のx座標が0なら、そのy座標がそのまま切片。傾きだけ計算すればOK。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：傾きの計算は「yの差 ÷ xの差」</strong><br>
+            順番さえ合わせれば、どちらの点を先にしてもOK。\(\frac{y_1 - y_2}{x_1 - x_2}\) でも同じ答え。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：交点を求めたら検算</strong><br>
+            求めた \((x, y)\) を両方の式に代入して、両方成り立てばOK。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：変域は端点だけチェック</strong><br>
+            一次関数は直線だから、途中で最大・最小になることはない。端点の2つのyを計算するだけ。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ5：文章題は「何がxで何がy」を最初に決める</strong><br>
+            時間なのか距離なのか、料金なのか個数なのか。軸を決めてから式を立てる。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：傾きの計算でx, yを逆にする</div>
+            <p><strong>ダメな例：</strong> \((1, 3)\) と \((4, 9)\) で傾き = \(\frac{4-1}{9-3} = \frac{3}{6} = \frac{1}{2}\)</p>
+            <p><strong>対策：</strong> 傾き = <strong>yの差 ÷ xの差</strong>！「y」が上、「x」が下。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：変域で最大・最小を逆にする</div>
+            <p><strong>ダメな例：</strong> 傾きが負なのに「xが大きいとyも大きい」と思う</p>
+            <p><strong>対策：</strong> 傾きが負なら右下がり！xが増えるとyは減る。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：追いつき問題で時間のズレを忘れる</div>
+            <p><strong>ダメな例：</strong> 「5分後に出発」なのに両方とも \(y = (\text{速さ}) \times x\) にする</p>
+            <p><strong>対策：</strong> 先に出た方は「\(x + (\text{先に出た時間})\)」分経過している。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：交点の計算で代入ミス</div>
+            <p><strong>ダメな例：</strong> \(x\) を求めた後、関係ない式に代入する</p>
+            <p><strong>対策：</strong> どちらの式に代入してもOK。計算しやすい方を選ぶ。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">2点から傾きを計算できるか？（yの差 ÷ xの差）</div>
+            <div class="checklist-item">傾きと1点から式を求められるか？</div>
+            <div class="checklist-item">2つの直線の交点を連立方程式で求められるか？</div>
+            <div class="checklist-item">xの変域からyの変域を求められるか？（傾きの符号に注意）</div>
+            <div class="checklist-item">文章題で式を立てて問題を解けるか？</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>2点 \((2, 5)\), \((5, 11)\) を通る直線の式を求めなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>傾き：\(a = \frac{11 - 5}{5 - 2} = \frac{6}{3} = 2\)</p>
+                    <p>切片：\(5 = 2 \times 2 + b\) より \(b = 1\)</p>
+                    <p><strong>答え：\(y = 2x + 1\)</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\(y = 3x - 2\) と \(y = -x + 6\) の交点の座標を求めなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(3x - 2 = -x + 6\)</p>
+                    <p>\(4x = 8\) より \(x = 2\)</p>
+                    <p>\(y = 3 \times 2 - 2 = 4\)</p>
+                    <p><strong>答え：\((2, 4)\)</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>\(y = -\frac{1}{2}x + 4\) で、\(x\) の変域が \(-2 \leq x \leq 6\) のとき、\(y\) の変域を求めなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>傾きが負なので、\(x = -2\) で最大、\(x = 6\) で最小</p>
+                    <p>\(x = -2\)：\(y = -\frac{1}{2} \times (-2) + 4 = 5\)</p>
+                    <p>\(x = 6\)：\(y = -\frac{1}{2} \times 6 + 4 = 1\)</p>
+                    <p><strong>答え：\(1 \leq y \leq 5\)</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：2点から傾きを求めて式を作る！交点は連立方程式で解く！変域は傾きの符号に注意！
+</div>
+
+<!-- ========== 関連教材 ========== -->
+<!-- Front Matterのrelatedで指定すればレイアウトが自動生成します -->
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「ガリレオと落下の法則」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">🗼 ピサの斜塔から始まった「速さ」の物語</div>
+
+            <p>1589年、イタリア。若き数学教授ガリレオ・ガリレイは、ある実験をしようとしていました。</p>
+
+            <p>当時の常識は「重いものほど速く落ちる」。アリストテレス（古代ギリシャの大哲学者）がそう言ったから、約2000年間誰も疑わなかったのです。</p>
+
+            <p>ガリレオ「いや、それおかしくない？」</p>
+
+            <p>彼はピサの斜塔に登り、重さの違う2つの球を同時に落としました。</p>
+
+            <p>結果は......</p>
+
+            <p><strong>同時に着地！</strong></p>
+
+            <p>重さに関係なく、同じ時間で落ちたのです。</p>
+
+            <p>さらにガリレオは、斜面を転がる球の実験で「落下の法則」を発見しました。</p>
+
+            <p>物体が落ち始めてから \(t\) 秒後の速さ \(v\) は：</p>
+
+            <div class="formula">
+                \[ v = gt \]
+            </div>
+
+            <p>（\(g\) は重力加速度、約9.8 m/s²）</p>
+
+            <p>これは<strong>傾き \(g\)、切片 \(0\) の一次関数</strong>です！</p>
+
+            <p>つまり、速さは時間に比例して一定の割合で増える。1秒ごとに約9.8 m/s ずつ速くなる。</p>
+
+            <p>ちなみに、ピサの斜塔の実験は「伝説」とも言われています。本当にやったかどうかは定かではありません。</p>
+
+            <p>でも確実なのは、ガリレオが「実験で確かめる」という科学の基本を確立したこと。2000年間信じられていた常識を、たった一つの実験で覆したのです。</p>
+
+            <p style="color: #666; font-size: 0.95em;">...というわけで、一次関数は物理学の基礎。ガリレオは「近代科学の父」と呼ばれ、彼の発見は後にニュートンの運動法則へとつながります。</p>
+
+            <p style="font-size: 0.9em; color: #888; margin-top: 15px;">※ピサの斜塔の実験については、ガリレオの弟子ヴィヴィアーニの伝記に記載がありますが、実際に行われたかは議論があります。</p>
+        </div>
+    </div>
+</section>

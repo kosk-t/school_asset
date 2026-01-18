@@ -1,0 +1,492 @@
+---
+layout: material-raw
+title: 図形と関数の融合問題
+icon: "🔷"
+description: 座標平面上の図形と関数を組み合わせた融合問題を攻略します。面積・等積変形・特殊な点の3パターンをマスターしよう！
+level: 発展
+level_num: 3
+category: functions
+school_level: junior
+order: 51
+keywords:
+  - 融合問題
+  - 座標平面
+  - 面積
+  - 等積変形
+  - 三角形
+cover_image: /images/noimage.jpg
+cover_description: 座標平面上の図形と関数のグラフ
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：入試必勝「融合問題の読み解き方」"
+related:
+  - url: /junior/関数の総合問題_攻略法_教材.html
+    title: 関数の総合問題：攻略法
+    note: 関数問題の基本を学ぶ
+    type: prerequisite
+  - url: /junior/三平方の定理の応用_教材.html
+    title: 三平方の定理の応用
+    note: 座標平面での距離計算
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>入試の大問でよく出る「融合問題」。座標平面上に図形を描いて、関数の式を使って面積や特殊な点を求める問題です。図形と関数の両方の知識を組み合わせる力が試されます。</p>
+        <p>このページでは、<strong>図形と関数の融合問題</strong>を学びます：</p>
+        <ul>
+            <li><strong>座標平面上の面積</strong>：三角形・四角形の面積計算</li>
+            <li><strong>等積変形</strong>：面積を変えずに頂点を移動</li>
+            <li><strong>特殊な点を求める</strong>：面積二等分・直角など</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】座標平面の三角形の面積は「y軸を底辺」にするのが基本！
+        </div>
+
+        <h3 style="color: #1976d2; margin: 20px 0 10px 0;">▶ 座標平面上の面積計算</h3>
+
+        <div class="rule-box" id="rule-area-yaxis">
+            <strong>📌 ルール1：y軸を底辺にする方法</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <p>直線とx軸・y軸で囲まれた三角形は、y軸を底辺にするとラク</p>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="300" height="220" viewBox="0 0 300 220">
+                    <!-- 座標軸 -->
+                    <line x1="50" y1="180" x2="280" y2="180" stroke="#333" stroke-width="1"/>
+                    <line x1="100" y1="20" x2="100" y2="200" stroke="#333" stroke-width="1"/>
+                    <text x="270" y="175" font-size="14">x</text>
+                    <text x="105" y="30" font-size="14">y</text>
+
+                    <!-- 直線 -->
+                    <line x1="50" y1="60" x2="250" y2="180" stroke="#1976d2" stroke-width="2"/>
+
+                    <!-- 三角形 -->
+                    <polygon points="100,180 100,100 200,180" fill="#e3f2fd" fill-opacity="0.5" stroke="#1976d2" stroke-width="2"/>
+
+                    <!-- 点のラベル -->
+                    <circle cx="100" cy="180" r="4" fill="#333"/>
+                    <circle cx="100" cy="100" r="4" fill="#e53935"/>
+                    <circle cx="200" cy="180" r="4" fill="#4caf50"/>
+                    <text x="90" y="195" font-size="14">O</text>
+                    <text x="105" y="95" font-size="14" fill="#e53935">A(0,b)</text>
+                    <text x="200" y="195" font-size="14" fill="#4caf50">B(c,0)</text>
+
+                    <!-- 底辺と高さ -->
+                    <line x1="95" y1="100" x2="95" y2="180" stroke="#ff9800" stroke-width="2"/>
+                    <text x="70" y="145" font-size="14" fill="#ff9800">底辺b</text>
+                    <line x1="100" y1="185" x2="200" y2="185" stroke="#9c27b0" stroke-width="2"/>
+                    <text x="140" y="205" font-size="14" fill="#9c27b0">高さc</text>
+                </svg>
+                <div class="svg-caption">y軸を底辺に、x座標を高さに</div>
+            </div>
+            <div class="formula">
+                \[ \triangle OAB = \frac{1}{2} \times b \times c \]
+            </div>
+            <p>底辺 = y切片の絶対値、高さ = x切片の絶対値</p>
+        </div>
+
+        <div class="rule-box" id="rule-area-split">
+            <strong>📌 ルール2：三角形を分割する方法</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <p>原点を通らない三角形は、y軸で分割して計算</p>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="320" height="200" viewBox="0 0 320 200">
+                    <!-- 座標軸 -->
+                    <line x1="30" y1="150" x2="290" y2="150" stroke="#333" stroke-width="1"/>
+                    <line x1="120" y1="20" x2="120" y2="180" stroke="#333" stroke-width="1"/>
+
+                    <!-- 三角形ABC -->
+                    <polygon points="60,100 200,50 180,150" fill="#e3f2fd" fill-opacity="0.5" stroke="#1976d2" stroke-width="2"/>
+
+                    <!-- y軸との交点 -->
+                    <circle cx="120" cy="70" r="4" fill="#e53935"/>
+                    <circle cx="120" cy="130" r="4" fill="#e53935"/>
+
+                    <!-- ラベル -->
+                    <text x="45" y="100" font-size="14">A</text>
+                    <text x="200" y="45" font-size="14">B</text>
+                    <text x="185" y="165" font-size="14">C</text>
+                    <text x="125" y="65" font-size="14" fill="#e53935">P</text>
+                    <text x="125" y="135" font-size="14" fill="#e53935">Q</text>
+
+                    <!-- 分割線 -->
+                    <line x1="120" y1="70" x2="60" y2="100" stroke="#ff9800" stroke-width="1" stroke-dasharray="4,2"/>
+                    <line x1="120" y1="70" x2="200" y2="50" stroke="#ff9800" stroke-width="1" stroke-dasharray="4,2"/>
+                    <line x1="120" y1="130" x2="60" y2="100" stroke="#4caf50" stroke-width="1" stroke-dasharray="4,2"/>
+                    <line x1="120" y1="130" x2="180" y2="150" stroke="#4caf50" stroke-width="1" stroke-dasharray="4,2"/>
+                </svg>
+                <div class="svg-caption">y軸との交点P, Qを使って分割</div>
+            </div>
+            <p>△ABC = △APQ + △BPQ + △CPQ（または引き算）</p>
+        </div>
+
+        <div class="rule-box" id="rule-area-formula">
+            <strong>📌 ルール3：座標による面積公式</strong>
+            <p>3点 A(x₁, y₁), B(x₂, y₂), C(x₃, y₃) の三角形の面積：</p>
+            <div class="formula">
+                \[ S = \frac{1}{2}|x_1(y_2 - y_3) + x_2(y_3 - y_1) + x_3(y_1 - y_2)| \]
+            </div>
+            <p>複雑な形でも、この公式を使えば座標から直接計算できる</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 20px 0 10px 0;">▶ 等積変形</h3>
+
+        <div class="rule-box" id="rule-equal-area">
+            <strong>📌 ルール4：等積変形の原理</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <p>底辺が共通なら、<strong>頂点を底辺と平行な直線上で動かしても面積は変わらない</strong></p>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="350" height="180" viewBox="0 0 350 180">
+                    <!-- 底辺 -->
+                    <line x1="50" y1="140" x2="200" y2="140" stroke="#1976d2" stroke-width="2"/>
+                    <text x="115" y="160" font-size="14" fill="#1976d2">底辺AB</text>
+
+                    <!-- 平行線 -->
+                    <line x1="30" y1="50" x2="320" y2="50" stroke="#4caf50" stroke-width="1" stroke-dasharray="4,2"/>
+                    <text x="250" y="45" font-size="14" fill="#4caf50">底辺と平行</text>
+
+                    <!-- 三角形1 -->
+                    <polygon points="50,140 200,140 100,50" fill="#e3f2fd" fill-opacity="0.3" stroke="#1976d2" stroke-width="2"/>
+                    <circle cx="100" cy="50" r="4" fill="#e53935"/>
+                    <text x="95" y="40" font-size="14">C</text>
+
+                    <!-- 三角形2（等積） -->
+                    <polygon points="50,140 200,140 180,50" fill="none" stroke="#ff9800" stroke-width="2" stroke-dasharray="4,2"/>
+                    <circle cx="180" cy="50" r="4" fill="#ff9800"/>
+                    <text x="175" y="40" font-size="14" fill="#ff9800">C'</text>
+
+                    <!-- 矢印 -->
+                    <path d="M 110 50 L 170 50" stroke="#333" stroke-width="2" marker-end="url(#arrow3)"/>
+                    <defs>
+                        <marker id="arrow3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+                        </marker>
+                    </defs>
+                </svg>
+                <div class="svg-caption">△ABC = △ABC'（高さが同じ）</div>
+            </div>
+            <p><strong>使い方：</strong> 「y軸上に頂点がある三角形に変形」すると面積計算が楽に！</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 20px 0 10px 0;">▶ 特殊な点を求める</h3>
+
+        <div class="rule-box" id="rule-special-point">
+            <strong>📌 ルール5：面積を二等分する点</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <p>三角形の面積を二等分する直線は、<strong>頂点と対辺の中点を通る</strong></p>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="280" height="180" viewBox="0 0 280 180">
+                    <polygon points="50,150 200,150 130,40" fill="#e3f2fd" fill-opacity="0.5" stroke="#1976d2" stroke-width="2"/>
+                    <!-- 中点 -->
+                    <circle cx="125" cy="150" r="4" fill="#e53935"/>
+                    <!-- 二等分線 -->
+                    <line x1="130" y1="40" x2="125" y2="150" stroke="#e53935" stroke-width="2"/>
+                    <!-- ラベル -->
+                    <text x="35" y="165" font-size="14">A</text>
+                    <text x="200" y="165" font-size="14">B</text>
+                    <text x="125" y="35" font-size="14">C</text>
+                    <text x="110" y="170" font-size="14" fill="#e53935">M</text>
+                </svg>
+                <div class="svg-caption">CMはABの中点を通る</div>
+            </div>
+        </div>
+
+        <div class="rule-box" id="rule-right-angle">
+            <strong>📌 ルール6：直角になる点</strong> <a href="#ex-5" class="example-link">→ 例5</a>
+            <p>「∠APB = 90°となる点P」→ 直径ABの円周上にある</p>
+            <p>または、傾きの積 = -1 を使う</p>
+            <div class="formula">
+                \[ \text{傾き}_1 \times \text{傾き}_2 = -1 \Leftrightarrow \text{直交} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>融合問題を実際に解いてみましょう。</p>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>三角形の面積（基本）
+            </div>
+            <p>直線 y = -x + 4 と x軸、y軸で囲まれた三角形の面積を求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>y切片：x = 0 を代入 → y = 4、点(0, 4)</li>
+                <li>x切片：y = 0 を代入 → x = 4、点(4, 0)</li>
+                <li>y軸を底辺（長さ4）、高さ = x切片（4）</li>
+            </ol>
+            <div class="formula">
+                \[ \text{面積} = \frac{1}{2} \times 4 \times 4 = 8 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>三角形の面積（分割）
+            </div>
+            <p>3点 A(-2, 1), B(4, 4), C(2, -2) を頂点とする三角形の面積を求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <p>座標による面積公式を使用：</p>
+            <div class="formula">
+                \[ S = \frac{1}{2}|x_1(y_2 - y_3) + x_2(y_3 - y_1) + x_3(y_1 - y_2)| \]
+            </div>
+            <p>= \(\frac{1}{2}|(-2)(4-(-2)) + 4((-2)-1) + 2(1-4)|\)</p>
+            <p>= \(\frac{1}{2}|(-2)(6) + 4(-3) + 2(-3)|\)</p>
+            <p>= \(\frac{1}{2}|-12 - 12 - 6| = \frac{1}{2} \times 30 = 15\)</p>
+            <div class="formula">
+                \[ \text{面積} = 15 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>等積変形
+            </div>
+            <p>放物線 y = x² 上の点A(-1, 1), B(2, 4) と原点Oで作る△OABの面積を、等積変形を使って求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>直線ABの式を求める：傾き = (4-1)/(2-(-1)) = 1</li>
+                <li>y = x + 2（y切片はC(0, 2)）</li>
+                <li>△OABを△OACと△OBCに分割</li>
+                <li>底辺OC = 2（y軸上）</li>
+                <li>△OAC = (1/2) × 2 × 1 = 1（Aのx座標の絶対値が高さ）</li>
+                <li>△OBC = (1/2) × 2 × 2 = 2（Bのx座標が高さ）</li>
+            </ol>
+            <div class="formula">
+                \[ \triangle OAB = 1 + 2 = 3 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>面積を二等分する点
+            </div>
+            <p>△OABで O(0,0), A(6,0), B(2,4) とする。原点Oを通り△OABの面積を二等分する直線の式を求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>Oを通り面積を二等分 → 対辺ABの中点Mを通る</li>
+                <li>Mの座標 = ((6+2)/2, (0+4)/2) = (4, 2)</li>
+                <li>直線OMの傾き = 2/4 = 1/2</li>
+                <li>原点を通るので y = (1/2)x</li>
+            </ol>
+            <div class="formula">
+                \[ y = \frac{1}{2}x \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>直角になる点
+            </div>
+            <p>A(0, 4), B(6, 0) とする。x軸上の点Pで∠APB = 90°となる点の座標を求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>P(t, 0) とおく（x軸上）</li>
+                <li>PAの傾き = (4-0)/(0-t) = -4/t</li>
+                <li>PBの傾き = (0-0)/(6-t) = 0</li>
+            </ol>
+            <p>これだとPBは水平線なので傾きの積では解けない。別解で考える。</p>
+            <p><strong>別解：三平方の定理</strong></p>
+            <ol>
+                <li>PA² + PB² = AB² の関係（∠APB = 90°）</li>
+                <li>PA² = t² + 16</li>
+                <li>PB² = (6-t)²</li>
+                <li>AB² = 36 + 16 = 52</li>
+                <li>t² + 16 + (6-t)² = 52</li>
+                <li>t² + 16 + 36 - 12t + t² = 52</li>
+                <li>2t² - 12t = 0</li>
+                <li>2t(t - 6) = 0</li>
+                <li>t = 0 または t = 6</li>
+            </ol>
+            <p>t = 0 は点A、t = 6 は点Bなので、<strong>P(0, 0) または P(6, 0) は不適</strong></p>
+            <p>→ x軸上には∠APB = 90°となる点はない（AB自体がx軸上にあるため）</p>
+            <p><strong>※ 問題設定の確認が必要な例</strong></p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：まず図を描く</strong><br>
+            座標軸と点を描いて、三角形や四角形の形を把握する。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：y軸を底辺にする</strong><br>
+            直線のy切片を使えば、底辺がy軸上になる。計算が楽になる。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：座標公式を覚えておく</strong><br>
+            複雑な三角形は座標公式で直接計算。分割よりも確実。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：等積変形で頂点を動かす</strong><br>
+            「底辺と平行な直線上に頂点を移動」で、y軸上に頂点を持っていく。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ5：中点は座標の平均</strong><br>
+            中点 = ((x₁+x₂)/2, (y₁+y₂)/2)。面積二等分で必ず使う。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：底辺と高さを間違える</div>
+            <p><strong>ダメな例：</strong> 斜めの辺を底辺にして、高さがわからなくなる</p>
+            <p><strong>対策：</strong> 底辺は軸に平行な辺を選ぶ。y軸やx軸上の線分がベスト。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：符号ミス</div>
+            <p><strong>ダメな例：</strong> x = -2 のとき「高さ -2」と計算</p>
+            <p><strong>対策：</strong> 長さは絶対値！常に正の数。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：y切片を求め忘れる</div>
+            <p><strong>ダメな例：</strong> 直線の式があるのにy切片を使わない</p>
+            <p><strong>対策：</strong> まずy切片を求めて、y軸との交点を出す。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：分割を複雑にしすぎる</div>
+            <p><strong>ダメな例：</strong> 4つ以上に分割して混乱</p>
+            <p><strong>対策：</strong> 座標公式を使うか、2つの三角形の和・差で求める。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">y軸を底辺にした面積計算ができるか？</div>
+            <div class="checklist-item">座標による面積公式を使えるか？</div>
+            <div class="checklist-item">等積変形の原理（底辺と平行な線上を移動）を説明できるか？</div>
+            <div class="checklist-item">面積を二等分する直線が「中点を通る」ことを使えるか？</div>
+            <div class="checklist-item">直線の傾き・切片を正しく求められるか？</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>直線 y = 2x - 6 とx軸、y軸で囲まれた三角形の面積を求めなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>y切片：(0, -6)、x切片：(3, 0)</p>
+                    <p>底辺 = 6、高さ = 3</p>
+                    <p>面積 = (1/2) × 6 × 3 = <strong>9</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>3点 A(0, 0), B(4, 0), C(2, 6) を頂点とする三角形の面積を求めなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>底辺AB = 4（x軸上）</p>
+                    <p>高さ = Cのy座標 = 6</p>
+                    <p>面積 = (1/2) × 4 × 6 = <strong>12</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>△OABで O(0,0), A(8,0), B(4,6) とする。原点Oを通り△OABの面積を二等分する直線の式を求めなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>対辺ABの中点 M = ((8+4)/2, (0+6)/2) = (6, 3)</p>
+                    <p>直線OMの傾き = 3/6 = 1/2</p>
+                    <p><strong>y = (1/2)x</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：座標平面の面積は「y軸を底辺」が基本！等積変形で頂点をy軸上に動かすと楽に計算できる！
+</div>
+
+<!-- ========== おまけ：入試必勝 ========== -->
+<section id="story">
+    <h2>おまけ：入試必勝「融合問題の読み解き方」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 融合問題を得点源にする</div>
+
+            <p>「図形と関数の融合問題」は、入試の最後の大問でよく出ます。配点が高い分、ここで点を取れると大きい！</p>
+
+            <h4>問題を読むときのポイント</h4>
+
+            <p><strong>1. 図を描く</strong></p>
+            <p>問題文を読みながら、座標平面に点と直線・放物線を描く。視覚化すると関係が見えやすい。</p>
+
+            <p><strong>2. 小問のつながりを意識</strong></p>
+            <p>(1)で求めた式や座標は、(2)(3)で必ず使う。前の問題の答えが次のヒント。</p>
+
+            <p><strong>3. キーワードで解法を判断</strong></p>
+            <ul>
+                <li>「面積」→ y軸を底辺、または座標公式</li>
+                <li>「二等分」→ 中点を通る直線</li>
+                <li>「等しい」→ 方程式を立てる</li>
+                <li>「〜となる点」→ 未知数を置いて条件を式に</li>
+            </ul>
+
+            <h4>典型的な出題パターン</h4>
+
+            <p><strong>パターンA：</strong>(1)直線の式 → (2)交点 → (3)面積</p>
+            <p><strong>パターンB：</strong>(1)交点 → (2)面積 → (3)面積が○○になる点</p>
+            <p><strong>パターンC：</strong>(1)式を求める → (2)二等分する直線</p>
+
+            <p>どのパターンでも、<strong>「まず座標を全部求める」</strong>のが基本。座標がわかれば、あとは計算で解ける！</p>
+        </div>
+    </div>
+</section>

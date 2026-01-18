@@ -1,0 +1,652 @@
+---
+layout: material-raw
+title: 四角形の性質
+icon: "🔷"
+description: 平行四辺形・長方形・ひし形・正方形の性質を学びます。四角形の分類と性質を使って証明問題を解けるようになろう！
+level: 標準
+level_num: 2
+category: geometry
+school_level: junior
+order: 10
+keywords:
+  - 平行四辺形
+  - 長方形
+  - ひし形
+  - 正方形
+  - 台形
+cover_image: /images/noimage.jpg
+cover_description: 平行四辺形・長方形・ひし形・正方形の関係図
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学雑学「マンホールはなぜ丸い？」"
+related:
+  - url: /junior/三角形の性質_教材.html
+    title: 三角形の性質
+    note: 三角形の性質を先に学ぶ
+    type: prerequisite
+  - url: /junior/三角形の合同条件_教材.html
+    title: 三角形の合同条件
+    note: 証明で合同を使う
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>四角形にはいろいろな種類があります。平行四辺形、長方形、ひし形、正方形...これらは見た目が違うだけでなく、それぞれ固有の性質を持っています。この関係を理解すると、「どの性質が使えるか」がわかり、証明問題がスッキリ解けます。</p>
+        <p>このページでは、<strong>特別な四角形の性質</strong>を学びます：</p>
+        <ul>
+            <li><strong>平行四辺形</strong>：向かい合う辺が平行な四角形</li>
+            <li><strong>長方形</strong>：4つの角がすべて直角の四角形</li>
+            <li><strong>ひし形</strong>：4つの辺がすべて等しい四角形</li>
+            <li><strong>正方形</strong>：長方形でありひし形でもある四角形</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】平行四辺形の5つの性質と5つの条件を押さえよう！
+        </div>
+
+        <h3 style="color: #1976d2; margin: 20px 0 10px 0;">▶ 四角形の分類</h3>
+
+        <div class="rule-box" id="rule-classification">
+            <strong>📌 ルール1：四角形の包含関係</strong>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="450" height="280" viewBox="0 0 450 280">
+                    <!-- 台形（最外） -->
+                    <rect x="20" y="20" width="410" height="240" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                    <text x="40" y="50" font-size="16" fill="#1976d2">台形（1組の対辺が平行）</text>
+
+                    <!-- 平行四辺形 -->
+                    <rect x="50" y="70" width="350" height="170" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                    <text x="70" y="95" font-size="16" fill="#ff9800">平行四辺形（2組の対辺が平行）</text>
+
+                    <!-- 長方形 -->
+                    <rect x="80" y="115" width="150" height="110" rx="10" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+                    <text x="100" y="140" font-size="14" fill="#4caf50">長方形</text>
+                    <text x="100" y="160" font-size="14" fill="#4caf50">（4角が直角）</text>
+
+                    <!-- ひし形 -->
+                    <rect x="250" y="115" width="130" height="110" rx="10" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
+                    <text x="270" y="140" font-size="14" fill="#e91e63">ひし形</text>
+                    <text x="270" y="160" font-size="14" fill="#e91e63">（4辺が等しい）</text>
+
+                    <!-- 正方形（中央で重なる） -->
+                    <rect x="165" y="175" width="100" height="40" rx="5" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"/>
+                    <text x="180" y="200" font-size="14" fill="#9c27b0">正方形</text>
+                </svg>
+                <div class="svg-caption">四角形の包含関係</div>
+            </div>
+            <p><strong>ポイント：</strong></p>
+            <ul>
+                <li>正方形は長方形でありひし形でもある</li>
+                <li>長方形もひし形も平行四辺形である</li>
+                <li>平行四辺形は台形である</li>
+            </ul>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 20px 0 10px 0;">▶ 平行四辺形</h3>
+
+        <div class="rule-box" id="rule-parallelogram-def">
+            <strong>📌 ルール2：平行四辺形の定義</strong>
+            <p><strong>平行四辺形</strong>：2組の向かい合う辺がそれぞれ平行な四角形</p>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="300" height="150" viewBox="0 0 300 150">
+                    <!-- 平行四辺形 -->
+                    <polygon points="60,110 120,30 260,30 200,110" fill="none" stroke="#1976d2" stroke-width="2"/>
+                    <!-- 平行の印 -->
+                    <line x1="85" y1="75" x2="95" y2="65" stroke="#e53935" stroke-width="2"/>
+                    <line x1="225" y1="75" x2="235" y2="65" stroke="#e53935" stroke-width="2"/>
+                    <line x1="130" y1="25" x2="140" y2="25" stroke="#4caf50" stroke-width="2"/>
+                    <line x1="133" y1="28" x2="143" y2="28" stroke="#4caf50" stroke-width="2"/>
+                    <line x1="120" y1="115" x2="130" y2="115" stroke="#4caf50" stroke-width="2"/>
+                    <line x1="123" y1="118" x2="133" y2="118" stroke="#4caf50" stroke-width="2"/>
+                    <!-- ラベル -->
+                    <text x="45" y="120" font-size="14">A</text>
+                    <text x="110" y="25" font-size="14">B</text>
+                    <text x="265" y="35" font-size="14">C</text>
+                    <text x="200" y="125" font-size="14">D</text>
+                </svg>
+                <div class="svg-caption">AB // DC、AD // BC</div>
+            </div>
+        </div>
+
+        <div class="rule-box" id="rule-parallelogram-prop">
+            <strong>📌 ルール3：平行四辺形の性質（5つ）</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <table class="material-table">
+                <tr>
+                    <th>#</th>
+                    <th>性質</th>
+                    <th>記号</th>
+                </tr>
+                <tr>
+                    <td>①</td>
+                    <td>2組の対辺がそれぞれ等しい</td>
+                    <td>AB = DC, AD = BC</td>
+                </tr>
+                <tr>
+                    <td>②</td>
+                    <td>2組の対角がそれぞれ等しい</td>
+                    <td>∠A = ∠C, ∠B = ∠D</td>
+                </tr>
+                <tr>
+                    <td>③</td>
+                    <td>対角線がそれぞれの中点で交わる</td>
+                    <td>AO = CO, BO = DO</td>
+                </tr>
+                <tr>
+                    <td>④</td>
+                    <td>隣り合う角の和は180°</td>
+                    <td>∠A + ∠B = 180°</td>
+                </tr>
+                <tr>
+                    <td>⑤</td>
+                    <td>2組の対辺がそれぞれ平行（定義）</td>
+                    <td>AB // DC, AD // BC</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="rule-box" id="rule-parallelogram-cond">
+            <strong>📌 ルール4：平行四辺形になる条件（5つ）</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <p>以下のどれか1つを満たせば平行四辺形：</p>
+            <table class="material-table">
+                <tr>
+                    <th>#</th>
+                    <th>条件</th>
+                </tr>
+                <tr>
+                    <td>①</td>
+                    <td>2組の対辺がそれぞれ平行（定義）</td>
+                </tr>
+                <tr>
+                    <td>②</td>
+                    <td>2組の対辺がそれぞれ等しい</td>
+                </tr>
+                <tr>
+                    <td>③</td>
+                    <td>2組の対角がそれぞれ等しい</td>
+                </tr>
+                <tr>
+                    <td>④</td>
+                    <td>対角線がそれぞれの中点で交わる</td>
+                </tr>
+                <tr>
+                    <td>⑤</td>
+                    <td><strong>1組の対辺が平行で等しい</strong></td>
+                </tr>
+            </table>
+            <p><strong>⑤がポイント！</strong> 「平行」と「等しい」を1組だけ示せばOK。</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 20px 0 10px 0;">▶ 長方形・ひし形・正方形</h3>
+
+        <div class="rule-box" id="rule-rectangle">
+            <strong>📌 ルール5：長方形の性質</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <p><strong>長方形</strong>：4つの角がすべて直角の四角形</p>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="280" height="140" viewBox="0 0 280 140">
+                    <rect x="40" y="20" width="200" height="100" fill="none" stroke="#1976d2" stroke-width="2"/>
+                    <!-- 対角線 -->
+                    <line x1="40" y1="20" x2="240" y2="120" stroke="#e53935" stroke-width="1" stroke-dasharray="4,2"/>
+                    <line x1="240" y1="20" x2="40" y2="120" stroke="#e53935" stroke-width="1" stroke-dasharray="4,2"/>
+                    <!-- 直角記号 -->
+                    <rect x="40" y="20" width="10" height="10" fill="none" stroke="#333" stroke-width="1"/>
+                    <rect x="230" y="20" width="10" height="10" fill="none" stroke="#333" stroke-width="1"/>
+                    <rect x="40" y="110" width="10" height="10" fill="none" stroke="#333" stroke-width="1"/>
+                    <rect x="230" y="110" width="10" height="10" fill="none" stroke="#333" stroke-width="1"/>
+                </svg>
+                <div class="svg-caption">長方形の対角線は等しい</div>
+            </div>
+            <p><strong>長方形の性質：</strong></p>
+            <ul>
+                <li>平行四辺形のすべての性質を持つ</li>
+                <li><strong>対角線の長さが等しい</strong></li>
+            </ul>
+            <p><strong>長方形になる条件：</strong> 平行四辺形 + 1つの角が直角 or 対角線が等しい</p>
+        </div>
+
+        <div class="rule-box" id="rule-rhombus">
+            <strong>📌 ルール6：ひし形の性質</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <p><strong>ひし形</strong>：4つの辺がすべて等しい四角形</p>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="220" height="180" viewBox="0 0 220 180">
+                    <polygon points="110,20 200,90 110,160 20,90" fill="none" stroke="#1976d2" stroke-width="2"/>
+                    <!-- 対角線 -->
+                    <line x1="110" y1="20" x2="110" y2="160" stroke="#e53935" stroke-width="1" stroke-dasharray="4,2"/>
+                    <line x1="20" y1="90" x2="200" y2="90" stroke="#4caf50" stroke-width="1" stroke-dasharray="4,2"/>
+                    <!-- 直角記号 -->
+                    <rect x="110" y="80" width="10" height="10" fill="none" stroke="#333" stroke-width="1"/>
+                    <!-- 等しい辺の印 -->
+                    <line x1="60" y1="50" x2="55" y2="60" stroke="#ff9800" stroke-width="2"/>
+                    <line x1="160" y1="50" x2="165" y2="60" stroke="#ff9800" stroke-width="2"/>
+                    <line x1="60" y1="130" x2="55" y2="120" stroke="#ff9800" stroke-width="2"/>
+                    <line x1="160" y1="130" x2="165" y2="120" stroke="#ff9800" stroke-width="2"/>
+                </svg>
+                <div class="svg-caption">ひし形の対角線は垂直に交わる</div>
+            </div>
+            <p><strong>ひし形の性質：</strong></p>
+            <ul>
+                <li>平行四辺形のすべての性質を持つ</li>
+                <li><strong>対角線が垂直に交わる</strong></li>
+                <li><strong>対角線が角を二等分する</strong></li>
+            </ul>
+            <p><strong>ひし形になる条件：</strong> 平行四辺形 + 隣り合う2辺が等しい or 対角線が垂直</p>
+        </div>
+
+        <div class="rule-box" id="rule-square">
+            <strong>📌 ルール7：正方形の性質</strong>
+            <p><strong>正方形</strong>：長方形でありひし形でもある四角形（4辺等しく4角直角）</p>
+            <p><strong>正方形の性質：</strong></p>
+            <ul>
+                <li>長方形のすべての性質（対角線が等しい）</li>
+                <li>ひし形のすべての性質（対角線が垂直）</li>
+                <li><strong>対角線が等しくて垂直に交わる</strong></li>
+            </ul>
+            <p><strong>正方形になる条件：</strong> 長方形 + 隣り合う2辺が等しい、または ひし形 + 1角が直角</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 まとめ：特別な四角形の対角線</strong>
+            <table class="material-table">
+                <tr>
+                    <th>四角形</th>
+                    <th>対角線が中点で交わる</th>
+                    <th>対角線が等しい</th>
+                    <th>対角線が垂直</th>
+                </tr>
+                <tr>
+                    <td>平行四辺形</td>
+                    <td>○</td>
+                    <td>×</td>
+                    <td>×</td>
+                </tr>
+                <tr>
+                    <td>長方形</td>
+                    <td>○</td>
+                    <td>○</td>
+                    <td>×</td>
+                </tr>
+                <tr>
+                    <td>ひし形</td>
+                    <td>○</td>
+                    <td>×</td>
+                    <td>○</td>
+                </tr>
+                <tr>
+                    <td>正方形</td>
+                    <td>○</td>
+                    <td>○</td>
+                    <td>○</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>四角形の性質を使って問題を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 平行四辺形</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>平行四辺形の角を求める
+            </div>
+            <p>平行四辺形ABCDで、∠A = 70° のとき、∠B、∠C、∠D を求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>∠C = ∠A = 70°（対角は等しい）</li>
+                <li>∠A + ∠B = 180°（隣り合う角の和）</li>
+                <li>∠B = 180° - 70° = 110°</li>
+                <li>∠D = ∠B = 110°（対角は等しい）</li>
+            </ol>
+            <div class="formula">
+                \[ \angle B = 110°, \quad \angle C = 70°, \quad \angle D = 110° \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>平行四辺形であることを証明する
+            </div>
+            <p>四角形ABCDで、AB // DC、AB = DC のとき、ABCDが平行四辺形であることを証明しなさい。</p>
+            <p><strong>【証明】</strong></p>
+            <p>AB // DC、AB = DC より、</p>
+            <p><strong>1組の対辺が平行で等しい</strong>ので、</p>
+            <p>四角形ABCDは平行四辺形である。</p>
+            <p><strong>→ 条件⑤を使うと、証明が1行で終わる！</strong></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 長方形</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>長方形の対角線
+            </div>
+            <p>長方形ABCDの対角線AC、BDの交点をOとする。AC = 10cm のとき、OB の長さを求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>長方形の対角線は等しいので、BD = AC = 10cm</li>
+                <li>平行四辺形の性質より、対角線は中点で交わるので、OB = BD ÷ 2</li>
+            </ol>
+            <div class="formula">
+                \[ OB = \frac{10}{2} = 5 \text{ cm} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ ひし形</h3>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>ひし形の角
+            </div>
+            <p>ひし形ABCDで、∠ABD = 35° のとき、∠ABC を求めなさい。</p>
+            <div class="svg-container" style="margin: 10px 0;">
+                <svg width="200" height="160" viewBox="0 0 200 160">
+                    <polygon points="100,20 170,80 100,140 30,80" fill="none" stroke="#1976d2" stroke-width="2"/>
+                    <line x1="100" y1="20" x2="100" y2="140" stroke="#333" stroke-width="1" stroke-dasharray="4,2"/>
+                    <line x1="30" y1="80" x2="170" y2="80" stroke="#333" stroke-width="1" stroke-dasharray="4,2"/>
+                    <text x="95" y="15" font-size="14">A</text>
+                    <text x="175" y="85" font-size="14">B</text>
+                    <text x="95" y="155" font-size="14">C</text>
+                    <text x="15" y="85" font-size="14">D</text>
+                </svg>
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>ひし形の対角線は角を二等分する</li>
+                <li>よって、∠ABC = 2 × ∠ABD</li>
+            </ol>
+            <div class="formula">
+                \[ \angle ABC = 2 \times 35° = 70° \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>四角形の分類
+            </div>
+            <p>次の条件を満たす四角形ABCDは何という四角形か答えなさい。</p>
+            <p>（1）AB // DC、AD // BC、∠A = 90°</p>
+            <p>（2）AB = BC = CD = DA、AC ⊥ BD</p>
+            <p><strong>解答：</strong></p>
+            <p>（1）2組の対辺が平行 → 平行四辺形。さらに1角が直角 → <strong>長方形</strong></p>
+            <p>（2）4辺が等しい → ひし形。対角線が垂直はひし形の性質なので追加情報なし。よって<strong>ひし形</strong></p>
+        </div>
+
+        <div class="example-box" id="ex-6">
+            <div class="example-title">
+                <span class="number-badge">例6</span>証明：対角線を使う
+            </div>
+            <p>平行四辺形ABCDの対角線AC、BD の交点をOとする。OA = OC、OB = OD を証明しなさい。</p>
+            <p><strong>【証明】</strong></p>
+            <p>△OABと△OCDにおいて、</p>
+            <ol>
+                <li>AB = CD（平行四辺形の対辺）</li>
+                <li>∠OAB = ∠OCD（AB // CD より錯角）</li>
+                <li>∠OBA = ∠ODC（AB // CD より錯角）</li>
+            </ol>
+            <p>①②③より、1辺とその両端の角がそれぞれ等しいので、</p>
+            <p>△OAB ≡ △OCD</p>
+            <p>合同な三角形の対応する辺は等しいので、</p>
+            <div class="formula">
+                \[ OA = OC, \quad OB = OD \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：「平行四辺形になる条件⑤」をフル活用</strong><br>
+            1組の対辺が「平行」で「等しい」→ 平行四辺形。これが最も使いやすい条件！
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：包含関係を意識する</strong><br>
+            正方形 → 長方形の性質も使える。ひし形 → 平行四辺形の性質も使える。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：対角線の交点は中点</strong><br>
+            平行四辺形（長方形・ひし形・正方形含む）では、対角線は互いの中点で交わる。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：対角線の性質で判別</strong><br>
+            対角線が「等しい」→ 長方形系。「垂直」→ ひし形系。「両方」→ 正方形。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ5：錯角・同位角をどんどん使う</strong><br>
+            平行四辺形には平行線が2組ある。錯角・同位角で等しい角がたくさん作れる。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：「性質」と「条件」を混同する</div>
+            <p><strong>ダメな例：</strong> 「平行四辺形だから対辺が平行」を証明で使う（これは定義なので当然）</p>
+            <p><strong>対策：</strong></p>
+            <ul>
+                <li>性質：平行四辺形 → 対角線が中点で交わる</li>
+                <li>条件：対角線が中点で交わる → 平行四辺形</li>
+            </ul>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：正方形を長方形・ひし形と認識しない</div>
+            <p><strong>ダメな例：</strong> 「正方形の対角線が等しい」の証明で、長方形の性質を使わない</p>
+            <p><strong>対策：</strong> 正方形は長方形でありひし形。両方の性質が使える！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：台形と平行四辺形の区別</div>
+            <p><strong>ダメな例：</strong> 「1組の対辺が平行」だけで平行四辺形と言う</p>
+            <p><strong>対策：</strong> 1組平行だけなら台形。平行四辺形は「2組」平行。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：条件⑤を忘れる</div>
+            <p><strong>ダメな例：</strong> AB // DC、AB = DC があるのに、もう1組の平行や等しい辺を探す</p>
+            <p><strong>対策：</strong> 「1組の対辺が平行で等しい」だけで平行四辺形確定！</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">平行四辺形の5つの性質を言えるか？</div>
+            <div class="checklist-item">平行四辺形になる5つの条件を言えるか？（特に⑤を忘れずに）</div>
+            <div class="checklist-item">長方形・ひし形・正方形の対角線の性質を区別できるか？</div>
+            <div class="checklist-item">「正方形 ⊂ 長方形」「正方形 ⊂ ひし形」の包含関係がわかるか？</div>
+            <div class="checklist-item">四角形が平行四辺形であることを証明できるか？</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>平行四辺形ABCDで、∠B = 115° のとき、∠A と ∠D を求めなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>∠A + ∠B = 180°（隣り合う角）より、∠A = 180° - 115° = <strong>65°</strong></p>
+                    <p>∠D = ∠B = <strong>115°</strong>（対角）</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>次の四角形はそれぞれ何という四角形か答えなさい。</p>
+            <p>（1）4辺がすべて等しく、4角がすべて直角</p>
+            <p>（2）対角線が等しく、中点で交わる</p>
+            <p>（3）対角線が垂直に交わり、中点で交わる</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>（1）<strong>正方形</strong>（長方形でありひし形）</p>
+                    <p>（2）<strong>長方形</strong>（対角線が等しい平行四辺形）</p>
+                    <p>（3）<strong>ひし形</strong>（対角線が垂直な平行四辺形）</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>四角形ABCDで、AB = DC = 6cm、AB // DC のとき、四角形ABCDが平行四辺形であることを示しなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>AB // DC、AB = DC より、</p>
+                    <p><strong>1組の対辺が平行で等しい</strong>ので、</p>
+                    <p>四角形ABCDは平行四辺形である。</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：平行四辺形の性質・条件は5つずつ！長方形は「対角線等しい」、ひし形は「対角線垂直」、正方形は「両方」！
+</div>
+
+<!-- ========== 関連教材 ========== -->
+<!-- Front Matterのrelatedで指定すればレイアウトが自動生成します -->
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「マンホールはなぜ丸い？」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 マンホールはなぜ丸い？</div>
+
+            <p>街を歩くと、道路にマンホールの蓋がたくさんあります。よく見ると、ほとんどが<strong>円形</strong>。なぜ四角形じゃないのでしょうか？</p>
+
+            <p>実は、これは<strong>四角形の性質</strong>が関係しています。</p>
+
+            <h4>正方形のマンホールだと何が起こる？</h4>
+
+            <p>正方形のマンホール蓋を想像してください。一辺が 60cm の正方形です。</p>
+
+            <p>この蓋を穴の上で斜めに持ち上げると...なんと<strong>穴の中に落ちてしまう</strong>のです！</p>
+
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="400" height="200" viewBox="0 0 400 200">
+                    <!-- 左：正方形の蓋を真上から見た図 -->
+                    <rect x="30" y="30" width="120" height="120" fill="none" stroke="#333" stroke-width="2"/>
+                    <text x="70" y="20" font-size="14" fill="#333">正方形の穴</text>
+                    <text x="60" y="170" font-size="14" fill="#333">60 cm</text>
+
+                    <!-- 対角線 -->
+                    <line x1="30" y1="30" x2="150" y2="150" stroke="#e53935" stroke-width="2" stroke-dasharray="4,2"/>
+                    <text x="100" y="100" font-size="14" fill="#e53935">対角線</text>
+                    <text x="85" y="185" font-size="14" fill="#e53935">60√2 ≈ 85 cm</text>
+
+                    <!-- 右：斜めにした蓋が落ちる様子 -->
+                    <rect x="230" y="50" width="120" height="120" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="2,2"/>
+                    <rect x="250" y="30" width="85" height="85" fill="#ffeb3b" stroke="#333" stroke-width="2" transform="rotate(45 292.5 72.5)" opacity="0.7"/>
+                    <text x="250" y="20" font-size="14" fill="#333">斜めにすると...</text>
+                    <path d="M 280 115 L 280 140" stroke="#e53935" stroke-width="2" marker-end="url(#arrow-down)"/>
+                    <text x="290" y="135" font-size="14" fill="#e53935">落ちる！</text>
+
+                    <!-- 矢印マーカー定義 -->
+                    <defs>
+                        <marker id="arrow-down" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                            <polygon points="0 0, 10 5, 0 10" fill="#e53935"/>
+                        </marker>
+                    </defs>
+                </svg>
+                <div class="svg-caption">正方形の蓋は斜めにすると穴より小さくなる</div>
+            </div>
+
+            <h4>なぜ落ちる？</h4>
+
+            <p>正方形の<strong>対角線の長さ</strong>を計算すると：</p>
+
+            <div class="formula">
+                \[ \text{対角線} = 60\sqrt{2} \approx 84.9 \text{ cm} \]
+            </div>
+
+            <p>一方、穴の1辺は 60cm。蓋を<strong>斜めに傾ける</strong>と、対角線の長さ（約85cm）が穴の幅（60cm）より長いので、蓋は穴の中に落ちてしまいます！</p>
+
+            <h4>円形なら大丈夫？</h4>
+
+            <p>円形のマンホールなら、どの方向から見ても<strong>直径は同じ</strong>。どう傾けても穴より大きいままなので、絶対に落ちません。</p>
+
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="300" height="150" viewBox="0 0 300 150">
+                    <!-- 円形の穴と蓋 -->
+                    <circle cx="80" cy="75" r="50" fill="none" stroke="#333" stroke-width="2"/>
+                    <circle cx="80" cy="75" r="50" fill="#4caf50" opacity="0.3" stroke="#333" stroke-width="2"/>
+
+                    <!-- 直径 -->
+                    <line x1="30" y1="75" x2="130" y2="75" stroke="#1976d2" stroke-width="2"/>
+                    <text x="60" y="65" font-size="14" fill="#1976d2">直径</text>
+
+                    <!-- 傾けた蓋 -->
+                    <ellipse cx="220" cy="75" rx="50" ry="30" fill="#4caf50" opacity="0.5" stroke="#333" stroke-width="2"/>
+                    <circle cx="220" cy="75" r="50" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="2,2"/>
+                    <text x="180" y="130" font-size="14" fill="#4caf50">どう傾けても</text>
+                    <text x="180" y="145" font-size="14" fill="#4caf50">落ちない！</text>
+                </svg>
+                <div class="svg-caption">円形はどの方向でも幅が同じ</div>
+            </div>
+
+            <h4>数学の教訓</h4>
+
+            <p>この話から学べることは2つ：</p>
+
+            <ul>
+                <li><strong>正方形の対角線は1辺の √2 倍</strong>（約1.41倍）</li>
+                <li><strong>円は「どこから見ても同じ幅」という特別な性質</strong>を持つ</li>
+            </ul>
+
+            <p>実は、マンホールが円形なのは他にも理由があります。製造が簡単、転がして運べる、どの角度でも設置できる、など。でも「落ちない」という安全性が一番大事なんです！</p>
+
+            <p>ちなみに、三角形（正三角形のルーローの三角形）も「どこから見ても同じ幅」という性質を持っています。でも円が一番シンプルで安全なので、世界中で円形マンホールが使われているのです。</p>
+        </div>
+    </div>
+</section>

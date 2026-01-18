@@ -1,0 +1,454 @@
+---
+layout: material-raw
+title: 二次方程式の文章題
+icon: "📝"
+description: 二次方程式を使って文章問題を解く力を身につけます。面積・数の問題・動点の3パターンを攻略しよう！
+level: 発展
+level_num: 3
+category: equations
+school_level: junior
+order: 50
+keywords:
+  - 二次方程式
+  - 文章題
+  - 面積
+  - 動点
+  - 立式
+cover_image: /images/noimage.jpg
+cover_description: 二次方程式の文章題の図
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：入試頻出「動点問題の攻略」"
+related:
+  - url: /junior/二次方程式の解き方_教材.html
+    title: 二次方程式の解き方
+    note: 解き方の基本を学ぶ
+    type: prerequisite
+  - url: /junior/二次方程式_解法の選び方_教材.html
+    title: 二次方程式：解法の選び方
+    note: 最適な解法を選ぶ
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「長方形の面積が48cm²になるのは...」「連続する3つの整数の積が...」「点Pが動くと面積が...」──これらの問題は、すべて<strong>二次方程式</strong>で解けます。文章を読んで正しく式を立てる力が、入試で差がつくポイントです。</p>
+        <p>このページでは、<strong>二次方程式の文章題</strong>を学びます：</p>
+        <ul>
+            <li><strong>面積の問題</strong>：長方形・正方形の面積から辺を求める</li>
+            <li><strong>数の問題</strong>：連続する整数、2乗の関係など</li>
+            <li><strong>動点の問題</strong>：点が動いたときの面積変化</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】「何をxとおくか」を決めたら、条件を式に！最後に「解の吟味」を忘れずに！
+        </div>
+
+        <h3 style="color: #1976d2; margin: 20px 0 10px 0;">▶ 文章題の解き方フロー</h3>
+
+        <div class="rule-box" id="rule-flow">
+            <strong>📌 ルール1：文章題の解き方5ステップ</strong>
+            <ol>
+                <li><strong>文をよく読む</strong>：何を求めるか、条件は何かを整理</li>
+                <li><strong>xをおく</strong>：求めるもの（または関連する量）をxとする</li>
+                <li><strong>式を立てる</strong>：条件を等式で表す</li>
+                <li><strong>方程式を解く</strong>：因数分解・平方完成・解の公式</li>
+                <li><strong>解の吟味</strong>：問題の条件に合うか確認して答える</li>
+            </ol>
+        </div>
+
+        <div class="rule-box" id="rule-check">
+            <strong>📌 ルール2：解の吟味（とても重要！）</strong>
+            <p>二次方程式は解が<strong>2つ</strong>出ることが多い。どちらも答えになるとは限らない！</p>
+            <table class="material-table">
+                <tr>
+                    <th>条件</th>
+                    <th>確認すること</th>
+                </tr>
+                <tr>
+                    <td>長さ・面積</td>
+                    <td>正の数か？（負は不適）</td>
+                </tr>
+                <tr>
+                    <td>人数・個数</td>
+                    <td>正の整数か？</td>
+                </tr>
+                <tr>
+                    <td>時間</td>
+                    <td>正の数か？範囲内か？</td>
+                </tr>
+                <tr>
+                    <td>動点の位置</td>
+                    <td>図形の範囲内か？</td>
+                </tr>
+            </table>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 20px 0 10px 0;">▶ 問題タイプ別</h3>
+
+        <div class="rule-box" id="rule-area">
+            <strong>📌 ルール3：面積の問題</strong> <a href="#ex-1" class="example-link">→ 例1, 2</a>
+            <p>長方形や正方形の面積から辺を求める</p>
+            <ul>
+                <li>縦を x cm、横を (x + ○) cm などとおく</li>
+                <li>面積 = 縦 × 横 で式を立てる</li>
+            </ul>
+            <p><strong>例：</strong> 縦が横より3cm短く、面積が40cm²</p>
+            <p>横を x とすると、縦は (x - 3)</p>
+            <div class="formula">
+                \[ x(x - 3) = 40 \]
+            </div>
+        </div>
+
+        <div class="rule-box" id="rule-number">
+            <strong>📌 ルール4：数の問題</strong> <a href="#ex-3" class="example-link">→ 例3, 4</a>
+            <p>整数や数の関係を求める</p>
+            <table class="material-table">
+                <tr>
+                    <th>表現</th>
+                    <th>xのおき方</th>
+                </tr>
+                <tr>
+                    <td>連続する2つの整数</td>
+                    <td>x, x+1</td>
+                </tr>
+                <tr>
+                    <td>連続する3つの整数</td>
+                    <td>x-1, x, x+1（真ん中をx）</td>
+                </tr>
+                <tr>
+                    <td>連続する2つの偶数</td>
+                    <td>2n, 2n+2</td>
+                </tr>
+                <tr>
+                    <td>2桁の自然数</td>
+                    <td>10a + b（十の位a、一の位b）</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="rule-box" id="rule-moving">
+            <strong>📌 ルール5：動点の問題</strong> <a href="#ex-5" class="example-link">→ 例5</a>
+            <p>点Pが動くとき、面積がどう変わるか</p>
+            <ol>
+                <li>点Pの位置を t cm（または x cm）とおく</li>
+                <li>底辺と高さを t で表す</li>
+                <li>面積 = (1/2) × 底辺 × 高さ で式を立てる</li>
+                <li>t の範囲を確認して吟味</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>各タイプの文章題を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 面積の問題</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>長方形の面積
+            </div>
+            <p>長方形の横の長さは縦の長さより5cm長く、面積は36cm²である。縦の長さを求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>xをおく：</strong> 縦を x cm とする（x > 0）</li>
+                <li><strong>横を表す：</strong> 横 = (x + 5) cm</li>
+                <li><strong>式を立てる：</strong> x(x + 5) = 36</li>
+                <li><strong>解く：</strong></li>
+            </ol>
+            <div class="formula">
+                \[ x^2 + 5x - 36 = 0 \]
+                \[ (x + 9)(x - 4) = 0 \]
+                \[ x = -9, 4 \]
+            </div>
+            <ol start="5">
+                <li><strong>吟味：</strong> x > 0 より x = -9 は不適</li>
+            </ol>
+            <p><strong>答え：縦 4 cm</strong></p>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>正方形の面積
+            </div>
+            <p>正方形の各辺を2cmずつ長くすると、面積が32cm²増えた。もとの正方形の一辺の長さを求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>xをおく：</strong> もとの一辺を x cm とする（x > 0）</li>
+                <li><strong>面積の関係：</strong></li>
+            </ol>
+            <p>もとの面積 = x²、新しい面積 = (x + 2)²</p>
+            <p>増えた分 = (x + 2)² - x² = 32</p>
+            <div class="formula">
+                \[ x^2 + 4x + 4 - x^2 = 32 \]
+                \[ 4x + 4 = 32 \]
+                \[ 4x = 28 \]
+                \[ x = 7 \]
+            </div>
+            <p><strong>吟味：</strong> x = 7 > 0 で適する</p>
+            <p><strong>答え：一辺 7 cm</strong></p>
+            <p><strong>※ この問題は一次方程式になった！</strong></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 数の問題</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>連続する整数
+            </div>
+            <p>連続する2つの正の整数があり、それぞれを2乗した和は85である。この2つの整数を求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>xをおく：</strong> 小さい方を x とする（x は正の整数）</li>
+                <li><strong>大きい方：</strong> x + 1</li>
+                <li><strong>式を立てる：</strong> x² + (x + 1)² = 85</li>
+            </ol>
+            <div class="formula">
+                \[ x^2 + x^2 + 2x + 1 = 85 \]
+                \[ 2x^2 + 2x - 84 = 0 \]
+                \[ x^2 + x - 42 = 0 \]
+                \[ (x + 7)(x - 6) = 0 \]
+                \[ x = -7, 6 \]
+            </div>
+            <p><strong>吟味：</strong> x は正の整数なので x = 6</p>
+            <p><strong>答え：6 と 7</strong></p>
+        </div>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>数の平方
+            </div>
+            <p>ある正の数の2乗から、その数の3倍を引くと10になる。この数を求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>xをおく：</strong> ある正の数を x とする（x > 0）</li>
+                <li><strong>式を立てる：</strong> x² - 3x = 10</li>
+            </ol>
+            <div class="formula">
+                \[ x^2 - 3x - 10 = 0 \]
+                \[ (x - 5)(x + 2) = 0 \]
+                \[ x = 5, -2 \]
+            </div>
+            <p><strong>吟味：</strong> x > 0 より x = 5</p>
+            <p><strong>答え：5</strong></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 動点の問題</h3>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>動点と面積
+            </div>
+            <p>AB = 6cm、BC = 8cm の長方形ABCDがある。点PがAを出発してB、Cを通ってDまで辺上を移動する。APの長さを x cm とするとき、△APDの面積が20cm²になるのは x がいくつのときか。</p>
+            <p><strong>解き方：</strong></p>
+            <p><strong>【場合1】PがAB上にあるとき（0 ≤ x ≤ 6）</strong></p>
+            <ul>
+                <li>AP = x、AD = 8（高さ）</li>
+                <li>△APD = (1/2) × x × 8 = 4x</li>
+                <li>4x = 20 より x = 5</li>
+                <li>0 ≤ 5 ≤ 6 なので<strong>適する</strong></li>
+            </ul>
+            <p><strong>【場合2】PがBC上にあるとき（6 ≤ x ≤ 14）</strong></p>
+            <ul>
+                <li>△APDの面積は一定（= 24）</li>
+                <li>24 ≠ 20 なので<strong>この範囲に答えはない</strong></li>
+            </ul>
+            <p><strong>【場合3】PがCD上にあるとき（14 ≤ x ≤ 20）</strong></p>
+            <ul>
+                <li>DP = 20 - x</li>
+                <li>△APD = (1/2) × (20 - x) × 8 = 4(20 - x)</li>
+                <li>4(20 - x) = 20 より x = 15</li>
+                <li>14 ≤ 15 ≤ 20 なので<strong>適する</strong></li>
+            </ul>
+            <p><strong>答え：x = 5 または x = 15</strong></p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：図を描く</strong><br>
+            面積や動点の問題は必ず図を描く。x の位置を明確にする。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：求めるものをそのまま x におく</strong><br>
+            「縦を求めよ」なら縦を x に。迷ったらこれが一番シンプル。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：連続する整数は「真ん中」をxに</strong><br>
+            連続する3つの整数なら x-1, x, x+1 とおくと、和や積の計算が楽。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：吟味は「問題文に戻る」</strong><br>
+            x > 0、整数、範囲内か。問題文の条件を再確認。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ5：動点は「場合分け」</strong><br>
+            点Pがどの辺にいるかで式が変わる。それぞれの範囲で考える。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：解の吟味を忘れる</div>
+            <p><strong>ダメな例：</strong> x = 5, -3 を両方答えにする</p>
+            <p><strong>対策：</strong> 長さは正！整数か？範囲内か？必ずチェック。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：何をxにおくか決めずに立式</div>
+            <p><strong>ダメな例：</strong> 「xとyで...」と複雑になる</p>
+            <p><strong>対策：</strong> まず「何をxとおくか」を宣言。1つの文字で表す。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：展開ミス</div>
+            <p><strong>ダメな例：</strong> (x+2)² = x² + 4 とする</p>
+            <p><strong>対策：</strong> (x+2)² = x² + 4x + 4。中央の項を忘れない！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：動点の範囲を無視</div>
+            <p><strong>ダメな例：</strong> x = 15 が出ても、範囲外かチェックしない</p>
+            <p><strong>対策：</strong> 点Pがどの辺にいる場合か、xの範囲を明確に。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">「何をxとおく」を決めてから立式しているか？</div>
+            <div class="checklist-item">面積の問題で、縦・横をxで正しく表せるか？</div>
+            <div class="checklist-item">数の問題で、連続する整数を正しくおけるか？</div>
+            <div class="checklist-item">解の吟味（正か？整数か？範囲内か？）をしているか？</div>
+            <div class="checklist-item">動点の問題で、場合分けができるか？</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>長方形の縦の長さは横の長さより3cm短く、面積が54cm²である。横の長さを求めなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>横を x cm とすると、縦は (x - 3) cm</p>
+                    <p>x(x - 3) = 54 → x² - 3x - 54 = 0</p>
+                    <p>(x - 9)(x + 6) = 0 → x = 9, -6</p>
+                    <p>x > 3 より <strong>x = 9 cm</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>ある正の数の2乗は、その数の5倍より6大きい。この数を求めなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>x² = 5x + 6 → x² - 5x - 6 = 0</p>
+                    <p>(x - 6)(x + 1) = 0 → x = 6, -1</p>
+                    <p>x > 0 より <strong>x = 6</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>連続する2つの正の偶数があり、積が168である。この2つの偶数を求めなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>小さい方を x とすると x(x + 2) = 168</p>
+                    <p>x² + 2x - 168 = 0</p>
+                    <p>(x + 14)(x - 12) = 0 → x = -14, 12</p>
+                    <p>x > 0 より <strong>12 と 14</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：「xをおく→条件を式に→解く→吟味」の4ステップ！解の吟味を絶対忘れない！
+</div>
+
+<!-- ========== おまけ：入試攻略 ========== -->
+<section id="story">
+    <h2>おまけ：入試頻出「動点問題の攻略」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 動点問題が難しく感じる理由</div>
+
+            <p>入試で「動点の問題」が出ると、苦手に感じる人が多いです。でも実は、動点問題には<strong>決まったパターン</strong>があります。</p>
+
+            <h4>動点問題の3ステップ</h4>
+
+            <p><strong>Step 1：場合分けする</strong></p>
+            <p>点Pがどの辺にいるかで、三角形や四角形の形が変わります。まず「Pが AB上」「PがBC上」などと場合分け。</p>
+
+            <p><strong>Step 2：それぞれの式を立てる</strong></p>
+            <p>各場合で、底辺と高さを x で表して面積の式を作ります。</p>
+
+            <p><strong>Step 3：範囲を確認する</strong></p>
+            <p>解が出ても、その範囲の中にあるか確認。範囲外なら「その場合には答えなし」。</p>
+
+            <h4>よくある出題パターン</h4>
+
+            <ul>
+                <li><strong>「面積が○○になるとき」</strong>：方程式を解いて x を求める</li>
+                <li><strong>「面積の最大値」</strong>：二次関数のグラフで考える</li>
+                <li><strong>「面積が一定」</strong>：式を立てると変数が消えることを確認</li>
+            </ul>
+
+            <p>動点問題は<strong>図を描いて点Pを動かしてみる</strong>ことが大切。何が変わって何が変わらないかを把握すれば、式が自然に立てられます。</p>
+        </div>
+    </div>
+</section>

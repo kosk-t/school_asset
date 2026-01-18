@@ -1,0 +1,664 @@
+---
+layout: material-raw
+title: 標本調査とデータ分析
+icon: "📊"
+description: 母集団と標本・全数調査と標本調査・四分位数・箱ひげ図でデータを読み解く力を！
+level: 標準
+level_num: 2
+category: data
+school_level: junior
+order: 12
+keywords:
+  - 標本調査
+  - 母集団
+  - 箱ひげ図
+cover_image: /images/noimage.jpg
+cover_description: 母集団から標本を抽出する様子、箱ひげ図のビジュアル、四分位数の位置関係
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「選挙速報の秘密」"
+related:
+  - url: /junior/データの整理_教材.html
+    title: データの整理
+    note: 度数分布表と代表値の基礎
+    type: prerequisite
+  - url: /junior/データの分析と確率_教材.html
+    title: データの分析と確率
+    note: 四分位数の基本概念
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>テレビの視聴率調査や選挙の出口調査では、全員にアンケートを取るのではなく、一部の人だけ調べて全体の傾向を予測します。このように「一部から全体を推測する」のが標本調査です。</p>
+        <p>このページでは、データ分析の実践的な手法を学びます：</p>
+        <ul>
+            <li><strong>母集団と標本</strong>：調べたい全体と、実際に調べる一部の関係</li>
+            <li><strong>全数調査と標本調査</strong>：すべて調べる方法と一部だけ調べる方法の使い分け</li>
+            <li><strong>四分位数と箱ひげ図</strong>：データのばらつきを視覚的に把握する方法</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】母集団（ぼしゅうだん）：調査の対象となる全体。標本（ひょうほん）：実際に調査する一部。標本から母集団の性質を推測するのが標本調査。
+        </div>
+
+        <!-- 最重要ルールの図解（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="220" viewBox="0 0 700 220">
+                <!-- 母集団 -->
+                <ellipse cx="200" cy="110" rx="150" ry="90" fill="#e3f2fd" stroke="#1976d2" stroke-width="3"/>
+                <text x="200" y="35" font-size="18" font-weight="bold" fill="#1976d2" text-anchor="middle">母集団（全体）</text>
+                <text x="200" y="60" font-size="15" fill="#333" text-anchor="middle">例：ある市の全中学生 10,000人</text>
+
+                <!-- 小さい丸（個体）をランダムに配置 -->
+                <circle cx="120" cy="90" r="8" fill="#64b5f6"/>
+                <circle cx="160" cy="80" r="8" fill="#64b5f6"/>
+                <circle cx="140" cy="110" r="8" fill="#64b5f6"/>
+                <circle cx="180" cy="100" r="8" fill="#64b5f6"/>
+                <circle cx="200" cy="85" r="8" fill="#64b5f6"/>
+                <circle cx="220" cy="105" r="8" fill="#64b5f6"/>
+                <circle cx="240" cy="90" r="8" fill="#64b5f6"/>
+                <circle cx="260" cy="110" r="8" fill="#64b5f6"/>
+                <circle cx="150" cy="130" r="8" fill="#64b5f6"/>
+                <circle cx="190" cy="125" r="8" fill="#64b5f6"/>
+                <circle cx="230" cy="120" r="8" fill="#64b5f6"/>
+                <circle cx="210" cy="140" r="8" fill="#64b5f6"/>
+                <text x="200" y="175" font-size="14" fill="#666" text-anchor="middle">・・・他に9,988人</text>
+
+                <!-- 矢印 -->
+                <defs>
+                    <marker id="arrow-sampling" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#4caf50"/>
+                    </marker>
+                </defs>
+                <path d="M 350 110 L 430 110" stroke="#4caf50" stroke-width="3" fill="none" marker-end="url(#arrow-sampling)"/>
+                <text x="390" y="100" font-size="16" font-weight="bold" fill="#4caf50" text-anchor="middle">抽出</text>
+
+                <!-- 標本 -->
+                <rect x="450" y="40" width="200" height="140" fill="#fff3e0" stroke="#ff9800" stroke-width="3" rx="10"/>
+                <text x="550" y="65" font-size="18" font-weight="bold" fill="#ff9800" text-anchor="middle">標本（一部）</text>
+                <text x="550" y="85" font-size="15" fill="#333" text-anchor="middle">例：無作為に選んだ 300人</text>
+
+                <!-- 標本内の丸（抽出された個体） -->
+                <circle cx="480" cy="110" r="8" fill="#ffb74d"/>
+                <circle cx="510" cy="105" r="8" fill="#ffb74d"/>
+                <circle cx="540" cy="115" r="8" fill="#ffb74d"/>
+                <circle cx="570" cy="108" r="8" fill="#ffb74d"/>
+                <circle cx="600" cy="112" r="8" fill="#ffb74d"/>
+                <circle cx="495" cy="135" r="8" fill="#ffb74d"/>
+                <circle cx="525" cy="140" r="8" fill="#ffb74d"/>
+                <circle cx="555" cy="138" r="8" fill="#ffb74d"/>
+                <circle cx="585" cy="142" r="8" fill="#ffb74d"/>
+                <circle cx="620" cy="125" r="8" fill="#ffb74d"/>
+                <text x="550" y="165" font-size="14" fill="#666" text-anchor="middle">・・・他に290人</text>
+            </svg>
+            <div class="svg-caption">母集団から標本を抽出する様子。標本調査では、母集団全体の性質を標本から推測する</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 全数調査と標本調査の違い</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <p><strong>全数調査（ぜんすうちょうさ）</strong>：母集団のすべてを調べる方法。</p>
+            <p>例：国勢調査（全国民を調べる）、学校のクラス全員のテスト結果</p>
+            <p><strong>→ メリット：</strong> 正確なデータが得られる</p>
+            <p><strong>→ デメリット：</strong> 時間・費用・労力がかかる</p>
+
+            <p style="margin-top: 15px;"><strong>標本調査（ひょうほんちょうさ）</strong>：母集団の一部だけを調べて全体を推測する方法。</p>
+            <p>例：視聴率調査、出口調査、製品の抜き取り検査</p>
+            <p><strong>→ メリット：</strong> 時間・費用・労力が少なくて済む</p>
+            <p><strong>→ デメリット：</strong> 推測なので誤差が生じる可能性がある</p>
+
+            <p style="margin-top: 15px;"><strong>✅ 使い分け：</strong></p>
+            <ul style="margin-top: 5px;">
+                <li><strong>全数調査</strong>：正確さが最重要な場合（国勢調査、選挙の開票など）</li>
+                <li><strong>標本調査</strong>：迅速さやコストが重要な場合、または調査で破壊される場合（電球の寿命検査など）</li>
+            </ul>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 無作為抽出（むさくいちゅうしゅつ）</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <p>標本を選ぶとき、どの個体も同じ確率で選ばれるようにする方法。</p>
+            <p><strong>→ だから結果は：</strong> 標本が母集団を公平に代表し、偏り（かたより）のない推測ができる</p>
+            <p><strong>✅ メリット：</strong> 特定の集団に偏らず、母集団の性質を正しく推測できる</p>
+
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>例えば、中学生の身長調査で「背の高い生徒ばかり選ぶ」と平均身長が実際より高くなってしまいます。無作為抽出では、くじ引きや乱数表を使ってランダムに選ぶことで、このような偏りを防ぎます。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 四分位数（しぶんいすう）</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <p>データを小さい順に並べたとき、4等分する3つの値。</p>
+            <div class="formula">
+                \[
+                \begin{aligned}
+                &\text{第1四分位数 } Q_1: \text{下位25%の位置（データを4等分して1番目）} \\
+                &\text{第2四分位数 } Q_2: \text{中央値（データを4等分して2番目 = データの真ん中）} \\
+                &\text{第3四分位数 } Q_3: \text{上位25%の位置（データを4等分して3番目）}
+                \end{aligned}
+                \]
+            </div>
+            <p><strong>→ だから結果は：</strong> データの散らばり具合（ばらつき）がわかる</p>
+            <p><strong>四分位範囲（しぶんいはんい）：</strong> \(Q_3 - Q_1\)。データの真ん中50%の幅で、ばらつきの大きさを表す</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 箱ひげ図（はこひげず）</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <p>四分位数・最小値・最大値の5つの値を使って、データの分布を1つの図にまとめたもの。</p>
+
+            <!-- 箱ひげ図のSVG -->
+            <div class="svg-container">
+                <svg width="700" height="180" viewBox="0 0 700 180">
+                    <!-- 目盛り線 -->
+                    <line x1="50" y1="90" x2="650" y2="90" stroke="#ddd" stroke-width="1"/>
+
+                    <!-- 目盛り -->
+                    <line x1="50" y1="85" x2="50" y2="95" stroke="#666" stroke-width="2"/>
+                    <text x="50" y="110" font-size="14" fill="#666" text-anchor="middle">0</text>
+
+                    <line x1="150" y1="85" x2="150" y2="95" stroke="#666" stroke-width="2"/>
+                    <text x="150" y="110" font-size="14" fill="#666" text-anchor="middle">10</text>
+
+                    <line x1="250" y1="85" x2="250" y2="95" stroke="#666" stroke-width="2"/>
+                    <text x="250" y="110" font-size="14" fill="#666" text-anchor="middle">20</text>
+
+                    <line x1="350" y1="85" x2="350" y2="95" stroke="#666" stroke-width="2"/>
+                    <text x="350" y="110" font-size="14" fill="#666" text-anchor="middle">30</text>
+
+                    <line x1="450" y1="85" x2="450" y2="95" stroke="#666" stroke-width="2"/>
+                    <text x="450" y="110" font-size="14" fill="#666" text-anchor="middle">40</text>
+
+                    <line x1="550" y1="85" x2="550" y2="95" stroke="#666" stroke-width="2"/>
+                    <text x="550" y="110" font-size="14" fill="#666" text-anchor="middle">50</text>
+
+                    <line x1="650" y1="85" x2="650" y2="95" stroke="#666" stroke-width="2"/>
+                    <text x="650" y="110" font-size="14" fill="#666" text-anchor="middle">60</text>
+
+                    <!-- 箱ひげ図 本体 -->
+                    <!-- 最小値からQ1までのひげ -->
+                    <line x1="150" y1="50" x2="250" y2="50" stroke="#1976d2" stroke-width="3"/>
+                    <line x1="150" y1="40" x2="150" y2="60" stroke="#1976d2" stroke-width="3"/>
+
+                    <!-- 箱 (Q1からQ3) -->
+                    <rect x="250" y="30" width="200" height="40" fill="#90caf9" stroke="#1976d2" stroke-width="3"/>
+
+                    <!-- 中央値 (Q2) の線 -->
+                    <line x1="350" y1="30" x2="350" y2="70" stroke="#d32f2f" stroke-width="4"/>
+
+                    <!-- Q3から最大値までのひげ -->
+                    <line x1="450" y1="50" x2="550" y2="50" stroke="#1976d2" stroke-width="3"/>
+                    <line x1="550" y1="40" x2="550" y2="60" stroke="#1976d2" stroke-width="3"/>
+
+                    <!-- ラベル -->
+                    <text x="150" y="130" font-size="15" fill="#1976d2" text-anchor="middle" font-weight="bold">最小値</text>
+                    <text x="150" y="148" font-size="14" fill="#666" text-anchor="middle">(10)</text>
+
+                    <text x="250" y="130" font-size="15" fill="#1976d2" text-anchor="middle" font-weight="bold">Q₁</text>
+                    <text x="250" y="148" font-size="14" fill="#666" text-anchor="middle">(20)</text>
+
+                    <text x="350" y="130" font-size="15" fill="#d32f2f" text-anchor="middle" font-weight="bold">Q₂(中央値)</text>
+                    <text x="350" y="148" font-size="14" fill="#666" text-anchor="middle">(30)</text>
+
+                    <text x="450" y="130" font-size="15" fill="#1976d2" text-anchor="middle" font-weight="bold">Q₃</text>
+                    <text x="450" y="148" font-size="14" fill="#666" text-anchor="middle">(40)</text>
+
+                    <text x="550" y="130" font-size="15" fill="#1976d2" text-anchor="middle" font-weight="bold">最大値</text>
+                    <text x="550" y="148" font-size="14" fill="#666" text-anchor="middle">(50)</text>
+
+                    <!-- 説明 -->
+                    <text x="350" y="20" font-size="14" fill="#666" text-anchor="middle">← 四分位範囲（Q₃ − Q₁ = 20） →</text>
+                </svg>
+                <div class="svg-caption">箱ひげ図の構造。箱の長さが四分位範囲（データの真ん中50%の幅）を表す</div>
+            </div>
+
+            <p><strong>→ だから結果は：</strong> 複数のデータ分布を一目で比較できる</p>
+            <p><strong>✅ メリット：</strong> 平均値だけではわからない「データの散らばり」や「偏り」を視覚的に把握できる</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>標本調査の考え方と、四分位数・箱ひげ図の計算を実際にやってみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 母集団と標本の理解</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>全数調査か標本調査か？
+            </div>
+            <p>次の調査は全数調査と標本調査のどちらが適切か答えなさい。</p>
+            <p>(1) ある工場で生産された電池1万個の寿命を調べる</p>
+            <p>(2) クラス全員の数学のテスト結果を調べる</p>
+            <p>(3) 全国の中学生のスマートフォン所持率を調べる</p>
+
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>調査の目的と制約を考える</li>
+                <li>すべて調べる必要があるか、一部で推測できるかを判断</li>
+                <li>破壊検査（調べると使えなくなる）かどうかも考慮</li>
+            </ol>
+
+            <p><strong>答え：</strong></p>
+            <p>(1) <strong>標本調査</strong> → 電池の寿命を調べると電池が使えなくなる（破壊検査）ので、全部調べると製品が残らない</p>
+            <p>(2) <strong>全数調査</strong> → クラス全員なら時間も費用もかからないので、全員調べた方が正確</p>
+            <p>(3) <strong>標本調査</strong> → 全国の中学生（約300万人）全員を調べるのは時間・費用がかかりすぎるので、一部から推測</p>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>無作為抽出の重要性
+            </div>
+            <p>ある市の中学生1万人の平均身長を調べるため、300人の標本を抽出する。次の方法のうち、無作為抽出といえるものはどれか。</p>
+            <p>(a) バスケットボール部の生徒300人を選ぶ</p>
+            <p>(b) 全生徒の名簿から、くじ引きで300人を選ぶ</p>
+            <p>(c) 身長順に並べて、上から300人を選ぶ</p>
+
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>どの生徒も同じ確率で選ばれるかをチェック</li>
+                <li>特定の集団に偏っていないかを確認</li>
+            </ol>
+
+            <p><strong>答え：(b)</strong></p>
+            <p>(a) はバスケ部員に偏る → 背の高い生徒が多く選ばれてしまう</p>
+            <p>(b) はくじ引きなのでどの生徒も同じ確率 → <strong>無作為抽出</strong></p>
+            <p>(c) は背の高い順に選んでいる → 平均身長が実際より高くなる</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 四分位数の計算</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>四分位数を求める
+            </div>
+            <p>次のデータの第1四分位数\(Q_1\)、第2四分位数\(Q_2\)、第3四分位数\(Q_3\)を求めなさい。</p>
+            <p>データ：3, 5, 7, 8, 10, 12, 15, 18, 20（9個）</p>
+
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>データを小さい順に並べる（すでに並んでいる）</li>
+                <li><strong>\(Q_2\)（中央値）を求める</strong> → データ数が9個（奇数）なので、真ん中は5番目 → <strong>\(Q_2 = 10\)</strong></li>
+                <li><strong>\(Q_1\)を求める</strong> → \(Q_2\)より小さいデータ（3, 5, 7, 8）の中央値 → 2番目と3番目の平均 → \((5 + 7) ÷ 2 = 6\) → <strong>\(Q_1 = 6\)</strong></li>
+                <li><strong>\(Q_3\)を求める</strong> → \(Q_2\)より大きいデータ（12, 15, 18, 20）の中央値 → 2番目と3番目の平均 → \((15 + 18) ÷ 2 = 16.5\) → <strong>\(Q_3 = 16.5\)</strong></li>
+            </ol>
+
+            <div class="formula">
+                \[ Q_1 = 6, \quad Q_2 = 10, \quad Q_3 = 16.5 \]
+            </div>
+
+            <p><strong>四分位範囲：</strong> \(Q_3 - Q_1 = 16.5 - 6 = 10.5\)</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 箱ひげ図の作成と読み取り</h3>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>箱ひげ図を描く
+            </div>
+            <p>例3のデータから箱ひげ図を描きなさい。</p>
+            <p>データ：3, 5, 7, 8, 10, 12, 15, 18, 20（最小値=3、最大値=20、\(Q_1=6\)、\(Q_2=10\)、\(Q_3=16.5\)）</p>
+
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>数直線を描く（最小値〜最大値が入る範囲）</li>
+                <li>5つの値（最小値、\(Q_1\)、\(Q_2\)、\(Q_3\)、最大値）を数直線上にマーク</li>
+                <li>\(Q_1\)から\(Q_3\)まで箱を描く</li>
+                <li>\(Q_2\)（中央値）の位置に縦線を引く</li>
+                <li>最小値から\(Q_1\)、\(Q_3\)から最大値まで「ひげ」を伸ばす</li>
+            </ol>
+
+            <!-- 箱ひげ図の例 -->
+            <div class="svg-container">
+                <svg width="700" height="140" viewBox="0 0 700 140">
+                    <!-- 目盛り線 -->
+                    <line x1="50" y1="70" x2="650" y2="70" stroke="#ddd" stroke-width="1"/>
+
+                    <!-- 目盛り -->
+                    <line x1="50" y1="65" x2="50" y2="75" stroke="#666" stroke-width="2"/>
+                    <text x="50" y="90" font-size="14" fill="#666" text-anchor="middle">0</text>
+
+                    <line x1="110" y1="65" x2="110" y2="75" stroke="#666" stroke-width="2"/>
+                    <text x="110" y="90" font-size="14" fill="#666" text-anchor="middle">3</text>
+
+                    <line x1="170" y1="65" x2="170" y2="75" stroke="#666" stroke-width="2"/>
+                    <text x="170" y="90" font-size="14" fill="#666" text-anchor="middle">6</text>
+
+                    <line x1="250" y1="65" x2="250" y2="75" stroke="#666" stroke-width="2"/>
+                    <text x="250" y="90" font-size="14" fill="#666" text-anchor="middle">10</text>
+
+                    <line x1="380" y1="65" x2="380" y2="75" stroke="#666" stroke-width="2"/>
+                    <text x="380" y="90" font-size="14" fill="#666" text-anchor="middle">16.5</text>
+
+                    <line x1="450" y1="65" x2="450" y2="75" stroke="#666" stroke-width="2"/>
+                    <text x="450" y="90" font-size="14" fill="#666" text-anchor="middle">20</text>
+
+                    <!-- 箱ひげ図 -->
+                    <!-- 最小値(3)からQ1(6)までのひげ -->
+                    <line x1="110" y1="40" x2="170" y2="40" stroke="#1976d2" stroke-width="3"/>
+                    <line x1="110" y1="30" x2="110" y2="50" stroke="#1976d2" stroke-width="3"/>
+
+                    <!-- 箱 (Q1=6 からQ3=16.5) -->
+                    <rect x="170" y="20" width="210" height="40" fill="#90caf9" stroke="#1976d2" stroke-width="3"/>
+
+                    <!-- 中央値 (Q2=10) の線 -->
+                    <line x1="250" y1="20" x2="250" y2="60" stroke="#d32f2f" stroke-width="4"/>
+
+                    <!-- Q3(16.5)から最大値(20)までのひげ -->
+                    <line x1="380" y1="40" x2="450" y2="40" stroke="#1976d2" stroke-width="3"/>
+                    <line x1="450" y1="30" x2="450" y2="50" stroke="#1976d2" stroke-width="3"/>
+
+                    <!-- ラベル -->
+                    <text x="110" y="110" font-size="14" fill="#1976d2" text-anchor="middle" font-weight="bold">最小値 3</text>
+                    <text x="170" y="110" font-size="14" fill="#1976d2" text-anchor="middle" font-weight="bold">Q₁ = 6</text>
+                    <text x="250" y="110" font-size="14" fill="#d32f2f" text-anchor="middle" font-weight="bold">Q₂ = 10</text>
+                    <text x="380" y="110" font-size="14" fill="#1976d2" text-anchor="middle" font-weight="bold">Q₃ = 16.5</text>
+                    <text x="450" y="110" font-size="14" fill="#1976d2" text-anchor="middle" font-weight="bold">最大値 20</text>
+                </svg>
+                <div class="svg-caption">例3のデータの箱ひげ図</div>
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>2つの箱ひげ図を比較する
+            </div>
+            <p>A組とB組の数学のテスト結果（100点満点）を箱ひげ図で表した。どちらのクラスの方が成績のばらつきが大きいか答えなさい。</p>
+
+            <!-- 2つの箱ひげ図 -->
+            <div class="svg-container">
+                <svg width="700" height="200" viewBox="0 0 700 200">
+                    <!-- 目盛り線 -->
+                    <line x1="50" y1="60" x2="650" y2="60" stroke="#ddd" stroke-width="1"/>
+                    <line x1="50" y1="140" x2="650" y2="140" stroke="#ddd" stroke-width="1"/>
+
+                    <!-- 目盛り -->
+                    <line x1="50" y1="55" x2="50" y2="65" stroke="#666" stroke-width="2"/>
+                    <text x="50" y="75" font-size="14" fill="#666" text-anchor="middle">0</text>
+                    <line x1="50" y1="135" x2="50" y2="145" stroke="#666" stroke-width="2"/>
+                    <text x="50" y="155" font-size="14" fill="#666" text-anchor="middle">0</text>
+
+                    <line x1="170" y1="55" x2="170" y2="65" stroke="#666" stroke-width="2"/>
+                    <text x="170" y="75" font-size="14" fill="#666" text-anchor="middle">20</text>
+                    <line x1="170" y1="135" x2="170" y2="145" stroke="#666" stroke-width="2"/>
+                    <text x="170" y="155" font-size="14" fill="#666" text-anchor="middle">20</text>
+
+                    <line x1="290" y1="55" x2="290" y2="65" stroke="#666" stroke-width="2"/>
+                    <text x="290" y="75" font-size="14" fill="#666" text-anchor="middle">40</text>
+                    <line x1="290" y1="135" x2="290" y2="145" stroke="#666" stroke-width="2"/>
+                    <text x="290" y="155" font-size="14" fill="#666" text-anchor="middle">40</text>
+
+                    <line x1="410" y1="55" x2="410" y2="65" stroke="#666" stroke-width="2"/>
+                    <text x="410" y="75" font-size="14" fill="#666" text-anchor="middle">60</text>
+                    <line x1="410" y1="135" x2="410" y2="145" stroke="#666" stroke-width="2"/>
+                    <text x="410" y="155" font-size="14" fill="#666" text-anchor="middle">60</text>
+
+                    <line x1="530" y1="55" x2="530" y2="65" stroke="#666" stroke-width="2"/>
+                    <text x="530" y="75" font-size="14" fill="#666" text-anchor="middle">80</text>
+                    <line x1="530" y1="135" x2="530" y2="145" stroke="#666" stroke-width="2"/>
+                    <text x="530" y="155" font-size="14" fill="#666" text-anchor="middle">80</text>
+
+                    <line x1="650" y1="55" x2="650" y2="65" stroke="#666" stroke-width="2"/>
+                    <text x="650" y="75" font-size="14" fill="#666" text-anchor="middle">100</text>
+                    <line x1="650" y1="135" x2="650" y2="145" stroke="#666" stroke-width="2"/>
+                    <text x="650" y="155" font-size="14" fill="#666" text-anchor="middle">100</text>
+
+                    <!-- A組の箱ひげ図（ばらつき大）-->
+                    <text x="25" y="40" font-size="16" fill="#1976d2" font-weight="bold">A組</text>
+                    <!-- 最小値30からQ1=45 -->
+                    <line x1="230" y1="40" x2="290" y2="40" stroke="#1976d2" stroke-width="3"/>
+                    <line x1="230" y1="30" x2="230" y2="50" stroke="#1976d2" stroke-width="3"/>
+                    <!-- 箱 Q1=45からQ3=75 -->
+                    <rect x="290" y="20" width="170" height="40" fill="#90caf9" stroke="#1976d2" stroke-width="3"/>
+                    <!-- 中央値 Q2=60 -->
+                    <line x1="410" y1="20" x2="410" y2="60" stroke="#d32f2f" stroke-width="4"/>
+                    <!-- Q3=75から最大値90 -->
+                    <line x1="460" y1="40" x2="590" y2="40" stroke="#1976d2" stroke-width="3"/>
+                    <line x1="590" y1="30" x2="590" y2="50" stroke="#1976d2" stroke-width="3"/>
+
+                    <!-- B組の箱ひげ図（ばらつき小）-->
+                    <text x="25" y="120" font-size="16" fill="#ff9800" font-weight="bold">B組</text>
+                    <!-- 最小値45からQ1=55 -->
+                    <line x1="290" y1="120" x2="350" y2="120" stroke="#ff9800" stroke-width="3"/>
+                    <line x1="290" y1="110" x2="290" y2="130" stroke="#ff9800" stroke-width="3"/>
+                    <!-- 箱 Q1=55からQ3=70 -->
+                    <rect x="350" y="100" width="90" height="40" fill="#ffcc80" stroke="#ff9800" stroke-width="3"/>
+                    <!-- 中央値 Q2=62 -->
+                    <line x1="402" y1="100" x2="402" y2="140" stroke="#d32f2f" stroke-width="4"/>
+                    <!-- Q3=70から最大値80 -->
+                    <line x1="440" y1="120" x2="530" y2="120" stroke="#ff9800" stroke-width="3"/>
+                    <line x1="530" y1="110" x2="530" y2="130" stroke="#ff9800" stroke-width="3"/>
+                </svg>
+                <div class="svg-caption">A組とB組の箱ひげ図の比較</div>
+            </div>
+
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>四分位範囲（箱の長さ）を比較する</li>
+                <li>A組：\(Q_3 - Q_1 = 75 - 45 = 30\)</li>
+                <li>B組：\(Q_3 - Q_1 = 70 - 55 = 15\)</li>
+            </ol>
+
+            <p><strong>答え：A組の方がばらつきが大きい</strong></p>
+            <p>理由：A組の四分位範囲（30点）の方が、B組（15点）より大きいため。また、A組の方が最大値と最小値の差（範囲）も大きい。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：全数調査か標本調査かは「3つの質問」で判断</strong><br>
+            <ol style="margin-top: 5px;">
+                <li>母集団の数は多い？ → 多ければ標本調査が有利</li>
+                <li>調べると壊れる？（破壊検査） → 壊れるなら標本調査しかできない</li>
+                <li>時間・費用は限られている？ → 限られていれば標本調査</li>
+            </ol>
+            これらのどれか1つでも当てはまれば標本調査、すべて当てはまらず正確さが最重要なら全数調査。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：四分位数は「データを4等分する3つの仕切り」と覚える</strong><br>
+            データを小さい順に並べて4つのブロックに分けたとき、3つの仕切りが\(Q_1\)、\(Q_2\)、\(Q_3\)。
+            <ul style="margin-top: 5px;">
+                <li>\(Q_2\)（中央値）から先に求める</li>
+                <li>\(Q_1\)は「\(Q_2\)より小さいデータ」の中央値</li>
+                <li>\(Q_3\)は「\(Q_2\)より大きいデータ」の中央値</li>
+            </ul>
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：箱ひげ図は「5つの値」さえわかれば描ける</strong><br>
+            最小値、\(Q_1\)、\(Q_2\)、\(Q_3\)、最大値の5つを数直線上にマークすれば、あとは箱とひげを繋ぐだけ。
+            <ul style="margin-top: 5px;">
+                <li><strong>箱の左端</strong> = \(Q_1\)</li>
+                <li><strong>箱の真ん中の線</strong> = \(Q_2\)</li>
+                <li><strong>箱の右端</strong> = \(Q_3\)</li>
+                <li><strong>左のひげ</strong> = 最小値から\(Q_1\)</li>
+                <li><strong>右のひげ</strong> = \(Q_3\)から最大値</li>
+            </ul>
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：ばらつきを比べるには「箱の長さ」を見る</strong><br>
+            箱ひげ図で複数のデータを比較するとき、<strong>箱の長さ（四分位範囲）</strong>がばらつきの指標。
+            <ul style="margin-top: 5px;">
+                <li>箱が長い → ばらつきが大きい</li>
+                <li>箱が短い → ばらつきが小さい（データが集中している）</li>
+            </ul>
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ5：標本調査の精度は「標本の大きさ」と「無作為性」で決まる</strong><br>
+            <ul style="margin-top: 5px;">
+                <li><strong>標本を大きくする</strong> → 推測の誤差が小さくなる</li>
+                <li><strong>無作為抽出する</strong> → 偏りのない推測ができる</li>
+            </ul>
+            どちらか一方だけでは不十分。無作為に選ばれた大きな標本が理想。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：母集団と標本を逆に考える</div>
+            <p><strong>ダメな例：</strong> 「ある市の中学生300人にアンケート」で、「300人が母集団」と考える</p>
+            <p><strong>対策：</strong> <strong>母集団 = 知りたい全体</strong>（この場合、市の全中学生）、<strong>標本 = 実際に調べた一部</strong>（300人）。「調べたい全体は何か？」を最初に考える。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：四分位数を求めるとき\(Q_2\)を2回数える</div>
+            <p><strong>ダメな例：</strong> データが9個のとき、\(Q_1\)を求めるために「1番目から5番目（\(Q_2\)を含む）」の中央値を求める</p>
+            <p><strong>対策：</strong> データ数が奇数のとき、<strong>\(Q_2\)（真ん中の値）は\(Q_1\)や\(Q_3\)を求める計算には含めない</strong>。\(Q_2\)より小さいデータだけ、\(Q_2\)より大きいデータだけを使う。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：箱ひげ図で「箱の真ん中の線」を平均値と勘違い</div>
+            <p><strong>ダメな例：</strong> 箱の真ん中の線を「平均値」だと思い込む</p>
+            <p><strong>対策：</strong> 箱の真ん中の線は<strong>中央値（\(Q_2\)）</strong>であって平均値ではない。中央値はデータを並べた真ん中、平均値はすべての値の合計÷個数。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：無作為抽出を「適当に選ぶ」と誤解する</div>
+            <p><strong>ダメな例：</strong> 「目についた人を選ぶ」「手前から順に選ぶ」を無作為抽出だと思う</p>
+            <p><strong>対策：</strong> 無作為抽出は<strong>どの個体も同じ確率で選ばれる</strong>ように、くじ引きや乱数表を使って機械的に選ぶこと。人間の判断で「適当に」選ぶと偏りが生じる。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき5：箱ひげ図で「ひげの長さ」だけ見てばらつきを判断</div>
+            <p><strong>ダメな例：</strong> 最大値と最小値の差（範囲）だけでばらつきを比較する</p>
+            <p><strong>対策：</strong> 最大値・最小値は「外れ値（極端な値）」の影響を受けやすい。<strong>ばらつきを比べるには四分位範囲（箱の長さ）</strong>を見る。箱の長さが長いほど、データの真ん中50%が広く散らばっている。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">母集団と標本の違いを説明できる（母集団=調べたい全体、標本=実際に調べた一部）</div>
+            <div class="checklist-item">全数調査と標本調査のメリット・デメリットを言える（正確さ vs 時間・費用）</div>
+            <div class="checklist-item">無作為抽出の意味がわかる（どの個体も同じ確率で選ばれる）</div>
+            <div class="checklist-item">四分位数（\(Q_1\)、\(Q_2\)、\(Q_3\)）を正しく求められる</div>
+            <div class="checklist-item">箱ひげ図を描ける・読み取れる（5つの値と四分位範囲）</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>次のデータの四分位数（\(Q_1\)、\(Q_2\)、\(Q_3\)）と四分位範囲を求めなさい。</p>
+            <p>データ：4, 6, 8, 9, 11, 13, 14, 16（8個）</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>解答：</strong></p>
+                    <ol>
+                        <li>データ数8個（偶数）なので、\(Q_2\)は4番目と5番目の平均 → \((9 + 11) ÷ 2 = 10\) → <strong>\(Q_2 = 10\)</strong></li>
+                        <li>\(Q_1\)：\(Q_2\)より小さいデータ（4, 6, 8, 9）の中央値 → 2番目と3番目の平均 → \((6 + 8) ÷ 2 = 7\) → <strong>\(Q_1 = 7\)</strong></li>
+                        <li>\(Q_3\)：\(Q_2\)より大きいデータ（11, 13, 14, 16）の中央値 → 2番目と3番目の平均 → \((13 + 14) ÷ 2 = 13.5\) → <strong>\(Q_3 = 13.5\)</strong></li>
+                        <li>四分位範囲：\(Q_3 - Q_1 = 13.5 - 7 = 6.5\)</li>
+                    </ol>
+                    <p><strong>答え：\(Q_1 = 7\)、\(Q_2 = 10\)、\(Q_3 = 13.5\)、四分位範囲 = 6.5</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>ある学校で、全校生徒600人のうち300人に「朝食を食べるか」をアンケート調査したところ、240人が「はい」と答えた。全校生徒のうち、朝食を食べる生徒は何人と推測されるか。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>解答：</strong></p>
+                    <ol>
+                        <li>標本（300人）のうち、朝食を食べる割合 = \(240 ÷ 300 = 0.8\)（80%）</li>
+                        <li>母集団（600人）にこの割合を適用 → \(600 × 0.8 = 480\)人</li>
+                    </ol>
+                    <p><strong>答え：480人</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：母集団から標本を無作為抽出し、四分位数と箱ひげ図でデータの散らばりを視覚的に把握する！
+</div>
+
+<!-- ========== 関連教材 ========== -->
+<!-- Front Matterのrelatedで指定すればレイアウトが自動生成します -->
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「選挙速報の秘密」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 選挙速報の秘密</div>
+
+            <p>選挙の日、テレビをつけると「当選確実」の速報が流れる。投票が締め切られてまだ数分しか経っていないのに、なぜもう結果がわかるのだろうか？</p>
+
+            <p>実は、開票作業はとても時間がかかる。数万票、数十万票を人の手で数えるには何時間もかかる。でも、テレビ局は「出口調査」という標本調査を使っている。投票所から出てきた有権者に「誰に投票しましたか？」と聞くのだ。</p>
+
+            <p><strong>なぜ数百人に聞くだけで結果がわかるのか？</strong></p>
+
+            <p>例えば、ある選挙区で10万人が投票し、出口調査で500人に聞いたとする。この500人（標本）のうち、A候補に投票した人が300人（60%）なら、10万人（母集団）のうち約6万人がA候補に投票したと推測できる。</p>
+
+            <div class="formula">
+                \[
+                \text{推定得票数} = 100{,}000 \times 0.6 = 60{,}000 \text{票}
+                \]
+            </div>
+
+            <p>もちろん、500人だけの調査では誤差がある。でも、<strong>無作為抽出</strong>で偏りなく選び、標本を大きくすれば（例：1000人、2000人）、誤差は小さくなる。</p>
+
+            <p>統計学の理論によれば、標本の大きさが\(n\)のとき、誤差は約\(\frac{1}{\sqrt{n}}\)に比例する。つまり、1000人に聞けば誤差は約3%程度に収まり、「当選確実」と判断できるのだ。</p>
+
+            <p><strong>世界初の科学的世論調査</strong></p>
+
+            <p>このアイデアを確立したのは、アメリカの統計学者ジョージ・ギャラップ（1901-1984）。1936年のアメリカ大統領選挙で、ギャラップは5万人への調査で結果を的中させた。一方、当時の有名な雑誌『リテラリー・ダイジェスト』は200万人にアンケートを送ったのに、結果を大外ししてしまった。</p>
+
+            <p>なぜか？ 雑誌は電話帳や自動車登録名簿から回答者を選んだため、<strong>裕福な層に偏ってしまった</strong>のだ。一方、ギャラップは人数は少ないが<strong>無作為抽出</strong>で偏りなく選んだため、正確な予測ができた。</p>
+
+            <p><strong>教訓：大きな標本より、偏りのない標本</strong></p>
+
+            <p>この事件は「標本調査の精度は、標本の大きさだけでなく、無作為性（偏りのなさ）で決まる」ことを証明した。数学の力で、未来を予測できる――それが標本調査の魅力だ！</p>
+        </div>
+    </div>
+</section>

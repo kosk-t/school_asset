@@ -1,0 +1,531 @@
+---
+layout: material-raw
+title: 関数の総合問題：攻略法
+icon: "🎯"
+description: 直線と放物線の複合問題を解くための判断力を身につけます。問題タイプを見抜いて最適なアプローチを選ぼう！
+level: 標準
+level_num: 2
+category: functions
+school_level: junior
+order: 13
+keywords:
+  - 一次関数
+  - 二次関数
+  - 交点
+  - 変域
+  - 面積
+  - 等積変形
+cover_image: /images/noimage.jpg
+cover_description: 直線と放物線のグラフと面積
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：入試攻略「関数問題の読み解き方」"
+related:
+  - url: /junior/一次関数の応用_教材.html
+    title: 一次関数の応用
+    note: 一次関数の基本を学ぶ
+    type: prerequisite
+  - url: /junior/二次関数のグラフと性質_教材.html
+    title: 二次関数のグラフと性質
+    note: 二次関数の基本を学ぶ
+    type: prerequisite
+  - url: /junior/図形と関数の融合問題_教材.html
+    title: 図形と関数の融合問題
+    note: さらに応用的な問題へ
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>入試では、直線と放物線を組み合わせた「総合問題」がよく出ます。これらの問題は、実は<strong>いくつかのパターン</strong>に分類できます。パターンを見抜けば、解き方が自然と決まります。</p>
+        <p>このページでは、<strong>関数の総合問題の攻略法</strong>を学びます：</p>
+        <ul>
+            <li><strong>問題タイプの判別</strong>：何を求める問題か見抜く</li>
+            <li><strong>解法フロー</strong>：タイプごとの解き方</li>
+            <li><strong>面積問題の攻略</strong>：三角形・台形の面積計算</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】問題を見たら「①交点 ②変域 ③面積 ④条件を満たす点」のどれか判別しよう！
+        </div>
+
+        <h3 style="color: #1976d2; margin: 20px 0 10px 0;">▶ 問題タイプ判別フロー</h3>
+
+        <div class="rule-box" id="rule-type-flow">
+            <strong>📌 ルール1：5つの問題タイプ</strong>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="450" height="200" viewBox="0 0 450 200">
+                    <!-- メインの問いかけ -->
+                    <rect x="150" y="10" width="150" height="40" rx="5" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                    <text x="175" y="35" font-size="14" fill="#1976d2">何を求める？</text>
+
+                    <!-- 分岐線 -->
+                    <line x1="225" y1="50" x2="225" y2="70" stroke="#333" stroke-width="1"/>
+                    <line x1="75" y1="70" x2="375" y2="70" stroke="#333" stroke-width="1"/>
+
+                    <!-- タイプ1：交点 -->
+                    <line x1="75" y1="70" x2="75" y2="90" stroke="#333" stroke-width="1"/>
+                    <rect x="25" y="90" width="100" height="50" rx="5" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                    <text x="40" y="110" font-size="14" fill="#ff9800">タイプ①</text>
+                    <text x="45" y="130" font-size="14" fill="#ff9800">交点</text>
+
+                    <!-- タイプ2：式を求める -->
+                    <line x1="150" y1="70" x2="150" y2="90" stroke="#333" stroke-width="1"/>
+                    <rect x="100" y="90" width="100" height="50" rx="5" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+                    <text x="115" y="110" font-size="14" fill="#4caf50">タイプ②</text>
+                    <text x="110" y="130" font-size="14" fill="#4caf50">式を求める</text>
+
+                    <!-- タイプ3：変域 -->
+                    <line x1="225" y1="70" x2="225" y2="90" stroke="#333" stroke-width="1"/>
+                    <rect x="175" y="90" width="100" height="50" rx="5" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
+                    <text x="190" y="110" font-size="14" fill="#e91e63">タイプ③</text>
+                    <text x="200" y="130" font-size="14" fill="#e91e63">変域</text>
+
+                    <!-- タイプ4：面積 -->
+                    <line x1="300" y1="70" x2="300" y2="90" stroke="#333" stroke-width="1"/>
+                    <rect x="250" y="90" width="100" height="50" rx="5" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"/>
+                    <text x="265" y="110" font-size="14" fill="#9c27b0">タイプ④</text>
+                    <text x="275" y="130" font-size="14" fill="#9c27b0">面積</text>
+
+                    <!-- タイプ5：条件を満たす点 -->
+                    <line x1="375" y1="70" x2="375" y2="90" stroke="#333" stroke-width="1"/>
+                    <rect x="325" y="90" width="100" height="50" rx="5" fill="#e0f7fa" stroke="#00bcd4" stroke-width="2"/>
+                    <text x="340" y="110" font-size="14" fill="#00bcd4">タイプ⑤</text>
+                    <text x="330" y="130" font-size="14" fill="#00bcd4">条件を満たす点</text>
+
+                    <!-- 詳細（下部） -->
+                    <text x="30" y="165" font-size="14">連立方程式</text>
+                    <text x="105" y="165" font-size="14">2点通過</text>
+                    <text x="180" y="165" font-size="14">xの範囲→y</text>
+                    <text x="255" y="165" font-size="14">三角形/台形</text>
+                    <text x="345" y="165" font-size="14">逆算</text>
+                </svg>
+            </div>
+            <table class="material-table">
+                <tr>
+                    <th>タイプ</th>
+                    <th>キーワード</th>
+                    <th>解法</th>
+                </tr>
+                <tr>
+                    <td>① 交点</td>
+                    <td>「交点」「共有点」</td>
+                    <td>連立方程式を解く</td>
+                </tr>
+                <tr>
+                    <td>② 式を求める</td>
+                    <td>「直線の式」「放物線の式」</td>
+                    <td>2点の座標を代入</td>
+                </tr>
+                <tr>
+                    <td>③ 変域</td>
+                    <td>「yの変域」「最大・最小」</td>
+                    <td>xの範囲でグラフを追う</td>
+                </tr>
+                <tr>
+                    <td>④ 面積</td>
+                    <td>「面積」「三角形」</td>
+                    <td>底辺×高さ÷2</td>
+                </tr>
+                <tr>
+                    <td>⑤ 条件を満たす点</td>
+                    <td>「面積が○○のとき」「等しいとき」</td>
+                    <td>条件を式にして方程式</td>
+                </tr>
+            </table>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 20px 0 10px 0;">▶ タイプ別解法</h3>
+
+        <div class="rule-box" id="rule-intersection">
+            <strong>📌 ルール2：タイプ① 交点を求める</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <p>2つのグラフの交点 = <strong>連立方程式の解</strong></p>
+            <ol>
+                <li>2つの式を連立する</li>
+                <li>代入法または加減法でxを求める</li>
+                <li>xを代入してyを求める</li>
+            </ol>
+            <p><strong>例：</strong> \(y = x^2\) と \(y = 2x + 3\) の交点</p>
+            <div class="formula">
+                \[ x^2 = 2x + 3 \Rightarrow x^2 - 2x - 3 = 0 \Rightarrow (x-3)(x+1) = 0 \]
+            </div>
+        </div>
+
+        <div class="rule-box" id="rule-equation">
+            <strong>📌 ルール3：タイプ② 式を求める</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <p><strong>直線の式：</strong> 2点を通る直線 → 傾きを求めて \(y = ax + b\)</p>
+            <div class="formula">
+                \[ \text{傾き} = \frac{y_2 - y_1}{x_2 - x_1} \]
+            </div>
+            <p><strong>放物線の式：</strong> \(y = ax^2\) の形なら、1点を代入してaを求める</p>
+        </div>
+
+        <div class="rule-box" id="rule-range">
+            <strong>📌 ルール4：タイプ③ 変域を求める</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <p>xの変域が与えられたとき、yの変域を求める</p>
+            <ol>
+                <li>一次関数：端点のy座標を計算</li>
+                <li>二次関数（\(y = ax^2\)）：
+                    <ul>
+                        <li>xの変域が原点（頂点）を含むか確認</li>
+                        <li>含む → 最小値は0（a > 0のとき）</li>
+                        <li>含まない → 端点で最大・最小</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="rule-box" id="rule-area">
+            <strong>📌 ルール5：タイプ④ 面積を求める</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <p><strong>座標平面上の三角形の面積：</strong></p>
+            <ol>
+                <li>底辺を軸に平行にとる（x軸またはy軸）</li>
+                <li>高さ = 底辺から頂点までの距離</li>
+            </ol>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="350" height="200" viewBox="0 0 350 200">
+                    <!-- 座標軸 -->
+                    <line x1="50" y1="150" x2="300" y2="150" stroke="#333" stroke-width="1"/>
+                    <line x1="100" y1="30" x2="100" y2="180" stroke="#333" stroke-width="1"/>
+                    <text x="290" y="145" font-size="14">x</text>
+                    <text x="105" y="40" font-size="14">y</text>
+
+                    <!-- 三角形OAB -->
+                    <polygon points="100,150 200,50 250,150" fill="#e3f2fd" fill-opacity="0.5" stroke="#1976d2" stroke-width="2"/>
+                    <text x="95" y="165" font-size="14">O</text>
+                    <text x="195" y="45" font-size="14">A</text>
+                    <text x="255" y="165" font-size="14">B</text>
+
+                    <!-- 底辺と高さ -->
+                    <line x1="100" y1="155" x2="250" y2="155" stroke="#e53935" stroke-width="2"/>
+                    <text x="160" y="175" font-size="14" fill="#e53935">底辺</text>
+                    <line x1="200" y1="150" x2="200" y2="50" stroke="#4caf50" stroke-width="2" stroke-dasharray="4,2"/>
+                    <text x="205" y="100" font-size="14" fill="#4caf50">高さ</text>
+                </svg>
+                <div class="svg-caption">底辺をx軸上に、高さを縦にとる</div>
+            </div>
+            <p><strong>y軸を底辺にする場合：</strong> △OAB でAとBがy軸上にあるとき</p>
+            <div class="formula">
+                \[ \text{面積} = \frac{1}{2} \times |y_A - y_B| \times |x_P| \]
+            </div>
+        </div>
+
+        <div class="rule-box" id="rule-condition">
+            <strong>📌 ルール6：タイプ⑤ 条件を満たす点</strong> <a href="#ex-5" class="example-link">→ 例5</a>
+            <p>「面積が○○になる点P」「三角形が二等分される点」など</p>
+            <ol>
+                <li>求める点を \((t, at^2)\) などと置く</li>
+                <li>条件を式で表す（面積 = 12 など）</li>
+                <li>方程式を解いてtを求める</li>
+            </ol>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 面積公式まとめ</strong>
+            <table class="material-table">
+                <tr>
+                    <th>図形</th>
+                    <th>公式</th>
+                </tr>
+                <tr>
+                    <td>三角形</td>
+                    <td>\(\frac{1}{2} \times \text{底辺} \times \text{高さ}\)</td>
+                </tr>
+                <tr>
+                    <td>台形</td>
+                    <td>\(\frac{1}{2} \times (\text{上底} + \text{下底}) \times \text{高さ}\)</td>
+                </tr>
+                <tr>
+                    <td>y軸上に2点</td>
+                    <td>\(\frac{1}{2} \times |y_1 - y_2| \times |x|\)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>各タイプの問題を実際に解いてみましょう。</p>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>タイプ① 交点を求める
+            </div>
+            <p>放物線 \(y = x^2\) と直線 \(y = x + 2\) の交点の座標を求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>連立して \(x^2 = x + 2\)</li>
+                <li>\(x^2 - x - 2 = 0\)</li>
+                <li>\((x-2)(x+1) = 0\) より \(x = 2, -1\)</li>
+                <li>y座標：\(x=2\) のとき \(y=4\)、\(x=-1\) のとき \(y=1\)</li>
+            </ol>
+            <div class="formula">
+                \[ \text{交点：} (2, 4), (-1, 1) \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>タイプ② 式を求める
+            </div>
+            <p>点A(-1, 1)と点B(2, 4)を通る直線の式を求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>傾き = \(\frac{4-1}{2-(-1)} = \frac{3}{3} = 1\)</li>
+                <li>\(y = x + b\) に点A(-1, 1)を代入</li>
+                <li>\(1 = -1 + b\) より \(b = 2\)</li>
+            </ol>
+            <div class="formula">
+                \[ y = x + 2 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>タイプ③ 変域を求める
+            </div>
+            <p>\(y = x^2\) で、xの変域が \(-1 \leq x \leq 3\) のとき、yの変域を求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>xの変域が0を含むか確認 → -1から3なので<strong>含む</strong></li>
+                <li>x = 0のとき y = 0（最小値）</li>
+                <li>x = -1のとき y = 1、x = 3のとき y = 9</li>
+                <li>0から遠い方（x = 3）で最大値</li>
+            </ol>
+            <div class="formula">
+                \[ 0 \leq y \leq 9 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>タイプ④ 面積を求める
+            </div>
+            <p>放物線 \(y = x^2\) と直線 \(y = x + 2\) について、2つの交点と原点Oで作られる三角形の面積を求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>交点はA(-1, 1)、B(2, 4)（例1より）</li>
+                <li>直線のy切片はC(0, 2)</li>
+                <li>△OABを△OACと△OBCに分割</li>
+                <li>底辺をy軸上のOCにとる（長さ2）</li>
+                <li>△OAC = \(\frac{1}{2} \times 2 \times 1 = 1\)</li>
+                <li>△OBC = \(\frac{1}{2} \times 2 \times 2 = 2\)</li>
+            </ol>
+            <div class="formula">
+                \[ \triangle OAB = 1 + 2 = 3 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>タイプ⑤ 条件を満たす点
+            </div>
+            <p>放物線 \(y = x^2\) 上に点Pをとり、△OAPの面積が6になるようにする。ただしA(-1, 1)、Pのx座標は正とする。Pの座標を求めなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>P(t, t²) と置く（t > 0）</li>
+                <li>座標による面積公式を使用</li>
+            </ol>
+            <p>面積 = \(\frac{1}{2}|x_O(y_A - y_P) + x_A(y_P - y_O) + x_P(y_O - y_A)|\)</p>
+            <p>= \(\frac{1}{2}|0 \cdot (1-t^2) + (-1)(t^2 - 0) + t(0 - 1)|\)</p>
+            <p>= \(\frac{1}{2}|-t^2 - t| = \frac{1}{2}(t^2 + t)\)（t > 0より）</p>
+            <p>\(\frac{1}{2}(t^2 + t) = 6\) より \(t^2 + t - 12 = 0\)</p>
+            <p>\((t+4)(t-3) = 0\)、t > 0より t = 3</p>
+            <div class="formula">
+                \[ P(3, 9) \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：まず問題タイプを判別する</strong><br>
+            問題文のキーワード（交点/変域/面積/〜のとき）から、どのタイプか見抜く。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：グラフを描く</strong><br>
+            概略でいいのでグラフを描く。三角形や交点の位置関係が見えやすくなる。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：面積はy軸を底辺にすると楽</strong><br>
+            直線のy切片を使って、y軸上の線分を底辺にすると計算が簡単。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：二次関数の変域は「0を含むか」がカギ</strong><br>
+            \(y = ax^2\) でxの変域が0を含むなら、y = 0が端点になる（a > 0のとき最小）。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ5：交点を先に求める</strong><br>
+            多くの問題は「まず交点を求める」ことから始まる。最初にやっておく。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：変域で0を含むか確認しない</div>
+            <p><strong>ダメな例：</strong> \(y = x^2\) で \(-2 \leq x \leq 1\) のとき、端点だけ計算して「1 ≤ y ≤ 4」とする</p>
+            <p><strong>対策：</strong> 0を含むので y = 0 が最小。正解は「0 ≤ y ≤ 4」</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：交点を求めずに面積計算</div>
+            <p><strong>ダメな例：</strong> 交点の座標がわからないまま面積を求めようとする</p>
+            <p><strong>対策：</strong> まず交点の座標を求める。それが基本。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：面積の分割を忘れる</div>
+            <p><strong>ダメな例：</strong> 三角形の底辺と高さが軸に平行でないのに、無理に計算</p>
+            <p><strong>対策：</strong> 軸に平行な線で分割して、小さい三角形に分ける。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：符号ミス</div>
+            <p><strong>ダメな例：</strong> 座標が負のとき、長さも負で計算してしまう</p>
+            <p><strong>対策：</strong> 長さは常に正。|x₁ - x₂| のように絶対値を使う。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">問題を見て5つのタイプ（交点/式/変域/面積/条件）を判別できるか？</div>
+            <div class="checklist-item">放物線と直線の交点を連立方程式で求められるか？</div>
+            <div class="checklist-item">\(y = ax^2\) の変域で「0を含むか」をチェックしているか？</div>
+            <div class="checklist-item">座標平面上の三角形の面積を、y軸を底辺にして求められるか？</div>
+            <div class="checklist-item">「面積が○○のとき」の問題で、方程式を立てられるか？</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>放物線 \(y = 2x^2\) と直線 \(y = 4x + 6\) の交点の座標を求めなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(2x^2 = 4x + 6\) → \(x^2 - 2x - 3 = 0\) → \((x-3)(x+1) = 0\)</p>
+                    <p>x = 3のとき y = 18、x = -1のとき y = 2</p>
+                    <p><strong>交点：(3, 18), (-1, 2)</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\(y = \frac{1}{2}x^2\) で、xの変域が \(-4 \leq x \leq 2\) のとき、yの変域を求めなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>0を含む → y = 0が最小。x = -4で最大値8</p>
+                    <p><strong>0 ≤ y ≤ 8</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>点O(0, 0)、A(4, 0)、B(2, 6) で作られる三角形OABの面積を求めなさい。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>底辺OA = 4、高さ = 6</p>
+                    <p><strong>面積：12</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：問題タイプ（交点/式/変域/面積/条件）を判別 → それぞれの解法を使う！面積はy軸を底辺に！
+</div>
+
+<!-- ========== 関連教材 ========== -->
+<!-- Front Matterのrelatedで指定すればレイアウトが自動生成します -->
+
+<!-- ========== おまけ：入試攻略 ========== -->
+<section id="story">
+    <h2>おまけ：入試攻略「関数問題の読み解き方」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 入試問題の「型」を見抜く</div>
+
+            <p>高校入試の関数問題は、一見すると「難しそう」に見えます。でも実は、ほとんどが<strong>決まった型</strong>の組み合わせです。</p>
+
+            <h4>入試問題の典型パターン</h4>
+
+            <p><strong>パターン1：「式を求める→交点→面積」</strong></p>
+            <p>最も多いパターン。(1)で直線の式、(2)で交点、(3)で面積という流れ。</p>
+
+            <p><strong>パターン2：「変域→最大最小」</strong></p>
+            <p>二次関数の変域問題。0を含むかどうかがポイント。</p>
+
+            <p><strong>パターン3：「面積を二等分する点」</strong></p>
+            <p>条件を満たす点Pを求める。方程式を立てて解く。</p>
+
+            <h4>問題文の読み方</h4>
+
+            <p>問題文にはヒントが隠れています：</p>
+            <ul>
+                <li>「交点」と書いてあれば → 連立方程式</li>
+                <li>「面積」と書いてあれば → 底辺×高さ÷2</li>
+                <li>「〜のとき」と書いてあれば → 方程式を立てる</li>
+                <li>「変域」と書いてあれば → グラフで端点チェック</li>
+            </ul>
+
+            <h4>解答の「流れ」を意識する</h4>
+
+            <p>入試問題は通常、(1)(2)(3)と続きます。前の問いの答えが次で使えることがほとんど。</p>
+
+            <p>もし(2)で詰まったら、(1)の答えをヒントに。(1)で求めた式や座標が、(2)以降で必ず使われます。</p>
+        </div>
+    </div>
+</section>

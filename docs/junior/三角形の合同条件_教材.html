@@ -1,0 +1,560 @@
+---
+layout: material-raw
+title: 三角形の合同条件
+icon: "🔺"
+description: 三角形の合同条件と証明の書き方を学びます。3つの合同条件を使い分けて、証明問題を解けるようになろう！
+level: 標準
+level_num: 2
+category: geometry
+school_level: junior
+order: 8
+keywords:
+  - 合同
+  - 合同条件
+  - 証明
+  - 三角形
+  - SSS
+  - SAS
+  - ASA
+cover_image: /images/noimage.jpg
+cover_description: 合同な2つの三角形と3つの合同条件
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「ユークリッドと『原論』」"
+related:
+  - url: /junior/角と平行線_教材.html
+    title: 角と平行線
+    note: 角度の性質を証明で使う
+    type: prerequisite
+  - url: /junior/証明問題_合同条件の選び方_教材.html
+    title: 証明問題：合同条件の選び方
+    note: 条件選択のコツ
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「この2つの三角形は完全に同じ形だ」と言いたいとき、すべての辺と角を測る必要はありません。実は、特定の3つの条件さえ確認すれば十分なのです。これが「合同条件」で、図形の証明問題を解く鍵になります。</p>
+        <p>このページでは、<strong>三角形の合同条件</strong>を学びます：</p>
+        <ul>
+            <li><strong>合同の意味</strong>：ぴったり重なる図形の関係</li>
+            <li><strong>3つの合同条件</strong>：三角形が合同であることを示す3つの方法</li>
+            <li><strong>証明の書き方</strong>：合同を使った証明問題の解き方</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】三角形の合同条件は3つ！「3辺」「2辺とその間の角」「1辺と両端の角」
+        </div>
+
+        <div class="rule-box" id="rule-congruent-def">
+            <strong>📌 ルール1：合同とは</strong>
+            <p>2つの図形が<strong>ぴったり重なる</strong>とき、その2つの図形は<strong>合同</strong>であるという。</p>
+            <p>記号：\(\triangle ABC \equiv \triangle DEF\)（「≡」は合同を表す）</p>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="450" height="180" viewBox="0 0 450 180">
+                    <!-- 左の三角形 -->
+                    <polygon points="50,140 150,140 100,50" fill="none" stroke="#1976d2" stroke-width="2"/>
+                    <text x="45" y="155" font-size="14">A</text>
+                    <text x="150" y="155" font-size="14">B</text>
+                    <text x="95" y="45" font-size="14">C</text>
+
+                    <!-- 矢印 -->
+                    <text x="210" y="100" font-size="24">≡</text>
+
+                    <!-- 右の三角形 -->
+                    <polygon points="280,140 380,140 330,50" fill="none" stroke="#e53935" stroke-width="2"/>
+                    <text x="275" y="155" font-size="14">D</text>
+                    <text x="380" y="155" font-size="14">E</text>
+                    <text x="325" y="45" font-size="14">F</text>
+
+                    <!-- 対応を示す印 -->
+                    <text x="100" y="150" font-size="10" fill="#4caf50">|</text>
+                    <text x="330" y="150" font-size="10" fill="#4caf50">|</text>
+                </svg>
+                <div class="svg-caption">合同な三角形は裏返しても重なる</div>
+            </div>
+            <p><strong>→ 対応する辺と角がすべて等しい！</strong></p>
+        </div>
+
+        <div class="rule-box" id="rule-sss">
+            <strong>📌 ルール2：合同条件①「3辺がそれぞれ等しい」（SSS）</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <p>3組の辺がそれぞれ等しいとき、2つの三角形は合同。</p>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="400" height="160" viewBox="0 0 400 160">
+                    <!-- 左の三角形 -->
+                    <polygon points="40,130 140,130 90,40" fill="none" stroke="#1976d2" stroke-width="2"/>
+                    <text x="80" y="145" font-size="12" fill="#e53935">a</text>
+                    <text x="50" y="80" font-size="12" fill="#4caf50">b</text>
+                    <text x="125" y="80" font-size="12" fill="#ff9800">c</text>
+                    <!-- 印 -->
+                    <line x1="85" y1="135" x2="95" y2="135" stroke="#e53935" stroke-width="2"/>
+                    <line x1="60" y1="85" x2="55" y2="95" stroke="#4caf50" stroke-width="2"/>
+                    <line x1="62" y1="87" x2="57" y2="97" stroke="#4caf50" stroke-width="2"/>
+                    <line x1="120" y1="85" x2="125" y2="95" stroke="#ff9800" stroke-width="2"/>
+                    <line x1="118" y1="87" x2="123" y2="97" stroke="#ff9800" stroke-width="2"/>
+                    <line x1="116" y1="89" x2="121" y2="99" stroke="#ff9800" stroke-width="2"/>
+
+                    <!-- 右の三角形 -->
+                    <polygon points="240,130 340,130 290,40" fill="none" stroke="#1976d2" stroke-width="2"/>
+                    <text x="280" y="145" font-size="12" fill="#e53935">a</text>
+                    <text x="250" y="80" font-size="12" fill="#4caf50">b</text>
+                    <text x="325" y="80" font-size="12" fill="#ff9800">c</text>
+                    <!-- 印 -->
+                    <line x1="285" y1="135" x2="295" y2="135" stroke="#e53935" stroke-width="2"/>
+                    <line x1="260" y1="85" x2="255" y2="95" stroke="#4caf50" stroke-width="2"/>
+                    <line x1="262" y1="87" x2="257" y2="97" stroke="#4caf50" stroke-width="2"/>
+                    <line x1="320" y1="85" x2="325" y2="95" stroke="#ff9800" stroke-width="2"/>
+                    <line x1="318" y1="87" x2="323" y2="97" stroke="#ff9800" stroke-width="2"/>
+                    <line x1="316" y1="89" x2="321" y2="99" stroke="#ff9800" stroke-width="2"/>
+
+                    <text x="190" y="90" font-size="18">≡</text>
+                </svg>
+                <div class="svg-caption">3辺がそれぞれ等しい（SSS: Side-Side-Side）</div>
+            </div>
+            <p><strong>覚え方：</strong> 辺・辺・辺 → 「へん・へん・へん」</p>
+        </div>
+
+        <div class="rule-box" id="rule-sas">
+            <strong>📌 ルール3：合同条件②「2辺とその間の角がそれぞれ等しい」（SAS）</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <p>2組の辺と、その間にはさまれた角がそれぞれ等しいとき、2つの三角形は合同。</p>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="400" height="160" viewBox="0 0 400 160">
+                    <!-- 左の三角形 -->
+                    <polygon points="40,130 140,130 90,40" fill="none" stroke="#1976d2" stroke-width="2"/>
+                    <!-- 2辺 -->
+                    <text x="50" y="80" font-size="12" fill="#4caf50">b</text>
+                    <text x="125" y="80" font-size="12" fill="#ff9800">c</text>
+                    <!-- 間の角 -->
+                    <path d="M 90 40 L 80 55 A 15 15 0 0 0 100 55 Z" fill="#e53935" fill-opacity="0.3"/>
+                    <!-- 印 -->
+                    <line x1="60" y1="85" x2="55" y2="95" stroke="#4caf50" stroke-width="2"/>
+                    <line x1="120" y1="85" x2="125" y2="95" stroke="#ff9800" stroke-width="2"/>
+                    <line x1="118" y1="87" x2="123" y2="97" stroke="#ff9800" stroke-width="2"/>
+
+                    <!-- 右の三角形 -->
+                    <polygon points="240,130 340,130 290,40" fill="none" stroke="#1976d2" stroke-width="2"/>
+                    <!-- 2辺 -->
+                    <text x="250" y="80" font-size="12" fill="#4caf50">b</text>
+                    <text x="325" y="80" font-size="12" fill="#ff9800">c</text>
+                    <!-- 間の角 -->
+                    <path d="M 290 40 L 280 55 A 15 15 0 0 0 300 55 Z" fill="#e53935" fill-opacity="0.3"/>
+                    <!-- 印 -->
+                    <line x1="260" y1="85" x2="255" y2="95" stroke="#4caf50" stroke-width="2"/>
+                    <line x1="320" y1="85" x2="325" y2="95" stroke="#ff9800" stroke-width="2"/>
+                    <line x1="318" y1="87" x2="323" y2="97" stroke="#ff9800" stroke-width="2"/>
+
+                    <text x="190" y="90" font-size="18">≡</text>
+                </svg>
+                <div class="svg-caption">2辺とその間の角（SAS: Side-Angle-Side）</div>
+            </div>
+            <p><strong>覚え方：</strong> 辺・角・辺 → 「はさみうち」の角！</p>
+            <p><strong>⚠️ 注意：</strong> 「間の角」でないとダメ！</p>
+        </div>
+
+        <div class="rule-box" id="rule-asa">
+            <strong>📌 ルール4：合同条件③「1辺とその両端の角がそれぞれ等しい」（ASA）</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <p>1組の辺と、その両端の角がそれぞれ等しいとき、2つの三角形は合同。</p>
+            <div class="svg-container" style="margin: 15px 0;">
+                <svg width="400" height="160" viewBox="0 0 400 160">
+                    <!-- 左の三角形 -->
+                    <polygon points="40,130 140,130 90,40" fill="none" stroke="#1976d2" stroke-width="2"/>
+                    <!-- 1辺 -->
+                    <text x="80" y="145" font-size="12" fill="#e53935">a</text>
+                    <line x1="85" y1="135" x2="95" y2="135" stroke="#e53935" stroke-width="2"/>
+                    <!-- 両端の角 -->
+                    <path d="M 40 130 L 55 130 A 15 15 0 0 0 50 115 Z" fill="#4caf50" fill-opacity="0.3"/>
+                    <path d="M 140 130 L 125 130 A 15 15 0 0 1 130 115 Z" fill="#ff9800" fill-opacity="0.3"/>
+
+                    <!-- 右の三角形 -->
+                    <polygon points="240,130 340,130 290,40" fill="none" stroke="#1976d2" stroke-width="2"/>
+                    <!-- 1辺 -->
+                    <text x="280" y="145" font-size="12" fill="#e53935">a</text>
+                    <line x1="285" y1="135" x2="295" y2="135" stroke="#e53935" stroke-width="2"/>
+                    <!-- 両端の角 -->
+                    <path d="M 240 130 L 255 130 A 15 15 0 0 0 250 115 Z" fill="#4caf50" fill-opacity="0.3"/>
+                    <path d="M 340 130 L 325 130 A 15 15 0 0 1 330 115 Z" fill="#ff9800" fill-opacity="0.3"/>
+
+                    <text x="190" y="90" font-size="18">≡</text>
+                </svg>
+                <div class="svg-caption">1辺とその両端の角（ASA: Angle-Side-Angle）</div>
+            </div>
+            <p><strong>覚え方：</strong> 角・辺・角 → 辺の「両端」の角！</p>
+        </div>
+
+        <div class="rule-box" id="rule-proof-format">
+            <strong>📌 ルール5：証明の書き方</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <p>合同の証明は以下の形式で書く：</p>
+            <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 10px 0;">
+                <p><strong>【証明】</strong></p>
+                <p>△ABC と △DEF において、</p>
+                <p style="margin-left: 20px;">① ○○ = △△ （理由）</p>
+                <p style="margin-left: 20px;">② □□ = ◇◇ （理由）</p>
+                <p style="margin-left: 20px;">③ ●● = ★★ （理由）</p>
+                <p>①②③より、【合同条件】が成り立つから、</p>
+                <p style="margin-left: 20px;">△ABC ≡ △DEF</p>
+            </div>
+            <p><strong>ポイント：</strong></p>
+            <ul>
+                <li>等しいものを3つ見つける</li>
+                <li>なぜ等しいか理由を書く</li>
+                <li>どの合同条件を使ったか明記する</li>
+            </ul>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 合同条件のまとめ</strong>
+            <table class="material-table">
+                <tr>
+                    <th>条件</th>
+                    <th>略称</th>
+                    <th>内容</th>
+                    <th>覚え方</th>
+                </tr>
+                <tr>
+                    <td>条件①</td>
+                    <td>SSS</td>
+                    <td>3辺がそれぞれ等しい</td>
+                    <td>へん・へん・へん</td>
+                </tr>
+                <tr>
+                    <td>条件②</td>
+                    <td>SAS</td>
+                    <td>2辺とその間の角</td>
+                    <td>はさみうち</td>
+                </tr>
+                <tr>
+                    <td>条件③</td>
+                    <td>ASA</td>
+                    <td>1辺とその両端の角</td>
+                    <td>両端の角</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>合同条件を使って証明問題を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 合同条件の確認</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>3辺がそれぞれ等しい（SSS）
+            </div>
+            <p>△ABCと△DEFで、AB = DE = 5cm、BC = EF = 7cm、CA = FD = 6cm のとき、2つの三角形は合同か。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>AB = DE（5cm）</li>
+                <li>BC = EF（7cm）</li>
+                <li>CA = FD（6cm）</li>
+            </ol>
+            <p><strong>3辺がそれぞれ等しいので、△ABC ≡ △DEF</strong></p>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>2辺とその間の角（SAS）
+            </div>
+            <p>△ABCと△DEFで、AB = DE = 4cm、AC = DF = 6cm、∠A = ∠D = 60° のとき、2つの三角形は合同か。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>AB = DE（4cm）</li>
+                <li>AC = DF（6cm）</li>
+                <li>∠A = ∠D（60°）← これが2辺の<strong>間の角</strong></li>
+            </ol>
+            <p><strong>2辺とその間の角がそれぞれ等しいので、△ABC ≡ △DEF</strong></p>
+        </div>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>1辺とその両端の角（ASA）
+            </div>
+            <p>△ABCと△DEFで、BC = EF = 8cm、∠B = ∠E = 50°、∠C = ∠F = 70° のとき、2つの三角形は合同か。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>BC = EF（8cm）</li>
+                <li>∠B = ∠E（50°）← 辺BCの端</li>
+                <li>∠C = ∠F（70°）← 辺BCの端</li>
+            </ol>
+            <p><strong>1辺とその両端の角がそれぞれ等しいので、△ABC ≡ △DEF</strong></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 証明問題</h3>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>基本の証明
+            </div>
+            <p>下の図で、AB = CB、∠ABD = ∠CBD のとき、△ABD ≡ △CBD を証明しなさい。</p>
+            <div class="svg-container" style="margin: 10px 0;">
+                <svg width="250" height="180" viewBox="0 0 250 180">
+                    <polygon points="125,20 50,160 200,160" fill="none" stroke="#1976d2" stroke-width="2"/>
+                    <line x1="125" y1="20" x2="125" y2="160" stroke="#333" stroke-width="2"/>
+                    <text x="115" y="15" font-size="14">B</text>
+                    <text x="35" y="170" font-size="14">A</text>
+                    <text x="200" y="170" font-size="14">C</text>
+                    <text x="130" y="170" font-size="14">D</text>
+                    <!-- 等しい辺の印 -->
+                    <line x1="85" y1="88" x2="80" y2="95" stroke="#e53935" stroke-width="2"/>
+                    <line x1="165" y1="88" x2="170" y2="95" stroke="#e53935" stroke-width="2"/>
+                </svg>
+            </div>
+            <p><strong>【証明】</strong></p>
+            <p>△ABDと△CBDにおいて、</p>
+            <ol>
+                <li>AB = CB （仮定）</li>
+                <li>∠ABD = ∠CBD （仮定）</li>
+                <li>BD = BD （共通）</li>
+            </ol>
+            <p>①②③より、<strong>2辺とその間の角がそれぞれ等しい</strong>ので、</p>
+            <div class="formula">
+                \[ \triangle ABD \equiv \triangle CBD \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>平行線を使った証明
+            </div>
+            <p>下の図で、AB // DC、AB = DC のとき、△ABO ≡ △CDO を証明しなさい。</p>
+            <div class="svg-container" style="margin: 10px 0;">
+                <svg width="280" height="160" viewBox="0 0 280 160">
+                    <!-- 四角形ABCD -->
+                    <line x1="50" y1="40" x2="180" y2="40" stroke="#1976d2" stroke-width="2"/>
+                    <line x1="100" y1="130" x2="230" y2="130" stroke="#1976d2" stroke-width="2"/>
+                    <line x1="50" y1="40" x2="100" y2="130" stroke="#333" stroke-width="2"/>
+                    <line x1="180" y1="40" x2="230" y2="130" stroke="#333" stroke-width="2"/>
+                    <!-- 対角線 -->
+                    <line x1="50" y1="40" x2="230" y2="130" stroke="#333" stroke-width="1" stroke-dasharray="4,2"/>
+                    <line x1="180" y1="40" x2="100" y2="130" stroke="#333" stroke-width="1" stroke-dasharray="4,2"/>
+                    <!-- 交点 -->
+                    <circle cx="140" cy="85" r="3" fill="#333"/>
+                    <text x="40" y="35" font-size="14">A</text>
+                    <text x="180" y="35" font-size="14">B</text>
+                    <text x="230" y="145" font-size="14">C</text>
+                    <text x="85" y="145" font-size="14">D</text>
+                    <text x="145" y="80" font-size="14">O</text>
+                    <!-- 等しい辺 -->
+                    <line x1="110" y1="45" x2="120" y2="45" stroke="#e53935" stroke-width="2"/>
+                    <line x1="160" y1="135" x2="170" y2="135" stroke="#e53935" stroke-width="2"/>
+                </svg>
+            </div>
+            <p><strong>【証明】</strong></p>
+            <p>△ABOと△CDOにおいて、</p>
+            <ol>
+                <li>AB = DC （仮定）</li>
+                <li>∠ABO = ∠DCO （AB // DC より錯角）</li>
+                <li>∠BAO = ∠CDO （AB // DC より錯角）</li>
+            </ol>
+            <p>①②③より、<strong>1辺とその両端の角がそれぞれ等しい</strong>ので、</p>
+            <div class="formula">
+                \[ \triangle ABO \equiv \triangle CDO \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-6">
+            <div class="example-title">
+                <span class="number-badge">例6</span>合同を使って辺や角が等しいことを示す
+            </div>
+            <p>例5の条件で、AO = CO を証明しなさい。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>例5より △ABO ≡ △CDO</li>
+                <li>合同な三角形の対応する辺は等しいので、AO = CO</li>
+            </ol>
+            <p><strong>→ 合同を示した後、対応する辺・角が等しいと言える！</strong></p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：「共通な辺・角」を探す</strong><br>
+            2つの三角形が重なっている部分は「共通」。同じ辺や角を共有していることが多い。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：対頂角・同位角・錯角を使う</strong><br>
+            等しい角を見つけるとき、これらの性質が使えることが多い。平行線があれば特に注目！
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：仮定を図に書き込む</strong><br>
+            問題文の条件（等しい辺・角）を図に印で書き込むと、どの条件が使えるか見えやすい。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：結論から逆算する</strong><br>
+            「何を示したいか」を確認。AO = CO を示したいなら、まずAOとCOを含む三角形の合同を考える。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ5：条件は3つ！数えながら確認</strong><br>
+            合同を示すには、等しいものが<strong>3組</strong>必要。2つしか見つからなければ、もう1つ探す。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：「間の角」でない角をSASに使う</div>
+            <p><strong>ダメな例：</strong> AB = DE、AC = DF、∠B = ∠E で「2辺とその間の角」と言う</p>
+            <p><strong>対策：</strong> ∠Aが間の角！∠Bは間の角ではない。2辺に「はさまれた」角かチェック。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：対応する頂点の順番を間違える</div>
+            <p><strong>ダメな例：</strong> △ABC ≡ △FDE と書く（対応がずれている）</p>
+            <p><strong>対策：</strong> A↔D、B↔E、C↔F のように対応する頂点を同じ順で書く。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：理由を書かない</div>
+            <p><strong>ダメな例：</strong> 「AB = CB」だけで理由がない</p>
+            <p><strong>対策：</strong> なぜ等しいか（仮定、共通、対頂角、錯角など）を必ず書く。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：使う合同条件を明記しない</div>
+            <p><strong>ダメな例：</strong> 3つの等式を書いて「よって合同」で終わる</p>
+            <p><strong>対策：</strong> 「3辺がそれぞれ等しい」など、どの条件を使ったか明記する。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">3つの合同条件を言えるか？（SSS, SAS, ASA）</div>
+            <div class="checklist-item">SASの「間の角」の意味がわかるか？</div>
+            <div class="checklist-item">証明で「共通な辺」「対頂角」「錯角」を使えるか？</div>
+            <div class="checklist-item">証明の形式（等式3つ→合同条件→結論）で書けるか？</div>
+            <div class="checklist-item">合同から、対応する辺・角が等しいと言えるか？</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>次の条件で、2つの三角形が合同といえるか。合同なら使う条件を答えなさい。</p>
+            <p>（1）3辺がそれぞれ等しい</p>
+            <p>（2）2辺と1つの角がそれぞれ等しい</p>
+            <p>（3）1辺とその両端の角がそれぞれ等しい</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>（1）<strong>合同（SSS）</strong></p>
+                    <p>（2）<strong>「間の角」かどうかによる</strong>。間の角なら合同（SAS）、そうでなければ合同とは限らない</p>
+                    <p>（3）<strong>合同（ASA）</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>下の図で、M は AB の中点で、CM ⊥ AB のとき、△ACM ≡ △BCM を証明しなさい。</p>
+            <div class="svg-container" style="margin: 10px 0;">
+                <svg width="250" height="150" viewBox="0 0 250 150">
+                    <polygon points="50,120 200,120 125,30" fill="none" stroke="#1976d2" stroke-width="2"/>
+                    <line x1="125" y1="30" x2="125" y2="120" stroke="#333" stroke-width="2"/>
+                    <text x="40" y="135" font-size="14">A</text>
+                    <text x="200" y="135" font-size="14">B</text>
+                    <text x="115" y="25" font-size="14">C</text>
+                    <text x="130" y="135" font-size="14">M</text>
+                    <!-- 直角記号 -->
+                    <rect x="125" y="110" width="10" height="10" fill="none" stroke="#333" stroke-width="1"/>
+                </svg>
+            </div>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>【証明】</strong></p>
+                    <p>△ACMと△BCMにおいて、</p>
+                    <p>① AM = BM （Mは中点）</p>
+                    <p>② ∠AMC = ∠BMC = 90° （CM ⊥ AB）</p>
+                    <p>③ CM = CM （共通）</p>
+                    <p>①②③より、2辺とその間の角がそれぞれ等しいので、</p>
+                    <p><strong>△ACM ≡ △BCM</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：合同条件は3つ！「3辺（SSS）」「2辺と間の角（SAS）」「1辺と両端の角（ASA）」
+</div>
+
+<!-- ========== 関連教材 ========== -->
+<!-- Front Matterのrelatedで指定すればレイアウトが自動生成します -->
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「ユークリッドと『原論』」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 2300年読み継がれた教科書</div>
+
+            <p>紀元前300年頃、エジプトのアレクサンドリア。プトレマイオス1世が建てた図書館で、一人の数学者が歴史的な仕事をしていました。</p>
+
+            <p>その名は<strong>ユークリッド</strong>。</p>
+
+            <p>彼は、それまでバラバラに知られていた幾何学の定理を、<strong>「5つの公理」から論理的に導く</strong>という壮大なプロジェクトを始めました。</p>
+
+            <p>その成果が『原論（ストイケイア）』全13巻。この本には、三角形の合同条件もしっかり載っています。</p>
+
+            <p>実は、ユークリッドは合同条件を「定理」として証明しました。「2辺とその間の角が等しければ合同」は、第1巻命題4として登場します。</p>
+
+            <p>プトレマイオス王が「もっと簡単に幾何学を学べないか」と尋ねたとき、ユークリッドはこう答えたと言われています。</p>
+
+            <p><strong>「幾何学に王道なし」</strong>（There is no royal road to geometry.）</p>
+
+            <p>つまり、「近道はない。一つ一つ積み上げていくしかない」と。</p>
+
+            <p>『原論』は2300年以上読み継がれ、聖書に次いで世界で2番目に多く出版された本とも言われます。今みなさんが学んでいる合同条件も、ユークリッドの時代から変わっていないのです。</p>
+
+            <p style="font-size: 0.9em; color: #888; margin-top: 15px;">※「幾何学に王道なし」の逸話は、プロクロスの『ユークリッド原論注釈』に記録されています。</p>
+        </div>
+    </div>
+</section>
