@@ -1,0 +1,566 @@
+---
+layout: material-raw
+title: 統計的推測
+icon: "📊"
+description: 標本から母集団の特性を推測する方法を学びます。母平均の点推定・区間推定（95%信頼区間）、仮説検定の基本的な考え方を身につけましょう。
+level: 標準
+level_num: 2
+category: data
+school_level: senior
+order: 10
+keywords:
+  - 母集団
+  - 標本
+  - 母平均
+  - 信頼区間
+  - 仮説検定
+  - 標準誤差
+cover_image: /images/noimage.jpg
+cover_description: 正規分布の曲線と信頼区間を示す図、母集団と標本の関係を表すイラスト
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：統計パラドックス「世論調査のウソ？」"
+related:
+  - url: /senior/データの分析_教材.html
+    title: データの分析
+    note: 分散・標準偏差の計算が前提
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>テレビの視聴率調査では、日本全国の約4000万世帯すべてを調べることはできません。そこで、一部の世帯（標本）を調べて、全体（母集団）の傾向を「推測」します。これが<strong>統計的推測</strong>の考え方です。</p>
+        <p>このページでは、以下の内容を学びます：</p>
+        <ul>
+            <li><strong>母集団と標本</strong>：調査対象全体と、そこから選んだ一部の関係</li>
+            <li><strong>母平均の推定</strong>：標本平均から母平均を「点」で推定する方法</li>
+            <li><strong>信頼区間</strong>：母平均が「この範囲にある」と95%の確率で言える区間</li>
+            <li><strong>仮説検定</strong>：「この仮説は正しいか？」を統計的に判断する方法</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】標本平均 \(\bar{X}\) は正規分布 \(N\left(m, \dfrac{\sigma^2}{n}\right)\) に従う（中心極限定理）
+        </div>
+
+        <!-- 母集団と標本のイメージ図 -->
+        <div class="svg-container">
+            <svg width="700" height="280" viewBox="0 0 700 280">
+                <!-- 母集団（大きな円） -->
+                <ellipse cx="200" cy="140" rx="150" ry="120" fill="#e3f2fd" stroke="#1976d2" stroke-width="3"/>
+                <text x="200" y="50" text-anchor="middle" font-size="18" fill="#1976d2" font-weight="bold">母集団</text>
+                <text x="200" y="75" text-anchor="middle" font-size="14" fill="#666">（全体 N 個）</text>
+
+                <!-- 母集団内の点 -->
+                <circle cx="150" cy="100" r="5" fill="#1976d2"/>
+                <circle cx="180" cy="120" r="5" fill="#1976d2"/>
+                <circle cx="220" cy="110" r="5" fill="#1976d2"/>
+                <circle cx="160" cy="150" r="5" fill="#1976d2"/>
+                <circle cx="200" cy="160" r="5" fill="#1976d2"/>
+                <circle cx="240" cy="140" r="5" fill="#1976d2"/>
+                <circle cx="170" cy="180" r="5" fill="#1976d2"/>
+                <circle cx="210" cy="190" r="5" fill="#1976d2"/>
+                <circle cx="250" cy="170" r="5" fill="#1976d2"/>
+                <circle cx="130" cy="130" r="5" fill="#1976d2"/>
+                <circle cx="270" cy="120" r="5" fill="#1976d2"/>
+                <circle cx="190" cy="200" r="5" fill="#1976d2"/>
+
+                <!-- 標本（抽出された部分） -->
+                <ellipse cx="230" cy="155" rx="50" ry="40" fill="rgba(255, 152, 0, 0.3)" stroke="#ff9800" stroke-width="3" stroke-dasharray="5,3"/>
+
+                <!-- 抽出矢印 -->
+                <defs>
+                    <marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#ff9800"/>
+                    </marker>
+                </defs>
+                <path d="M 290 155 C 350 155 350 155 400 155" stroke="#ff9800" stroke-width="3" fill="none" marker-end="url(#arrow-orange)"/>
+                <text x="345" y="145" text-anchor="middle" font-size="14" fill="#ff9800" font-weight="bold">無作為抽出</text>
+
+                <!-- 標本（小さな円） -->
+                <ellipse cx="520" cy="140" rx="80" ry="70" fill="#fff3e0" stroke="#ff9800" stroke-width="3"/>
+                <text x="520" y="70" text-anchor="middle" font-size="18" fill="#ff9800" font-weight="bold">標本</text>
+                <text x="520" y="95" text-anchor="middle" font-size="14" fill="#666">（抽出 n 個）</text>
+
+                <!-- 標本内の点 -->
+                <circle cx="490" cy="130" r="6" fill="#ff9800"/>
+                <circle cx="530" cy="120" r="6" fill="#ff9800"/>
+                <circle cx="510" cy="150" r="6" fill="#ff9800"/>
+                <circle cx="550" cy="140" r="6" fill="#ff9800"/>
+                <circle cx="520" cy="170" r="6" fill="#ff9800"/>
+
+                <!-- 母数と統計量 -->
+                <text x="200" y="240" text-anchor="middle" font-size="16" fill="#1976d2">母平均 m、母分散 σ²</text>
+                <text x="520" y="230" text-anchor="middle" font-size="16" fill="#ff9800">標本平均 X̄</text>
+            </svg>
+            <div class="svg-caption">母集団から無作為に抽出した標本で、母集団の特性を推測する</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 母集団と標本の用語</strong>
+            <table class="material-table" style="margin-top: 10px;">
+                <tr><th>用語</th><th>意味</th><th>記号</th></tr>
+                <tr><td>母集団</td><td>調査対象の全体</td><td>大きさ \(N\)</td></tr>
+                <tr><td>標本</td><td>母集団から抽出した一部</td><td>大きさ \(n\)</td></tr>
+                <tr><td>母平均</td><td>母集団全体の平均</td><td>\(m\)（または \(\mu\)）</td></tr>
+                <tr><td>母分散</td><td>母集団全体の分散</td><td>\(\sigma^2\)</td></tr>
+                <tr><td>母標準偏差</td><td>母集団全体の標準偏差</td><td>\(\sigma\)</td></tr>
+                <tr><td>標本平均</td><td>標本の平均値</td><td>\(\bar{X}\)</td></tr>
+            </table>
+            <p style="margin-top: 10px;"><strong>無作為抽出</strong>とは、母集団のどの要素も同じ確率で選ばれるように抽出すること。偏りのない推測のために必須！</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 標本平均の分布（中心極限定理）</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <p>母平均 \(m\)、母標準偏差 \(\sigma\) の母集団から、大きさ \(n\) の標本を無作為抽出するとき：</p>
+            <div class="formula">
+                \[ \bar{X} \sim N\left(m, \frac{\sigma^2}{n}\right) \]
+            </div>
+            <p>つまり、標本平均 \(\bar{X}\) の：</p>
+            <ul>
+                <li>期待値（平均）= \(m\)（母平均と同じ）</li>
+                <li>分散 = \(\dfrac{\sigma^2}{n}\)（母分散を \(n\) で割る）</li>
+                <li>標準偏差 = \(\dfrac{\sigma}{\sqrt{n}}\)（これを<strong>標準誤差</strong>という）</li>
+            </ul>
+            <p><strong>→ だから結果は：</strong> 標本サイズ \(n\) が大きいほど、標本平均のばらつきは小さくなる！</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>たくさんのデータを集めれば、平均値は安定する。100人調べた平均より、10000人調べた平均の方が信頼できる、というイメージ。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 標準化と正規分布表</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <p>標本平均 \(\bar{X}\) を標準化すると、標準正規分布 \(N(0, 1)\) に従う：</p>
+            <div class="formula">
+                \[ Z = \frac{\bar{X} - m}{\dfrac{\sigma}{\sqrt{n}}} \sim N(0, 1) \]
+            </div>
+            <p>正規分布表で重要な値：</p>
+            <ul>
+                <li>\(P(|Z| \leq 1.96) = 0.95\)（95%が \(-1.96 \leq Z \leq 1.96\) に入る）</li>
+                <li>\(P(|Z| \leq 2.58) = 0.99\)（99%が \(-2.58 \leq Z \leq 2.58\) に入る）</li>
+            </ul>
+        </div>
+
+        <!-- 信頼区間のイメージ図 -->
+        <div class="svg-container">
+            <svg width="700" height="220" viewBox="0 0 700 220">
+                <!-- 正規分布曲線 -->
+                <path d="M 50 180
+                         Q 100 180 150 175
+                         Q 200 165 250 140
+                         Q 300 100 350 60
+                         Q 400 100 450 140
+                         Q 500 165 550 175
+                         Q 600 180 650 180"
+                      stroke="#1976d2" stroke-width="3" fill="none"/>
+
+                <!-- 95%信頼区間の塗りつぶし -->
+                <path d="M 175 178
+                         Q 225 160 275 130
+                         Q 325 85 350 60
+                         Q 375 85 425 130
+                         Q 475 160 525 178
+                         L 525 180
+                         L 175 180
+                         Z"
+                      fill="rgba(76, 175, 80, 0.3)" stroke="none"/>
+
+                <!-- 軸 -->
+                <line x1="50" y1="180" x2="650" y2="180" stroke="#333" stroke-width="2"/>
+
+                <!-- 中心線と端点 -->
+                <line x1="350" y1="180" x2="350" y2="50" stroke="#1976d2" stroke-width="2" stroke-dasharray="5,3"/>
+                <line x1="175" y1="180" x2="175" y2="178" stroke="#e53935" stroke-width="3"/>
+                <line x1="525" y1="180" x2="525" y2="178" stroke="#e53935" stroke-width="3"/>
+
+                <!-- ラベル -->
+                <text x="350" y="200" text-anchor="middle" font-size="16" fill="#1976d2" font-weight="bold">m</text>
+                <text x="175" y="200" text-anchor="middle" font-size="14" fill="#e53935">−1.96σ/√n</text>
+                <text x="525" y="200" text-anchor="middle" font-size="14" fill="#e53935">+1.96σ/√n</text>
+
+                <!-- 95%のラベル -->
+                <text x="350" y="130" text-anchor="middle" font-size="18" fill="#4caf50" font-weight="bold">95%</text>
+
+                <!-- 両端のラベル -->
+                <text x="110" y="160" text-anchor="middle" font-size="14" fill="#666">2.5%</text>
+                <text x="590" y="160" text-anchor="middle" font-size="14" fill="#666">2.5%</text>
+            </svg>
+            <div class="svg-caption">正規分布の中央95%の範囲が信頼区間の基礎</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 95%信頼区間の公式</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <p>母平均 \(m\) の95%信頼区間は：</p>
+            <div class="formula">
+                \[ \bar{X} - 1.96 \cdot \frac{\sigma}{\sqrt{n}} \leq m \leq \bar{X} + 1.96 \cdot \frac{\sigma}{\sqrt{n}} \]
+            </div>
+            <p>または、まとめて書くと：</p>
+            <div class="formula">
+                \[ \bar{X} \pm 1.96 \cdot \frac{\sigma}{\sqrt{n}} \]
+            </div>
+            <p><strong>→ だから結果は：</strong> 「この区間に母平均が含まれる」と95%の信頼度で言える！</p>
+            <p><strong>✅ メリット：</strong> 「母平均は〇〇です」（点推定）より、「〇〇から△△の間です」（区間推定）の方が信頼性を伝えやすい。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>「95%信頼区間」とは、「同じ調査を100回やれば、そのうち95回はこの区間に母平均が入る」という意味。1回の調査で「絶対に入る」わけではないことに注意！</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 仮説検定の手順</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <p>「母平均は \(m_0\) である」という仮説を検定する手順：</p>
+            <ol>
+                <li><strong>帰無仮説 \(H_0\)</strong> を立てる：「母平均 \(m = m_0\)」（否定したい仮説）</li>
+                <li><strong>対立仮説 \(H_1\)</strong> を立てる：「母平均 \(m \neq m_0\)」（主張したい仮説）</li>
+                <li><strong>有意水準 \(\alpha\)</strong> を決める（通常は5%）</li>
+                <li>検定統計量 \(Z = \dfrac{\bar{X} - m_0}{\sigma / \sqrt{n}}\) を計算</li>
+                <li>棄却域と比較して判定：
+                    <ul>
+                        <li>\(|Z| > 1.96\) なら \(H_0\) を<strong>棄却</strong>（有意差あり）</li>
+                        <li>\(|Z| \leq 1.96\) なら \(H_0\) を<strong>棄却しない</strong></li>
+                    </ul>
+                </li>
+            </ol>
+            <p><strong>→ だから結果は：</strong> 仮説が正しいとしたら起こりにくいこと（5%未満）が起きたら、仮説を疑う！</p>
+        </div>
+
+        <!-- 仮説検定のイメージ図 -->
+        <div class="svg-container">
+            <svg width="700" height="220" viewBox="0 0 700 220">
+                <!-- 正規分布曲線 -->
+                <path d="M 50 180
+                         Q 100 180 150 175
+                         Q 200 165 250 140
+                         Q 300 100 350 60
+                         Q 400 100 450 140
+                         Q 500 165 550 175
+                         Q 600 180 650 180"
+                      stroke="#1976d2" stroke-width="3" fill="none"/>
+
+                <!-- 棄却域（左） -->
+                <path d="M 50 180
+                         Q 100 180 150 175
+                         Q 175 170 175 178
+                         L 175 180
+                         L 50 180
+                         Z"
+                      fill="rgba(229, 57, 53, 0.4)" stroke="none"/>
+
+                <!-- 棄却域（右） -->
+                <path d="M 525 178
+                         Q 525 170 550 175
+                         Q 600 180 650 180
+                         L 650 180
+                         L 525 180
+                         Z"
+                      fill="rgba(229, 57, 53, 0.4)" stroke="none"/>
+
+                <!-- 採択域 -->
+                <path d="M 175 178
+                         Q 225 160 275 130
+                         Q 325 85 350 60
+                         Q 375 85 425 130
+                         Q 475 160 525 178
+                         L 525 180
+                         L 175 180
+                         Z"
+                      fill="rgba(76, 175, 80, 0.2)" stroke="none"/>
+
+                <!-- 軸 -->
+                <line x1="50" y1="180" x2="650" y2="180" stroke="#333" stroke-width="2"/>
+
+                <!-- 境界線 -->
+                <line x1="175" y1="180" x2="175" y2="150" stroke="#e53935" stroke-width="2"/>
+                <line x1="525" y1="180" x2="525" y2="150" stroke="#e53935" stroke-width="2"/>
+
+                <!-- ラベル -->
+                <text x="350" y="200" text-anchor="middle" font-size="16" fill="#1976d2" font-weight="bold">m₀</text>
+                <text x="175" y="200" text-anchor="middle" font-size="14" fill="#e53935">−1.96</text>
+                <text x="525" y="200" text-anchor="middle" font-size="14" fill="#e53935">+1.96</text>
+
+                <!-- 領域名 -->
+                <text x="100" y="160" text-anchor="middle" font-size="14" fill="#e53935" font-weight="bold">棄却域</text>
+                <text x="600" y="160" text-anchor="middle" font-size="14" fill="#e53935" font-weight="bold">棄却域</text>
+                <text x="350" y="130" text-anchor="middle" font-size="14" fill="#4caf50" font-weight="bold">採択域</text>
+
+                <!-- 割合 -->
+                <text x="100" y="145" text-anchor="middle" font-size="12" fill="#e53935">2.5%</text>
+                <text x="600" y="145" text-anchor="middle" font-size="12" fill="#e53935">2.5%</text>
+            </svg>
+            <div class="svg-caption">有意水準5%の両側検定：\(|Z| > 1.96\) なら帰無仮説を棄却</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>標本から母集団の特性を推測する具体的な方法を見ていきましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 標本平均の分布</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>標本平均の確率を求める
+            </div>
+            <p>ある工場で生産される製品の重さは、母平均 50g、母標準偏差 4g の正規分布に従う。この製品から16個を無作為抽出したとき、標本平均が 49g 以上 51g 以下になる確率を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>標本平均 \(\bar{X}\) の分布を確認
+                    <div class="formula">\[ \bar{X} \sim N\left(50, \frac{4^2}{16}\right) = N(50, 1) \]</div>
+                    標準偏差（標準誤差）は \(\dfrac{4}{\sqrt{16}} = 1\)</li>
+                <li>標準化する
+                    <div class="formula">\[ Z = \frac{\bar{X} - 50}{1} = \bar{X} - 50 \]</div></li>
+                <li>\(\bar{X} = 49\) のとき \(Z = -1\)、\(\bar{X} = 51\) のとき \(Z = 1\)</li>
+                <li>正規分布表から確率を求める
+                    <div class="formula">\[ P(-1 \leq Z \leq 1) = 2 \times 0.3413 = 0.6826 \]</div></li>
+            </ol>
+            <p><strong>答え：約 0.683（約68.3%）</strong></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 標準化</h3>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>標本サイズによる違い
+            </div>
+            <p>母平均 100、母標準偏差 20 の母集団から標本を抽出する。標本平均が 96 以上 104 以下になる確率が 95% 以上になるには、標本サイズ \(n\) はいくつ以上必要か。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>条件を式で表す。\(P(96 \leq \bar{X} \leq 104) \geq 0.95\) より
+                    <div class="formula">\[ P\left(\frac{96 - 100}{\sigma/\sqrt{n}} \leq Z \leq \frac{104 - 100}{\sigma/\sqrt{n}}\right) \geq 0.95 \]</div></li>
+                <li>\(\sigma = 20\) を代入して整理
+                    <div class="formula">\[ P\left(-\frac{4\sqrt{n}}{20} \leq Z \leq \frac{4\sqrt{n}}{20}\right) \geq 0.95 \]</div>
+                    <div class="formula">\[ P\left(-\frac{\sqrt{n}}{5} \leq Z \leq \frac{\sqrt{n}}{5}\right) \geq 0.95 \]</div></li>
+                <li>95%の範囲は \(|Z| \leq 1.96\) なので
+                    <div class="formula">\[ \frac{\sqrt{n}}{5} \geq 1.96 \]</div></li>
+                <li>\(\sqrt{n} \geq 9.8\) より \(n \geq 96.04\)</li>
+            </ol>
+            <p><strong>答え：\(n \geq 97\)（97個以上）</strong></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 信頼区間</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>母平均の95%信頼区間を求める
+            </div>
+            <p>ある缶ジュースの内容量は母標準偏差 5mL の正規分布に従う。100本を無作為抽出したところ、標本平均は 248mL だった。母平均の95%信頼区間を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>標準誤差を計算する
+                    <div class="formula">\[ \frac{\sigma}{\sqrt{n}} = \frac{5}{\sqrt{100}} = \frac{5}{10} = 0.5 \]</div></li>
+                <li>信頼区間の幅を計算する
+                    <div class="formula">\[ 1.96 \times 0.5 = 0.98 \]</div></li>
+                <li>信頼区間を求める
+                    <div class="formula">\[ 248 - 0.98 \leq m \leq 248 + 0.98 \]</div>
+                    <div class="formula">\[ 247.02 \leq m \leq 248.98 \]</div></li>
+            </ol>
+            <p><strong>答え：247.02mL 以上 248.98mL 以下</strong></p>
+            <p>（または「\(248 \pm 0.98\) mL」「約 247mL から 249mL」と書いてもよい）</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 仮説検定</h3>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>仮説検定（両側検定）
+            </div>
+            <p>ある工場では、製品の重さの母平均は 500g とされている。品質管理のため 64 個を無作為抽出したところ、標本平均は 503g だった。母標準偏差は 16g である。母平均が 500g と異なるといえるか。有意水準 5% で検定せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>仮説を立てる
+                    <ul>
+                        <li>帰無仮説 \(H_0\)：\(m = 500\)（母平均は 500g）</li>
+                        <li>対立仮説 \(H_1\)：\(m \neq 500\)（母平均は 500g ではない）</li>
+                    </ul>
+                </li>
+                <li>検定統計量を計算する
+                    <div class="formula">\[ Z = \frac{\bar{X} - m_0}{\sigma / \sqrt{n}} = \frac{503 - 500}{16 / \sqrt{64}} = \frac{3}{16/8} = \frac{3}{2} = 1.5 \]</div></li>
+                <li>棄却域と比較する
+                    <p>有意水準 5%（両側検定）の棄却域は \(|Z| > 1.96\)</p>
+                    <p>\(|1.5| = 1.5 < 1.96\) なので、<strong>棄却域に入らない</strong></p>
+                </li>
+                <li>結論を述べる</li>
+            </ol>
+            <p><strong>答え：帰無仮説を棄却しない。母平均が 500g と異なるとはいえない。</strong></p>
+            <p>（注意：「500g と等しい」とは言っていない。「異なるとはいえない」という消極的な結論）</p>
+        </div>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>仮説検定（棄却される場合）
+            </div>
+            <p>例4と同じ条件で、標本平均が 508g だった場合はどうなるか。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>検定統計量を計算する
+                    <div class="formula">\[ Z = \frac{508 - 500}{16 / \sqrt{64}} = \frac{8}{2} = 4 \]</div></li>
+                <li>棄却域と比較する
+                    <p>\(|4| = 4 > 1.96\) なので、<strong>棄却域に入る</strong></p>
+                </li>
+            </ol>
+            <p><strong>答え：帰無仮説を棄却する。有意水準5%で、母平均は 500g と異なるといえる。</strong></p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：1.96 と 2.58 を覚える</strong><br>
+            95%信頼区間 → 1.96（ほぼ2）<br>
+            99%信頼区間 → 2.58（ほぼ2.6）<br>
+            概算なら「95%は約2」と覚えておくと便利！
+        </div>
+        <div class="tip-box">
+            <strong>✏️ コツ2：標準誤差の計算は先にやる</strong><br>
+            \(\dfrac{\sigma}{\sqrt{n}}\) を先に計算しておくと、信頼区間も検定統計量もスムーズに出せる。<br>
+            特に \(\sqrt{n}\) が整数になる \(n = 4, 9, 16, 25, 36, 49, 64, 81, 100\) は計算しやすい！
+        </div>
+        <div class="tip-box">
+            <strong>✏️ コツ3：仮説検定は「背理法」と同じ発想</strong><br>
+            「帰無仮説が正しいと仮定 → ありえないことが起きた → 仮説は間違い」<br>
+            数学の背理法と同じ論理構造！「正しいと仮定して矛盾を導く」イメージで理解しよう。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：分散と標準偏差を混同</div>
+            <p><strong>ダメな例：</strong> 「母分散が 16 なので、標準誤差は \(\dfrac{16}{\sqrt{n}}\)」</p>
+            <p><strong>対策：</strong> 母分散 \(\sigma^2 = 16\) なら、母標準偏差 \(\sigma = 4\) を使う。標準誤差は \(\dfrac{4}{\sqrt{n}}\)。公式には「\(\sigma\)（標準偏差）」が入ることを確認！</p>
+        </div>
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：信頼区間の解釈ミス</div>
+            <p><strong>ダメな例：</strong> 「母平均が信頼区間に入る確率が95%」</p>
+            <p><strong>対策：</strong> 母平均は固定値（動かない）。「同じ調査を100回やれば、95回の区間が母平均を含む」が正しい解釈。区間が動くのであって、母平均が動くのではない！</p>
+        </div>
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：仮説検定の結論の書き方</div>
+            <p><strong>ダメな例：</strong> 「帰無仮説を棄却しないので、母平均は500gである」</p>
+            <p><strong>対策：</strong> 「棄却しない」は「正しいと証明した」わけではない。「異なるとはいえない」「500gでないとはいえない」のように消極的に書く。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">標本平均の分布 \(N\left(m, \dfrac{\sigma^2}{n}\right)\) を書ける</div>
+            <div class="checklist-item">標準誤差 \(\dfrac{\sigma}{\sqrt{n}}\) を正しく計算できる</div>
+            <div class="checklist-item">95%信頼区間の公式 \(\bar{X} \pm 1.96 \cdot \dfrac{\sigma}{\sqrt{n}}\) を使える</div>
+            <div class="checklist-item">仮説検定で帰無仮説・対立仮説を正しく立てられる</div>
+            <div class="checklist-item">検定統計量 \(Z\) を計算し、棄却域と比較できる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>ある商品の重さは母平均 \(m\)、母標準偏差 10g の正規分布に従う。25個を無作為抽出したところ、標本平均は 202g だった。母平均 \(m\) の95%信頼区間を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>標準誤差：\(\dfrac{10}{\sqrt{25}} = \dfrac{10}{5} = 2\)</p>
+                    <p>信頼区間の幅：\(1.96 \times 2 = 3.92\)</p>
+                    <p>\(202 - 3.92 \leq m \leq 202 + 3.92\)</p>
+                    <p><strong>答え：198.08g 以上 205.92g 以下</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>ある電球の寿命は母平均 1000 時間、母標準偏差 100 時間の正規分布に従うとされている。新しい製法で作った電球 36 個を調べたところ、標本平均は 1040 時間だった。新しい製法で寿命が変わったといえるか。有意水準 5% で検定せよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>帰無仮説 \(H_0\)：\(m = 1000\)、対立仮説 \(H_1\)：\(m \neq 1000\)</p>
+                    <p>検定統計量：\(Z = \dfrac{1040 - 1000}{100 / \sqrt{36}} = \dfrac{40}{100/6} = \dfrac{40 \times 6}{100} = 2.4\)</p>
+                    <p>\(|2.4| > 1.96\) なので棄却域に入る</p>
+                    <p><strong>答え：帰無仮説を棄却する。有意水準5%で、新しい製法で寿命が変わったといえる。</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：標本平均は \(N\left(m, \dfrac{\sigma^2}{n}\right)\) に従い、95%信頼区間は \(\bar{X} \pm 1.96 \cdot \dfrac{\sigma}{\sqrt{n}}\) で求める。仮説検定では \(|Z| > 1.96\) なら棄却！
+</div>
+
+<!-- ========== 関連教材 ========== -->
+<!-- Front Matterのrelatedで指定すればレイアウトが自動生成します -->
+
+<!-- ========== おまけ：統計パラドックス ========== -->
+<section id="story">
+    <h2>おまけ：統計パラドックス「世論調査のウソ？」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 1936年のアメリカ大統領選挙</div>
+
+            <p>1936年、アメリカでは大統領選挙が行われ、現職のフランクリン・ルーズベルトと共和党のアルフレッド・ランドンが対決しました。</p>
+
+            <p>当時、「リテラリー・ダイジェスト」という有名な雑誌が、<strong>約240万人</strong>という史上最大規模の世論調査を実施。その結果、「ランドンが57%で圧勝する」と予測しました。</p>
+
+            <p>一方、新興の調査会社ギャラップは、たった<strong>約5万人</strong>の調査で「ルーズベルトが56%で勝つ」と予測。</p>
+
+            <p><strong>結果は？</strong></p>
+
+            <p>ルーズベルトが<strong>62%</strong>を獲得して圧勝！</p>
+
+            <p>なぜ240万人の調査が大外れし、5万人の調査が的中したのでしょうか？</p>
+
+            <p><strong>原因は「無作為抽出」ではなかったこと。</strong></p>
+
+            <p>リテラリー・ダイジェストは、電話帳や自動車登録名簿から回答者を選びました。しかし、1936年当時、電話や自動車を持っているのは比較的裕福な人々だけ。つまり、<strong>富裕層に偏った標本</strong>だったのです。不況下でルーズベルトを支持した低所得層の声は、ほとんど含まれていませんでした。</p>
+
+            <p>一方、ギャラップは所得・地域・年齢のバランスを考慮した「割り当て法」で調査対象を選定。人数は少なくても、<strong>母集団を代表する標本</strong>を作ることに成功したのです。</p>
+
+            <div class="formula">
+                \[ \text{大量データ} + \text{偏った抽出} < \text{少量データ} + \text{無作為抽出} \]
+            </div>
+
+            <p><strong>教訓：</strong>サンプルサイズが大きくても、無作為抽出でなければ意味がない。統計的推測で最も大事なのは「どう選んだか」なのです！</p>
+
+            <p>ちなみに、この大失敗でリテラリー・ダイジェストは信用を失い、まもなく廃刊。ギャラップは一躍有名になり、今も「ギャラップ調査」として世界的に知られています。</p>
+        </div>
+    </div>
+</section>

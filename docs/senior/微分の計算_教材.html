@@ -1,0 +1,525 @@
+---
+layout: material-raw
+title: 微分の計算
+icon: "📉"
+description: 導関数の定義から微分公式（積・商・べき乗）をマスターし、接線の方程式を求められるようになる。微分法の基礎を固めて関数の変化を分析する力を身につける。
+level: 標準
+level_num: 2
+category: functions
+school_level: senior
+order: 11
+keywords:
+  - 微分
+  - 導関数
+  - 微分公式
+  - 接線
+  - べき乗の微分
+cover_image: /images/noimage.jpg
+cover_description: 曲線と接線、導関数のグラフ
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「微分を発明した2人の天才」"
+related:
+  - url: /senior/二次関数のグラフ_教材.html
+    title: 二次関数のグラフ
+    note: 平方完成と頂点（前提知識）
+    type: prerequisite
+  - url: /senior/三角関数の基本_教材.html
+    title: 三角関数の基本
+    note: 三角関数の微分に発展
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>車のスピードメーターは「瞬間の速さ」を表示します。では、位置の変化から「瞬間の速さ」をどう計算するのでしょう？その答えが<strong>微分</strong>です。微分は物理・経済・工学など、あらゆる分野で「変化の速さ」を分析する強力な道具です。</p>
+        <p>このページでは、微分の基本を学びます：</p>
+        <ul>
+            <li><strong>導関数の定義</strong>：極限を使った「瞬間の変化率」の厳密な定義</li>
+            <li><strong>べき乗の微分公式</strong>：\(x^n\) の微分は \(nx^{n-1}\)</li>
+            <li><strong>和・差・定数倍の微分</strong>：基本的な計算規則</li>
+            <li><strong>積の微分・商の微分</strong>：関数の掛け算・割り算の微分</li>
+            <li><strong>接線の方程式</strong>：曲線上の点における接線を求める</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】べき乗の微分：\((x^n)' = nx^{n-1}\)（指数を前に出して、指数を1減らす）
+        </div>
+
+        <!-- 導関数の定義の図解 -->
+        <div class="svg-container">
+            <svg width="650" height="320" viewBox="0 0 650 320">
+                <!-- 座標軸 -->
+                <defs>
+                    <marker id="arrow-black" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+                    </marker>
+                </defs>
+                <line x1="50" y1="250" x2="600" y2="250" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+                <line x1="100" y1="280" x2="100" y2="30" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+                <text x="610" y="255" font-size="16" fill="#333">x</text>
+                <text x="90" y="25" font-size="16" fill="#333">y</text>
+
+                <!-- 曲線 y = f(x) -->
+                <path d="M 120 220 Q 200 180 280 120 Q 360 60 440 50 Q 520 45 560 80"
+                      fill="none" stroke="#1976d2" stroke-width="3"/>
+                <text x="570" y="65" font-size="16" fill="#1976d2" font-weight="bold">y = f(x)</text>
+
+                <!-- 点P -->
+                <circle cx="220" cy="165" r="6" fill="#e53935"/>
+                <text x="210" y="190" font-size="14" fill="#e53935" font-weight="bold">P(a, f(a))</text>
+
+                <!-- 点Q -->
+                <circle cx="360" cy="75" r="6" fill="#4caf50"/>
+                <text x="370" y="70" font-size="14" fill="#4caf50" font-weight="bold">Q(a+h, f(a+h))</text>
+
+                <!-- 割線 PQ -->
+                <line x1="140" y1="210" x2="460" y2="20" stroke="#ff9800" stroke-width="2" stroke-dasharray="8,4"/>
+                <text x="470" y="35" font-size="14" fill="#ff9800">割線PQ</text>
+
+                <!-- 接線（極限） -->
+                <line x1="120" y1="230" x2="400" y2="95" stroke="#9c27b0" stroke-width="2.5"/>
+                <text x="405" y="110" font-size="14" fill="#9c27b0" font-weight="bold">接線（h→0の極限）</text>
+
+                <!-- h の説明 -->
+                <line x1="220" y1="260" x2="360" y2="260" stroke="#333" stroke-width="1"/>
+                <line x1="220" y1="255" x2="220" y2="265" stroke="#333" stroke-width="1"/>
+                <line x1="360" y1="255" x2="360" y2="265" stroke="#333" stroke-width="1"/>
+                <text x="290" y="278" text-anchor="middle" font-size="14" fill="#333">h</text>
+
+                <!-- 傾きの公式 -->
+                <text x="450" y="200" font-size="16" fill="#333">割線の傾き：</text>
+                <text x="450" y="225" font-size="16" fill="#ff9800" font-weight="bold">(f(a+h) - f(a)) / h</text>
+                <text x="450" y="260" font-size="16" fill="#333">h→0で接線の傾き</text>
+                <text x="450" y="285" font-size="16" fill="#9c27b0" font-weight="bold">= f'(a)</text>
+            </svg>
+            <div class="svg-caption">導関数の定義：割線の傾きの極限が接線の傾き（微分係数）</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 導関数の定義</strong>
+            <div class="formula">
+                \[ f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h} \]
+            </div>
+            <p>\(f'(x)\)（エフダッシュエックス）と読む。「f(x) を x で微分した関数」という意味。</p>
+            <p><strong>→ だから結果は：</strong> 曲線 \(y = f(x)\) 上の点 \((a, f(a))\) における接線の傾きは \(f'(a)\)</p>
+            <details class="thinking"><summary><strong>💡 なぜ極限を取るのか</strong></summary>
+            <p>2点を結ぶ直線（割線）の傾きは \(\frac{f(a+h) - f(a)}{h}\) で計算できます。この2点をどんどん近づけていく（h→0）と、割線は接線に近づきます。その極限値が「瞬間の変化率」= 微分係数です。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 べき乗の微分公式</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ (x^n)' = nx^{n-1} \quad (n \text{ は任意の実数}) \]
+            </div>
+            <p><strong>→ だから結果は：</strong></p>
+            <ul>
+                <li>\((x^3)' = 3x^2\)（指数3を前に、指数は3-1=2）</li>
+                <li>\((x^5)' = 5x^4\)</li>
+                <li>\((x)' = (x^1)' = 1 \cdot x^0 = 1\)</li>
+                <li>\((1)' = (x^0)' = 0\)（定数の微分は0）</li>
+            </ul>
+            <p><strong>✅ メリット：</strong> 多項式の微分がすべてこの公式で計算できる</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 定数倍・和・差の微分</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ (cf(x))' = cf'(x) \quad (\text{定数倍はそのまま外に出せる}) \]
+                \[ (f(x) + g(x))' = f'(x) + g'(x) \quad (\text{和は各項を別々に微分}) \]
+                \[ (f(x) - g(x))' = f'(x) - g'(x) \quad (\text{差も同様}) \]
+            </div>
+            <p><strong>→ だから結果は：</strong> 多項式は各項をバラバラに微分すればOK</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 積の微分公式</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ (f(x)g(x))' = f'(x)g(x) + f(x)g'(x) \]
+            </div>
+            <p><strong>→ だから結果は：</strong> 「前を微分×後ろそのまま + 前そのまま×後ろを微分」</p>
+            <details class="thinking"><summary><strong>💡 覚え方のコツ</strong></summary>
+            <p>「<strong>前ダッシュ×後ろ + 前×後ろダッシュ</strong>」と唱える。掛け算の片方ずつ微分して足す。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 商の微分公式</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <div class="formula">
+                \[ \left(\frac{f(x)}{g(x)}\right)' = \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2} \]
+            </div>
+            <p><strong>→ だから結果は：</strong> 「分子：上ダッシュ×下 − 上×下ダッシュ、分母：下の2乗」</p>
+            <p><strong>✅ メリット：</strong> 分数関数を展開せずに微分できる</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 接線の方程式</strong> <a href="#ex-5" class="example-link">→ 例5</a>
+            <p>曲線 \(y = f(x)\) 上の点 \((a, f(a))\) における接線の方程式は：</p>
+            <div class="formula">
+                \[ y - f(a) = f'(a)(x - a) \]
+            </div>
+            <p><strong>→ だから結果は：</strong> 接点の座標と傾き（微分係数）がわかれば接線が求まる</p>
+            <details class="thinking"><summary><strong>💡 公式の意味</strong></summary>
+            <p>直線の方程式 \(y - y_1 = m(x - x_1)\) で、傾き \(m = f'(a)\)、通る点 \((x_1, y_1) = (a, f(a))\) を代入したもの。</p>
+            </details>
+        </div>
+
+        <!-- 主な関数の導関数 -->
+        <div class="rule-box">
+            <strong>📌 覚えておきたい導関数</strong>
+            <table class="material-table">
+                <tr><th>\(f(x)\)</th><th>\(f'(x)\)</th><th>備考</th></tr>
+                <tr><td>\(c\)（定数）</td><td>\(0\)</td><td>定数の微分は0</td></tr>
+                <tr><td>\(x\)</td><td>\(1\)</td><td></td></tr>
+                <tr><td>\(x^2\)</td><td>\(2x\)</td><td></td></tr>
+                <tr><td>\(x^3\)</td><td>\(3x^2\)</td><td></td></tr>
+                <tr><td>\(x^n\)</td><td>\(nx^{n-1}\)</td><td>一般のべき乗</td></tr>
+                <tr><td>\(\frac{1}{x} = x^{-1}\)</td><td>\(-\frac{1}{x^2} = -x^{-2}\)</td><td>べき乗公式を適用</td></tr>
+                <tr><td>\(\sqrt{x} = x^{1/2}\)</td><td>\(\frac{1}{2\sqrt{x}} = \frac{1}{2}x^{-1/2}\)</td><td>べき乗公式を適用</td></tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>公式を使って実際に微分してみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ べき乗の微分</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>べき乗の微分
+            </div>
+            <p>次の関数を微分せよ。（1）\(f(x) = x^4\)　（2）\(f(x) = x^{-2}\)　（3）\(f(x) = x^{3/2}\)</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>公式 \((x^n)' = nx^{n-1}\) を適用</li>
+                <li>指数を前に出し、指数から1を引く</li>
+            </ol>
+            <p><strong>（1）</strong></p>
+            <div class="formula">
+                \[ f'(x) = (x^4)' = 4x^{4-1} = 4x^3 \]
+            </div>
+            <p><strong>（2）</strong></p>
+            <div class="formula">
+                \[ f'(x) = (x^{-2})' = -2x^{-2-1} = -2x^{-3} = -\frac{2}{x^3} \]
+            </div>
+            <p><strong>（3）</strong></p>
+            <div class="formula">
+                \[ f'(x) = \left(x^{3/2}\right)' = \frac{3}{2}x^{3/2-1} = \frac{3}{2}x^{1/2} = \frac{3}{2}\sqrt{x} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 多項式の微分</h3>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>多項式の微分
+            </div>
+            <p>次の関数を微分せよ。（1）\(f(x) = 3x^4 - 2x^2 + 5x - 7\)　（2）\(f(x) = (x+1)(x-2)\)</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>各項をバラバラに微分する</li>
+                <li>定数倍はそのまま残す</li>
+                <li>定数項の微分は0</li>
+            </ol>
+            <p><strong>（1）</strong></p>
+            <div class="formula">
+                \[ f'(x) = (3x^4)' - (2x^2)' + (5x)' - (7)' \]
+                \[ = 3 \cdot 4x^3 - 2 \cdot 2x + 5 \cdot 1 - 0 \]
+                \[ = 12x^3 - 4x + 5 \]
+            </div>
+            <p><strong>（2）</strong> まず展開してから微分する方法：</p>
+            <div class="formula">
+                \[ f(x) = (x+1)(x-2) = x^2 - x - 2 \]
+                \[ f'(x) = 2x - 1 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 積の微分</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>積の微分公式
+            </div>
+            <p>\(f(x) = (x^2 + 1)(x^3 - 2x)\) を積の微分公式で微分せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(u = x^2 + 1\)、\(v = x^3 - 2x\) とおく</li>
+                <li>公式 \((uv)' = u'v + uv'\) を適用</li>
+                <li>\(u' = 2x\)、\(v' = 3x^2 - 2\)</li>
+            </ol>
+            <div class="formula">
+                \[ f'(x) = (x^2 + 1)'(x^3 - 2x) + (x^2 + 1)(x^3 - 2x)' \]
+                \[ = 2x(x^3 - 2x) + (x^2 + 1)(3x^2 - 2) \]
+                \[ = 2x^4 - 4x^2 + 3x^4 - 2x^2 + 3x^2 - 2 \]
+                \[ = 5x^4 - 3x^2 - 2 \]
+            </div>
+            <p><em>（確認：展開してから微分しても \(f(x) = x^5 - x^3 - 2x\) → \(f'(x) = 5x^4 - 3x^2 - 2\) で一致）</em></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 商の微分</h3>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>商の微分公式
+            </div>
+            <p>\(f(x) = \frac{x^2 + 1}{x - 1}\) を微分せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>分子 \(u = x^2 + 1\)、分母 \(v = x - 1\) とおく</li>
+                <li>公式 \(\left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^2}\) を適用</li>
+                <li>\(u' = 2x\)、\(v' = 1\)</li>
+            </ol>
+            <div class="formula">
+                \[ f'(x) = \frac{(x^2 + 1)'(x - 1) - (x^2 + 1)(x - 1)'}{(x - 1)^2} \]
+                \[ = \frac{2x(x - 1) - (x^2 + 1) \cdot 1}{(x - 1)^2} \]
+                \[ = \frac{2x^2 - 2x - x^2 - 1}{(x - 1)^2} \]
+                \[ = \frac{x^2 - 2x - 1}{(x - 1)^2} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 接線の方程式</h3>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>接線の方程式を求める
+            </div>
+            <p>曲線 \(y = x^3 - 2x\) 上の点 \((1, -1)\) における接線の方程式を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>関数を微分して導関数を求める</li>
+                <li>接点の x 座標を代入して傾きを求める</li>
+                <li>接線の公式 \(y - f(a) = f'(a)(x - a)\) に代入</li>
+            </ol>
+            <p><strong>Step 1：微分</strong></p>
+            <div class="formula">
+                \[ f(x) = x^3 - 2x \]
+                \[ f'(x) = 3x^2 - 2 \]
+            </div>
+            <p><strong>Step 2：傾きを求める</strong>（\(x = 1\) を代入）</p>
+            <div class="formula">
+                \[ f'(1) = 3 \cdot 1^2 - 2 = 3 - 2 = 1 \]
+            </div>
+            <p><strong>Step 3：接線の方程式</strong></p>
+            <div class="formula">
+                \[ y - (-1) = 1 \cdot (x - 1) \]
+                \[ y + 1 = x - 1 \]
+                \[ y = x - 2 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-6">
+            <div class="example-title">
+                <span class="number-badge">例6</span>傾きが指定された接線
+            </div>
+            <p>曲線 \(y = x^2\) に傾きが 4 となる接線の方程式を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>導関数を求める</li>
+                <li>\(f'(a) = 4\) となる \(a\) を求める（接点の x 座標）</li>
+                <li>接点の座標と傾きから接線を求める</li>
+            </ol>
+            <p><strong>Step 1：微分</strong></p>
+            <div class="formula">
+                \[ f'(x) = 2x \]
+            </div>
+            <p><strong>Step 2：接点を求める</strong></p>
+            <div class="formula">
+                \[ f'(a) = 2a = 4 \quad \Rightarrow \quad a = 2 \]
+            </div>
+            <p>接点は \((2, f(2)) = (2, 4)\)</p>
+            <p><strong>Step 3：接線の方程式</strong></p>
+            <div class="formula">
+                \[ y - 4 = 4(x - 2) \]
+                \[ y = 4x - 4 \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：積の微分より「展開してから微分」が楽なことも</strong><br>
+            \((x+1)(x+2)\) のような簡単な積は、展開してから微分する方が計算が楽。<br>
+            積の微分公式は「展開が大変なとき」に使おう。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：商の微分は「分子の計算」が勝負</strong><br>
+            分母の2乗は簡単に書ける。分子の \(u'v - uv'\) を丁寧に計算しよう。<br>
+            符号ミスに注意！「上ダッシュ×下 <strong>マイナス</strong> 上×下ダッシュ」
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：接線問題は「3ステップ」で解く</strong><br>
+            ① 微分して \(f'(x)\) を求める<br>
+            ② 接点の x を代入して傾き \(f'(a)\) を求める<br>
+            ③ 公式 \(y - f(a) = f'(a)(x - a)\) に代入<br>
+            この順番を守れば確実に解ける。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：負の指数・分数指数も公式そのまま</strong><br>
+            \(\frac{1}{x} = x^{-1}\)、\(\sqrt{x} = x^{1/2}\) と書き換えれば、<br>
+            べき乗の公式 \((x^n)' = nx^{n-1}\) がそのまま使える。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：定数の微分を忘れる</div>
+            <p><strong>ダメな例：</strong> \((3x^2 + 5)' = 6x + 5\)（×）</p>
+            <p><strong>対策：</strong> 定数の微分は 0！<br>
+            \((3x^2 + 5)' = 6x + 0 = 6x\)（○）</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：商の微分の符号を逆にする</div>
+            <p><strong>ダメな例：</strong> \(\left(\frac{u}{v}\right)' = \frac{uv' - u'v}{v^2}\)（×）</p>
+            <p><strong>対策：</strong> 正しくは「<strong>上ダッシュ×下 − 上×下ダッシュ</strong>」<br>
+            \(\left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^2}\)（○）<br>
+            <em>「ぶんし（u'）が先」と覚える。</em></p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：接線の公式で座標を間違える</div>
+            <p><strong>ダメな例：</strong> 接点 \((a, f(a))\) で \(y - a = f'(a)(x - f(a))\)（×）</p>
+            <p><strong>対策：</strong> x座標には x座標、y座標には y座標を対応させる<br>
+            \(y - f(a) = f'(a)(x - a)\)（○）<br>
+            <em>「y から y座標を引く、x から x座標を引く」</em></p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：\(x\) の微分を 0 にしてしまう</div>
+            <p><strong>ダメな例：</strong> \((x)' = 0\)（×）</p>
+            <p><strong>対策：</strong> \(x = x^1\) なので \((x)' = 1 \cdot x^0 = 1\)（○）<br>
+            <em>「x の微分は 1」を覚えておく。</em></p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">\((x^n)' = nx^{n-1}\) を使って、べき乗の微分ができる</div>
+            <div class="checklist-item">多項式を各項ごとに微分できる（定数の微分は0）</div>
+            <div class="checklist-item">積の微分公式「前ダッシュ×後ろ + 前×後ろダッシュ」が使える</div>
+            <div class="checklist-item">商の微分公式「上ダッシュ×下 − 上×下ダッシュ / 下の2乗」が使える</div>
+            <div class="checklist-item">接線の方程式 \(y - f(a) = f'(a)(x - a)\) を導き、正しく代入できる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>次の関数を微分せよ。<br>（1）\(f(x) = 2x^5 - 3x^3 + x - 4\)　（2）\(f(x) = x^{-3}\)</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>（1）\(f'(x) = 10x^4 - 9x^2 + 1\)</p>
+                    <p>（2）\(f'(x) = -3x^{-4} = -\frac{3}{x^4}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>積の微分公式を使って \(f(x) = (2x + 1)(x^2 - 3)\) を微分せよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(u = 2x + 1\)、\(v = x^2 - 3\)、\(u' = 2\)、\(v' = 2x\) とすると</p>
+                    <p>\(f'(x) = u'v + uv' = 2(x^2 - 3) + (2x + 1)(2x)\)</p>
+                    <p>\(= 2x^2 - 6 + 4x^2 + 2x = 6x^2 + 2x - 6\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>曲線 \(y = x^2 - 4x + 3\) 上の点 \((3, 0)\) における接線の方程式を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(f'(x) = 2x - 4\)</p>
+                    <p>傾き：\(f'(3) = 2 \cdot 3 - 4 = 2\)</p>
+                    <p>接線：\(y - 0 = 2(x - 3)\)</p>
+                    <p>\(y = 2x - 6\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：べき乗の微分は「指数を前に出して1減らす」、接線は「微分して傾きを求め、点と傾きで直線を作る」！
+</div>
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「微分を発明した2人の天才」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 微分を発明した2人の天才</div>
+
+            <p>17世紀後半、「微分」という概念をほぼ同時期に発明した2人の天才がいました。イギリスの<strong>アイザック・ニュートン</strong>とドイツの<strong>ゴットフリート・ライプニッツ</strong>です。</p>
+
+            <p>ニュートンは物体の運動を分析するために微分を発明しました。リンゴが木から落ちる速さは刻一刻と変化する——その「瞬間の速さ」を表すために、彼は<strong>流率法（fluxion）</strong>という方法を編み出しました。</p>
+
+            <p>一方、ライプニッツは純粋に数学的な興味から微分を研究し、私たちが今使っている記号を発明しました。\(\frac{dy}{dx}\) や \(\int\)（積分記号）はすべてライプニッツの発明です。</p>
+
+            <div class="formula">
+                \[ \frac{dy}{dx} = \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x} \]
+            </div>
+
+            <p>この「どちらが先に発明したか？」という論争は<strong>数学史上最大のスキャンダル</strong>に発展しました。両者のファンが激しく争い、イギリスとヨーロッパ大陸の数学者の交流が100年近く途絶えるという悲しい結果を招きました。</p>
+
+            <p>現在では、2人は<strong>独立に同じ発明をした</strong>と考えられています。ニュートンの方がわずかに早く発見していましたが、ライプニッツは独自に発見し、より使いやすい記号を作りました。今日、私たちがライプニッツの記号を使っているのは、その実用性の証拠です。</p>
+
+            <p>ちなみに、ニュートンは生涯を通じて論争好きな性格だったようで、ライプニッツ以外にも多くの科学者と激しい論争を繰り広げました。天才であっても、人間関係のマネジメントは苦手だったのかもしれませんね。</p>
+        </div>
+    </div>
+</section>

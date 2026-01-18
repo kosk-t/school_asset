@@ -1,0 +1,634 @@
+---
+layout: material-raw
+title: 関数の増減と極値
+icon: "📈"
+description: 導関数の符号から関数の増減を調べ、増減表を使って極大・極小・最大・最小を正確に求める。
+level: 標準
+level_num: 2
+category: functions
+school_level: senior
+order: 11
+keywords:
+  - 微分
+  - 増減表
+  - 極大値
+  - 極小値
+  - 最大値
+  - 最小値
+cover_image: /images/noimage.jpg
+cover_description: 増減表とグラフの対応、極値と最大最小の関係
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学史「フェルマーと極値の発見」"
+related:
+  - url: /senior/二次関数の最大最小_教材.html
+    title: 二次関数の最大最小
+    note: 場合分けによる最大最小の考え方
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「グラフが上がっているか下がっているか」「どこで折り返すか」「区間内での最大値・最小値は？」——これらは全て<strong>導関数の符号</strong>から分かります。</p>
+
+        <p>このページでは、<strong>関数の増減と極値</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>増減表の書き方</strong>：導関数の符号で増加・減少を判定する</li>
+            <li><strong>極大・極小</strong>：増加から減少（またはその逆）に変わる点を見つける</li>
+            <li><strong>最大・最小</strong>：閉区間での最大値・最小値を正確に求める</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            📈 最重要：\(f'(x) > 0\) なら増加、\(f'(x) < 0\) なら減少！
+        </div>
+
+        <!-- 増減表の図解（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="320" viewBox="0 0 700 320">
+                <!-- タイトル -->
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">増減表とグラフの対応</text>
+
+                <!-- 増減表 -->
+                <rect x="50" y="45" width="280" height="120" fill="#f5f5f5" stroke="#333" stroke-width="1"/>
+
+                <!-- 横線 -->
+                <line x1="50" y1="75" x2="330" y2="75" stroke="#333" stroke-width="1"/>
+                <line x1="50" y1="105" x2="330" y2="105" stroke="#333" stroke-width="1"/>
+                <line x1="50" y1="135" x2="330" y2="135" stroke="#333" stroke-width="1"/>
+
+                <!-- 縦線 -->
+                <line x1="90" y1="45" x2="90" y2="165" stroke="#333" stroke-width="1"/>
+                <line x1="150" y1="45" x2="150" y2="165" stroke="#333" stroke-width="1"/>
+                <line x1="210" y1="45" x2="210" y2="165" stroke="#333" stroke-width="1"/>
+                <line x1="270" y1="45" x2="270" y2="165" stroke="#333" stroke-width="1"/>
+
+                <!-- 見出し -->
+                <text x="70" y="63" font-size="14" fill="#333" text-anchor="middle">x</text>
+                <text x="70" y="93" font-size="14" fill="#333" text-anchor="middle">f'(x)</text>
+                <text x="70" y="123" font-size="14" fill="#333" text-anchor="middle">f(x)</text>
+
+                <!-- 内容 -->
+                <text x="120" y="63" font-size="14" fill="#333" text-anchor="middle">...</text>
+                <text x="180" y="63" font-size="14" fill="#333" text-anchor="middle">a</text>
+                <text x="240" y="63" font-size="14" fill="#333" text-anchor="middle">...</text>
+                <text x="300" y="63" font-size="14" fill="#333" text-anchor="middle">b</text>
+
+                <text x="120" y="93" font-size="16" fill="#4caf50" text-anchor="middle">+</text>
+                <text x="180" y="93" font-size="14" fill="#333" text-anchor="middle">0</text>
+                <text x="240" y="93" font-size="16" fill="#e53935" text-anchor="middle">−</text>
+                <text x="300" y="93" font-size="14" fill="#333" text-anchor="middle">0</text>
+
+                <!-- 矢印 -->
+                <text x="120" y="150" font-size="18" fill="#4caf50" text-anchor="middle">↗</text>
+                <text x="180" y="150" font-size="12" fill="#9c27b0" text-anchor="middle">極大</text>
+                <text x="240" y="150" font-size="18" fill="#e53935" text-anchor="middle">↘</text>
+                <text x="300" y="150" font-size="12" fill="#9c27b0" text-anchor="middle">極小</text>
+
+                <!-- グラフ -->
+                <rect x="380" y="45" width="280" height="230" fill="#fff" stroke="#333" stroke-width="1"/>
+
+                <!-- 軸 -->
+                <line x1="400" y1="230" x2="640" y2="230" stroke="#333" stroke-width="1"/>
+                <line x1="400" y1="60" x2="400" y2="250" stroke="#333" stroke-width="1"/>
+                <text x="645" y="235" font-size="12" fill="#333">x</text>
+                <text x="395" y="55" font-size="12" fill="#333">y</text>
+
+                <!-- 三次関数のグラフ -->
+                <path d="M 420 200
+                         C 440 160, 460 100, 480 100
+                         C 500 100, 520 140, 540 180
+                         C 560 220, 580 200, 620 120"
+                      stroke="#1976d2" stroke-width="3" fill="none"/>
+
+                <!-- 極大点 -->
+                <circle cx="480" cy="100" r="5" fill="#e53935"/>
+                <text x="480" y="85" font-size="12" fill="#e53935" text-anchor="middle">極大</text>
+                <line x1="480" y1="100" x2="480" y2="230" stroke="#999" stroke-width="1" stroke-dasharray="3,3"/>
+                <text x="480" y="245" font-size="12" fill="#333" text-anchor="middle">a</text>
+
+                <!-- 極小点 -->
+                <circle cx="560" cy="190" r="5" fill="#4caf50"/>
+                <text x="560" y="205" font-size="12" fill="#4caf50" text-anchor="middle">極小</text>
+                <line x1="560" y1="190" x2="560" y2="230" stroke="#999" stroke-width="1" stroke-dasharray="3,3"/>
+                <text x="560" y="245" font-size="12" fill="#333" text-anchor="middle">b</text>
+
+                <!-- 増減の矢印 -->
+                <text x="450" y="175" font-size="16" fill="#4caf50">↗</text>
+                <text x="520" y="165" font-size="16" fill="#e53935">↘</text>
+                <text x="590" y="140" font-size="16" fill="#4caf50">↗</text>
+
+                <!-- 説明 -->
+                <text x="190" y="190" font-size="14" fill="#333" text-anchor="middle">増減表</text>
+                <text x="520" y="290" font-size="14" fill="#333" text-anchor="middle">グラフ</text>
+            </svg>
+            <div class="svg-caption">増減表の符号とグラフの形の対応</div>
+        </div>
+
+        <div class="rule-box" id="rule-increase-decrease">
+            <strong>📌 ルール1：増加・減少の判定</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <p>区間内で導関数 \(f'(x)\) の符号を調べる：</p>
+            <ul>
+                <li>\(f'(x) > 0\) → 関数は<strong>増加</strong>（グラフは右上がり）</li>
+                <li>\(f'(x) < 0\) → 関数は<strong>減少</strong>（グラフは右下がり）</li>
+                <li>\(f'(x) = 0\) → 増加から減少（またはその逆）に変わる<strong>境目の候補</strong></li>
+            </ul>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>導関数 \(f'(x)\) は「傾き」を表す。傾きが正なら上り坂（増加）、傾きが負なら下り坂（減少）。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-extrema">
+            <strong>📌 ルール2：極大・極小の条件</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <p>\(f'(a) = 0\) のとき：</p>
+            <ul>
+                <li>\(x = a\) の前後で \(f'(x)\) が <strong>+ → −</strong> に変わる → <strong>極大</strong></li>
+                <li>\(x = a\) の前後で \(f'(x)\) が <strong>− → +</strong> に変わる → <strong>極小</strong></li>
+                <li>\(x = a\) の前後で符号が<strong>変わらない</strong> → <strong>極値ではない</strong></li>
+            </ul>
+            <p><strong>→ だから結果は：</strong> \(f'(a) = 0\) だけでは極値とは限らない！符号の変化が重要</p>
+        </div>
+
+        <div class="rule-box" id="rule-table">
+            <strong>📌 ルール3：増減表の書き方</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <ol>
+                <li>\(f'(x) = 0\) を解いて、\(f'(x)\) が \(0\) になる \(x\) の値を求める</li>
+                <li>数直線を区切り、各区間で \(f'(x)\) の符号（+/−）を調べる</li>
+                <li>符号に応じて増加（↗）・減少（↘）を記入</li>
+                <li>極大・極小の点には \(f(x)\) の値を記入</li>
+            </ol>
+        </div>
+
+        <div class="rule-box" id="rule-max-min">
+            <strong>📌 ルール4：閉区間での最大・最小</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <p>閉区間 \([a, b]\) で \(f(x)\) の最大値・最小値を求めるには：</p>
+            <ol>
+                <li>区間内の<strong>極値</strong>（極大値・極小値）を全て求める</li>
+                <li><strong>端点</strong>での値 \(f(a)\)、\(f(b)\) を計算する</li>
+                <li>全ての値を比較し、<strong>最大</strong>と<strong>最小</strong>を選ぶ</li>
+            </ol>
+            <p><strong>→ だから結果は：</strong> 最大・最小は「極値」か「端点」のどこかにある！</p>
+        </div>
+
+        <div class="rule-box" id="rule-cubic">
+            <strong>📌 ルール5：三次関数の増減</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <p>\(f(x) = ax^3 + bx^2 + cx + d\)（\(a \neq 0\)）のとき：</p>
+            <ul>
+                <li>\(f'(x) = 3ax^2 + 2bx + c\)（二次式）</li>
+                <li>判別式 \(D > 0\) → \(f'(x) = 0\) が異なる2つの実数解 → <strong>極値が2つ</strong></li>
+                <li>判別式 \(D \leq 0\) → \(f'(x) = 0\) が重解または実数解なし → <strong>極値なし</strong>（単調増加または単調減少）</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>増減表を作り、極値・最大最小を求める流れを身につけましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 増減表を書く（基本）</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>\(f(x) = x^3 - 3x^2\) の増減を調べよ
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(f'(x)\) を求める：\(f'(x) = 3x^2 - 6x = 3x(x - 2)\)</li>
+                <li>\(f'(x) = 0\) を解く：\(3x(x - 2) = 0\) より \(x = 0, 2\)</li>
+                <li>各区間で符号を調べる：
+                    <ul>
+                        <li>\(x < 0\) のとき：\(f'(-1) = 3(-1)(-3) = 9 > 0\) → +</li>
+                        <li>\(0 < x < 2\) のとき：\(f'(1) = 3(1)(-1) = -3 < 0\) → −</li>
+                        <li>\(x > 2\) のとき：\(f'(3) = 3(3)(1) = 9 > 0\) → +</li>
+                    </ul>
+                </li>
+                <li>\(f(0) = 0\)、\(f(2) = 8 - 12 = -4\)</li>
+            </ol>
+
+            <table class="material-table" style="margin: 15px 0;">
+                <tr>
+                    <th style="width: 60px;">\(x\)</th>
+                    <td style="text-align: center;">...</td>
+                    <td style="text-align: center;">0</td>
+                    <td style="text-align: center;">...</td>
+                    <td style="text-align: center;">2</td>
+                    <td style="text-align: center;">...</td>
+                </tr>
+                <tr>
+                    <th>\(f'(x)\)</th>
+                    <td style="text-align: center; color: #4caf50;">+</td>
+                    <td style="text-align: center;">0</td>
+                    <td style="text-align: center; color: #e53935;">−</td>
+                    <td style="text-align: center;">0</td>
+                    <td style="text-align: center; color: #4caf50;">+</td>
+                </tr>
+                <tr>
+                    <th>\(f(x)\)</th>
+                    <td style="text-align: center;">↗</td>
+                    <td style="text-align: center; color: #9c27b0;">極大 0</td>
+                    <td style="text-align: center;">↘</td>
+                    <td style="text-align: center; color: #9c27b0;">極小 −4</td>
+                    <td style="text-align: center;">↗</td>
+                </tr>
+            </table>
+
+            <p><strong>結果：</strong></p>
+            <ul>
+                <li>\(x < 0\) で増加、\(0 < x < 2\) で減少、\(x > 2\) で増加</li>
+                <li>\(x = 0\) で極大値 \(0\)、\(x = 2\) で極小値 \(-4\)</li>
+            </ul>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 極値を求める</h3>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>\(f(x) = x^3 - 6x^2 + 9x + 1\) の極値を求めよ
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(f'(x) = 3x^2 - 12x + 9 = 3(x^2 - 4x + 3) = 3(x - 1)(x - 3)\)</li>
+                <li>\(f'(x) = 0\) より \(x = 1, 3\)</li>
+                <li>増減表を作成：</li>
+            </ol>
+
+            <table class="material-table" style="margin: 15px 0;">
+                <tr>
+                    <th style="width: 60px;">\(x\)</th>
+                    <td style="text-align: center;">...</td>
+                    <td style="text-align: center;">1</td>
+                    <td style="text-align: center;">...</td>
+                    <td style="text-align: center;">3</td>
+                    <td style="text-align: center;">...</td>
+                </tr>
+                <tr>
+                    <th>\(f'(x)\)</th>
+                    <td style="text-align: center; color: #4caf50;">+</td>
+                    <td style="text-align: center;">0</td>
+                    <td style="text-align: center; color: #e53935;">−</td>
+                    <td style="text-align: center;">0</td>
+                    <td style="text-align: center; color: #4caf50;">+</td>
+                </tr>
+                <tr>
+                    <th>\(f(x)\)</th>
+                    <td style="text-align: center;">↗</td>
+                    <td style="text-align: center; color: #9c27b0;">極大</td>
+                    <td style="text-align: center;">↘</td>
+                    <td style="text-align: center; color: #9c27b0;">極小</td>
+                    <td style="text-align: center;">↗</td>
+                </tr>
+            </table>
+
+            <ol start="4">
+                <li>極値を計算：
+                    <ul>
+                        <li>\(f(1) = 1 - 6 + 9 + 1 = 5\)</li>
+                        <li>\(f(3) = 27 - 54 + 27 + 1 = 1\)</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <div class="formula">
+                \[ x = 1 \text{ で極大値 } 5, \quad x = 3 \text{ で極小値 } 1 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 閉区間での最大・最小</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>\(f(x) = x^3 - 3x\)（\(-2 \leq x \leq 3\)）の最大値・最小値を求めよ
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(f'(x) = 3x^2 - 3 = 3(x^2 - 1) = 3(x + 1)(x - 1)\)</li>
+                <li>\(f'(x) = 0\) より \(x = -1, 1\)（両方とも区間 \([-2, 3]\) 内）</li>
+                <li>増減表と各点での値：</li>
+            </ol>
+
+            <table class="material-table" style="margin: 15px 0;">
+                <tr>
+                    <th style="width: 60px;">\(x\)</th>
+                    <td style="text-align: center;">−2</td>
+                    <td style="text-align: center;">...</td>
+                    <td style="text-align: center;">−1</td>
+                    <td style="text-align: center;">...</td>
+                    <td style="text-align: center;">1</td>
+                    <td style="text-align: center;">...</td>
+                    <td style="text-align: center;">3</td>
+                </tr>
+                <tr>
+                    <th>\(f'(x)\)</th>
+                    <td style="text-align: center;"></td>
+                    <td style="text-align: center; color: #4caf50;">+</td>
+                    <td style="text-align: center;">0</td>
+                    <td style="text-align: center; color: #e53935;">−</td>
+                    <td style="text-align: center;">0</td>
+                    <td style="text-align: center; color: #4caf50;">+</td>
+                    <td style="text-align: center;"></td>
+                </tr>
+                <tr>
+                    <th>\(f(x)\)</th>
+                    <td style="text-align: center;">−2</td>
+                    <td style="text-align: center;">↗</td>
+                    <td style="text-align: center; color: #9c27b0;">2</td>
+                    <td style="text-align: center;">↘</td>
+                    <td style="text-align: center; color: #9c27b0;">−2</td>
+                    <td style="text-align: center;">↗</td>
+                    <td style="text-align: center;">18</td>
+                </tr>
+            </table>
+
+            <ol start="4">
+                <li>各点の値を計算：
+                    <ul>
+                        <li>端点：\(f(-2) = -8 + 6 = -2\)、\(f(3) = 27 - 9 = 18\)</li>
+                        <li>極値点：\(f(-1) = -1 + 3 = 2\)、\(f(1) = 1 - 3 = -2\)</li>
+                    </ul>
+                </li>
+                <li>比較：\(-2, 2, -2, 18\) の中で最大は \(18\)、最小は \(-2\)</li>
+            </ol>
+
+            <div class="formula">
+                \[ \text{最大値}：18 \quad (x = 3), \quad \text{最小値}：-2 \quad (x = -2, 1) \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 極値がない場合</h3>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>\(f(x) = x^3 + 3x\) の極値を求めよ
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(f'(x) = 3x^2 + 3 = 3(x^2 + 1)\)</li>
+                <li>\(x^2 + 1 > 0\) より、すべての実数 \(x\) で \(f'(x) > 0\)</li>
+                <li>常に増加 → <strong>極値なし</strong></li>
+            </ol>
+
+            <table class="material-table" style="margin: 15px 0;">
+                <tr>
+                    <th style="width: 60px;">\(x\)</th>
+                    <td style="text-align: center;" colspan="3">全ての実数</td>
+                </tr>
+                <tr>
+                    <th>\(f'(x)\)</th>
+                    <td style="text-align: center; color: #4caf50;" colspan="3">+ （常に正）</td>
+                </tr>
+                <tr>
+                    <th>\(f(x)\)</th>
+                    <td style="text-align: center;" colspan="3">↗ （単調増加）</td>
+                </tr>
+            </table>
+
+            <div class="formula">
+                \[ \text{極値なし（単調増加）} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 二次関数の最大・最小（復習）</h3>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>\(f(x) = -x^2 + 4x - 1\)（\(0 \leq x \leq 4\)）の最大値・最小値を求めよ
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(f'(x) = -2x + 4 = -2(x - 2)\)</li>
+                <li>\(f'(x) = 0\) より \(x = 2\)（区間内）</li>
+                <li>増減表を作成：</li>
+            </ol>
+
+            <table class="material-table" style="margin: 15px 0;">
+                <tr>
+                    <th style="width: 60px;">\(x\)</th>
+                    <td style="text-align: center;">0</td>
+                    <td style="text-align: center;">...</td>
+                    <td style="text-align: center;">2</td>
+                    <td style="text-align: center;">...</td>
+                    <td style="text-align: center;">4</td>
+                </tr>
+                <tr>
+                    <th>\(f'(x)\)</th>
+                    <td style="text-align: center;"></td>
+                    <td style="text-align: center; color: #4caf50;">+</td>
+                    <td style="text-align: center;">0</td>
+                    <td style="text-align: center; color: #e53935;">−</td>
+                    <td style="text-align: center;"></td>
+                </tr>
+                <tr>
+                    <th>\(f(x)\)</th>
+                    <td style="text-align: center;">−1</td>
+                    <td style="text-align: center;">↗</td>
+                    <td style="text-align: center; color: #9c27b0;">3</td>
+                    <td style="text-align: center;">↘</td>
+                    <td style="text-align: center;">−1</td>
+                </tr>
+            </table>
+
+            <ol start="4">
+                <li>値の計算：\(f(0) = -1\)、\(f(2) = -4 + 8 - 1 = 3\)、\(f(4) = -16 + 16 - 1 = -1\)</li>
+            </ol>
+
+            <div class="formula">
+                \[ \text{最大値}：3 \quad (x = 2), \quad \text{最小値}：-1 \quad (x = 0, 4) \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box" id="tip-factor">
+            <strong>✏️ コツ1：\(f'(x)\) は因数分解してから符号判定</strong><br>
+            \(f'(x) = 3x^2 - 6x\) なら \(3x(x-2)\) と因数分解。\(x=0, 2\) が境目で、各区間の符号は因数の積で判定できる。
+        </div>
+
+        <div class="tip-box" id="tip-test-value">
+            <strong>✏️ コツ2：代表値を代入して符号を確認</strong><br>
+            各区間で適当な値（例：\(x = -1, 1, 3\)）を \(f'(x)\) に代入して、+か−かを確認する。
+        </div>
+
+        <div class="tip-box" id="tip-all-candidates">
+            <strong>✏️ コツ3：閉区間では「極値点」と「端点」を全て調べる</strong><br>
+            最大・最小は必ずこのどちらかにある。極値だけ見て端点を忘れると間違える。
+        </div>
+
+        <div class="tip-box" id="tip-cubic-shape">
+            <strong>✏️ コツ4：三次関数のグラフの形を覚える</strong><br>
+            \(a > 0\) の三次関数は「N字型」（左下から右上へ、途中に極大・極小）。\(a < 0\) なら「逆N字型」。極値がなければS字型。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：\(f'(x) = 0\) だけで極値と判断する</div>
+            <p><strong>ダメな例：</strong> \(f(x) = x^3\) で \(f'(0) = 0\) だから「\(x = 0\) で極値」と答える</p>
+            <p><strong>対策：</strong> \(f'(x) = 3x^2\) は \(x = 0\) の前後で符号が変わらない（常に + か 0）。だから<strong>極値ではない</strong>。符号の変化を必ず確認！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：閉区間で端点を忘れる</div>
+            <p><strong>ダメな例：</strong> 極大値と極小値だけ求めて「最大値・最小値」と答える</p>
+            <p><strong>対策：</strong> 閉区間では<strong>端点の値も必ず計算</strong>して比較する。最大・最小は端点にあることも多い！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：区間外の極値を含めてしまう</div>
+            <p><strong>ダメな例：</strong> \([-1, 0]\) の範囲で最大最小を求めるのに、\(x = 2\) の極値も含める</p>
+            <p><strong>対策：</strong> \(f'(x) = 0\) の解が<strong>区間内にあるか</strong>を必ず確認する。区間外の極値は無視！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：極大と最大、極小と最小を混同</div>
+            <p><strong>ダメな例：</strong> 「極大値」を「最大値」と言い換える</p>
+            <p><strong>対策：</strong> <strong>極大</strong>は「局所的に最も大きい」、<strong>最大</strong>は「区間全体で最も大きい」。極大値より端点の値が大きいこともある！</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">\(f'(x) > 0\) で増加、\(f'(x) < 0\) で減少と言える</div>
+            <div class="checklist-item">\(f'(x) = 0\) の解を求め、増減表を正しく書ける</div>
+            <div class="checklist-item">符号の変化（+ → − または − → +）で極値を判定できる</div>
+            <div class="checklist-item">閉区間での最大・最小は「極値」と「端点」を全て比較する</div>
+            <div class="checklist-item">極値と最大・最小の違いを説明できる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>\(f(x) = x^3 - 12x\) の極値を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(f'(x) = 3x^2 - 12 = 3(x^2 - 4) = 3(x + 2)(x - 2)\)</p>
+                    <p>\(f'(x) = 0\) より \(x = -2, 2\)</p>
+                    <p>\(x < -2\) で +、\(-2 < x < 2\) で −、\(x > 2\) で +</p>
+                    <p>\(f(-2) = -8 + 24 = 16\)、\(f(2) = 8 - 24 = -16\)</p>
+                    <p><strong>答え：</strong> \(x = -2\) で極大値 \(16\)、\(x = 2\) で極小値 \(-16\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\(f(x) = x^3 - 3x + 2\)（\(-2 \leq x \leq 2\)）の最大値・最小値を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(f'(x) = 3x^2 - 3 = 3(x + 1)(x - 1)\)</p>
+                    <p>\(f'(x) = 0\) より \(x = -1, 1\)（両方とも区間内）</p>
+                    <p>各点での値：</p>
+                    <ul>
+                        <li>\(f(-2) = -8 + 6 + 2 = 0\)</li>
+                        <li>\(f(-1) = -1 + 3 + 2 = 4\)（極大）</li>
+                        <li>\(f(1) = 1 - 3 + 2 = 0\)（極小）</li>
+                        <li>\(f(2) = 8 - 6 + 2 = 4\)</li>
+                    </ul>
+                    <p><strong>答え：</strong> 最大値 \(4\)（\(x = -1, 2\)）、最小値 \(0\)（\(x = -2, 1\)）</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>\(f(x) = 2x^3 + 3x^2 - 12x + 1\) の極値を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(f'(x) = 6x^2 + 6x - 12 = 6(x^2 + x - 2) = 6(x + 2)(x - 1)\)</p>
+                    <p>\(f'(x) = 0\) より \(x = -2, 1\)</p>
+                    <p>\(x < -2\) で +、\(-2 < x < 1\) で −、\(x > 1\) で +</p>
+                    <p>\(f(-2) = -16 + 12 + 24 + 1 = 21\)</p>
+                    <p>\(f(1) = 2 + 3 - 12 + 1 = -6\)</p>
+                    <p><strong>答え：</strong> \(x = -2\) で極大値 \(21\)、\(x = 1\) で極小値 \(-6\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：\(f'(x)\) の符号で増減を判定し、閉区間では「極値」と「端点」を全て比較して最大・最小を決める！
+</div>
+
+<!-- ========== おまけ：数学史 ========== -->
+<section id="story">
+    <h2>おまけ：数学史「フェルマーと極値の発見」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 「フェルマーの最終定理」の人は極値も発見していた</div>
+
+            <p>「フェルマーの最終定理」で有名な<strong>ピエール・ド・フェルマー</strong>（1607-1665）。実は彼は、ニュートンやライプニッツよりも早く<strong>極値を求める方法</strong>を発見していた。</p>
+
+            <p>フェルマーの考え方はシンプルだった：</p>
+
+            <p>「関数が最大や最小になる点では、少しずらしても値がほとんど変わらない」</p>
+
+            <p>数式で書くと、\(f(x)\) が \(x = a\) で極値を取るなら：</p>
+
+            <div class="formula">
+                \[ f(a + h) \approx f(a) \quad (\text{微小な } h \text{ に対して}) \]
+            </div>
+
+            <p>これを変形すると：</p>
+
+            <div class="formula">
+                \[ \frac{f(a + h) - f(a)}{h} \approx 0 \]
+            </div>
+
+            <p>これは今日の言葉で言う \(f'(a) = 0\) そのものだ！</p>
+
+            <p>フェルマーはこの方法を1630年代に発見したが、論文として出版しなかった。彼は本業が弁護士で、数学は「趣味」だったのだ。</p>
+
+            <p>ニュートンとライプニッツが微分積分学を発表したのは1680年代。フェルマーの発見は<strong>約50年も先取り</strong>していた。</p>
+
+            <p><strong>趣味でやっていた弁護士が、世紀の発見を先取りしていた。</strong>数学の世界では、本業以外の人が大発見をすることがある。</p>
+        </div>
+    </div>
+</section>

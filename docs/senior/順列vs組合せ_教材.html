@@ -1,0 +1,435 @@
+---
+layout: material-raw
+title: 順列 vs 組合せ
+icon: "⚖️"
+description: 「順序を区別する？」を瞬時に判断し、PとCを正しく使い分ける力を身につける。
+level: 標準
+level_num: 2
+category: data
+school_level: senior
+order: 7
+keywords:
+  - 順列
+  - 組合せ
+  - nPr
+  - nCr
+  - 判断
+cover_image: /images/noimage.jpg
+cover_description: 順列と組合せの判断フローチャート
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "判断フロー"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：実践ストーリー「委員選びの罠」"
+related:
+  - url: /senior/順列_教材.html
+    title: 順列
+    note: nPrの公式の復習に
+    type: prerequisite
+  - url: /senior/組合せ_教材.html
+    title: 組合せ
+    note: nCrの公式の復習に
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>場合の数の問題で最も多いミスは「順列と組合せの使い分け」。このページでは、<strong>一瞬で判断する力</strong>を身につけます。</p>
+
+        <p>このページでは、<strong>順列 vs 組合せ</strong>の判断を学びます：</p>
+
+        <ul>
+            <li><strong>順列（P）</strong>を使うとき：順序・役職・配置が「区別される」</li>
+            <li><strong>組合せ（C）</strong>を使うとき：「選ぶだけ」で順序は関係ない</li>
+            <li><strong>判断キーワード</strong>：問題文から瞬時に見分ける</li>
+        </ul>
+
+        <div class="important-rule">
+            ⚖️ 核心：「ABとBA」は同じ？ 違う？ → 同じなら組合せ、違うなら順列
+        </div>
+    </div>
+</section>
+
+<!-- ========== 2. 判断フロー ========== -->
+<section id="section2">
+    <h2>2. 判断フロー</h2>
+    <div class="section">
+        <!-- 判断フローチャート（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="350" viewBox="0 0 700 350">
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">順列 vs 組合せ 判断フローチャート</text>
+
+                <!-- スタート -->
+                <ellipse cx="350" cy="60" rx="100" ry="25" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
+                <text x="350" y="65" font-size="14" fill="#333" text-anchor="middle">問題を読む</text>
+
+                <!-- 矢印1 -->
+                <path d="M 350 85 L 350 110" stroke="#333" stroke-width="2" marker-end="url(#arrow5)"/>
+                <defs>
+                    <marker id="arrow5" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+                    </marker>
+                </defs>
+
+                <!-- 判断1：順番を区別？ -->
+                <rect x="200" y="115" width="300" height="50" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="5"/>
+                <text x="350" y="145" font-size="14" font-weight="bold" fill="#ff9800" text-anchor="middle">順番・役職・配置を区別する？</text>
+
+                <!-- 矢印2（Yes） -->
+                <path d="M 200 140 L 100 140 L 100 220" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow5)"/>
+                <text x="130" y="135" font-size="12" font-weight="bold" fill="#4caf50">Yes</text>
+
+                <!-- 矢印3（No） -->
+                <path d="M 500 140 L 600 140 L 600 220" stroke="#e91e63" stroke-width="2" marker-end="url(#arrow5)"/>
+                <text x="560" y="135" font-size="12" font-weight="bold" fill="#e91e63">No</text>
+
+                <!-- 順列ボックス -->
+                <rect x="20" y="225" width="160" height="80" fill="#e8f5e9" stroke="#4caf50" stroke-width="3" rx="10"/>
+                <text x="100" y="255" font-size="18" font-weight="bold" fill="#4caf50" text-anchor="middle">順列 P</text>
+                <text x="100" y="280" font-size="12" fill="#333" text-anchor="middle">nPr を使う</text>
+                <text x="100" y="298" font-size="11" fill="#666" text-anchor="middle">並べる・配置する</text>
+
+                <!-- 組合せボックス -->
+                <rect x="520" y="225" width="160" height="80" fill="#fce4ec" stroke="#e91e63" stroke-width="3" rx="10"/>
+                <text x="600" y="255" font-size="18" font-weight="bold" fill="#e91e63" text-anchor="middle">組合せ C</text>
+                <text x="600" y="280" font-size="12" fill="#333" text-anchor="middle">nCr を使う</text>
+                <text x="600" y="298" font-size="11" fill="#666" text-anchor="middle">選ぶ・グループ分け</text>
+
+                <!-- キーワード例 -->
+                <rect x="200" y="230" width="300" height="90" fill="#f5f5f5" stroke="#333" stroke-width="1" rx="5"/>
+                <text x="350" y="252" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">【判断キーワード】</text>
+                <text x="250" y="275" font-size="11" fill="#4caf50" text-anchor="middle">順列：並べる</text>
+                <text x="250" y="293" font-size="11" fill="#4caf50" text-anchor="middle">配置、順位、役職</text>
+                <text x="450" y="275" font-size="11" fill="#e91e63" text-anchor="middle">組合せ：選ぶ</text>
+                <text x="450" y="293" font-size="11" fill="#e91e63" text-anchor="middle">グループ、チーム</text>
+            </svg>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 判断のポイント</strong>
+            <table class="material-table">
+                <tr>
+                    <th>順列（P）を使う</th>
+                    <th>組合せ（C）を使う</th>
+                </tr>
+                <tr>
+                    <td>ABとBAは<strong>違う</strong>とき</td>
+                    <td>ABとBAは<strong>同じ</strong>とき</td>
+                </tr>
+                <tr>
+                    <td>並べ方、配置、順番</td>
+                    <td>選び方、グループ、チーム</td>
+                </tr>
+                <tr>
+                    <td>1位、2位、3位を決める</td>
+                    <td>代表3人を選ぶ</td>
+                </tr>
+                <tr>
+                    <td>委員長・副委員長を決める</td>
+                    <td>委員2人を選ぶ</td>
+                </tr>
+                <tr>
+                    <td>数字を並べて番号を作る</td>
+                    <td>数字を選ぶ</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 キーワード一覧</strong>
+
+            <p><strong>🟢 順列のキーワード：</strong></p>
+            <ul>
+                <li>「<strong>並べる</strong>」「配置する」「順に並ぶ」</li>
+                <li>「1位、2位...」「順位」「順番」</li>
+                <li>「委員長と副委員長」など<strong>役職名</strong>がある</li>
+                <li>「文字を並べて単語を作る」</li>
+                <li>「数字を並べて〇桁の数を作る」</li>
+            </ul>
+
+            <p><strong>🔴 組合せのキーワード：</strong></p>
+            <ul>
+                <li>「<strong>選ぶ</strong>」「取り出す」「抜き出す」</li>
+                <li>「グループ」「チーム」「班」</li>
+                <li>「代表を選ぶ」（役職なし）</li>
+                <li>「何通りの選び方」</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>実際の問題で判断してみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 順列を使う問題</h3>
+
+        <div class="example-box">
+            <div class="example-title">
+                <span class="number-badge">例1</span>役職を決める
+            </div>
+            <p>10人から委員長、副委員長、書記の3人を選ぶ方法は何通りか。</p>
+            <p><strong>判断：</strong>「委員長」「副委員長」「書記」と<strong>役職がある</strong> → ABCとACBは違う → <strong>順列</strong></p>
+            <div class="formula">
+                \[ _{10}P_3 = 10 \times 9 \times 8 = 720 \text{通り} \]
+            </div>
+        </div>
+
+        <div class="example-box">
+            <div class="example-title">
+                <span class="number-badge">例2</span>順位を決める
+            </div>
+            <p>6人でレースをして、1位から3位までを決める方法は何通りか。</p>
+            <p><strong>判断：</strong>「1位」「2位」「3位」と<strong>順位がある</strong> → <strong>順列</strong></p>
+            <div class="formula">
+                \[ _6P_3 = 6 \times 5 \times 4 = 120 \text{通り} \]
+            </div>
+        </div>
+
+        <div class="example-box">
+            <div class="example-title">
+                <span class="number-badge">例3</span>数字を並べる
+            </div>
+            <p>1, 2, 3, 4, 5の5枚のカードから3枚を選んで3桁の整数を作る。何通りできるか。</p>
+            <p><strong>判断：</strong>「3桁の整数を作る」→ 123と321は違う数 → <strong>順列</strong></p>
+            <div class="formula">
+                \[ _5P_3 = 5 \times 4 \times 3 = 60 \text{通り} \]
+            </div>
+        </div>
+
+        <h3 style="color: #e91e63; margin: 25px 0 10px 0;">▶ 組合せを使う問題</h3>
+
+        <div class="example-box">
+            <div class="example-title">
+                <span class="number-badge">例4</span>代表を選ぶ
+            </div>
+            <p>10人から委員3人を選ぶ方法は何通りか。</p>
+            <p><strong>判断：</strong>「委員3人」で<strong>役職なし</strong> → ABCとACBは同じ → <strong>組合せ</strong></p>
+            <div class="formula">
+                \[ _{10}C_3 = \frac{10 \times 9 \times 8}{3 \times 2 \times 1} = 120 \text{通り} \]
+            </div>
+        </div>
+
+        <div class="example-box">
+            <div class="example-title">
+                <span class="number-badge">例5</span>チームを作る
+            </div>
+            <p>8人を4人ずつ2つのチームA, Bに分ける方法は何通りか。</p>
+            <p><strong>判断：</strong>「チームに分ける」→ 誰がAに入るか選ぶだけ → <strong>組合せ</strong></p>
+            <div class="formula">
+                \[ _8C_4 = \frac{8 \times 7 \times 6 \times 5}{4 \times 3 \times 2 \times 1} = 70 \text{通り} \]
+            </div>
+            <p><strong>注意：</strong>AとBに区別がないなら、70 ÷ 2 = 35通り</p>
+        </div>
+
+        <div class="example-box">
+            <div class="example-title">
+                <span class="number-badge">例6</span>カードを引く
+            </div>
+            <p>52枚のトランプから5枚を引く。何通りあるか。</p>
+            <p><strong>判断：</strong>「5枚を引く」→ 引く順番は関係ない → <strong>組合せ</strong></p>
+            <div class="formula">
+                \[ _{52}C_5 = \frac{52 \times 51 \times 50 \times 49 \times 48}{5!} = 2598960 \text{通り} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 紛らわしい問題</h3>
+
+        <div class="example-box">
+            <div class="example-title">
+                <span class="number-badge">例7</span>判断が微妙なケース
+            </div>
+            <p>5人を1列に並べる方法は何通りか。</p>
+            <p><strong>判断：</strong>「1列に並べる」→ ABCDEとEDCBAは違う → <strong>順列</strong></p>
+            <div class="formula">
+                \[ _5P_5 = 5! = 120 \text{通り} \]
+            </div>
+        </div>
+
+        <div class="example-box">
+            <div class="example-title">
+                <span class="number-badge">例8</span>2段階の問題
+            </div>
+            <p>男子5人、女子4人から男女2人ずつの委員4人を選ぶ方法は何通りか。</p>
+            <p><strong>判断：</strong>「委員を選ぶ」→ 役職なし → <strong>組合せ</strong>（男女それぞれ）</p>
+            <div class="formula">
+                \[ _5C_2 \times _4C_2 = 10 \times 6 = 60 \text{通り} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：「役職名」があれば順列</strong><br>
+            委員長、1位、座席番号... → 名前がついている = 区別する = 順列
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：「選ぶだけ」なら組合せ</strong><br>
+            「◯人を選ぶ」「◯個取り出す」→ 順番なし = 組合せ
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：迷ったら具体例で確認</strong><br>
+            「A, Bを選ぶ」と「B, Aを選ぶ」は同じ結果か？<br>
+            同じなら組合せ、違うなら順列。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：順列 ÷ r! = 組合せ</strong><br>
+            \(_nC_r = \frac{_nP_r}{r!}\)<br>
+            もし順列で計算してしまったら、r!で割れば組合せになる。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：「3人選ぶ」で順列を使う</div>
+            <p><strong>ダメな例：</strong>「10人から3人選ぶ」で \(_{10}P_3 = 720\) と計算</p>
+            <p><strong>対策：</strong>役職がなければ組合せ。\(_{10}C_3 = 120\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：「並べる」を見落とす</div>
+            <p><strong>ダメな例：</strong>「5人を1列に並べる」で組合せを使う</p>
+            <p><strong>対策：</strong>「並べる」は順列のキーワード。\(5! = 120\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：グループの区別を忘れる</div>
+            <p><strong>ダメな例：</strong>「2つに分ける」で区別ありとして計算</p>
+            <p><strong>対策：</strong>A組・B組と名前があれば区別あり。「2組に分ける」だけなら区別なし（÷2!）</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：数字を「選ぶ」と「並べる」を混同</div>
+            <p><strong>ダメな例：</strong>「3桁の数を作る」で組合せを使う</p>
+            <p><strong>対策：</strong>123と321は違う数 → 順列</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">「ABとBA」が同じか違うかで判断できる</div>
+            <div class="checklist-item">役職・順位があれば順列を選べる</div>
+            <div class="checklist-item">「選ぶだけ」なら組合せを選べる</div>
+            <div class="checklist-item">判断に迷ったら具体例で確認する習慣がある</div>
+            <div class="checklist-item">グループの区別（あり/なし）を見分けられる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>順列か組合せか判断して解こう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>12人から4人を選んでリレーチームを作る。走る順番も決める場合、何通りあるか。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong>「走る順番も決める」→ 順序あり → 順列</p>
+                    <p>\(_{12}P_4 = 12 \times 11 \times 10 \times 9 = 11880\) 通り</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>7人から3人の代表を選ぶ方法は何通りか。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong>「代表を選ぶ」→ 役職なし → 組合せ</p>
+                    <p>\(_7C_3 = \frac{7 \times 6 \times 5}{3!} = 35\) 通り</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>0, 1, 2, 3, 4の5枚のカードから3枚を選んで3桁の整数を作る。何通りできるか（最高位は0でない）。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong>「3桁の整数を作る」→ 順列</p>
+                    <p>百の位：0以外の4通り</p>
+                    <p>十の位：残り4枚から1枚で4通り</p>
+                    <p>一の位：残り3枚から1枚で3通り</p>
+                    <p>4 × 4 × 3 = 48通り</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：「ABとBA」が同じなら組合せ(C)、違うなら順列(P)！
+</div>
+
+<!-- ========== おまけ：実践ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：実践ストーリー「委員選びの罠」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">🎭 同じ問題？ 違う問題？</div>
+
+            <p>「10人から3人を選ぶ」問題を2つ見てみよう。</p>
+
+            <p><strong>問題A：</strong>10人から委員長・副委員長・書記を選ぶ</p>
+            <p><strong>問題B：</strong>10人から委員3人を選ぶ</p>
+
+            <p>一見似ているが、答えは全く違う。</p>
+
+            <div class="formula">
+                \[ \text{問題A（順列）：} _{10}P_3 = 720 \text{通り} \]
+                \[ \text{問題B（組合せ）：} _{10}C_3 = 120 \text{通り} \]
+            </div>
+
+            <p><strong>なぜ6倍も違う？</strong></p>
+            <p>問題Aでは、A君が委員長、B君が副委員長、C君が書記の場合と、B君が委員長、A君が副委員長、C君が書記の場合は<strong>別物</strong>として数える。</p>
+            <p>同じ3人{A, B, C}でも、役職の割り当て方が 3! = 6通り あるから、6倍になる。</p>
+
+            <p><strong>だから：</strong></p>
+            <div class="formula">
+                \[ _{10}P_3 = _{10}C_3 \times 3! = 120 \times 6 = 720 \]
+            </div>
+
+            <p>問題文の「役職名」を見落とすと、答えが1/6になってしまう。テストでは致命的だ。</p>
+
+            <p><strong>教訓：</strong>問題を読んだら、まず「役職・順番があるか」をチェック！</p>
+        </div>
+    </div>
+</section>

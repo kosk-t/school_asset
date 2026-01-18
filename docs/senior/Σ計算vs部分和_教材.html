@@ -1,0 +1,483 @@
+---
+layout: material-raw
+title: Σ計算 vs 部分和
+icon: "Σ"
+description: 数列の和を求めるとき、「Σの公式を使う」か「部分分数分解（部分和）を使う」か。式の形を見て最適な方法を選ぶ判断力を身につけます。
+level: 発展
+level_num: 3
+category: numbers
+school_level: senior
+order: 51
+keywords:
+  - Σ計算
+  - 部分分数分解
+  - テレスコーピング
+  - 数列の和
+  - 部分和
+cover_image: /images/noimage.jpg
+cover_description: Σ記号と部分分数分解の式が対比された図、フローチャート
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: section8
+    title: "おまけ：数学雑学「消える項の魔法」"
+related:
+  - url: /senior/数列の和とΣ計算_教材.html
+    title: 数列の和とΣ計算
+    note: Σの公式が前提知識
+    type: prerequisite
+  - url: /senior/等差数列_教材.html
+    title: 等差数列
+    note: 等差数列の和の公式を使う
+    type: related
+  - url: /senior/等比数列_教材.html
+    title: 等比数列
+    note: 等比数列の和の公式を使う
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>数列の和を求める問題で、「公式を当てはめればすぐ終わる問題」と「公式が使えず途方に暮れる問題」があります。実は、<strong>式の形を見れば最適な解法が一目でわかる</strong>んです！</p>
+        <p>このページでは、数列の和を求める2つの方法を学びます：</p>
+        <ul>
+            <li><strong>Σの公式</strong>：等差・等比・べき乗の和は公式で一発計算</li>
+            <li><strong>部分分数分解（テレスコーピング）</strong>：分数型の和は項が消え合う魔法を使う</li>
+            <li><strong>判断フロー</strong>：式の形を見て「どちらを使うか」を瞬時に判断</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】判断フローチャート：Σか部分和か？
+        </div>
+
+        <!-- 判断フローのSVG図解 -->
+        <div class="svg-container">
+            <svg width="700" height="400" viewBox="0 0 700 400">
+                <!-- 背景 -->
+                <rect x="0" y="0" width="700" height="400" fill="#fafafa"/>
+
+                <!-- スタート -->
+                <ellipse cx="350" cy="40" rx="80" ry="30" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="350" y="45" text-anchor="middle" font-size="16" font-weight="bold" fill="#1976d2">数列の和を求める</text>
+
+                <!-- 矢印1 -->
+                <line x1="350" y1="70" x2="350" y2="100" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+
+                <!-- 判断1: 分数型か？ -->
+                <polygon points="350,100 450,150 350,200 250,150" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                <text x="350" y="145" text-anchor="middle" font-size="14" fill="#333">一般項は</text>
+                <text x="350" y="163" text-anchor="middle" font-size="14" fill="#333">分数型か？</text>
+
+                <!-- Yes: 部分分数へ -->
+                <line x1="450" y1="150" x2="550" y2="150" stroke="#333" stroke-width="2"/>
+                <text x="500" y="140" text-anchor="middle" font-size="14" fill="#4caf50">Yes</text>
+                <line x1="550" y1="150" x2="550" y2="280" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+
+                <!-- No: Σ公式へ -->
+                <line x1="250" y1="150" x2="150" y2="150" stroke="#333" stroke-width="2"/>
+                <text x="200" y="140" text-anchor="middle" font-size="14" fill="#e53935">No</text>
+                <line x1="150" y1="150" x2="150" y2="280" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+
+                <!-- 判断2: 部分分数分解できるか？ -->
+                <polygon points="550,280 620,320 550,360 480,320" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                <text x="550" y="315" text-anchor="middle" font-size="14" fill="#333">分解</text>
+                <text x="550" y="333" text-anchor="middle" font-size="14" fill="#333">できる？</text>
+
+                <!-- 判断2: Σ公式が使えるか？ -->
+                <polygon points="150,280 220,320 150,360 80,320" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                <text x="150" y="315" text-anchor="middle" font-size="14" fill="#333">公式</text>
+                <text x="150" y="333" text-anchor="middle" font-size="14" fill="#333">ある？</text>
+
+                <!-- 結果: テレスコーピング -->
+                <rect x="470" y="370" width="160" height="40" rx="5" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+                <text x="550" y="395" text-anchor="middle" font-size="14" font-weight="bold" fill="#4caf50">テレスコーピング</text>
+                <line x1="550" y1="360" x2="550" y2="370" stroke="#333" stroke-width="2"/>
+                <text x="580" y="368" font-size="12" fill="#4caf50">Yes</text>
+
+                <!-- 結果: Σ公式 -->
+                <rect x="70" y="370" width="160" height="40" rx="5" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="150" y="395" text-anchor="middle" font-size="14" font-weight="bold" fill="#1976d2">Σの公式を適用</text>
+                <line x1="150" y1="360" x2="150" y2="370" stroke="#333" stroke-width="2"/>
+                <text x="180" y="368" font-size="12" fill="#4caf50">Yes</text>
+
+                <!-- 中央に別解表示 -->
+                <rect x="280" y="250" width="140" height="50" rx="5" fill="#ffebee" stroke="#e53935" stroke-width="2"/>
+                <text x="350" y="270" text-anchor="middle" font-size="12" fill="#333">公式なし→</text>
+                <text x="350" y="288" text-anchor="middle" font-size="12" fill="#e53935">工夫が必要</text>
+
+                <!-- Noルート -->
+                <line x1="80" y1="320" x2="50" y2="320" stroke="#333" stroke-width="2"/>
+                <text x="60" y="310" font-size="12" fill="#e53935">No</text>
+                <line x1="50" y1="320" x2="50" y2="275" stroke="#333" stroke-width="2"/>
+                <line x1="50" y1="275" x2="280" y2="275" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+
+                <line x1="620" y1="320" x2="650" y2="320" stroke="#333" stroke-width="2"/>
+                <text x="640" y="310" font-size="12" fill="#e53935">No</text>
+                <line x1="650" y1="320" x2="650" y2="275" stroke="#333" stroke-width="2"/>
+                <line x1="650" y1="275" x2="420" y2="275" stroke="#333" stroke-width="2" marker-end="url(#arrow-black-rev)"/>
+
+                <!-- 矢印マーカー定義 -->
+                <defs>
+                    <marker id="arrow-black" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+                    </marker>
+                    <marker id="arrow-black-rev" markerWidth="10" markerHeight="10" refX="1" refY="3" orient="auto">
+                        <polygon points="10 0, 0 3, 10 6" fill="#333"/>
+                    </marker>
+                </defs>
+            </svg>
+            <div class="svg-caption">Σ計算 vs 部分和の判断フローチャート</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 ルール1：Σの公式が使える条件</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <p>一般項が次の形なら、Σの公式で直接計算！</p>
+            <table class="material-table">
+                <tr><th>一般項の形</th><th>Σの公式</th></tr>
+                <tr><td>\(k\)（等差型）</td><td>\(\displaystyle\sum_{k=1}^{n}k = \frac{n(n+1)}{2}\)</td></tr>
+                <tr><td>\(k^2\)（平方の和）</td><td>\(\displaystyle\sum_{k=1}^{n}k^2 = \frac{n(n+1)(2n+1)}{6}\)</td></tr>
+                <tr><td>\(k^3\)（立方の和）</td><td>\(\displaystyle\sum_{k=1}^{n}k^3 = \left\{\frac{n(n+1)}{2}\right\}^2\)</td></tr>
+                <tr><td>\(r^k\)（等比型）</td><td>\(\displaystyle\sum_{k=1}^{n}r^k = \frac{r(r^n-1)}{r-1}\)（\(r \neq 1\)）</td></tr>
+            </table>
+            <p><strong>→ だから結果は：</strong> 一般項が「整数のべき乗」や「等比数列」なら公式一発！</p>
+            <details class="thinking"><summary><strong>💡 考え方を見る</strong></summary>
+            <p>これらの公式は、数学的帰納法で証明できる基本公式です。「k」「k²」「k³」「rᵏ」の形を見たら反射的に公式を思い出しましょう。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 ルール2：部分分数分解（テレスコーピング）が使える条件</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <p>一般項が次の形なら、部分分数分解で「消し合い」を狙う！</p>
+            <div class="formula">
+                \[ \frac{1}{k(k+1)} = \frac{1}{k} - \frac{1}{k+1} \]
+            </div>
+            <p>より一般的に：</p>
+            <div class="formula">
+                \[ \frac{1}{k(k+d)} = \frac{1}{d}\left(\frac{1}{k} - \frac{1}{k+d}\right) \]
+            </div>
+            <p><strong>→ だから結果は：</strong> 分母が「連続する因数の積」なら部分分数分解！</p>
+            <p><strong>✅ メリット：</strong> 中間の項がすべて消え合い、最初と最後の数項だけが残る</p>
+            <details class="thinking"><summary><strong>💡 なぜ消えるのか</strong></summary>
+            <p>\(\displaystyle\sum_{k=1}^{n}\left(\frac{1}{k} - \frac{1}{k+1}\right)\)を展開すると：</p>
+            <p>\(\left(\frac{1}{1} - \frac{1}{2}\right) + \left(\frac{1}{2} - \frac{1}{3}\right) + \left(\frac{1}{3} - \frac{1}{4}\right) + \cdots + \left(\frac{1}{n} - \frac{1}{n+1}\right)\)</p>
+            <p>隣り合う項が打ち消し合い、最初の\(\frac{1}{1}\)と最後の\(-\frac{1}{n+1}\)だけが残ります！</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 ルール3：3つ以上の因数の部分分数分解</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <div class="formula">
+                \[ \frac{1}{k(k+1)(k+2)} = \frac{1}{2}\left(\frac{1}{k(k+1)} - \frac{1}{(k+1)(k+2)}\right) \]
+            </div>
+            <p><strong>→ だから結果は：</strong> 分母の因数が3つ以上でも、2つずつに分解すればテレスコーピングできる</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 ルール4：判断の決め手</strong>
+            <table class="material-table">
+                <tr><th>一般項の特徴</th><th>使う方法</th><th>理由</th></tr>
+                <tr><td>整数のべき乗（k, k², k³）</td><td>Σの公式</td><td>公式があるから</td></tr>
+                <tr><td>等比数列（rᵏ）</td><td>Σの公式</td><td>公式があるから</td></tr>
+                <tr><td>分母が連続因数の積</td><td>部分分数分解</td><td>消し合いが起きるから</td></tr>
+                <tr><td>\(\sqrt{k+1}-\sqrt{k}\)の逆数</td><td>有理化して消し合い</td><td>分母の有理化で消える形に</td></tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>式の形を見て、最適な方法を選んで解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ Σの公式を使うパターン</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>等差型・べき乗型の和
+            </div>
+            <p>\(\displaystyle\sum_{k=1}^{n}(3k^2 + 2k - 1)\) を求めよ。</p>
+            <p><strong>判断：</strong> 一般項は\(k^2\)と\(k\)の組み合わせ → <span style="color: #1976d2; font-weight: bold;">Σの公式</span></p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>Σを項ごとに分解：\(\displaystyle 3\sum_{k=1}^{n}k^2 + 2\sum_{k=1}^{n}k - \sum_{k=1}^{n}1\)</li>
+                <li>各公式を適用：
+                    <ul>
+                        <li>\(\displaystyle\sum_{k=1}^{n}k^2 = \frac{n(n+1)(2n+1)}{6}\)</li>
+                        <li>\(\displaystyle\sum_{k=1}^{n}k = \frac{n(n+1)}{2}\)</li>
+                        <li>\(\displaystyle\sum_{k=1}^{n}1 = n\)</li>
+                    </ul>
+                </li>
+                <li>代入して計算</li>
+            </ol>
+            <div class="formula">
+                \[ = 3 \cdot \frac{n(n+1)(2n+1)}{6} + 2 \cdot \frac{n(n+1)}{2} - n \]
+                \[ = \frac{n(n+1)(2n+1)}{2} + n(n+1) - n \]
+                \[ = \frac{n(n+1)(2n+1) + 2n(n+1) - 2n}{2} \]
+                \[ = \frac{n\{(n+1)(2n+1) + 2(n+1) - 2\}}{2} \]
+                \[ = \frac{n(2n^2 + 5n + 1)}{2} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>等比型の和
+            </div>
+            <p>\(\displaystyle\sum_{k=1}^{n}3 \cdot 2^k\) を求めよ。</p>
+            <p><strong>判断：</strong> 一般項は\(2^k\)（等比数列）→ <span style="color: #1976d2; font-weight: bold;">等比数列の和の公式</span></p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>定数を前に出す：\(\displaystyle 3\sum_{k=1}^{n}2^k\)</li>
+                <li>等比数列の和の公式：初項\(2\)、公比\(2\)、項数\(n\)</li>
+                <li>\(\displaystyle\sum_{k=1}^{n}2^k = \frac{2(2^n - 1)}{2-1} = 2(2^n - 1) = 2^{n+1} - 2\)</li>
+            </ol>
+            <div class="formula">
+                \[ = 3(2^{n+1} - 2) = 3 \cdot 2^{n+1} - 6 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 部分分数分解（テレスコーピング）を使うパターン</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>2因数の積（基本）
+            </div>
+            <p>\(\displaystyle\sum_{k=1}^{n}\frac{1}{k(k+1)}\) を求めよ。</p>
+            <p><strong>判断：</strong> 分母が連続する整数の積 → <span style="color: #4caf50; font-weight: bold;">部分分数分解</span></p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>部分分数分解：\(\displaystyle\frac{1}{k(k+1)} = \frac{1}{k} - \frac{1}{k+1}\)</li>
+                <li>展開して消し合いを確認：
+                    \[\left(\frac{1}{1} - \frac{1}{2}\right) + \left(\frac{1}{2} - \frac{1}{3}\right) + \cdots + \left(\frac{1}{n} - \frac{1}{n+1}\right)\]
+                </li>
+                <li>最初と最後だけ残る（テレスコーピング）</li>
+            </ol>
+            <div class="formula">
+                \[ = 1 - \frac{1}{n+1} = \frac{n}{n+1} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>3因数の積
+            </div>
+            <p>\(\displaystyle\sum_{k=1}^{n}\frac{1}{k(k+1)(k+2)}\) を求めよ。</p>
+            <p><strong>判断：</strong> 分母が3つの連続因数の積 → <span style="color: #4caf50; font-weight: bold;">部分分数分解</span></p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>分解の公式を適用：
+                    \[\frac{1}{k(k+1)(k+2)} = \frac{1}{2}\left(\frac{1}{k(k+1)} - \frac{1}{(k+1)(k+2)}\right)\]
+                </li>
+                <li>これも消し合いの形！</li>
+                <li>\(\displaystyle\frac{1}{2}\left(\frac{1}{1 \cdot 2} - \frac{1}{(n+1)(n+2)}\right)\)</li>
+            </ol>
+            <div class="formula">
+                \[ = \frac{1}{2}\left(\frac{1}{2} - \frac{1}{(n+1)(n+2)}\right) = \frac{1}{4} - \frac{1}{2(n+1)(n+2)} \]
+            </div>
+            <p>通分すると：\(\displaystyle\frac{n(n+3)}{4(n+1)(n+2)}\)</p>
+        </div>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>差が2以上の場合
+            </div>
+            <p>\(\displaystyle\sum_{k=1}^{n}\frac{1}{(2k-1)(2k+1)}\) を求めよ。</p>
+            <p><strong>判断：</strong> 分母が奇数の積（差は2）→ <span style="color: #4caf50; font-weight: bold;">部分分数分解</span></p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>差が\(d=2\)なので：\(\displaystyle\frac{1}{(2k-1)(2k+1)} = \frac{1}{2}\left(\frac{1}{2k-1} - \frac{1}{2k+1}\right)\)</li>
+                <li>展開：\(\displaystyle\frac{1}{2}\left[\left(\frac{1}{1} - \frac{1}{3}\right) + \left(\frac{1}{3} - \frac{1}{5}\right) + \cdots + \left(\frac{1}{2n-1} - \frac{1}{2n+1}\right)\right]\)</li>
+            </ol>
+            <div class="formula">
+                \[ = \frac{1}{2}\left(1 - \frac{1}{2n+1}\right) = \frac{1}{2} \cdot \frac{2n}{2n+1} = \frac{n}{2n+1} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 有理化で消し合いを作るパターン</h3>
+
+        <div class="example-box" id="ex-6">
+            <div class="example-title">
+                <span class="number-badge">例6</span>ルートを含む和
+            </div>
+            <p>\(\displaystyle\sum_{k=1}^{n}\frac{1}{\sqrt{k} + \sqrt{k+1}}\) を求めよ。</p>
+            <p><strong>判断：</strong> 分母がルートの和 → <span style="color: #4caf50; font-weight: bold;">有理化でテレスコーピング</span></p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>分母を有理化：
+                    \[\frac{1}{\sqrt{k} + \sqrt{k+1}} = \frac{\sqrt{k+1} - \sqrt{k}}{(\sqrt{k+1})^2 - (\sqrt{k})^2} = \sqrt{k+1} - \sqrt{k}\]
+                </li>
+                <li>これは差の形！消し合いが起きる</li>
+                <li>\((\sqrt{2} - \sqrt{1}) + (\sqrt{3} - \sqrt{2}) + \cdots + (\sqrt{n+1} - \sqrt{n})\)</li>
+            </ol>
+            <div class="formula">
+                \[ = \sqrt{n+1} - 1 \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：まず分母の形をチェック</strong><br>
+            分母が「k(k+1)」「k(k+2)」「(2k-1)(2k+1)」のような<strong>因数の積</strong>なら、部分分数分解を疑う。<br>
+            分母がなく整数のべき乗なら、Σの公式を使う。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：部分分数分解は「1/差」を前に出す</strong><br>
+            \(\displaystyle\frac{1}{k(k+d)} = \frac{1}{d}\left(\frac{1}{k} - \frac{1}{k+d}\right)\)<br>
+            差\(d\)で割ることを忘れずに！\(d=1\)なら係数は不要、\(d=2\)なら\(\frac{1}{2}\)を前に出す。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：最初の数項と最後の数項を書き出す</strong><br>
+            テレスコーピングでは、\(k=1,2,3,\ldots\)と\(k=n-1,n\)を書き出して、どの項が残るか確認する。<br>
+            中間が消えることを目で確認すると、ミスが減る。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：ルートは有理化を試す</strong><br>
+            \(\displaystyle\frac{1}{\sqrt{k} + \sqrt{k+1}}\)のような形は、分母を有理化すると差の形になる。<br>
+            \(\sqrt{k+1} - \sqrt{k}\)の形が出たらテレスコーピング確定！
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：部分分数分解の係数を忘れる</div>
+            <p><strong>ダメな例：</strong> \(\displaystyle\frac{1}{k(k+2)} = \frac{1}{k} - \frac{1}{k+2}\)（×）</p>
+            <p><strong>対策：</strong> 差が\(d=2\)なので、\(\displaystyle\frac{1}{2}\)を忘れない！<br>
+            正しくは：\(\displaystyle\frac{1}{k(k+2)} = \frac{1}{2}\left(\frac{1}{k} - \frac{1}{k+2}\right)\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：残る項の見落とし</div>
+            <p><strong>ダメな例：</strong> \(\displaystyle\sum_{k=1}^{n}\frac{1}{k(k+2)}\)で、\(\frac{1}{1}\)と\(\frac{1}{n+2}\)だけ残ると思う</p>
+            <p><strong>対策：</strong> 差が2の場合、<strong>2項ずつ</strong>消えるので、最初の2項と最後の2項が残る！<br>
+            具体的に書き出すと：\(\frac{1}{2}\left(\frac{1}{1} + \frac{1}{2} - \frac{1}{n+1} - \frac{1}{n+2}\right)\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：Σの公式を無理に使う</div>
+            <p><strong>ダメな例：</strong> \(\displaystyle\sum_{k=1}^{n}\frac{1}{k^2}\)を公式で解こうとする</p>
+            <p><strong>対策：</strong> \(\displaystyle\sum_{k=1}^{n}\frac{1}{k^2}\)は公式がない（ゼータ関数の領域）！<br>
+            \(\frac{1}{k^2}\)と\(\frac{1}{k(k+1)}\)は別物。分母が「因数の積」か「べき乗」かで判断。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">一般項の形を見て「Σ公式」か「部分分数分解」か判断できた</div>
+            <div class="checklist-item">部分分数分解で「1/差」の係数を正しく付けた</div>
+            <div class="checklist-item">テレスコーピングで残る項を正しく特定できた</div>
+            <div class="checklist-item">等比数列の和では公比\(\neq 1\)を確認した</div>
+            <div class="checklist-item">答えを通分・簡約して最終形にした</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだ判断フローを使って、最適な方法で解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>\(\displaystyle\sum_{k=1}^{n}\frac{1}{(k+1)(k+3)}\) を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong> 分母が2因数の積、差は2 → 部分分数分解</p>
+                    <p>\(\displaystyle\frac{1}{(k+1)(k+3)} = \frac{1}{2}\left(\frac{1}{k+1} - \frac{1}{k+3}\right)\)</p>
+                    <p>差が2なので、最初の2項\(\frac{1}{2}, \frac{1}{3}\)と最後の2項\(-\frac{1}{n+2}, -\frac{1}{n+3}\)が残る：</p>
+                    <p>\(\displaystyle = \frac{1}{2}\left(\frac{1}{2} + \frac{1}{3} - \frac{1}{n+2} - \frac{1}{n+3}\right)\)</p>
+                    <p>\(\displaystyle = \frac{1}{2}\left(\frac{5}{6} - \frac{2n+5}{(n+2)(n+3)}\right) = \frac{n(5n+13)}{12(n+2)(n+3)}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\(\displaystyle\sum_{k=1}^{n}k \cdot 2^k\) を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong> \(k \cdot r^k\)の形は「等差×等比」→ 特殊な手法が必要</p>
+                    <p>\(S = \sum_{k=1}^{n}k \cdot 2^k\)とおき、\(2S\)を計算して引く方法を使う：</p>
+                    <p>\(S = 1\cdot2 + 2\cdot2^2 + 3\cdot2^3 + \cdots + n\cdot2^n\)</p>
+                    <p>\(2S = 1\cdot2^2 + 2\cdot2^3 + 3\cdot2^4 + \cdots + n\cdot2^{n+1}\)</p>
+                    <p>\(S - 2S = 2 + 2^2 + 2^3 + \cdots + 2^n - n\cdot2^{n+1}\)</p>
+                    <p>\(-S = \frac{2(2^n-1)}{2-1} - n\cdot2^{n+1} = 2^{n+1} - 2 - n\cdot2^{n+1}\)</p>
+                    <p>\(\displaystyle S = (n-1)\cdot2^{n+1} + 2\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：分母が因数の積なら部分分数分解、べき乗ならΣの公式！
+</div>
+
+<!-- ========== 関連教材 ========== -->
+<!-- Front Matterのrelatedで指定すればレイアウトが自動生成します -->
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="section8">
+    <h2>おまけ：数学雑学「消える項の魔法」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 テレスコーピングの語源と天文学者ガリレオ</div>
+
+            <p>「テレスコーピング」という言葉、実は<strong>望遠鏡（telescope）</strong>から来ています。</p>
+
+            <p>望遠鏡は、筒を伸び縮みさせて焦点を合わせますよね。伸ばした望遠鏡を<strong>縮めるとき、中間の筒がスルスルと消えて</strong>両端だけが残る。</p>
+
+            <p>これが数列の和で中間項が消える様子にそっくりなので、「テレスコーピング和（telescoping sum）」と呼ばれるようになりました。</p>
+
+            <div class="formula">
+                \[ \sum_{k=1}^{n}\left(a_k - a_{k+1}\right) = a_1 - a_{n+1} \]
+            </div>
+
+            <p>ガリレオ・ガリレイが1609年に望遠鏡で木星の衛星を発見したとき、数学者たちはこの「望遠鏡的な」計算法をまだ知りませんでした。</p>
+
+            <p>テレスコーピング和が体系的に使われるようになったのは18世紀のオイラーの時代。数学の世界では、望遠鏡より150年以上遅れて「発見」されたんですね。</p>
+
+            <p><strong>ちなみに...</strong> 今では「伸縮自在の望遠鏡」より「消し合いの計算」の方が有名かもしれません。試験会場で「テレスコーピング！」と叫んでも、誰も星を見ようとはしないでしょう（笑）</p>
+        </div>
+    </div>
+</section>

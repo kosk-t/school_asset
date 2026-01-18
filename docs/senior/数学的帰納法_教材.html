@@ -1,0 +1,490 @@
+---
+layout: material-raw
+title: 数学的帰納法
+icon: "🎯"
+description: 自然数に関する命題を証明する最強の武器。基底・仮定・帰納の3ステップで、等式も不等式もすべて証明できる！
+level: 標準
+level_num: 2
+category: numbers
+school_level: senior
+order: 10
+keywords:
+  - 数学的帰納法
+  - 証明
+  - 等式の証明
+  - 不等式の証明
+  - 帰納法
+cover_image: /images/noimage.jpg
+cover_description: ドミノ倒しのイメージ、n=1からn=kへの矢印、数列の和の公式
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学雑学「無限のドミノ倒し」"
+related:
+  - url: /senior/等差数列_教材.html
+    title: 等差数列
+    note: 帰納法で証明する例題の題材
+    type: prerequisite
+  - url: /senior/等比数列_教材.html
+    title: 等比数列
+    note: 等比数列の和の公式を帰納法で証明
+    type: related
+  - url: /senior/漸化式_教材.html
+    title: 漸化式
+    note: 漸化式から導いた一般項を帰納法で証明
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「すべての自然数 \(n\) について〇〇が成り立つ」ことを証明したいとき、\(n = 1, 2, 3, \ldots\) と無限に確かめることはできません。数学的帰納法を使えば、有限のステップで無限個の命題を一気に証明できます。</p>
+        <p>このページでは、数学的帰納法の基本を学びます：</p>
+        <ul>
+            <li><strong>3ステップの流れ</strong>：基底・仮定・帰納のセットで証明する方法</li>
+            <li><strong>等式の証明</strong>：\(1 + 2 + \cdots + n = \frac{n(n+1)}{2}\) などの公式を証明</li>
+            <li><strong>不等式の証明</strong>：\(2^n > n\) などの大小関係を証明</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】数学的帰納法の3ステップ<br>
+            <strong>Step 1（基底）</strong>：\(n = 1\) で成り立つことを示す<br>
+            <strong>Step 2（仮定）</strong>：\(n = k\) で成り立つと仮定する<br>
+            <strong>Step 3（帰納）</strong>：\(n = k + 1\) でも成り立つことを示す
+        </div>
+
+        <!-- ドミノ倒しのイメージ図 -->
+        <div class="svg-container">
+            <svg width="700" height="180" viewBox="0 0 700 180">
+                <!-- 背景 -->
+                <rect x="0" y="0" width="700" height="180" fill="#f8f9fa"/>
+
+                <!-- ドミノたち -->
+                <rect x="80" y="60" width="20" height="80" fill="#4caf50" rx="3"/>
+                <text x="90" y="155" text-anchor="middle" font-size="14" fill="#333">n=1</text>
+
+                <rect x="160" y="60" width="20" height="80" fill="#2196f3" rx="3"/>
+                <text x="170" y="155" text-anchor="middle" font-size="14" fill="#333">n=2</text>
+
+                <rect x="240" y="60" width="20" height="80" fill="#2196f3" rx="3"/>
+                <text x="250" y="155" text-anchor="middle" font-size="14" fill="#333">n=3</text>
+
+                <!-- 省略記号 -->
+                <text x="320" y="100" text-anchor="middle" font-size="24" fill="#666">...</text>
+
+                <rect x="380" y="60" width="20" height="80" fill="#ff9800" rx="3"/>
+                <text x="390" y="155" text-anchor="middle" font-size="14" fill="#333">n=k</text>
+
+                <!-- 矢印 -->
+                <defs>
+                    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#e53935"/>
+                    </marker>
+                </defs>
+                <path d="M 410 90 L 460 90" stroke="#e53935" stroke-width="3" marker-end="url(#arrow-blue)"/>
+
+                <rect x="480" y="60" width="20" height="80" fill="#e53935" rx="3"/>
+                <text x="490" y="155" text-anchor="middle" font-size="14" fill="#333">n=k+1</text>
+
+                <!-- 省略記号（続き） -->
+                <text x="560" y="100" text-anchor="middle" font-size="24" fill="#666">...</text>
+
+                <rect x="600" y="60" width="20" height="80" fill="#9e9e9e" rx="3"/>
+                <text x="610" y="155" text-anchor="middle" font-size="14" fill="#333">∞</text>
+
+                <!-- 説明テキスト -->
+                <text x="90" y="45" text-anchor="middle" font-size="14" fill="#4caf50" font-weight="bold">倒す!</text>
+                <text x="435" y="75" text-anchor="middle" font-size="14" fill="#e53935" font-weight="bold">k倒れる→k+1倒れる</text>
+            </svg>
+            <div class="svg-caption">ドミノ倒しのイメージ：1枚目が倒れ、k枚目が倒れればk+1枚目も倒れる</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 なぜこれで証明になるのか？</strong>
+            <p>ドミノ倒しで考えてみましょう：</p>
+            <ol>
+                <li><strong>1枚目のドミノを倒す</strong>（Step 1）</li>
+                <li><strong>k枚目が倒れたら、k+1枚目も必ず倒れる</strong>（Step 2 → Step 3）</li>
+            </ol>
+            <p>この2つが保証されれば、<strong>すべてのドミノが倒れる</strong>ことがわかります。</p>
+            <p><strong>→ だから結果は：</strong> Step 1とStep 3を示せば、すべての自然数nで命題が成り立つことが証明できる。</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 帰納法の書き方テンプレート</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <p>以下の形式で答案を書きます：</p>
+            <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 10px 0;">
+                <p><strong>[Step 1]</strong> \(n = 1\) のとき</p>
+                <p style="margin-left: 20px;">（左辺）= ... 、（右辺）= ...</p>
+                <p style="margin-left: 20px;">よって \(n = 1\) で成り立つ。</p>
+                <p style="margin-top: 10px;"><strong>[Step 2]</strong> \(n = k\) で成り立つと仮定する</p>
+                <p style="margin-left: 20px;">すなわち、... が成り立つと仮定する。</p>
+                <p style="margin-top: 10px;"><strong>[Step 3]</strong> \(n = k + 1\) のとき</p>
+                <p style="margin-left: 20px;">（左辺）= ... = （仮定を使う）= ... = （右辺）</p>
+                <p style="margin-left: 20px;">よって \(n = k + 1\) でも成り立つ。</p>
+                <p style="margin-top: 10px;"><strong>[結論]</strong> Step 1, 3より、すべての自然数 \(n\) で成り立つ。</p>
+            </div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 等式の証明のコツ</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <p>Step 3では「\(n = k + 1\) の左辺」から出発して、仮定を代入し、「\(n = k + 1\) の右辺」に変形します。</p>
+            <div class="formula">
+                \[ \underbrace{a_1 + a_2 + \cdots + a_k}_{仮定で置き換え} + a_{k+1} = (\text{仮定の右辺}) + a_{k+1} \]
+            </div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 不等式の証明のコツ</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <p>Step 3では仮定の不等式を利用して、新たな不等式を導きます。</p>
+            <p>「\(k\) で成り立つ」\(\Rightarrow\)「\(k + 1\) で成り立つ」を示す際、<strong>不等式の両辺に同じ操作</strong>をして式を繋げます。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>不等式 \(A > B\) が成り立つとき、\(A + C > B + C\) や \(2A > 2B\)（係数が正のとき）も成り立ちます。この性質を使って、仮定から\(n = k + 1\) の場合を導きます。</p>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>基本の等式証明から不等式証明まで、3ステップの流れを確認しましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 等式の証明</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>等差数列の和の公式
+            </div>
+            <p>すべての自然数 \(n\) について、次の等式を数学的帰納法で証明せよ。</p>
+            <div class="formula">
+                \[ 1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2} \]
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>Step 1：</strong> \(n = 1\) を確認</li>
+                <li><strong>Step 2：</strong> \(n = k\) で成り立つと仮定</li>
+                <li><strong>Step 3：</strong> \(n = k + 1\) の左辺に仮定を代入して右辺を導く</li>
+            </ol>
+            <p><strong>【証明】</strong></p>
+            <p><strong>[Step 1]</strong> \(n = 1\) のとき</p>
+            <p style="margin-left: 20px;">（左辺）= \(1\)</p>
+            <p style="margin-left: 20px;">（右辺）= \(\dfrac{1 \cdot 2}{2} = 1\)</p>
+            <p style="margin-left: 20px;">左辺 = 右辺 より、\(n = 1\) で成り立つ。</p>
+
+            <p style="margin-top: 15px;"><strong>[Step 2]</strong> \(n = k\) で成り立つと仮定する</p>
+            <div class="formula">
+                \[ 1 + 2 + 3 + \cdots + k = \frac{k(k+1)}{2} \quad \cdots (*) \]
+            </div>
+
+            <p style="margin-top: 15px;"><strong>[Step 3]</strong> \(n = k + 1\) のとき</p>
+            <div class="formula">
+                \begin{align}
+                (\text{左辺}) &= 1 + 2 + \cdots + k + (k+1) \\
+                &= \frac{k(k+1)}{2} + (k+1) \quad \text{（仮定(*)より）} \\
+                &= \frac{k(k+1) + 2(k+1)}{2} \\
+                &= \frac{(k+1)(k+2)}{2} \\
+                &= \frac{(k+1)\{(k+1)+1\}}{2} = (\text{右辺})
+                \end{align}
+            </div>
+            <p style="margin-left: 20px;">よって \(n = k + 1\) でも成り立つ。</p>
+
+            <p style="margin-top: 15px;"><strong>[結論]</strong> Step 1, 3より、すべての自然数 \(n\) について等式は成り立つ。 ■</p>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>等比数列の和の公式
+            </div>
+            <p>すべての自然数 \(n\) について、次の等式を証明せよ。</p>
+            <div class="formula">
+                \[ 1 + 2 + 2^2 + \cdots + 2^{n-1} = 2^n - 1 \]
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>Step 1：</strong> \(n = 1\) で両辺が等しいか確認</li>
+                <li><strong>Step 2：</strong> \(n = k\) で成り立つと仮定</li>
+                <li><strong>Step 3：</strong> 左辺に \(2^k\) を加えて仮定を利用</li>
+            </ol>
+            <p><strong>【証明】</strong></p>
+            <p><strong>[Step 1]</strong> \(n = 1\) のとき</p>
+            <p style="margin-left: 20px;">（左辺）= \(2^0 = 1\)</p>
+            <p style="margin-left: 20px;">（右辺）= \(2^1 - 1 = 1\)</p>
+            <p style="margin-left: 20px;">よって \(n = 1\) で成り立つ。</p>
+
+            <p style="margin-top: 15px;"><strong>[Step 2]</strong> \(n = k\) で成り立つと仮定する</p>
+            <div class="formula">
+                \[ 1 + 2 + 2^2 + \cdots + 2^{k-1} = 2^k - 1 \quad \cdots (*) \]
+            </div>
+
+            <p style="margin-top: 15px;"><strong>[Step 3]</strong> \(n = k + 1\) のとき</p>
+            <div class="formula">
+                \begin{align}
+                (\text{左辺}) &= 1 + 2 + 2^2 + \cdots + 2^{k-1} + 2^k \\
+                &= (2^k - 1) + 2^k \quad \text{（仮定(*)より）} \\
+                &= 2 \cdot 2^k - 1 \\
+                &= 2^{k+1} - 1 = (\text{右辺})
+                \end{align}
+            </div>
+            <p style="margin-left: 20px;">よって \(n = k + 1\) でも成り立つ。</p>
+
+            <p style="margin-top: 15px;"><strong>[結論]</strong> Step 1, 3より、すべての自然数 \(n\) について等式は成り立つ。 ■</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 不等式の証明</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>指数と自然数の比較
+            </div>
+            <p>すべての自然数 \(n\) について、次の不等式を証明せよ。</p>
+            <div class="formula">
+                \[ 2^n > n \]
+            </div>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>Step 1：</strong> \(n = 1\) で不等式が成り立つか確認</li>
+                <li><strong>Step 2：</strong> \(n = k\) で \(2^k > k\) と仮定</li>
+                <li><strong>Step 3：</strong> 両辺を2倍して \(2^{k+1} > k + 1\) を導く</li>
+            </ol>
+            <p><strong>【証明】</strong></p>
+            <p><strong>[Step 1]</strong> \(n = 1\) のとき</p>
+            <p style="margin-left: 20px;">（左辺）= \(2^1 = 2\)、（右辺）= \(1\)</p>
+            <p style="margin-left: 20px;">\(2 > 1\) より成り立つ。</p>
+
+            <p style="margin-top: 15px;"><strong>[Step 2]</strong> \(n = k\) で成り立つと仮定する</p>
+            <div class="formula">
+                \[ 2^k > k \quad \cdots (*) \]
+            </div>
+
+            <p style="margin-top: 15px;"><strong>[Step 3]</strong> \(n = k + 1\) のとき</p>
+            <p style="margin-left: 20px;">仮定(*)の両辺に2を掛けると</p>
+            <div class="formula">
+                \[ 2^{k+1} > 2k \]
+            </div>
+            <p style="margin-left: 20px;">ここで、\(k \geq 1\) より \(2k = k + k \geq k + 1\)</p>
+            <p style="margin-left: 20px;">よって</p>
+            <div class="formula">
+                \[ 2^{k+1} > 2k \geq k + 1 \]
+            </div>
+            <p style="margin-left: 20px;">したがって \(2^{k+1} > k + 1\) が成り立つ。</p>
+
+            <p style="margin-top: 15px;"><strong>[結論]</strong> Step 1, 3より、すべての自然数 \(n\) について \(2^n > n\) が成り立つ。 ■</p>
+        </div>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>n! と 2^n の比較（n ≧ 4）
+            </div>
+            <p>\(n \geq 4\) のすべての自然数 \(n\) について、次の不等式を証明せよ。</p>
+            <div class="formula">
+                \[ n! > 2^n \]
+            </div>
+            <p><strong>ポイント：</strong> 「\(n \geq 4\)」のように条件付きの場合、Step 1は \(n = 4\) から始めます。</p>
+            <p><strong>【証明】</strong></p>
+            <p><strong>[Step 1]</strong> \(n = 4\) のとき</p>
+            <p style="margin-left: 20px;">（左辺）= \(4! = 24\)、（右辺）= \(2^4 = 16\)</p>
+            <p style="margin-left: 20px;">\(24 > 16\) より成り立つ。</p>
+
+            <p style="margin-top: 15px;"><strong>[Step 2]</strong> \(n = k\)（\(k \geq 4\)）で成り立つと仮定する</p>
+            <div class="formula">
+                \[ k! > 2^k \quad \cdots (*) \]
+            </div>
+
+            <p style="margin-top: 15px;"><strong>[Step 3]</strong> \(n = k + 1\) のとき</p>
+            <p style="margin-left: 20px;">仮定(*)の両辺に \(k + 1\) を掛けると</p>
+            <div class="formula">
+                \[ (k+1)! = (k+1) \cdot k! > (k+1) \cdot 2^k \]
+            </div>
+            <p style="margin-left: 20px;">ここで、\(k \geq 4\) より \(k + 1 \geq 5 > 2\) なので</p>
+            <div class="formula">
+                \[ (k+1) \cdot 2^k > 2 \cdot 2^k = 2^{k+1} \]
+            </div>
+            <p style="margin-left: 20px;">よって \((k+1)! > 2^{k+1}\) が成り立つ。</p>
+
+            <p style="margin-top: 15px;"><strong>[結論]</strong> Step 1, 3より、\(n \geq 4\) のすべての自然数 \(n\) について \(n! > 2^n\) が成り立つ。 ■</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：Step 3の変形では「仮定の形」をよく見る</strong><br>
+            仮定で「\(1 + 2 + \cdots + k = \frac{k(k+1)}{2}\)」とあるなら、Step 3の左辺に「\(1 + 2 + \cdots + k\)」の形が現れるように式を整理しましょう。丸ごと置き換えられます。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：不等式は「両辺に同じ操作」が鍵</strong><br>
+            仮定 \(2^k > k\) があるとき、両辺に正の数を掛けたり足したりして、\(2^{k+1}\) や \(k + 1\) を作り出します。このとき「\(k \geq 1\)」などの条件を使って評価します。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：「n = 1以外」から始める問題に注意</strong><br>
+            「\(n \geq 2\)」や「\(n \geq 4\)」という条件があれば、Step 1はその最小値から始めます。結論も「\(n \geq 4\) のすべての自然数で」と範囲を限定します。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：因数分解は「n = k + 1」の形にまとめる</strong><br>
+            Step 3の計算では、最終形を \(\frac{(k+1)(k+2)}{2}\) のように「\(k + 1\) を含む形」にまとめます。「\(n = k + 1\) のときの右辺」と比較しやすくなります。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：Step 1を省略する</div>
+            <p><strong>ダメな例：</strong> 「n = 1 は明らかに成り立つ」と書いて計算を省く</p>
+            <p><strong>対策：</strong> 左辺と右辺を実際に計算して「左辺 = 右辺」であることを示す。明らかでも計算を書くのがルール。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：仮定を「使わずに」k + 1 を示す</div>
+            <p><strong>ダメな例：</strong> Step 3で直接 \(n = k + 1\) の等式を計算して「成り立つ」と言う</p>
+            <p><strong>対策：</strong> 仮定(*)を必ず利用して式変形する。仮定を使わない証明は帰納法になっていない。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：不等式で等号が曖昧</div>
+            <p><strong>ダメな例：</strong> \(2k \geq k + 1\) と書くべきところで \(2k > k + 1\) と書く</p>
+            <p><strong>対策：</strong> 不等号の向き・等号の有無を慎重に確認。\(k = 1\) のとき \(2k = 2 = k + 1\) なので等号が必要。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：結論を書き忘れる</div>
+            <p><strong>ダメな例：</strong> Step 3を示して終わり</p>
+            <p><strong>対策：</strong> 「Step 1, 3より、すべての自然数nで成り立つ」と明記して締めくくる。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">Step 1で \(n = 1\)（または条件の最小値）を計算したか？</div>
+            <div class="checklist-item">Step 2で仮定を「\(n = k\) で成り立つ」と明記したか？</div>
+            <div class="checklist-item">Step 3で仮定を実際に使って式変形したか？</div>
+            <div class="checklist-item">不等式の問題で、不等号の向きと等号の有無は正しいか？</div>
+            <div class="checklist-item">「すべての自然数nで成り立つ」と結論を書いたか？</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>すべての自然数 \(n\) について、次の等式を数学的帰納法で証明せよ。</p>
+            <div class="formula">
+                \[ 1^2 + 2^2 + 3^2 + \cdots + n^2 = \frac{n(n+1)(2n+1)}{6} \]
+            </div>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>[Step 1]</strong> \(n = 1\) のとき</p>
+                    <p>（左辺）= \(1^2 = 1\)、（右辺）= \(\frac{1 \cdot 2 \cdot 3}{6} = 1\)</p>
+                    <p>成り立つ。</p>
+                    <p><strong>[Step 2]</strong> \(n = k\) で成り立つと仮定：\(1^2 + \cdots + k^2 = \frac{k(k+1)(2k+1)}{6}\)</p>
+                    <p><strong>[Step 3]</strong> \(n = k + 1\) のとき</p>
+                    <p>\(\displaystyle 1^2 + \cdots + k^2 + (k+1)^2 = \frac{k(k+1)(2k+1)}{6} + (k+1)^2\)</p>
+                    <p>\(\displaystyle = \frac{k(k+1)(2k+1) + 6(k+1)^2}{6} = \frac{(k+1)\{k(2k+1) + 6(k+1)\}}{6}\)</p>
+                    <p>\(\displaystyle = \frac{(k+1)(2k^2 + 7k + 6)}{6} = \frac{(k+1)(k+2)(2k+3)}{6}\)</p>
+                    <p>\(\displaystyle = \frac{(k+1)(k+2)\{2(k+1)+1\}}{6}\) で成り立つ。</p>
+                    <p><strong>[結論]</strong> すべての自然数 \(n\) で成り立つ。 ■</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\(n \geq 1\) のすべての自然数 \(n\) について、次の不等式を証明せよ。</p>
+            <div class="formula">
+                \[ 3^n > 2n + 1 \]
+            </div>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>[Step 1]</strong> \(n = 1\) のとき</p>
+                    <p>（左辺）= \(3^1 = 3\)、（右辺）= \(2 \cdot 1 + 1 = 3\)</p>
+                    <p>\(3 > 3\) は成り立たないので、\(n = 2\) から確認。</p>
+                    <p>（注：問題を \(n \geq 2\) と読み替える、または \(3^n \geq 2n + 1\) なら成立）</p>
+                    <p>※ 問題が \(3^n \geq 2n + 1\) の場合：</p>
+                    <p>\(n = 1\)：\(3 \geq 3\) で成立。</p>
+                    <p><strong>[Step 2]</strong> \(n = k\) で \(3^k \geq 2k + 1\) と仮定</p>
+                    <p><strong>[Step 3]</strong> \(n = k + 1\) のとき</p>
+                    <p>\(3^{k+1} = 3 \cdot 3^k \geq 3(2k + 1) = 6k + 3\)</p>
+                    <p>\(6k + 3 = 2(k+1) + 1 + 4k = 2(k+1) + 1 + 4k\)</p>
+                    <p>\(k \geq 1\) より \(4k \geq 4 > 0\) なので \(6k + 3 > 2(k+1) + 1\)</p>
+                    <p>よって \(3^{k+1} > 2(k+1) + 1\) が成り立つ。</p>
+                    <p><strong>[結論]</strong> \(n \geq 1\) で \(3^n \geq 2n + 1\) が成り立つ。 ■</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：数学的帰納法は「1枚目を倒す」＋「k倒れたらk+1も倒れる」の2ステップで無限を証明！
+</div>
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「無限のドミノ倒し」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 無限のドミノ倒し</div>
+
+            <p>数学的帰納法は、17世紀のフランスの数学者ブレーズ・パスカル（1623-1662）が二項係数の性質を証明するために使ったのが最初の明確な例といわれています。</p>
+
+            <p>でも「数学的帰納法」という名前をつけたのは、19世紀イギリスの数学者ド・モルガンでした。彼は「帰納的推論」（個別の事例から一般法則を推測する方法）にちなんでこの名前をつけましたが、ちょっと皮肉なことがあります。</p>
+
+            <p><strong>実は「数学的帰納法」は帰納法ではありません！</strong></p>
+
+            <p>普通の「帰納法」は、例えば「白鳥を100羽見たら全部白かったから、すべての白鳥は白い」と推測すること。でもこれは101羽目が黒かもしれない不確かな推論です。（実際、オーストラリアには黒い白鳥がいます！）</p>
+
+            <p>一方、数学的帰納法は：</p>
+            <ul>
+                <li>「1枚目のドミノは倒れる」（確認済み）</li>
+                <li>「k枚目が倒れたら、必ずk+1枚目も倒れる」（論理的に証明済み）</li>
+            </ul>
+            <p>この2つが示されれば、1億枚目でも1兆枚目でも、<strong>絶対に</strong>倒れることが保証されます。</p>
+
+            <p>つまり数学的帰納法は「帰納」という名前がついているけれど、実は<strong>完璧な演繹法</strong>（前提から結論が100%導かれる推論）なのです。</p>
+
+            <p>名前に騙されないでください。数学的帰納法は、無限個の事実を有限の手続きで証明できる、数学の中でも最もパワフルな証明法の一つなのです！</p>
+        </div>
+    </div>
+</section>

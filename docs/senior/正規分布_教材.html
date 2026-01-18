@@ -1,0 +1,514 @@
+---
+layout: material-raw
+title: 正規分布
+icon: "📊"
+description: 正規分布と標準正規分布の基本を理解し、標準化（z値への変換）と正規分布表の使い方をマスターする教材です。
+level: 標準
+level_num: 2
+category: data
+school_level: senior
+order: 9
+keywords:
+  - 正規分布
+  - 標準正規分布
+  - 標準化
+  - z値
+  - 正規分布表
+cover_image: /images/noimage.jpg
+cover_description: 正規分布の釣り鐘型曲線と標準化のイメージ
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: section8
+    title: "まとめ一言"
+  - id: story
+    title: "おまけ：歴史ストーリー「天文学者が見つけた誤差の法則」"
+related:
+  - url: /senior/データの分析_教材.html
+    title: データの分析
+    note: 分散・標準偏差の基礎
+    type: prerequisite
+  - url: /senior/確率の計算_教材.html
+    title: 確率の計算
+    note: 確率の基本を復習
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>テストの点数、身長、気温の変動...自然界や社会の多くのデータは、ある特徴的な「釣り鐘型」の分布に従います。この分布を理解すれば、「上位何%に入るか」「何点以上取る確率は」といった問いに答えられるようになります。</p>
+        <p>このページでは、統計学の最重要概念である<strong>正規分布</strong>を学びます：</p>
+        <ul>
+            <li><strong>正規分布とは</strong>：平均を中心に左右対称な釣り鐘型の分布</li>
+            <li><strong>標準正規分布</strong>：平均0、標準偏差1の基準となる正規分布</li>
+            <li><strong>標準化（z値）</strong>：どんな正規分布も標準正規分布に変換する方法</li>
+            <li><strong>正規分布表の使い方</strong>：確率を求めるための表の読み方</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】標準化の公式：\( Z = \dfrac{X - \mu}{\sigma} \)
+            <p style="margin-top: 10px; font-size: 0.95em;">
+            データ \(X\) を、平均 \(\mu\)（ミュー）と標準偏差 \(\sigma\)（シグマ）を使って、標準正規分布に従う値 \(Z\) に変換する
+            </p>
+        </div>
+
+        <!-- 正規分布の図解 -->
+        <div class="svg-container">
+            <svg width="700" height="280" viewBox="0 0 700 280">
+                <!-- 座標軸 -->
+                <line x1="50" y1="220" x2="650" y2="220" stroke="#333" stroke-width="2"/>
+                <line x1="350" y1="220" x2="350" y2="30" stroke="#333" stroke-width="1" stroke-dasharray="5,5"/>
+
+                <!-- 正規分布曲線 -->
+                <path d="M 50 220
+                         Q 100 218, 130 215
+                         Q 160 210, 190 200
+                         Q 220 185, 250 160
+                         Q 280 125, 310 85
+                         Q 330 55, 350 40
+                         Q 370 55, 390 85
+                         Q 420 125, 450 160
+                         Q 480 185, 510 200
+                         Q 540 210, 570 215
+                         Q 600 218, 650 220"
+                      fill="rgba(33, 150, 243, 0.3)" stroke="#2196f3" stroke-width="3"/>
+
+                <!-- 平均の線 -->
+                <text x="350" y="245" text-anchor="middle" font-size="16" fill="#333">μ (平均)</text>
+                <text x="350" y="25" text-anchor="middle" font-size="14" fill="#2196f3">最大</text>
+
+                <!-- 標準偏差の範囲 -->
+                <line x1="250" y1="220" x2="250" y2="160" stroke="#e53935" stroke-width="2" stroke-dasharray="3,3"/>
+                <line x1="450" y1="220" x2="450" y2="160" stroke="#e53935" stroke-width="2" stroke-dasharray="3,3"/>
+                <text x="250" y="245" text-anchor="middle" font-size="14" fill="#e53935">μ-σ</text>
+                <text x="450" y="245" text-anchor="middle" font-size="14" fill="#e53935">μ+σ</text>
+
+                <!-- 68%の範囲を示す -->
+                <path d="M 250 220 L 250 160 Q 280 125, 310 85 Q 330 55, 350 40 Q 370 55, 390 85 Q 420 125, 450 160 L 450 220 Z"
+                      fill="rgba(76, 175, 80, 0.3)" stroke="none"/>
+                <text x="350" y="140" text-anchor="middle" font-size="16" fill="#4caf50" font-weight="bold">約68%</text>
+
+                <!-- 2σの範囲 -->
+                <line x1="150" y1="220" x2="150" y2="200" stroke="#9c27b0" stroke-width="1" stroke-dasharray="3,3"/>
+                <line x1="550" y1="220" x2="550" y2="200" stroke="#9c27b0" stroke-width="1" stroke-dasharray="3,3"/>
+                <text x="150" y="245" text-anchor="middle" font-size="14" fill="#9c27b0">μ-2σ</text>
+                <text x="550" y="245" text-anchor="middle" font-size="14" fill="#9c27b0">μ+2σ</text>
+
+                <!-- 95%と99.7%の注釈 -->
+                <text x="350" y="195" text-anchor="middle" font-size="14" fill="#9c27b0">約95%（μ±2σ）</text>
+            </svg>
+            <div class="svg-caption">正規分布の曲線と確率の範囲（68-95-99.7ルール）</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 正規分布 \(N(\mu, \sigma^2)\)</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <p>正規分布は2つのパラメータで決まる：</p>
+            <ul>
+                <li>\(\mu\)（ミュー）：平均（分布の中心位置）</li>
+                <li>\(\sigma^2\)（シグマの2乗）：分散（\(\sigma\) は標準偏差）</li>
+            </ul>
+            <p>「確率変数 \(X\) が正規分布に従う」ことを \(X \sim N(\mu, \sigma^2)\) と書く。</p>
+            <p><strong>→ だから結果は：</strong> 平均 \(\mu\) を中心に、データの約68%が \(\mu \pm \sigma\) の範囲に、約95%が \(\mu \pm 2\sigma\) の範囲に収まる。</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 標準正規分布 \(N(0, 1)\)</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <p>平均 \(\mu = 0\)、標準偏差 \(\sigma = 1\) の正規分布を<strong>標準正規分布</strong>という。</p>
+            <div class="formula">
+                \[ Z \sim N(0, 1) \]
+            </div>
+            <p><strong>✅ メリット：</strong> 正規分布表はすべて標準正規分布用なので、どんな正規分布も標準化すれば表が使える！</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 標準化の公式</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ Z = \frac{X - \mu}{\sigma} \]
+            </div>
+            <p>\(X \sim N(\mu, \sigma^2)\) のとき、\(Z = \dfrac{X - \mu}{\sigma}\) は \(N(0, 1)\) に従う。</p>
+            <p><strong>→ だから結果は：</strong> 「\(X\) が \(a\) 以上」の確率は「\(Z\) が \(\dfrac{a - \mu}{\sigma}\) 以上」の確率と同じ。</p>
+            <details class="thinking"><summary><strong>💡 考え方を見る</strong></summary>
+            <p>標準化は「平均からどれだけ離れているかを、標準偏差何個分で表す」操作です。</p>
+            <p>たとえば、平均50点・標準偏差10点のテストで70点を取った場合：</p>
+            <p>\( Z = \dfrac{70 - 50}{10} = 2 \)</p>
+            <p>これは「平均より標準偏差2個分だけ上」という意味です。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 正規分布表の見方</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <p>正規分布表には \(P(0 \leq Z \leq z)\) の値が載っている（0からzまでの確率）。</p>
+
+            <!-- 正規分布表の図解 -->
+            <div class="svg-container">
+                <svg width="400" height="180" viewBox="0 0 400 180">
+                    <!-- 座標軸 -->
+                    <line x1="50" y1="130" x2="350" y2="130" stroke="#333" stroke-width="2"/>
+                    <line x1="200" y1="130" x2="200" y2="20" stroke="#333" stroke-width="1" stroke-dasharray="3,3"/>
+
+                    <!-- 正規分布曲線 -->
+                    <path d="M 50 130
+                             Q 80 128, 100 125
+                             Q 130 115, 160 95
+                             Q 180 65, 200 35
+                             Q 220 65, 240 95
+                             Q 270 115, 300 125
+                             Q 320 128, 350 130"
+                          fill="none" stroke="#2196f3" stroke-width="3"/>
+
+                    <!-- 塗りつぶし部分（0からz） -->
+                    <path d="M 200 130
+                             Q 220 65, 240 95
+                             Q 260 110, 280 120
+                             L 280 130 Z"
+                          fill="rgba(76, 175, 80, 0.5)" stroke="none"/>
+
+                    <!-- z の位置 -->
+                    <line x1="280" y1="130" x2="280" y2="120" stroke="#4caf50" stroke-width="2"/>
+                    <text x="200" y="150" text-anchor="middle" font-size="14" fill="#333">0</text>
+                    <text x="280" y="150" text-anchor="middle" font-size="14" fill="#4caf50">z</text>
+                    <text x="240" y="115" text-anchor="middle" font-size="14" fill="#4caf50" font-weight="bold">P(0≦Z≦z)</text>
+                </svg>
+                <div class="svg-caption">正規分布表が示す確率（緑色の部分）</div>
+            </div>
+
+            <p><strong>→ よく使う値：</strong></p>
+            <ul>
+                <li>\(P(0 \leq Z \leq 1) = 0.3413\)（約34%）</li>
+                <li>\(P(0 \leq Z \leq 1.96) = 0.4750\)（約47.5%）</li>
+                <li>\(P(0 \leq Z \leq 2) = 0.4772\)（約48%）</li>
+            </ul>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 確率の計算パターン</strong> <a href="#ex-5" class="example-link">→ 例5</a>
+            <p>正規分布は左右対称なので、以下の関係を使う：</p>
+            <table class="material-table">
+                <tr><th>求めたい確率</th><th>計算方法</th></tr>
+                <tr><td>\(P(Z \leq z)\)</td><td>\(0.5 + P(0 \leq Z \leq z)\)</td></tr>
+                <tr><td>\(P(Z \geq z)\)</td><td>\(0.5 - P(0 \leq Z \leq z)\)</td></tr>
+                <tr><td>\(P(a \leq Z \leq b)\)</td><td>\(P(0 \leq Z \leq b) - P(0 \leq Z \leq a)\)（\(0 < a < b\) のとき）</td></tr>
+                <tr><td>\(P(Z \leq -z)\)</td><td>\(P(Z \geq z) = 0.5 - P(0 \leq Z \leq z)\)</td></tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>標準化と正規分布表を使って、確率を求める手順を見ていきましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 基本：標準正規分布の確率</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>正規分布のパラメータを読み取る
+            </div>
+            <p>ある高校の数学テストの点数は、平均60点、標準偏差12点の正規分布に従う。この正規分布を記号で表せ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>平均 \(\mu = 60\) を確認する</li>
+                <li>標準偏差 \(\sigma = 12\) なので、分散 \(\sigma^2 = 144\)</li>
+                <li>正規分布の記号 \(N(\mu, \sigma^2)\) に代入する</li>
+            </ol>
+            <div class="formula">
+                \[ X \sim N(60, 12^2) = N(60, 144) \]
+            </div>
+            <p><strong>注意：</strong> \(N(\mu, \sigma^2)\) の2つ目は分散（標準偏差の2乗）です。</p>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>標準正規分布表を使う（基本）
+            </div>
+            <p>\(Z \sim N(0, 1)\) のとき、\(P(Z \leq 1.5)\) を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(P(Z \leq 1.5) = P(Z \leq 0) + P(0 \leq Z \leq 1.5)\) と分ける</li>
+                <li>\(P(Z \leq 0) = 0.5\)（左右対称なので半分）</li>
+                <li>正規分布表で \(z = 1.5\) の値を読む → \(P(0 \leq Z \leq 1.5) = 0.4332\)</li>
+                <li>足し算する</li>
+            </ol>
+            <div class="formula">
+                \[ P(Z \leq 1.5) = 0.5 + 0.4332 = 0.9332 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 標準化して確率を求める</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>標準化の計算
+            </div>
+            <p>例1のテスト（平均60点、標準偏差12点）で、84点以上取る確率を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>標準化する：\(Z = \dfrac{X - \mu}{\sigma} = \dfrac{84 - 60}{12} = \dfrac{24}{12} = 2\)</li>
+                <li>「\(X \geq 84\)」は「\(Z \geq 2\)」と同じ</li>
+                <li>\(P(Z \geq 2) = 0.5 - P(0 \leq Z \leq 2)\)</li>
+                <li>正規分布表で \(P(0 \leq Z \leq 2) = 0.4772\)</li>
+                <li>計算する</li>
+            </ol>
+            <div class="formula">
+                \[ P(X \geq 84) = P(Z \geq 2) = 0.5 - 0.4772 = 0.0228 \]
+            </div>
+            <p><strong>答え：</strong> 約2.3%（上位約2%に相当）</p>
+        </div>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>正規分布表の詳しい読み方
+            </div>
+            <p>正規分布表で \(P(0 \leq Z \leq 1.64)\) を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(z = 1.64\) を整数部分と小数部分に分ける</li>
+                <li>表の「行」で \(1.6\) を見つける</li>
+                <li>表の「列」で \(0.04\) を見つける</li>
+                <li>交点の値を読む</li>
+            </ol>
+            <table class="material-table" style="font-size: 14px;">
+                <tr><th>z</th><th>0.00</th><th>0.01</th><th>0.02</th><th>0.03</th><th style="background: #fff3e0;">0.04</th><th>0.05</th></tr>
+                <tr><td>1.5</td><td>0.4332</td><td>0.4345</td><td>0.4357</td><td>0.4370</td><td>0.4382</td><td>0.4394</td></tr>
+                <tr style="background: #e3f2fd;"><td>1.6</td><td>0.4452</td><td>0.4463</td><td>0.4474</td><td>0.4484</td><td style="background: #bbdefb;"><strong>0.4495</strong></td><td>0.4505</td></tr>
+                <tr><td>1.7</td><td>0.4554</td><td>0.4564</td><td>0.4573</td><td>0.4582</td><td>0.4591</td><td>0.4599</td></tr>
+            </table>
+            <div class="formula">
+                \[ P(0 \leq Z \leq 1.64) = 0.4495 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 応用：範囲の確率</h3>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>範囲の確率を求める
+            </div>
+            <p>身長が平均170cm、標準偏差6cmの正規分布に従うとき、身長が164cm以上182cm以下である確率を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>両端を標準化する
+                    <ul>
+                        <li>\(Z_1 = \dfrac{164 - 170}{6} = -1\)</li>
+                        <li>\(Z_2 = \dfrac{182 - 170}{6} = 2\)</li>
+                    </ul>
+                </li>
+                <li>\(P(164 \leq X \leq 182) = P(-1 \leq Z \leq 2)\)</li>
+                <li>分けて計算する：\(P(-1 \leq Z \leq 2) = P(-1 \leq Z \leq 0) + P(0 \leq Z \leq 2)\)</li>
+                <li>左右対称性より \(P(-1 \leq Z \leq 0) = P(0 \leq Z \leq 1) = 0.3413\)</li>
+                <li>表より \(P(0 \leq Z \leq 2) = 0.4772\)</li>
+            </ol>
+            <div class="formula">
+                \[ P(-1 \leq Z \leq 2) = 0.3413 + 0.4772 = 0.8185 \]
+            </div>
+            <p><strong>答え：</strong> 約81.9%</p>
+        </div>
+
+        <div class="example-box" id="ex-6">
+            <div class="example-title">
+                <span class="number-badge">例6</span>上位何%かを求める
+            </div>
+            <p>あるテストの得点が平均55点、標準偏差8点の正規分布に従う。75点は上位何%に入るか。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>標準化する：\(Z = \dfrac{75 - 55}{8} = \dfrac{20}{8} = 2.5\)</li>
+                <li>「75点以上」の確率を求める：\(P(Z \geq 2.5)\)</li>
+                <li>表より \(P(0 \leq Z \leq 2.5) = 0.4938\)</li>
+                <li>\(P(Z \geq 2.5) = 0.5 - 0.4938 = 0.0062\)</li>
+            </ol>
+            <div class="formula">
+                \[ P(X \geq 75) = P(Z \geq 2.5) = 0.0062 \approx 0.6\% \]
+            </div>
+            <p><strong>答え：</strong> 上位約0.6%</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：68-95-99.7ルールで概算する</strong><br>
+            正規分布表を見なくても、以下の値は覚えておくと便利：
+            <ul>
+                <li>\(\mu \pm \sigma\) の範囲に約68%</li>
+                <li>\(\mu \pm 2\sigma\) の範囲に約95%</li>
+                <li>\(\mu \pm 3\sigma\) の範囲に約99.7%</li>
+            </ul>
+            例：平均60、標準偏差10なら、40点〜80点の範囲に約95%が入る。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：図を描いて求める範囲を確認</strong><br>
+            正規分布曲線を描き、求めたい範囲を塗りつぶす。
+            <ul>
+                <li>0より右側だけ → 表の値をそのまま使う</li>
+                <li>0をまたぐ → 左右に分けて足す</li>
+                <li>「以上」→ 0.5から引く</li>
+            </ul>
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：標準化の計算は分数のままでOK</strong><br>
+            \(Z = \dfrac{X - \mu}{\sigma}\) の計算では、無理に小数にしなくてよい。<br>
+            例：\(Z = \dfrac{76 - 60}{8} = \dfrac{16}{8} = 2\) のように、約分して整数や小数第1位で済むことが多い。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：分散と標準偏差を混同する</div>
+            <p><strong>ダメな例：</strong> 標準偏差10のとき、\(N(\mu, 10)\) と書く</p>
+            <p><strong>対策：</strong> \(N(\mu, \sigma^2)\) の2つ目は<strong>分散</strong>！標準偏差10なら \(N(\mu, 100)\) と書く。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：正規分布表の読み方を間違える</div>
+            <p><strong>ダメな例：</strong> \(P(Z \leq 1.5)\) を求めるとき、表の値 0.4332 をそのまま答える</p>
+            <p><strong>対策：</strong> 表は \(P(0 \leq Z \leq z)\) を示す。\(P(Z \leq z) = 0.5 + P(0 \leq Z \leq z)\) に注意！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：負のz値で混乱する</div>
+            <p><strong>ダメな例：</strong> \(P(Z \leq -1)\) を求めるとき、表に \(-1\) がないので困る</p>
+            <p><strong>対策：</strong> 左右対称性を使う！\(P(Z \leq -1) = P(Z \geq 1) = 0.5 - P(0 \leq Z \leq 1)\)</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">正規分布 \(N(\mu, \sigma^2)\) の \(\mu\) は平均、\(\sigma^2\) は分散と言える</div>
+            <div class="checklist-item">標準化の公式 \(Z = \dfrac{X - \mu}{\sigma}\) を使える</div>
+            <div class="checklist-item">正規分布表が \(P(0 \leq Z \leq z)\) を示すことを理解している</div>
+            <div class="checklist-item">\(P(Z \leq z)\) と \(P(Z \geq z)\) を計算できる</div>
+            <div class="checklist-item">68-95-99.7ルールを使って概算できる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>あるメーカーのボルトの長さは、平均50mm、標準偏差2mmの正規分布に従う。長さが54mm以上のボルトは全体の何%か。正規分布表より \(P(0 \leq Z \leq 2) = 0.4772\) を使え。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>解答：</strong></p>
+                    <ol>
+                        <li>標準化：\(Z = \dfrac{54 - 50}{2} = 2\)</li>
+                        <li>\(P(X \geq 54) = P(Z \geq 2) = 0.5 - P(0 \leq Z \leq 2)\)</li>
+                        <li>\(= 0.5 - 0.4772 = 0.0228\)</li>
+                    </ol>
+                    <p><strong>答え：約2.28%</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>ある試験の得点は平均65点、標準偏差10点の正規分布に従う。得点が55点以上75点以下の受験生は全体の何%か。正規分布表より \(P(0 \leq Z \leq 1) = 0.3413\) を使え。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>解答：</strong></p>
+                    <ol>
+                        <li>両端を標準化：
+                            <ul>
+                                <li>\(Z_1 = \dfrac{55 - 65}{10} = -1\)</li>
+                                <li>\(Z_2 = \dfrac{75 - 65}{10} = 1\)</li>
+                            </ul>
+                        </li>
+                        <li>\(P(55 \leq X \leq 75) = P(-1 \leq Z \leq 1)\)</li>
+                        <li>\(= P(-1 \leq Z \leq 0) + P(0 \leq Z \leq 1)\)</li>
+                        <li>左右対称より \(P(-1 \leq Z \leq 0) = P(0 \leq Z \leq 1) = 0.3413\)</li>
+                        <li>\(= 0.3413 + 0.3413 = 0.6826\)</li>
+                    </ol>
+                    <p><strong>答え：約68.26%</strong>（これは68-95-99.7ルールの68%に相当！）</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<section id="section8">
+    <div class="summary">
+        📌 まとめ：どんな正規分布も「標準化」で基準に揃え、正規分布表で確率を読み取れる！
+    </div>
+</section>
+
+<!-- ========== 関連教材 ========== -->
+<!-- Front Matterのrelatedで指定すればレイアウトが自動生成します -->
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「天文学者が見つけた誤差の法則」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 星を観測していたら、数学の大発見</div>
+
+            <p>18世紀、天文学者たちはある問題に悩んでいました。星の位置を何度測っても、毎回少しずつ違う値が出てしまうのです。「真の位置」はどれなのか？</p>
+
+            <p>1809年、ドイツの数学者<strong>カール・フリードリヒ・ガウス</strong>（1777-1855）は、惑星ケレスの軌道を計算する中で、この「測定誤差」に法則があることを発見しました。</p>
+
+            <p>彼が見つけた法則とは：</p>
+
+            <div class="formula">
+                \[ f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x-\mu)^2}{2\sigma^2}} \]
+            </div>
+
+            <p>これが<strong>正規分布</strong>（別名：ガウス分布）の確率密度関数です。</p>
+
+            <p>ガウスは、誤差には以下の特徴があることを見抜きました：</p>
+            <ul>
+                <li>小さい誤差は大きい誤差より起こりやすい</li>
+                <li>プラスの誤差とマイナスの誤差は同じくらい起こる</li>
+                <li>複数の測定の平均をとると、真の値に近づく</li>
+            </ul>
+
+            <p>面白いことに、この分布は星の観測だけでなく、身長、テストの点数、工場の製品の寸法...あらゆる自然現象に現れることがわかりました。</p>
+
+            <p>なぜこれほど普遍的なのでしょうか？その答えは<strong>「中心極限定理」</strong>にあります。多くの小さな要因が積み重なった結果は、正規分布に近づくのです。</p>
+
+            <p>ちなみに、ガウスはあまりに多くの業績を残したため、<strong>「数学の王子」</strong>と呼ばれています。正規分布の発見は、その業績のほんの一部にすぎません。</p>
+
+            <p>次に正規分布を使うときは、200年以上前の天文学者たちが星を見上げて悩んでいた姿を思い浮かべてみてください。誤差の中に法則を見出すのは、科学の醍醐味かもしれませんね。</p>
+        </div>
+    </div>
+</section>

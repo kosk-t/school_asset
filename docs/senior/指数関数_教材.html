@@ -1,0 +1,592 @@
+---
+layout: material-raw
+title: 指数関数
+icon: "📈"
+description: 指数法則から指数関数のグラフ、方程式・不等式まで体系的にマスター。累乗の拡張で負の指数や分数指数も扱える！
+level: 標準
+level_num: 2
+category: functions
+school_level: senior
+order: 11
+keywords:
+  - 指数法則
+  - 指数関数
+  - 累乗
+  - 指数方程式
+  - 指数不等式
+cover_image: /images/noimage.jpg
+cover_description: 指数関数のグラフ（底が1より大きい場合と小さい場合）と指数法則の公式
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学雑学「細菌の爆発的増殖」"
+related:
+  - url: /junior/累乗と平方根_教材.html
+    title: 累乗と平方根
+    note: 指数法則の基礎を復習
+    type: prerequisite
+  - url: /senior/三角関数の基本_教材.html
+    title: 三角関数の基本
+    note: グラフの描き方に共通点あり
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>人口増加、細菌の増殖、複利計算、放射性物質の減衰...これらはすべて「倍々ゲーム」で増えたり減ったりします。この「倍々」の仕組みを数学的に扱うのが<strong>指数関数</strong>です。</p>
+        <p>このページでは、以下の内容を学びます：</p>
+        <ul>
+            <li><strong>指数法則の拡張</strong>：整数指数から有理数指数へ</li>
+            <li><strong>指数関数のグラフ</strong>：\(y = a^x\) の形とその特徴</li>
+            <li><strong>指数方程式</strong>：底を揃えて指数を比較する解法</li>
+            <li><strong>指数不等式</strong>：底が1より大きいか小さいかで向きが変わる</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】指数法則は「累乗のかけ算・割り算・累乗」の3パターン！
+        </div>
+
+        <!-- 指数法則のSVG図解 -->
+        <div class="svg-container">
+            <svg width="700" height="200" viewBox="0 0 700 200">
+                <!-- 背景 -->
+                <rect x="10" y="10" width="680" height="180" fill="#f8f9fa" rx="10"/>
+
+                <!-- タイトル -->
+                <text x="350" y="40" text-anchor="middle" font-size="18" font-weight="bold" fill="#1976d2">指数法則の3パターン</text>
+
+                <!-- パターン1: 積 -->
+                <rect x="30" y="60" width="200" height="120" fill="#e3f2fd" rx="8"/>
+                <text x="130" y="90" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565c0">積</text>
+                <text x="130" y="125" text-anchor="middle" font-size="20" fill="#333">a<tspan baseline-shift="super" font-size="14">m</tspan> × a<tspan baseline-shift="super" font-size="14">n</tspan> = a<tspan baseline-shift="super" font-size="14">m+n</tspan></text>
+                <text x="130" y="160" text-anchor="middle" font-size="14" fill="#666">指数を足す</text>
+
+                <!-- パターン2: 商 -->
+                <rect x="250" y="60" width="200" height="120" fill="#e8f5e9" rx="8"/>
+                <text x="350" y="90" text-anchor="middle" font-size="16" font-weight="bold" fill="#2e7d32">商</text>
+                <text x="350" y="125" text-anchor="middle" font-size="20" fill="#333">a<tspan baseline-shift="super" font-size="14">m</tspan> ÷ a<tspan baseline-shift="super" font-size="14">n</tspan> = a<tspan baseline-shift="super" font-size="14">m−n</tspan></text>
+                <text x="350" y="160" text-anchor="middle" font-size="14" fill="#666">指数を引く</text>
+
+                <!-- パターン3: 累乗の累乗 -->
+                <rect x="470" y="60" width="200" height="120" fill="#fff3e0" rx="8"/>
+                <text x="570" y="90" text-anchor="middle" font-size="16" font-weight="bold" fill="#ef6c00">累乗の累乗</text>
+                <text x="570" y="125" text-anchor="middle" font-size="20" fill="#333">(a<tspan baseline-shift="super" font-size="14">m</tspan>)<tspan baseline-shift="super" font-size="14">n</tspan> = a<tspan baseline-shift="super" font-size="14">mn</tspan></text>
+                <text x="570" y="160" text-anchor="middle" font-size="14" fill="#666">指数をかける</text>
+            </svg>
+            <div class="svg-caption">指数法則の3つの基本パターン</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 指数法則（基本）</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ a^m \times a^n = a^{m+n}, \quad \frac{a^m}{a^n} = a^{m-n}, \quad (a^m)^n = a^{mn} \]
+            </div>
+            <p>\(a > 0, a \neq 1\) で、\(m, n\) は任意の実数で成り立ちます。</p>
+            <p><strong>→ だから結果は：</strong> 指数のかけ算は指数を足す、割り算は引く、累乗の累乗はかける</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 追加公式</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ (ab)^n = a^n b^n, \quad \left(\frac{a}{b}\right)^n = \frac{a^n}{b^n} \]
+            </div>
+            <p>積や商の累乗は、それぞれに分配できます。</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 負の指数と0乗</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ a^0 = 1, \quad a^{-n} = \frac{1}{a^n} \]
+            </div>
+            <p><strong>「0乗は1」「負の指数は逆数」</strong>と覚えましょう。</p>
+            <details class="thinking"><summary><strong>💡 考え方を見る</strong></summary>
+            <p>\(a^m \div a^m = a^{m-m} = a^0\)。また \(a^m \div a^m = 1\) なので \(a^0 = 1\)。</p>
+            <p>\(a^{-n} = a^{0-n} = a^0 \div a^n = 1 \div a^n = \frac{1}{a^n}\) となります。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 分数指数（累乗根）</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <div class="formula">
+                \[ a^{\frac{1}{n}} = \sqrt[n]{a}, \quad a^{\frac{m}{n}} = \sqrt[n]{a^m} = (\sqrt[n]{a})^m \]
+            </div>
+            <p>\(\sqrt[n]{a}\)（「n乗根」と読む）は「n乗すると \(a\) になる正の数」。</p>
+            <p><strong>→ だから結果は：</strong> 分母はルートの次数、分子は累乗の指数</p>
+        </div>
+
+        <!-- 指数関数のグラフ -->
+        <div class="important-rule">
+            【最重要】指数関数 \(y = a^x\) のグラフは、\(a > 1\) なら右上がり、\(0 < a < 1\) なら右下がり！
+        </div>
+
+        <div class="svg-container">
+            <svg width="700" height="320" viewBox="0 0 700 320">
+                <!-- 背景 -->
+                <rect x="10" y="10" width="680" height="300" fill="#fff" rx="5"/>
+
+                <!-- 左側グラフ (a > 1) -->
+                <g transform="translate(40, 20)">
+                    <!-- 座標軸 -->
+                    <line x1="20" y1="240" x2="280" y2="240" stroke="#333" stroke-width="2"/>
+                    <line x1="150" y1="280" x2="150" y2="20" stroke="#333" stroke-width="2"/>
+                    <polygon points="280,240 270,235 270,245" fill="#333"/>
+                    <polygon points="150,20 145,30 155,30" fill="#333"/>
+                    <text x="290" y="245" font-size="14" fill="#333">x</text>
+                    <text x="155" y="15" font-size="14" fill="#333">y</text>
+
+                    <!-- グリッド線 -->
+                    <line x1="150" y1="140" x2="280" y2="140" stroke="#ddd" stroke-width="1" stroke-dasharray="5,5"/>
+                    <text x="285" y="145" font-size="12" fill="#666">2</text>
+
+                    <!-- y = 2^x のグラフ -->
+                    <path d="M 30 235 L 50 230 L 70 220 L 90 200 L 110 170 L 130 140 L 150 100 L 170 60 L 190 30"
+                          stroke="#e53935" stroke-width="3" fill="none"/>
+
+                    <!-- 点 (0, 1) -->
+                    <circle cx="150" cy="190" r="5" fill="#e53935"/>
+                    <text x="160" y="195" font-size="14" fill="#e53935">(0, 1)</text>
+
+                    <!-- y = 1 の線 -->
+                    <line x1="20" y1="190" x2="280" y2="190" stroke="#999" stroke-width="1" stroke-dasharray="3,3"/>
+                    <text x="22" y="185" font-size="12" fill="#666">y = 1</text>
+
+                    <!-- ラベル -->
+                    <text x="200" y="50" font-size="16" fill="#e53935" font-weight="bold">y = 2<tspan baseline-shift="super" font-size="12">x</tspan></text>
+                    <text x="150" y="275" text-anchor="middle" font-size="14" font-weight="bold" fill="#1976d2">a > 1：右上がり</text>
+                </g>
+
+                <!-- 右側グラフ (0 < a < 1) -->
+                <g transform="translate(380, 20)">
+                    <!-- 座標軸 -->
+                    <line x1="20" y1="240" x2="280" y2="240" stroke="#333" stroke-width="2"/>
+                    <line x1="150" y1="280" x2="150" y2="20" stroke="#333" stroke-width="2"/>
+                    <polygon points="280,240 270,235 270,245" fill="#333"/>
+                    <polygon points="150,20 145,30 155,30" fill="#333"/>
+                    <text x="290" y="245" font-size="14" fill="#333">x</text>
+                    <text x="155" y="15" font-size="14" fill="#333">y</text>
+
+                    <!-- グリッド線 -->
+                    <line x1="20" y1="140" x2="150" y2="140" stroke="#ddd" stroke-width="1" stroke-dasharray="5,5"/>
+                    <text x="5" y="145" font-size="12" fill="#666">2</text>
+
+                    <!-- y = (1/2)^x のグラフ -->
+                    <path d="M 110 30 L 130 60 L 150 100 L 170 140 L 190 170 L 210 200 L 230 220 L 250 230 L 270 235"
+                          stroke="#2196f3" stroke-width="3" fill="none"/>
+
+                    <!-- 点 (0, 1) -->
+                    <circle cx="150" cy="190" r="5" fill="#2196f3"/>
+                    <text x="160" y="195" font-size="14" fill="#2196f3">(0, 1)</text>
+
+                    <!-- y = 1 の線 -->
+                    <line x1="20" y1="190" x2="280" y2="190" stroke="#999" stroke-width="1" stroke-dasharray="3,3"/>
+                    <text x="22" y="185" font-size="12" fill="#666">y = 1</text>
+
+                    <!-- ラベル -->
+                    <text x="60" y="50" font-size="16" fill="#2196f3" font-weight="bold">y = (1/2)<tspan baseline-shift="super" font-size="12">x</tspan></text>
+                    <text x="150" y="275" text-anchor="middle" font-size="14" font-weight="bold" fill="#1976d2">0 < a < 1：右下がり</text>
+                </g>
+            </svg>
+            <div class="svg-caption">指数関数のグラフ：底aの大きさで増減が決まる</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 指数関数のグラフの特徴</strong> <a href="#ex-5" class="example-link">→ 例5</a>
+            <table class="material-table">
+                <tr>
+                    <th>特徴</th>
+                    <th>\(a > 1\) のとき</th>
+                    <th>\(0 < a < 1\) のとき</th>
+                </tr>
+                <tr>
+                    <td>グラフの形</td>
+                    <td>右上がり（単調増加）</td>
+                    <td>右下がり（単調減少）</td>
+                </tr>
+                <tr>
+                    <td>必ず通る点</td>
+                    <td colspan="2" style="text-align: center;">\((0, 1)\)</td>
+                </tr>
+                <tr>
+                    <td>漸近線</td>
+                    <td colspan="2" style="text-align: center;">\(x\) 軸（\(y = 0\)）</td>
+                </tr>
+                <tr>
+                    <td>\(y\) の値の範囲</td>
+                    <td colspan="2" style="text-align: center;">\(y > 0\)（常に正）</td>
+                </tr>
+            </table>
+            <p><strong>✅ メリット：</strong> グラフの増減を見れば、指数の大小関係がわかる</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 指数方程式の解法</strong> <a href="#ex-6" class="example-link">→ 例6</a>
+            <div class="formula">
+                \[ a^{f(x)} = a^{g(x)} \Rightarrow f(x) = g(x) \]
+            </div>
+            <p><strong>底を揃えて指数を比較</strong>するのが基本戦略です。</p>
+            <p><strong>→ だから結果は：</strong> \(2^x = 8\) なら \(2^x = 2^3\) なので \(x = 3\)</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 指数不等式の解法</strong> <a href="#ex-7" class="example-link">→ 例7</a>
+            <div class="formula">
+                \[ a > 1 のとき：a^{f(x)} > a^{g(x)} \Leftrightarrow f(x) > g(x) \]
+                \[ 0 < a < 1 のとき：a^{f(x)} > a^{g(x)} \Leftrightarrow f(x) < g(x) \]
+            </div>
+            <p><strong>底が1より小さいと不等号が逆転</strong>することに注意！</p>
+            <details class="thinking"><summary><strong>💡 考え方を見る</strong></summary>
+            <p>\(a > 1\) のときグラフは右上がりなので、\(x\) が大きいほど \(y\) も大きい。</p>
+            <p>\(0 < a < 1\) のときグラフは右下がりなので、\(x\) が大きいほど \(y\) は小さくなる。</p>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>指数法則から方程式・不等式まで、順番に見ていきましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 指数法則の計算</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>指数法則（基本）
+            </div>
+            <p>\(2^3 \times 2^5\) と \(\dfrac{3^7}{3^4}\) と \((5^2)^3\) を計算せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>積 → 指数を足す：\(2^3 \times 2^5 = 2^{3+5} = 2^8 = 256\)</li>
+                <li>商 → 指数を引く：\(\dfrac{3^7}{3^4} = 3^{7-4} = 3^3 = 27\)</li>
+                <li>累乗の累乗 → 指数をかける：\((5^2)^3 = 5^{2 \times 3} = 5^6 = 15625\)</li>
+            </ol>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>積・商の累乗
+            </div>
+            <p>\((2 \times 3)^4\) と \(\left(\dfrac{4}{5}\right)^3\) を計算せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>積の累乗：\((2 \times 3)^4 = 2^4 \times 3^4 = 16 \times 81 = 1296\)</li>
+                <li>商の累乗：\(\left(\dfrac{4}{5}\right)^3 = \dfrac{4^3}{5^3} = \dfrac{64}{125}\)</li>
+            </ol>
+        </div>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>0乗と負の指数
+            </div>
+            <p>\(7^0\) と \(2^{-3}\) と \(\left(\dfrac{1}{3}\right)^{-2}\) を計算せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>0乗は常に1：\(7^0 = 1\)</li>
+                <li>負の指数は逆数：\(2^{-3} = \dfrac{1}{2^3} = \dfrac{1}{8}\)</li>
+                <li>分数の負の指数：\(\left(\dfrac{1}{3}\right)^{-2} = \dfrac{1}{\left(\frac{1}{3}\right)^2} = \dfrac{1}{\frac{1}{9}} = 9\)</li>
+            </ol>
+            <p><strong>ポイント：</strong> \(\left(\dfrac{a}{b}\right)^{-n} = \left(\dfrac{b}{a}\right)^n\) で分子分母を入れ替えてもOK！</p>
+        </div>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>分数指数
+            </div>
+            <p>\(8^{\frac{1}{3}}\) と \(27^{\frac{2}{3}}\) と \(16^{-\frac{3}{4}}\) を計算せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(8^{\frac{1}{3}} = \sqrt[3]{8} = 2\)（\(2^3 = 8\) だから）</li>
+                <li>\(27^{\frac{2}{3}} = (\sqrt[3]{27})^2 = 3^2 = 9\)（\(3^3 = 27\) だから）</li>
+                <li>\(16^{-\frac{3}{4}} = \dfrac{1}{16^{\frac{3}{4}}} = \dfrac{1}{(\sqrt[4]{16})^3} = \dfrac{1}{2^3} = \dfrac{1}{8}\)</li>
+            </ol>
+            <p><strong>ポイント：</strong> 分数指数は「分母がルートの次数、分子が累乗の指数」と覚える</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 指数関数のグラフ</h3>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>グラフの特徴
+            </div>
+            <p>\(y = 3^x\) と \(y = \left(\dfrac{1}{3}\right)^x\) のグラフについて、共通点と相違点を述べよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>共通点：
+                    <ul>
+                        <li>必ず点 \((0, 1)\) を通る</li>
+                        <li>\(x\) 軸が漸近線（\(y = 0\) には達しない）</li>
+                        <li>\(y > 0\)（常に正の値をとる）</li>
+                    </ul>
+                </li>
+                <li>相違点：
+                    <ul>
+                        <li>\(y = 3^x\)：\(3 > 1\) なので右上がり（\(x\) が増えると \(y\) も増加）</li>
+                        <li>\(y = \left(\frac{1}{3}\right)^x\)：\(0 < \frac{1}{3} < 1\) なので右下がり（\(x\) が増えると \(y\) は減少）</li>
+                    </ul>
+                </li>
+            </ol>
+            <p><strong>ポイント：</strong> \(\left(\dfrac{1}{3}\right)^x = 3^{-x}\) なので、2つのグラフは \(y\) 軸に関して対称！</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 指数方程式</h3>
+
+        <div class="example-box" id="ex-6">
+            <div class="example-title">
+                <span class="number-badge">例6</span>指数方程式
+            </div>
+            <p>次の方程式を解け。</p>
+            <p>(1) \(4^x = 32\)　　(2) \(9^x = 27\)　　(3) \(2^{2x+1} = 8^{x-1}\)</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>(1) 底を2に統一：\(4^x = (2^2)^x = 2^{2x}\)、\(32 = 2^5\)
+                    <div class="formula">\[ 2^{2x} = 2^5 \Rightarrow 2x = 5 \Rightarrow x = \frac{5}{2} \]</div>
+                </li>
+                <li>(2) 底を3に統一：\(9^x = (3^2)^x = 3^{2x}\)、\(27 = 3^3\)
+                    <div class="formula">\[ 3^{2x} = 3^3 \Rightarrow 2x = 3 \Rightarrow x = \frac{3}{2} \]</div>
+                </li>
+                <li>(3) 両辺を2のべき乗に：左辺 \(2^{2x+1}\)、右辺 \(8^{x-1} = (2^3)^{x-1} = 2^{3x-3}\)
+                    <div class="formula">\[ 2^{2x+1} = 2^{3x-3} \Rightarrow 2x+1 = 3x-3 \Rightarrow x = 4 \]</div>
+                </li>
+            </ol>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 指数不等式</h3>
+
+        <div class="example-box" id="ex-7">
+            <div class="example-title">
+                <span class="number-badge">例7</span>指数不等式
+            </div>
+            <p>次の不等式を解け。</p>
+            <p>(1) \(2^{x+1} > 8\)　　(2) \(\left(\dfrac{1}{3}\right)^x \geq 9\)</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>(1) 底が2（> 1）なので、不等号の向きはそのまま：
+                    <div class="formula">\[ 2^{x+1} > 2^3 \Rightarrow x+1 > 3 \Rightarrow x > 2 \]</div>
+                </li>
+                <li>(2) 底が \(\frac{1}{3}\)（< 1）なので、不等号の向きが逆転：
+                    <br>まず \(9 = 3^2 = \left(\frac{1}{3}\right)^{-2}\) と変形
+                    <div class="formula">\[ \left(\frac{1}{3}\right)^x \geq \left(\frac{1}{3}\right)^{-2} \]</div>
+                    底が1より小さいので：
+                    <div class="formula">\[ x \leq -2 \]</div>
+                </li>
+            </ol>
+            <p><strong>ポイント：</strong> 底が1より小さいときは「不等号が逆転」を忘れずに！</p>
+        </div>
+
+        <div class="example-box" id="ex-8">
+            <div class="example-title">
+                <span class="number-badge">例8</span>置き換えによる方程式
+            </div>
+            <p>\(4^x - 3 \cdot 2^x - 4 = 0\) を解け。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(4^x = (2^2)^x = (2^x)^2\) なので、\(t = 2^x\) とおく（\(t > 0\)）</li>
+                <li>方程式は \(t^2 - 3t - 4 = 0\) になる</li>
+                <li>因数分解：\((t-4)(t+1) = 0\) より \(t = 4\) または \(t = -1\)</li>
+                <li>\(t > 0\) なので \(t = -1\) は不適。\(t = 4\) より \(2^x = 4 = 2^2\)</li>
+                <li>よって \(x = 2\)</li>
+            </ol>
+            <div class="formula">\[ 答え：x = 2 \]</div>
+            <p><strong>ポイント：</strong> \(a^{2x}\) と \(a^x\) が混在 → \(t = a^x\) とおいて二次方程式に！</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：よく使う累乗を覚えておく</strong><br>
+            <table class="material-table">
+                <tr>
+                    <th>2の累乗</th>
+                    <td>\(2^1=2\)</td><td>\(2^2=4\)</td><td>\(2^3=8\)</td><td>\(2^4=16\)</td><td>\(2^5=32\)</td><td>\(2^6=64\)</td><td>\(2^{10}=1024\)</td>
+                </tr>
+                <tr>
+                    <th>3の累乗</th>
+                    <td>\(3^1=3\)</td><td>\(3^2=9\)</td><td>\(3^3=27\)</td><td>\(3^4=81\)</td><td colspan="3"></td>
+                </tr>
+                <tr>
+                    <th>5の累乗</th>
+                    <td>\(5^1=5\)</td><td>\(5^2=25\)</td><td>\(5^3=125\)</td><td colspan="4"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：底を統一するときは素因数分解</strong><br>
+            \(4 = 2^2\)、\(8 = 2^3\)、\(16 = 2^4\)、\(32 = 2^5\) のように素因数分解すれば、底を揃えやすくなります。
+            <br>例：\(4^x = 32\) → \((2^2)^x = 2^5\) → \(2^{2x} = 2^5\)
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：負の指数は「ひっくり返す」</strong><br>
+            \(a^{-n} = \dfrac{1}{a^n}\) を使えば、負の指数を正の指数に変換できます。
+            <br>また \(\left(\dfrac{a}{b}\right)^{-n} = \left(\dfrac{b}{a}\right)^n\) で分子分母を入れ替えられます。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：グラフの増減は底で決まる</strong><br>
+            不等式を解くとき「底が1より大きい？小さい？」をまず確認。
+            <ul>
+                <li>\(a > 1\)：不等号そのまま（右上がりだから）</li>
+                <li>\(0 < a < 1\)：不等号逆転（右下がりだから）</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：指数の足し算と底の足し算を混同</div>
+            <p><strong>ダメな例：</strong> \(2^3 + 2^4 = 2^7\) としてしまう</p>
+            <p><strong>対策：</strong> 指数法則は<strong>「かけ算・割り算」のとき</strong>だけ使える！足し算のときは使えません。</p>
+            <p>正しくは：\(2^3 + 2^4 = 8 + 16 = 24\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：底が違うのに指数法則を使う</div>
+            <p><strong>ダメな例：</strong> \(2^3 \times 3^2 = 6^5\) としてしまう</p>
+            <p><strong>対策：</strong> 指数法則は<strong>「底が同じ」とき</strong>だけ使える！底が違うときはそのまま計算。</p>
+            <p>正しくは：\(2^3 \times 3^2 = 8 \times 9 = 72\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：底が1より小さいときの不等号</div>
+            <p><strong>ダメな例：</strong> \(\left(\dfrac{1}{2}\right)^x > \left(\dfrac{1}{2}\right)^3\) のとき \(x > 3\) とする</p>
+            <p><strong>対策：</strong> 底が1より小さいときは、グラフが右下がりなので不等号が逆転！</p>
+            <p>正しくは：\(x < 3\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：置き換えで範囲を忘れる</div>
+            <p><strong>ダメな例：</strong> \(t = 2^x\) とおいて \(t = -1\) も答えに含めてしまう</p>
+            <p><strong>対策：</strong> \(a^x > 0\) は常に正なので、置き換えた変数の範囲 \(t > 0\) を忘れずに！</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">指数法則の3パターン（積→足す、商→引く、累乗→かける）を使えるか？</div>
+            <div class="checklist-item">負の指数と0乗の計算ができるか？</div>
+            <div class="checklist-item">分数指数をルートに変換できるか？</div>
+            <div class="checklist-item">指数関数のグラフの増減を底の大きさから判断できるか？</div>
+            <div class="checklist-item">指数不等式で底が1より小さいとき不等号を逆転させているか？</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>次の計算をせよ。</p>
+            <p>(1) \(3^2 \times 3^{-5}\)　　(2) \(16^{\frac{3}{4}}\)　　(3) \(\left(\dfrac{2}{3}\right)^{-2}\)</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>(1) \(3^2 \times 3^{-5} = 3^{2-5} = 3^{-3} = \dfrac{1}{27}\)</p>
+                    <p>(2) \(16^{\frac{3}{4}} = (\sqrt[4]{16})^3 = 2^3 = 8\)</p>
+                    <p>(3) \(\left(\dfrac{2}{3}\right)^{-2} = \left(\dfrac{3}{2}\right)^2 = \dfrac{9}{4}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>次の方程式・不等式を解け。</p>
+            <p>(1) \(8^x = 4^{x+1}\)　　(2) \(\left(\dfrac{1}{2}\right)^{2x-1} \leq 4\)</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>(1) 底を2に統一：\(8^x = (2^3)^x = 2^{3x}\)、\(4^{x+1} = (2^2)^{x+1} = 2^{2x+2}\)</p>
+                    <p>\(2^{3x} = 2^{2x+2}\) より \(3x = 2x + 2\)、よって \(x = 2\)</p>
+                    <p>(2) \(4 = 2^2 = \left(\frac{1}{2}\right)^{-2}\) なので</p>
+                    <p>\(\left(\frac{1}{2}\right)^{2x-1} \leq \left(\frac{1}{2}\right)^{-2}\)</p>
+                    <p>底が \(\frac{1}{2} < 1\) なので不等号逆転：\(2x - 1 \geq -2\)</p>
+                    <p>よって \(x \geq -\dfrac{1}{2}\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：指数法則で「かけ算は足す、割り算は引く、累乗はかける」を使い、指数関数では「底 > 1 なら右上がり、0 < 底 < 1 なら右下がり」を覚えれば方程式・不等式も攻略できる！
+</div>
+
+<!-- ========== 関連教材 ========== -->
+<!-- Front Matterのrelatedで指定すればレイアウトが自動生成します -->
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「細菌の爆発的増殖」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 1匹の細菌が地球を覆うまで</div>
+
+            <p>ある種の細菌は、理想的な環境では<strong>20分ごとに2倍に分裂</strong>します。1匹の細菌からスタートしたら、24時間後には何匹になるでしょう？</p>
+
+            <p>20分で2倍ということは、1時間で3回分裂。24時間では...</p>
+
+            <div class="formula">
+                \[ 24 \times 3 = 72 \text{ 回の分裂} \]
+            </div>
+
+            <p>つまり細菌の数は：</p>
+
+            <div class="formula">
+                \[ 2^{72} \approx 4.7 \times 10^{21} \text{ 匹！} \]
+            </div>
+
+            <p>これは<strong>4700兆兆匹</strong>です。地球上の砂粒の数（約10^18個）よりも多い！</p>
+
+            <p>もし1匹の細菌の体積が 1 立方マイクロメートルだとすると、\(2^{72}\) 匹の総体積は...</p>
+
+            <div class="formula">
+                \[ 4.7 \times 10^{21} \times 10^{-18} \text{ m}^3 = 4700 \text{ m}^3 \]
+            </div>
+
+            <p>これはプール（25m×10m×2m = 500 m³）<strong>約10杯分</strong>。たった24時間でこの増殖量！</p>
+
+            <p>実際には栄養や空間の制約があるので無限には増えませんが、これが「指数関数的増加」の恐ろしさ（と面白さ）です。感染症が急激に広がるのも、まさにこの指数関数の性質なのです。</p>
+
+            <p style="margin-top: 15px; color: #666; font-size: 14px;">📝 ちなみに、同じ原理で複利計算も「お金が勝手に増える」仕組み。アインシュタインは複利を「人類最大の発明」と呼んだとか...真偽は定かではありませんが、指数関数のパワーを表す良いエピソードですね。</p>
+        </div>
+    </div>
+</section>

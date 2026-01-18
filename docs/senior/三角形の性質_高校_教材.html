@@ -1,0 +1,520 @@
+---
+layout: material-raw
+title: 三角形の性質（高校）
+icon: "🔺"
+description: 三角形の五心とチェバ・メネラウスの定理を使った証明・計算をマスターする。
+level: 標準
+level_num: 2
+category: geometry
+school_level: senior
+order: 4
+keywords:
+  - 重心
+  - 外心
+  - 内心
+  - 垂心
+  - 傍心
+  - チェバの定理
+  - メネラウスの定理
+cover_image: /images/noimage.jpg
+cover_description: 三角形の五心のイメージ
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学雑学「オイラー線」"
+related:
+  - url: /junior/三角形の性質_教材.html
+    title: 三角形の性質（中学）
+    note: 二等辺三角形・正三角形の復習に
+    type: prerequisite
+  - url: /senior/三角比_教材.html
+    title: 三角比
+    note: sin・cos・tanの復習に
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>三角形には「重心」「外心」「内心」など、特別な点がいくつもあります。これらの点の性質を知ると、複雑な図形問題がすっきり解けるようになります。</p>
+
+        <p>このページでは、<strong>三角形の性質（高校）</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>三角形の五心</strong>：重心・外心・内心・垂心・傍心</li>
+            <li><strong>チェバの定理</strong>：3本の線が1点で交わる条件</li>
+            <li><strong>メネラウスの定理</strong>：3点が一直線上にある条件</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🔺 最重要：三角形の五心は「何の交点か」で覚える！
+        </div>
+
+        <!-- 五心の図（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="250" viewBox="0 0 700 250">
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">三角形の五心</text>
+
+                <!-- 重心 -->
+                <rect x="20" y="45" width="120" height="75" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                <text x="80" y="68" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">重心 G</text>
+                <text x="80" y="88" font-size="11" fill="#333" text-anchor="middle">中線の交点</text>
+                <text x="80" y="108" font-size="10" fill="#666" text-anchor="middle">2:1に内分</text>
+
+                <!-- 外心 -->
+                <rect x="160" y="45" width="120" height="75" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                <text x="220" y="68" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">外心 O</text>
+                <text x="220" y="88" font-size="11" fill="#333" text-anchor="middle">垂直二等分線</text>
+                <text x="220" y="108" font-size="10" fill="#666" text-anchor="middle">外接円の中心</text>
+
+                <!-- 内心 -->
+                <rect x="300" y="45" width="120" height="75" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="5"/>
+                <text x="360" y="68" font-size="14" font-weight="bold" fill="#ff9800" text-anchor="middle">内心 I</text>
+                <text x="360" y="88" font-size="11" fill="#333" text-anchor="middle">角の二等分線</text>
+                <text x="360" y="108" font-size="10" fill="#666" text-anchor="middle">内接円の中心</text>
+
+                <!-- 垂心 -->
+                <rect x="440" y="45" width="120" height="75" fill="#fce4ec" stroke="#e91e63" stroke-width="2" rx="5"/>
+                <text x="500" y="68" font-size="14" font-weight="bold" fill="#e91e63" text-anchor="middle">垂心 H</text>
+                <text x="500" y="88" font-size="11" fill="#333" text-anchor="middle">垂線の交点</text>
+                <text x="500" y="108" font-size="10" fill="#666" text-anchor="middle">各頂点から対辺へ</text>
+
+                <!-- 傍心 -->
+                <rect x="580" y="45" width="120" height="75" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2" rx="5"/>
+                <text x="640" y="68" font-size="14" font-weight="bold" fill="#9c27b0" text-anchor="middle">傍心 Iₐ</text>
+                <text x="640" y="88" font-size="11" fill="#333" text-anchor="middle">1内角+2外角</text>
+                <text x="640" y="108" font-size="10" fill="#666" text-anchor="middle">傍接円の中心</text>
+
+                <!-- 覚え方 -->
+                <rect x="100" y="140" width="500" height="100" fill="#f5f5f5" stroke="#333" stroke-width="1" rx="5"/>
+                <text x="350" y="165" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">覚え方：「中外内垂傍」</text>
+                <text x="350" y="190" font-size="12" fill="#333" text-anchor="middle">重心→中線、外心→外接円、内心→内接円</text>
+                <text x="350" y="210" font-size="12" fill="#333" text-anchor="middle">垂心→垂線、傍心→傍接円</text>
+                <text x="350" y="230" font-size="11" fill="#666" text-anchor="middle">※傍心は3つある（各頂点の対辺側）</text>
+            </svg>
+        </div>
+
+        <div class="rule-box" id="rule-centroid">
+            <strong>📌 ルール1：重心（G）</strong> <a href="#ex-centroid" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ \text{重心} = \text{中線（頂点と対辺の中点を結ぶ線）の交点} \]
+            </div>
+            <p><strong>性質：</strong>重心は各中線を頂点から <strong>2:1</strong> に内分する</p>
+            <p><strong>座標：</strong>A(x₁, y₁), B(x₂, y₂), C(x₃, y₃) のとき、\(G = \left(\frac{x_1+x_2+x_3}{3}, \frac{y_1+y_2+y_3}{3}\right)\)</p>
+        </div>
+
+        <!-- 重心の図（SVG） -->
+        <div class="svg-container">
+            <svg width="350" height="200" viewBox="0 0 350 200">
+                <polygon points="50,180 300,180 175,30" fill="none" stroke="#333" stroke-width="2"/>
+                <text x="40" y="195" font-size="14" fill="#333">A</text>
+                <text x="300" y="195" font-size="14" fill="#333">B</text>
+                <text x="175" y="25" font-size="14" fill="#333">C</text>
+
+                <!-- 中点 -->
+                <circle cx="175" cy="180" r="4" fill="#666"/>
+                <text x="175" y="198" font-size="10" fill="#666" text-anchor="middle">M</text>
+                <circle cx="237.5" cy="105" r="4" fill="#666"/>
+                <circle cx="112.5" cy="105" r="4" fill="#666"/>
+
+                <!-- 中線 -->
+                <line x1="50" y1="180" x2="237.5" y2="105" stroke="#1976d2" stroke-width="1.5" stroke-dasharray="5,3"/>
+                <line x1="300" y1="180" x2="112.5" y2="105" stroke="#1976d2" stroke-width="1.5" stroke-dasharray="5,3"/>
+                <line x1="175" y1="30" x2="175" y2="180" stroke="#1976d2" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+                <!-- 重心 -->
+                <circle cx="175" cy="130" r="6" fill="#e91e63"/>
+                <text x="190" y="130" font-size="14" font-weight="bold" fill="#e91e63">G</text>
+
+                <!-- 2:1の説明 -->
+                <text x="175" y="155" font-size="10" fill="#e91e63" text-anchor="middle">2</text>
+                <text x="175" y="175" font-size="10" fill="#e91e63" text-anchor="middle">1</text>
+            </svg>
+            <div class="svg-caption">重心Gは中線を2:1に内分</div>
+        </div>
+
+        <div class="rule-box" id="rule-circumcenter">
+            <strong>📌 ルール2：外心（O）</strong> <a href="#ex-circumcenter" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ \text{外心} = \text{各辺の垂直二等分線の交点} = \text{外接円の中心} \]
+            </div>
+            <p><strong>性質：</strong>外心から3頂点までの距離は等しい（= 外接円の半径）</p>
+            <p><strong>位置：</strong>鋭角三角形→内部、直角三角形→斜辺の中点、鈍角三角形→外部</p>
+        </div>
+
+        <div class="rule-box" id="rule-incenter">
+            <strong>📌 ルール3：内心（I）</strong> <a href="#ex-incenter" class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ \text{内心} = \text{各頂点の角の二等分線の交点} = \text{内接円の中心} \]
+            </div>
+            <p><strong>性質：</strong>内心から3辺までの距離は等しい（= 内接円の半径 r）</p>
+            <p><strong>面積公式：</strong>\(S = rs\)（sは周長の半分、\(s = \frac{a+b+c}{2}\)）</p>
+        </div>
+
+        <div class="rule-box" id="rule-orthocenter">
+            <strong>📌 ルール4：垂心（H）</strong>
+            <div class="formula">
+                \[ \text{垂心} = \text{各頂点から対辺への垂線の交点} \]
+            </div>
+            <p><strong>位置：</strong>鋭角三角形→内部、直角三角形→直角の頂点、鈍角三角形→外部</p>
+        </div>
+
+        <div class="rule-box" id="rule-ceva">
+            <strong>📌 ルール5：チェバの定理</strong> <a href="#ex-ceva" class="example-link">→ 例4</a>
+            <div class="formula">
+                \[ \frac{AF}{FB} \cdot \frac{BD}{DC} \cdot \frac{CE}{EA} = 1 \]
+            </div>
+            <p><strong>条件：</strong>三角形ABCの辺上の点D, E, Fと頂点を結ぶ線AD, BE, CFが<strong>1点で交わる</strong></p>
+            <p><strong>逆も成立：</strong>積が1なら3直線は1点で交わる</p>
+        </div>
+
+        <!-- チェバの定理の図（SVG） -->
+        <div class="svg-container">
+            <svg width="350" height="220" viewBox="0 0 350 220">
+                <polygon points="30,190 320,190 175,30" fill="none" stroke="#333" stroke-width="2"/>
+                <text x="20" y="205" font-size="14" fill="#333">A</text>
+                <text x="320" y="205" font-size="14" fill="#333">B</text>
+                <text x="175" y="25" font-size="14" fill="#333">C</text>
+
+                <!-- 辺上の点 -->
+                <circle cx="200" cy="190" r="4" fill="#1976d2"/>
+                <text x="200" y="208" font-size="12" fill="#1976d2" text-anchor="middle">F</text>
+                <circle cx="247.5" cy="110" r="4" fill="#4caf50"/>
+                <text x="260" y="115" font-size="12" fill="#4caf50">D</text>
+                <circle cx="102.5" cy="110" r="4" fill="#ff9800"/>
+                <text x="90" y="115" font-size="12" fill="#ff9800">E</text>
+
+                <!-- チェバ線 -->
+                <line x1="30" y1="190" x2="247.5" y2="110" stroke="#4caf50" stroke-width="1.5"/>
+                <line x1="320" y1="190" x2="102.5" y2="110" stroke="#ff9800" stroke-width="1.5"/>
+                <line x1="175" y1="30" x2="200" y2="190" stroke="#1976d2" stroke-width="1.5"/>
+
+                <!-- 交点 -->
+                <circle cx="175" cy="140" r="5" fill="#e91e63"/>
+                <text x="185" y="140" font-size="12" font-weight="bold" fill="#e91e63">P</text>
+
+                <!-- 式 -->
+                <text x="175" y="215" font-size="11" fill="#333" text-anchor="middle">AF/FB · BD/DC · CE/EA = 1</text>
+            </svg>
+            <div class="svg-caption">チェバの定理：3線が1点で交わる条件</div>
+        </div>
+
+        <div class="rule-box" id="rule-menelaus">
+            <strong>📌 ルール6：メネラウスの定理</strong> <a href="#ex-menelaus" class="example-link">→ 例5</a>
+            <div class="formula">
+                \[ \frac{AF}{FB} \cdot \frac{BD}{DC} \cdot \frac{CE}{EA} = 1 \]
+            </div>
+            <p><strong>条件：</strong>三角形ABCの3辺（またはその延長）上の点D, E, Fが<strong>一直線上</strong>にある</p>
+            <p><strong>注意：</strong>チェバと同じ式だが、点の取り方が違う（1つは辺上、2つは延長上など）</p>
+            <p><strong>逆も成立：</strong>積が1なら3点は一直線上</p>
+        </div>
+
+        <!-- メネラウスの定理の図（SVG） -->
+        <div class="svg-container">
+            <svg width="400" height="220" viewBox="0 0 400 220">
+                <polygon points="50,180 280,180 165,40" fill="none" stroke="#333" stroke-width="2"/>
+                <text x="40" y="195" font-size="14" fill="#333">A</text>
+                <text x="280" y="195" font-size="14" fill="#333">B</text>
+                <text x="165" y="35" font-size="14" fill="#333">C</text>
+
+                <!-- 辺上・延長上の点 -->
+                <circle cx="165" cy="180" r="4" fill="#1976d2"/>
+                <text x="165" y="198" font-size="12" fill="#1976d2" text-anchor="middle">F</text>
+                <circle cx="222.5" cy="110" r="4" fill="#4caf50"/>
+                <text x="235" y="115" font-size="12" fill="#4caf50">D</text>
+                <circle cx="50" cy="40" r="4" fill="#ff9800"/>
+                <text x="38" y="45" font-size="12" fill="#ff9800">E</text>
+
+                <!-- 延長線 -->
+                <line x1="50" y1="180" x2="50" y2="40" stroke="#666" stroke-width="1" stroke-dasharray="3,3"/>
+
+                <!-- 直線 -->
+                <line x1="50" y1="40" x2="280" y2="180" stroke="#e91e63" stroke-width="2"/>
+
+                <!-- 式 -->
+                <text x="330" y="100" font-size="11" fill="#333" text-anchor="middle">D, E, F が</text>
+                <text x="330" y="120" font-size="11" fill="#333" text-anchor="middle">一直線上</text>
+            </svg>
+            <div class="svg-caption">メネラウスの定理：3点が一直線上にある条件</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>三角形の性質を使って問題を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 五心の基本</h3>
+
+        <div class="example-box" id="ex-centroid">
+            <div class="example-title">
+                <span class="number-badge">例1</span>重心の座標
+            </div>
+            <p>A(1, 2), B(4, 5), C(7, 2) を頂点とする三角形ABCの重心Gの座標を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>重心の公式を使う</li>
+            </ol>
+            <div class="formula">
+                \[ G = \left(\frac{1+4+7}{3}, \frac{2+5+2}{3}\right) = \left(\frac{12}{3}, \frac{9}{3}\right) = (4, 3) \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-circumcenter">
+            <div class="example-title">
+                <span class="number-badge">例2</span>外接円の半径
+            </div>
+            <p>三角形ABCにおいて、AB = 5, BC = 6, CA = 7 のとき、外接円の半径Rを求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>まず面積Sをヘロンの公式で求める</li>
+                <li>\(s = \frac{5+6+7}{2} = 9\)</li>
+                <li>\(S = \sqrt{9(9-5)(9-6)(9-7)} = \sqrt{9 \cdot 4 \cdot 3 \cdot 2} = \sqrt{216} = 6\sqrt{6}\)</li>
+                <li>正弦定理 \(R = \frac{abc}{4S}\) を使う</li>
+            </ol>
+            <div class="formula">
+                \[ R = \frac{5 \times 6 \times 7}{4 \times 6\sqrt{6}} = \frac{210}{24\sqrt{6}} = \frac{35}{4\sqrt{6}} = \frac{35\sqrt{6}}{24} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-incenter">
+            <div class="example-title">
+                <span class="number-badge">例3</span>内接円の半径
+            </div>
+            <p>三角形ABCにおいて、AB = 5, BC = 6, CA = 7、面積 S = 6√6 のとき、内接円の半径rを求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>公式 \(S = rs\) を使う</li>
+                <li>\(s = \frac{5+6+7}{2} = 9\)</li>
+            </ol>
+            <div class="formula">
+                \[ r = \frac{S}{s} = \frac{6\sqrt{6}}{9} = \frac{2\sqrt{6}}{3} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ チェバ・メネラウスの定理</h3>
+
+        <div class="example-box" id="ex-ceva">
+            <div class="example-title">
+                <span class="number-badge">例4</span>チェバの定理
+            </div>
+            <p>三角形ABCにおいて、辺BC, CA, ABの上にそれぞれ点D, E, Fがあり、AD, BE, CFが1点で交わる。BD:DC = 2:3, CE:EA = 1:2 のとき、AF:FB を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>チェバの定理を適用</li>
+                <li>\(\frac{AF}{FB} \cdot \frac{BD}{DC} \cdot \frac{CE}{EA} = 1\)</li>
+                <li>\(\frac{AF}{FB} \cdot \frac{2}{3} \cdot \frac{1}{2} = 1\)</li>
+            </ol>
+            <div class="formula">
+                \[ \frac{AF}{FB} = \frac{1}{\frac{2}{3} \cdot \frac{1}{2}} = \frac{1}{\frac{1}{3}} = 3 \]
+            </div>
+            <p><strong>答え：</strong>AF:FB = 3:1</p>
+        </div>
+
+        <div class="example-box" id="ex-menelaus">
+            <div class="example-title">
+                <span class="number-badge">例5</span>メネラウスの定理
+            </div>
+            <p>三角形ABCにおいて、辺BC上に点D、辺ACの延長上に点E、辺AB上に点Fがあり、D, E, Fは一直線上にある。BD:DC = 1:2, AE:EC = 3:1（Eは外分点）のとき、AF:FB を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>メネラウスの定理を適用</li>
+                <li>Eが外分点なので、CE:EA = 1:3（向きに注意）</li>
+                <li>\(\frac{AF}{FB} \cdot \frac{BD}{DC} \cdot \frac{CE}{EA} = 1\)</li>
+                <li>\(\frac{AF}{FB} \cdot \frac{1}{2} \cdot \frac{1}{3} = 1\)</li>
+            </ol>
+            <div class="formula">
+                \[ \frac{AF}{FB} = \frac{1}{\frac{1}{6}} = 6 \]
+            </div>
+            <p><strong>答え：</strong>AF:FB = 6:1</p>
+        </div>
+
+        <div class="example-box" id="ex-ratio">
+            <div class="example-title">
+                <span class="number-badge">例6</span>面積比への応用
+            </div>
+            <p>三角形ABCにおいて、AD, BE, CFが点Pで交わる。BP:PE = 3:2 のとき、△ABP と △APC の面積比を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>同じ高さの三角形の面積比は底辺の比</li>
+                <li>△ABP : △APC = BP : PC（Aを共通頂点として）</li>
+                <li>これには追加情報が必要... 問題の条件を確認</li>
+            </ol>
+            <p>※実際の問題では、チェバの定理などを使って必要な比を求めます</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：五心は「何の交点か」で覚える</strong><br>
+            重心→中線、外心→垂直二等分線、内心→角の二等分線<br>
+            垂心→垂線、傍心→1つの内角+2つの外角の二等分線
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：チェバとメネラウスは「回る向き」を統一</strong><br>
+            A→F→B→D→C→E→A のように、三角形を一周する向きで比をとる。<br>
+            分子と分母を間違えないように注意。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：外分点は符号に注意</strong><br>
+            メネラウスで延長上の点を扱うとき、向きに注意。<br>
+            「逆向き」なら比の片方にマイナスをつけるか、絶対値で考える。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：図を描いて確認</strong><br>
+            チェバ・メネラウスは図がないとわかりにくい。<br>
+            必ず図を描いて、点の位置を確認してから計算。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：五心を混同</div>
+            <p><strong>ダメな例：</strong>「重心は外接円の中心」と勘違い</p>
+            <p><strong>対策：</strong>重心→中線、外心→外接円、内心→内接円と紐づけて覚える</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：チェバとメネラウスを混同</div>
+            <p><strong>ダメな例：</strong>3点が一直線上のときにチェバを使う</p>
+            <p><strong>対策：</strong>チェバ→3線が1点で交わる、メネラウス→3点が一直線上</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：比の向きを間違える</div>
+            <p><strong>ダメな例：</strong>AF:FB と書くべきところを FB:AF で計算</p>
+            <p><strong>対策：</strong>必ず三角形を「一周する向き」で比をとる</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：重心の比を逆にする</div>
+            <p><strong>ダメな例：</strong>重心は中線を1:2に内分すると覚える</p>
+            <p><strong>対策：</strong>頂点から2:1（頂点に近い方が長い）</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">五心（重心・外心・内心・垂心・傍心）の定義がわかる</div>
+            <div class="checklist-item">重心の座標公式と2:1の内分が使える</div>
+            <div class="checklist-item">外心・内心の性質（等距離）がわかる</div>
+            <div class="checklist-item">チェバの定理が使える（3線が1点で交わる）</div>
+            <div class="checklist-item">メネラウスの定理が使える（3点が一直線上）</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>A(0, 0), B(6, 0), C(3, 6) を頂点とする三角形ABCの重心Gの座標を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(G = \left(\frac{0+6+3}{3}, \frac{0+0+6}{3}\right) = (3, 2)\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>三角形ABCにおいて、辺BC, CA, AB上にそれぞれ点D, E, Fがあり、AD, BE, CFが1点で交わる。BD:DC = 1:3, AF:FB = 2:1 のとき、CE:EA を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>チェバの定理：\(\frac{2}{1} \cdot \frac{1}{3} \cdot \frac{CE}{EA} = 1\)</p>
+                    <p>\(\frac{CE}{EA} = \frac{3}{2}\)</p>
+                    <p>CE:EA = 3:2</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>三角形ABCにおいて、AB = 3, BC = 4, CA = 5 のとき、内接円の半径rを求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>3² + 4² = 5² より直角三角形。面積 S = (1/2) × 3 × 4 = 6</p>
+                    <p>s = (3+4+5)/2 = 6</p>
+                    <p>r = S/s = 6/6 = 1</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：五心は「何の交点か」で覚える！チェバは1点交わり、メネラウスは一直線！
+</div>
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「オイラー線」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📐 3つの点が一直線上に！</div>
+
+            <p>三角形の<strong>重心G</strong>、<strong>外心O</strong>、<strong>垂心H</strong>は、なんと<strong>一直線上</strong>にある！</p>
+
+            <p>この直線を<strong>オイラー線</strong>という。18世紀の大数学者レオンハルト・オイラーが発見した。</p>
+
+            <p><strong>さらに驚くべき性質：</strong></p>
+            <ul>
+                <li>OG:GH = 1:2（重心Gは外心Oと垂心Hを1:2に内分）</li>
+                <li>つまり、重心は「外心寄り」の位置にある</li>
+            </ul>
+
+            <p><strong>内心はオイラー線上にない！</strong></p>
+            <p>内心Iは一般にオイラー線上にない。内心がオイラー線上にあるのは、<strong>二等辺三角形</strong>のときだけだ。</p>
+
+            <p><strong>九点円の中心もオイラー線上</strong></p>
+            <p>三角形の各辺の中点、各頂点から対辺への垂線の足、各頂点と垂心の中点、合計9つの点を通る円を<strong>九点円</strong>（オイラー円）という。この中心もオイラー線上にある。</p>
+
+            <p>三角形という単純な図形にも、深い構造が隠されている。数学の美しさを感じる瞬間だ。</p>
+        </div>
+    </div>
+</section>

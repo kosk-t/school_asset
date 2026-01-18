@@ -1,0 +1,539 @@
+---
+layout: material-raw
+title: 複素数と高次方程式
+icon: "i"
+description: 虚数単位iを導入し、複素数の計算から解と係数の関係、因数定理・剰余の定理、高次方程式の解法まで体系的にマスター。
+level: 標準
+level_num: 2
+category: equations
+school_level: senior
+order: 3
+keywords:
+  - 複素数
+  - 虚数単位
+  - 解と係数の関係
+  - 因数定理
+  - 剰余の定理
+  - 高次方程式
+cover_image: /images/noimage.jpg
+cover_description: 複素数平面と高次方程式のグラフ
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: section8
+    title: "まとめ一言"
+  - id: story
+    title: "おまけ：歴史ストーリー「虚数を発見した男たち」"
+related:
+  - url: /senior/二次方程式と二次不等式_教材.html
+    title: 二次方程式と二次不等式
+    note: 判別式・解の公式が基礎
+    type: prerequisite
+  - url: /senior/展開と因数分解_高校_教材.html
+    title: 展開と因数分解（高校）
+    note: 因数分解の発展
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「\(x^2 = -1\) を満たす数は存在しない」と中学では習いました。しかし、\(i^2 = -1\) となる「虚数単位 \(i\)」を導入すると、すべての方程式が解けるようになります。</p>
+        <p>このページでは、複素数と高次方程式について学びます：</p>
+        <ul>
+            <li><strong>複素数の計算</strong>：虚数単位 \(i\) を使った四則演算</li>
+            <li><strong>解と係数の関係</strong>：方程式の解と係数の間に成り立つ公式</li>
+            <li><strong>因数定理・剰余の定理</strong>：多項式を因数分解するための強力な定理</li>
+            <li><strong>高次方程式</strong>：3次・4次方程式を解くテクニック</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】虚数単位 \(i\) の定義：\(i^2 = -1\)（つまり \(i = \sqrt{-1}\)）
+        </div>
+
+        <!-- 複素数の図解 -->
+        <div class="svg-container">
+            <svg width="400" height="220" viewBox="0 0 400 220">
+                <!-- 背景 -->
+                <rect x="0" y="0" width="400" height="220" fill="#f8f9fa"/>
+
+                <!-- 複素数平面 -->
+                <line x1="50" y1="180" x2="350" y2="180" stroke="#333" stroke-width="2"/>
+                <line x1="200" y1="30" x2="200" y2="200" stroke="#333" stroke-width="2"/>
+
+                <!-- 軸ラベル -->
+                <text x="360" y="185" font-size="14" fill="#333">実軸</text>
+                <text x="205" y="25" font-size="14" fill="#333">虚軸</text>
+
+                <!-- 点 3+2i -->
+                <circle cx="290" cy="100" r="6" fill="#e53935"/>
+                <line x1="200" y1="180" x2="290" y2="100" stroke="#e53935" stroke-width="2" stroke-dasharray="5,3"/>
+                <text x="300" y="95" font-size="16" fill="#e53935" font-weight="bold">3+2i</text>
+
+                <!-- 補助線 -->
+                <line x1="290" y1="180" x2="290" y2="100" stroke="#888" stroke-width="1" stroke-dasharray="3,3"/>
+                <line x1="200" y1="100" x2="290" y2="100" stroke="#888" stroke-width="1" stroke-dasharray="3,3"/>
+
+                <!-- 目盛り -->
+                <text x="290" y="195" font-size="14" fill="#333">3</text>
+                <text x="175" y="105" font-size="14" fill="#333">2i</text>
+                <text x="195" y="195" font-size="14" fill="#333">O</text>
+            </svg>
+            <div class="svg-caption">複素数 3+2i を複素数平面上に表示</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 複素数の定義</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <p>\(a + bi\)（\(a, b\) は実数）の形で表される数を<strong>複素数</strong>という。</p>
+            <ul>
+                <li>\(a\)：<strong>実部</strong>（Real part）</li>
+                <li>\(b\)：<strong>虚部</strong>（Imaginary part）</li>
+                <li>\(b \neq 0\) のとき<strong>虚数</strong>、\(a = 0, b \neq 0\) のとき<strong>純虚数</strong></li>
+            </ul>
+            <p><strong>→ だから結果は：</strong> すべての実数は \(b = 0\) の複素数と見なせる</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 複素数の相等</strong>
+            <div class="formula">
+                \[ a + bi = c + di \Leftrightarrow a = c \text{ かつ } b = d \]
+            </div>
+            <p>実部どうし、虚部どうしが等しいときに限り、2つの複素数は等しい。</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 共役複素数</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ \overline{a + bi} = a - bi \]
+            </div>
+            <p>\(z = a + bi\) に対し、\(\bar{z} = a - bi\) を \(z\) の<strong>共役複素数</strong>という。</p>
+            <p><strong>重要な性質：</strong></p>
+            <ul>
+                <li>\(z \cdot \bar{z} = a^2 + b^2\)（常に実数で非負）</li>
+                <li>\(z + \bar{z} = 2a\)（実部の2倍）</li>
+                <li>\(\overline{z_1 \cdot z_2} = \bar{z_1} \cdot \bar{z_2}\)</li>
+            </ul>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 \(i\) の累乗</strong>
+            <div class="formula">
+                \[ i^1 = i, \quad i^2 = -1, \quad i^3 = -i, \quad i^4 = 1, \quad i^5 = i, \ldots \]
+            </div>
+            <p>\(i\) の累乗は<strong>4周期</strong>で繰り返す。\(i^n\) を求めるには \(n\) を4で割った余りを見る。</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 負の数の平方根</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ \sqrt{-a} = \sqrt{a} \cdot i \quad (a > 0) \]
+            </div>
+            <p><strong>⚠️ 注意：</strong> \(\sqrt{-a} \cdot \sqrt{-b} \neq \sqrt{ab}\)（負の数では成り立たない）</p>
+            <p><strong>→ 正しい計算法：</strong> 先に \(i\) を出してから計算する</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 解と係数の関係（2次方程式）</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <p>\(ax^2 + bx + c = 0\) の2つの解を \(\alpha, \beta\) とすると：</p>
+            <div class="formula">
+                \[ \alpha + \beta = -\frac{b}{a}, \quad \alpha\beta = \frac{c}{a} \]
+            </div>
+            <p><strong>✅ メリット：</strong> 解を求めなくても、解の和・積がわかる</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>\(ax^2 + bx + c = a(x - \alpha)(x - \beta)\) と因数分解できる。<br>
+            展開すると \(a(x^2 - (\alpha + \beta)x + \alpha\beta)\) となるので、係数を比較すると公式が得られる。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 解と係数の関係（3次方程式）</strong> <a href="#ex-5" class="example-link">→ 例5</a>
+            <p>\(ax^3 + bx^2 + cx + d = 0\) の3つの解を \(\alpha, \beta, \gamma\) とすると：</p>
+            <div class="formula">
+                \[ \alpha + \beta + \gamma = -\frac{b}{a}, \quad \alpha\beta + \beta\gamma + \gamma\alpha = \frac{c}{a}, \quad \alpha\beta\gamma = -\frac{d}{a} \]
+            </div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 剰余の定理</strong> <a href="#ex-6" class="example-link">→ 例6</a>
+            <p>多項式 \(P(x)\) を \((x - a)\) で割った余りは \(P(a)\) に等しい。</p>
+            <div class="formula">
+                \[ P(x) = (x - a)Q(x) + P(a) \]
+            </div>
+            <p><strong>✅ メリット：</strong> 割り算をせずに余りがわかる</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 因数定理</strong> <a href="#ex-7" class="example-link">→ 例7</a>
+            <div class="formula">
+                \[ P(a) = 0 \Leftrightarrow P(x) \text{ は } (x - a) \text{ で割り切れる} \]
+            </div>
+            <p>剰余の定理の特別な場合。余りが0なら、\((x - a)\) は \(P(x)\) の因数。</p>
+            <p><strong>→ 使い方：</strong> 高次方程式で \(P(a) = 0\) となる \(a\) を見つけ、\((x - a)\) でくくる</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 2次方程式の解と共役</strong>
+            <p>実数係数の2次方程式が虚数解 \(\alpha\) を持つとき、その共役 \(\bar{\alpha}\) も解となる。</p>
+            <p><strong>→ 理由：</strong> 解の公式で \(b^2 - 4ac < 0\) のとき、\(\pm\sqrt{b^2-4ac}\) の部分が共役の関係になる</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>ルールを使って実際に解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 複素数の計算</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>複素数の四則演算
+            </div>
+            <p>\((3 + 2i) + (1 - 4i)\)、\((3 + 2i)(1 - 4i)\)、\(\dfrac{3 + 2i}{1 - 4i}\) を計算せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>加法：</strong>実部どうし、虚部どうしを足す
+                    <div class="formula">\[ (3 + 2i) + (1 - 4i) = (3+1) + (2-4)i = \mathbf{4 - 2i} \]</div>
+                </li>
+                <li><strong>乗法：</strong>展開して \(i^2 = -1\) を使う
+                    <div class="formula">\[ (3 + 2i)(1 - 4i) = 3 - 12i + 2i - 8i^2 = 3 - 10i - 8(-1) = \mathbf{11 - 10i} \]</div>
+                </li>
+                <li><strong>除法：</strong>分母の共役を分母・分子にかけて、分母を実数化
+                    <div class="formula">\[ \frac{3 + 2i}{1 - 4i} = \frac{(3 + 2i)(1 + 4i)}{(1 - 4i)(1 + 4i)} = \frac{3 + 12i + 2i + 8i^2}{1 + 16} = \frac{-5 + 14i}{17} = \mathbf{-\frac{5}{17} + \frac{14}{17}i} \]</div>
+                </li>
+            </ol>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>共役複素数の活用
+            </div>
+            <p>\(z = 2 + 3i\) のとき、\(z\bar{z}\) と \(z + \bar{z}\) を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(\bar{z} = 2 - 3i\) を求める</li>
+                <li>\(z\bar{z} = (2 + 3i)(2 - 3i) = 4 - 9i^2 = 4 + 9 = \mathbf{13}\)</li>
+                <li>\(z + \bar{z} = (2 + 3i) + (2 - 3i) = \mathbf{4}\)</li>
+            </ol>
+            <p><strong>※</strong> \(z\bar{z} = |z|^2 = a^2 + b^2\) は複素数の絶対値の2乗になる</p>
+        </div>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>負の数の平方根の計算
+            </div>
+            <p>\(\sqrt{-3} \cdot \sqrt{-12}\) を計算せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>先に \(i\) を出す：\(\sqrt{-3} = \sqrt{3}i\)、\(\sqrt{-12} = 2\sqrt{3}i\)</li>
+                <li>計算：\(\sqrt{3}i \cdot 2\sqrt{3}i = 2 \cdot 3 \cdot i^2 = 6 \cdot (-1) = \mathbf{-6}\)</li>
+            </ol>
+            <p><strong>⚠️ 誤り：</strong> \(\sqrt{-3} \cdot \sqrt{-12} = \sqrt{36} = 6\) としてはいけない！</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 解と係数の関係</h3>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>解と係数の関係（2次）
+            </div>
+            <p>2次方程式 \(x^2 - 5x + 3 = 0\) の2つの解を \(\alpha, \beta\) とするとき、\(\alpha^2 + \beta^2\) の値を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>解と係数の関係より：\(\alpha + \beta = 5\)、\(\alpha\beta = 3\)</li>
+                <li>\(\alpha^2 + \beta^2\) を \(\alpha + \beta\) と \(\alpha\beta\) で表す：
+                    <div class="formula">\[ \alpha^2 + \beta^2 = (\alpha + \beta)^2 - 2\alpha\beta \]</div>
+                </li>
+                <li>代入：\(\alpha^2 + \beta^2 = 5^2 - 2 \cdot 3 = 25 - 6 = \mathbf{19}\)</li>
+            </ol>
+        </div>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>2数を解とする方程式
+            </div>
+            <p>2数 \(3 + 2i\)、\(3 - 2i\) を解とする \(x\) の2次方程式を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>解の和：\((3 + 2i) + (3 - 2i) = 6\)</li>
+                <li>解の積：\((3 + 2i)(3 - 2i) = 9 + 4 = 13\)</li>
+                <li>解と係数の関係より：\(\mathbf{x^2 - 6x + 13 = 0}\)</li>
+            </ol>
+            <p><strong>※</strong> 共役な複素数を解に持つ2次方程式は、係数がすべて実数になる</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 因数定理・剰余の定理</h3>
+
+        <div class="example-box" id="ex-6">
+            <div class="example-title">
+                <span class="number-badge">例6</span>剰余の定理
+            </div>
+            <p>\(P(x) = x^3 - 2x^2 + 3x - 4\) を \(x - 2\) で割った余りを求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>剰余の定理より、余り = \(P(2)\)</li>
+                <li>\(P(2) = 2^3 - 2 \cdot 2^2 + 3 \cdot 2 - 4 = 8 - 8 + 6 - 4 = \mathbf{2}\)</li>
+            </ol>
+        </div>
+
+        <div class="example-box" id="ex-7">
+            <div class="example-title">
+                <span class="number-badge">例7</span>因数定理で因数分解
+            </div>
+            <p>\(P(x) = x^3 - 6x^2 + 11x - 6\) を因数分解せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(P(a) = 0\) となる整数 \(a\) を探す（定数項 \(-6\) の約数 \(\pm 1, \pm 2, \pm 3, \pm 6\) を試す）</li>
+                <li>\(P(1) = 1 - 6 + 11 - 6 = 0\) → \((x - 1)\) は因数</li>
+                <li>組立除法（または筆算）で割る：
+                    <table class="material-table" style="margin: 10px 0;">
+                        <tr><td></td><td>1</td><td>-6</td><td>11</td><td>-6</td></tr>
+                        <tr><td>1</td><td></td><td>1</td><td>-5</td><td>6</td></tr>
+                        <tr><td></td><td>1</td><td>-5</td><td>6</td><td>0</td></tr>
+                    </table>
+                </li>
+                <li>\(P(x) = (x - 1)(x^2 - 5x + 6) = (x - 1)(x - 2)(x - 3)\)</li>
+            </ol>
+            <div class="formula">\[ \mathbf{P(x) = (x - 1)(x - 2)(x - 3)} \]</div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 高次方程式</h3>
+
+        <div class="example-box" id="ex-8">
+            <div class="example-title">
+                <span class="number-badge">例8</span>3次方程式
+            </div>
+            <p>\(x^3 + 2x^2 - 5x - 6 = 0\) を解け。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(P(x) = x^3 + 2x^2 - 5x - 6\) として、\(P(a) = 0\) となる \(a\) を探す</li>
+                <li>\(P(2) = 8 + 8 - 10 - 6 = 0\) → \((x - 2)\) は因数</li>
+                <li>組立除法：\(P(x) = (x - 2)(x^2 + 4x + 3)\)</li>
+                <li>\(x^2 + 4x + 3 = (x + 1)(x + 3)\)</li>
+                <li>\(P(x) = (x - 2)(x + 1)(x + 3) = 0\)</li>
+            </ol>
+            <div class="formula">\[ \mathbf{x = 2, -1, -3} \]</div>
+        </div>
+
+        <div class="example-box" id="ex-9">
+            <div class="example-title">
+                <span class="number-badge">例9</span>虚数解を持つ3次方程式
+            </div>
+            <p>\(x^3 - 3x^2 + 4x - 12 = 0\) を解け。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(P(3) = 27 - 27 + 12 - 12 = 0\) → \((x - 3)\) は因数</li>
+                <li>組立除法：\(P(x) = (x - 3)(x^2 + 4)\)</li>
+                <li>\(x^2 + 4 = 0\) より \(x^2 = -4\)、\(x = \pm 2i\)</li>
+            </ol>
+            <div class="formula">\[ \mathbf{x = 3, 2i, -2i} \]</div>
+        </div>
+
+        <div class="example-box" id="ex-10">
+            <div class="example-title">
+                <span class="number-badge">例10</span>4次方程式（複二次式）
+            </div>
+            <p>\(x^4 - 5x^2 + 4 = 0\) を解け。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(x^2 = t\) とおく（\(t \geq 0\) の条件に注意）</li>
+                <li>\(t^2 - 5t + 4 = 0\) を解く：\((t - 1)(t - 4) = 0\)、\(t = 1, 4\)</li>
+                <li>\(x^2 = 1\) より \(x = \pm 1\)、\(x^2 = 4\) より \(x = \pm 2\)</li>
+            </ol>
+            <div class="formula">\[ \mathbf{x = \pm 1, \pm 2} \]</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：除法は「共役を掛ける」で実数化</strong><br>
+            \(\dfrac{a + bi}{c + di}\) を計算するとき、分母分子に \(c - di\) を掛ける。分母が \(c^2 + d^2\)（実数）になる。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：因数定理では「定数項の約数」を試す</strong><br>
+            \(P(x) = x^n + \cdots + d\) の整数解は、定数項 \(d\) の約数に限られる。まず \(\pm 1, \pm 2, \ldots\) を代入して \(P(a) = 0\) となる \(a\) を探す。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：対称式は基本対称式で表す</strong><br>
+            \(\alpha^2 + \beta^2\)、\(\alpha^3 + \beta^3\) などは、\(\alpha + \beta\) と \(\alpha\beta\) だけで表せる。
+            <ul style="margin-top: 5px;">
+                <li>\(\alpha^2 + \beta^2 = (\alpha + \beta)^2 - 2\alpha\beta\)</li>
+                <li>\(\alpha^3 + \beta^3 = (\alpha + \beta)^3 - 3\alpha\beta(\alpha + \beta)\)</li>
+                <li>\(\dfrac{1}{\alpha} + \dfrac{1}{\beta} = \dfrac{\alpha + \beta}{\alpha\beta}\)</li>
+            </ul>
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：複二次式は \(t = x^2\) で置換</strong><br>
+            \(ax^4 + bx^2 + c = 0\) の形なら、\(t = x^2\) と置いて2次方程式に帰着。ただし \(t \geq 0\) の解のみ有効。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ5：\(i\) の累乗は4で割った余りで判定</strong><br>
+            \(i^{100}\) なら、\(100 \div 4 = 25\) 余り \(0\) → \(i^0 = 1\)
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：\(\sqrt{-a} \cdot \sqrt{-b} = \sqrt{ab}\) と計算</div>
+            <p><strong>ダメな例：</strong> \(\sqrt{-2} \cdot \sqrt{-8} = \sqrt{16} = 4\)</p>
+            <p><strong>対策：</strong> 先に \(i\) を出す。\(\sqrt{-2} \cdot \sqrt{-8} = \sqrt{2}i \cdot 2\sqrt{2}i = 4i^2 = -4\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：解と係数の関係の符号ミス</div>
+            <p><strong>ダメな例：</strong> \(x^2 + 5x + 6 = 0\) で \(\alpha + \beta = 5\)</p>
+            <p><strong>対策：</strong> \(\alpha + \beta = -\dfrac{b}{a}\) なので、\(\alpha + \beta = -5\)。符号を逆にするのを忘れない。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：因数定理で約数以外を試す</div>
+            <p><strong>ダメな例：</strong> \(x^3 + 2x - 3 = 0\) で \(x = 2\) を最初に試す</p>
+            <p><strong>対策：</strong> 定数項 \(-3\) の約数は \(\pm 1, \pm 3\) のみ。効率的に \(1, -1, 3, -3\) の順で試す。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：複二次式で \(t < 0\) の解を使う</div>
+            <p><strong>ダメな例：</strong> \(x^4 + 5x^2 + 4 = 0\) で \(t = -1, -4\) から \(x = \pm i, \pm 2i\)</p>
+            <p><strong>対策：</strong> 実数解を求める場合は \(t \geq 0\) の解のみ。この場合は「実数解なし」。複素数解を求める場合は \(t < 0\) も使える。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき5：3次方程式の解と係数の関係で積の符号</div>
+            <p><strong>ダメな例：</strong> \(x^3 - 2x^2 + 3x - 4 = 0\) で \(\alpha\beta\gamma = -4\)</p>
+            <p><strong>対策：</strong> \(\alpha\beta\gamma = -\dfrac{d}{a}\) なので、\(\alpha\beta\gamma = -\dfrac{-4}{1} = 4\)。符号が2回変わることに注意。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">虚数単位 \(i\) の定義（\(i^2 = -1\)）を理解している</div>
+            <div class="checklist-item">複素数の四則演算（特に除法で共役を使う）ができる</div>
+            <div class="checklist-item">解と係数の関係を2次・3次方程式で使える</div>
+            <div class="checklist-item">剰余の定理・因数定理を使って多項式を因数分解できる</div>
+            <div class="checklist-item">高次方程式を因数定理で解ける</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>\(\dfrac{1 + 2i}{3 - i}\) を \(a + bi\) の形で表せ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>分母の共役 \(3 + i\) を掛ける：</p>
+                    <p>\(\dfrac{(1 + 2i)(3 + i)}{(3 - i)(3 + i)} = \dfrac{3 + i + 6i + 2i^2}{9 + 1} = \dfrac{1 + 7i}{10} = \mathbf{\dfrac{1}{10} + \dfrac{7}{10}i}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>2次方程式 \(x^2 - 3x + 5 = 0\) の2つの解を \(\alpha, \beta\) とするとき、\(\alpha^2 + \beta^2\) と \(\dfrac{1}{\alpha} + \dfrac{1}{\beta}\) を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>解と係数の関係より：\(\alpha + \beta = 3\)、\(\alpha\beta = 5\)</p>
+                    <p>\(\alpha^2 + \beta^2 = (\alpha + \beta)^2 - 2\alpha\beta = 9 - 10 = \mathbf{-1}\)</p>
+                    <p>\(\dfrac{1}{\alpha} + \dfrac{1}{\beta} = \dfrac{\alpha + \beta}{\alpha\beta} = \mathbf{\dfrac{3}{5}}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>\(x^3 - 7x + 6 = 0\) を解け。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(P(1) = 1 - 7 + 6 = 0\) より \((x - 1)\) は因数</p>
+                    <p>組立除法で割ると：\(P(x) = (x - 1)(x^2 + x - 6) = (x - 1)(x + 3)(x - 2)\)</p>
+                    <p>よって \(\mathbf{x = 1, -3, 2}\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：\(i^2 = -1\) で負の数の平方根が扱え、因数定理で高次方程式が解ける
+</div>
+
+<!-- ========== 関連教材 ========== -->
+<!-- Front Matterのrelatedで指定すればレイアウトが自動生成します -->
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「虚数を発見した男たち」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 「ありえない数」の誕生</div>
+
+            <p>16世紀のイタリア。数学者たちは3次方程式の解法を競い合っていました。</p>
+
+            <p>カルダノ（Gerolamo Cardano, 1501-1576）は、3次方程式の一般解法を発表しましたが、ある問題に直面しました。</p>
+
+            <div class="formula">
+                \[ x^3 = 15x + 4 \]
+            </div>
+
+            <p>この方程式の解は明らかに \(x = 4\) です（代入すれば確かめられます）。しかし、カルダノの公式を使うと、計算の途中で<strong>負の数の平方根</strong>が現れてしまいます。</p>
+
+            <p>「負の数の平方根なんて存在しない！」と当時の数学者は考えました。しかし、最終的な答えは正しい実数になる...。</p>
+
+            <p>カルダノの弟子ボンベリ（Rafael Bombelli, 1526-1572）は、大胆なアイデアを思いつきました。</p>
+
+            <p>「<strong>存在しない数でも、計算を続ければいい</strong>」</p>
+
+            <p>彼は \(\sqrt{-1}\) を「あたかも存在するかのように」扱い、計算を進めました。すると、途中に現れた「ありえない数」が最後には打ち消し合い、正しい答え \(x = 4\) が得られたのです！</p>
+
+            <p>この「ありえない数」は長い間「虚数（imaginary number）」と呼ばれ、実在しない数として扱われました。しかし18世紀、オイラーが \(i = \sqrt{-1}\) という記号を導入し、ガウスが複素数を平面上の点として可視化したことで、虚数は立派な「市民権」を得ました。</p>
+
+            <p><strong>教訓：</strong> 今では、電気工学、量子力学、信号処理など、虚数なしでは成り立たない分野がたくさんあります。「ありえない」と思われた数が、現代科学を支えているのです！</p>
+        </div>
+    </div>
+</section>

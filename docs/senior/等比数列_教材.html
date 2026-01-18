@@ -1,0 +1,520 @@
+---
+layout: material-raw
+title: 等比数列
+icon: "📈"
+description: 等比数列の一般項と和の公式をマスターし、無限等比級数の収束条件まで理解する。複利計算やウイルス増殖など身近な例で指数的増加の本質を学ぶ。
+level: 標準
+level_num: 2
+category: numbers
+school_level: senior
+order: 2
+keywords:
+  - 等比数列
+  - 公比
+  - 一般項
+  - 等比数列の和
+  - 無限等比級数
+  - 収束
+cover_image: /images/noimage.jpg
+cover_description: 公比rで次々と倍になっていく数列のイメージ、無限等比級数が収束する様子を視覚化
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: section8
+    title: "まとめ一言"
+  - id: story
+    title: "おまけ：数学雑学「チェスの報酬と指数爆発」"
+related:
+  - url: /senior/指数関数_教材.html
+    title: 指数関数
+    note: 指数法則・累乗の計算が前提知識
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>銀行の複利計算、ウイルスの増殖、放射性物質の半減期。これらに共通するのは「一定の割合で増える（または減る）」という性質です。この「倍々で変化する」パターンを数式で表したのが<strong>等比数列</strong>です。</p>
+        <p>このページでは、等比数列の基本を学びます：</p>
+        <ul>
+            <li><strong>等比数列の一般項</strong>：第n項を直接求める公式</li>
+            <li><strong>等比数列の和</strong>：第1項から第n項までの合計を一発で計算</li>
+            <li><strong>無限等比級数</strong>：無限に足し続けても有限の値に収束する条件</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】等比数列の一般項：\(a_n = a_1 \cdot r^{n-1}\)
+        </div>
+
+        <!-- 等比数列の図解（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="180" viewBox="0 0 700 180">
+                <!-- 背景 -->
+                <rect x="0" y="0" width="700" height="180" fill="#fafafa"/>
+
+                <!-- 数列の項 -->
+                <circle cx="80" cy="90" r="35" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="80" y="95" text-anchor="middle" font-size="18" fill="#1976d2" font-weight="bold">a</text>
+                <text x="80" y="130" text-anchor="middle" font-size="14" fill="#666">第1項</text>
+
+                <circle cx="200" cy="90" r="35" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="200" y="95" text-anchor="middle" font-size="18" fill="#1976d2" font-weight="bold">ar</text>
+                <text x="200" y="130" text-anchor="middle" font-size="14" fill="#666">第2項</text>
+
+                <circle cx="320" cy="90" r="35" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="320" y="95" text-anchor="middle" font-size="18" fill="#1976d2" font-weight="bold">ar²</text>
+                <text x="320" y="130" text-anchor="middle" font-size="14" fill="#666">第3項</text>
+
+                <circle cx="440" cy="90" r="35" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="440" y="95" text-anchor="middle" font-size="18" fill="#1976d2" font-weight="bold">ar³</text>
+                <text x="440" y="130" text-anchor="middle" font-size="14" fill="#666">第4項</text>
+
+                <text x="520" y="95" text-anchor="middle" font-size="24" fill="#666">...</text>
+
+                <circle cx="600" cy="90" r="35" fill="#ffecb3" stroke="#ff9800" stroke-width="2"/>
+                <text x="600" y="88" text-anchor="middle" font-size="16" fill="#e65100" font-weight="bold">ar</text>
+                <text x="600" y="103" text-anchor="middle" font-size="14" fill="#e65100" font-weight="bold" baseline-shift="super">n-1</text>
+                <text x="600" y="130" text-anchor="middle" font-size="14" fill="#666">第n項</text>
+
+                <!-- 矢印（公比r） -->
+                <path d="M 115 70 Q 140 50 165 70" stroke="#4caf50" stroke-width="2" fill="none" marker-end="url(#arrow-green)"/>
+                <text x="140" y="45" text-anchor="middle" font-size="14" fill="#4caf50" font-weight="bold">×r</text>
+
+                <path d="M 235 70 Q 260 50 285 70" stroke="#4caf50" stroke-width="2" fill="none" marker-end="url(#arrow-green)"/>
+                <text x="260" y="45" text-anchor="middle" font-size="14" fill="#4caf50" font-weight="bold">×r</text>
+
+                <path d="M 355 70 Q 380 50 405 70" stroke="#4caf50" stroke-width="2" fill="none" marker-end="url(#arrow-green)"/>
+                <text x="380" y="45" text-anchor="middle" font-size="14" fill="#4caf50" font-weight="bold">×r</text>
+
+                <defs>
+                    <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#4caf50"/>
+                    </marker>
+                </defs>
+            </svg>
+            <div class="svg-caption">等比数列：隣り合う項の比が常に一定（公比r）</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 等比数列の定義</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <p>隣り合う2つの項の比が常に一定の数列を<strong>等比数列</strong>という。</p>
+            <div class="formula">
+                \[ \frac{a_{n+1}}{a_n} = r \quad \text{（一定）} \]
+            </div>
+            <p>この一定の比\(r\)を<strong>公比</strong>（こうひ）と呼ぶ。</p>
+            <p><strong>→ だから：</strong> 「次の項 = 前の項 × 公比」の関係が成り立つ</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 等比数列の一般項</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ a_n = a_1 \cdot r^{n-1} \]
+            </div>
+            <p>\(a_1\)：初項（第1項）、\(r\)：公比、\(n\)：項番号</p>
+            <p><strong>→ だから：</strong> 第n項は初項を「(n-1)回」公比で掛けた値</p>
+            <p><strong>✅ メリット：</strong> 第100項でも直接計算できる（100回掛ける必要なし！）</p>
+            <details class="thinking"><summary><strong>💡 考え方を見る</strong></summary>
+            <p>第1項 → 第2項で1回、第2項 → 第3項で1回、...と公比を掛けていく。</p>
+            <p>第1項 → 第n項では\((n-1)\)回掛けるので、\(a_n = a_1 \cdot r^{n-1}\)となる。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 等比数列の和の公式</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ S_n = \frac{a_1(1 - r^n)}{1 - r} = \frac{a_1(r^n - 1)}{r - 1} \quad (r \neq 1) \]
+            </div>
+            <p>\(r = 1\)のときは\(S_n = na_1\)（同じ数をn回足すだけ）</p>
+            <p><strong>→ だから：</strong> 初項・公比・項数がわかれば和が一発で出る</p>
+            <p><strong>✅ メリット：</strong> 100項の和でも一瞬で計算（1つずつ足す必要なし！）</p>
+            <details class="thinking"><summary><strong>💡 公式の導出を見る</strong></summary>
+            <p>等比数列の和を\(S_n = a_1 + a_1r + a_1r^2 + \cdots + a_1r^{n-1}\)とおく。</p>
+            <p>両辺に\(r\)を掛けると：\(rS_n = a_1r + a_1r^2 + a_1r^3 + \cdots + a_1r^n\)</p>
+            <p>引き算すると：\(S_n - rS_n = a_1 - a_1r^n\)</p>
+            <p>整理：\(S_n(1 - r) = a_1(1 - r^n)\)</p>
+            <p>よって：\(S_n = \dfrac{a_1(1 - r^n)}{1 - r}\)（\(r \neq 1\)のとき）</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 無限等比級数</strong> <a href="#ex-5" class="example-link">→ 例5</a>
+            <p>\(|r| < 1\)のとき、無限等比級数（無限に足し続ける）は収束する：</p>
+            <div class="formula">
+                \[ \sum_{n=1}^{\infty} a_1 r^{n-1} = \frac{a_1}{1 - r} \quad (|r| < 1) \]
+            </div>
+            <p><strong>→ だから：</strong> \(|r| < 1\)なら無限に足しても有限の値になる</p>
+            <p><strong>✅ メリット：</strong> 循環小数を分数に変換できる</p>
+            <details class="thinking"><summary><strong>💡 収束の理由を見る</strong></summary>
+            <p>\(|r| < 1\)のとき、\(r^n \to 0\)（nが大きくなると0に近づく）。</p>
+            <p>だから\(S_n = \dfrac{a_1(1 - r^n)}{1 - r} \to \dfrac{a_1(1 - 0)}{1 - r} = \dfrac{a_1}{1 - r}\)</p>
+            </details>
+        </div>
+
+        <!-- 収束・発散の図解 -->
+        <div class="svg-container">
+            <svg width="700" height="200" viewBox="0 0 700 200">
+                <!-- 背景 -->
+                <rect x="0" y="0" width="700" height="200" fill="#fafafa"/>
+
+                <!-- 収束のケース（左） -->
+                <text x="175" y="25" text-anchor="middle" font-size="16" fill="#333" font-weight="bold">|r| &lt; 1 → 収束</text>
+
+                <!-- 棒グラフ（減衰） -->
+                <rect x="50" y="50" width="30" height="100" fill="#4caf50" opacity="0.8"/>
+                <rect x="90" y="80" width="30" height="70" fill="#4caf50" opacity="0.8"/>
+                <rect x="130" y="101" width="30" height="49" fill="#4caf50" opacity="0.8"/>
+                <rect x="170" y="116" width="30" height="34" fill="#4caf50" opacity="0.8"/>
+                <rect x="210" y="126" width="30" height="24" fill="#4caf50" opacity="0.8"/>
+                <rect x="250" y="133" width="30" height="17" fill="#4caf50" opacity="0.8"/>
+                <rect x="290" y="138" width="30" height="12" fill="#4caf50" opacity="0.8"/>
+
+                <!-- 収束先の線 -->
+                <line x1="40" y1="150" x2="330" y2="150" stroke="#666" stroke-width="1" stroke-dasharray="4,4"/>
+                <text x="175" y="175" text-anchor="middle" font-size="14" fill="#4caf50">和が一定値に近づく</text>
+
+                <!-- 発散のケース（右） -->
+                <text x="525" y="25" text-anchor="middle" font-size="16" fill="#333" font-weight="bold">|r| &gt; 1 → 発散</text>
+
+                <!-- 棒グラフ（増大） -->
+                <rect x="400" y="138" width="30" height="12" fill="#e53935" opacity="0.8"/>
+                <rect x="440" y="126" width="30" height="24" fill="#e53935" opacity="0.8"/>
+                <rect x="480" y="108" width="30" height="42" fill="#e53935" opacity="0.8"/>
+                <rect x="520" y="76" width="30" height="74" fill="#e53935" opacity="0.8"/>
+                <rect x="560" y="30" width="30" height="120" fill="#e53935" opacity="0.8"/>
+                <text x="610" y="90" font-size="24" fill="#e53935">∞</text>
+
+                <text x="525" y="175" text-anchor="middle" font-size="14" fill="#e53935">和が無限大に発散</text>
+            </svg>
+            <div class="svg-caption">無限等比級数の収束・発散：公比の絶対値が1より小さいかどうかで決まる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>公式を使って等比数列の問題を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 等比数列の基本</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>等比数列の判定
+            </div>
+            <p>数列 \(3, 6, 12, 24, 48, \ldots\) が等比数列かどうか判定し、等比数列なら公比を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>隣り合う項の比を計算する</li>
+                <li>すべて同じ値なら等比数列</li>
+            </ol>
+            <div class="formula">
+                \[ \frac{6}{3} = 2, \quad \frac{12}{6} = 2, \quad \frac{24}{12} = 2, \quad \frac{48}{24} = 2 \]
+            </div>
+            <p>すべて2なので、<strong>公比 \(r = 2\) の等比数列</strong>である。</p>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>一般項を求める
+            </div>
+            <p>初項 \(a_1 = 5\)、公比 \(r = 3\) の等比数列について、第10項を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>一般項の公式 \(a_n = a_1 \cdot r^{n-1}\) を使う</li>
+                <li>\(n = 10\) を代入</li>
+            </ol>
+            <div class="formula">
+                \[ a_{10} = 5 \times 3^{10-1} = 5 \times 3^9 = 5 \times 19683 = \mathbf{98415} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 等比数列の和</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>等比数列の和を求める
+            </div>
+            <p>初項 \(a_1 = 2\)、公比 \(r = 3\) の等比数列の初項から第8項までの和を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>和の公式 \(S_n = \dfrac{a_1(r^n - 1)}{r - 1}\) を使う（\(r > 1\)のときはこの形が便利）</li>
+                <li>\(a_1 = 2, r = 3, n = 8\) を代入</li>
+            </ol>
+            <div class="formula">
+                \[ S_8 = \frac{2(3^8 - 1)}{3 - 1} = \frac{2(6561 - 1)}{2} = \frac{2 \times 6560}{2} = \mathbf{6560} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>公比が1より小さい場合
+            </div>
+            <p>初項 \(a_1 = 16\)、公比 \(r = \dfrac{1}{2}\) の等比数列の初項から第5項までの和を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>和の公式 \(S_n = \dfrac{a_1(1 - r^n)}{1 - r}\) を使う（\(r < 1\)のときはこの形が便利）</li>
+                <li>値を代入して計算</li>
+            </ol>
+            <div class="formula">
+                \[ S_5 = \frac{16\left(1 - \left(\frac{1}{2}\right)^5\right)}{1 - \frac{1}{2}} = \frac{16\left(1 - \frac{1}{32}\right)}{\frac{1}{2}} = \frac{16 \times \frac{31}{32}}{\frac{1}{2}} = \frac{16 \times 31}{32 \times \frac{1}{2}} = \mathbf{31} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 無限等比級数</h3>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>無限等比級数の和
+            </div>
+            <p>無限等比級数 \(1 + \dfrac{1}{2} + \dfrac{1}{4} + \dfrac{1}{8} + \cdots\) の和を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>初項 \(a_1 = 1\)、公比 \(r = \dfrac{1}{2}\) を確認</li>
+                <li>\(|r| = \dfrac{1}{2} < 1\) なので収束する</li>
+                <li>無限等比級数の公式 \(S = \dfrac{a_1}{1 - r}\) を使う</li>
+            </ol>
+            <div class="formula">
+                \[ S = \frac{1}{1 - \frac{1}{2}} = \frac{1}{\frac{1}{2}} = \mathbf{2} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-6">
+            <div class="example-title">
+                <span class="number-badge">例6</span>循環小数を分数に変換
+            </div>
+            <p>循環小数 \(0.333\ldots = 0.\overline{3}\) を分数で表せ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(0.\overline{3} = 0.3 + 0.03 + 0.003 + \cdots\) と表す</li>
+                <li>初項 \(a_1 = 0.3 = \dfrac{3}{10}\)、公比 \(r = \dfrac{1}{10}\) の無限等比級数</li>
+                <li>公式を適用</li>
+            </ol>
+            <div class="formula">
+                \[ 0.\overline{3} = \frac{\frac{3}{10}}{1 - \frac{1}{10}} = \frac{\frac{3}{10}}{\frac{9}{10}} = \frac{3}{10} \times \frac{10}{9} = \mathbf{\frac{1}{3}} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-7">
+            <div class="example-title">
+                <span class="number-badge">例7</span>条件から初項と公比を求める
+            </div>
+            <p>等比数列で、第3項が12、第6項が96のとき、初項と公比を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>一般項の式を使って2つの方程式を立てる</li>
+                <li>割り算で公比を求める</li>
+                <li>公比を代入して初項を求める</li>
+            </ol>
+            <div class="formula">
+                \[ a_3 = a_1 r^2 = 12, \quad a_6 = a_1 r^5 = 96 \]
+            </div>
+            <p>\(a_6 \div a_3\) を計算：</p>
+            <div class="formula">
+                \[ \frac{a_1 r^5}{a_1 r^2} = \frac{96}{12} \Rightarrow r^3 = 8 \Rightarrow r = 2 \]
+            </div>
+            <p>\(r = 2\) を \(a_3 = a_1 r^2 = 12\) に代入：</p>
+            <div class="formula">
+                \[ a_1 \times 4 = 12 \Rightarrow a_1 = 3 \]
+            </div>
+            <p>よって、<strong>初項 \(a_1 = 3\)、公比 \(r = 2\)</strong></p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：和の公式は2種類を使い分ける</strong><br>
+            <ul>
+                <li>\(r > 1\) のとき → \(S_n = \dfrac{a_1(r^n - 1)}{r - 1}\)（分子・分母とも正で計算しやすい）</li>
+                <li>\(r < 1\) のとき → \(S_n = \dfrac{a_1(1 - r^n)}{1 - r}\)（分子・分母とも正で計算しやすい）</li>
+            </ul>
+            どちらも同じ公式を変形しただけなので、結果は同じになる。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：指数の計算は「(n-1)」に注意</strong><br>
+            一般項は \(a_n = a_1 \cdot r^{n-1}\) であって、\(r^n\) ではない！<br>
+            「第n項を求めるのに、公比を(n-1)回掛ける」と覚えておこう。<br>
+            <ul>
+                <li>第1項 → 第1項：0回掛ける → \(a_1 \cdot r^0 = a_1\)</li>
+                <li>第1項 → 第2項：1回掛ける → \(a_1 \cdot r^1\)</li>
+                <li>第1項 → 第n項：(n-1)回掛ける → \(a_1 \cdot r^{n-1}\)</li>
+            </ul>
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：連続する項の比を使って公比を求める</strong><br>
+            2つの項 \(a_m\) と \(a_n\) がわかっているとき：
+            <div class="formula">
+                \[ \frac{a_n}{a_m} = r^{n-m} \]
+            </div>
+            例えば、第3項と第6項がわかっていれば、\(\dfrac{a_6}{a_3} = r^3\) となり、3乗根で公比が求まる。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：無限等比級数の収束条件を最初に確認</strong><br>
+            無限等比級数の問題を見たら、まず \(|r| < 1\) かどうかをチェック！<br>
+            <ul>
+                <li>\(|r| < 1\) → 収束する → 公式 \(\dfrac{a_1}{1-r}\) が使える</li>
+                <li>\(|r| \geq 1\) → 発散する → 和は存在しない（「発散」と答える）</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：指数を「n」にしてしまう</div>
+            <p><strong>ダメな例：</strong> 第10項を求めるのに \(a_{10} = a_1 \cdot r^{10}\) とする</p>
+            <p><strong>対策：</strong> 正しくは \(a_{10} = a_1 \cdot r^9\)。「第n項の指数は(n-1)」と覚える。第1項は \(r^0 = 1\) を掛けることで確認できる。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：公比が負のときの符号ミス</div>
+            <p><strong>ダメな例：</strong> 公比 \(r = -2\) のとき、\((-2)^3 = 8\) とする</p>
+            <p><strong>対策：</strong> 負の数の累乗は括弧をつけて計算。\((-2)^3 = -8\)、\((-2)^4 = 16\) のように、奇数乗は負、偶数乗は正になる。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：r = 1 のときに和の公式を使う</div>
+            <p><strong>ダメな例：</strong> 公比 \(r = 1\) のとき、\(S_n = \dfrac{a_1(1 - 1^n)}{1 - 1} = \dfrac{0}{0}\) と計算</p>
+            <p><strong>対策：</strong> \(r = 1\) のときは分母が0になるので公式は使えない。\(r = 1\) なら全項が同じ値 \(a_1\) なので、\(S_n = na_1\) で計算する。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：|r| >= 1 なのに無限級数の公式を使う</div>
+            <p><strong>ダメな例：</strong> \(r = 2\) のとき、\(S = \dfrac{a_1}{1 - 2} = -a_1\) と計算</p>
+            <p><strong>対策：</strong> \(|r| \geq 1\) のとき無限等比級数は発散する。公式は \(|r| < 1\) のときだけ使える。収束条件を最初に確認！</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">等比数列の定義（隣り合う項の比が一定）を説明できる</div>
+            <div class="checklist-item">一般項の公式 \(a_n = a_1 \cdot r^{n-1}\) を使って第n項を求められる</div>
+            <div class="checklist-item">等比数列の和の公式を使って初項から第n項までの和を計算できる</div>
+            <div class="checklist-item">無限等比級数の収束条件（\(|r| < 1\)）を判定できる</div>
+            <div class="checklist-item">収束する無限等比級数の和を \(\dfrac{a_1}{1-r}\) で求められる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>初項 \(a_1 = 4\)、公比 \(r = \dfrac{1}{2}\) の等比数列について、</p>
+            <p>(1) 第6項を求めよ。</p>
+            <p>(2) 初項から第6項までの和を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>(1) \(a_6 = 4 \times \left(\dfrac{1}{2}\right)^5 = 4 \times \dfrac{1}{32} = \mathbf{\dfrac{1}{8}}\)</p>
+                    <p>(2) \(S_6 = \dfrac{4\left(1 - \left(\frac{1}{2}\right)^6\right)}{1 - \frac{1}{2}} = \dfrac{4\left(1 - \frac{1}{64}\right)}{\frac{1}{2}} = \dfrac{4 \times \frac{63}{64}}{\frac{1}{2}} = \mathbf{\dfrac{63}{8}}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>無限等比級数 \(3 + 1 + \dfrac{1}{3} + \dfrac{1}{9} + \cdots\) の和を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>初項 \(a_1 = 3\)、公比 \(r = \dfrac{1}{3}\)</p>
+                    <p>\(|r| = \dfrac{1}{3} < 1\) なので収束する。</p>
+                    <p>\(S = \dfrac{3}{1 - \frac{1}{3}} = \dfrac{3}{\frac{2}{3}} = 3 \times \dfrac{3}{2} = \mathbf{\dfrac{9}{2}}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>等比数列で、第2項が6、第5項が162のとき、初項と公比を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(a_2 = a_1 r = 6\)、\(a_5 = a_1 r^4 = 162\)</p>
+                    <p>\(\dfrac{a_5}{a_2} = \dfrac{a_1 r^4}{a_1 r} = r^3 = \dfrac{162}{6} = 27\)</p>
+                    <p>\(r^3 = 27\) より \(r = 3\)</p>
+                    <p>\(a_1 \times 3 = 6\) より \(a_1 = 2\)</p>
+                    <p>よって、<strong>初項 \(a_1 = 2\)、公比 \(r = 3\)</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：等比数列は「公比で倍々」、一般項は \(a_1 \cdot r^{n-1}\)、無限級数は \(|r|<1\) で収束！
+</div>
+
+<!-- ========== 関連教材 ========== -->
+<!-- Front Matterのrelatedで指定すればレイアウトが自動生成します -->
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「チェスの報酬と指数爆発」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 チェスの報酬と指数爆発</div>
+
+            <p>昔々、インドの王様がチェスを発明した賢者に「好きな褒美を取らせよう」と言いました。</p>
+
+            <p>賢者は言いました。「それではチェス盤のマス目に小麦を置いてください。最初のマスに1粒、次のマスに2粒、その次に4粒...と、各マスごとに前のマスの2倍の小麦をください。」</p>
+
+            <p>王様は「たったそれだけでいいのか？」と笑いましたが...実際に計算してみると：</p>
+
+            <div class="formula">
+                \[ \text{合計} = 1 + 2 + 4 + 8 + \cdots + 2^{63} = 2^{64} - 1 \]
+            </div>
+
+            <p>これは等比数列の和の公式で計算できます。初項1、公比2、項数64の等比数列：</p>
+
+            <div class="formula">
+                \[ S_{64} = \frac{1 \times (2^{64} - 1)}{2 - 1} = 2^{64} - 1 \approx 1.8 \times 10^{19} \text{粒} \]
+            </div>
+
+            <p>これは約<strong>1844京粒</strong>（1844の後に16個のゼロがつく数）。現代の世界の小麦生産量の<strong>約2000年分</strong>に相当します！</p>
+
+            <p>王様は支払えるわけがなく、賢者の知恵に脱帽したとか。これが<strong>指数爆発</strong>の恐ろしさ。等比数列の公比が1より大きいと、あっという間に天文学的な数になるのです。</p>
+
+            <p>ちなみに、もし公比が \(\dfrac{1}{2}\) だったら（1粒、\(\dfrac{1}{2}\)粒、\(\dfrac{1}{4}\)粒...）、無限に足しても合計は<strong>たったの2粒</strong>。これが \(|r| < 1\) で収束する無限等比級数の不思議なところです。</p>
+        </div>
+    </div>
+</section>

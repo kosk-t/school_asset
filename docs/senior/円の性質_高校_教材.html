@@ -1,0 +1,565 @@
+---
+layout: material-raw
+title: 円の性質（高校）
+icon: "⭕"
+description: 円周角・接線・方べきの定理を使った証明と計算をマスターする。
+level: 標準
+level_num: 2
+category: geometry
+school_level: senior
+order: 5
+keywords:
+  - 円周角
+  - 接弦定理
+  - 方べきの定理
+  - 接線
+  - 円に内接する四角形
+cover_image: /images/noimage.jpg
+cover_description: 円の性質と定理のイメージ
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学雑学「円周率πの歴史」"
+related:
+  - url: /junior/円周角の定理_教材.html
+    title: 円周角の定理（中学）
+    note: 円周角の基本の復習に
+    type: prerequisite
+  - url: /senior/三角比_教材.html
+    title: 三角比
+    note: 三角比を使った計算に
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>円は古代から研究されてきた美しい図形。円周角・接線・方べきの定理を使うと、複雑な図形問題もスマートに解けます。</p>
+
+        <p>このページでは、<strong>円の性質（高校）</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>円周角の定理</strong>（復習）：同じ弧に対する円周角は等しい</li>
+            <li><strong>円に内接する四角形</strong>：対角の和が180°</li>
+            <li><strong>接弦定理</strong>：接線と弦のなす角</li>
+            <li><strong>方べきの定理</strong>：円と直線の交点に関する定理</li>
+            <li><strong>2円の位置関係</strong>：共通接線と交点</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            ⭕ 最重要：方べきの定理 PA · PB = PC · PD（点Pから円への2本の直線）
+        </div>
+
+        <div class="rule-box" id="rule-inscribed-angle">
+            <strong>📌 ルール1：円周角の定理（復習）</strong>
+            <div class="formula">
+                \[ \text{円周角} = \frac{1}{2} \times \text{中心角} \]
+            </div>
+            <p><strong>性質：</strong>同じ弧に対する円周角は等しい</p>
+            <p><strong>半円の弧に対する円周角 = 90°</strong>（直径の両端を見る角）</p>
+        </div>
+
+        <!-- 円周角の図（SVG） -->
+        <div class="svg-container">
+            <svg width="350" height="200" viewBox="0 0 350 200">
+                <circle cx="175" cy="100" r="80" fill="none" stroke="#333" stroke-width="2"/>
+                <text x="175" y="100" font-size="12" fill="#666" text-anchor="middle">O</text>
+
+                <!-- 弧ABの両端 -->
+                <circle cx="110" cy="150" r="4" fill="#333"/>
+                <text x="95" y="160" font-size="14" fill="#333">A</text>
+                <circle cx="240" cy="150" r="4" fill="#333"/>
+                <text x="250" y="160" font-size="14" fill="#333">B</text>
+
+                <!-- 円周上の点P, Q -->
+                <circle cx="175" cy="20" r="4" fill="#1976d2"/>
+                <text x="175" y="15" font-size="14" fill="#1976d2" text-anchor="middle">P</text>
+                <circle cx="120" cy="40" r="4" fill="#4caf50"/>
+                <text x="105" y="40" font-size="14" fill="#4caf50">Q</text>
+
+                <!-- 円周角 -->
+                <line x1="110" y1="150" x2="175" y2="20" stroke="#1976d2" stroke-width="1.5"/>
+                <line x1="240" y1="150" x2="175" y2="20" stroke="#1976d2" stroke-width="1.5"/>
+                <line x1="110" y1="150" x2="120" y2="40" stroke="#4caf50" stroke-width="1.5"/>
+                <line x1="240" y1="150" x2="120" y2="40" stroke="#4caf50" stroke-width="1.5"/>
+
+                <!-- 説明 -->
+                <text x="280" y="60" font-size="11" fill="#1976d2">∠APB</text>
+                <text x="280" y="80" font-size="11" fill="#333">=</text>
+                <text x="280" y="100" font-size="11" fill="#4caf50">∠AQB</text>
+            </svg>
+            <div class="svg-caption">同じ弧ABに対する円周角は等しい</div>
+        </div>
+
+        <div class="rule-box" id="rule-inscribed-quadrilateral">
+            <strong>📌 ルール2：円に内接する四角形</strong> <a href="#ex-quadrilateral" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ \text{対角の和} = 180° \quad (\angle A + \angle C = \angle B + \angle D = 180°) \]
+            </div>
+            <p><strong>逆も成立：</strong>四角形の対角の和が180°なら、円に内接する</p>
+            <p><strong>外角 = 内対角：</strong>1つの外角は、その対角に等しい</p>
+        </div>
+
+        <!-- 内接四角形の図（SVG） -->
+        <div class="svg-container">
+            <svg width="300" height="200" viewBox="0 0 300 200">
+                <circle cx="150" cy="100" r="80" fill="none" stroke="#333" stroke-width="2"/>
+
+                <!-- 四角形ABCD -->
+                <polygon points="90,45 220,55 210,165 80,145" fill="none" stroke="#1976d2" stroke-width="2"/>
+                <circle cx="90" cy="45" r="3" fill="#333"/>
+                <text x="75" y="40" font-size="14" fill="#333">A</text>
+                <circle cx="220" cy="55" r="3" fill="#333"/>
+                <text x="230" y="55" font-size="14" fill="#333">B</text>
+                <circle cx="210" cy="165" r="3" fill="#333"/>
+                <text x="220" y="175" font-size="14" fill="#333">C</text>
+                <circle cx="80" cy="145" r="3" fill="#333"/>
+                <text x="60" y="150" font-size="14" fill="#333">D</text>
+
+                <!-- 対角表示 -->
+                <text x="150" y="195" font-size="11" fill="#333" text-anchor="middle">∠A + ∠C = ∠B + ∠D = 180°</text>
+            </svg>
+            <div class="svg-caption">内接四角形の対角の和は180°</div>
+        </div>
+
+        <div class="rule-box" id="rule-tangent-chord">
+            <strong>📌 ルール3：接弦定理</strong> <a href="#ex-tangent-chord" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ \text{接線と弦のなす角} = \text{その弦に対する円周角} \]
+            </div>
+            <p><strong>接弦定理：</strong>接点を通る弦と接線がなす角は、その弦に対する円周角に等しい</p>
+        </div>
+
+        <!-- 接弦定理の図（SVG） -->
+        <div class="svg-container">
+            <svg width="350" height="220" viewBox="0 0 350 220">
+                <circle cx="175" cy="110" r="70" fill="none" stroke="#333" stroke-width="2"/>
+
+                <!-- 接点Aと弦AB -->
+                <circle cx="175" cy="180" r="4" fill="#e91e63"/>
+                <text x="175" y="200" font-size="14" fill="#e91e63" text-anchor="middle">A</text>
+                <circle cx="230" cy="60" r="4" fill="#333"/>
+                <text x="240" y="55" font-size="14" fill="#333">B</text>
+
+                <!-- 弦AB -->
+                <line x1="175" y1="180" x2="230" y2="60" stroke="#1976d2" stroke-width="2"/>
+
+                <!-- 接線 -->
+                <line x1="80" y1="180" x2="270" y2="180" stroke="#e91e63" stroke-width="2"/>
+                <text x="270" y="175" font-size="12" fill="#e91e63">接線</text>
+
+                <!-- 円周上の点C -->
+                <circle cx="110" cy="80" r="4" fill="#4caf50"/>
+                <text x="95" y="75" font-size="14" fill="#4caf50">C</text>
+
+                <!-- 弦に対する円周角 -->
+                <line x1="110" y1="80" x2="175" y2="180" stroke="#4caf50" stroke-width="1.5" stroke-dasharray="5,3"/>
+                <line x1="110" y1="80" x2="230" y2="60" stroke="#4caf50" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+                <!-- 角度表示 -->
+                <path d="M 195 180 A 20 20 0 0 0 185 165" fill="none" stroke="#1976d2" stroke-width="1.5"/>
+                <text x="210" y="170" font-size="11" fill="#1976d2">α</text>
+
+                <path d="M 125 90 A 15 15 0 0 1 120 75" fill="none" stroke="#4caf50" stroke-width="1.5"/>
+                <text x="135" y="95" font-size="11" fill="#4caf50">α</text>
+            </svg>
+            <div class="svg-caption">接弦定理：接線と弦のなす角 = 円周角</div>
+        </div>
+
+        <div class="rule-box" id="rule-power">
+            <strong>📌 ルール4：方べきの定理</strong> <a href="#ex-power" class="example-link">→ 例3</a>
+            <p><strong>パターン1：2本の割線</strong>（点Pが円の外部）</p>
+            <div class="formula">
+                \[ PA \cdot PB = PC \cdot PD \]
+            </div>
+            <p><strong>パターン2：2本の弦</strong>（点Pが円の内部）</p>
+            <div class="formula">
+                \[ PA \cdot PB = PC \cdot PD \]
+            </div>
+            <p><strong>パターン3：割線と接線</strong>（点Pが円の外部）</p>
+            <div class="formula">
+                \[ PA \cdot PB = PT^2 \quad (\text{Tは接点}) \]
+            </div>
+        </div>
+
+        <!-- 方べきの定理の図（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="180" viewBox="0 0 700 180">
+                <text x="350" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">方べきの定理の3パターン</text>
+
+                <!-- パターン1：外部 -->
+                <circle cx="120" cy="100" r="50" fill="none" stroke="#333" stroke-width="2"/>
+                <circle cx="30" cy="100" r="4" fill="#e91e63"/>
+                <text x="15" y="105" font-size="12" fill="#e91e63">P</text>
+                <line x1="30" y1="100" x2="170" y2="70" stroke="#1976d2" stroke-width="1.5"/>
+                <line x1="30" y1="100" x2="170" y2="130" stroke="#1976d2" stroke-width="1.5"/>
+                <circle cx="75" cy="90" r="3" fill="#333"/>
+                <text x="75" y="82" font-size="10" fill="#333">A</text>
+                <circle cx="160" cy="72" r="3" fill="#333"/>
+                <text x="165" y="68" font-size="10" fill="#333">B</text>
+                <circle cx="75" cy="110" r="3" fill="#333"/>
+                <text x="75" y="125" font-size="10" fill="#333">C</text>
+                <circle cx="160" cy="128" r="3" fill="#333"/>
+                <text x="165" y="140" font-size="10" fill="#333">D</text>
+                <text x="100" y="170" font-size="11" fill="#333" text-anchor="middle">PA·PB = PC·PD</text>
+
+                <!-- パターン2：内部 -->
+                <circle cx="350" cy="100" r="50" fill="none" stroke="#333" stroke-width="2"/>
+                <circle cx="350" cy="100" r="4" fill="#e91e63"/>
+                <text x="355" y="95" font-size="12" fill="#e91e63">P</text>
+                <line x1="300" y1="90" x2="400" y2="110" stroke="#1976d2" stroke-width="1.5"/>
+                <line x1="320" y1="55" x2="380" y2="145" stroke="#1976d2" stroke-width="1.5"/>
+                <circle cx="305" cy="91" r="3" fill="#333"/>
+                <text x="295" y="88" font-size="10" fill="#333">A</text>
+                <circle cx="395" cy="109" r="3" fill="#333"/>
+                <text x="400" y="120" font-size="10" fill="#333">B</text>
+                <circle cx="323" cy="60" r="3" fill="#333"/>
+                <text x="315" y="52" font-size="10" fill="#333">C</text>
+                <circle cx="377" cy="140" r="3" fill="#333"/>
+                <text x="385" y="150" font-size="10" fill="#333">D</text>
+                <text x="350" y="170" font-size="11" fill="#333" text-anchor="middle">PA·PB = PC·PD</text>
+
+                <!-- パターン3：接線 -->
+                <circle cx="580" cy="100" r="50" fill="none" stroke="#333" stroke-width="2"/>
+                <circle cx="490" cy="100" r="4" fill="#e91e63"/>
+                <text x="475" y="105" font-size="12" fill="#e91e63">P</text>
+                <line x1="490" y1="100" x2="630" y2="85" stroke="#1976d2" stroke-width="1.5"/>
+                <line x1="490" y1="100" x2="535" y2="65" stroke="#ff9800" stroke-width="1.5"/>
+                <circle cx="535" cy="90" r="3" fill="#333"/>
+                <text x="530" y="105" font-size="10" fill="#333">A</text>
+                <circle cx="620" cy="85" r="3" fill="#333"/>
+                <text x="625" y="80" font-size="10" fill="#333">B</text>
+                <circle cx="535" cy="65" r="3" fill="#ff9800"/>
+                <text x="540" y="55" font-size="10" fill="#ff9800">T</text>
+                <text x="580" y="170" font-size="11" fill="#333" text-anchor="middle">PA·PB = PT²</text>
+            </svg>
+        </div>
+
+        <div class="rule-box" id="rule-two-circles">
+            <strong>📌 ルール5：2円の位置関係</strong>
+            <p>半径 r, R（r < R）、中心間距離 d のとき：</p>
+            <table class="material-table">
+                <tr>
+                    <th>位置関係</th>
+                    <th>条件</th>
+                    <th>共通接線</th>
+                </tr>
+                <tr>
+                    <td>離れている</td>
+                    <td>d > R + r</td>
+                    <td>4本</td>
+                </tr>
+                <tr>
+                    <td>外接</td>
+                    <td>d = R + r</td>
+                    <td>3本</td>
+                </tr>
+                <tr>
+                    <td>2点で交わる</td>
+                    <td>R - r < d < R + r</td>
+                    <td>2本</td>
+                </tr>
+                <tr>
+                    <td>内接</td>
+                    <td>d = R - r</td>
+                    <td>1本</td>
+                </tr>
+                <tr>
+                    <td>一方が内部</td>
+                    <td>d < R - r</td>
+                    <td>0本</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>円の性質を使って問題を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 内接四角形</h3>
+
+        <div class="example-box" id="ex-quadrilateral">
+            <div class="example-title">
+                <span class="number-badge">例1</span>内接四角形の角度
+            </div>
+            <p>円に内接する四角形ABCDにおいて、∠A = 70°, ∠B = 110° のとき、∠C, ∠D を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>対角の和 = 180° を使う</li>
+                <li>∠A + ∠C = 180° → ∠C = 180° - 70° = 110°</li>
+                <li>∠B + ∠D = 180° → ∠D = 180° - 110° = 70°</li>
+            </ol>
+            <div class="formula">
+                \[ \angle C = 110°, \quad \angle D = 70° \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 接弦定理</h3>
+
+        <div class="example-box" id="ex-tangent-chord">
+            <div class="example-title">
+                <span class="number-badge">例2</span>接弦定理の利用
+            </div>
+            <p>円Oの接線ATと弦ABがあり、接線と弦のなす角が35°である。弦ABに対する円周角∠ACBを求めよ（CはAB上にない円周上の点）。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>接弦定理より、接線と弦のなす角 = 円周角</li>
+            </ol>
+            <div class="formula">
+                \[ \angle ACB = 35° \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 方べきの定理</h3>
+
+        <div class="example-box" id="ex-power">
+            <div class="example-title">
+                <span class="number-badge">例3</span>方べきの定理（外部の点）
+            </div>
+            <p>円の外部の点Pから2本の割線を引き、一方は円とA, Bで交わり、他方はC, Dで交わる。PA = 3, AB = 5, PC = 2 のとき、CD を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>方べきの定理：PA · PB = PC · PD</li>
+                <li>PB = PA + AB = 3 + 5 = 8</li>
+                <li>PD = PC + CD = 2 + CD</li>
+                <li>3 × 8 = 2 × (2 + CD)</li>
+            </ol>
+            <div class="formula">
+                \[ 24 = 2(2 + CD) \Rightarrow 2 + CD = 12 \Rightarrow CD = 10 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-power-tangent">
+            <div class="example-title">
+                <span class="number-badge">例4</span>方べきの定理（接線）
+            </div>
+            <p>円の外部の点Pから接線PTと割線PABを引く。PA = 4, AB = 5 のとき、接線の長さPTを求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>方べきの定理：PA · PB = PT²</li>
+                <li>PB = PA + AB = 4 + 5 = 9</li>
+            </ol>
+            <div class="formula">
+                \[ PT^2 = 4 \times 9 = 36 \Rightarrow PT = 6 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-power-inside">
+            <div class="example-title">
+                <span class="number-badge">例5</span>方べきの定理（内部の点）
+            </div>
+            <p>円の内部の点Pを通る2本の弦AB, CDがある。AP = 3, PB = 8, CP = 4 のとき、PD を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>方べきの定理：AP · PB = CP · PD</li>
+            </ol>
+            <div class="formula">
+                \[ 3 \times 8 = 4 \times PD \Rightarrow PD = 6 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 2円の位置関係</h3>
+
+        <div class="example-box" id="ex-two-circles">
+            <div class="example-title">
+                <span class="number-badge">例6</span>2円の共通接線
+            </div>
+            <p>半径3と半径5の2円があり、中心間距離が10のとき、共通接線は何本あるか。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>r = 3, R = 5, d = 10</li>
+                <li>R + r = 8, R - r = 2</li>
+                <li>d = 10 > R + r = 8 なので、2円は離れている</li>
+            </ol>
+            <div class="formula">
+                \[ \text{共通接線は } 4 \text{ 本} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：円周角は「同じ弧」を探す</strong><br>
+            等しい円周角を見つけるには、同じ弧を見ている角を探す。<br>
+            半円の弧なら90°になる。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：内接四角形は「対角」に注目</strong><br>
+            対角の和が180°、または外角 = 内対角を使う。<br>
+            四角形が内接することの証明にも使える。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：方べきは「点Pからの長さの積」</strong><br>
+            点Pから円への2本の線について、交点までの長さの積が等しい。<br>
+            接線のときは PT² になる（同じ点を2回通る）。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：接弦定理は「接点を探す」</strong><br>
+            接線があったら、接点を通る弦に注目。<br>
+            接線と弦のなす角 = その弦に対する円周角。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：方べきの「長さ」を間違える</div>
+            <p><strong>ダメな例：</strong>PA · AB = PC · CD と計算（ABはABの長さではない）</p>
+            <p><strong>対策：</strong>Pからの「距離」を使う。PA · PB = PC · PD</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：内接四角形の条件を逆にする</div>
+            <p><strong>ダメな例：</strong>隣り合う角の和が180°と勘違い</p>
+            <p><strong>対策：</strong>「対角」の和が180°。向かい合う角を選ぶ</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：円周角と中心角を混同</div>
+            <p><strong>ダメな例：</strong>円周角を2倍して別の円周角と比較</p>
+            <p><strong>対策：</strong>円周角 = 中心角の半分。同じ弧の円周角同士は等しい</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：2円の位置関係の境界を間違える</div>
+            <p><strong>ダメな例：</strong>d = R + r で「2点で交わる」と判断</p>
+            <p><strong>対策：</strong>d = R + r は外接（1点で接する）</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">円周角の定理が使える</div>
+            <div class="checklist-item">内接四角形の対角の和 = 180° が使える</div>
+            <div class="checklist-item">接弦定理が使える</div>
+            <div class="checklist-item">方べきの定理（3パターン）が使える</div>
+            <div class="checklist-item">2円の位置関係と共通接線の本数がわかる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>円に内接する四角形ABCDにおいて、∠A = 85° のとき、∠C を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>∠A + ∠C = 180°</p>
+                    <p>∠C = 180° - 85° = 95°</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>円の外部の点Pから接線PTを引く。また、Pを通る直線が円とA, Bで交わり、PA = 2, AB = 6 である。PTの長さを求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>PB = PA + AB = 2 + 6 = 8</p>
+                    <p>PT² = PA · PB = 2 × 8 = 16</p>
+                    <p>PT = 4</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>半径2と半径4の2円があり、中心間距離が6のとき、2円の位置関係と共通接線の本数を答えよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>r = 2, R = 4, d = 6</p>
+                    <p>R + r = 6 = d なので外接</p>
+                    <p>共通接線は3本</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：方べきは「Pからの長さの積」、内接四角形は「対角の和180°」！
+</div>
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「円周率πの歴史」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">🥧 πを追い求めた人類の歴史</div>
+
+            <p>円周率π ≈ 3.14159...は、円の直径と周の長さの比。古代から人類を魅了してきた数だ。</p>
+
+            <p><strong>古代の近似値：</strong></p>
+            <ul>
+                <li><strong>古代バビロニア</strong>（紀元前2000年頃）：π ≈ 3.125</li>
+                <li><strong>古代エジプト</strong>（紀元前1650年頃）：π ≈ 3.16</li>
+                <li><strong>アルキメデス</strong>（紀元前250年頃）：\(\frac{223}{71} < \pi < \frac{22}{7}\) → 約3.14</li>
+            </ul>
+
+            <p>アルキメデスは、円に内接・外接する正多角形を使って、πの範囲を絞り込んだ。正96角形まで計算したという。</p>
+
+            <p><strong>その後の発展：</strong></p>
+            <ul>
+                <li><strong>祖沖之</strong>（中国、5世紀）：π ≈ 3.1415926〜3.1415927（小数点以下7桁）</li>
+                <li><strong>ライプニッツの公式</strong>（1674年）：\(\frac{\pi}{4} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \cdots\)</li>
+                <li><strong>コンピュータ時代</strong>：2024年時点で100兆桁以上が計算されている</li>
+            </ul>
+
+            <p><strong>πの性質：</strong></p>
+            <ul>
+                <li><strong>無理数</strong>：分数では表せない（1761年にランベルトが証明）</li>
+                <li><strong>超越数</strong>：整数係数の代数方程式の解にならない（1882年にリンデマンが証明）</li>
+                <li>これにより「円の正方形化」（コンパスと定規だけで、円と同じ面積の正方形を作る）が不可能であることが証明された</li>
+            </ul>
+
+            <p>円という単純な図形から、これほど奥深い数が生まれる。数学の神秘だ。</p>
+        </div>
+    </div>
+</section>

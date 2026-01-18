@@ -1,0 +1,678 @@
+---
+layout: material-raw
+title: 微分 vs 判別式
+icon: "🔀"
+description: 「すべてのxで成り立つ」「共有点の個数」などの問題で、微分と判別式のどちらを使うべきかを瞬時に判断できるようになる。二次関数との融合問題を攻略する判断力を身につける。
+level: 発展
+level_num: 3
+category: functions
+school_level: senior
+order: 13
+keywords:
+  - 微分
+  - 判別式
+  - 二次関数
+  - 最大最小
+  - 共有点
+  - すべてのxで成り立つ
+cover_image: /images/noimage.jpg
+cover_description: 微分と判別式の使い分けフローチャート、放物線と接線のグラフ
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "判断フローと覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学雑学「同じ問題、2つの道」"
+related:
+  - url: /senior/二次方程式と二次不等式_教材.html
+    title: 二次方程式と二次不等式
+    note: 判別式の基本（前提知識）
+    type: prerequisite
+  - url: /senior/関数の増減と極値_教材.html
+    title: 関数の増減と極値
+    note: 微分による最大最小（前提知識）
+    type: prerequisite
+  - url: /senior/二次関数の最大最小_教材.html
+    title: 二次関数の最大最小
+    note: 場合分けの考え方
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「すべての実数 \(x\) で \(f(x) > 0\) が成り立つ条件は？」「曲線と直線の共有点の個数は？」——こうした問題を見たとき、<strong>微分を使うか</strong>、それとも<strong>判別式を使うか</strong>で迷ったことはありませんか？</p>
+
+        <p>実は、どちらを使うかは<strong>問題の構造で決まります</strong>。このページでは：</p>
+
+        <ul>
+            <li><strong>判断フロー</strong>：問題文のキーワードから最適な解法を選ぶ</li>
+            <li><strong>判別式が有効な場面</strong>：二次方程式の解の存在・個数を問う問題</li>
+            <li><strong>微分が有効な場面</strong>：関数の最大・最小を問う問題</li>
+            <li><strong>両方使う場面</strong>：三次関数の極値条件などの融合問題</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 判断フローと覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 判断フローと覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🔀 最重要：問題文の「問われていること」で判別式 vs 微分を決める！
+        </div>
+
+        <!-- 判断フローのSVG -->
+        <div class="svg-container">
+            <svg width="700" height="420" viewBox="0 0 700 420">
+                <!-- タイトル -->
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">微分 vs 判別式：判断フロー</text>
+
+                <!-- スタート -->
+                <rect x="250" y="45" width="200" height="40" rx="20" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="350" y="70" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">問題を読む</text>
+
+                <!-- 矢印1 -->
+                <line x1="350" y1="85" x2="350" y2="110" stroke="#333" stroke-width="2"/>
+                <polygon points="350,115 345,105 355,105" fill="#333"/>
+
+                <!-- 分岐ひし形 -->
+                <polygon points="350,120 480,175 350,230 220,175" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                <text x="350" y="168" font-size="13" fill="#e65100" text-anchor="middle">何を問われている？</text>
+                <text x="350" y="185" font-size="12" fill="#e65100" text-anchor="middle">（キーワードをチェック）</text>
+
+                <!-- 左分岐（判別式） -->
+                <line x1="220" y1="175" x2="120" y2="175" stroke="#333" stroke-width="2"/>
+                <line x1="120" y1="175" x2="120" y2="250" stroke="#333" stroke-width="2"/>
+                <polygon points="120,255 115,245 125,245" fill="#333"/>
+                <text x="170" y="165" font-size="12" fill="#333" text-anchor="middle">解の個数</text>
+                <text x="170" y="180" font-size="12" fill="#333" text-anchor="middle">共有点</text>
+
+                <!-- 右分岐（微分） -->
+                <line x1="480" y1="175" x2="580" y2="175" stroke="#333" stroke-width="2"/>
+                <line x1="580" y1="175" x2="580" y2="250" stroke="#333" stroke-width="2"/>
+                <polygon points="580,255 575,245 585,245" fill="#333"/>
+                <text x="530" y="165" font-size="12" fill="#333" text-anchor="middle">最大・最小</text>
+                <text x="530" y="180" font-size="12" fill="#333" text-anchor="middle">範囲</text>
+
+                <!-- 中央分岐（両方） -->
+                <line x1="350" y1="230" x2="350" y2="250" stroke="#333" stroke-width="2"/>
+                <polygon points="350,255 345,245 355,245" fill="#333"/>
+                <text x="350" y="248" font-size="12" fill="#333" text-anchor="middle">極値条件</text>
+
+                <!-- 判別式ボックス -->
+                <rect x="40" y="260" width="160" height="90" rx="5" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+                <text x="120" y="285" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">判別式 D</text>
+                <text x="120" y="305" font-size="12" fill="#333" text-anchor="middle">・解の存在条件</text>
+                <text x="120" y="323" font-size="12" fill="#333" text-anchor="middle">・共有点の個数</text>
+                <text x="120" y="341" font-size="12" fill="#333" text-anchor="middle">・すべてのxで成立</text>
+
+                <!-- 微分ボックス -->
+                <rect x="500" y="260" width="160" height="90" rx="5" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
+                <text x="580" y="285" font-size="14" font-weight="bold" fill="#c2185b" text-anchor="middle">微分 f'(x)</text>
+                <text x="580" y="305" font-size="12" fill="#333" text-anchor="middle">・最大値・最小値</text>
+                <text x="580" y="323" font-size="12" fill="#333" text-anchor="middle">・増減と極値</text>
+                <text x="580" y="341" font-size="12" fill="#333" text-anchor="middle">・範囲の端点比較</text>
+
+                <!-- 両方ボックス -->
+                <rect x="270" y="260" width="160" height="90" rx="5" fill="#fff8e1" stroke="#ffc107" stroke-width="2"/>
+                <text x="350" y="285" font-size="14" font-weight="bold" fill="#f57f17" text-anchor="middle">両方使う</text>
+                <text x="350" y="305" font-size="12" fill="#333" text-anchor="middle">・三次関数の極値条件</text>
+                <text x="350" y="323" font-size="12" fill="#333" text-anchor="middle">・f'(x)=0の解の個数</text>
+                <text x="350" y="341" font-size="12" fill="#333" text-anchor="middle">・極値存在の判定</text>
+
+                <!-- 下部の補足 -->
+                <rect x="50" y="370" width="600" height="40" rx="5" fill="#f5f5f5" stroke="#999" stroke-width="1"/>
+                <text x="350" y="395" font-size="13" fill="#333" text-anchor="middle">ポイント：「二次式=0」の解の問題 → 判別式、「関数の値の範囲」の問題 → 微分</text>
+            </svg>
+            <div class="svg-caption">問題の種類に応じた解法選択のフロー</div>
+        </div>
+
+        <div class="rule-box" id="rule-discriminant">
+            <strong>📌 ルール1：判別式を使う場面</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <p>以下のキーワードが出たら<strong>判別式</strong>を考える：</p>
+            <ul>
+                <li>「<strong>実数解を持つ</strong>」「<strong>解が存在する</strong>」条件</li>
+                <li>「<strong>共有点の個数</strong>」「<strong>接する</strong>」条件</li>
+                <li>「<strong>すべての実数 \(x\) で \(f(x) > 0\)</strong>」（常に正）</li>
+                <li>「<strong>解なし</strong>」「<strong>重解</strong>」</li>
+            </ul>
+            <p><strong>→ 判別式の基本：</strong></p>
+            <div class="formula">
+                \[ D = b^2 - 4ac \]
+            </div>
+            <ul>
+                <li>\(D > 0\)：異なる2つの実数解</li>
+                <li>\(D = 0\)：重解（接する）</li>
+                <li>\(D < 0\)：実数解なし</li>
+            </ul>
+        </div>
+
+        <div class="rule-box" id="rule-derivative">
+            <strong>📌 ルール2：微分を使う場面</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <p>以下のキーワードが出たら<strong>微分</strong>を考える：</p>
+            <ul>
+                <li>「<strong>最大値</strong>」「<strong>最小値</strong>」を求める</li>
+                <li>「<strong>範囲</strong>」「<strong>変域</strong>」での最大・最小</li>
+                <li>「<strong>\(f(x)\) の値域</strong>」を求める</li>
+                <li>「<strong>\(f(x) \geq k\) が成り立つ</strong>」（最小値との比較）</li>
+            </ul>
+            <p><strong>→ 微分の基本：</strong></p>
+            <div class="formula">
+                \[ f'(x) = 0 \text{ の解で増減を調べ、極値を求める} \]
+            </div>
+        </div>
+
+        <div class="rule-box" id="rule-both">
+            <strong>📌 ルール3：両方使う場面</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <p>以下の場合は<strong>微分して得られる式に判別式を使う</strong>：</p>
+            <ul>
+                <li>「<strong>三次関数が極値を持つ</strong>」条件
+                    → \(f'(x) = 0\) が異なる2実数解を持つ → 判別式 \(D > 0\)</li>
+                <li>「<strong>三次関数が極値を持たない</strong>」条件
+                    → \(f'(x) = 0\) が実数解を持たない、または重解 → 判別式 \(D \leq 0\)</li>
+            </ul>
+            <p><strong>→ 三次関数 \(f(x) = ax^3 + bx^2 + cx + d\) の極値条件：</strong></p>
+            <div class="formula">
+                \[ f'(x) = 3ax^2 + 2bx + c \text{ の判別式 } D' = 4b^2 - 12ac \]
+            </div>
+            <ul>
+                <li>\(D' > 0\)：極大と極小を持つ</li>
+                <li>\(D' \leq 0\)：極値を持たない（単調増加または単調減少）</li>
+            </ul>
+        </div>
+
+        <div class="rule-box" id="rule-always-positive">
+            <strong>📌 ルール4：「すべての \(x\) で成り立つ」の攻略</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <p><strong>パターン1：二次式の場合（判別式）</strong></p>
+            <div class="formula">
+                \[ ax^2 + bx + c > 0 \text{ がすべての実数 } x \text{ で成立} \Leftrightarrow a > 0 \text{ かつ } D < 0 \]
+            </div>
+            <p><strong>パターン2：より複雑な式の場合（微分）</strong></p>
+            <div class="formula">
+                \[ f(x) \geq k \text{ がすべての } x \text{ で成立} \Leftrightarrow f(x) \text{ の最小値} \geq k \]
+            </div>
+            <p><strong>→ 使い分けのポイント：</strong></p>
+            <ul>
+                <li>二次式だけなら判別式がシンプル</li>
+                <li>三次以上や複雑な式なら微分で最小値を求める</li>
+            </ul>
+        </div>
+
+        <div class="rule-box" id="rule-intersection">
+            <strong>📌 ルール5：「共有点の個数」の攻略</strong> <a href="#ex-5" class="example-link">→ 例5</a>
+            <p>曲線 \(y = f(x)\) と直線 \(y = g(x)\) の共有点の個数：</p>
+            <ol>
+                <li>\(f(x) = g(x)\) を整理して \(h(x) = 0\) の形にする</li>
+                <li>\(h(x)\) が<strong>二次式</strong>なら → <strong>判別式</strong>で個数判定</li>
+                <li>\(h(x)\) が<strong>三次以上</strong>なら → <strong>微分</strong>でグラフを描いて個数判定</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>実際の問題で判断力を磨きましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 判別式を使う問題</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>二次方程式の解の存在条件
+            </div>
+            <p>二次方程式 \(x^2 - 2ax + a + 2 = 0\) が実数解を持つような \(a\) の範囲を求めよ。</p>
+
+            <p><strong>判断：</strong>「実数解を持つ」→ <strong>判別式</strong></p>
+
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>判別式を計算：\(D = (-2a)^2 - 4 \cdot 1 \cdot (a + 2) = 4a^2 - 4a - 8\)</li>
+                <li>実数解を持つ条件：\(D \geq 0\)</li>
+                <li>\(4a^2 - 4a - 8 \geq 0\) を解く</li>
+                <li>\(a^2 - a - 2 \geq 0\) → \((a - 2)(a + 1) \geq 0\)</li>
+            </ol>
+            <div class="formula">
+                \[ a \leq -1 \text{ または } a \geq 2 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-1b">
+            <div class="example-title">
+                <span class="number-badge">例1'</span>すべての実数で正になる条件
+            </div>
+            <p>すべての実数 \(x\) に対して \(x^2 + 2x + k > 0\) が成り立つような \(k\) の範囲を求めよ。</p>
+
+            <p><strong>判断：</strong>「すべての実数 \(x\) で正」+「二次式」→ <strong>判別式</strong></p>
+
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>二次関数 \(y = x^2 + 2x + k\) の係数 \(a = 1 > 0\)（下に凸）</li>
+                <li>常に正 → x軸と交わらない → \(D < 0\)</li>
+                <li>\(D = 4 - 4k < 0\)</li>
+            </ol>
+            <div class="formula">
+                \[ k > 1 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 微分を使う問題</h3>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>関数の最小値
+            </div>
+            <p>\(f(x) = x^3 - 3x^2 + 4\) の \(0 \leq x \leq 3\) における最小値を求めよ。</p>
+
+            <p><strong>判断：</strong>「最小値」+「範囲指定」→ <strong>微分</strong></p>
+
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>微分：\(f'(x) = 3x^2 - 6x = 3x(x - 2)\)</li>
+                <li>\(f'(x) = 0\) より \(x = 0, 2\)（両方とも区間内）</li>
+                <li>増減表を作成し、端点と極値を比較：</li>
+            </ol>
+
+            <table class="material-table" style="margin: 15px 0;">
+                <tr>
+                    <th style="width: 60px;">\(x\)</th>
+                    <td style="text-align: center;">0</td>
+                    <td style="text-align: center;">...</td>
+                    <td style="text-align: center;">2</td>
+                    <td style="text-align: center;">...</td>
+                    <td style="text-align: center;">3</td>
+                </tr>
+                <tr>
+                    <th>\(f'(x)\)</th>
+                    <td style="text-align: center;">0</td>
+                    <td style="text-align: center; color: #e53935;">−</td>
+                    <td style="text-align: center;">0</td>
+                    <td style="text-align: center; color: #4caf50;">+</td>
+                    <td style="text-align: center;"></td>
+                </tr>
+                <tr>
+                    <th>\(f(x)\)</th>
+                    <td style="text-align: center;">4</td>
+                    <td style="text-align: center;">↘</td>
+                    <td style="text-align: center; color: #9c27b0;">0</td>
+                    <td style="text-align: center;">↗</td>
+                    <td style="text-align: center;">4</td>
+                </tr>
+            </table>
+
+            <ol start="4">
+                <li>\(f(0) = 4\)、\(f(2) = 8 - 12 + 4 = 0\)、\(f(3) = 27 - 27 + 4 = 4\)</li>
+            </ol>
+            <div class="formula">
+                \[ \text{最小値} = 0 \quad (x = 2) \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-2b">
+            <div class="example-title">
+                <span class="number-badge">例2'</span>不等式が常に成り立つ条件（微分ver）
+            </div>
+            <p>\(x > 0\) において \(x^3 - 3x + k \geq 0\) が常に成り立つような \(k\) の範囲を求めよ。</p>
+
+            <p><strong>判断：</strong>「常に成り立つ」+「三次式」→ <strong>微分で最小値</strong></p>
+
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(f(x) = x^3 - 3x + k\) とおく</li>
+                <li>微分：\(f'(x) = 3x^2 - 3 = 3(x + 1)(x - 1)\)</li>
+                <li>\(x > 0\) の範囲で \(f'(x) = 0\) となるのは \(x = 1\)</li>
+                <li>\(0 < x < 1\) で \(f'(x) < 0\)、\(x > 1\) で \(f'(x) > 0\)</li>
+                <li>\(x = 1\) で最小値 \(f(1) = 1 - 3 + k = k - 2\)</li>
+                <li>常に \(f(x) \geq 0\) となる条件：最小値 \(\geq 0\)</li>
+            </ol>
+            <div class="formula">
+                \[ k - 2 \geq 0 \quad \Rightarrow \quad k \geq 2 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 両方使う問題</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>三次関数が極値を持つ条件
+            </div>
+            <p>\(f(x) = x^3 - 3ax^2 + 3x + 1\) が極値を持つような \(a\) の範囲を求めよ。</p>
+
+            <p><strong>判断：</strong>「極値を持つ」→ <strong>微分 + 判別式</strong></p>
+
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>微分：\(f'(x) = 3x^2 - 6ax + 3 = 3(x^2 - 2ax + 1)\)</li>
+                <li>極値を持つ条件：\(f'(x) = 0\) が<strong>異なる2つの実数解</strong>を持つ</li>
+                <li>\(x^2 - 2ax + 1 = 0\) の判別式：\(D = 4a^2 - 4 = 4(a^2 - 1)\)</li>
+                <li>\(D > 0\) となる条件：\(a^2 - 1 > 0\)</li>
+            </ol>
+            <div class="formula">
+                \[ a < -1 \text{ または } a > 1 \]
+            </div>
+            <p><em>※ \(D \leq 0\) のとき（\(-1 \leq a \leq 1\)）は単調増加となり極値なし</em></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 同じ問題を2つの方法で解く</h3>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>「すべてのxで正」を2通りで解く
+            </div>
+            <p>すべての実数 \(x\) に対して \(x^2 - 4x + k > 0\) が成り立つ \(k\) の範囲を求めよ。</p>
+
+            <p><strong>【方法1：判別式】</strong></p>
+            <ol>
+                <li>下に凸の二次関数（\(a = 1 > 0\)）</li>
+                <li>常に正 → \(D < 0\)</li>
+                <li>\(D = 16 - 4k < 0\)</li>
+            </ol>
+            <div class="formula">
+                \[ k > 4 \]
+            </div>
+
+            <p><strong>【方法2：微分（平方完成）】</strong></p>
+            <ol>
+                <li>\(f(x) = x^2 - 4x + k = (x - 2)^2 + (k - 4)\)</li>
+                <li>最小値は \(x = 2\) で \(k - 4\)</li>
+                <li>常に正 → 最小値 \(> 0\)</li>
+            </ol>
+            <div class="formula">
+                \[ k - 4 > 0 \quad \Rightarrow \quad k > 4 \]
+            </div>
+
+            <p><strong>→ どちらも同じ答え！</strong> 二次関数なら判別式が早い。</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 共有点の個数</h3>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>放物線と直線の共有点
+            </div>
+            <p>放物線 \(y = x^2\) と直線 \(y = 2x + k\) の共有点の個数を \(k\) の値で場合分けせよ。</p>
+
+            <p><strong>判断：</strong>「共有点の個数」+「結果が二次方程式」→ <strong>判別式</strong></p>
+
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>連立して：\(x^2 = 2x + k\) → \(x^2 - 2x - k = 0\)</li>
+                <li>判別式：\(D = 4 + 4k = 4(1 + k)\)</li>
+                <li>場合分け：
+                    <ul>
+                        <li>\(D > 0\)（\(k > -1\)）：共有点<strong>2個</strong></li>
+                        <li>\(D = 0\)（\(k = -1\)）：共有点<strong>1個</strong>（接する）</li>
+                        <li>\(D < 0\)（\(k < -1\)）：共有点<strong>0個</strong></li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="example-box" id="ex-6">
+            <div class="example-title">
+                <span class="number-badge">例6</span>三次関数とx軸の共有点
+            </div>
+            <p>\(f(x) = x^3 - 3x + k\) と x軸の共有点の個数を \(k\) の値で場合分けせよ。</p>
+
+            <p><strong>判断：</strong>「共有点の個数」+「三次方程式」→ <strong>微分でグラフ</strong></p>
+
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>微分：\(f'(x) = 3x^2 - 3 = 3(x + 1)(x - 1)\)</li>
+                <li>極大：\(f(-1) = -1 + 3 + k = k + 2\)</li>
+                <li>極小：\(f(1) = 1 - 3 + k = k - 2\)</li>
+                <li>グラフとx軸の交点で場合分け：</li>
+            </ol>
+
+            <div class="svg-container">
+                <svg width="650" height="240" viewBox="0 0 650 240">
+                    <!-- 3つのケース -->
+                    <!-- ケース1: k < -2 -->
+                    <rect x="20" y="30" width="190" height="180" fill="#f5f5f5" stroke="#999" rx="5"/>
+                    <text x="115" y="50" font-size="13" font-weight="bold" fill="#1976d2" text-anchor="middle">k &lt; −2</text>
+
+                    <line x1="40" y1="150" x2="190" y2="150" stroke="#333" stroke-width="1"/>
+                    <path d="M 50 180 C 70 160, 80 80, 100 80 C 120 80, 130 100, 150 140 C 170 180, 180 190, 190 160"
+                          stroke="#e53935" stroke-width="2" fill="none"/>
+                    <circle cx="100" cy="80" r="3" fill="#9c27b0"/>
+                    <circle cx="150" cy="140" r="3" fill="#9c27b0"/>
+                    <text x="100" y="75" font-size="10" fill="#9c27b0" text-anchor="middle">極大</text>
+                    <text x="150" y="155" font-size="10" fill="#9c27b0" text-anchor="middle">極小</text>
+                    <text x="115" y="200" font-size="12" fill="#333" text-anchor="middle">共有点 1個</text>
+
+                    <!-- ケース2: -2 < k < 2 -->
+                    <rect x="230" y="30" width="190" height="180" fill="#e8f5e9" stroke="#4caf50" rx="5"/>
+                    <text x="325" y="50" font-size="13" font-weight="bold" fill="#2e7d32" text-anchor="middle">−2 &lt; k &lt; 2</text>
+
+                    <line x1="250" y1="130" x2="400" y2="130" stroke="#333" stroke-width="1"/>
+                    <path d="M 260 200 C 280 180, 290 80, 310 80 C 330 80, 340 150, 360 180 C 380 210, 390 200, 400 160"
+                          stroke="#e53935" stroke-width="2" fill="none"/>
+                    <circle cx="310" cy="80" r="3" fill="#9c27b0"/>
+                    <circle cx="360" cy="180" r="3" fill="#9c27b0"/>
+                    <circle cx="280" cy="130" r="4" fill="#4caf50"/>
+                    <circle cx="335" cy="130" r="4" fill="#4caf50"/>
+                    <circle cx="385" cy="130" r="4" fill="#4caf50"/>
+                    <text x="325" y="200" font-size="12" fill="#333" text-anchor="middle">共有点 3個</text>
+
+                    <!-- ケース3: k > 2 -->
+                    <rect x="440" y="30" width="190" height="180" fill="#f5f5f5" stroke="#999" rx="5"/>
+                    <text x="535" y="50" font-size="13" font-weight="bold" fill="#1976d2" text-anchor="middle">k &gt; 2</text>
+
+                    <line x1="460" y1="150" x2="610" y2="150" stroke="#333" stroke-width="1"/>
+                    <path d="M 470 100 C 490 80, 500 130, 520 160 C 540 190, 550 200, 570 180 C 590 160, 600 60, 610 40"
+                          stroke="#e53935" stroke-width="2" fill="none"/>
+                    <circle cx="520" cy="160" r="3" fill="#9c27b0"/>
+                    <circle cx="570" cy="180" r="3" fill="#9c27b0"/>
+                    <text x="535" y="200" font-size="12" fill="#333" text-anchor="middle">共有点 1個</text>
+                </svg>
+                <div class="svg-caption">三次関数 \(y = x^3 - 3x + k\) のグラフと x軸の共有点の個数</div>
+            </div>
+
+            <p><strong>答え：</strong></p>
+            <ul>
+                <li>\(k < -2\) または \(k > 2\)：共有点<strong>1個</strong></li>
+                <li>\(k = -2\) または \(k = 2\)：共有点<strong>2個</strong>（極値がx軸上）</li>
+                <li>\(-2 < k < 2\)：共有点<strong>3個</strong></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：キーワードで瞬時に判断</strong><br>
+            「解の個数」「共有点」「接する」→ 判別式<br>
+            「最大」「最小」「範囲での値」→ 微分<br>
+            「極値を持つ条件」→ 微分して判別式
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：二次式なら判別式が最速</strong><br>
+            「すべてのxで正」が二次式だけで表されているなら、判別式一発で解ける。わざわざ微分して最小値を求める必要はない。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：三次以上は微分が必須</strong><br>
+            三次方程式の解の個数や、三次関数のグラフとの交点は、判別式では解けない。微分してグラフの概形を把握する。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：「常に成り立つ」は2通り考える</strong><br>
+            二次式なら：「下に凸 + D < 0」（判別式）<br>
+            三次以上なら：「最小値 ≥ 右辺」（微分）<br>
+            問題を見て、どちらが簡単か判断しよう。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ5：極値条件は「f'(x)=0の判別式」</strong><br>
+            三次関数の極値条件は、導関数（二次式）の判別式で判定できる。<br>
+            極値を持つ → \(D > 0\)、極値を持たない → \(D \leq 0\)
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：三次方程式に判別式を使おうとする</div>
+            <p><strong>ダメな例：</strong> \(x^3 - 3x + 1 = 0\) の解の個数を判別式で求めようとする</p>
+            <p><strong>対策：</strong> 判別式は<strong>二次方程式専用</strong>。三次方程式は微分してグラフで考える。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：「すべてのxで」を見落とす</div>
+            <p><strong>ダメな例：</strong> 「\(x^2 + 2x + k > 0\) が成り立つ」で \(k\) の「解」を求める</p>
+            <p><strong>対策：</strong> 「すべての実数 \(x\) で」なら判別式、「ある \(x\) で」なら解の存在条件。問題文を正確に読む。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：極値条件で D ≥ 0 と D > 0 を混同</div>
+            <p><strong>ダメな例：</strong> 「極値を持つ」条件で \(D \geq 0\) と答える</p>
+            <p><strong>対策：</strong> 極値を持つには<strong>異なる2つの実数解</strong>が必要 → \(D > 0\)。<br>
+            \(D = 0\)（重解）だと、その点で \(f'(x) = 0\) だが符号が変わらず極値にならない。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：係数aの符号を確認しない</div>
+            <p><strong>ダメな例：</strong> 「常に正」で \(D < 0\) だけで答える</p>
+            <p><strong>対策：</strong> 二次関数が「常に正」になるには、\(a > 0\)（下に凸）<strong>かつ</strong> \(D < 0\) が必要。両方確認！</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">「解の個数」「共有点」を見たら判別式を使う判断ができる</div>
+            <div class="checklist-item">「最大・最小」「範囲での値」を見たら微分を使う判断ができる</div>
+            <div class="checklist-item">三次関数の極値条件は「f'(x)=0の判別式」で判定できる</div>
+            <div class="checklist-item">「すべてのxで正」の条件を二次式なら判別式、三次以上なら微分で解ける</div>
+            <div class="checklist-item">共有点の個数を、二次式なら判別式、三次式なら微分で求められる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>判断力を鍛えよう。まず「判別式か微分か」を判断してから解く。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>二次方程式 \(x^2 + 4x + k = 0\) が異なる2つの正の実数解を持つような \(k\) の範囲を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">ヒントを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e3f2fd; border-radius: 5px;">
+                    <p>「異なる2つの実数解」→ 判別式 \(D > 0\)</p>
+                    <p>「正の解」→ 解と係数の関係（和 \(> 0\)、積 \(> 0\)）も必要</p>
+                </div>
+            </details>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>① \(D > 0\)：\(16 - 4k > 0\) → \(k < 4\)</p>
+                    <p>② 解の和 \(> 0\)：\(-4 > 0\) は不成立！</p>
+                    <p><strong>答え：解なし</strong>（2つの解の和が \(-4\) なので、両方正にはならない）</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\(f(x) = x^3 + ax^2 + x + 1\) が極値を持たないような \(a\) の範囲を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">ヒントを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e3f2fd; border-radius: 5px;">
+                    <p>「極値を持たない」→ \(f'(x) = 0\) が異なる2実数解を持たない → 判別式 \(D \leq 0\)</p>
+                </div>
+            </details>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(f'(x) = 3x^2 + 2ax + 1\)</p>
+                    <p>判別式：\(D = 4a^2 - 12 \leq 0\)</p>
+                    <p>\(a^2 \leq 3\) → \(-\sqrt{3} \leq a \leq \sqrt{3}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>\(x \geq 0\) において \(x^3 - 6x + k \geq 0\) が常に成り立つような \(k\) の最小値を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">ヒントを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e3f2fd; border-radius: 5px;">
+                    <p>「常に成り立つ」+「三次式」→ 微分で最小値を求める</p>
+                </div>
+            </details>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(f(x) = x^3 - 6x + k\)、\(f'(x) = 3x^2 - 6 = 3(x^2 - 2)\)</p>
+                    <p>\(x \geq 0\) で \(f'(x) = 0\) となるのは \(x = \sqrt{2}\)</p>
+                    <p>最小値：\(f(\sqrt{2}) = 2\sqrt{2} - 6\sqrt{2} + k = k - 4\sqrt{2}\)</p>
+                    <p>常に \(\geq 0\) となる条件：\(k - 4\sqrt{2} \geq 0\)</p>
+                    <p><strong>答え：</strong> \(k = 4\sqrt{2}\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：「解の個数・共有点」は判別式、「最大・最小」は微分、「極値条件」は微分して判別式！
+</div>
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「同じ問題、2つの道」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 同じ問題、2つの道</div>
+
+            <p>「すべての実数 \(x\) で \(x^2 - 4x + k > 0\) が成り立つ \(k\) の範囲は？」</p>
+
+            <p>この問題、実は<strong>2つの全く異なる方法</strong>で解ける。</p>
+
+            <p><strong>方法1：判別式</strong></p>
+            <p>「x軸と交わらない」条件 → \(D < 0\) → \(16 - 4k < 0\) → \(k > 4\)</p>
+
+            <p><strong>方法2：微分（平方完成）</strong></p>
+            <p>最小値 \(= k - 4\) が正 → \(k - 4 > 0\) → \(k > 4\)</p>
+
+            <p>どちらも答えは \(k > 4\)。でも考え方は全然違う。</p>
+
+            <p>判別式は「方程式の解」という<strong>代数的</strong>な視点。<br>
+            微分は「関数の最小値」という<strong>解析的</strong>な視点。</p>
+
+            <p>数学の面白さは、<strong>違う道を辿って同じ場所に着く</strong>こと。</p>
+
+            <p>19世紀の数学者<strong>リーマン</strong>は言った：「数学には王道がある。そしてその王道は、しばしば複数ある」</p>
+
+            <p>どの道を選ぶかは、あなた次第。でも、<strong>両方の道を知っている人が、最短ルートを選べる</strong>のだ。</p>
+        </div>
+    </div>
+</section>

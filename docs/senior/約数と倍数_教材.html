@@ -1,0 +1,574 @@
+---
+layout: material-raw
+title: 約数と倍数
+icon: "🔢"
+description: 素因数分解を使って約数・倍数・最大公約数・最小公倍数を求める方法をマスターする。
+level: 基礎
+level_num: 1
+category: numbers
+school_level: senior
+order: 4
+keywords:
+  - 素因数分解
+  - 約数
+  - 倍数
+  - 最大公約数
+  - 最小公倍数
+cover_image: /images/noimage.jpg
+cover_description: 素因数分解と約数のイメージ
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学雑学「素数の謎」"
+related:
+  - url: /junior/因数分解_教材.html
+    title: 因数分解
+    note: 多項式の因数分解の復習に
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>12の約数は何個？ 18と24の最大公約数は？ 整数の性質を調べるとき、<strong>素因数分解</strong>が強力な武器になります。</p>
+
+        <p>このページでは、<strong>約数と倍数</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>素数と素因数分解</strong>：整数を素数の積で表す</li>
+            <li><strong>約数の個数・総和</strong>：素因数分解から公式で求める</li>
+            <li><strong>最大公約数（GCD）</strong>：共通する約数の最大値</li>
+            <li><strong>最小公倍数（LCM）</strong>：共通する倍数の最小値</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🔢 最重要：すべての正整数は素数の積で一意に表せる（素因数分解の一意性）
+        </div>
+
+        <!-- 素因数分解のイメージ（SVG） -->
+        <div class="svg-container">
+            <svg width="600" height="180" viewBox="0 0 600 180">
+                <!-- タイトル -->
+                <text x="300" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">素因数分解のイメージ</text>
+
+                <!-- 60の分解 -->
+                <rect x="250" y="40" width="100" height="35" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                <text x="300" y="63" font-size="18" font-weight="bold" fill="#1976d2" text-anchor="middle">60</text>
+
+                <!-- 矢印 -->
+                <path d="M 300 75 L 300 95" stroke="#333" stroke-width="2" marker-end="url(#arrow3)"/>
+                <defs>
+                    <marker id="arrow3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+                    </marker>
+                </defs>
+
+                <!-- 分解結果 -->
+                <rect x="70" y="105" width="50" height="35" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                <text x="95" y="128" font-size="16" font-weight="bold" fill="#4caf50" text-anchor="middle">2</text>
+
+                <text x="140" y="128" font-size="18" fill="#333" text-anchor="middle">×</text>
+
+                <rect x="160" y="105" width="50" height="35" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                <text x="185" y="128" font-size="16" font-weight="bold" fill="#4caf50" text-anchor="middle">2</text>
+
+                <text x="230" y="128" font-size="18" fill="#333" text-anchor="middle">×</text>
+
+                <rect x="250" y="105" width="50" height="35" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="5"/>
+                <text x="275" y="128" font-size="16" font-weight="bold" fill="#ff9800" text-anchor="middle">3</text>
+
+                <text x="320" y="128" font-size="18" fill="#333" text-anchor="middle">×</text>
+
+                <rect x="340" y="105" width="50" height="35" fill="#fce4ec" stroke="#e91e63" stroke-width="2" rx="5"/>
+                <text x="365" y="128" font-size="16" font-weight="bold" fill="#e91e63" text-anchor="middle">5</text>
+
+                <!-- 式 -->
+                <text x="480" y="128" font-size="16" fill="#333" text-anchor="middle">= 2² × 3 × 5</text>
+
+                <!-- 説明 -->
+                <text x="300" y="165" font-size="12" fill="#666" text-anchor="middle">60 = 2² × 3¹ × 5¹（素数の積で表す）</text>
+            </svg>
+        </div>
+
+        <div class="rule-box" id="rule-prime">
+            <strong>📌 ルール1：素数と合成数</strong>
+            <div class="formula">
+                \[ \text{素数：1とその数自身でしか割れない自然数（2, 3, 5, 7, 11, 13, ...）} \]
+            </div>
+            <p><strong>素数の性質：</strong></p>
+            <ul>
+                <li>1は素数ではない（定義）</li>
+                <li>2は唯一の偶数の素数</li>
+                <li>素数は無限に存在する</li>
+            </ul>
+            <p><strong>合成数：</strong>1と自身以外の約数を持つ自然数（4, 6, 8, 9, 10, ...）</p>
+        </div>
+
+        <div class="rule-box" id="rule-factorization">
+            <strong>📌 ルール2：素因数分解</strong> <a href="#ex-factorization" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ n = p_1^{a_1} \times p_2^{a_2} \times \cdots \times p_k^{a_k} \]
+            </div>
+            <p><strong>素因数分解</strong>：自然数を素数の積で表すこと</p>
+            <p><strong>一意性：</strong>どんな自然数も、素因数分解の結果は一通りしかない</p>
+            <p><strong>例：</strong>60 = 2² × 3 × 5、84 = 2² × 3 × 7</p>
+        </div>
+
+        <div class="rule-box" id="rule-divisor-count">
+            <strong>📌 ルール3：約数の個数</strong> <a href="#ex-divisor-count" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ n = p_1^{a_1} \times p_2^{a_2} \times \cdots \times p_k^{a_k} \text{ のとき} \]
+                \[ \text{約数の個数} = (a_1 + 1)(a_2 + 1) \cdots (a_k + 1) \]
+            </div>
+            <p><strong>考え方：</strong>各素因数 \(p_i\) は 0個～\(a_i\)個 使える → \(a_i + 1\) 通りの選び方</p>
+            <p><strong>例：</strong>60 = 2² × 3 × 5 → 約数の個数 = (2+1)(1+1)(1+1) = 3 × 2 × 2 = 12個</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>60の約数は「2を0～2個」「3を0～1個」「5を0～1個」の組合せで作れる。</p>
+            <p>例：2⁰×3⁰×5⁰=1、2¹×3⁰×5⁰=2、2²×3¹×5¹=60 など</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-divisor-sum">
+            <strong>📌 ルール4：約数の総和</strong> <a href="#ex-divisor-sum" class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ n = p_1^{a_1} \times p_2^{a_2} \times \cdots \times p_k^{a_k} \text{ のとき} \]
+                \[ \text{約数の総和} = \frac{p_1^{a_1+1}-1}{p_1-1} \times \frac{p_2^{a_2+1}-1}{p_2-1} \times \cdots \]
+            </div>
+            <p>または、展開して計算：</p>
+            <div class="formula">
+                \[ \text{約数の総和} = (1 + p_1 + p_1^2 + \cdots + p_1^{a_1})(1 + p_2 + \cdots + p_2^{a_2}) \cdots \]
+            </div>
+            <p><strong>例：</strong>12 = 2² × 3 → 約数の総和 = (1+2+4)(1+3) = 7 × 4 = 28</p>
+        </div>
+
+        <div class="rule-box" id="rule-gcd">
+            <strong>📌 ルール5：最大公約数（GCD）</strong> <a href="#ex-gcd" class="example-link">→ 例4</a>
+            <div class="formula">
+                \[ \gcd(a, b) = \text{各素因数の指数の「小さい方」の積} \]
+            </div>
+            <p><strong>最大公約数</strong>：aとbの両方を割り切る最大の自然数</p>
+            <p><strong>例：</strong>60 = 2² × 3 × 5、84 = 2² × 3 × 7</p>
+            <p>→ gcd(60, 84) = 2² × 3 = 12（共通する素因数の「小さい方」の指数）</p>
+        </div>
+
+        <div class="rule-box" id="rule-lcm">
+            <strong>📌 ルール6：最小公倍数（LCM）</strong> <a href="#ex-lcm" class="example-link">→ 例5</a>
+            <div class="formula">
+                \[ \text{lcm}(a, b) = \text{各素因数の指数の「大きい方」の積} \]
+            </div>
+            <p><strong>最小公倍数</strong>：aとbの両方の倍数である最小の自然数</p>
+            <p><strong>例：</strong>60 = 2² × 3 × 5、84 = 2² × 3 × 7</p>
+            <p>→ lcm(60, 84) = 2² × 3 × 5 × 7 = 420（すべての素因数の「大きい方」の指数）</p>
+        </div>
+
+        <div class="rule-box" id="rule-relation">
+            <strong>📌 ルール7：GCDとLCMの関係</strong>
+            <div class="formula">
+                \[ a \times b = \gcd(a, b) \times \text{lcm}(a, b) \]
+            </div>
+            <p><strong>例：</strong>60 × 84 = 5040、12 × 420 = 5040 ✓</p>
+            <p><strong>✅ メリット：</strong>GCDがわかればLCMが計算できる（逆も同様）</p>
+        </div>
+
+        <!-- GCDとLCMの関係（SVG） -->
+        <div class="svg-container">
+            <svg width="600" height="200" viewBox="0 0 600 200">
+                <text x="300" y="25" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">60と84の素因数分解とGCD・LCM</text>
+
+                <!-- 60 -->
+                <text x="80" y="60" font-size="14" fill="#333" text-anchor="middle">60 =</text>
+                <rect x="100" y="45" width="30" height="25" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="3"/>
+                <text x="115" y="63" font-size="12" font-weight="bold" fill="#1976d2" text-anchor="middle">2²</text>
+                <text x="140" y="60" font-size="14" fill="#333" text-anchor="middle">×</text>
+                <rect x="150" y="45" width="30" height="25" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="3"/>
+                <text x="165" y="63" font-size="12" font-weight="bold" fill="#4caf50" text-anchor="middle">3</text>
+                <text x="190" y="60" font-size="14" fill="#333" text-anchor="middle">×</text>
+                <rect x="200" y="45" width="30" height="25" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="3"/>
+                <text x="215" y="63" font-size="12" font-weight="bold" fill="#ff9800" text-anchor="middle">5</text>
+
+                <!-- 84 -->
+                <text x="80" y="100" font-size="14" fill="#333" text-anchor="middle">84 =</text>
+                <rect x="100" y="85" width="30" height="25" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="3"/>
+                <text x="115" y="103" font-size="12" font-weight="bold" fill="#1976d2" text-anchor="middle">2²</text>
+                <text x="140" y="100" font-size="14" fill="#333" text-anchor="middle">×</text>
+                <rect x="150" y="85" width="30" height="25" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="3"/>
+                <text x="165" y="103" font-size="12" font-weight="bold" fill="#4caf50" text-anchor="middle">3</text>
+                <text x="190" y="100" font-size="14" fill="#333" text-anchor="middle">×</text>
+                <rect x="200" y="85" width="30" height="25" fill="#fce4ec" stroke="#e91e63" stroke-width="2" rx="3"/>
+                <text x="215" y="103" font-size="12" font-weight="bold" fill="#e91e63" text-anchor="middle">7</text>
+
+                <!-- GCD -->
+                <text x="400" y="60" font-size="14" fill="#333" text-anchor="middle">GCD = 2² × 3 = 12</text>
+                <text x="400" y="80" font-size="11" fill="#666" text-anchor="middle">（共通部分・小さい方）</text>
+
+                <!-- LCM -->
+                <text x="400" y="120" font-size="14" fill="#333" text-anchor="middle">LCM = 2² × 3 × 5 × 7 = 420</text>
+                <text x="400" y="140" font-size="11" fill="#666" text-anchor="middle">（全部含む・大きい方）</text>
+
+                <!-- 関係式 -->
+                <rect x="150" y="155" width="300" height="35" fill="#f5f5f5" stroke="#333" stroke-width="1" rx="5"/>
+                <text x="300" y="178" font-size="14" fill="#333" text-anchor="middle">60 × 84 = 12 × 420 = 5040 ✓</text>
+            </svg>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>素因数分解を使って約数・倍数の問題を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 素因数分解</h3>
+
+        <div class="example-box" id="ex-factorization">
+            <div class="example-title">
+                <span class="number-badge">例1</span>素因数分解の手順
+            </div>
+            <p>360を素因数分解せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>小さい素数から順に割っていく</li>
+                <li>360 ÷ 2 = 180</li>
+                <li>180 ÷ 2 = 90</li>
+                <li>90 ÷ 2 = 45</li>
+                <li>45 ÷ 3 = 15</li>
+                <li>15 ÷ 3 = 5</li>
+                <li>5は素数なのでそのまま</li>
+            </ol>
+            <div class="formula">
+                \[ 360 = 2^3 \times 3^2 \times 5 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 約数の個数・総和</h3>
+
+        <div class="example-box" id="ex-divisor-count">
+            <div class="example-title">
+                <span class="number-badge">例2</span>約数の個数
+            </div>
+            <p>360の約数は何個あるか。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>素因数分解：360 = 2³ × 3² × 5¹</li>
+                <li>約数の個数の公式を適用</li>
+            </ol>
+            <div class="formula">
+                \[ \text{約数の個数} = (3+1)(2+1)(1+1) = 4 \times 3 \times 2 = 24 \text{個} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-divisor-sum">
+            <div class="example-title">
+                <span class="number-badge">例3</span>約数の総和
+            </div>
+            <p>12の約数の総和を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>素因数分解：12 = 2² × 3¹</li>
+                <li>約数の総和の公式を適用</li>
+            </ol>
+            <div class="formula">
+                \begin{align}
+                \text{約数の総和} &= (1 + 2 + 2^2)(1 + 3) \\
+                &= (1 + 2 + 4)(1 + 3) \\
+                &= 7 \times 4 = 28
+                \end{align}
+            </div>
+            <p><strong>確認：</strong>12の約数は 1, 2, 3, 4, 6, 12 → 合計 1+2+3+4+6+12 = 28 ✓</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 最大公約数・最小公倍数</h3>
+
+        <div class="example-box" id="ex-gcd">
+            <div class="example-title">
+                <span class="number-badge">例4</span>最大公約数（GCD）
+            </div>
+            <p>72と90の最大公約数を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>素因数分解：72 = 2³ × 3²、90 = 2 × 3² × 5</li>
+                <li>共通する素因数の「小さい方」の指数をとる</li>
+            </ol>
+            <div class="formula">
+                \begin{align}
+                72 &= 2^3 \times 3^2 \\
+                90 &= 2^1 \times 3^2 \times 5 \\
+                \gcd(72, 90) &= 2^1 \times 3^2 = 2 \times 9 = 18
+                \end{align}
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-lcm">
+            <div class="example-title">
+                <span class="number-badge">例5</span>最小公倍数（LCM）
+            </div>
+            <p>72と90の最小公倍数を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>素因数分解：72 = 2³ × 3²、90 = 2 × 3² × 5</li>
+                <li>すべての素因数の「大きい方」の指数をとる</li>
+            </ol>
+            <div class="formula">
+                \begin{align}
+                \text{lcm}(72, 90) &= 2^3 \times 3^2 \times 5 = 8 \times 9 \times 5 = 360
+                \end{align}
+            </div>
+            <p><strong>確認：</strong>72 × 90 = 6480、18 × 360 = 6480 ✓（GCD × LCM = a × b）</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 応用問題</h3>
+
+        <div class="example-box" id="ex-divisor-list">
+            <div class="example-title">
+                <span class="number-badge">例6</span>約数をすべて列挙
+            </div>
+            <p>30の約数をすべて求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>素因数分解：30 = 2 × 3 × 5</li>
+                <li>各素因数を0個または1個使う組合せを列挙</li>
+            </ol>
+            <table class="material-table">
+                <tr>
+                    <th>2の個数</th>
+                    <th>3の個数</th>
+                    <th>5の個数</th>
+                    <th>約数</th>
+                </tr>
+                <tr><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+                <tr><td>1</td><td>0</td><td>0</td><td>2</td></tr>
+                <tr><td>0</td><td>1</td><td>0</td><td>3</td></tr>
+                <tr><td>0</td><td>0</td><td>1</td><td>5</td></tr>
+                <tr><td>1</td><td>1</td><td>0</td><td>6</td></tr>
+                <tr><td>1</td><td>0</td><td>1</td><td>10</td></tr>
+                <tr><td>0</td><td>1</td><td>1</td><td>15</td></tr>
+                <tr><td>1</td><td>1</td><td>1</td><td>30</td></tr>
+            </table>
+            <p><strong>答え：</strong>1, 2, 3, 5, 6, 10, 15, 30（8個）</p>
+        </div>
+
+        <div class="example-box" id="ex-application">
+            <div class="example-title">
+                <span class="number-badge">例7</span>約数の個数が決まった数
+            </div>
+            <p>正の約数がちょうど6個ある最小の自然数を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>6 = (a₁+1)(a₂+1)... の形で表す</li>
+                <li>6 = 6 = 6×1 または 6 = 3×2</li>
+                <li>パターン1：p⁵ → 2⁵ = 32</li>
+                <li>パターン2：p² × q → 2² × 3 = 12</li>
+                <li>小さい方を選ぶ</li>
+            </ol>
+            <div class="formula">
+                \[ \text{答え：} 12 = 2^2 \times 3 \]
+            </div>
+            <p><strong>確認：</strong>12の約数は 1, 2, 3, 4, 6, 12 → 6個 ✓</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：素因数分解は小さい素数から</strong><br>
+            2 → 3 → 5 → 7 → 11... の順に割っていく。<br>
+            偶数なら2で割れる、末尾が0か5なら5で割れる。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：GCDは「共通」、LCMは「全部」</strong><br>
+            GCD：両方に共通する素因数だけ、指数は小さい方<br>
+            LCM：どちらかにある素因数すべて、指数は大きい方
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：GCD × LCM = a × b を活用</strong><br>
+            GCDがわかったら、LCM = a × b ÷ GCD で計算できる。<br>
+            計算量が減るので便利。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：約数の個数は「指数+1」の積</strong><br>
+            n = 2³ × 3² なら、約数の個数 = (3+1)(2+1) = 12。<br>
+            素因数分解さえできれば、公式一発。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：1を素数と勘違い</div>
+            <p><strong>ダメな例：</strong>「1は素数」と考えて計算に含める</p>
+            <p><strong>対策：</strong>1は素数ではない（定義）。素因数分解に1は含めない</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：GCDとLCMを逆にする</div>
+            <p><strong>ダメな例：</strong>GCDで「大きい方」、LCMで「小さい方」をとる</p>
+            <p><strong>対策：</strong>GCDは共通部分（小さい）、LCMは全部含む（大きい）</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：約数の個数で+1を忘れる</div>
+            <p><strong>ダメな例：</strong>2³ × 3² の約数の個数を 3 × 2 = 6個 とする</p>
+            <p><strong>対策：</strong>(3+1)(2+1) = 12個。指数に1を足すのを忘れずに</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：素因数分解が不完全</div>
+            <p><strong>ダメな例：</strong>72 = 8 × 9 で終わる（8と9は素数でない）</p>
+            <p><strong>対策：</strong>素数になるまで分解。72 = 2³ × 3²</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">素因数分解ができる</div>
+            <div class="checklist-item">約数の個数の公式 (a₁+1)(a₂+1)... が使える</div>
+            <div class="checklist-item">約数の総和の公式が使える</div>
+            <div class="checklist-item">GCDを素因数分解で求められる</div>
+            <div class="checklist-item">LCMを素因数分解で求められる</div>
+            <div class="checklist-item">GCD × LCM = a × b の関係を使える</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>180を素因数分解し、約数の個数を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>180 = 2² × 3² × 5</p>
+                    <p>約数の個数 = (2+1)(2+1)(1+1) = 3 × 3 × 2 = 18個</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>48と72の最大公約数と最小公倍数を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>48 = 2⁴ × 3、72 = 2³ × 3²</p>
+                    <p>GCD = 2³ × 3 = 24</p>
+                    <p>LCM = 2⁴ × 3² = 144</p>
+                    <p>確認：48 × 72 = 3456、24 × 144 = 3456 ✓</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>正の約数がちょうど10個ある最小の自然数を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>10 = 10 = 5×2 のパターン</p>
+                    <p>パターン1：p⁹ → 2⁹ = 512</p>
+                    <p>パターン2：p⁴ × q → 2⁴ × 3 = 48</p>
+                    <p>答え：48</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：素因数分解が基本！GCDは「小さい方」、LCMは「大きい方」
+</div>
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「素数の謎」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">🔢 素数は無限にある</div>
+
+            <p>素数は無限に存在する。これを最初に証明したのは、紀元前300年頃の数学者<strong>ユークリッド</strong>だ。</p>
+
+            <p><strong>証明（背理法）：</strong></p>
+            <ol>
+                <li>素数が有限個しかないと仮定する</li>
+                <li>それらを \(p_1, p_2, \ldots, p_n\) とする</li>
+                <li>\(N = p_1 \times p_2 \times \cdots \times p_n + 1\) を考える</li>
+                <li>Nをどの \(p_i\) で割っても余りは1（割り切れない）</li>
+                <li>ということは、Nは新しい素数か、既知でない素因数を持つ</li>
+                <li>これは「すべての素数を列挙した」という仮定に矛盾</li>
+                <li>よって、素数は無限に存在する ∎</li>
+            </ol>
+
+            <p><strong>素数の分布の謎</strong></p>
+            <p>素数は2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, ... と続くが、その出現パターンには完全な規則性がない。</p>
+
+            <p>しかし、「n以下の素数の個数」は約 \(\frac{n}{\ln n}\) 個という<strong>素数定理</strong>が知られている。</p>
+
+            <table class="material-table">
+                <tr>
+                    <th>n</th>
+                    <th>n以下の素数の個数</th>
+                    <th>n / ln(n)</th>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>25</td>
+                    <td>約22</td>
+                </tr>
+                <tr>
+                    <td>1,000</td>
+                    <td>168</td>
+                    <td>約145</td>
+                </tr>
+                <tr>
+                    <td>1,000,000</td>
+                    <td>78,498</td>
+                    <td>約72,382</td>
+                </tr>
+            </table>
+
+            <p><strong>リーマン予想</strong></p>
+            <p>素数の分布に関する「リーマン予想」は、1859年に提唱されて以来160年以上未解決の難問。100万ドルの懸賞金がかけられた「ミレニアム問題」の1つだ。</p>
+
+            <p>素数は暗号技術（RSA暗号など）の基盤でもあり、純粋数学の問題が現代社会のセキュリティを支えている。</p>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,442 @@
+---
+layout: material-raw
+title: 漸化式
+icon: "🔄"
+description: 漸化式の基本（等差型・等比型）から特性方程式を使った解法、分数型漸化式まで、数列の漸化式を体系的にマスターする。
+level: 標準
+level_num: 2
+category: numbers
+school_level: senior
+order: 8
+keywords:
+  - 漸化式
+  - 等差型漸化式
+  - 等比型漸化式
+  - 特性方程式
+  - 分数型漸化式
+  - 一般項
+cover_image: /images/noimage.jpg
+cover_description: 漸化式から一般項を求める過程を示すフローチャート
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: section8
+    title: "まとめ一言"
+  - id: story
+    title: "おまけ：数学雑学「フィボナッチ数列と黄金比」"
+related:
+  - url: /senior/等差数列_教材.html
+    title: 等差数列
+    note: 等差型漸化式の基礎となる
+    type: prerequisite
+  - url: /senior/等比数列_教材.html
+    title: 等比数列
+    note: 等比型漸化式の基礎となる
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>預金の利息、ウイルスの増殖、ローンの残高...。これらに共通するのは「前の値から次の値が決まる」という関係です。この関係を式で表したものが<strong>漸化式</strong>（ぜんかしき）です。</p>
+        <p>このページでは、漸化式の解き方を学びます：</p>
+        <ul>
+            <li><strong>等差型・等比型</strong>：最も基本的な漸化式のパターン</li>
+            <li><strong>特性方程式</strong>：\(a_{n+1} = pa_n + q\) 型を等比型に変形する魔法の道具</li>
+            <li><strong>分数型漸化式</strong>：逆数をとって線形に変形するテクニック</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】漸化式とは「隣り合う項の関係式」<br>
+            \(a_{n+1} = f(a_n)\) の形で、\(a_1\)（初項）が与えられれば全ての項が決まる！
+        </div>
+
+        <!-- 漸化式の分類図 -->
+        <div class="svg-container">
+            <svg width="700" height="280" viewBox="0 0 700 280">
+                <!-- タイトル -->
+                <text x="350" y="25" text-anchor="middle" font-size="18" font-weight="bold" fill="#1976d2">漸化式の分類と解法</text>
+
+                <!-- メインボックス -->
+                <rect x="250" y="40" width="200" height="40" rx="5" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="350" y="65" text-anchor="middle" font-size="16" fill="#1976d2">漸化式</text>
+
+                <!-- 矢印 -->
+                <line x1="300" y1="80" x2="150" y2="120" stroke="#666" stroke-width="2"/>
+                <line x1="350" y1="80" x2="350" y2="120" stroke="#666" stroke-width="2"/>
+                <line x1="400" y1="80" x2="550" y2="120" stroke="#666" stroke-width="2"/>
+
+                <!-- 3つのタイプ -->
+                <rect x="50" y="120" width="200" height="50" rx="5" fill="#c8e6c9" stroke="#4caf50" stroke-width="2"/>
+                <text x="150" y="140" text-anchor="middle" font-size="14" fill="#2e7d32">等差型</text>
+                <text x="150" y="158" text-anchor="middle" font-size="14" fill="#2e7d32">a_{n+1} = a_n + d</text>
+
+                <rect x="250" y="120" width="200" height="50" rx="5" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+                <text x="350" y="140" text-anchor="middle" font-size="14" fill="#e65100">等比型</text>
+                <text x="350" y="158" text-anchor="middle" font-size="14" fill="#e65100">a_{n+1} = ra_n</text>
+
+                <rect x="450" y="120" width="200" height="50" rx="5" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
+                <text x="550" y="140" text-anchor="middle" font-size="14" fill="#c2185b">一般線形型</text>
+                <text x="550" y="158" text-anchor="middle" font-size="14" fill="#c2185b">a_{n+1} = pa_n + q</text>
+
+                <!-- 解法への矢印 -->
+                <line x1="150" y1="170" x2="150" y2="200" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow-green)"/>
+                <line x1="350" y1="170" x2="350" y2="200" stroke="#ff9800" stroke-width="2" marker-end="url(#arrow-orange)"/>
+                <line x1="550" y1="170" x2="550" y2="200" stroke="#e91e63" stroke-width="2" marker-end="url(#arrow-pink)"/>
+
+                <!-- 解法 -->
+                <rect x="50" y="200" width="200" height="60" rx="5" fill="#c8e6c9" stroke="#4caf50" stroke-width="1"/>
+                <text x="150" y="225" text-anchor="middle" font-size="14" fill="#2e7d32">そのまま一般項</text>
+                <text x="150" y="245" text-anchor="middle" font-size="14" fill="#2e7d32">a_n = a_1 + (n-1)d</text>
+
+                <rect x="250" y="200" width="200" height="60" rx="5" fill="#fff3e0" stroke="#ff9800" stroke-width="1"/>
+                <text x="350" y="225" text-anchor="middle" font-size="14" fill="#e65100">そのまま一般項</text>
+                <text x="350" y="245" text-anchor="middle" font-size="14" fill="#e65100">a_n = a_1 × r^{n-1}</text>
+
+                <rect x="450" y="200" width="200" height="60" rx="5" fill="#fce4ec" stroke="#e91e63" stroke-width="1"/>
+                <text x="550" y="220" text-anchor="middle" font-size="14" fill="#c2185b">特性方程式で</text>
+                <text x="550" y="240" text-anchor="middle" font-size="14" fill="#c2185b">等比型に変形！</text>
+
+                <!-- 矢印マーカー定義 -->
+                <defs>
+                    <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#4caf50"/>
+                    </marker>
+                    <marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#ff9800"/>
+                    </marker>
+                    <marker id="arrow-pink" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#e91e63"/>
+                    </marker>
+                </defs>
+            </svg>
+            <div class="svg-caption">漸化式のタイプと対応する解法</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 等差型漸化式</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ a_{n+1} = a_n + d \quad \Rightarrow \quad a_n = a_1 + (n-1)d \]
+            </div>
+            <p>隣り合う項の差が一定（公差\(d\)）。等差数列の定義そのもの。</p>
+            <p><strong>→ だから結果は：</strong> 初項と公差が分かれば一般項は一発で求まる。</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 等比型漸化式</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ a_{n+1} = ra_n \quad \Rightarrow \quad a_n = a_1 \cdot r^{n-1} \]
+            </div>
+            <p>隣り合う項の比が一定（公比\(r\)）。等比数列の定義そのもの。</p>
+            <p><strong>→ だから結果は：</strong> 初項と公比が分かれば一般項は一発で求まる。</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 特性方程式（\(a_{n+1} = pa_n + q\) 型）</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ \alpha = p\alpha + q \quad \text{を解いて} \quad \alpha = \frac{q}{1-p} \]
+            </div>
+            <p>特性方程式の解\(\alpha\)を使うと、\(a_{n+1} - \alpha = p(a_n - \alpha)\) と変形できる。</p>
+            <p><strong>→ だから結果は：</strong> \(b_n = a_n - \alpha\) とおくと等比型に帰着！</p>
+            <details class="thinking"><summary><strong>💡 考え方を見る</strong></summary>
+            <p>漸化式 \(a_{n+1} = pa_n + q\) の両辺から\(\alpha\)を引くと：</p>
+            <p>\(a_{n+1} - \alpha = pa_n + q - \alpha\)</p>
+            <p>\(\alpha = p\alpha + q\) より \(q = \alpha - p\alpha = \alpha(1-p)\) なので：</p>
+            <p>\(a_{n+1} - \alpha = pa_n + \alpha(1-p) - \alpha = pa_n - p\alpha = p(a_n - \alpha)\)</p>
+            <p>これは \(b_n = a_n - \alpha\) とおくと、\(b_{n+1} = pb_n\) という等比型になる！</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 分数型漸化式</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <div class="formula">
+                \[ a_{n+1} = \frac{a_n}{pa_n + q} \quad \Rightarrow \quad \frac{1}{a_{n+1}} = p + \frac{q}{a_n} \]
+            </div>
+            <p>\(b_n = \dfrac{1}{a_n}\) とおくと、\(b_{n+1} = qb_n + p\) という線形型に変形できる。</p>
+            <p><strong>→ だから結果は：</strong> 逆数をとれば、特性方程式を使える形になる！</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>漸化式のタイプを見極めて、適切な方法で一般項を求めましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 基本型（等差・等比）</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>等差型漸化式
+            </div>
+            <p>\(a_1 = 3\)、\(a_{n+1} = a_n + 5\) のとき、一般項\(a_n\)を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>漸化式の形から「等差型」と判断（\(+5\)が一定）</li>
+                <li>公差\(d = 5\)、初項\(a_1 = 3\)</li>
+                <li>等差数列の一般項公式に代入</li>
+            </ol>
+            <div class="formula">
+                \[ a_n = a_1 + (n-1)d = 3 + (n-1) \cdot 5 = 3 + 5n - 5 = \boxed{5n - 2} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>等比型漸化式
+            </div>
+            <p>\(a_1 = 2\)、\(a_{n+1} = 3a_n\) のとき、一般項\(a_n\)を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>漸化式の形から「等比型」と判断（\(\times 3\)が一定）</li>
+                <li>公比\(r = 3\)、初項\(a_1 = 2\)</li>
+                <li>等比数列の一般項公式に代入</li>
+            </ol>
+            <div class="formula">
+                \[ a_n = a_1 \cdot r^{n-1} = 2 \cdot 3^{n-1} = \boxed{2 \cdot 3^{n-1}} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 特性方程式を使うタイプ</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>\(a_{n+1} = pa_n + q\) 型
+            </div>
+            <p>\(a_1 = 1\)、\(a_{n+1} = 2a_n + 3\) のとき、一般項\(a_n\)を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>特性方程式 \(\alpha = 2\alpha + 3\) を解く → \(\alpha = -3\)</li>
+                <li>漸化式を変形：\(a_{n+1} - (-3) = 2(a_n - (-3))\) すなわち \(a_{n+1} + 3 = 2(a_n + 3)\)</li>
+                <li>\(b_n = a_n + 3\) とおくと、\(b_{n+1} = 2b_n\)（等比型！）</li>
+                <li>\(b_1 = a_1 + 3 = 1 + 3 = 4\) なので、\(b_n = 4 \cdot 2^{n-1} = 2^{n+1}\)</li>
+                <li>\(a_n = b_n - 3\) に戻す</li>
+            </ol>
+            <div class="formula">
+                \[ a_n = 2^{n+1} - 3 = \boxed{2^{n+1} - 3} \]
+            </div>
+            <p><strong>検算：</strong> \(a_1 = 2^2 - 3 = 1\) ✓、\(a_2 = 2 \cdot 1 + 3 = 5\)、\(2^3 - 3 = 5\) ✓</p>
+        </div>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例4</span>特性方程式の応用
+            </div>
+            <p>\(a_1 = 5\)、\(a_{n+1} = 3a_n - 4\) のとき、一般項\(a_n\)を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>特性方程式 \(\alpha = 3\alpha - 4\) を解く → \(-2\alpha = -4\) → \(\alpha = 2\)</li>
+                <li>漸化式を変形：\(a_{n+1} - 2 = 3(a_n - 2)\)</li>
+                <li>\(b_n = a_n - 2\) とおくと、\(b_{n+1} = 3b_n\)（等比型！）</li>
+                <li>\(b_1 = a_1 - 2 = 5 - 2 = 3\) なので、\(b_n = 3 \cdot 3^{n-1} = 3^n\)</li>
+                <li>\(a_n = b_n + 2\) に戻す</li>
+            </ol>
+            <div class="formula">
+                \[ a_n = 3^n + 2 = \boxed{3^n + 2} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 分数型</h3>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例5</span>分数型漸化式
+            </div>
+            <p>\(a_1 = 1\)、\(a_{n+1} = \dfrac{a_n}{2a_n + 1}\) のとき、一般項\(a_n\)を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>分数型なので、\(b_n = \dfrac{1}{a_n}\) とおく</li>
+                <li>漸化式の逆数をとる：\(\dfrac{1}{a_{n+1}} = \dfrac{2a_n + 1}{a_n} = 2 + \dfrac{1}{a_n}\)</li>
+                <li>つまり \(b_{n+1} = b_n + 2\)（等差型！）</li>
+                <li>\(b_1 = \dfrac{1}{a_1} = 1\) なので、\(b_n = 1 + (n-1) \cdot 2 = 2n - 1\)</li>
+                <li>\(a_n = \dfrac{1}{b_n}\) に戻す</li>
+            </ol>
+            <div class="formula">
+                \[ a_n = \frac{1}{2n - 1} = \boxed{\frac{1}{2n - 1}} \]
+            </div>
+            <p><strong>検算：</strong> \(a_1 = \dfrac{1}{1} = 1\) ✓、\(a_2 = \dfrac{1}{2 \cdot 1 + 1} = \dfrac{1}{3}\)、\(\dfrac{1}{2 \cdot 2 - 1} = \dfrac{1}{3}\) ✓</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：タイプ判定フロー</strong><br>
+            <ol>
+                <li>右辺が \(a_n + d\) → 等差型</li>
+                <li>右辺が \(ra_n\) → 等比型</li>
+                <li>右辺が \(pa_n + q\)（\(q \neq 0\)）→ 特性方程式</li>
+                <li>右辺が分数で\(a_n\)が分母にも → 逆数をとって線形化</li>
+            </ol>
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：特性方程式は「固定点」を探している</strong><br>
+            特性方程式 \(\alpha = p\alpha + q\) の解は、「\(a_n = \alpha\) なら \(a_{n+1} = \alpha\) になる」という不動点。<br>
+            この\(\alpha\)からのズレ（\(a_n - \alpha\)）が等比数列になる、という発想！
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：必ず検算する</strong><br>
+            求めた一般項に \(n = 1, 2\) を代入して、初項と2番目の項が正しいか確認。<br>
+            また、\(a_2 = pa_1 + q\) も確認すると安心。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：特性方程式の符号ミス</div>
+            <p><strong>ダメな例：</strong> \(\alpha = 2\alpha + 3\) を \(\alpha = 3\) と解く</p>
+            <p><strong>対策：</strong> \(\alpha = 2\alpha + 3\) → \(\alpha - 2\alpha = 3\) → \(-\alpha = 3\) → \(\alpha = -3\)<br>
+            丁寧に移項して符号を確認！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：置き換えた数列の初項を間違える</div>
+            <p><strong>ダメな例：</strong> \(b_n = a_n + 3\) としたとき、\(b_1 = a_1 = 1\) とする</p>
+            <p><strong>対策：</strong> \(b_1 = a_1 + 3 = 1 + 3 = 4\) が正しい。置き換えの式に初項を代入する！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：元の数列に戻し忘れる</div>
+            <p><strong>ダメな例：</strong> \(b_n = 2^{n+1}\) で終わりにする</p>
+            <p><strong>対策：</strong> \(a_n = b_n - 3 = 2^{n+1} - 3\) と必ず元の数列に戻す。<br>
+            答えは必ず \(a_n = \ldots\) の形で書く！</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">漸化式のタイプを正しく判定したか？</div>
+            <div class="checklist-item">特性方程式を使う場合、\(\alpha\)の符号は正しいか？</div>
+            <div class="checklist-item">置き換えた数列の初項を正しく求めたか？</div>
+            <div class="checklist-item">元の数列\(a_n\)に戻したか？</div>
+            <div class="checklist-item">\(n = 1, 2\)で検算して初項・漸化式が成り立つか確認したか？</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>\(a_1 = 2\)、\(a_{n+1} = 3a_n + 2\) のとき、一般項\(a_n\)を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>特性方程式：\(\alpha = 3\alpha + 2\) → \(-2\alpha = 2\) → \(\alpha = -1\)</p>
+                    <p>変形：\(a_{n+1} + 1 = 3(a_n + 1)\)</p>
+                    <p>\(b_n = a_n + 1\) とおくと、\(b_1 = 3\)、\(b_{n+1} = 3b_n\)</p>
+                    <p>\(b_n = 3 \cdot 3^{n-1} = 3^n\)</p>
+                    <p>\(\boxed{a_n = 3^n - 1}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\(a_1 = 2\)、\(a_{n+1} = \dfrac{a_n}{a_n + 1}\) のとき、一般項\(a_n\)を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>逆数をとる：\(\dfrac{1}{a_{n+1}} = \dfrac{a_n + 1}{a_n} = 1 + \dfrac{1}{a_n}\)</p>
+                    <p>\(b_n = \dfrac{1}{a_n}\) とおくと、\(b_{n+1} = b_n + 1\)（等差型）</p>
+                    <p>\(b_1 = \dfrac{1}{2}\)、公差\(d = 1\)</p>
+                    <p>\(b_n = \dfrac{1}{2} + (n-1) = n - \dfrac{1}{2} = \dfrac{2n - 1}{2}\)</p>
+                    <p>\(\boxed{a_n = \dfrac{2}{2n - 1}}\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：漸化式は「タイプ判定 → 適切な変形 → 一般項 → 検算」の4ステップで攻略！
+</div>
+
+<!-- ========== 関連教材 ========== -->
+<!-- Front Matterのrelatedで指定すればレイアウトが自動生成します -->
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「フィボナッチ数列と黄金比」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 ウサギの繁殖問題から生まれた数列</div>
+
+            <p>1202年、イタリアの数学者フィボナッチは『算盤の書』の中でこんな問題を考えました：</p>
+
+            <p>「つがいのウサギは毎月1組のつがいを産む。産まれたウサギは2ヶ月後から毎月1組ずつ産む。1組から始めて1年後には何組になる？」</p>
+
+            <p>月ごとのつがいの数を数えると：</p>
+            <div class="formula">
+                \[ 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, \ldots \]
+            </div>
+
+            <p>これが有名な<strong>フィボナッチ数列</strong>です。漸化式で書くと：</p>
+            <div class="formula">
+                \[ a_1 = 1, \quad a_2 = 1, \quad a_{n+2} = a_{n+1} + a_n \]
+            </div>
+
+            <p>実はこの数列、驚くべき性質を持っています。隣り合う項の比 \(\dfrac{a_{n+1}}{a_n}\) を計算すると：</p>
+
+            <table class="material-table">
+                <tr><th>n</th><th>a_n</th><th>a_{n+1}/a_n</th></tr>
+                <tr><td>1</td><td>1</td><td>1/1 = 1.000</td></tr>
+                <tr><td>2</td><td>1</td><td>2/1 = 2.000</td></tr>
+                <tr><td>3</td><td>2</td><td>3/2 = 1.500</td></tr>
+                <tr><td>4</td><td>3</td><td>5/3 = 1.667</td></tr>
+                <tr><td>5</td><td>5</td><td>8/5 = 1.600</td></tr>
+                <tr><td>10</td><td>55</td><td>89/55 = 1.618...</td></tr>
+            </table>
+
+            <p>この比は、nが大きくなると<strong>黄金比</strong> \(\varphi = \dfrac{1 + \sqrt{5}}{2} \approx 1.618\ldots\) に近づきます！</p>
+
+            <p>黄金比は古代ギリシャ時代から「最も美しい比率」とされ、パルテノン神殿やモナリザの構図にも使われています。</p>
+
+            <p>そしてフィボナッチ数列は自然界にもあふれています。ひまわりの種の配列、松ぼっくりの鱗の螺旋、貝殻の巻き方...。数学と自然の不思議なつながりですね。</p>
+
+            <p>ちなみにフィボナッチ数列の一般項は：</p>
+            <div class="formula">
+                \[ a_n = \frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^n - \left(\frac{1-\sqrt{5}}{2}\right)^n\right] \]
+            </div>
+            <p>整数の数列なのに、一般項に\(\sqrt{5}\)が出てくるのは不思議ですよね。しかし計算すると必ず整数になります。これも数学の美しさです。</p>
+        </div>
+    </div>
+</section>

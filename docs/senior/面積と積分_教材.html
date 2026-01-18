@@ -1,0 +1,618 @@
+---
+layout: material-raw
+title: 面積と積分
+icon: "📐"
+description: 曲線とx軸で囲まれた面積、2曲線間の面積、そして入試頻出の面積公式（1/6公式、1/12公式）をマスター。定積分を使った面積計算の完全攻略。
+level: 標準
+level_num: 2
+category: functions
+school_level: senior
+order: 13
+keywords:
+  - 積分
+  - 面積
+  - 定積分
+  - 1/6公式
+  - 1/12公式
+  - 曲線
+cover_image: /images/noimage.jpg
+cover_description: 放物線とx軸に囲まれた領域、2曲線で囲まれた領域
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「ケプラーのワイン樽問題」"
+related:
+  - url: /senior/微分の計算_教材.html
+    title: 微分の計算
+    note: 微分と積分は逆演算の関係
+    type: prerequisite
+  - url: /senior/関数の増減と極値_教材.html
+    title: 関数の増減と極値
+    note: 増減表と面積計算の融合問題に発展
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「曲線で囲まれた図形の面積を求めたい」——この自然な疑問に答えるのが<strong>積分による面積計算</strong>です。長方形や三角形の面積は小学校で習いましたが、曲線で囲まれた図形はどうでしょう？定積分を使えば、どんな曲線でも面積が計算できます。</p>
+        <p>このページでは、積分による面積計算を学びます：</p>
+        <ul>
+            <li><strong>曲線とx軸で囲まれた面積</strong>：定積分の絶対値に注意</li>
+            <li><strong>2曲線間の面積</strong>：「上から下を引く」の原則</li>
+            <li><strong>面積公式（1/6公式）</strong>：放物線と直線で囲まれた面積の高速計算</li>
+            <li><strong>面積公式（1/12公式）</strong>：2つの放物線で囲まれた面積</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】面積は「上の関数 − 下の関数」を積分：\(S = \int_a^b \{f(x) - g(x)\} dx\)（\(f(x) \geq g(x)\) のとき）
+        </div>
+
+        <!-- 面積の基本概念の図解 -->
+        <div class="svg-container">
+            <svg width="700" height="280" viewBox="0 0 700 280">
+                <!-- 座標軸 -->
+                <defs>
+                    <marker id="arrow-black" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+                    </marker>
+                </defs>
+                <line x1="50" y1="200" x2="330" y2="200" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+                <line x1="80" y1="250" x2="80" y2="30" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+                <text x="340" y="205" font-size="14" fill="#333">x</text>
+                <text x="70" y="25" font-size="14" fill="#333">y</text>
+
+                <!-- 放物線 y = -x² + 4 を近似（頂点(0,4), x=-2,2で0） -->
+                <!-- 座標変換: SVG_x = 80 + 50*x, SVG_y = 200 - 30*y -->
+                <!-- x=-2: (80-100, 200-0) = (-20, 200) → (80, 140) から開始 -->
+                <path d="M 80 140
+                         L 90 119 L 100 101 L 110 86 L 120 74 L 130 65 L 140 59 L 150 56 L 160 56
+                         L 170 59 L 180 65 L 190 74 L 200 86 L 210 101 L 220 119 L 230 140 L 240 164 L 250 191"
+                      fill="none" stroke="#1976d2" stroke-width="3"/>
+                <text x="255" y="210" font-size="14" fill="#1976d2" font-weight="bold">y = f(x)</text>
+
+                <!-- 面積の塗りつぶし -->
+                <path d="M 120 200 L 120 74 L 130 65 L 140 59 L 150 56 L 160 56 L 170 59 L 180 65 L 190 74 L 200 200 Z"
+                      fill="#e3f2fd" stroke="none"/>
+
+                <!-- x = a, b の縦線 -->
+                <line x1="120" y1="200" x2="120" y2="74" stroke="#e53935" stroke-width="2" stroke-dasharray="5,3"/>
+                <line x1="200" y1="200" x2="200" y2="86" stroke="#e53935" stroke-width="2" stroke-dasharray="5,3"/>
+                <text x="115" y="220" font-size="14" fill="#e53935">a</text>
+                <text x="195" y="220" font-size="14" fill="#e53935">b</text>
+
+                <!-- 面積S -->
+                <text x="155" y="130" font-size="18" fill="#1976d2" font-weight="bold">S</text>
+
+                <!-- 右側：2曲線の場合 -->
+                <line x1="400" y1="200" x2="650" y2="200" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+                <line x1="420" y1="250" x2="420" y2="30" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+                <text x="660" y="205" font-size="14" fill="#333">x</text>
+                <text x="410" y="25" font-size="14" fill="#333">y</text>
+
+                <!-- 上の曲線 f(x) -->
+                <path d="M 440 160 Q 490 60 540 80 Q 590 100 620 130"
+                      fill="none" stroke="#1976d2" stroke-width="3"/>
+                <text x="625" y="125" font-size="14" fill="#1976d2" font-weight="bold">y = f(x)</text>
+
+                <!-- 下の曲線 g(x) -->
+                <path d="M 440 160 Q 490 180 540 170 Q 590 160 620 130"
+                      fill="none" stroke="#4caf50" stroke-width="3"/>
+                <text x="625" y="165" font-size="14" fill="#4caf50" font-weight="bold">y = g(x)</text>
+
+                <!-- 面積の塗りつぶし -->
+                <path d="M 440 160 Q 490 60 540 80 Q 590 100 620 130 Q 590 160 540 170 Q 490 180 440 160"
+                      fill="#e8f5e9" stroke="none"/>
+
+                <!-- 交点 -->
+                <circle cx="440" cy="160" r="5" fill="#e53935"/>
+                <circle cx="620" cy="130" r="5" fill="#e53935"/>
+                <text x="430" y="180" font-size="14" fill="#e53935">a</text>
+                <text x="625" y="145" font-size="14" fill="#e53935">b</text>
+
+                <!-- 面積S -->
+                <text x="530" y="135" font-size="18" fill="#4caf50" font-weight="bold">S</text>
+
+                <!-- 説明 -->
+                <text x="90" y="265" font-size="14" fill="#333">曲線とx軸の面積</text>
+                <text x="450" y="265" font-size="14" fill="#333">2曲線間の面積</text>
+            </svg>
+            <div class="svg-caption">面積は「上の関数から下の関数を引いて積分」</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 曲線とx軸で囲まれた面積（基本）</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <p>\(a \leq x \leq b\) で \(f(x) \geq 0\) のとき：</p>
+            <div class="formula">
+                \[ S = \int_a^b f(x)\, dx \]
+            </div>
+            <p>\(a \leq x \leq b\) で \(f(x) \leq 0\) のとき（x軸より下）：</p>
+            <div class="formula">
+                \[ S = -\int_a^b f(x)\, dx = \int_a^b |f(x)|\, dx \]
+            </div>
+            <p><strong>→ だから結果は：</strong> x軸より下の部分は絶対値を取る（マイナスをつける）</p>
+            <details class="thinking"><summary><strong>💡 なぜマイナスをつけるのか</strong></summary>
+            <p>定積分は「符号付き面積」を計算します。x軸より下では \(f(x) < 0\) なので、積分値も負になります。面積（正の値）を求めるには絶対値を取る必要があります。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 2曲線間の面積</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <p>\(a \leq x \leq b\) で \(f(x) \geq g(x)\) のとき（f が上、g が下）：</p>
+            <div class="formula">
+                \[ S = \int_a^b \{f(x) - g(x)\}\, dx \]
+            </div>
+            <p><strong>→ だから結果は：</strong> 「上から下を引く」と覚える。上下が入れ替わる場合は分割して計算。</p>
+            <p><strong>✅ メリット：</strong> 「どちらがx軸の上か下か」を気にせず、単に「上−下」で計算できる</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 面積公式① 1/6公式</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <p>放物線 \(y = a(x - \alpha)(x - \beta)\)（\(a \neq 0\)、\(\alpha < \beta\)）と x軸で囲まれた面積：</p>
+            <div class="formula">
+                \[ S = \frac{|a|}{6}(\beta - \alpha)^3 \]
+            </div>
+            <p><strong>→ だから結果は：</strong> 2次関数がx軸と交わる2点 \(\alpha, \beta\) がわかれば、即座に面積が求まる</p>
+            <details class="thinking"><summary><strong>💡 公式の導出</strong></summary>
+            <p>\(a > 0\) のとき、\(\alpha < x < \beta\) で \(y < 0\) なので：</p>
+            <p>\(S = -\int_\alpha^\beta a(x-\alpha)(x-\beta)\,dx = -a \cdot \left(-\frac{1}{6}\right)(\beta-\alpha)^3 = \frac{a}{6}(\beta-\alpha)^3\)</p>
+            <p>積分の計算に \(\int_\alpha^\beta (x-\alpha)(x-\beta)\,dx = -\frac{(\beta-\alpha)^3}{6}\) という公式を使っています。</p>
+            </details>
+        </div>
+
+        <!-- 1/6公式の図解 -->
+        <div class="svg-container">
+            <svg width="650" height="250" viewBox="0 0 650 250">
+                <defs>
+                    <marker id="arrow-b" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+                    </marker>
+                </defs>
+                <!-- 座標軸 -->
+                <line x1="50" y1="120" x2="320" y2="120" stroke="#333" stroke-width="2" marker-end="url(#arrow-b)"/>
+                <line x1="80" y1="220" x2="80" y2="30" stroke="#333" stroke-width="2" marker-end="url(#arrow-b)"/>
+                <text x="330" y="125" font-size="14" fill="#333">x</text>
+                <text x="70" y="25" font-size="14" fill="#333">y</text>
+
+                <!-- 放物線 y = (x-α)(x-β) を下に凸で描画 (α=1, β=4 として) -->
+                <!-- y = (x-1)(x-4) = x² - 5x + 4, 頂点 x=2.5, y=-2.25 -->
+                <!-- 座標変換: SVG_x = 80 + 40*x, SVG_y = 120 - 40*y -->
+                <path d="M 100 120
+                         L 110 110 L 120 104 L 130 101 L 140 100 L 150 101 L 160 104 L 170 110 L 180 120 L 200 144 L 220 176"
+                      fill="none" stroke="#1976d2" stroke-width="3"/>
+
+                <!-- 面積塗りつぶし -->
+                <path d="M 100 120 L 110 110 L 120 104 L 130 101 L 140 100 L 150 101 L 160 104 L 170 110 L 180 120 Z"
+                      fill="#ffebee" stroke="none"/>
+
+                <!-- α, β のマーク -->
+                <circle cx="100" cy="120" r="4" fill="#e53935"/>
+                <circle cx="180" cy="120" r="4" fill="#e53935"/>
+                <text x="93" y="140" font-size="14" fill="#e53935">α</text>
+                <text x="175" y="140" font-size="14" fill="#e53935">β</text>
+
+                <!-- 面積S -->
+                <text x="130" y="118" font-size="16" fill="#e53935" font-weight="bold">S</text>
+
+                <!-- 公式 -->
+                <text x="250" y="60" font-size="16" fill="#333">1/6公式</text>
+                <text x="250" y="90" font-size="18" fill="#e53935" font-weight="bold">S = |a|/6 × (β−α)³</text>
+
+                <!-- 右側：放物線と直線 -->
+                <line x1="380" y1="150" x2="620" y2="150" stroke="#333" stroke-width="2" marker-end="url(#arrow-b)"/>
+                <line x1="400" y1="220" x2="400" y2="30" stroke="#333" stroke-width="2" marker-end="url(#arrow-b)"/>
+                <text x="630" y="155" font-size="14" fill="#333">x</text>
+                <text x="390" y="25" font-size="14" fill="#333">y</text>
+
+                <!-- 放物線と直線 -->
+                <path d="M 420 180 L 440 160 L 460 148 L 480 144 L 500 148 L 520 160 L 540 180 L 560 208"
+                      fill="none" stroke="#1976d2" stroke-width="3"/>
+                <line x1="420" y1="180" x2="560" y2="100" stroke="#4caf50" stroke-width="2"/>
+
+                <!-- 交点 -->
+                <circle cx="440" cy="160" r="4" fill="#e53935"/>
+                <circle cx="520" cy="133" r="4" fill="#e53935"/>
+                <text x="430" y="180" font-size="14" fill="#e53935">α</text>
+                <text x="525" y="125" font-size="14" fill="#e53935">β</text>
+
+                <!-- 面積塗りつぶし -->
+                <path d="M 440 160 L 460 148 L 480 144 L 500 148 L 520 133 L 440 160"
+                      fill="#e8f5e9" stroke="none" fill-opacity="0.7"/>
+
+                <!-- 1/6公式（直線と放物線） -->
+                <text x="430" y="220" font-size="14" fill="#333">放物線と直線も1/6公式！</text>
+            </svg>
+            <div class="svg-caption">1/6公式：放物線とx軸、放物線と直線で囲まれた面積</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 面積公式② 放物線と直線の1/6公式</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <p>放物線 \(y = ax^2 + bx + c\) と直線が \(x = \alpha, \beta\) で交わるとき：</p>
+            <div class="formula">
+                \[ S = \frac{|a|}{6}(\beta - \alpha)^3 \]
+            </div>
+            <p><strong>→ だから結果は：</strong> 「放物線と直線の差」は2次関数。その2次の係数と交点の差だけで面積がわかる</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 面積公式③ 1/12公式</strong> <a href="#ex-5" class="example-link">→ 例5</a>
+            <p>2つの放物線が \(x = \alpha, \beta\) で交わり、\(x^2\) の係数の差が \(a\) のとき：</p>
+            <div class="formula">
+                \[ S = \frac{|a|}{12}(\beta - \alpha)^3 \]
+            </div>
+            <p><strong>→ だから結果は：</strong> 2つの放物線の差は2次関数。その最高次係数と交点で面積が決まる</p>
+            <details class="thinking"><summary><strong>💡 1/6 と 1/12 の違い</strong></summary>
+            <p>1/6公式：放物線と「直線」（または x軸）→ 差が2次関数で、最高次係数がそのまま \(a\)</p>
+            <p>1/12公式：2つの放物線 → 差をとると2次関数になるが、放物線同士の対称性から係数が半分の効果を持ち、1/12になる</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 便利な積分公式（導出に使う）</strong>
+            <table class="material-table">
+                <tr><th>積分</th><th>結果</th><th>用途</th></tr>
+                <tr><td>\(\int_\alpha^\beta (x-\alpha)(x-\beta)\,dx\)</td><td>\(-\frac{(\beta-\alpha)^3}{6}\)</td><td>1/6公式の導出</td></tr>
+                <tr><td>\(\int_\alpha^\beta (x-\alpha)^2(x-\beta)\,dx\)</td><td>\(-\frac{(\beta-\alpha)^4}{12}\)</td><td>1/12公式の導出</td></tr>
+                <tr><td>\(\int_\alpha^\beta (x-\alpha)(x-\beta)^2\,dx\)</td><td>\(\frac{(\beta-\alpha)^4}{12}\)</td><td>1/12公式の導出</td></tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>定積分を使って面積を求めてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 曲線とx軸で囲まれた面積</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>放物線とx軸の面積（基本）
+            </div>
+            <p>放物線 \(y = x^2 - 4\) と x軸で囲まれた面積を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>x軸との交点を求める（\(y = 0\) を解く）</li>
+                <li>グラフの上下を確認する</li>
+                <li>面積を積分で計算する（x軸より下なら絶対値）</li>
+            </ol>
+            <p><strong>Step 1：交点を求める</strong></p>
+            <div class="formula">
+                \[ x^2 - 4 = 0 \quad \Rightarrow \quad x = \pm 2 \]
+            </div>
+            <p><strong>Step 2：上下を確認</strong></p>
+            <p>\(-2 < x < 2\) で \(y = x^2 - 4 < 0\)（x軸より下）</p>
+            <p><strong>Step 3：面積を計算</strong></p>
+            <div class="formula">
+                \[ S = -\int_{-2}^{2} (x^2 - 4)\, dx = -\left[\frac{x^3}{3} - 4x\right]_{-2}^{2} \]
+                \[ = -\left\{\left(\frac{8}{3} - 8\right) - \left(-\frac{8}{3} + 8\right)\right\} \]
+                \[ = -\left\{-\frac{16}{3} - \frac{16}{3}\right\} = -\left(-\frac{32}{3}\right) = \frac{32}{3} \]
+            </div>
+            <p><em>（確認：1/6公式なら \(S = \frac{1}{6} \cdot |1| \cdot (2-(-2))^3 = \frac{1}{6} \cdot 64 = \frac{32}{3}\) で一致！）</em></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 2曲線間の面積</h3>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>放物線と直線の面積（基本）
+            </div>
+            <p>放物線 \(y = x^2\) と直線 \(y = x + 2\) で囲まれた面積を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>2曲線の交点を求める</li>
+                <li>どちらが上かを確認する</li>
+                <li>「上 − 下」を積分する</li>
+            </ol>
+            <p><strong>Step 1：交点を求める</strong></p>
+            <div class="formula">
+                \[ x^2 = x + 2 \quad \Rightarrow \quad x^2 - x - 2 = 0 \]
+                \[ (x-2)(x+1) = 0 \quad \Rightarrow \quad x = -1, 2 \]
+            </div>
+            <p><strong>Step 2：上下を確認</strong></p>
+            <p>\(-1 < x < 2\) で \(x + 2 > x^2\)（直線が上、放物線が下）</p>
+            <p><strong>Step 3：面積を計算</strong></p>
+            <div class="formula">
+                \[ S = \int_{-1}^{2} \{(x + 2) - x^2\}\, dx = \int_{-1}^{2} (-x^2 + x + 2)\, dx \]
+                \[ = \left[-\frac{x^3}{3} + \frac{x^2}{2} + 2x\right]_{-1}^{2} \]
+                \[ = \left(-\frac{8}{3} + 2 + 4\right) - \left(\frac{1}{3} + \frac{1}{2} - 2\right) \]
+                \[ = \left(-\frac{8}{3} + 6\right) - \left(\frac{1}{3} + \frac{1}{2} - 2\right) \]
+                \[ = \frac{10}{3} - \left(-\frac{7}{6}\right) = \frac{10}{3} + \frac{7}{6} = \frac{20}{6} + \frac{7}{6} = \frac{27}{6} = \frac{9}{2} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 1/6公式の活用</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>1/6公式で高速計算
+            </div>
+            <p>放物線 \(y = x^2 - 4\) と x軸で囲まれた面積を1/6公式で求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(y = a(x - \alpha)(x - \beta)\) の形に因数分解</li>
+                <li>公式 \(S = \frac{|a|}{6}(\beta - \alpha)^3\) に代入</li>
+            </ol>
+            <p><strong>Step 1：因数分解</strong></p>
+            <div class="formula">
+                \[ y = x^2 - 4 = (x + 2)(x - 2) \]
+            </div>
+            <p>よって \(a = 1\)、\(\alpha = -2\)、\(\beta = 2\)</p>
+            <p><strong>Step 2：公式に代入</strong></p>
+            <div class="formula">
+                \[ S = \frac{|1|}{6}(2 - (-2))^3 = \frac{1}{6} \cdot 4^3 = \frac{64}{6} = \frac{32}{3} \]
+            </div>
+            <p><em>積分計算なしで一発！</em></p>
+        </div>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>放物線と直線に1/6公式
+            </div>
+            <p>例2の面積を1/6公式で求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>「上 − 下」の式を作る</li>
+                <li>2次の係数 \(a\) と交点 \(\alpha, \beta\) を読み取る</li>
+                <li>公式に代入</li>
+            </ol>
+            <p><strong>Step 1：上 − 下の式</strong></p>
+            <div class="formula">
+                \[ (x + 2) - x^2 = -x^2 + x + 2 = -(x^2 - x - 2) = -(x - 2)(x + 1) \]
+            </div>
+            <p>よって \(a = -1\)、\(\alpha = -1\)、\(\beta = 2\)</p>
+            <p><strong>Step 2：公式に代入</strong></p>
+            <div class="formula">
+                \[ S = \frac{|-1|}{6}(2 - (-1))^3 = \frac{1}{6} \cdot 3^3 = \frac{27}{6} = \frac{9}{2} \]
+            </div>
+            <p><em>例2と同じ答えが出た！</em></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 1/12公式の活用</h3>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>2つの放物線で囲まれた面積
+            </div>
+            <p>放物線 \(y = x^2\) と \(y = -x^2 + 4x\) で囲まれた面積を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>交点を求める</li>
+                <li>\(x^2\) の係数の差を求める</li>
+                <li>1/12公式に代入</li>
+            </ol>
+            <p><strong>Step 1：交点を求める</strong></p>
+            <div class="formula">
+                \[ x^2 = -x^2 + 4x \quad \Rightarrow \quad 2x^2 - 4x = 0 \]
+                \[ 2x(x - 2) = 0 \quad \Rightarrow \quad x = 0, 2 \]
+            </div>
+            <p><strong>Step 2：係数の差</strong></p>
+            <p>上の放物線：\(-x^2 + 4x\)（\(x^2\) の係数は \(-1\)）</p>
+            <p>下の放物線：\(x^2\)（\(x^2\) の係数は \(1\)）</p>
+            <p>差：\(-1 - 1 = -2\)、よって \(|a| = 2\)</p>
+            <p><strong>Step 3：1/12公式に代入</strong></p>
+            <div class="formula">
+                \[ S = \frac{|{-2}|}{12}(2 - 0)^3 = \frac{2}{12} \cdot 8 = \frac{16}{12} = \frac{4}{3} \]
+            </div>
+            <p><em>（確認：普通に積分しても \(\int_0^2 \{(-x^2+4x) - x^2\}\,dx = \int_0^2 (-2x^2+4x)\,dx = \frac{4}{3}\) で一致）</em></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 上下が入れ替わる場合</h3>
+
+        <div class="example-box" id="ex-6">
+            <div class="example-title">
+                <span class="number-badge">例6</span>上下が入れ替わる場合
+            </div>
+            <p>\(y = x^3 - x\) と x軸で囲まれた面積を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>x軸との交点を求める</li>
+                <li>各区間で上下を確認し、分割して積分</li>
+            </ol>
+            <p><strong>Step 1：交点を求める</strong></p>
+            <div class="formula">
+                \[ x^3 - x = x(x^2 - 1) = x(x+1)(x-1) = 0 \]
+                \[ x = -1, 0, 1 \]
+            </div>
+            <p><strong>Step 2：各区間の上下</strong></p>
+            <ul>
+                <li>\(-1 < x < 0\)：\(y > 0\)（x軸より上）</li>
+                <li>\(0 < x < 1\)：\(y < 0\)（x軸より下）</li>
+            </ul>
+            <p><strong>Step 3：分割して積分</strong></p>
+            <div class="formula">
+                \[ S = \int_{-1}^{0} (x^3 - x)\, dx + \left(-\int_{0}^{1} (x^3 - x)\, dx\right) \]
+            </div>
+            <p>対称性より、2つの積分の絶対値は等しい：</p>
+            <div class="formula">
+                \[ \int_{-1}^{0} (x^3 - x)\, dx = \left[\frac{x^4}{4} - \frac{x^2}{2}\right]_{-1}^{0} = 0 - \left(\frac{1}{4} - \frac{1}{2}\right) = \frac{1}{4} \]
+            </div>
+            <div class="formula">
+                \[ S = \frac{1}{4} + \frac{1}{4} = \frac{1}{2} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：1/6公式が使えるか最初にチェック</strong><br>
+            「放物線とx軸」「放物線と直線」→ 1/6公式が使える！<br>
+            「2つの放物線」→ 1/12公式が使える！<br>
+            公式が使えれば積分計算が不要で、計算ミスも激減。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：グラフの概形を描いてから計算</strong><br>
+            どちらが上でどちらが下か、必ず確認する。<br>
+            「上 − 下」を間違えると、符号が逆になり答えが変わってしまう。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：「上 − 下」の式は因数分解してから</strong><br>
+            \(f(x) - g(x)\) を計算したら、まず因数分解を試みる。<br>
+            因数分解できれば、1/6公式や1/12公式が使えることが多い。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：交点の計算は丁寧に</strong><br>
+            面積計算の多くは「交点を求める」→「積分区間が決まる」という流れ。<br>
+            交点を間違えると、すべてが狂う。必ず検算しよう。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：x軸より下の部分の符号を忘れる</div>
+            <p><strong>ダメな例：</strong> \(y = x^2 - 4\) と x軸の面積を \(\int_{-2}^{2} (x^2 - 4)\, dx = -\frac{32}{3}\) として終わり</p>
+            <p><strong>対策：</strong> 面積は必ず正！x軸より下ならマイナスをつける。<br>
+            \(S = -\int_{-2}^{2} (x^2 - 4)\, dx = \frac{32}{3}\)（○）</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：「上から下」を逆にする</div>
+            <p><strong>ダメな例：</strong> 下の関数から上の関数を引いてしまう</p>
+            <p><strong>対策：</strong> 必ずグラフを描いて確認。「上 − 下」で正の値になる。<br>
+            迷ったら、区間内の適当な点で値を代入して確認。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：1/6公式の係数を間違える</div>
+            <p><strong>ダメな例：</strong> \(y = 2x^2 - 8\) で \(a = 1\) として計算</p>
+            <p><strong>対策：</strong> 元の式の \(x^2\) の係数が \(a\)。<br>
+            \(y = 2x^2 - 8 = 2(x^2 - 4) = 2(x+2)(x-2)\) なので \(a = 2\)。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：上下が入れ替わる場合に分割を忘れる</div>
+            <p><strong>ダメな例：</strong> \(y = x^3 - x\) と x軸の面積を一括で積分</p>
+            <p><strong>対策：</strong> 交点が3つ以上あれば上下が入れ替わる可能性あり。<br>
+            各区間で上下を確認し、分割して計算する。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">曲線とx軸で囲まれた面積を定積分で求められる</div>
+            <div class="checklist-item">2曲線間の面積を「上 − 下」の積分で求められる</div>
+            <div class="checklist-item">1/6公式 \(S = \frac{|a|}{6}(\beta - \alpha)^3\) を使いこなせる</div>
+            <div class="checklist-item">1/12公式 \(S = \frac{|a|}{12}(\beta - \alpha)^3\) を使いこなせる</div>
+            <div class="checklist-item">上下が入れ替わる場合に、分割して面積を求められる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>放物線 \(y = -x^2 + 6x - 5\) と x軸で囲まれた面積を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>交点：\(-x^2 + 6x - 5 = 0\) → \(x^2 - 6x + 5 = 0\) → \((x-1)(x-5) = 0\) → \(x = 1, 5\)</p>
+                    <p>\(y = -(x-1)(x-5)\) なので \(a = -1\)、\(\alpha = 1\)、\(\beta = 5\)</p>
+                    <p>1/6公式：\(S = \frac{|-1|}{6}(5-1)^3 = \frac{1}{6} \cdot 64 = \frac{32}{3}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>放物線 \(y = x^2 - 2x\) と直線 \(y = x\) で囲まれた面積を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>交点：\(x^2 - 2x = x\) → \(x^2 - 3x = 0\) → \(x(x-3) = 0\) → \(x = 0, 3\)</p>
+                    <p>上 − 下：\(x - (x^2 - 2x) = -x^2 + 3x = -x(x-3)\)</p>
+                    <p>\(a = -1\)、\(\alpha = 0\)、\(\beta = 3\)</p>
+                    <p>1/6公式：\(S = \frac{|-1|}{6}(3-0)^3 = \frac{1}{6} \cdot 27 = \frac{9}{2}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>2つの放物線 \(y = x^2 - 4x + 3\) と \(y = -x^2 + 2x + 3\) で囲まれた面積を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>交点：\(x^2 - 4x + 3 = -x^2 + 2x + 3\) → \(2x^2 - 6x = 0\) → \(2x(x-3) = 0\) → \(x = 0, 3\)</p>
+                    <p>上 − 下：\((-x^2 + 2x + 3) - (x^2 - 4x + 3) = -2x^2 + 6x = -2x(x-3)\)</p>
+                    <p>\(x^2\) の係数の差は \(-2\)、よって \(|a| = 2\)</p>
+                    <p>1/12公式：\(S = \frac{2}{12}(3-0)^3 = \frac{1}{6} \cdot 27 = \frac{9}{2}\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：面積は「上 − 下」を積分。1/6公式・1/12公式で高速計算！
+</div>
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「ケプラーのワイン樽問題」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 ケプラーのワイン樽問題（17世紀・オーストリア）</div>
+
+            <p>1612年、天文学者<strong>ヨハネス・ケプラー</strong>は結婚式のためにワインを大量に購入しました。ところが、ワイン商人が樽の容量を測る方法を見て、彼は首をかしげました。</p>
+
+            <p>商人は樽に斜めに棒を差し込み、その長さだけで容量を判断していたのです。</p>
+
+            <p>「いやいや、それじゃ正確じゃないだろ」——天文学者の血が騒ぎました。</p>
+
+            <p>ケプラーは「曲線で囲まれた立体の体積をどう計算するか」という問題に取り組み、樽を無数の薄い円盤の積み重ねと考えました。これは現代の積分の考え方そのものです。</p>
+
+            <div class="formula">
+                \[ V = \int_a^b \pi r(x)^2 \, dx \]
+            </div>
+
+            <p>彼の研究は『ワイン樽の新立体幾何学』（1615年）として出版され、微分積分学の先駆けとなりました。ニュートンやライプニッツが微積分を完成させる50年以上も前のことです。</p>
+
+            <p>惑星の運動法則で有名なケプラーですが、実は「ワインの値段が気になって」積分学の種を蒔いていたとは...。科学の発展は意外なところから始まるものですね。</p>
+
+            <p>ちなみに、結婚式は大成功だったそうです。数学的に正確な量のワインのおかげかもしれません。</p>
+        </div>
+    </div>
+</section>

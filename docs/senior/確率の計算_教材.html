@@ -1,0 +1,524 @@
+---
+layout: material-raw
+title: 確率の計算
+icon: "🎲"
+description: 確率の基本計算から余事象・加法定理まで、場合の数を使った確率の求め方をマスターする。
+level: 基礎
+level_num: 1
+category: data
+school_level: senior
+order: 5
+keywords:
+  - 確率
+  - 余事象
+  - 加法定理
+  - 排反事象
+  - 和事象
+cover_image: /images/noimage.jpg
+cover_description: サイコロとカードによる確率のイメージ
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：実践ストーリー「モンティ・ホール問題」"
+related:
+  - url: /senior/場合の数_教材.html
+    title: 場合の数
+    note: 和の法則・積の法則の復習に
+    type: prerequisite
+  - url: /senior/順列_教材.html
+    title: 順列
+    note: nPrを使った確率計算に
+    type: prerequisite
+  - url: /senior/組合せ_教材.html
+    title: 組合せ
+    note: nCrを使った確率計算に
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>サイコロを振って6が出る確率は？ くじを引いて当たる確率は？ 雨が降る確率は？ 私たちは日常的に「確率」を使っている。</p>
+
+        <p>このページでは、<strong>確率の計算方法</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>確率の基本公式</strong>：P(A) = （Aが起こる場合の数）÷（全体の場合の数）</li>
+            <li><strong>余事象</strong>：「〜でない確率」= 1 −「〜の確率」</li>
+            <li><strong>加法定理</strong>：「AまたはB」の確率の求め方</li>
+            <li><strong>排反事象</strong>：同時に起こらない事象の扱い方</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎲 最重要：確率 \(P(A) = \frac{\text{事象Aの場合の数}}{\text{全事象の場合の数}} = \frac{n(A)}{n(U)}\)
+        </div>
+
+        <!-- 確率の基本（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="200" viewBox="0 0 700 200">
+                <!-- タイトル -->
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">確率の基本イメージ</text>
+
+                <!-- 全事象U（大きな円） -->
+                <ellipse cx="200" cy="115" rx="130" ry="70" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
+                <text x="200" y="50" font-size="14" fill="#333" text-anchor="middle">全事象 U</text>
+
+                <!-- 事象A（小さな円） -->
+                <ellipse cx="180" cy="115" rx="60" ry="40" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="180" y="120" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">事象 A</text>
+
+                <!-- 式 -->
+                <text x="500" y="80" font-size="16" fill="#333" text-anchor="middle">確率 P(A) =</text>
+                <text x="500" y="115" font-size="18" font-weight="bold" fill="#1976d2" text-anchor="middle">事象Aの場合の数</text>
+                <line x1="400" y1="125" x2="600" y2="125" stroke="#333" stroke-width="2"/>
+                <text x="500" y="150" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">全事象の場合の数</text>
+
+                <!-- 確率の範囲 -->
+                <text x="500" y="185" font-size="14" fill="#666" text-anchor="middle">（0 ≤ P(A) ≤ 1）</text>
+            </svg>
+            <div class="svg-caption">確率は「全体の中でAが占める割合」</div>
+        </div>
+
+        <div class="rule-box" id="rule-basic">
+            <strong>📌 ルール1：確率の基本公式</strong> <a href="#ex-basic" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ P(A) = \frac{n(A)}{n(U)} = \frac{\text{事象Aが起こる場合の数}}{\text{起こりうるすべての場合の数}} \]
+            </div>
+            <p><strong>前提：</strong>すべての結果が<strong>同様に確からしい</strong>とき（どの結果も同じ確率で起こる）</p>
+            <p><strong>確率の性質：</strong></p>
+            <ul>
+                <li>\(0 \leq P(A) \leq 1\)（確率は0以上1以下）</li>
+                <li>\(P(U) = 1\)（何かは必ず起こる）</li>
+                <li>\(P(\emptyset) = 0\)（起こりえないことの確率は0）</li>
+            </ul>
+        </div>
+
+        <div class="rule-box" id="rule-complement">
+            <strong>📌 ルール2：余事象の確率</strong> <a href="#ex-complement" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ P(\overline{A}) = 1 - P(A) \]
+            </div>
+            <p><strong>余事象 \(\overline{A}\)</strong>：事象Aが起こら<strong>ない</strong>という事象</p>
+            <p><strong>→ だから結果は：</strong>「Aでない」確率 = 1 −「Aの確率」</p>
+            <p><strong>✅ メリット：</strong>「少なくとも1つ〜」「〜でない」は余事象が楽！</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>全体（100%）からAが起こる確率を引けば、Aが起こらない確率が残る。</p>
+            <p>「少なくとも1つ当たる」の余事象は「1つも当たらない」で計算が単純。</p>
+            </details>
+        </div>
+
+        <!-- 余事象の図（SVG） -->
+        <div class="svg-container">
+            <svg width="500" height="150" viewBox="0 0 500 150">
+                <text x="250" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">余事象のイメージ</text>
+
+                <!-- 全事象 -->
+                <rect x="50" y="40" width="400" height="80" fill="#f5f5f5" stroke="#333" stroke-width="2" rx="5"/>
+                <text x="250" y="35" font-size="12" fill="#333" text-anchor="middle">全事象 U（確率 = 1）</text>
+
+                <!-- 事象A -->
+                <rect x="60" y="50" width="150" height="60" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                <text x="135" y="85" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">A</text>
+
+                <!-- 余事象 -->
+                <rect x="220" y="50" width="220" height="60" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="5"/>
+                <text x="330" y="75" font-size="14" font-weight="bold" fill="#ff9800" text-anchor="middle">A&#x0305;</text>
+                <text x="330" y="95" font-size="12" fill="#ff9800" text-anchor="middle">（Aでない）</text>
+
+                <!-- 式 -->
+                <text x="250" y="145" font-size="14" fill="#333" text-anchor="middle">P(A) + P(A&#x0305;) = 1  →  P(A&#x0305;) = 1 − P(A)</text>
+            </svg>
+        </div>
+
+        <div class="rule-box" id="rule-addition">
+            <strong>📌 ルール3：加法定理（和事象の確率）</strong> <a href="#ex-addition" class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ P(A \cup B) = P(A) + P(B) - P(A \cap B) \]
+            </div>
+            <p><strong>和事象 \(A \cup B\)</strong>：AまたはBが起こる事象</p>
+            <p><strong>積事象 \(A \cap B\)</strong>：AかつBが起こる事象</p>
+            <p><strong>→ だから結果は：</strong>単純に足すと重複する部分を2回数えるので、引く</p>
+        </div>
+
+        <!-- 加法定理の図（SVG） -->
+        <div class="svg-container">
+            <svg width="600" height="180" viewBox="0 0 600 180">
+                <text x="300" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">加法定理のイメージ</text>
+
+                <!-- 事象A（左の円） -->
+                <ellipse cx="170" cy="100" rx="80" ry="55" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="130" y="100" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">A</text>
+
+                <!-- 事象B（右の円） -->
+                <ellipse cx="260" cy="100" rx="80" ry="55" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
+                <text x="300" y="100" font-size="14" font-weight="bold" fill="#e91e63" text-anchor="middle">B</text>
+
+                <!-- 重なり部分（A∩B） -->
+                <ellipse cx="215" cy="100" rx="30" ry="40" fill="#ce93d8" stroke="#9c27b0" stroke-width="2" opacity="0.7"/>
+                <text x="215" y="105" font-size="12" font-weight="bold" fill="#9c27b0" text-anchor="middle">A∩B</text>
+
+                <!-- 式 -->
+                <text x="450" y="70" font-size="14" fill="#333" text-anchor="middle">P(A∪B) =</text>
+                <text x="450" y="95" font-size="14" fill="#1976d2" text-anchor="middle">P(A) + P(B)</text>
+                <text x="450" y="120" font-size="14" fill="#9c27b0" text-anchor="middle">− P(A∩B)</text>
+                <text x="450" y="155" font-size="12" fill="#666" text-anchor="middle">（重複分を引く）</text>
+            </svg>
+        </div>
+
+        <div class="rule-box" id="rule-exclusive">
+            <strong>📌 ルール4：排反事象の加法定理</strong> <a href="#ex-exclusive" class="example-link">→ 例4</a>
+            <div class="formula">
+                \[ \text{AとBが排反のとき：} P(A \cup B) = P(A) + P(B) \]
+            </div>
+            <p><strong>排反事象</strong>：AとBが<strong>同時に起こらない</strong>（\(A \cap B = \emptyset\)）</p>
+            <p><strong>例：</strong>サイコロで「1が出る」と「6が出る」は排反（同時に起こらない）</p>
+            <p><strong>→ だから結果は：</strong>重複がないので、単純に足せる</p>
+        </div>
+
+        <div class="rule-box" id="rule-at-least">
+            <strong>📌 ルール5：「少なくとも〜」は余事象</strong> <a href="#ex-at-least" class="example-link">→ 例5</a>
+            <div class="formula">
+                \[ P(\text{少なくとも1つ〜}) = 1 - P(\text{1つも〜ない}) \]
+            </div>
+            <p><strong>理由：</strong>「少なくとも1つ」を直接数えると大変。「1つもない」の方が簡単。</p>
+            <p><strong>例：</strong>「少なくとも1回当たる」= 1 −「1回も当たらない」</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>確率の計算を実際にやってみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 基本の確率計算</h3>
+
+        <div class="example-box" id="ex-basic">
+            <div class="example-title">
+                <span class="number-badge">例1</span>サイコロの確率
+            </div>
+            <p>1個のサイコロを投げるとき、3以下の目が出る確率を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>全事象を確認：目の出方は 1, 2, 3, 4, 5, 6 の6通り</li>
+                <li>事象Aを確認：3以下の目は 1, 2, 3 の3通り</li>
+                <li>公式に代入</li>
+            </ol>
+            <div class="formula">
+                \[ P(A) = \frac{n(A)}{n(U)} = \frac{3}{6} = \frac{1}{2} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-cards">
+            <div class="example-title">
+                <span class="number-badge">例1b</span>トランプの確率
+            </div>
+            <p>52枚のトランプから1枚引くとき、ハートが出る確率を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>全事象：52枚（どのカードも同様に確からしい）</li>
+                <li>ハートのカード：13枚</li>
+            </ol>
+            <div class="formula">
+                \[ P(\text{ハート}) = \frac{13}{52} = \frac{1}{4} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 余事象を使う</h3>
+
+        <div class="example-box" id="ex-complement">
+            <div class="example-title">
+                <span class="number-badge">例2</span>余事象の基本
+            </div>
+            <p>1個のサイコロを投げるとき、1以外の目が出る確率を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>直接計算：2, 3, 4, 5, 6 の5通りで \(\frac{5}{6}\)</li>
+                <li><strong>または</strong>余事象を使う：\(P(\text{1以外}) = 1 - P(\text{1}) = 1 - \frac{1}{6} = \frac{5}{6}\)</li>
+            </ol>
+            <div class="formula">
+                \[ P(\overline{A}) = 1 - P(A) = 1 - \frac{1}{6} = \frac{5}{6} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-at-least">
+            <div class="example-title">
+                <span class="number-badge">例5</span>少なくとも1回当たる
+            </div>
+            <p>当たりが2本、はずれが3本のくじがある。くじを1本ずつ2回引く（引いたくじは戻す）とき、少なくとも1回当たる確率を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>「少なくとも1回当たる」の余事象は「2回ともはずれ」</li>
+                <li>1回引いてはずれる確率：\(\frac{3}{5}\)</li>
+                <li>2回ともはずれる確率：\(\frac{3}{5} \times \frac{3}{5} = \frac{9}{25}\)</li>
+                <li>余事象で求める</li>
+            </ol>
+            <div class="formula">
+                \[ P(\text{少なくとも1回当たる}) = 1 - P(\text{2回ともはずれ}) = 1 - \frac{9}{25} = \frac{16}{25} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 加法定理を使う</h3>
+
+        <div class="example-box" id="ex-addition">
+            <div class="example-title">
+                <span class="number-badge">例3</span>「または」の確率
+            </div>
+            <p>52枚のトランプから1枚引くとき、ハートまたは絵札が出る確率を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>ハートの枚数：13枚</li>
+                <li>絵札の枚数：12枚（J, Q, K × 4マーク）</li>
+                <li>ハートかつ絵札：3枚（ハートのJ, Q, K）</li>
+                <li>加法定理を適用</li>
+            </ol>
+            <div class="formula">
+                \begin{align}
+                P(\text{ハート} \cup \text{絵札}) &= P(\text{ハート}) + P(\text{絵札}) - P(\text{ハート} \cap \text{絵札}) \\
+                &= \frac{13}{52} + \frac{12}{52} - \frac{3}{52} = \frac{22}{52} = \frac{11}{26}
+                \end{align}
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-exclusive">
+            <div class="example-title">
+                <span class="number-badge">例4</span>排反事象
+            </div>
+            <p>1個のサイコロを投げるとき、1または6が出る確率を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>「1が出る」と「6が出る」は<strong>排反</strong>（同時に起こらない）</li>
+                <li>排反のとき、単純に足せる</li>
+            </ol>
+            <div class="formula">
+                \[ P(1 \cup 6) = P(1) + P(6) = \frac{1}{6} + \frac{1}{6} = \frac{2}{6} = \frac{1}{3} \]
+            </div>
+            <p><strong>ポイント：</strong>「1かつ6」は起こりえない（\(P(1 \cap 6) = 0\)）ので引く必要なし</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 組合せを使った確率</h3>
+
+        <div class="example-box" id="ex-combination">
+            <div class="example-title">
+                <span class="number-badge">例6</span>くじ引きの確率
+            </div>
+            <p>10本のくじの中に当たりが3本ある。3本同時に引くとき、2本が当たりである確率を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>全事象：10本から3本を選ぶ = \(_{10}C_3\) 通り</li>
+                <li>事象A：当たり3本から2本、はずれ7本から1本を選ぶ = \(_3C_2 \times _7C_1\) 通り</li>
+            </ol>
+            <div class="formula">
+                \[ P(\text{当たり2本}) = \frac{_3C_2 \times _7C_1}{_{10}C_3} = \frac{3 \times 7}{120} = \frac{21}{120} = \frac{7}{40} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-group">
+            <div class="example-title">
+                <span class="number-badge">例7</span>グループ分けの確率
+            </div>
+            <p>男子4人、女子3人の計7人から3人を選ぶとき、男子2人、女子1人が選ばれる確率を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>全事象：7人から3人を選ぶ = \(_7C_3 = 35\) 通り</li>
+                <li>事象A：男子4人から2人、女子3人から1人 = \(_4C_2 \times _3C_1 = 6 \times 3 = 18\) 通り</li>
+            </ol>
+            <div class="formula">
+                \[ P = \frac{_4C_2 \times _3C_1}{_7C_3} = \frac{6 \times 3}{35} = \frac{18}{35} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：「少なくとも〜」は余事象</strong><br>
+            「少なくとも1回当たる」を直接数えると、1回当たる、2回当たる...と面倒。<br>
+            → 1 −「1回も当たらない」の方が圧倒的に楽！
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：「または」は加法定理</strong><br>
+            「AまたはB」= P(A) + P(B) − P(A∩B)<br>
+            ただしAとBが排反なら、P(A) + P(B) でOK（引く必要なし）
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：分母と分子を分けて考える</strong><br>
+            確率 = （条件を満たす場合の数）÷（全体の場合の数）<br>
+            それぞれ独立に計算してから割り算する
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：「同時に」と「順番に」で考え方を変える</strong><br>
+            「3枚同時に引く」→ 組合せ \(_nC_r\)<br>
+            「1枚ずつ順に引く」→ 順列 or 積の法則
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：加法定理で重複を引き忘れる</div>
+            <p><strong>ダメな例：</strong>「ハートまたは絵札」で \(\frac{13}{52} + \frac{12}{52} = \frac{25}{52}\) と計算</p>
+            <p><strong>対策：</strong>「ハートかつ絵札」（3枚）を引く。答えは \(\frac{22}{52}\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：排反でないのに単純に足す</div>
+            <p><strong>ダメな例：</strong>「偶数または4以下」でP(偶数) + P(4以下) と計算</p>
+            <p><strong>対策：</strong>2と4は両方に含まれる → 排反ではない → 重複を引く必要あり</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：余事象を使わず直接計算して混乱</div>
+            <p><strong>ダメな例：</strong>「少なくとも1回当たる」で「1回だけ当たる」「2回当たる」...を全部足す</p>
+            <p><strong>対策：</strong>1 −「1回も当たらない」で一発計算</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：「同様に確からしい」を確認しない</div>
+            <p><strong>ダメな例：</strong>歪んだサイコロで \(P(6) = \frac{1}{6}\) と計算</p>
+            <p><strong>対策：</strong>「同様に確からしい」が前提。問題文で確認する</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">確率の基本公式 \(P(A) = \frac{n(A)}{n(U)}\) が使える</div>
+            <div class="checklist-item">余事象の公式 \(P(\overline{A}) = 1 - P(A)\) が使える</div>
+            <div class="checklist-item">加法定理 \(P(A \cup B) = P(A) + P(B) - P(A \cap B)\) が使える</div>
+            <div class="checklist-item">排反事象のとき、単純に足せることを知っている</div>
+            <div class="checklist-item">「少なくとも〜」は余事象で解く習慣がある</div>
+            <div class="checklist-item">組合せを使った確率計算ができる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>2個のサイコロを投げるとき、目の和が7になる確率を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>全事象：6 × 6 = 36通り</p>
+                    <p>和が7：(1,6), (2,5), (3,4), (4,3), (5,2), (6,1) の6通り</p>
+                    <p>\(P = \frac{6}{36} = \frac{1}{6}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>52枚のトランプから1枚引くとき、スペードまたはエースが出る確率を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>スペード：13枚、エース：4枚、スペードのエース：1枚</p>
+                    <p>\(P = \frac{13}{52} + \frac{4}{52} - \frac{1}{52} = \frac{16}{52} = \frac{4}{13}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>コインを3回投げるとき、少なくとも1回表が出る確率を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>余事象「3回とも裏」を使う</p>
+                    <p>3回とも裏：\(\left(\frac{1}{2}\right)^3 = \frac{1}{8}\)</p>
+                    <p>\(P(\text{少なくとも1回表}) = 1 - \frac{1}{8} = \frac{7}{8}\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：確率は「場合の数の割合」。余事象・加法定理を使いこなせ！
+</div>
+
+<!-- ========== おまけ：実践ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：実践ストーリー「モンティ・ホール問題」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">🚪 ドアを変えるべきか？</div>
+
+            <p>有名なテレビ番組「Let's Make a Deal」から生まれた、<strong>モンティ・ホール問題</strong>。確率の直感がいかに当てにならないかを示す、数学史上最も議論を呼んだ問題のひとつだ。</p>
+
+            <p><strong>ルール：</strong></p>
+            <ul>
+                <li>3つのドアがあり、1つの後ろに車、残り2つの後ろにヤギがいる</li>
+                <li>あなたは1つのドアを選ぶ</li>
+                <li>司会者（モンティ）は、<strong>あなたが選ばなかった</strong>ドアのうち、<strong>ヤギがいる</strong>ドアを1つ開ける</li>
+                <li>「選択を変えますか？」と聞かれる</li>
+            </ul>
+
+            <p><strong>問題：</strong>ドアを変えるべきか？ それとも最初の選択を維持すべきか？</p>
+
+            <p><strong>直感的な答え：</strong>「2つのドアが残っているから、確率は \(\frac{1}{2}\) ずつ。変えても変えなくても同じ」</p>
+
+            <p><strong>しかし、これは間違い！</strong></p>
+
+            <div class="formula">
+                \[ P(\text{変えて当たる}) = \frac{2}{3}, \quad P(\text{変えずに当たる}) = \frac{1}{3} \]
+            </div>
+
+            <p><strong>なぜ？</strong></p>
+            <ul>
+                <li>最初に車を選ぶ確率：\(\frac{1}{3}\)（この場合、変えると負け）</li>
+                <li>最初にヤギを選ぶ確率：\(\frac{2}{3}\)（この場合、変えると必ず勝ち）</li>
+            </ul>
+
+            <p>司会者は<strong>必ずヤギのドアを開ける</strong>というルールがポイント。これにより、最初にヤギを選んでいた場合、変えれば<strong>100%</strong>車に当たる。</p>
+
+            <p><strong>教訓：</strong>確率は直感に反することがある。計算して確かめよう。</p>
+
+            <p style="font-size: 0.9em; color: #666; margin-top: 15px;">
+                この問題は1990年にマリリン・ボス・サバントがパレード誌のコラムで「変えた方がいい」と答え、
+                数学者を含む約1万人から「間違いだ」という抗議の手紙が届いた。
+                しかしシミュレーションで確認すると...彼女が正しかった。
+            </p>
+        </div>
+    </div>
+</section>

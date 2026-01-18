@@ -1,0 +1,645 @@
+---
+layout: material-raw
+title: 三角関数の応用
+icon: "📐"
+description: 三角関数の合成で複雑な式を1つにまとめ、三角方程式・三角不等式を解く方法を学ぶ。加法定理の実践的な応用力を身につける。
+level: 標準
+level_num: 2
+category: functions
+school_level: senior
+order: 8
+keywords:
+  - 三角関数の合成
+  - 三角方程式
+  - 三角不等式
+  - 加法定理
+  - 弧度法
+cover_image: /images/noimage.jpg
+cover_description: 三角関数の合成公式、単位円上での方程式・不等式の解法
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：物理と数学「振動の合成と共鳴」"
+related:
+  - url: /senior/三角比_教材.html
+    title: 三角比
+    note: sin, cos, tanの基本定義
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「\(a\sin\theta + b\cos\theta\) を1つの三角関数にまとめたい」「\(\sin x = \dfrac{1}{2}\) を満たす \(x\) は？」——三角関数を自在に操るには、<strong>合成</strong>と<strong>方程式・不等式</strong>の解法が欠かせません。</p>
+
+        <p>このページでは、<strong>三角関数の応用</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>三角関数の合成</strong>：\(a\sin\theta + b\cos\theta\) を \(r\sin(\theta + \alpha)\) の形に変換</li>
+            <li><strong>三角方程式</strong>：\(\sin x = k\) や \(\cos x = k\) を満たす角を求める</li>
+            <li><strong>三角不等式</strong>：\(\sin x > k\) や \(\cos x \leq k\) を満たす範囲を求める</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要：三角関数の合成は \(a\sin\theta + b\cos\theta = \sqrt{a^2+b^2}\sin(\theta + \alpha)\) の形にまとめる！
+        </div>
+
+        <!-- 三角関数の合成の図解（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="320" viewBox="0 0 700 320">
+                <!-- タイトル -->
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">三角関数の合成のイメージ</text>
+
+                <!-- 座標軸 -->
+                <line x1="80" y1="180" x2="330" y2="180" stroke="#333" stroke-width="2"/>
+                <line x1="180" y1="280" x2="180" y2="80" stroke="#333" stroke-width="2"/>
+                <polygon points="330,180 320,175 320,185" fill="#333"/>
+                <polygon points="180,80 175,90 185,90" fill="#333"/>
+                <text x="340" y="185" font-size="14" fill="#333">x</text>
+                <text x="185" y="75" font-size="14" fill="#333">y</text>
+
+                <!-- 点P(a, b) -->
+                <circle cx="280" cy="120" r="5" fill="#e53935"/>
+                <text x="288" y="115" font-size="14" font-weight="bold" fill="#e53935">P(a, b)</text>
+
+                <!-- ベクトルOP -->
+                <line x1="180" y1="180" x2="280" y2="120" stroke="#e53935" stroke-width="3"/>
+
+                <!-- r = √(a² + b²) -->
+                <text x="195" y="145" font-size="14" fill="#4caf50" transform="rotate(-31 220 140)">r = √(a² + b²)</text>
+
+                <!-- 角度α -->
+                <path d="M 220,180 A 40 40 0 0 0 215,155" fill="none" stroke="#9c27b0" stroke-width="2"/>
+                <text x="228" y="168" font-size="16" font-weight="bold" fill="#9c27b0">α</text>
+
+                <!-- 点(a, 0)と(0, b) -->
+                <circle cx="280" cy="180" r="3" fill="#1976d2"/>
+                <text x="275" y="200" font-size="14" fill="#1976d2">a</text>
+                <circle cx="180" cy="120" r="3" fill="#1976d2"/>
+                <text x="160" y="125" font-size="14" fill="#1976d2">b</text>
+
+                <!-- 補助線 -->
+                <line x1="280" y1="180" x2="280" y2="120" stroke="#999" stroke-width="1" stroke-dasharray="4"/>
+                <line x1="180" y1="120" x2="280" y2="120" stroke="#999" stroke-width="1" stroke-dasharray="4"/>
+
+                <!-- 公式ボックス -->
+                <rect x="380" y="60" width="280" height="200" fill="#fff8e1" stroke="#ff9800" stroke-width="2" rx="10"/>
+
+                <text x="520" y="95" font-size="16" font-weight="bold" fill="#e65100" text-anchor="middle">三角関数の合成公式</text>
+
+                <text x="400" y="135" font-size="14" fill="#333">a sin θ + b cos θ</text>
+                <text x="400" y="165" font-size="14" fill="#333">= r sin(θ + α)</text>
+                <text x="400" y="200" font-size="14" fill="#333">ただし</text>
+                <text x="400" y="230" font-size="14" fill="#e53935" font-weight="bold">r = √(a² + b²)</text>
+                <text x="400" y="255" font-size="14" fill="#9c27b0" font-weight="bold">cos α = a/r, sin α = b/r</text>
+            </svg>
+            <div class="svg-caption">三角関数の合成：点P(a, b)へのベクトルの長さrと角度αを使う</div>
+        </div>
+
+        <div class="rule-box" id="rule-synthesis">
+            <strong>📌 ルール1：三角関数の合成</strong> <a href="#ex-synthesis" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ a\sin\theta + b\cos\theta = \sqrt{a^2+b^2}\sin(\theta + \alpha) \]
+            </div>
+            <p>ただし、\(\alpha\) は \(\cos\alpha = \dfrac{a}{\sqrt{a^2+b^2}}\)、\(\sin\alpha = \dfrac{b}{\sqrt{a^2+b^2}}\) を満たす角。</p>
+            <p><strong>→ だから結果は：</strong> 2つの三角関数の和を1つにまとめて、最大値・最小値や方程式が解きやすくなる。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>加法定理 \(\sin(\theta + \alpha) = \sin\theta\cos\alpha + \cos\theta\sin\alpha\) を使うと：</p>
+            <p>\(r\sin(\theta + \alpha) = r\cos\alpha \cdot \sin\theta + r\sin\alpha \cdot \cos\theta\)</p>
+            <p>\(r\cos\alpha = a\)、\(r\sin\alpha = b\) となるように \(r\) と \(\alpha\) を決めればよい。</p>
+            <p>\(r^2 = (r\cos\alpha)^2 + (r\sin\alpha)^2 = a^2 + b^2\) より \(r = \sqrt{a^2 + b^2}\)</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-synthesis-cos">
+            <strong>📌 ルール1'：cos型の合成</strong>
+            <div class="formula">
+                \[ a\sin\theta + b\cos\theta = \sqrt{a^2+b^2}\cos(\theta - \beta) \]
+            </div>
+            <p>ただし、\(\cos\beta = \dfrac{b}{\sqrt{a^2+b^2}}\)、\(\sin\beta = \dfrac{a}{\sqrt{a^2+b^2}}\)。</p>
+            <p><strong>✅ 使い分け：</strong> sin型かcos型かは問題に合わせて選ぶ。どちらでも結果は同じ。</p>
+        </div>
+
+        <div class="rule-box" id="rule-equation">
+            <strong>📌 ルール2：三角方程式の解き方</strong> <a href="#ex-equation" class="example-link">→ 例2・3</a>
+            <p><strong>\(\sin x = k\)</strong> の解法（\(-1 \leq k \leq 1\) のとき）：</p>
+            <ol>
+                <li>単位円で \(y = k\) となる点を探す</li>
+                <li>その点に対応する角を求める（基本角 \(\alpha\) を使う）</li>
+                <li>周期 \(2\pi\) を考慮して一般解を書く：\(x = \alpha + 2n\pi\) または \(x = (\pi - \alpha) + 2n\pi\)</li>
+            </ol>
+            <p><strong>\(\cos x = k\)</strong> の解法：</p>
+            <ol>
+                <li>単位円で \(x = k\) となる点を探す</li>
+                <li>基本角 \(\alpha\)（\(0 \leq \alpha \leq \pi\) で \(\cos\alpha = k\)）を求める</li>
+                <li>一般解：\(x = \pm\alpha + 2n\pi\)</li>
+            </ol>
+            <p><strong>→ だから結果は：</strong> 単位円を描けば、解がどこにあるか視覚的にわかる。</p>
+        </div>
+
+        <!-- 三角方程式の図解（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="300" viewBox="0 0 700 300">
+                <!-- タイトル -->
+                <text x="180" y="25" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">sin x = 1/2 の解</text>
+                <text x="520" y="25" font-size="14" font-weight="bold" fill="#9c27b0" text-anchor="middle">cos x = 1/2 の解</text>
+
+                <!-- 左：sin x = 1/2 -->
+                <!-- 単位円 -->
+                <circle cx="180" cy="160" r="100" fill="none" stroke="#1976d2" stroke-width="2"/>
+                <!-- 座標軸 -->
+                <line x1="50" y1="160" x2="310" y2="160" stroke="#333" stroke-width="1"/>
+                <line x1="180" y1="30" x2="180" y2="290" stroke="#333" stroke-width="1"/>
+                <!-- y = 1/2 の線 -->
+                <line x1="50" y1="110" x2="310" y2="110" stroke="#e53935" stroke-width="2" stroke-dasharray="5"/>
+                <text x="315" y="115" font-size="14" fill="#e53935">y = 1/2</text>
+                <!-- 解の点 -->
+                <circle cx="266" cy="110" r="6" fill="#4caf50"/>
+                <circle cx="94" cy="110" r="6" fill="#4caf50"/>
+                <text x="275" y="100" font-size="14" fill="#4caf50">π/6</text>
+                <text x="55" y="100" font-size="14" fill="#4caf50">5π/6</text>
+                <!-- 角度の弧 -->
+                <path d="M 200,160 A 20 20 0 0 0 197,150" fill="none" stroke="#4caf50" stroke-width="2"/>
+                <path d="M 160,160 A 20 20 0 0 1 163,150" fill="none" stroke="#4caf50" stroke-width="2"/>
+
+                <!-- 右：cos x = 1/2 -->
+                <!-- 単位円 -->
+                <circle cx="520" cy="160" r="100" fill="none" stroke="#9c27b0" stroke-width="2"/>
+                <!-- 座標軸 -->
+                <line x1="390" y1="160" x2="650" y2="160" stroke="#333" stroke-width="1"/>
+                <line x1="520" y1="30" x2="520" y2="290" stroke="#333" stroke-width="1"/>
+                <!-- x = 1/2 の線 -->
+                <line x1="570" y1="30" x2="570" y2="290" stroke="#e53935" stroke-width="2" stroke-dasharray="5"/>
+                <text x="575" y="50" font-size="14" fill="#e53935">x = 1/2</text>
+                <!-- 解の点 -->
+                <circle cx="570" cy="110" r="6" fill="#4caf50"/>
+                <circle cx="570" cy="210" r="6" fill="#4caf50"/>
+                <text x="580" y="100" font-size="14" fill="#4caf50">π/3</text>
+                <text x="580" y="225" font-size="14" fill="#4caf50">−π/3</text>
+                <!-- 角度の弧 -->
+                <path d="M 540,160 A 20 20 0 0 0 537,145" fill="none" stroke="#4caf50" stroke-width="2"/>
+            </svg>
+            <div class="svg-caption">単位円を使った三角方程式の解法：直線との交点が解</div>
+        </div>
+
+        <div class="rule-box" id="rule-inequality">
+            <strong>📌 ルール3：三角不等式の解き方</strong> <a href="#ex-inequality" class="example-link">→ 例4・5</a>
+            <p><strong>\(\sin x > k\)</strong> の解法：</p>
+            <ol>
+                <li>単位円で \(\sin x = k\) の解（境界）を求める</li>
+                <li>\(y > k\) となる弧を特定（上半分）</li>
+                <li>その弧に対応する角の範囲を答える</li>
+            </ol>
+            <p><strong>\(\cos x \leq k\)</strong> の解法：</p>
+            <ol>
+                <li>単位円で \(\cos x = k\) の解（境界）を求める</li>
+                <li>\(x \leq k\) となる弧を特定（左半分）</li>
+                <li>その弧に対応する角の範囲を答える</li>
+            </ol>
+            <p><strong>→ だから結果は：</strong> 方程式を解いて境界を出し、「上か下か」「右か左か」で範囲を決める。</p>
+        </div>
+
+        <!-- 三角不等式の図解（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="280" viewBox="0 0 700 280">
+                <!-- タイトル -->
+                <text x="180" y="25" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">sin x > 1/2 の範囲</text>
+                <text x="520" y="25" font-size="14" font-weight="bold" fill="#9c27b0" text-anchor="middle">cos x ≤ 1/2 の範囲</text>
+
+                <!-- 左：sin x > 1/2 -->
+                <!-- 単位円 -->
+                <circle cx="180" cy="150" r="100" fill="none" stroke="#ccc" stroke-width="2"/>
+                <!-- 座標軸 -->
+                <line x1="50" y1="150" x2="310" y2="150" stroke="#333" stroke-width="1"/>
+                <line x1="180" y1="20" x2="180" y2="280" stroke="#333" stroke-width="1"/>
+                <!-- y = 1/2 の線 -->
+                <line x1="50" y1="100" x2="310" y2="100" stroke="#999" stroke-width="1" stroke-dasharray="5"/>
+                <!-- 解の範囲（塗りつぶし） -->
+                <path d="M 266,100 A 100 100 0 0 1 94,100" fill="none" stroke="#4caf50" stroke-width="6"/>
+                <!-- 解の点 -->
+                <circle cx="266" cy="100" r="4" fill="#e53935"/>
+                <circle cx="94" cy="100" r="4" fill="#e53935"/>
+                <text x="270" y="85" font-size="14" fill="#e53935">π/6</text>
+                <text x="55" y="85" font-size="14" fill="#e53935">5π/6</text>
+                <!-- 範囲の表示 -->
+                <text x="180" y="275" font-size="14" fill="#4caf50" text-anchor="middle">π/6 < x < 5π/6</text>
+
+                <!-- 右：cos x ≤ 1/2 -->
+                <!-- 単位円 -->
+                <circle cx="520" cy="150" r="100" fill="none" stroke="#ccc" stroke-width="2"/>
+                <!-- 座標軸 -->
+                <line x1="390" y1="150" x2="650" y2="150" stroke="#333" stroke-width="1"/>
+                <line x1="520" y1="20" x2="520" y2="280" stroke="#333" stroke-width="1"/>
+                <!-- x = 1/2 の線 -->
+                <line x1="570" y1="20" x2="570" y2="280" stroke="#999" stroke-width="1" stroke-dasharray="5"/>
+                <!-- 解の範囲（塗りつぶし） -->
+                <path d="M 570,100 A 100 100 0 1 1 570,200" fill="none" stroke="#4caf50" stroke-width="6"/>
+                <!-- 解の点 -->
+                <circle cx="570" cy="100" r="4" fill="#e53935"/>
+                <circle cx="570" cy="200" r="4" fill="#e53935"/>
+                <text x="580" y="90" font-size="14" fill="#e53935">π/3</text>
+                <text x="580" y="215" font-size="14" fill="#e53935">−π/3</text>
+                <!-- 範囲の表示 -->
+                <text x="520" y="275" font-size="14" fill="#4caf50" text-anchor="middle">π/3 ≤ x ≤ 5π/3</text>
+            </svg>
+            <div class="svg-caption">三角不等式：境界を求めて、条件を満たす弧を特定</div>
+        </div>
+
+        <div class="rule-box" id="rule-tan-eq">
+            <strong>📌 ルール4：tan の方程式・不等式</strong> <a href="#ex-tan" class="example-link">→ 例6</a>
+            <p><strong>\(\tan x = k\)</strong> の解法：</p>
+            <div class="formula">
+                \[ \tan x = k \quad \Rightarrow \quad x = \alpha + n\pi \quad (\text{n は整数}) \]
+            </div>
+            <p>tan の周期は \(\pi\) なので、1つ解を見つければ \(\pi\) ごとに繰り返す。</p>
+            <p><strong>→ だから結果は：</strong> sin, cos より周期が短い分、解の個数が多くなることに注意。</p>
+        </div>
+
+        <div class="rule-box" id="rule-special-values">
+            <strong>📌 ルール5：頻出の基本角（弧度法）</strong>
+            <table class="material-table">
+                <tr>
+                    <th>度数法</th>
+                    <th>弧度法</th>
+                    <th>sin</th>
+                    <th>cos</th>
+                    <th>tan</th>
+                </tr>
+                <tr>
+                    <td>0°</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>30°</td>
+                    <td>\(\dfrac{\pi}{6}\)</td>
+                    <td>\(\dfrac{1}{2}\)</td>
+                    <td>\(\dfrac{\sqrt{3}}{2}\)</td>
+                    <td>\(\dfrac{1}{\sqrt{3}}\)</td>
+                </tr>
+                <tr>
+                    <td>45°</td>
+                    <td>\(\dfrac{\pi}{4}\)</td>
+                    <td>\(\dfrac{\sqrt{2}}{2}\)</td>
+                    <td>\(\dfrac{\sqrt{2}}{2}\)</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>60°</td>
+                    <td>\(\dfrac{\pi}{3}\)</td>
+                    <td>\(\dfrac{\sqrt{3}}{2}\)</td>
+                    <td>\(\dfrac{1}{2}\)</td>
+                    <td>\(\sqrt{3}\)</td>
+                </tr>
+                <tr>
+                    <td>90°</td>
+                    <td>\(\dfrac{\pi}{2}\)</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>なし</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>三角関数の合成、方程式、不等式を順番にマスターしましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 三角関数の合成</h3>
+
+        <div class="example-box" id="ex-synthesis">
+            <div class="example-title">
+                <span class="number-badge">例1</span>三角関数の合成
+            </div>
+            <p>\(\sin\theta + \sqrt{3}\cos\theta\) を \(r\sin(\theta + \alpha)\) の形に変形せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(a = 1\)、\(b = \sqrt{3}\) として \(r = \sqrt{a^2 + b^2} = \sqrt{1 + 3} = 2\)</li>
+                <li>\(\cos\alpha = \dfrac{a}{r} = \dfrac{1}{2}\)、\(\sin\alpha = \dfrac{b}{r} = \dfrac{\sqrt{3}}{2}\)</li>
+                <li>これを満たす \(\alpha\) は \(\alpha = \dfrac{\pi}{3}\)（60°）</li>
+            </ol>
+            <div class="formula">
+                \[ \sin\theta + \sqrt{3}\cos\theta = \boxed{2\sin\left(\theta + \frac{\pi}{3}\right)} \]
+            </div>
+            <p><strong>✅ 検算：</strong> \(\theta = 0\) を代入。左辺 = \(0 + \sqrt{3} = \sqrt{3}\)、右辺 = \(2\sin\dfrac{\pi}{3} = 2 \cdot \dfrac{\sqrt{3}}{2} = \sqrt{3}\)。一致！</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 三角方程式</h3>
+
+        <div class="example-box" id="ex-equation">
+            <div class="example-title">
+                <span class="number-badge">例2</span>sin の方程式
+            </div>
+            <p>\(0 \leq x < 2\pi\) のとき、\(\sin x = \dfrac{1}{2}\) を解け。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>単位円で \(y = \dfrac{1}{2}\) となる点を探す</li>
+                <li>基本角：\(\sin\dfrac{\pi}{6} = \dfrac{1}{2}\) なので \(x = \dfrac{\pi}{6}\)</li>
+                <li>もう1つは対称性から：\(x = \pi - \dfrac{\pi}{6} = \dfrac{5\pi}{6}\)</li>
+            </ol>
+            <div class="formula">
+                \[ x = \boxed{\frac{\pi}{6}, \frac{5\pi}{6}} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-equation-cos">
+            <div class="example-title">
+                <span class="number-badge">例3</span>cos の方程式
+            </div>
+            <p>\(0 \leq x < 2\pi\) のとき、\(\cos x = -\dfrac{\sqrt{3}}{2}\) を解け。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(\cos\dfrac{\pi}{6} = \dfrac{\sqrt{3}}{2}\) なので、\(\cos x = -\dfrac{\sqrt{3}}{2}\) は第2象限と第3象限</li>
+                <li>第2象限：\(x = \pi - \dfrac{\pi}{6} = \dfrac{5\pi}{6}\)</li>
+                <li>第3象限：\(x = \pi + \dfrac{\pi}{6} = \dfrac{7\pi}{6}\)</li>
+            </ol>
+            <div class="formula">
+                \[ x = \boxed{\frac{5\pi}{6}, \frac{7\pi}{6}} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 三角不等式</h3>
+
+        <div class="example-box" id="ex-inequality">
+            <div class="example-title">
+                <span class="number-badge">例4</span>sin の不等式
+            </div>
+            <p>\(0 \leq x < 2\pi\) のとき、\(\sin x > \dfrac{1}{2}\) を解け。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>境界：\(\sin x = \dfrac{1}{2}\) の解は \(x = \dfrac{\pi}{6}, \dfrac{5\pi}{6}\)</li>
+                <li>単位円で \(y > \dfrac{1}{2}\) となる範囲は、上側の弧</li>
+                <li>\(\dfrac{\pi}{6}\) から \(\dfrac{5\pi}{6}\) の間</li>
+            </ol>
+            <div class="formula">
+                \[ \boxed{\frac{\pi}{6} < x < \frac{5\pi}{6}} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-inequality-cos">
+            <div class="example-title">
+                <span class="number-badge">例5</span>cos の不等式
+            </div>
+            <p>\(0 \leq x < 2\pi\) のとき、\(\cos x \leq \dfrac{1}{2}\) を解け。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>境界：\(\cos x = \dfrac{1}{2}\) の解は \(x = \dfrac{\pi}{3}, \dfrac{5\pi}{3}\)</li>
+                <li>単位円で \(x \leq \dfrac{1}{2}\) となる範囲は、左側の弧</li>
+                <li>\(\dfrac{\pi}{3}\) から \(\dfrac{5\pi}{3}\) の間（境界含む）</li>
+            </ol>
+            <div class="formula">
+                \[ \boxed{\frac{\pi}{3} \leq x \leq \frac{5\pi}{3}} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-tan">
+            <div class="example-title">
+                <span class="number-badge">例6</span>tan の方程式
+            </div>
+            <p>\(0 \leq x < 2\pi\) のとき、\(\tan x = 1\) を解け。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(\tan\dfrac{\pi}{4} = 1\) なので \(x = \dfrac{\pi}{4}\) が1つの解</li>
+                <li>tan の周期は \(\pi\) なので、\(x = \dfrac{\pi}{4} + \pi = \dfrac{5\pi}{4}\) も解</li>
+            </ol>
+            <div class="formula">
+                \[ x = \boxed{\frac{\pi}{4}, \frac{5\pi}{4}} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 合成を使った応用</h3>
+
+        <div class="example-box" id="ex-synthesis-app">
+            <div class="example-title">
+                <span class="number-badge">例7</span>合成を使った方程式
+            </div>
+            <p>\(0 \leq x < 2\pi\) のとき、\(\sin x + \cos x = 1\) を解け。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>まず合成：\(\sin x + \cos x = \sqrt{2}\sin\left(x + \dfrac{\pi}{4}\right)\)</li>
+                <li>\(\sqrt{2}\sin\left(x + \dfrac{\pi}{4}\right) = 1\) より \(\sin\left(x + \dfrac{\pi}{4}\right) = \dfrac{1}{\sqrt{2}} = \dfrac{\sqrt{2}}{2}\)</li>
+                <li>\(x + \dfrac{\pi}{4} = \dfrac{\pi}{4}\) または \(x + \dfrac{\pi}{4} = \dfrac{3\pi}{4}\)（\(0 \leq x < 2\pi\) より \(\dfrac{\pi}{4} \leq x + \dfrac{\pi}{4} < \dfrac{9\pi}{4}\)）</li>
+                <li>\(x = 0\) または \(x = \dfrac{\pi}{2}\)</li>
+            </ol>
+            <div class="formula">
+                \[ x = \boxed{0, \frac{\pi}{2}} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-max-min">
+            <div class="example-title">
+                <span class="number-badge">例8</span>合成を使った最大最小
+            </div>
+            <p>\(y = 3\sin\theta - 4\cos\theta\) の最大値と最小値を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>合成：\(r = \sqrt{3^2 + (-4)^2} = \sqrt{9 + 16} = 5\)</li>
+                <li>\(y = 5\sin(\theta + \alpha)\) の形になる（\(\alpha\) は \(\cos\alpha = \dfrac{3}{5}\)、\(\sin\alpha = \dfrac{-4}{5}\) を満たす角）</li>
+                <li>\(-1 \leq \sin(\theta + \alpha) \leq 1\) より \(-5 \leq y \leq 5\)</li>
+            </ol>
+            <div class="formula">
+                \[ \text{最大値} = \boxed{5}, \quad \text{最小値} = \boxed{-5} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box" id="tip-unit-circle">
+            <strong>✏️ コツ1：単位円を必ず描く</strong><br>
+            方程式・不等式を解くとき、単位円を描けば解が視覚的にわかる。「上か下か」「右か左か」で範囲を判断。
+        </div>
+
+        <div class="tip-box" id="tip-synthesis-direction">
+            <strong>✏️ コツ2：合成の符号に注意</strong><br>
+            \(a\sin\theta - b\cos\theta\) のように<strong>マイナス</strong>がある場合、\(b\) を負として計算するか、cos型で合成するとミスが減る。
+        </div>
+
+        <div class="tip-box" id="tip-range-check">
+            <strong>✏️ コツ3：範囲の確認を忘れずに</strong><br>
+            合成後 \(\sin(\theta + \alpha)\) を解くとき、\(\theta + \alpha\) の範囲を先に求めておく。範囲外の解を出さないように注意。
+        </div>
+
+        <div class="tip-box" id="tip-verification">
+            <strong>✏️ コツ4：特定の値で検算</strong><br>
+            合成した結果は、\(\theta = 0\) や \(\theta = \dfrac{\pi}{2}\) などを代入して元の式と一致するか確認。
+        </div>
+
+        <div class="tip-box" id="tip-symmetry">
+            <strong>✏️ コツ5：対称性を活用</strong><br>
+            \(\sin x = k\) の2つの解は、\(x = \alpha\) と \(x = \pi - \alpha\) の関係。\(\cos x = k\) は \(x = \pm\alpha\) の関係。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：合成の \(\alpha\) を間違える</div>
+            <p><strong>ダメな例：</strong> \(\sin\theta + \sqrt{3}\cos\theta\) で \(\alpha = \dfrac{\pi}{6}\) としてしまう</p>
+            <p><strong>対策：</strong> \(\cos\alpha = \dfrac{a}{r}\)、\(\sin\alpha = \dfrac{b}{r}\) を正確に計算。\(a = 1, b = \sqrt{3}, r = 2\) なら \(\cos\alpha = \dfrac{1}{2}, \sin\alpha = \dfrac{\sqrt{3}}{2}\) だから \(\alpha = \dfrac{\pi}{3}\)。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：解の個数を間違える</div>
+            <p><strong>ダメな例：</strong> \(\sin x = \dfrac{1}{2}\) で \(x = \dfrac{\pi}{6}\) だけを答える</p>
+            <p><strong>対策：</strong> 単位円を描いて交点の数を確認。\(\sin x = k\) は通常2つ、\(\cos x = k\) も通常2つ（\(k = \pm 1\) のときは1つ）。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：不等式の境界を含むかどうか</div>
+            <p><strong>ダメな例：</strong> \(\sin x > \dfrac{1}{2}\) で境界を含めてしまう</p>
+            <p><strong>対策：</strong> 不等号に「=」があるかどうかで、\(<\) か \(\leq\) かを使い分ける。等号があれば境界を含む。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：tan の周期を間違える</div>
+            <p><strong>ダメな例：</strong> \(\tan x = 1\) で周期 \(2\pi\) として \(x = \dfrac{\pi}{4}\) だけを答える</p>
+            <p><strong>対策：</strong> tan の周期は \(\pi\)。\(0 \leq x < 2\pi\) なら \(\dfrac{\pi}{4}\) と \(\dfrac{5\pi}{4}\) の2つ。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき5：象限を間違える</div>
+            <p><strong>ダメな例：</strong> \(\cos x = -\dfrac{1}{2}\) で第1象限の解を書いてしまう</p>
+            <p><strong>対策：</strong> cos が負 → 第2象限か第3象限。sin が負 → 第3象限か第4象限。符号から象限を特定。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">合成の \(r = \sqrt{a^2 + b^2}\) を正確に計算したか</div>
+            <div class="checklist-item">合成の \(\alpha\) の象限を確認したか</div>
+            <div class="checklist-item">方程式で解の個数を確認したか（単位円を描いたか）</div>
+            <div class="checklist-item">不等式で境界を含むか確認したか</div>
+            <div class="checklist-item">指定された範囲内の解だけを答えたか</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>\(\sqrt{3}\sin\theta + \cos\theta\) を \(r\sin(\theta + \alpha)\) の形に変形せよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(a = \sqrt{3}\)、\(b = 1\) より \(r = \sqrt{3 + 1} = 2\)</p>
+                    <p>\(\cos\alpha = \dfrac{\sqrt{3}}{2}\)、\(\sin\alpha = \dfrac{1}{2}\) より \(\alpha = \dfrac{\pi}{6}\)</p>
+                    <p>\(\sqrt{3}\sin\theta + \cos\theta = \boxed{2\sin\left(\theta + \dfrac{\pi}{6}\right)}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\(0 \leq x < 2\pi\) のとき、\(2\sin x - 1 \geq 0\) を解け。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(\sin x \geq \dfrac{1}{2}\) となる</p>
+                    <p>境界：\(\sin x = \dfrac{1}{2}\) より \(x = \dfrac{\pi}{6}, \dfrac{5\pi}{6}\)</p>
+                    <p>等号を含むので、境界も含めて</p>
+                    <p>\(\boxed{\dfrac{\pi}{6} \leq x \leq \dfrac{5\pi}{6}}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>\(0 \leq x < 2\pi\) のとき、\(\sin x - \cos x = 1\) を解け。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>合成：\(\sin x - \cos x = \sqrt{2}\sin\left(x - \dfrac{\pi}{4}\right)\)</p>
+                    <p>\(\sqrt{2}\sin\left(x - \dfrac{\pi}{4}\right) = 1\) より \(\sin\left(x - \dfrac{\pi}{4}\right) = \dfrac{1}{\sqrt{2}}\)</p>
+                    <p>\(x - \dfrac{\pi}{4} = \dfrac{\pi}{4}\) または \(x - \dfrac{\pi}{4} = \dfrac{3\pi}{4}\)</p>
+                    <p>\(x = \dfrac{\pi}{2}\) または \(x = \pi\)</p>
+                    <p>\(\boxed{x = \dfrac{\pi}{2}, \pi}\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：合成で2つを1つにまとめ、単位円で方程式・不等式を解く。範囲と解の個数に注意！
+</div>
+
+<!-- ========== おまけ：物理と数学「振動の合成と共鳴」 ========== -->
+<section id="story">
+    <h2>おまけ：物理と数学「振動の合成と共鳴」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 2つの波が出会うとき</div>
+
+            <p>音楽の世界で「うなり」という現象がある。2つの音叉を同時に鳴らすと、音が大きくなったり小さくなったりを繰り返すのだ。</p>
+
+            <p>これを数学で表すと、2つの振動の合成になる。例えば：</p>
+
+            <div class="formula">
+                \[ y_1 = \sin(100t), \quad y_2 = \sin(102t) \]
+            </div>
+
+            <p>これらを足し合わせると：</p>
+
+            <div class="formula">
+                \[ y_1 + y_2 = 2\cos(t)\sin(101t) \]
+            </div>
+
+            <p>——なんと、<strong>ゆっくり変化する \(\cos(t)\)</strong> と<strong>速く振動する \(\sin(101t)\)</strong> の積になった！</p>
+
+            <p>\(\cos(t)\) の部分が「音の大きさ」の変化を表し、これが1秒に1回のペースで変化する。だから音が「ウワンウワン」と聞こえるのだ。</p>
+
+            <p style="margin-top: 20px;"><strong>さらに面白いのは「共鳴」。</strong></p>
+
+            <p>ブランコを押すとき、ブランコの揺れに合わせて押すと、どんどん大きく揺れる。これは「外力の振動数 = 固有振動数」のとき起こる。</p>
+
+            <p>1940年、アメリカのタコマ・ナローズ橋は風との共鳴で崩壊した。風の振動数と橋の固有振動数が一致し、橋が激しく揺れ始めたのだ。</p>
+
+            <p style="font-weight: bold; color: #1976d2;">三角関数の合成は、単なる数学の技巧ではない。波動、音響、電気回路、建築——あらゆる「振動」を理解するための基本言語なのだ。</p>
+
+            <p style="font-style: italic; color: #666; margin-top: 20px;">...ちなみに、タコマ・ナローズ橋の崩壊映像は今でもYouTubeで見られる。物理学を学ぶ者なら一度は見ておくべき、三角関数が現実を動かす瞬間だ。</p>
+        </div>
+    </div>
+</section>

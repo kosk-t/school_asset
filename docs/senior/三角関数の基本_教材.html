@@ -1,0 +1,501 @@
+---
+layout: material-raw
+title: 三角関数の基本
+icon: "🌊"
+description: 弧度法（ラジアン）で角度を統一し、sin・cos・tanの三角関数のグラフと周期性を理解。加法定理で複雑な角度の三角関数を計算できるようになる。
+level: 標準
+level_num: 2
+category: functions
+school_level: senior
+order: 10
+keywords:
+  - 弧度法
+  - ラジアン
+  - 三角関数
+  - 周期
+  - 加法定理
+cover_image: /images/noimage.jpg
+cover_description: 正弦波のグラフと単位円、ラジアンの表記
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「三角関数表を作った天文学者たち」"
+related:
+  - url: /senior/三角比_教材.html
+    title: 三角比
+    note: sin・cos・tanの基本定義（前提知識）
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>音や光の波、観覧車の動き、心電図のリズム...。世の中の「繰り返す現象」は<strong>三角関数</strong>で表されます。高校数学の三角比から一歩進んで、<strong>あらゆる角度</strong>に対応できる道具を手に入れましょう。</p>
+        <p>このページでは、三角関数の基本を学びます：</p>
+        <ul>
+            <li><strong>弧度法（ラジアン）</strong>：度数法より便利な角度の表し方</li>
+            <li><strong>三角関数のグラフ</strong>：sin・cos・tanの波形と特徴</li>
+            <li><strong>周期</strong>：関数が繰り返す間隔の求め方</li>
+            <li><strong>加法定理</strong>：2つの角の和・差の三角関数を計算する公式</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】弧度法（ラジアン）では、<strong>180° = π（パイ）</strong>。これが角度変換の基本！
+        </div>
+
+        <!-- 弧度法の図解 -->
+        <div class="svg-container">
+            <svg width="600" height="280" viewBox="0 0 600 280">
+                <!-- 単位円 -->
+                <circle cx="150" cy="140" r="100" fill="none" stroke="#333" stroke-width="2"/>
+                <!-- 半径 -->
+                <line x1="150" y1="140" x2="250" y2="140" stroke="#1976d2" stroke-width="2"/>
+                <line x1="150" y1="140" x2="50" y2="140" stroke="#1976d2" stroke-width="2"/>
+                <!-- 半円の弧（強調） -->
+                <path d="M 250 140 A 100 100 0 0 0 50 140" fill="none" stroke="#e53935" stroke-width="4"/>
+                <!-- ラベル -->
+                <text x="150" y="260" text-anchor="middle" font-size="16" fill="#333">半径 r の円</text>
+                <text x="150" y="60" text-anchor="middle" font-size="18" fill="#e53935" font-weight="bold">弧の長さ = πr</text>
+                <text x="150" y="85" text-anchor="middle" font-size="16" fill="#333">（半周）</text>
+
+                <!-- 矢印 -->
+                <defs>
+                    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#1976d2"/>
+                    </marker>
+                </defs>
+                <path d="M 270 140 L 320 140" stroke="#1976d2" stroke-width="2" marker-end="url(#arrow-blue)"/>
+
+                <!-- 右側の説明 -->
+                <text x="340" y="100" font-size="16" fill="#333">弧度法の定義：</text>
+                <text x="340" y="130" font-size="16" fill="#1976d2" font-weight="bold">弧の長さ = r のとき</text>
+                <text x="340" y="155" font-size="16" fill="#1976d2" font-weight="bold">中心角 = 1 ラジアン</text>
+                <text x="340" y="190" font-size="16" fill="#333">半周 → 弧 = πr</text>
+                <text x="340" y="215" font-size="16" fill="#e53935" font-weight="bold">→ 中心角 = π ラジアン = 180°</text>
+            </svg>
+            <div class="svg-caption">弧度法の定義：半径と弧の長さの比で角度を表す</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 弧度法と度数法の変換</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ \pi \text{（ラジアン）} = 180° \]
+            </div>
+            <table class="material-table">
+                <tr><th>度数法</th><th>弧度法</th></tr>
+                <tr><td>30°</td><td>\(\frac{\pi}{6}\)</td></tr>
+                <tr><td>45°</td><td>\(\frac{\pi}{4}\)</td></tr>
+                <tr><td>60°</td><td>\(\frac{\pi}{3}\)</td></tr>
+                <tr><td>90°</td><td>\(\frac{\pi}{2}\)</td></tr>
+                <tr><td>180°</td><td>\(\pi\)</td></tr>
+                <tr><td>360°</td><td>\(2\pi\)</td></tr>
+            </table>
+            <p><strong>→ だから結果は：</strong> 度→ラジアンは \(\times \frac{\pi}{180}\)、ラジアン→度は \(\times \frac{180}{\pi}\)</p>
+            <p><strong>✅ メリット：</strong> 微分・積分や物理で「角度」が自然な計算になる</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 三角関数のグラフと周期</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <p>\(y = \sin x\)、\(y = \cos x\) の周期は \(2\pi\)、\(y = \tan x\) の周期は \(\pi\)</p>
+            <div class="formula">
+                \[ y = A\sin(Bx + C) \text{ の周期} = \frac{2\pi}{|B|} \]
+            </div>
+            <p><strong>→ だから結果は：</strong> \(B\) が大きいほど周期は短く（振動が速く）なる</p>
+        </div>
+
+        <!-- sin, cos, tan のグラフ -->
+        <div class="svg-container">
+            <svg width="700" height="350" viewBox="0 0 700 350">
+                <!-- 座標軸（sin, cos用） -->
+                <line x1="50" y1="100" x2="650" y2="100" stroke="#333" stroke-width="1"/>
+                <line x1="50" y1="50" x2="50" y2="150" stroke="#333" stroke-width="1"/>
+
+                <!-- x軸ラベル -->
+                <text x="130" y="118" text-anchor="middle" font-size="14">π/2</text>
+                <text x="210" y="118" text-anchor="middle" font-size="14">π</text>
+                <text x="290" y="118" text-anchor="middle" font-size="14">3π/2</text>
+                <text x="370" y="118" text-anchor="middle" font-size="14">2π</text>
+                <text x="450" y="118" text-anchor="middle" font-size="14">5π/2</text>
+                <text x="530" y="118" text-anchor="middle" font-size="14">3π</text>
+                <text x="610" y="118" text-anchor="middle" font-size="14">7π/2</text>
+
+                <!-- y軸ラベル -->
+                <text x="40" y="55" text-anchor="end" font-size="14">1</text>
+                <text x="40" y="105" text-anchor="end" font-size="14">0</text>
+                <text x="40" y="155" text-anchor="end" font-size="14">-1</text>
+
+                <!-- sin曲線（青） -->
+                <path d="M 50 100
+                         Q 90 55 130 55
+                         Q 170 55 210 100
+                         Q 250 145 290 145
+                         Q 330 145 370 100
+                         Q 410 55 450 55
+                         Q 490 55 530 100
+                         Q 570 145 610 145
+                         Q 640 145 650 120"
+                      fill="none" stroke="#1976d2" stroke-width="2.5"/>
+                <text x="660" y="80" font-size="14" fill="#1976d2" font-weight="bold">sin x</text>
+
+                <!-- cos曲線（緑） -->
+                <path d="M 50 55
+                         Q 90 55 130 100
+                         Q 170 145 210 145
+                         Q 250 145 290 100
+                         Q 330 55 370 55
+                         Q 410 55 450 100
+                         Q 490 145 530 145
+                         Q 570 145 610 100
+                         Q 640 70 650 55"
+                      fill="none" stroke="#4caf50" stroke-width="2.5"/>
+                <text x="660" y="55" font-size="14" fill="#4caf50" font-weight="bold">cos x</text>
+
+                <!-- 周期の矢印 -->
+                <line x1="50" y1="170" x2="370" y2="170" stroke="#e53935" stroke-width="2"/>
+                <polygon points="370,165 380,170 370,175" fill="#e53935"/>
+                <polygon points="50,165 40,170 50,175" fill="#e53935"/>
+                <text x="210" y="190" text-anchor="middle" font-size="16" fill="#e53935" font-weight="bold">周期 2π</text>
+
+                <!-- tan用の座標軸 -->
+                <line x1="50" y1="270" x2="650" y2="270" stroke="#333" stroke-width="1"/>
+                <line x1="50" y1="210" x2="50" y2="330" stroke="#333" stroke-width="1"/>
+
+                <!-- tan曲線（橙） -->
+                <!-- 第1周期 -->
+                <path d="M 50 270 Q 90 240 120 210" fill="none" stroke="#ff9800" stroke-width="2.5"/>
+                <path d="M 140 330 Q 170 300 210 270 Q 250 240 280 210" fill="none" stroke="#ff9800" stroke-width="2.5"/>
+                <path d="M 300 330 Q 330 300 370 270 Q 410 240 440 210" fill="none" stroke="#ff9800" stroke-width="2.5"/>
+                <path d="M 460 330 Q 490 300 530 270 Q 570 240 600 210" fill="none" stroke="#ff9800" stroke-width="2.5"/>
+
+                <!-- 漸近線（点線） -->
+                <line x1="130" y1="210" x2="130" y2="330" stroke="#999" stroke-width="1" stroke-dasharray="4,4"/>
+                <line x1="290" y1="210" x2="290" y2="330" stroke="#999" stroke-width="1" stroke-dasharray="4,4"/>
+                <line x1="450" y1="210" x2="450" y2="330" stroke="#999" stroke-width="1" stroke-dasharray="4,4"/>
+                <line x1="610" y1="210" x2="610" y2="330" stroke="#999" stroke-width="1" stroke-dasharray="4,4"/>
+
+                <text x="660" y="270" font-size="14" fill="#ff9800" font-weight="bold">tan x</text>
+
+                <!-- tan周期の矢印 -->
+                <line x1="130" y1="345" x2="290" y2="345" stroke="#ff9800" stroke-width="2"/>
+                <text x="210" y="345" text-anchor="middle" font-size="14" fill="#ff9800" font-weight="bold">周期 π</text>
+            </svg>
+            <div class="svg-caption">sin・cos（周期2π）と tan（周期π）のグラフ</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 加法定理（超重要！）</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ \sin(\alpha + \beta) = \sin\alpha\cos\beta + \cos\alpha\sin\beta \]
+                \[ \sin(\alpha - \beta) = \sin\alpha\cos\beta - \cos\alpha\sin\beta \]
+                \[ \cos(\alpha + \beta) = \cos\alpha\cos\beta - \sin\alpha\sin\beta \]
+                \[ \cos(\alpha - \beta) = \cos\alpha\cos\beta + \sin\alpha\sin\beta \]
+            </div>
+            <p><strong>→ だから結果は：</strong> 75°や15°など「特別な角の和・差」の三角関数が計算できる</p>
+            <details class="thinking"><summary><strong>💡 覚え方のコツ</strong></summary>
+            <p><strong>sin の加法定理</strong>：「sin cos cos sin」（サイン・コサイン・コサイン・サイン）</p>
+            <p><strong>cos の加法定理</strong>：「cos cos sin sin」（コサイン・コサイン・サイン・サイン）で<strong>符号が逆</strong>（+のとき−、−のとき+）</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 tan の加法定理</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <div class="formula">
+                \[ \tan(\alpha + \beta) = \frac{\tan\alpha + \tan\beta}{1 - \tan\alpha\tan\beta} \]
+                \[ \tan(\alpha - \beta) = \frac{\tan\alpha - \tan\beta}{1 + \tan\alpha\tan\beta} \]
+            </div>
+            <p><strong>→ だから結果は：</strong> tan だけで計算できるので、傾きの問題に便利</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 三角関数の相互関係（復習）</strong>
+            <div class="formula">
+                \[ \sin^2\theta + \cos^2\theta = 1, \quad \tan\theta = \frac{\sin\theta}{\cos\theta} \]
+            </div>
+            <p><strong>→ だから結果は：</strong> 1つがわかれば残りも求められる</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>公式を使って実際に計算してみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 弧度法と度数法の変換</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>弧度法・度数法の変換
+            </div>
+            <p>（1）120° をラジアンで表せ。　（2）\(\frac{5\pi}{4}\) を度数法で表せ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>度→ラジアン：\(\times \frac{\pi}{180}\) をかける</li>
+                <li>ラジアン→度：\(\times \frac{180}{\pi}\) をかける</li>
+            </ol>
+            <p><strong>（1）</strong></p>
+            <div class="formula">
+                \[ 120° = 120 \times \frac{\pi}{180} = \frac{120\pi}{180} = \frac{2\pi}{3} \]
+            </div>
+            <p><strong>（2）</strong></p>
+            <div class="formula">
+                \[ \frac{5\pi}{4} = \frac{5\pi}{4} \times \frac{180}{\pi} = \frac{5 \times 180}{4} = 225° \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 三角関数の値と周期</h3>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>三角関数の値と周期
+            </div>
+            <p>（1）\(\sin\frac{5\pi}{6}\) の値を求めよ。　（2）\(y = \sin 3x\) の周期を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>ラジアンを度数法に直して、基本角に帰着させる</li>
+                <li>周期は \(\frac{2\pi}{|B|}\) で計算</li>
+            </ol>
+            <p><strong>（1）</strong></p>
+            <div class="formula">
+                \[ \frac{5\pi}{6} = 150° = 180° - 30° \]
+            </div>
+            <p>\(\sin 150° = \sin(180° - 30°) = \sin 30° = \frac{1}{2}\)</p>
+            <p><strong>（2）</strong> \(y = \sin 3x\) で \(B = 3\) なので：</p>
+            <div class="formula">
+                \[ \text{周期} = \frac{2\pi}{|3|} = \frac{2\pi}{3} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 加法定理</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>sin, cos の加法定理
+            </div>
+            <p>\(\sin 75°\) の値を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>75° = 45° + 30° と分解する</li>
+                <li>加法定理 \(\sin(\alpha + \beta) = \sin\alpha\cos\beta + \cos\alpha\sin\beta\) を使う</li>
+                <li>特別な角の値を代入する</li>
+            </ol>
+            <div class="formula">
+                \[ \sin 75° = \sin(45° + 30°) \]
+                \[ = \sin 45°\cos 30° + \cos 45°\sin 30° \]
+                \[ = \frac{\sqrt{2}}{2} \cdot \frac{\sqrt{3}}{2} + \frac{\sqrt{2}}{2} \cdot \frac{1}{2} \]
+                \[ = \frac{\sqrt{6}}{4} + \frac{\sqrt{2}}{4} = \frac{\sqrt{6} + \sqrt{2}}{4} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>tan の加法定理
+            </div>
+            <p>\(\tan 15°\) の値を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>15° = 45° - 30° と分解する</li>
+                <li>tan の加法定理を使う</li>
+                <li>\(\tan 45° = 1\)、\(\tan 30° = \frac{1}{\sqrt{3}}\) を代入</li>
+            </ol>
+            <div class="formula">
+                \[ \tan 15° = \tan(45° - 30°) = \frac{\tan 45° - \tan 30°}{1 + \tan 45° \tan 30°} \]
+                \[ = \frac{1 - \frac{1}{\sqrt{3}}}{1 + 1 \cdot \frac{1}{\sqrt{3}}} = \frac{\frac{\sqrt{3} - 1}{\sqrt{3}}}{\frac{\sqrt{3} + 1}{\sqrt{3}}} = \frac{\sqrt{3} - 1}{\sqrt{3} + 1} \]
+            </div>
+            <p>有理化すると：</p>
+            <div class="formula">
+                \[ = \frac{(\sqrt{3} - 1)^2}{(\sqrt{3} + 1)(\sqrt{3} - 1)} = \frac{3 - 2\sqrt{3} + 1}{3 - 1} = \frac{4 - 2\sqrt{3}}{2} = 2 - \sqrt{3} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>加法定理の応用（値の計算）
+            </div>
+            <p>\(\sin\alpha = \frac{4}{5}\)（\(\alpha\) は第1象限）、\(\cos\beta = \frac{12}{13}\)（\(\beta\) は第1象限）のとき、\(\sin(\alpha + \beta)\) を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(\sin^2\theta + \cos^2\theta = 1\) から足りない値を求める</li>
+                <li>加法定理に代入</li>
+            </ol>
+            <p>\(\cos\alpha = \sqrt{1 - \sin^2\alpha} = \sqrt{1 - \frac{16}{25}} = \sqrt{\frac{9}{25}} = \frac{3}{5}\)（第1象限なので正）</p>
+            <p>\(\sin\beta = \sqrt{1 - \cos^2\beta} = \sqrt{1 - \frac{144}{169}} = \sqrt{\frac{25}{169}} = \frac{5}{13}\)（第1象限なので正）</p>
+            <div class="formula">
+                \[ \sin(\alpha + \beta) = \sin\alpha\cos\beta + \cos\alpha\sin\beta \]
+                \[ = \frac{4}{5} \cdot \frac{12}{13} + \frac{3}{5} \cdot \frac{5}{13} = \frac{48}{65} + \frac{15}{65} = \frac{63}{65} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：よく使うラジアン値は暗記する</strong><br>
+            30° = π/6、45° = π/4、60° = π/3、90° = π/2、180° = π<br>
+            これを覚えておけば、変換計算なしで使える！
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：加法定理は「角度を分解」から始める</strong><br>
+            75° = 45° + 30°、15° = 45° - 30° または 60° - 45°<br>
+            まず「特別な角の和・差」に分解できないか考える。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：cos の加法定理の符号は「逆」</strong><br>
+            \(\cos(\alpha \textcolor{red}{+} \beta)\) のときは \(\cos\alpha\cos\beta \textcolor{red}{-} \sin\alpha\sin\beta\)（符号が逆）<br>
+            \(\cos(\alpha \textcolor{blue}{-} \beta)\) のときは \(\cos\alpha\cos\beta \textcolor{blue}{+} \sin\alpha\sin\beta\)（符号が逆）<br>
+            sinは「そのまま」、cosは「逆」と覚える。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：周期を求めるときは係数だけ見る</strong><br>
+            \(y = \sin(3x + 2)\) の周期は？ → \(B = 3\) だから周期 = \(\frac{2\pi}{3}\)<br>
+            \(+2\) の部分（位相）は周期に影響しない。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：cos の加法定理で符号を間違える</div>
+            <p><strong>ダメな例：</strong> \(\cos(A + B) = \cos A \cos B + \sin A \sin B\)（×）</p>
+            <p><strong>対策：</strong> cosの加法定理は符号が「逆」！<br>
+            \(\cos(A + B) = \cos A \cos B \textcolor{red}{-} \sin A \sin B\)（○）</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：ラジアン変換で分母を忘れる</div>
+            <p><strong>ダメな例：</strong> 60° = \(\frac{\pi}{60}\)（×）</p>
+            <p><strong>対策：</strong> \(60° = 60 \times \frac{\pi}{180} = \frac{\pi}{3}\)（○）<br>
+            「180° = π」を基準に考える。60°は180°の1/3だから、π/3。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：tan の周期を 2π と思い込む</div>
+            <p><strong>ダメな例：</strong> \(\tan x\) の周期は \(2\pi\)（×）</p>
+            <p><strong>対策：</strong> \(\tan x\) の周期は <strong>π</strong>（sin, cos の半分）<br>
+            グラフを見れば、\(\pi\) ごとに同じパターンが繰り返されている。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">180° = π（ラジアン）を使って、度とラジアンを変換できる</div>
+            <div class="checklist-item">sin・cos のグラフの周期は 2π、tan の周期は π と言える</div>
+            <div class="checklist-item">\(y = \sin(Bx)\) の周期が \(\frac{2\pi}{|B|}\) で計算できる</div>
+            <div class="checklist-item">sin・cos の加法定理を暗唱でき、75°や15°の三角関数が計算できる</div>
+            <div class="checklist-item">tan の加法定理を使える（分数の形で覚えている）</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>（1）135° をラジアンで表せ。　（2）\(\frac{7\pi}{6}\) を度数法で表せ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>（1）\(135° = 135 \times \frac{\pi}{180} = \frac{3\pi}{4}\)</p>
+                    <p>（2）\(\frac{7\pi}{6} = \frac{7\pi}{6} \times \frac{180}{\pi} = \frac{7 \times 180}{6} = 210°\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\(\cos 15°\) の値を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>15° = 45° - 30° と分解して、cos の加法定理を使う。</p>
+                    <p>\(\cos 15° = \cos(45° - 30°)\)</p>
+                    <p>\(= \cos 45° \cos 30° + \sin 45° \sin 30°\)（符号が逆に注意！）</p>
+                    <p>\(= \frac{\sqrt{2}}{2} \cdot \frac{\sqrt{3}}{2} + \frac{\sqrt{2}}{2} \cdot \frac{1}{2}\)</p>
+                    <p>\(= \frac{\sqrt{6}}{4} + \frac{\sqrt{2}}{4} = \frac{\sqrt{6} + \sqrt{2}}{4}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>\(y = \cos 4x\) の周期を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(B = 4\) なので、周期 \(= \frac{2\pi}{|4|} = \frac{2\pi}{4} = \frac{\pi}{2}\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：弧度法では「180° = π」、加法定理で複雑な角度も計算できる！sinは符号そのまま、cosは符号が逆。
+</div>
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「三角関数表を作った天文学者たち」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 電卓がなかった時代の「超人的な計算力」</div>
+
+            <p>今では電卓で \(\sin 37°\) と打てば一瞬で答えが出ますよね。でも電卓が発明されたのは20世紀。それ以前、人々はどうやって三角関数の値を求めていたのでしょう？</p>
+
+            <p>答えは<strong>「三角関数表」</strong>。分厚い本に、0°から90°まで1°刻み（時には1分=1/60°刻み！）で sin, cos, tan の値がびっしり書かれていました。</p>
+
+            <p>この表を最初に本格的に作ったのは、2世紀の天文学者<strong>プトレマイオス</strong>。彼は天体の運動を予測するために、なんと<strong>1万5千行以上</strong>の三角関数表を手計算で作成しました。</p>
+
+            <p>プトレマイオスが使ったのは、加法定理と半角の公式です：</p>
+
+            <div class="formula">
+                \[ \sin 75° = \sin(45° + 30°) = \sin 45° \cos 30° + \cos 45° \sin 30° \]
+            </div>
+
+            <p>こうして「特別な角」から出発し、足したり引いたり半分にしたりして、あらゆる角度の値を求めていったのです。</p>
+
+            <p>16世紀のドイツでは、数学者<strong>レティクス</strong>が生涯をかけて三角関数表の精度を上げ続けました。彼の弟子が完成させた表は、小数点以下<strong>15桁</strong>の精度。計算に使った紙は山のようになったそうです。</p>
+
+            <p>現代のスマートフォンが1秒でできる計算に、天才たちが何十年もの人生を費やした—。「加法定理って覚えるの面倒だな」と思ったら、プトレマイオスの苦労を思い出してみてください。きっと公式がちょっとだけ愛おしくなるはず...？</p>
+        </div>
+    </div>
+</section>

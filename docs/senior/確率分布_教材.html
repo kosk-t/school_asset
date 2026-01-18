@@ -1,0 +1,459 @@
+---
+layout: material-raw
+title: 確率分布
+icon: "📊"
+description: 確率変数と確率分布の基本から期待値・分散・標準偏差の計算、二項分布まで体系的にマスター。統計的推測の土台となる重要概念を学びます。
+level: 標準
+level_num: 2
+category: data
+school_level: senior
+order: 9
+keywords:
+  - 確率分布
+  - 確率変数
+  - 期待値
+  - 分散
+  - 標準偏差
+  - 二項分布
+cover_image: /images/noimage.jpg
+cover_description: 確率変数Xの分布表、サイコロの目、棒グラフ、数学記号E(X)・V(X)・σ(X)
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: section8
+    title: "まとめ一言"
+  - id: story
+    title: "おまけ：歴史ストーリー「保険会社を救った確率論」"
+related:
+  - url: /senior/条件付き確率と独立試行_教材.html
+    title: 条件付き確率と独立試行
+    note: 反復試行・期待値の基礎
+    type: prerequisite
+  - url: /senior/組合せ_教材.html
+    title: 組合せ
+    note: 二項分布の計算にnCrを使用
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「サイコロを振ったとき、平均して何が出るか？」「ばらつきはどれくらい？」こうした問いに数学的に答えるのが<strong>確率分布</strong>です。保険料の設定、品質管理、試験の成績分析など、私たちの身の回りのあらゆる場面で使われています。</p>
+        <p>このページでは、以下の内容を学びます：</p>
+        <ul>
+            <li><strong>確率変数と確率分布</strong>：結果を数値で表し、その確率をまとめる方法</li>
+            <li><strong>期待値（平均）</strong>：長い目で見た「平均的な値」の計算</li>
+            <li><strong>分散と標準偏差</strong>：データのばらつきを数値化する方法</li>
+            <li><strong>二項分布</strong>：「成功・失敗」を繰り返したときの確率分布</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】確率分布の3つの基本量：期待値 \(E(X)\)、分散 \(V(X)\)、標準偏差 \(\sigma(X)\)
+        </div>
+
+        <div class="svg-container">
+            <svg width="700" height="200" viewBox="0 0 700 200">
+                <!-- 背景 -->
+                <rect x="10" y="10" width="220" height="180" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <rect x="240" y="10" width="220" height="180" rx="10" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
+                <rect x="470" y="10" width="220" height="180" rx="10" fill="#e8f5e9" stroke="#388e3c" stroke-width="2"/>
+
+                <!-- 期待値 -->
+                <text x="120" y="45" font-size="18" font-weight="bold" fill="#1976d2" text-anchor="middle">期待値 E(X)</text>
+                <text x="120" y="75" font-size="16" fill="#333" text-anchor="middle">= 平均値</text>
+                <text x="120" y="105" font-size="14" fill="#333" text-anchor="middle">Σ xk・pk</text>
+                <text x="120" y="140" font-size="14" fill="#666" text-anchor="middle">「長い目で見た</text>
+                <text x="120" y="160" font-size="14" fill="#666" text-anchor="middle">平均的な値」</text>
+
+                <!-- 分散 -->
+                <text x="350" y="45" font-size="18" font-weight="bold" fill="#f57c00" text-anchor="middle">分散 V(X)</text>
+                <text x="350" y="75" font-size="16" fill="#333" text-anchor="middle">= ばらつき</text>
+                <text x="350" y="105" font-size="14" fill="#333" text-anchor="middle">E(X²) − {E(X)}²</text>
+                <text x="350" y="140" font-size="14" fill="#666" text-anchor="middle">「平均からの</text>
+                <text x="350" y="160" font-size="14" fill="#666" text-anchor="middle">ずれの大きさ」</text>
+
+                <!-- 標準偏差 -->
+                <text x="580" y="45" font-size="18" font-weight="bold" fill="#388e3c" text-anchor="middle">標準偏差 σ(X)</text>
+                <text x="580" y="75" font-size="16" fill="#333" text-anchor="middle">= √分散</text>
+                <text x="580" y="105" font-size="14" fill="#333" text-anchor="middle">√V(X)</text>
+                <text x="580" y="140" font-size="14" fill="#666" text-anchor="middle">「元の単位での</text>
+                <text x="580" y="160" font-size="14" fill="#666" text-anchor="middle">ばらつき」</text>
+            </svg>
+            <div class="svg-caption">確率分布を特徴づける3つの量</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 ルール1：確率変数と確率分布</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <p><strong>確率変数</strong>（「かくりつへんすう」と読む）とは、試行の結果によって値が決まる変数のこと。通常、大文字 \(X\) で表す。</p>
+            <p>確率変数 \(X\) がとる値 \(x_1, x_2, \ldots, x_n\) と、それぞれの確率 \(p_1, p_2, \ldots, p_n\) の対応を<strong>確率分布</strong>という。</p>
+            <table class="material-table">
+                <tr><th>\(X\)</th><td>\(x_1\)</td><td>\(x_2\)</td><td>\(\cdots\)</td><td>\(x_n\)</td><td>計</td></tr>
+                <tr><th>\(P\)</th><td>\(p_1\)</td><td>\(p_2\)</td><td>\(\cdots\)</td><td>\(p_n\)</td><td>\(1\)</td></tr>
+            </table>
+            <p><strong>→ 重要：</strong>確率の合計は必ず \(p_1 + p_2 + \cdots + p_n = 1\)</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>サイコロを振ったとき「出る目」は1〜6のどれかになる。これは試行の結果で決まる数値なので、確率変数として扱える。各目が出る確率を表にまとめたものが確率分布。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 ルール2：期待値（平均）の公式</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <div class="formula">\[ E(X) = \sum_{k=1}^{n} x_k \cdot p_k = x_1 p_1 + x_2 p_2 + \cdots + x_n p_n \]</div>
+            <p>\(E(X)\)（「イーエックス」と読む）は「期待値」または「平均」を表す記号。\(E\) は Expectation（期待）の頭文字。</p>
+            <p><strong>→ だから結果は：</strong>「各値 × その確率」の総和 = 長い目で見た平均値</p>
+            <p><strong>✅ メリット：</strong>無限回試行したときの平均値を、計算だけで求められる！</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>サイコロを1万回振ったら、1は約1667回、2も約1667回...と出る。平均は「(1×1667 + 2×1667 + ... + 6×1667) ÷ 10000」で、これは「1×(1/6) + 2×(1/6) + ... + 6×(1/6)」と同じ！</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 ルール3：分散と標準偏差の公式</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <div class="formula">\[ V(X) = E(X^2) - \{E(X)\}^2 \]</div>
+            <div class="formula">\[ \sigma(X) = \sqrt{V(X)} \]</div>
+            <p>\(V(X)\)（「ブイエックス」と読む）は分散（Variance）、\(\sigma(X)\)（「シグマエックス」と読む）は標準偏差を表す。</p>
+            <p><strong>→ 分散の計算手順：</strong></p>
+            <ol>
+                <li>\(E(X)\) を計算</li>
+                <li>\(E(X^2) = \sum x_k^2 \cdot p_k\) を計算</li>
+                <li>\(V(X) = E(X^2) - \{E(X)\}^2\) で分散を求める</li>
+                <li>\(\sigma(X) = \sqrt{V(X)}\) で標準偏差を求める</li>
+            </ol>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>分散は「平均からのずれの2乗の平均」。直接計算すると \(E[(X - E(X))^2]\) だが、展開すると \(E(X^2) - \{E(X)\}^2\) になり、こちらの方が計算が楽！</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 ルール4：期待値・分散の性質（線形性）</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <p>定数 \(a, b\) に対して、\(Y = aX + b\) とおくと：</p>
+            <div class="formula">\[ E(aX + b) = aE(X) + b \]</div>
+            <div class="formula">\[ V(aX + b) = a^2 V(X) \]</div>
+            <div class="formula">\[ \sigma(aX + b) = |a| \sigma(X) \]</div>
+            <p><strong>→ ポイント：</strong>期待値は「足し算も掛け算も素直に通る」が、分散は「足し算は消え、掛け算は2乗される」</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 ルール5：二項分布</strong> <a href="#ex-5" class="example-link">→ 例5</a>
+            <p>確率 \(p\) で「成功」する試行を \(n\) 回繰り返すとき、成功回数 \(X\) が従う分布を<strong>二項分布</strong>といい、\(B(n, p)\) と書く。</p>
+            <div class="formula">\[ P(X = k) = {}_n C_k \cdot p^k \cdot (1-p)^{n-k} \quad (k = 0, 1, 2, \ldots, n) \]</div>
+            <p><strong>二項分布の期待値・分散・標準偏差：</strong></p>
+            <div class="formula">\[ E(X) = np, \quad V(X) = np(1-p), \quad \sigma(X) = \sqrt{np(1-p)} \]</div>
+            <p><strong>→ だから結果は：</strong>「成功確率 × 試行回数」が期待される成功回数</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>例えば、成功確率30%の試行を10回行うと、期待される成功回数は 10 × 0.3 = 3回。これは直感的にも納得できる！</p>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>確率分布の問題は「確率表を作る → 期待値・分散を公式で計算」という流れで解きます。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 確率分布表の作成と期待値</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>サイコロの目の確率分布
+            </div>
+            <p>1個のサイコロを投げるとき、出る目を確率変数 \(X\) とする。\(X\) の確率分布を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>確率変数 \(X\) がとりうる値をすべて列挙 → \(1, 2, 3, 4, 5, 6\)</li>
+                <li>各値の確率を求める → サイコロは各目が同様に確からしいので、各 \(\frac{1}{6}\)</li>
+                <li>確率の合計が1であることを確認</li>
+            </ol>
+            <table class="material-table">
+                <tr><th>\(X\)</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>計</td></tr>
+                <tr><th>\(P\)</th><td>\(\frac{1}{6}\)</td><td>\(\frac{1}{6}\)</td><td>\(\frac{1}{6}\)</td><td>\(\frac{1}{6}\)</td><td>\(\frac{1}{6}\)</td><td>\(\frac{1}{6}\)</td><td>\(1\)</td></tr>
+            </table>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>サイコロの期待値
+            </div>
+            <p>例1のサイコロについて、出る目の期待値 \(E(X)\) を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>公式 \(E(X) = \sum x_k \cdot p_k\) に当てはめる</li>
+                <li>計算を実行</li>
+            </ol>
+            <div class="formula">\[ E(X) = 1 \cdot \frac{1}{6} + 2 \cdot \frac{1}{6} + 3 \cdot \frac{1}{6} + 4 \cdot \frac{1}{6} + 5 \cdot \frac{1}{6} + 6 \cdot \frac{1}{6} \]</div>
+            <div class="formula">\[ = \frac{1+2+3+4+5+6}{6} = \frac{21}{6} = \frac{7}{2} = 3.5 \]</div>
+            <p><strong>答え：\(E(X) = \frac{7}{2}\)</strong>（サイコロを何度も振ると、平均して3.5が出る）</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 分散と標準偏差の計算</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>サイコロの分散と標準偏差
+            </div>
+            <p>例1のサイコロについて、分散 \(V(X)\) と標準偏差 \(\sigma(X)\) を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>まず \(E(X^2)\) を計算（\(X^2\) の期待値）</li>
+                <li>\(V(X) = E(X^2) - \{E(X)\}^2\) で分散を計算</li>
+                <li>\(\sigma(X) = \sqrt{V(X)}\) で標準偏差を計算</li>
+            </ol>
+            <div class="formula">\[ E(X^2) = 1^2 \cdot \frac{1}{6} + 2^2 \cdot \frac{1}{6} + 3^2 \cdot \frac{1}{6} + 4^2 \cdot \frac{1}{6} + 5^2 \cdot \frac{1}{6} + 6^2 \cdot \frac{1}{6} \]</div>
+            <div class="formula">\[ = \frac{1+4+9+16+25+36}{6} = \frac{91}{6} \]</div>
+            <div class="formula">\[ V(X) = E(X^2) - \{E(X)\}^2 = \frac{91}{6} - \left(\frac{7}{2}\right)^2 = \frac{91}{6} - \frac{49}{4} = \frac{182 - 147}{12} = \frac{35}{12} \]</div>
+            <div class="formula">\[ \sigma(X) = \sqrt{\frac{35}{12}} = \frac{\sqrt{35}}{2\sqrt{3}} = \frac{\sqrt{105}}{6} \approx 1.71 \]</div>
+            <p><strong>答え：\(V(X) = \frac{35}{12}\)、\(\sigma(X) = \frac{\sqrt{105}}{6}\)</strong></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 線形変換の公式</h3>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>期待値・分散の変換
+            </div>
+            <p>\(E(X) = 5\)、\(V(X) = 4\) のとき、\(Y = 3X + 2\) の期待値と分散を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>期待値は「定数倍も足し算も素直に通る」ので \(E(Y) = 3E(X) + 2\)</li>
+                <li>分散は「足し算は消え、係数は2乗される」ので \(V(Y) = 3^2 V(X)\)</li>
+            </ol>
+            <div class="formula">\[ E(Y) = E(3X + 2) = 3 \cdot E(X) + 2 = 3 \cdot 5 + 2 = 17 \]</div>
+            <div class="formula">\[ V(Y) = V(3X + 2) = 3^2 \cdot V(X) = 9 \cdot 4 = 36 \]</div>
+            <p><strong>答え：\(E(Y) = 17\)、\(V(Y) = 36\)</strong></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 二項分布</h3>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>二項分布の確率計算
+            </div>
+            <p>成功確率 \(\frac{1}{3}\) の試行を5回行う。成功回数を \(X\) とするとき、以下を求めよ。<br>
+            (1) \(P(X = 2)\)　(2) \(E(X)\)　(3) \(V(X)\)</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(X\) は二項分布 \(B(5, \frac{1}{3})\) に従う</li>
+                <li>(1) 二項分布の公式に代入</li>
+                <li>(2)(3) 二項分布の期待値・分散の公式を使用</li>
+            </ol>
+            <p><strong>(1) \(P(X = 2)\) の計算：</strong></p>
+            <div class="formula">\[ P(X = 2) = {}_5 C_2 \cdot \left(\frac{1}{3}\right)^2 \cdot \left(\frac{2}{3}\right)^3 = 10 \cdot \frac{1}{9} \cdot \frac{8}{27} = \frac{80}{243} \]</div>
+            <p><strong>(2) 期待値：</strong></p>
+            <div class="formula">\[ E(X) = np = 5 \cdot \frac{1}{3} = \frac{5}{3} \]</div>
+            <p><strong>(3) 分散：</strong></p>
+            <div class="formula">\[ V(X) = np(1-p) = 5 \cdot \frac{1}{3} \cdot \frac{2}{3} = \frac{10}{9} \]</div>
+            <p><strong>答え：(1) \(\frac{80}{243}\)　(2) \(\frac{5}{3}\)　(3) \(\frac{10}{9}\)</strong></p>
+        </div>
+
+        <div class="example-box" id="ex-6">
+            <div class="example-title">
+                <span class="number-badge">例6</span>二項分布の応用
+            </div>
+            <p>ある検査で不良品が出る確率は0.1である。100個検査したとき、不良品の個数の期待値と標準偏差を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>不良品の個数 \(X\) は \(B(100, 0.1)\) に従う</li>
+                <li>二項分布の公式で期待値・分散を計算</li>
+                <li>標準偏差は分散の平方根</li>
+            </ol>
+            <div class="formula">\[ E(X) = np = 100 \times 0.1 = 10 \]</div>
+            <div class="formula">\[ V(X) = np(1-p) = 100 \times 0.1 \times 0.9 = 9 \]</div>
+            <div class="formula">\[ \sigma(X) = \sqrt{9} = 3 \]</div>
+            <p><strong>答え：期待値10個、標準偏差3個</strong></p>
+            <p>（「平均10個、ばらつきは約3個」と解釈できる）</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：分散は「2乗の期待値 − 期待値の2乗」で計算</strong><br>
+            分散を定義どおり「偏差の2乗の期待値」で計算すると大変。<br>
+            \(V(X) = E(X^2) - \{E(X)\}^2\) の公式を使えば、2回の期待値計算だけで済む！
+        </div>
+        <div class="tip-box">
+            <strong>✏️ コツ2：二項分布は公式を暗記すると速い</strong><br>
+            二項分布 \(B(n, p)\) の期待値・分散は公式で一発！<br>
+            <ul>
+                <li>期待値：\(E(X) = np\)（「回数 × 確率」）</li>
+                <li>分散：\(V(X) = np(1-p)\)（「回数 × 確率 × 失敗確率」）</li>
+            </ul>
+            いちいち分布表を作って計算しなくてよい。
+        </div>
+        <div class="tip-box">
+            <strong>✏️ コツ3：線形変換の公式を覚える</strong><br>
+            \(Y = aX + b\) のとき：
+            <ul>
+                <li>期待値：\(E(Y) = aE(X) + b\)（素直に計算OK）</li>
+                <li>分散：\(V(Y) = a^2 V(X)\)（\(b\) は消える、\(a\) は2乗される）</li>
+            </ul>
+            「足し算はばらつきに影響しない」と覚えよう！
+        </div>
+        <div class="tip-box">
+            <strong>✏️ コツ4：確率の合計が1かチェック</strong><br>
+            確率分布表を作ったら、必ず確率の合計が1になるか確認。<br>
+            1にならなければ計算ミスがある！
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：分散の公式を間違える</div>
+            <p><strong>ダメな例：</strong> \(V(X) = \{E(X)\}^2 - E(X^2)\)（引き算の順序が逆）</p>
+            <p><strong>対策：</strong> 正しい公式は \(V(X) = E(X^2) - \{E(X)\}^2\)<br>
+            「2乗の期待値」から「期待値の2乗」を引く！ 順序を絶対に間違えない。<br>
+            （分散は常に 0 以上なので、結果がマイナスなら間違い）</p>
+        </div>
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：線形変換で分散の計算を間違える</div>
+            <p><strong>ダメな例：</strong> \(V(3X + 2) = 3V(X) + 2\)</p>
+            <p><strong>対策：</strong> 正しくは \(V(3X + 2) = 3^2 V(X) = 9V(X)\)<br>
+            分散の変換では「足し算の \(b\) は消える」「係数 \(a\) は2乗される」</p>
+        </div>
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：二項分布の確率計算でべき乗を間違える</div>
+            <p><strong>ダメな例：</strong> \(P(X = k) = {}_n C_k \cdot p^{n-k} \cdot (1-p)^k\)</p>
+            <p><strong>対策：</strong> 正しくは \(P(X = k) = {}_n C_k \cdot p^k \cdot (1-p)^{n-k}\)<br>
+            「成功 \(k\) 回」なので成功確率 \(p\) は \(k\) 乗、<br>
+            「失敗 \(n-k\) 回」なので失敗確率 \(1-p\) は \(n-k\) 乗</p>
+        </div>
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：\(E(X^2)\) と \(\{E(X)\}^2\) を混同</div>
+            <p><strong>ダメな例：</strong> 「\(E(X^2)\) と \(\{E(X)\}^2\) は同じ」と思い込む</p>
+            <p><strong>対策：</strong>
+            <ul>
+                <li>\(E(X^2)\)：「\(X\) を2乗してから平均をとる」</li>
+                <li>\(\{E(X)\}^2\)：「\(X\) の平均を2乗する」</li>
+            </ul>
+            この2つは一般に異なる！（等しいのは分散0のときだけ）</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">確率分布表を正しく作れる（確率の合計 = 1）</div>
+            <div class="checklist-item">期待値 \(E(X) = \sum x_k p_k\) を正しく計算できる</div>
+            <div class="checklist-item">分散 \(V(X) = E(X^2) - \{E(X)\}^2\) を正しく計算できる</div>
+            <div class="checklist-item">二項分布 \(B(n, p)\) の確率・期待値・分散を求められる</div>
+            <div class="checklist-item">線形変換 \(Y = aX + b\) のとき、\(E(Y)\)・\(V(Y)\) を求められる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>2枚のコインを同時に投げるとき、表の出る枚数を \(X\) とする。</p>
+            <p>(1) \(X\) の確率分布を求めよ。<br>
+            (2) \(E(X)\) を求めよ。<br>
+            (3) \(V(X)\) を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>(1) 確率分布：</strong></p>
+                    <p>\(X = 0\)（裏裏）：確率 \(\frac{1}{4}\)<br>
+                    \(X = 1\)（表裏 or 裏表）：確率 \(\frac{2}{4} = \frac{1}{2}\)<br>
+                    \(X = 2\)（表表）：確率 \(\frac{1}{4}\)</p>
+                    <table class="material-table">
+                        <tr><th>\(X\)</th><td>0</td><td>1</td><td>2</td><td>計</td></tr>
+                        <tr><th>\(P\)</th><td>\(\frac{1}{4}\)</td><td>\(\frac{1}{2}\)</td><td>\(\frac{1}{4}\)</td><td>1</td></tr>
+                    </table>
+                    <p><strong>(2) 期待値：</strong></p>
+                    <p>\(E(X) = 0 \cdot \frac{1}{4} + 1 \cdot \frac{1}{2} + 2 \cdot \frac{1}{4} = 0 + \frac{1}{2} + \frac{1}{2} = 1\)</p>
+                    <p><strong>(3) 分散：</strong></p>
+                    <p>\(E(X^2) = 0^2 \cdot \frac{1}{4} + 1^2 \cdot \frac{1}{2} + 2^2 \cdot \frac{1}{4} = 0 + \frac{1}{2} + 1 = \frac{3}{2}\)</p>
+                    <p>\(V(X) = E(X^2) - \{E(X)\}^2 = \frac{3}{2} - 1^2 = \frac{1}{2}\)</p>
+                    <p><strong>別解：</strong>これは二項分布 \(B(2, \frac{1}{2})\) なので<br>
+                    \(E(X) = np = 2 \cdot \frac{1}{2} = 1\)、\(V(X) = np(1-p) = 2 \cdot \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{2}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>あるバスケ選手のフリースロー成功率は80%である。5本投げたとき、成功本数 \(X\) について：</p>
+            <p>(1) \(E(X)\) と \(\sigma(X)\) を求めよ。<br>
+            (2) \(P(X \geq 4)\) を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(X\) は二項分布 \(B(5, 0.8)\) に従う。</p>
+                    <p><strong>(1) 期待値と標準偏差：</strong></p>
+                    <p>\(E(X) = np = 5 \times 0.8 = 4\)</p>
+                    <p>\(V(X) = np(1-p) = 5 \times 0.8 \times 0.2 = 0.8\)</p>
+                    <p>\(\sigma(X) = \sqrt{0.8} = \frac{2\sqrt{5}}{5} \approx 0.894\)</p>
+                    <p><strong>(2) \(P(X \geq 4)\) の計算：</strong></p>
+                    <p>\(P(X \geq 4) = P(X = 4) + P(X = 5)\)</p>
+                    <p>\(P(X = 4) = {}_5 C_4 \cdot (0.8)^4 \cdot (0.2)^1 = 5 \times 0.4096 \times 0.2 = 0.4096\)</p>
+                    <p>\(P(X = 5) = {}_5 C_5 \cdot (0.8)^5 \cdot (0.2)^0 = 1 \times 0.32768 \times 1 = 0.32768\)</p>
+                    <p>\(P(X \geq 4) = 0.4096 + 0.32768 = 0.73728\)</p>
+                    <p><strong>答え：(1) \(E(X) = 4\)、\(\sigma(X) = \frac{2\sqrt{5}}{5}\)　(2) 約73.7%</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<section id="section8">
+<div class="summary">
+    📌 まとめ：確率分布は「期待値で平均、分散でばらつき」を数値化する。二項分布は「np」と「np(1−p)」で一発計算！
+</div>
+</section>
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「保険会社を救った確率論」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 保険会社を救った確率論</div>
+            <p>17世紀のイギリス。海上貿易が盛んだったこの時代、船が嵐で沈没するリスクは大きなビジネス問題でした。</p>
+            <p>商人たちは「船が沈んでも破産しない仕組み」を求めていました。そこで生まれたのが<strong>海上保険</strong>。でも、保険料をいくらに設定すればいいのでしょうか？</p>
+            <p>高すぎれば誰も加入しない。安すぎれば保険会社が破産する。</p>
+            <p>この難問を解決したのが、天文学者エドモンド・ハレー（ハレー彗星で有名なあの人！）でした。</p>
+            <p>ハレーは、ドイツの都市ブレスラウの死亡記録を分析し、「各年齢での死亡確率」を計算しました。これが世界初の<strong>生命表</strong>です。</p>
+            <p>たとえば、30歳の人が1年以内に亡くなる確率が1%なら、1000人から保険料を集めて10人に保険金を払う計算ができます。</p>
+            <div class="formula">\[ \text{適正な保険料} = \text{保険金} \times \text{死亡確率} \]</div>
+            <p>これはまさに<strong>期待値</strong>の考え方！ハレーの計算は「期待値を使えばリスクを数値化できる」という大発見でした。</p>
+            <p>現代の保険会社は、この考え方をさらに発展させています。自動車保険なら「事故確率」、火災保険なら「火災確率」を計算し、期待値に基づいて保険料を設定しています。</p>
+            <p>ちなみに、ハレーはこの功績で「保険数理士の父」と呼ばれることもあります。彗星の発見だけでなく、保険業界も救っていたとは...まさに「星と確率の達人」ですね！</p>
+        </div>
+    </div>
+</section>

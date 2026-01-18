@@ -1,0 +1,497 @@
+---
+layout: material-raw
+title: 合同式とユークリッド互除法
+icon: "🔄"
+description: 合同式（mod）の計算とユークリッド互除法を使った不定方程式の解法をマスターする。
+level: 標準
+level_num: 2
+category: numbers
+school_level: senior
+order: 5
+keywords:
+  - 合同式
+  - mod
+  - ユークリッド互除法
+  - 不定方程式
+  - 一次不定方程式
+cover_image: /images/noimage.jpg
+cover_description: 合同式とユークリッド互除法のイメージ
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：実践ストーリー「暗号とmod」"
+related:
+  - url: /senior/約数と倍数_教材.html
+    title: 約数と倍数
+    note: GCDの復習に
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「13時は1時」「曜日は7で一周する」—— 私たちは日常的に「割った余り」で物事を考えています。この「余りの計算」を数学的に扱うのが<strong>合同式</strong>です。</p>
+
+        <p>このページでは、<strong>合同式とユークリッド互除法</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>合同式（mod）</strong>：余りが等しいことを表す記法</li>
+            <li><strong>合同式の性質</strong>：足し算・引き算・掛け算ができる</li>
+            <li><strong>ユークリッド互除法</strong>：GCDを効率よく求める方法</li>
+            <li><strong>一次不定方程式</strong>：ax + by = c の整数解を求める</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🔄 最重要：\(a \equiv b \pmod{m}\) ⟺ 「aとbをmで割った余りが等しい」⟺「a - bがmの倍数」
+        </div>
+
+        <!-- 合同式のイメージ（SVG） -->
+        <div class="svg-container">
+            <svg width="650" height="180" viewBox="0 0 650 180">
+                <!-- タイトル -->
+                <text x="325" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">合同式のイメージ（時計の針）</text>
+
+                <!-- 時計 -->
+                <circle cx="150" cy="100" r="60" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
+                <text x="150" y="55" font-size="14" fill="#333" text-anchor="middle">12</text>
+                <text x="200" y="105" font-size="14" fill="#333" text-anchor="middle">3</text>
+                <text x="150" y="155" font-size="14" fill="#333" text-anchor="middle">6</text>
+                <text x="100" y="105" font-size="14" fill="#333" text-anchor="middle">9</text>
+
+                <!-- 13時の針（1時の位置） -->
+                <line x1="150" y1="100" x2="175" y2="65" stroke="#e91e63" stroke-width="3"/>
+                <circle cx="175" cy="65" r="5" fill="#e91e63"/>
+
+                <!-- 説明 -->
+                <text x="420" y="60" font-size="14" fill="#333" text-anchor="middle">13時 = 1時（12時間で一周）</text>
+                <text x="420" y="90" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">13 ≡ 1 (mod 12)</text>
+                <text x="420" y="120" font-size="12" fill="#666" text-anchor="middle">「13を12で割った余りは1」</text>
+                <text x="420" y="150" font-size="12" fill="#666" text-anchor="middle">「13 - 1 = 12 は12の倍数」</text>
+            </svg>
+        </div>
+
+        <div class="rule-box" id="rule-congruence">
+            <strong>📌 ルール1：合同式の定義</strong> <a href="#ex-congruence" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ a \equiv b \pmod{m} \Leftrightarrow m \mid (a - b) \Leftrightarrow a = b + km \text{ （kは整数）} \]
+            </div>
+            <p><strong>\(a \equiv b \pmod{m}\)</strong>：「aとbはmを法として合同」</p>
+            <p><strong>読み方：</strong>「aはbとmodエムで合同」「aはbに合同（mod m）」</p>
+            <p><strong>例：</strong>17 ≡ 2 (mod 5)（17÷5=3余り2、2÷5=0余り2）</p>
+        </div>
+
+        <div class="rule-box" id="rule-properties">
+            <strong>📌 ルール2：合同式の演算</strong> <a href="#ex-calculation" class="example-link">→ 例2</a>
+            <p>\(a \equiv b \pmod{m}\)、\(c \equiv d \pmod{m}\) のとき：</p>
+            <div class="formula">
+                \begin{align}
+                a + c &\equiv b + d \pmod{m} \quad \text{（加法）} \\
+                a - c &\equiv b - d \pmod{m} \quad \text{（減法）} \\
+                ac &\equiv bd \pmod{m} \quad \text{（乗法）} \\
+                a^n &\equiv b^n \pmod{m} \quad \text{（べき乗）}
+                \end{align}
+            </div>
+            <p><strong>✅ メリット：</strong>大きな数のべき乗の余りも、途中で余りをとりながら計算できる</p>
+        </div>
+
+        <div class="rule-box" id="rule-euclidean">
+            <strong>📌 ルール3：ユークリッド互除法</strong> <a href="#ex-euclidean" class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ \gcd(a, b) = \gcd(b, a \mod b) \]
+            </div>
+            <p><strong>意味：</strong>「aとbの最大公約数」=「bとaをbで割った余りの最大公約数」</p>
+            <p><strong>手順：</strong>大きい方を小さい方で割り、余りで割る操作を繰り返す。余りが0になったとき、割る数がGCD。</p>
+        </div>
+
+        <!-- ユークリッド互除法の図（SVG） -->
+        <div class="svg-container">
+            <svg width="600" height="200" viewBox="0 0 600 200">
+                <text x="300" y="25" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">ユークリッド互除法：gcd(78, 30)</text>
+
+                <!-- ステップ1 -->
+                <rect x="30" y="45" width="150" height="30" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                <text x="105" y="65" font-size="12" fill="#1976d2" text-anchor="middle">78 = 30 × 2 + 18</text>
+
+                <!-- ステップ2 -->
+                <rect x="30" y="85" width="150" height="30" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                <text x="105" y="105" font-size="12" fill="#4caf50" text-anchor="middle">30 = 18 × 1 + 12</text>
+
+                <!-- ステップ3 -->
+                <rect x="30" y="125" width="150" height="30" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="5"/>
+                <text x="105" y="145" font-size="12" fill="#ff9800" text-anchor="middle">18 = 12 × 1 + 6</text>
+
+                <!-- ステップ4 -->
+                <rect x="30" y="165" width="150" height="30" fill="#fce4ec" stroke="#e91e63" stroke-width="2" rx="5"/>
+                <text x="105" y="185" font-size="12" fill="#e91e63" text-anchor="middle">12 = 6 × 2 + 0</text>
+
+                <!-- 結果 -->
+                <text x="300" y="70" font-size="14" fill="#333" text-anchor="middle">余りが0になった！</text>
+                <text x="300" y="100" font-size="14" fill="#333" text-anchor="middle">→ そのときの割る数が</text>
+                <rect x="230" y="115" width="140" height="40" fill="#e91e63" stroke="#e91e63" stroke-width="2" rx="5"/>
+                <text x="300" y="142" font-size="18" font-weight="bold" fill="white" text-anchor="middle">GCD = 6</text>
+
+                <!-- 矢印 -->
+                <path d="M 190 180 L 230 140" stroke="#e91e63" stroke-width="2" marker-end="url(#arrow4)"/>
+                <defs>
+                    <marker id="arrow4" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#e91e63"/>
+                    </marker>
+                </defs>
+
+                <!-- 計算の流れ -->
+                <text x="480" y="65" font-size="11" fill="#666" text-anchor="middle">78 → 30 → 18</text>
+                <text x="480" y="85" font-size="11" fill="#666" text-anchor="middle">→ 12 → 6 → 0</text>
+                <text x="480" y="115" font-size="11" fill="#333" text-anchor="middle">常に「新しい余り」で</text>
+                <text x="480" y="135" font-size="11" fill="#333" text-anchor="middle">「1つ前の余り」を割る</text>
+            </svg>
+        </div>
+
+        <div class="rule-box" id="rule-bezout">
+            <strong>📌 ルール4：一次不定方程式</strong> <a href="#ex-diophantine" class="example-link">→ 例4</a>
+            <div class="formula">
+                \[ ax + by = c \text{ が整数解を持つ} \Leftrightarrow \gcd(a, b) \mid c \]
+            </div>
+            <p><strong>ベズーの等式：</strong>\(\gcd(a, b) = d\) のとき、\(ax + by = d\) となる整数 x, y が存在する</p>
+            <p><strong>解の求め方：</strong>ユークリッド互除法を逆にたどる（拡張ユークリッド互除法）</p>
+        </div>
+
+        <div class="rule-box" id="rule-general-solution">
+            <strong>📌 ルール5：一般解の形</strong> <a href="#ex-general" class="example-link">→ 例5</a>
+            <div class="formula">
+                \[ ax + by = c \text{ の特殊解が } (x_0, y_0) \text{ のとき、一般解は：} \]
+                \[ x = x_0 + \frac{b}{d}t, \quad y = y_0 - \frac{a}{d}t \quad (t \text{は整数、} d = \gcd(a,b)) \]
+            </div>
+            <p><strong>意味：</strong>1つの解がわかれば、すべての解を表せる</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>合同式とユークリッド互除法を実際に使ってみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 合同式の基本</h3>
+
+        <div class="example-box" id="ex-congruence">
+            <div class="example-title">
+                <span class="number-badge">例1</span>合同式の判定
+            </div>
+            <p>次の合同式が成り立つか判定せよ：23 ≡ 8 (mod 5)</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>23 - 8 = 15</li>
+                <li>15 ÷ 5 = 3（割り切れる）</li>
+                <li>よって、15は5の倍数</li>
+            </ol>
+            <div class="formula">
+                \[ 23 - 8 = 15 = 5 \times 3 \quad \therefore 23 \equiv 8 \pmod{5} \text{ は成り立つ} \]
+            </div>
+            <p><strong>別解：</strong>23÷5=4余り3、8÷5=1余り3 → 余りが同じなので成り立つ</p>
+        </div>
+
+        <div class="example-box" id="ex-calculation">
+            <div class="example-title">
+                <span class="number-badge">例2</span>べき乗の余り
+            </div>
+            <p>\(3^{100}\) を7で割った余りを求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>3のべき乗を7で割った余りを調べる</li>
+                <li>\(3^1 \equiv 3\)、\(3^2 \equiv 9 \equiv 2\)、\(3^3 \equiv 6\)、\(3^4 \equiv 18 \equiv 4\)、\(3^5 \equiv 12 \equiv 5\)、\(3^6 \equiv 15 \equiv 1 \pmod{7}\)</li>
+                <li>\(3^6 \equiv 1\) なので、周期は6</li>
+                <li>100 = 6 × 16 + 4 より、\(3^{100} \equiv 3^4 \equiv 4 \pmod{7}\)</li>
+            </ol>
+            <div class="formula">
+                \[ 3^{100} = 3^{6 \times 16 + 4} = (3^6)^{16} \times 3^4 \equiv 1^{16} \times 4 \equiv 4 \pmod{7} \]
+            </div>
+            <p><strong>答え：</strong>余りは 4</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ ユークリッド互除法</h3>
+
+        <div class="example-box" id="ex-euclidean">
+            <div class="example-title">
+                <span class="number-badge">例3</span>GCDを求める
+            </div>
+            <p>gcd(111, 30) をユークリッド互除法で求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>111 = 30 × 3 + 21</li>
+                <li>30 = 21 × 1 + 9</li>
+                <li>21 = 9 × 2 + 3</li>
+                <li>9 = 3 × 3 + 0</li>
+            </ol>
+            <div class="formula">
+                \[ \gcd(111, 30) = 3 \]
+            </div>
+            <p><strong>ポイント：</strong>余りが0になったときの「割る数」がGCD</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 一次不定方程式</h3>
+
+        <div class="example-box" id="ex-diophantine">
+            <div class="example-title">
+                <span class="number-badge">例4</span>不定方程式の特殊解
+            </div>
+            <p>111x + 30y = 3 の整数解を1つ求めよ。</p>
+            <p><strong>解き方：</strong>ユークリッド互除法を逆にたどる</p>
+            <ol>
+                <li>例3より、gcd(111, 30) = 3</li>
+                <li>逆にたどる：
+                    <ul>
+                        <li>3 = 21 - 9 × 2</li>
+                        <li>9 = 30 - 21 × 1 を代入 → 3 = 21 - (30 - 21) × 2 = 3 × 21 - 2 × 30</li>
+                        <li>21 = 111 - 30 × 3 を代入 → 3 = 3(111 - 30 × 3) - 2 × 30 = 3 × 111 - 11 × 30</li>
+                    </ul>
+                </li>
+            </ol>
+            <div class="formula">
+                \[ 3 = 111 \times 3 + 30 \times (-11) \]
+            </div>
+            <p><strong>答え：</strong>x = 3, y = -11（特殊解の1つ）</p>
+        </div>
+
+        <div class="example-box" id="ex-general">
+            <div class="example-title">
+                <span class="number-badge">例5</span>一般解を求める
+            </div>
+            <p>111x + 30y = 3 の一般解を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>特殊解：(x₀, y₀) = (3, -11)</li>
+                <li>d = gcd(111, 30) = 3</li>
+                <li>一般解の公式を適用</li>
+            </ol>
+            <div class="formula">
+                \begin{align}
+                x &= 3 + \frac{30}{3}t = 3 + 10t \\
+                y &= -11 - \frac{111}{3}t = -11 - 37t
+                \end{align}
+            </div>
+            <p><strong>答え：</strong>\(x = 3 + 10t\)、\(y = -11 - 37t\)（tは任意の整数）</p>
+            <p><strong>確認：</strong>t = 1 のとき x = 13, y = -48 → 111×13 + 30×(-48) = 1443 - 1440 = 3 ✓</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 応用問題</h3>
+
+        <div class="example-box" id="ex-positive">
+            <div class="example-title">
+                <span class="number-badge">例6</span>正の整数解
+            </div>
+            <p>5x + 7y = 100 を満たす正の整数解 (x, y) をすべて求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>gcd(5, 7) = 1 で 1｜100 なので解は存在</li>
+                <li>特殊解を見つける：5×6 + 7×10 = 30 + 70 = 100 → (6, 10)</li>
+                <li>一般解：x = 6 + 7t、y = 10 - 5t</li>
+                <li>正の整数の条件：x > 0 かつ y > 0</li>
+                <li>6 + 7t > 0 → t > -6/7 → t ≥ 0</li>
+                <li>10 - 5t > 0 → t < 2 → t ≤ 1</li>
+            </ol>
+            <div class="formula">
+                \[ t = 0: (x, y) = (6, 10), \quad t = 1: (x, y) = (13, 5) \]
+            </div>
+            <p><strong>答え：</strong>(6, 10) と (13, 5) の2組</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：合同式は「余りに置き換える」</strong><br>
+            大きな数は余りに置き換えて計算。<br>
+            例：17 × 23 (mod 7) → 3 × 2 = 6 (mod 7)
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：べき乗は周期を見つける</strong><br>
+            \(a^n \pmod{m}\) は周期的になることが多い。<br>
+            周期がわかれば、nを周期で割った余りで計算できる。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：ユークリッド互除法は「表で管理」</strong><br>
+            各ステップを表にすると、逆にたどるときに便利。<br>
+            商と余りを記録しておく。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：特殊解は「試行錯誤」でもOK</strong><br>
+            小さい係数なら、適当に代入して見つけられることも。<br>
+            5x + 7y = 12 → x = -1, y = 2 など。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：合同式で割り算してしまう</div>
+            <p><strong>ダメな例：</strong>6 ≡ 0 (mod 3) だから 2 ≡ 0 (mod 3)（両辺を3で割った）</p>
+            <p><strong>対策：</strong>合同式では割り算は一般にできない（逆元が存在するときのみ可能）</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：GCDで割り切れるか確認しない</div>
+            <p><strong>ダメな例：</strong>6x + 9y = 10 の整数解を探そうとする</p>
+            <p><strong>対策：</strong>gcd(6, 9) = 3 で、3∤10 なので解なし</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：一般解の符号を間違える</div>
+            <p><strong>ダメな例：</strong>x = x₀ + (b/d)t のところを x = x₀ - (b/d)t とする</p>
+            <p><strong>対策：</strong>xには +b/d、yには -a/d を使う。代入して確認</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：正の整数解の範囲を間違える</div>
+            <p><strong>ダメな例：</strong>x > 0 の条件を x ≥ 0 と混同</p>
+            <p><strong>対策：</strong>「正の整数」は 1, 2, 3, ... で、0を含まない</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">合同式 \(a \equiv b \pmod{m}\) の意味がわかる</div>
+            <div class="checklist-item">合同式の加減乗ができる</div>
+            <div class="checklist-item">べき乗の余りを周期性を使って求められる</div>
+            <div class="checklist-item">ユークリッド互除法でGCDを求められる</div>
+            <div class="checklist-item">一次不定方程式の解の存在条件がわかる</div>
+            <div class="checklist-item">拡張ユークリッド互除法で特殊解を求められる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>\(2^{50}\) を7で割った余りを求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(2^1 \equiv 2, 2^2 \equiv 4, 2^3 \equiv 1 \pmod{7}\)</p>
+                    <p>周期3。50 = 3 × 16 + 2</p>
+                    <p>\(2^{50} \equiv 2^2 \equiv 4 \pmod{7}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>gcd(252, 105) をユークリッド互除法で求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>252 = 105 × 2 + 42</p>
+                    <p>105 = 42 × 2 + 21</p>
+                    <p>42 = 21 × 2 + 0</p>
+                    <p>gcd(252, 105) = 21</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>7x + 11y = 1 の整数解を1つ求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>11 = 7 × 1 + 4</p>
+                    <p>7 = 4 × 1 + 3</p>
+                    <p>4 = 3 × 1 + 1</p>
+                    <p>逆にたどる：1 = 4 - 3 = 4 - (7 - 4) = 2×4 - 7 = 2(11 - 7) - 7 = 2×11 - 3×7</p>
+                    <p>7×(-3) + 11×2 = 1 → x = -3, y = 2</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：合同式は「余りの計算」、ユークリッド互除法でGCDと不定方程式を解く！
+</div>
+
+<!-- ========== おまけ：実践ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：実践ストーリー「暗号とmod」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">🔐 RSA暗号の仕組み</div>
+
+            <p>インターネットでクレジットカード番号を安全に送るには？ 答えは<strong>RSA暗号</strong>。この暗号は、合同式とべき乗を使っている。</p>
+
+            <p><strong>簡単な例：</strong></p>
+            <ol>
+                <li>2つの素数を選ぶ：p = 3, q = 11 → n = 33</li>
+                <li>公開鍵 e = 7、秘密鍵 d = 3（これらは特別な関係がある）</li>
+                <li>メッセージ m = 4 を暗号化：\(c = m^e \mod n = 4^7 \mod 33\)</li>
+            </ol>
+
+            <div class="formula">
+                \[ 4^7 = 16384 = 33 \times 496 + 16 \equiv 16 \pmod{33} \]
+            </div>
+
+            <p>暗号文は c = 16。</p>
+
+            <p><strong>復号（秘密鍵で元に戻す）：</strong></p>
+            <div class="formula">
+                \[ m = c^d \mod n = 16^3 \mod 33 = 4096 \mod 33 = 4 \]
+            </div>
+
+            <p>元のメッセージ m = 4 が復元された！</p>
+
+            <p><strong>なぜ安全？</strong></p>
+            <ul>
+                <li>n = 33 を p × q = 3 × 11 に分解するのは簡単</li>
+                <li>でも実際のRSAでは n が300桁以上の巨大な数</li>
+                <li>大きな数の素因数分解は、最速のコンピュータでも数千年かかる</li>
+            </ul>
+
+            <p><strong>フェルマーの小定理</strong>も活躍：</p>
+            <div class="formula">
+                \[ a^{p-1} \equiv 1 \pmod{p} \quad (\gcd(a, p) = 1 \text{のとき}) \]
+            </div>
+
+            <p>この定理のおかげで、暗号化と復号が「打ち消し合う」ように設計できる。</p>
+
+            <p>高校数学の「合同式」と「素因数分解」が、世界中のインターネット通信を守っているのだ。</p>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,530 @@
+---
+layout: material-raw
+title: 軌跡と領域
+icon: "📍"
+description: 軌跡の求め方から不等式と領域、線形計画法まで、図形と方程式の後半を完全攻略！座標平面上で「条件を満たす点の集合」を視覚化する力を身につける。
+level: 標準
+level_num: 2
+category: geometry
+school_level: senior
+order: 7
+keywords:
+  - 軌跡
+  - 領域
+  - 不等式
+  - 線形計画法
+  - 図形と方程式
+cover_image: /images/noimage.jpg
+cover_description: 座標平面上の軌跡（円・直線）と不等式で表された領域（斜線部分）
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: section8
+    title: "まとめ一言"
+  - id: story
+    title: "おまけ：歴史ストーリー「デカルトと座標幾何学」"
+related:
+  - url: /senior/点と直線_教材.html
+    title: 点と直線
+    note: 直線の方程式・距離公式の前提知識
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「2点からの距離が等しい点を全部集めるとどんな図形になる？」「時速60km以下で進める範囲は？」こんな問いに答えるのが<strong>軌跡と領域</strong>です。条件を方程式や不等式で表し、図形として可視化する技術は、最適化問題など実社会でも活躍します。</p>
+        <p>このページでは、以下の内容を学びます：</p>
+        <ul>
+            <li><strong>軌跡の求め方</strong>：「条件を満たす点の集合」を方程式で表す</li>
+            <li><strong>不等式と領域</strong>：不等式が表す座標平面上の範囲を図示する</li>
+            <li><strong>線形計画法</strong>：領域内で一次式の最大・最小を求める</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】軌跡を求める3ステップ：<br>
+            (1) 求める点を\((x, y)\)とおく<br>
+            (2) 条件を\(x, y\)の式で表す<br>
+            (3) 式を整理して図形の方程式を得る
+        </div>
+
+        <!-- 軌跡の図解（SVG） -->
+        <div class="svg-container">
+            <svg width="400" height="300" viewBox="0 0 400 300">
+                <!-- 座標軸 -->
+                <defs>
+                    <marker id="arrow-black" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+                    </marker>
+                </defs>
+                <line x1="50" y1="250" x2="370" y2="250" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+                <line x1="50" y1="250" x2="50" y2="30" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+                <text x="375" y="255" font-size="16" fill="#333">x</text>
+                <text x="40" y="25" font-size="16" fill="#333">y</text>
+                <text x="45" y="265" font-size="14" fill="#333">O</text>
+
+                <!-- 2点A, B -->
+                <circle cx="130" cy="200" r="5" fill="#1976d2"/>
+                <text x="115" y="220" font-size="14" fill="#1976d2">A</text>
+                <circle cx="250" cy="200" r="5" fill="#1976d2"/>
+                <text x="255" y="220" font-size="14" fill="#1976d2">B</text>
+
+                <!-- 軌跡（垂直二等分線） -->
+                <line x1="190" y1="250" x2="190" y2="50" stroke="#e53935" stroke-width="3"/>
+
+                <!-- 動点P -->
+                <circle cx="190" cy="120" r="5" fill="#4caf50"/>
+                <text x="200" y="115" font-size="14" fill="#4caf50">P(x, y)</text>
+
+                <!-- 距離PA, PB -->
+                <line x1="130" y1="200" x2="190" y2="120" stroke="#4caf50" stroke-width="1" stroke-dasharray="5,3"/>
+                <line x1="250" y1="200" x2="190" y2="120" stroke="#4caf50" stroke-width="1" stroke-dasharray="5,3"/>
+                <text x="140" y="155" font-size="14" fill="#4caf50">PA</text>
+                <text x="220" y="155" font-size="14" fill="#4caf50">PB</text>
+
+                <!-- 説明 -->
+                <text x="100" y="280" font-size="14" fill="#333">PA = PB を満たす点Pの軌跡 → 線分ABの垂直二等分線</text>
+            </svg>
+            <div class="svg-caption">軌跡の例：2点から等距離にある点の集合</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 不等式と領域</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <p>直線 \(ax + by + c = 0\) について：</p>
+            <ul>
+                <li>\(ax + by + c > 0\) → 直線の<strong>片側</strong>の領域</li>
+                <li>\(ax + by + c < 0\) → 直線の<strong>反対側</strong>の領域</li>
+            </ul>
+            <p><strong>→ 判定法：</strong>原点\((0, 0)\)を代入して、不等式が成り立つ側が領域</p>
+            <p><strong>✅ メリット：</strong>グラフを描かなくても領域がわかる</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 境界線の扱い</strong>
+            <ul>
+                <li>\(\geq\) または \(\leq\) → 境界線を<strong>含む</strong>（実線）</li>
+                <li>\(>\) または \(<\) → 境界線を<strong>含まない</strong>（破線）</li>
+            </ul>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 線形計画法</strong> <a href="#ex-6" class="example-link">→ 例6</a>
+            <div class="formula">
+                \[ k = ax + by \text{ の最大・最小} \Rightarrow \text{領域の頂点で調べる} \]
+            </div>
+            <p>直線 \(y = -\frac{a}{b}x + \frac{k}{b}\) を平行移動させて、領域と共有点を持つ範囲で\(k\)の値域を求める。</p>
+            <p><strong>→ だから結果は：</strong>最大・最小は必ず<strong>頂点</strong>で達成される</p>
+            <details class="thinking"><summary><strong>💡 考え方を見る</strong></summary>
+            <p>直線\(ax + by = k\)を\(k\)を変化させながら平行移動すると、領域との共有点がある範囲で\(k\)が動きます。凸多角形領域なら、最も端に接触するのは頂点です。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 円の内部・外部</strong> <a href="#ex-5" class="example-link">→ 例5</a>
+            <p>円 \((x-a)^2 + (y-b)^2 = r^2\) について：</p>
+            <ul>
+                <li>\((x-a)^2 + (y-b)^2 < r^2\) → 円の<strong>内部</strong></li>
+                <li>\((x-a)^2 + (y-b)^2 > r^2\) → 円の<strong>外部</strong></li>
+            </ul>
+            <p><strong>→ 覚え方：</strong>「距離 < 半径」なら内部、「距離 > 半径」なら外部</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 代表的な軌跡パターン</strong>
+            <table class="material-table">
+                <tr><th>条件</th><th>軌跡</th></tr>
+                <tr><td>定点Aからの距離が一定（\(= r\)）</td><td>Aを中心とする半径\(r\)の円</td></tr>
+                <tr><td>2点A, Bから等距離</td><td>線分ABの垂直二等分線</td></tr>
+                <tr><td>2点A, Bからの距離の和が一定</td><td>楕円（\(|PA| + |PB| = 2a\)）</td></tr>
+                <tr><td>2点A, Bからの距離の比が一定（\(\neq 1\)）</td><td>アポロニウスの円</td></tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>軌跡と領域の問題を、パターン別に解いていきましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 軌跡の求め方</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>2点から等距離にある点の軌跡
+            </div>
+            <p>2点 \(A(1, 2)\), \(B(5, 4)\) から等距離にある点\(P\)の軌跡を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>求める点を\(P(x, y)\)とおく</li>
+                <li>条件「\(PA = PB\)」を式で表す：\(\sqrt{(x-1)^2+(y-2)^2} = \sqrt{(x-5)^2+(y-4)^2}\)</li>
+                <li>両辺を2乗して展開：\((x-1)^2+(y-2)^2 = (x-5)^2+(y-4)^2\)</li>
+                <li>整理：\(x^2 - 2x + 1 + y^2 - 4y + 4 = x^2 - 10x + 25 + y^2 - 8y + 16\)</li>
+                <li>\(8x + 4y - 36 = 0\) → \(2x + y - 9 = 0\)</li>
+            </ol>
+            <div class="formula">
+                \[ \text{答：直線 } 2x + y - 9 = 0 \text{（線分ABの垂直二等分線）} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>定点と定直線から等距離にある点の軌跡
+            </div>
+            <p>点 \(F(0, 1)\) と直線 \(y = -1\) から等距離にある点\(P\)の軌跡を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>点\(P(x, y)\)から点\(F\)までの距離：\(\sqrt{x^2 + (y-1)^2}\)</li>
+                <li>点\(P(x, y)\)から直線\(y = -1\)までの距離：\(|y + 1|\)</li>
+                <li>条件「等距離」：\(\sqrt{x^2 + (y-1)^2} = |y + 1|\)</li>
+                <li>両辺を2乗（\(y \geq -1\)のとき）：\(x^2 + (y-1)^2 = (y+1)^2\)</li>
+                <li>\(x^2 + y^2 - 2y + 1 = y^2 + 2y + 1\) → \(x^2 = 4y\)</li>
+            </ol>
+            <div class="formula">
+                \[ \text{答：放物線 } x^2 = 4y \]
+            </div>
+            <p>※これは焦点\(F(0, 1)\)、準線\(y = -1\)の放物線の定義そのものです。</p>
+        </div>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>アポロニウスの円
+            </div>
+            <p>2点 \(A(0, 0)\), \(B(6, 0)\) からの距離の比が \(1:2\) である点\(P\)の軌跡を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>条件：\(PA : PB = 1 : 2\) → \(2 \cdot PA = PB\)</li>
+                <li>\(2\sqrt{x^2 + y^2} = \sqrt{(x-6)^2 + y^2}\)</li>
+                <li>両辺を2乗：\(4(x^2 + y^2) = (x-6)^2 + y^2\)</li>
+                <li>展開：\(4x^2 + 4y^2 = x^2 - 12x + 36 + y^2\)</li>
+                <li>\(3x^2 + 3y^2 + 12x - 36 = 0\) → \(x^2 + y^2 + 4x - 12 = 0\)</li>
+                <li>平方完成：\((x+2)^2 + y^2 = 16\)</li>
+            </ol>
+            <div class="formula">
+                \[ \text{答：中心 } (-2, 0)\text{、半径 } 4 \text{ の円} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 不等式と領域</h3>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>直線で分けられる領域
+            </div>
+            <p>不等式 \(2x - y + 3 > 0\) の表す領域を図示せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>境界線 \(2x - y + 3 = 0\) を描く → \(y = 2x + 3\)</li>
+                <li>原点\((0, 0)\)を代入：\(2 \cdot 0 - 0 + 3 = 3 > 0\) ✓</li>
+                <li>原点を含む側が領域（境界線は含まない → 破線）</li>
+            </ol>
+            <div class="svg-container">
+                <svg width="350" height="280" viewBox="0 0 350 280">
+                    <defs>
+                        <marker id="arrow-b" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+                        </marker>
+                        <pattern id="hatch" patternUnits="userSpaceOnUse" width="8" height="8">
+                            <path d="M-2,2 l4,-4 M0,8 l8,-8 M6,10 l4,-4" stroke="#e53935" stroke-width="1" opacity="0.4"/>
+                        </pattern>
+                    </defs>
+                    <!-- 領域（原点側） -->
+                    <polygon points="30,30 30,250 175,250 310,30" fill="url(#hatch)"/>
+                    <!-- 座標軸 -->
+                    <line x1="30" y1="180" x2="320" y2="180" stroke="#333" stroke-width="2" marker-end="url(#arrow-b)"/>
+                    <line x1="175" y1="260" x2="175" y2="20" stroke="#333" stroke-width="2" marker-end="url(#arrow-b)"/>
+                    <text x="325" y="185" font-size="14" fill="#333">x</text>
+                    <text x="165" y="15" font-size="14" fill="#333">y</text>
+                    <text x="180" y="195" font-size="14" fill="#333">O</text>
+                    <!-- 境界線（破線） -->
+                    <line x1="30" y1="75" x2="310" y2="250" stroke="#1976d2" stroke-width="2" stroke-dasharray="8,4"/>
+                    <text x="280" y="230" font-size="14" fill="#1976d2">y = 2x + 3</text>
+                    <!-- 原点 -->
+                    <circle cx="175" cy="180" r="4" fill="#4caf50"/>
+                </svg>
+                <div class="svg-caption">2x - y + 3 > 0 の領域（斜線部分、境界を含まない）</div>
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>円の内部
+            </div>
+            <p>不等式 \(x^2 + y^2 \leq 4\) の表す領域を図示せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>境界線：\(x^2 + y^2 = 4\) → 原点中心、半径2の円</li>
+                <li>\(x^2 + y^2 \leq 4\) → 「中心からの距離が2以下」→ 円の内部</li>
+                <li>\(\leq\) なので境界を含む（実線）</li>
+            </ol>
+            <div class="formula">
+                \[ \text{答：原点中心、半径2の円の内部（周を含む）} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 線形計画法</h3>
+
+        <div class="example-box" id="ex-6">
+            <div class="example-title">
+                <span class="number-badge">例6</span>線形計画法の基本
+            </div>
+            <p>条件 \(x \geq 0\), \(y \geq 0\), \(x + y \leq 4\), \(x + 2y \leq 6\) のもとで、\(k = x + 3y\) の最大値を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>4つの不等式で囲まれる領域を図示する</li>
+                <li>領域の頂点を求める：\((0, 0)\), \((4, 0)\), \((2, 2)\), \((0, 3)\)</li>
+                <li>各頂点で\(k = x + 3y\)の値を計算：
+                    <ul>
+                        <li>\((0, 0)\)：\(k = 0\)</li>
+                        <li>\((4, 0)\)：\(k = 4\)</li>
+                        <li>\((2, 2)\)：\(k = 2 + 6 = 8\)</li>
+                        <li>\((0, 3)\)：\(k = 0 + 9 = 9\)</li>
+                    </ul>
+                </li>
+                <li>最大値は\((0, 3)\)で達成</li>
+            </ol>
+            <div class="formula">
+                \[ \text{答：最大値 } 9 \text{（点 }(0, 3)\text{ で達成）} \]
+            </div>
+            <div class="svg-container">
+                <svg width="350" height="300" viewBox="0 0 350 300">
+                    <defs>
+                        <marker id="arrow-c" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+                        </marker>
+                        <pattern id="hatch2" patternUnits="userSpaceOnUse" width="8" height="8">
+                            <path d="M-2,2 l4,-4 M0,8 l8,-8 M6,10 l4,-4" stroke="#4caf50" stroke-width="1" opacity="0.5"/>
+                        </pattern>
+                    </defs>
+                    <!-- 領域 -->
+                    <polygon points="50,250 210,250 170,170 50,130" fill="url(#hatch2)"/>
+                    <!-- 座標軸 -->
+                    <line x1="50" y1="250" x2="320" y2="250" stroke="#333" stroke-width="2" marker-end="url(#arrow-c)"/>
+                    <line x1="50" y1="250" x2="50" y2="30" stroke="#333" stroke-width="2" marker-end="url(#arrow-c)"/>
+                    <text x="325" y="255" font-size="14" fill="#333">x</text>
+                    <text x="40" y="25" font-size="14" fill="#333">y</text>
+                    <text x="35" y="265" font-size="14" fill="#333">O</text>
+                    <!-- 境界線 -->
+                    <line x1="50" y1="90" x2="290" y2="250" stroke="#1976d2" stroke-width="2"/>
+                    <text x="250" y="200" font-size="14" fill="#1976d2">x+y=4</text>
+                    <line x1="50" y1="130" x2="290" y2="250" stroke="#9c27b0" stroke-width="2"/>
+                    <text x="200" y="240" font-size="14" fill="#9c27b0">x+2y=6</text>
+                    <!-- 頂点 -->
+                    <circle cx="50" cy="250" r="5" fill="#e53935"/>
+                    <text x="30" y="270" font-size="14" fill="#e53935">(0,0)</text>
+                    <circle cx="210" cy="250" r="5" fill="#e53935"/>
+                    <text x="200" y="270" font-size="14" fill="#e53935">(4,0)</text>
+                    <circle cx="170" cy="170" r="5" fill="#e53935"/>
+                    <text x="175" y="165" font-size="14" fill="#e53935">(2,2)</text>
+                    <circle cx="50" cy="130" r="5" fill="#ff9800"/>
+                    <text x="55" y="125" font-size="14" fill="#ff9800">(0,3) 最大!</text>
+                    <!-- 目的関数の直線（k=9のとき） -->
+                    <line x1="50" y1="130" x2="170" y2="90" stroke="#ff9800" stroke-width="2" stroke-dasharray="5,3"/>
+                    <text x="130" y="85" font-size="14" fill="#ff9800">k=9</text>
+                </svg>
+                <div class="svg-caption">線形計画法：頂点で最大・最小を調べる</div>
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-7">
+            <div class="example-title">
+                <span class="number-badge">例7</span>連立不等式の領域
+            </div>
+            <p>連立不等式 \(\begin{cases} x^2 + y^2 \leq 9 \\ y \geq x \end{cases}\) の表す領域を図示せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(x^2 + y^2 \leq 9\) → 原点中心、半径3の円の内部（周を含む）</li>
+                <li>\(y \geq x\) → 直線\(y = x\)の上側（直線を含む）</li>
+                <li>2つの領域の<strong>共通部分</strong>が答え</li>
+            </ol>
+            <div class="formula">
+                \[ \text{答：円の内部のうち、直線 } y = x \text{ より上側の部分} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：軌跡は「2乗して整理」が基本</strong><br>
+            距離の条件が出てきたら、ルートを外すために両辺を2乗。その後、丁寧に展開・整理すれば図形の方程式が現れます。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：領域の判定は「原点代入」が最速</strong><br>
+            直線 \(ax + by + c = 0\) で領域を判定するとき、原点\((0, 0)\)が境界上になければ原点を代入。符号で領域がわかります。原点が境界上なら\((1, 0)\)など別の点で判定。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：線形計画法は「頂点だけチェック」</strong><br>
+            領域が凸多角形なら、\(k = ax + by\)の最大・最小は必ず頂点で達成されます。頂点の座標を全て求めて代入比較するだけでOK。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：連立不等式は「1つずつ図示して重ねる」</strong><br>
+            複数の不等式がある場合、それぞれの領域を順番に図示して、共通部分を見つけます。色分けやハッチングを使い分けると見やすくなります。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：境界線の実線・破線を間違える</div>
+            <p><strong>ダメな例：</strong>\(x + y > 3\)の境界を実線で描いてしまう</p>
+            <p><strong>対策：</strong>\(>\)や\(<\)は「含まない」→ 破線、\(\geq\)や\(\leq\)は「含む」→ 実線</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：領域の向きを逆にする</div>
+            <p><strong>ダメな例：</strong>\(y > 2x + 1\)で直線の下側を塗る</p>
+            <p><strong>対策：</strong>必ず具体的な点（原点など）を代入して確認。\(0 > 2 \cdot 0 + 1 = 1\)は偽なので、原点は含まない → 原点と反対側が領域</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：軌跡で条件の確認を忘れる</div>
+            <p><strong>ダメな例：</strong>計算で得た方程式をそのまま答えにする</p>
+            <p><strong>対策：</strong>軌跡の問題では「条件を満たす点が本当にその図形上にあるか」「その図形上の点が条件を満たすか」を最後に確認。特に除外点（分母=0など）に注意。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：線形計画法で頂点を見落とす</div>
+            <p><strong>ダメな例：</strong>連立方程式を解くとき、交点の計算ミスで頂点を間違える</p>
+            <p><strong>対策：</strong>領域の図を正確に描き、境界線同士の交点を丁寧に計算。見つけた頂点の個数が領域の形と一致するか確認。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">軌跡の3ステップ（点を置く → 条件を式に → 整理）を使いこなせる</div>
+            <div class="checklist-item">不等式の領域を「原点代入」で素早く判定できる</div>
+            <div class="checklist-item">境界線の実線・破線を正しく使い分けられる</div>
+            <div class="checklist-item">連立不等式の共通部分を正確に図示できる</div>
+            <div class="checklist-item">線形計画法で頂点を列挙して最大・最小を求められる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>点 \(A(2, 0)\) からの距離と、\(y\)軸からの距離が等しい点\(P\)の軌跡を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>解答：</strong></p>
+                    <p>点\(P(x, y)\)とする。</p>
+                    <ul>
+                        <li>Aからの距離：\(\sqrt{(x-2)^2 + y^2}\)</li>
+                        <li>\(y\)軸からの距離：\(|x|\)</li>
+                    </ul>
+                    <p>条件より：\(\sqrt{(x-2)^2 + y^2} = |x|\)</p>
+                    <p>両辺を2乗：\((x-2)^2 + y^2 = x^2\)</p>
+                    <p>\(x^2 - 4x + 4 + y^2 = x^2\)</p>
+                    <p>\(y^2 = 4x - 4 = 4(x-1)\)</p>
+                    <p><strong>答：放物線 \(y^2 = 4(x-1)\)（頂点\((1, 0)\)）</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>条件 \(x \geq 0\), \(y \geq 0\), \(2x + y \leq 8\), \(x + 2y \leq 10\) のもとで、\(k = 3x + 2y\) の最大値と、そのときの\((x, y)\)を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>解答：</strong></p>
+                    <p>領域の頂点を求める：</p>
+                    <ul>
+                        <li>\((0, 0)\)：原点</li>
+                        <li>\((4, 0)\)：\(2x + y = 8\)と\(y = 0\)の交点</li>
+                        <li>\((2, 4)\)：\(2x + y = 8\)と\(x + 2y = 10\)の交点（連立して\(x = 2, y = 4\)）</li>
+                        <li>\((0, 5)\)：\(x + 2y = 10\)と\(x = 0\)の交点</li>
+                    </ul>
+                    <p>各頂点で\(k = 3x + 2y\)を計算：</p>
+                    <ul>
+                        <li>\((0, 0)\)：\(k = 0\)</li>
+                        <li>\((4, 0)\)：\(k = 12\)</li>
+                        <li>\((2, 4)\)：\(k = 6 + 8 = 14\)</li>
+                        <li>\((0, 5)\)：\(k = 10\)</li>
+                    </ul>
+                    <p><strong>答：最大値 \(14\)（点\((2, 4)\)で達成）</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：軌跡は「点を置いて条件を式に」、領域は「境界線を引いて点で判定」、線形計画法は「頂点で勝負」！
+</div>
+
+<!-- ========== 関連教材 ========== -->
+<!-- Front Matterのrelatedで指定すればレイアウトが自動生成します -->
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「デカルトと座標幾何学」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 天井のハエが数学を変えた</div>
+
+            <p>1637年、フランスの哲学者<strong>ルネ・デカルト</strong>は病床に伏せていました。天井を眺めていると、1匹のハエが飛んでいるのが目に入ります。</p>
+
+            <p>「あのハエの位置を、壁の角からの距離で表せないだろうか...」</p>
+
+            <p>この何気ない発想が、<strong>解析幾何学（座標幾何学）</strong>の誕生につながりました。デカルトは「図形」と「数式」を結びつける革命的なアイデアを生み出したのです。</p>
+
+            <p>それまで、図形の問題と方程式の問題は別々に扱われていました。円は「中心から等距離にある点の集合」として幾何学的に理解され、方程式は「未知数を求める計算」でした。</p>
+
+            <p>デカルトの座標系を使えば：</p>
+
+            <div class="formula">
+                \[ \text{「中心から等距離」} \Leftrightarrow x^2 + y^2 = r^2 \]
+            </div>
+
+            <p>このように、<strong>幾何学の問題が代数の計算で解ける</strong>ようになったのです。</p>
+
+            <p>デカルトが著した『方法序説』の付録『幾何学』には、「我思う、ゆえに我あり」の哲学だけでなく、この座標幾何学のアイデアが記されています。</p>
+
+            <p>今日学んだ「軌跡と領域」は、まさにデカルトの遺産。「条件を満たす点の集合」という幾何学的な考えを、方程式や不等式で表現する技術です。</p>
+
+            <p>ちなみに、同時代の数学者<strong>フェルマー</strong>も独立に同じアイデアに到達していましたが、論文を発表しなかったため、座標系は「デカルト座標」と呼ばれることになりました。発表って大事ですね...</p>
+        </div>
+    </div>
+</section>

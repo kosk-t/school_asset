@@ -1,0 +1,550 @@
+---
+layout: material-raw
+title: 対数関数
+icon: "📊"
+description: 対数の定義から対数法則、対数関数のグラフ、対数方程式・不等式、常用対数まで体系的にマスター。指数と対数の関係を理解し、桁数計算や科学的計算への応用力を身につける。
+level: 標準
+level_num: 2
+category: functions
+school_level: senior
+order: 11
+keywords:
+  - 対数
+  - 対数関数
+  - 対数法則
+  - 常用対数
+  - 対数方程式
+  - 対数不等式
+cover_image: /images/noimage.jpg
+cover_description: y=log_a(x)のグラフと対数の性質を表す図
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「対数を発明した男」"
+related:
+  - url: /senior/三角関数の基本_教材.html
+    title: 三角関数の基本
+    note: 関数のグラフと周期性を学ぶ関連教材
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>地震のマグニチュードや音の大きさ（デシベル）、星の明るさ（等級）には対数が使われています。桁違いの大きさを扱いやすくするのが対数の力です。</p>
+        <p>このページでは、<strong>対数関数</strong>を学びます：</p>
+        <ul>
+            <li><strong>対数の定義</strong>：「\(a\)を何乗すると\(b\)になるか」を\(\log_a b\)と表す</li>
+            <li><strong>対数の性質</strong>：積・商・累乗を簡単にする3つの法則</li>
+            <li><strong>対数関数のグラフ</strong>：底が1より大きいか小さいかで形が変わる</li>
+            <li><strong>対数方程式・不等式</strong>：真数条件に注意して解く</li>
+            <li><strong>常用対数</strong>：桁数計算や科学的応用に活用</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】対数の定義：\(a^p = M\) ⇔ \(p = \log_a M\)（「\(a\)を何乗すると\(M\)になるか」が対数）
+        </div>
+
+        <div class="svg-container">
+            <svg width="700" height="200" viewBox="0 0 700 200">
+                <!-- 指数と対数の関係図 -->
+                <rect x="50" y="30" width="180" height="60" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="140" y="55" text-anchor="middle" font-size="18" fill="#1976d2">指数形式</text>
+                <text x="140" y="80" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">a^p = M</text>
+
+                <rect x="470" y="30" width="180" height="60" rx="10" fill="#fff3e0" stroke="#e65100" stroke-width="2"/>
+                <text x="560" y="55" text-anchor="middle" font-size="18" fill="#e65100">対数形式</text>
+                <text x="560" y="80" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">p = log_a M</text>
+
+                <!-- 双方向矢印 -->
+                <defs>
+                    <marker id="arrow-right" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#4caf50"/>
+                    </marker>
+                    <marker id="arrow-left" markerWidth="10" markerHeight="10" refX="1" refY="3" orient="auto">
+                        <polygon points="10 0, 0 3, 10 6" fill="#4caf50"/>
+                    </marker>
+                </defs>
+                <line x1="240" y1="55" x2="460" y2="55" stroke="#4caf50" stroke-width="3" marker-end="url(#arrow-right)" marker-start="url(#arrow-left)"/>
+                <text x="350" y="50" text-anchor="middle" font-size="16" fill="#4caf50">変換</text>
+
+                <!-- 読み方の説明 -->
+                <text x="350" y="130" text-anchor="middle" font-size="18" fill="#333">log_a M は「ログ a の M」と読む</text>
+                <text x="350" y="160" text-anchor="middle" font-size="16" fill="#666">a：底（てい）、M：真数（しんすう）</text>
+                <text x="350" y="185" text-anchor="middle" font-size="16" fill="#e53935">条件：a > 0, a ≠ 1, M > 0</text>
+            </svg>
+            <div class="svg-caption">指数形式と対数形式の相互変換</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 対数の基本値</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ \log_a 1 = 0, \quad \log_a a = 1 \]
+            </div>
+            <p>\(a^0 = 1\)より\(\log_a 1 = 0\)、\(a^1 = a\)より\(\log_a a = 1\)となる。</p>
+            <p><strong>→ だから結果は：</strong> 真数が1なら対数は0、真数が底と同じなら対数は1。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>対数の定義に当てはめると、\(a^? = 1\)を満たす?は0、\(a^? = a\)を満たす?は1です。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 対数の3つの法則</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ \log_a MN = \log_a M + \log_a N \quad \text{（積 → 和）} \]
+            </div>
+            <div class="formula">
+                \[ \log_a \frac{M}{N} = \log_a M - \log_a N \quad \text{（商 → 差）} \]
+            </div>
+            <div class="formula">
+                \[ \log_a M^r = r \log_a M \quad \text{（累乗 → 係数）} \]
+            </div>
+            <p><strong>→ だから結果は：</strong> かけ算を足し算に、割り算を引き算に、累乗を係数に変換できる！</p>
+            <p><strong>✅ メリット：</strong> 大きな数の計算が劇的に簡単になる。</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>\(a^p = M\)、\(a^q = N\)とすると、\(MN = a^p \cdot a^q = a^{p+q}\)より、\(\log_a MN = p + q = \log_a M + \log_a N\)。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 底の変換公式</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ \log_a b = \frac{\log_c b}{\log_c a} \]
+            </div>
+            <p>異なる底の対数を、共通の底（よく使うのは10やe）に揃えられる。</p>
+            <p><strong>→ だから結果は：</strong> 電卓やプログラムで常用対数（底10）や自然対数（底e）を使って計算できる。</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 対数関数のグラフ</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <p><strong>底 \(a > 1\) のとき：</strong> 右上がりの曲線、xが大きくなるとyも増加（単調増加）</p>
+            <p><strong>底 \(0 < a < 1\) のとき：</strong> 右下がりの曲線、xが大きくなるとyは減少（単調減少）</p>
+            <p><strong>共通点：</strong> 点(1, 0)を通り、y軸が漸近線。定義域は\(x > 0\)、値域は実数全体。</p>
+        </div>
+
+        <div class="svg-container">
+            <svg width="700" height="300" viewBox="0 0 700 300">
+                <!-- 座標軸 -->
+                <defs>
+                    <marker id="arrow-black" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+                    </marker>
+                </defs>
+                <line x1="50" y1="150" x2="650" y2="150" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+                <line x1="200" y1="280" x2="200" y2="20" stroke="#333" stroke-width="2" marker-end="url(#arrow-black)"/>
+                <text x="660" y="155" font-size="16" fill="#333">x</text>
+                <text x="205" y="15" font-size="16" fill="#333">y</text>
+                <text x="195" y="165" font-size="14" fill="#333">O</text>
+
+                <!-- 目盛り -->
+                <line x1="300" y1="145" x2="300" y2="155" stroke="#333" stroke-width="1"/>
+                <text x="300" y="170" text-anchor="middle" font-size="14" fill="#333">1</text>
+                <line x1="400" y1="145" x2="400" y2="155" stroke="#333" stroke-width="1"/>
+                <text x="400" y="170" text-anchor="middle" font-size="14" fill="#333">2</text>
+                <line x1="500" y1="145" x2="500" y2="155" stroke="#333" stroke-width="1"/>
+                <text x="500" y="170" text-anchor="middle" font-size="14" fill="#333">3</text>
+
+                <!-- y = log_2(x) のグラフ (a > 1) -->
+                <!-- x=0.25->y=-2, x=0.5->y=-1, x=1->y=0, x=2->y=1, x=4->y=2 -->
+                <!-- SVG座標: x=200+100*x, y=150-50*y -->
+                <path d="M 210 250 L 225 200 L 250 175 L 300 150 L 400 100 L 500 75 L 600 58"
+                      stroke="#1976d2" stroke-width="3" fill="none"/>
+                <text x="610" y="55" font-size="14" fill="#1976d2">y = log₂x</text>
+                <text x="550" y="40" font-size="12" fill="#1976d2">(a > 1)</text>
+
+                <!-- y = log_{1/2}(x) のグラフ (0 < a < 1) -->
+                <!-- x=0.25->y=2, x=0.5->y=1, x=1->y=0, x=2->y=-1, x=4->y=-2 -->
+                <path d="M 210 50 L 225 100 L 250 125 L 300 150 L 400 200 L 500 225 L 600 242"
+                      stroke="#e53935" stroke-width="3" fill="none"/>
+                <text x="610" y="248" font-size="14" fill="#e53935">y = log₁/₂x</text>
+                <text x="550" y="265" font-size="12" fill="#e53935">(0 < a < 1)</text>
+
+                <!-- 点(1,0)を強調 -->
+                <circle cx="300" cy="150" r="5" fill="#4caf50"/>
+                <text x="310" y="140" font-size="14" fill="#4caf50">(1, 0)</text>
+
+                <!-- y軸が漸近線であることを示す点線 -->
+                <line x1="200" y1="280" x2="200" y2="20" stroke="#999" stroke-width="1" stroke-dasharray="5,5"/>
+            </svg>
+            <div class="svg-caption">対数関数のグラフ：底が1より大きいか小さいかで増減が逆転</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 対数方程式・不等式の解き方</strong> <a href="#ex-5" class="example-link">→ 例5, 例6</a>
+            <p><strong>真数条件を必ず確認：</strong> 真数 > 0 を満たす範囲で解く</p>
+            <p><strong>方程式：</strong> 両辺の対数を取るか、指数形式に変換</p>
+            <p><strong>不等式：</strong> 底が1より大きいか小さいかで不等号の向きに注意</p>
+            <div class="formula">
+                \[ a > 1 \text{ のとき } \log_a M < \log_a N \Leftrightarrow M < N \]
+            </div>
+            <div class="formula">
+                \[ 0 < a < 1 \text{ のとき } \log_a M < \log_a N \Leftrightarrow M > N \text{（不等号が逆転！）} \]
+            </div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 常用対数と桁数</strong> <a href="#ex-7" class="example-link">→ 例7</a>
+            <div class="formula">
+                \[ \text{正の整数 } N \text{ の桁数} = \lfloor \log_{10} N \rfloor + 1 \]
+            </div>
+            <p>\(\log_{10} 2 \approx 0.3010\)、\(\log_{10} 3 \approx 0.4771\)を使って計算。</p>
+            <p><strong>→ だから結果は：</strong> \(2^{100}\)のような巨大な数の桁数も計算できる！</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>対数の定義と法則を使って、さまざまな問題を解いていきましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 対数の計算</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>対数の値を求める
+            </div>
+            <p>\(\log_2 8\)、\(\log_3 \frac{1}{9}\)、\(\log_{10} 0.01\)の値を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>対数の定義「\(a\)を何乗すると真数になるか」を考える</li>
+                <li>\(\log_2 8\)：\(2^3 = 8\)より <strong>\(\log_2 8 = 3\)</strong></li>
+                <li>\(\log_3 \frac{1}{9}\)：\(3^{-2} = \frac{1}{9}\)より <strong>\(\log_3 \frac{1}{9} = -2\)</strong></li>
+                <li>\(\log_{10} 0.01\)：\(10^{-2} = 0.01\)より <strong>\(\log_{10} 0.01 = -2\)</strong></li>
+            </ol>
+            <div class="formula">
+                \[ \log_2 8 = 3, \quad \log_3 \frac{1}{9} = -2, \quad \log_{10} 0.01 = -2 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>対数法則を使った計算
+            </div>
+            <p>\(\log_2 6 + \log_2 \frac{8}{3}\)を簡単にせよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>和の法則で1つにまとめる：\(\log_a M + \log_a N = \log_a MN\)</li>
+                <li>\(\log_2 6 + \log_2 \frac{8}{3} = \log_2 \left(6 \times \frac{8}{3}\right)\)</li>
+                <li>\(= \log_2 16 = \log_2 2^4 = 4\)</li>
+            </ol>
+            <div class="formula">
+                \[ \log_2 6 + \log_2 \frac{8}{3} = \log_2 16 = 4 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>底の変換公式
+            </div>
+            <p>\(\log_4 8\)を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>底を2に揃える：\(\log_4 8 = \frac{\log_2 8}{\log_2 4}\)</li>
+                <li>それぞれ計算：\(\log_2 8 = 3\)、\(\log_2 4 = 2\)</li>
+                <li>\(\log_4 8 = \frac{3}{2}\)</li>
+            </ol>
+            <div class="formula">
+                \[ \log_4 8 = \frac{\log_2 8}{\log_2 4} = \frac{3}{2} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 対数関数のグラフ</h3>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>グラフの読み取り
+            </div>
+            <p>\(y = \log_3 x\)のグラフについて、次の問いに答えよ。</p>
+            <p>(1) \(x = 9\)のときの\(y\)の値</p>
+            <p>(2) \(y = -1\)のときの\(x\)の値</p>
+            <p>(3) グラフが通る点で座標がともに整数であるものを2つ</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>(1) \(y = \log_3 9 = \log_3 3^2 = 2\)</li>
+                <li>(2) \(-1 = \log_3 x\)より\(x = 3^{-1} = \frac{1}{3}\)</li>
+                <li>(3) \(\log_3 1 = 0\)より(1, 0)、\(\log_3 3 = 1\)より(3, 1)、\(\log_3 9 = 2\)より(9, 2)など</li>
+            </ol>
+            <div class="formula">
+                \[ (1)\ y = 2, \quad (2)\ x = \frac{1}{3}, \quad (3)\ (1, 0), (3, 1), (9, 2) \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 対数方程式・不等式</h3>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>対数方程式
+            </div>
+            <p>\(\log_2 (x-1) + \log_2 (x+2) = 2\)を解け。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>真数条件を確認：</strong>\(x - 1 > 0\)かつ\(x + 2 > 0\) → \(x > 1\)</li>
+                <li>対数法則で1つにまとめる：\(\log_2 (x-1)(x+2) = 2\)</li>
+                <li>指数形式に変換：\((x-1)(x+2) = 2^2 = 4\)</li>
+                <li>展開して整理：\(x^2 + x - 2 = 4\) → \(x^2 + x - 6 = 0\)</li>
+                <li>因数分解：\((x+3)(x-2) = 0\) → \(x = -3, 2\)</li>
+                <li><strong>真数条件を確認：</strong>\(x > 1\)を満たすのは\(x = 2\)のみ</li>
+            </ol>
+            <div class="formula">
+                \[ x = 2 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-6">
+            <div class="example-title">
+                <span class="number-badge">例6</span>対数不等式
+            </div>
+            <p>\(\log_{\frac{1}{2}} (x-3) > -2\)を解け。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li><strong>真数条件：</strong>\(x - 3 > 0\) → \(x > 3\)</li>
+                <li>右辺を対数で表す：\(-2 = \log_{\frac{1}{2}} \left(\frac{1}{2}\right)^{-2} = \log_{\frac{1}{2}} 4\)</li>
+                <li>不等式は\(\log_{\frac{1}{2}} (x-3) > \log_{\frac{1}{2}} 4\)</li>
+                <li><strong>底が\(0 < \frac{1}{2} < 1\)なので不等号が逆転：</strong>\(x - 3 < 4\)</li>
+                <li>\(x < 7\)</li>
+                <li>真数条件と合わせて：\(3 < x < 7\)</li>
+            </ol>
+            <div class="formula">
+                \[ 3 < x < 7 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 常用対数の応用</h3>
+
+        <div class="example-box" id="ex-7">
+            <div class="example-title">
+                <span class="number-badge">例7</span>桁数の計算
+            </div>
+            <p>\(2^{50}\)は何桁の整数か。ただし\(\log_{10} 2 = 0.3010\)とする。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>常用対数を取る：\(\log_{10} 2^{50} = 50 \log_{10} 2 = 50 \times 0.3010 = 15.05\)</li>
+                <li>これは\(10^{15.05}\)を意味する → \(10^{15} < 2^{50} < 10^{16}\)</li>
+                <li>\(10^{15}\)は16桁、\(10^{16}\)は17桁だから、\(2^{50}\)は<strong>16桁</strong></li>
+            </ol>
+            <div class="formula">
+                \[ \log_{10} 2^{50} = 15.05 \quad \therefore \text{16桁} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-8">
+            <div class="example-title">
+                <span class="number-badge">例8</span>最高位の数字
+            </div>
+            <p>\(2^{10}\)の最高位の数字を求めよ。ただし\(\log_{10} 2 = 0.3010\)とする。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(\log_{10} 2^{10} = 10 \times 0.3010 = 3.010\)</li>
+                <li>\(2^{10} = 10^{3.010} = 10^{0.010} \times 10^3\)</li>
+                <li>\(10^{0.010} \approx 1.023\)（\(\log_{10} 1.023 \approx 0.010\)より）</li>
+                <li>よって\(2^{10} \approx 1.023 \times 10^3 = 1023\)</li>
+                <li>最高位の数字は<strong>1</strong>（実際、\(2^{10} = 1024\)）</li>
+            </ol>
+            <div class="formula">
+                \[ 2^{10} = 1024 \quad \therefore \text{最高位は 1} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：指数と対数は「翻訳」の関係</strong><br>
+            \(a^p = M\)と\(p = \log_a M\)は同じことを違う書き方で表している。「\(a\)を何乗すると\(M\)?」と考えれば、指数形式と対数形式を自由に行き来できる。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：対数の法則は「指数法則の翻訳版」</strong><br>
+            積→和、商→差、累乗→係数。これらは指数法則\(a^m \cdot a^n = a^{m+n}\)などを対数で表現したもの。指数と対数はセットで覚えよう。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：底を揃えてから計算</strong><br>
+            \(\log_2 \)と\(\log_4 \)のように底が違う対数が混ざったら、底の変換公式で揃える。特に\(\log_4 = \frac{\log_2}{\log_2 4} = \frac{\log_2}{2}\)のように2のべき乗の底は2に揃えると計算しやすい。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：不等式は底で場合分け</strong><br>
+            対数不等式で最も多いミスは底による不等号の向きの変化。<strong>底 > 1 なら不等号そのまま、0 < 底 < 1 なら不等号逆転</strong>。これを忘れると答えが真逆になる！
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ5：常用対数の近似値は丸暗記</strong><br>
+            \(\log_{10} 2 \approx 0.3010\)、\(\log_{10} 3 \approx 0.4771\)を覚えておくと、桁数計算がスムーズ。\(\log_{10} 5 = \log_{10} \frac{10}{2} = 1 - 0.3010 = 0.6990\)と計算することもできる。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：真数条件を忘れる</div>
+            <p><strong>ダメな例：</strong> \(\log_2 (x-1) = 3\)を解いて\(x = 9\)としただけ。</p>
+            <p><strong>対策：</strong> 対数方程式・不等式では必ず最初に<strong>真数 > 0</strong>の条件を書き出す。解が出たら必ず真数条件を満たすか確認！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：対数法則の誤用</div>
+            <p><strong>ダメな例：</strong> \(\log_a (M + N) = \log_a M + \log_a N\)と計算してしまう。</p>
+            <p><strong>対策：</strong> 対数法則が使えるのは<strong>積・商・累乗</strong>のみ！和や差には使えない。\(\log_a (M + N)\)はこれ以上分解できない。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：底による不等号の向きを間違える</div>
+            <p><strong>ダメな例：</strong> \(\log_{\frac{1}{2}} x < 2\)を解いて\(x < \frac{1}{4}\)としてしまう。</p>
+            <p><strong>対策：</strong> 底が1より小さいとき、対数関数は減少関数。\(\log_a M < \log_a N\)のとき\(M > N\)（不等号逆転）。正解は\(x > \frac{1}{4}\)（真数条件\(x > 0\)と合わせて）。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：\(\log_a 1 = 0\)と\(\log_a a = 1\)を混同</div>
+            <p><strong>ダメな例：</strong> \(\log_3 1 = 1\)としてしまう。</p>
+            <p><strong>対策：</strong> 「\(3\)を何乗すると\(1\)になる?」→ \(3^0 = 1\)だから答えは\(0\)。真数が\(1\)なら答えは常に\(0\)、真数が底と同じなら答えは常に\(1\)。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき5：桁数計算で1ずれる</div>
+            <p><strong>ダメな例：</strong> \(\log_{10} N = 5.3\)だから5桁としてしまう。</p>
+            <p><strong>対策：</strong> \(10^5 < N < 10^6\)のとき、\(N\)は\(10^5 = 100000\)（6桁）以上\(10^6\)（7桁）未満。つまり<strong>6桁</strong>。桁数 = 整数部分 + 1 と覚えよう。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">対数の定義「\(a^p = M \Leftrightarrow p = \log_a M\)」を理解しているか</div>
+            <div class="checklist-item">対数の3法則（積→和、商→差、累乗→係数）を使いこなせるか</div>
+            <div class="checklist-item">底の変換公式で異なる底を揃えられるか</div>
+            <div class="checklist-item">対数関数のグラフ（底による増減の違い）を描けるか</div>
+            <div class="checklist-item">対数方程式・不等式で<strong>真数条件</strong>と<strong>底による不等号の向き</strong>を正しく扱えるか</div>
+            <div class="checklist-item">常用対数を使って桁数・最高位の数字を計算できるか</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>次の値を求めよ。</p>
+            <p>(1) \(\log_5 125\)</p>
+            <p>(2) \(\log_4 2 + \log_4 8\)</p>
+            <p>(3) \(\log_9 27\)</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>(1) \(5^3 = 125\)より \(\log_5 125 = 3\)</p>
+                    <p>(2) \(\log_4 2 + \log_4 8 = \log_4 16 = \log_4 4^2 = 2\)</p>
+                    <p>(3) 底を3に変換：\(\log_9 27 = \frac{\log_3 27}{\log_3 9} = \frac{3}{2}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>方程式 \(\log_3 (2x+1) = 2\) を解け。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>真数条件：\(2x + 1 > 0\) → \(x > -\frac{1}{2}\)</p>
+                    <p>指数形式に変換：\(2x + 1 = 3^2 = 9\)</p>
+                    <p>\(2x = 8\) → \(x = 4\)</p>
+                    <p>真数条件を満たす。よって \(x = 4\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>不等式 \(\log_2 (x-2) \leq 3\) を解け。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>真数条件：\(x - 2 > 0\) → \(x > 2\)</p>
+                    <p>底が\(2 > 1\)なので不等号の向きはそのまま</p>
+                    <p>\(x - 2 \leq 2^3 = 8\) → \(x \leq 10\)</p>
+                    <p>真数条件と合わせて：\(2 < x \leq 10\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習4</strong>
+            <p>\(3^{20}\)は何桁の整数か。ただし\(\log_{10} 3 = 0.4771\)とする。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(\log_{10} 3^{20} = 20 \times 0.4771 = 9.542\)</p>
+                    <p>\(10^9 < 3^{20} < 10^{10}\)</p>
+                    <p>\(10^9\)は10桁、よって\(3^{20}\)は<strong>10桁</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：対数は「何乗?」を求める逆演算。積を和に変える法則と真数条件を押さえれば、桁違いの計算も自由自在！
+</div>
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「対数を発明した男」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 20年かけて計算を革命した数学者</div>
+
+            <p>1614年、スコットランドの数学者<strong>ジョン・ネイピア</strong>（John Napier）は「対数」を発表しました。当時、天文学者たちは膨大な計算に悩まされていました。惑星の軌道計算には何桁もの数のかけ算・割り算が必要で、1つの計算に何時間もかかることも珍しくありませんでした。</p>
+
+            <p>ネイピアは「かけ算を足し算に変えられないか」と考えました。</p>
+
+            <div class="formula">
+                \[ \log(A \times B) = \log A + \log B \]
+            </div>
+
+            <p>この発想のために、彼は<strong>20年以上</strong>をかけて対数表を作成しました。手計算だけで膨大な数値を計算し、表にまとめたのです。</p>
+
+            <p>この対数表が発表されると、天文学者たちは熱狂しました。有名な天文学者<strong>ケプラー</strong>は「ネイピアの発明によって、私たちの寿命が2倍になった」と言ったとか。計算時間が劇的に短縮され、その時間を新しい発見に使えるようになったからです。</p>
+
+            <p>さらに、対数の発明は<strong>計算尺</strong>の誕生にもつながりました。計算尺は20世紀後半まで科学者やエンジニアの必須道具で、アポロ計画で月に行った宇宙飛行士たちも持っていました。</p>
+
+            <p>現代では電卓やコンピュータがありますが、対数は今でも<strong>地震のマグニチュード</strong>（\(M = \log E\)の形）、<strong>音の大きさ（デシベル）</strong>、<strong>pHの計算</strong>、<strong>情報理論</strong>など、あらゆる分野で活躍しています。</p>
+
+            <p>ネイピアが20年かけた対数表、今なら数行のプログラムで作れますが、彼の「かけ算を足し算に」という発想がなければ、現代科学の発展はもっと遅れていたかもしれませんね。</p>
+        </div>
+    </div>
+</section>

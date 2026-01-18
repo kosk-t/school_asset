@@ -1,0 +1,458 @@
+---
+layout: material-raw
+title: 等差数列
+icon: "📊"
+description: 等差数列の一般項と和の公式をマスター。規則的な数の並びを自在に操れるようになります。
+level: 標準
+level_num: 2
+category: numbers
+school_level: senior
+order: 8
+keywords:
+  - 等差数列
+  - 公差
+  - 一般項
+  - 等差数列の和
+  - 数列
+cover_image: /images/noimage.jpg
+cover_description: 等差数列を表す数直線上の等間隔な点と、Sn公式を視覚化したイメージ
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: section8
+    title: "まとめ一言"
+  - id: story
+    title: "おまけ：歴史ストーリー「9歳の天才ガウス」"
+related:
+  - url: /senior/組合せ_教材.html
+    title: 組合せ
+    note: Σ記号の基礎となる数え上げの考え方
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>階段を上るときの段数、カレンダーの日付、給料の昇給額。身の回りには「同じ量ずつ増えていく」数の並びがあふれています。この規則を数学的に扱うのが<strong>等差数列</strong>です。</p>
+        <p>このページでは、等差数列を学びます：</p>
+        <ul>
+            <li><strong>等差数列とは何か</strong>：「隣同士の差が一定」という特徴を理解する</li>
+            <li><strong>一般項の公式</strong>：第n項を直接求める方法</li>
+            <li><strong>和の公式</strong>：初項から第n項までの合計を素早く計算する方法</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】等差数列の一般項：\(a_n = a + (n-1)d\)
+        </div>
+
+        <div class="svg-container">
+            <svg width="700" height="180" viewBox="0 0 700 180">
+                <!-- 数直線 -->
+                <line x1="50" y1="80" x2="650" y2="80" stroke="#333" stroke-width="2"/>
+                <!-- 点と値 -->
+                <circle cx="100" cy="80" r="8" fill="#1976d2"/>
+                <text x="100" y="55" text-anchor="middle" font-size="16" fill="#1976d2" font-weight="bold">a</text>
+                <text x="100" y="110" text-anchor="middle" font-size="14" fill="#666">第1項</text>
+
+                <circle cx="220" cy="80" r="8" fill="#1976d2"/>
+                <text x="220" y="55" text-anchor="middle" font-size="16" fill="#1976d2" font-weight="bold">a+d</text>
+                <text x="220" y="110" text-anchor="middle" font-size="14" fill="#666">第2項</text>
+
+                <circle cx="340" cy="80" r="8" fill="#1976d2"/>
+                <text x="340" y="55" text-anchor="middle" font-size="16" fill="#1976d2" font-weight="bold">a+2d</text>
+                <text x="340" y="110" text-anchor="middle" font-size="14" fill="#666">第3項</text>
+
+                <circle cx="460" cy="80" r="8" fill="#888"/>
+                <text x="460" y="55" text-anchor="middle" font-size="16" fill="#888">...</text>
+
+                <circle cx="580" cy="80" r="8" fill="#e53935"/>
+                <text x="580" y="55" text-anchor="middle" font-size="16" fill="#e53935" font-weight="bold">a+(n-1)d</text>
+                <text x="580" y="110" text-anchor="middle" font-size="14" fill="#666">第n項</text>
+
+                <!-- 公差の矢印 -->
+                <defs>
+                    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#4caf50"/>
+                    </marker>
+                </defs>
+                <path d="M 115 140 L 205 140" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow-blue)"/>
+                <text x="160" y="165" text-anchor="middle" font-size="14" fill="#4caf50" font-weight="bold">+d</text>
+                <path d="M 235 140 L 325 140" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow-blue)"/>
+                <text x="280" y="165" text-anchor="middle" font-size="14" fill="#4caf50" font-weight="bold">+d</text>
+            </svg>
+            <div class="svg-caption">等差数列は公差dずつ増える数の並び</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 等差数列の定義</strong>
+            <p><strong>等差数列</strong>とは、隣り合う項の差が一定の数列のこと。</p>
+            <p>たとえば、\(2, 5, 8, 11, 14, \ldots\) は差が常に3なので等差数列です。</p>
+            <p><strong>→ ポイント：</strong> この一定の差を<strong>公差</strong>（common difference）といい、\(d\) で表します。</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 一般項の公式</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <div class="formula">\[ a_n = a + (n-1)d \]</div>
+            <p>ここで、</p>
+            <ul>
+                <li>\(a_n\)（エーエヌ）：第n項の値</li>
+                <li>\(a\)：初項（最初の項、\(a_1\) とも書く）</li>
+                <li>\(d\)：公差（隣り合う項の差）</li>
+                <li>\(n\)：項番号（何番目か）</li>
+            </ul>
+            <p><strong>→ だから結果は：</strong> 第n項は「初項から公差を\((n-1)\)回足したもの」</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>第1項：\(a\)（公差を0回足す）</p>
+            <p>第2項：\(a + d\)（公差を1回足す）</p>
+            <p>第3項：\(a + 2d\)（公差を2回足す）</p>
+            <p>：</p>
+            <p>第n項：\(a + (n-1)d\)（公差を(n-1)回足す）</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 等差数列の和の公式</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <div class="formula">\[ S_n = \frac{n(a + l)}{2} = \frac{n\{2a + (n-1)d\}}{2} \]</div>
+            <p>ここで、</p>
+            <ul>
+                <li>\(S_n\)（エスエヌ）：初項から第n項までの和</li>
+                <li>\(a\)：初項</li>
+                <li>\(l\)（エル）：末項（最後の項、\(a_n\) のこと）</li>
+                <li>\(n\)：項数</li>
+            </ul>
+            <p><strong>✅ 使い分け：</strong></p>
+            <ul>
+                <li>末項がわかっているとき → \(\displaystyle S_n = \frac{n(a + l)}{2}\)</li>
+                <li>公差がわかっているとき → \(\displaystyle S_n = \frac{n\{2a + (n-1)d\}}{2}\)</li>
+            </ul>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>和を2回書いて逆順に足すと、各項のペアがすべて \(a + l\) になります。</p>
+            <p>\(S_n = a + (a+d) + (a+2d) + \cdots + l\)</p>
+            <p>\(S_n = l + (l-d) + (l-2d) + \cdots + a\)</p>
+            <p>足すと、\(2S_n = n(a + l)\)</p>
+            <p>よって、\(\displaystyle S_n = \frac{n(a + l)}{2}\)</p>
+            </details>
+        </div>
+
+        <div class="svg-container">
+            <svg width="700" height="200" viewBox="0 0 700 200">
+                <!-- 棒グラフで和を可視化 -->
+                <!-- 正順 -->
+                <rect x="80" y="140" width="40" height="20" fill="#1976d2" opacity="0.7"/>
+                <rect x="130" y="120" width="40" height="40" fill="#1976d2" opacity="0.7"/>
+                <rect x="180" y="100" width="40" height="60" fill="#1976d2" opacity="0.7"/>
+                <rect x="230" y="80" width="40" height="80" fill="#1976d2" opacity="0.7"/>
+                <rect x="280" y="60" width="40" height="100" fill="#1976d2" opacity="0.7"/>
+                <text x="190" y="180" text-anchor="middle" font-size="14" fill="#333">正順: a, a+d, a+2d, ...</text>
+
+                <!-- 逆順（上に重ねる） -->
+                <rect x="380" y="60" width="40" height="100" fill="#e53935" opacity="0.7"/>
+                <rect x="430" y="60" width="40" height="80" fill="#e53935" opacity="0.7"/>
+                <rect x="480" y="60" width="40" height="60" fill="#e53935" opacity="0.7"/>
+                <rect x="530" y="60" width="40" height="40" fill="#e53935" opacity="0.7"/>
+                <rect x="580" y="60" width="40" height="20" fill="#e53935" opacity="0.7"/>
+                <text x="490" y="180" text-anchor="middle" font-size="14" fill="#333">逆順: l, l-d, l-2d, ...</text>
+
+                <!-- 合計の説明 -->
+                <text x="350" y="40" text-anchor="middle" font-size="16" fill="#4caf50" font-weight="bold">各ペアの和 = a + l</text>
+            </svg>
+            <div class="svg-caption">正順と逆順を足すと各項のペアが (a+l) になる</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 等差中項</strong> <a href="#ex-5" class="example-link">→ 例5</a>
+            <div class="formula">\[ b = \frac{a + c}{2} \]</div>
+            <p>\(a, b, c\) がこの順で等差数列のとき、\(b\) を \(a\) と \(c\) の<strong>等差中項</strong>（相加平均）といいます。</p>
+            <p><strong>→ ポイント：</strong> 等差数列の真ん中の項は「両端の平均」</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>等差数列の問題は「一般項を求める」→「和を求める」の順で解きます。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 一般項を求める</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>一般項を求める（基本）
+            </div>
+            <p>初項3、公差4の等差数列の一般項を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(a = 3\)、\(d = 4\) を公式に代入</li>
+                <li>一般項 \(a_n = a + (n-1)d\) を計算</li>
+            </ol>
+            <div class="formula">\[ a_n = 3 + (n-1) \cdot 4 = 3 + 4n - 4 = 4n - 1 \]</div>
+            <p><strong>答え：\(a_n = 4n - 1\)</strong></p>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>2つの条件から一般項を求める
+            </div>
+            <p>等差数列で \(a_3 = 7\)、\(a_7 = 19\) のとき、一般項を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>一般項 \(a_n = a + (n-1)d\) に条件を代入
+                    <ul>
+                        <li>\(a_3 = a + 2d = 7\) ... ①</li>
+                        <li>\(a_7 = a + 6d = 19\) ... ②</li>
+                    </ul>
+                </li>
+                <li>② - ① で公差を求める：\(4d = 12\) より \(d = 3\)</li>
+                <li>① に代入して初項を求める：\(a + 6 = 7\) より \(a = 1\)</li>
+                <li>一般項を書く</li>
+            </ol>
+            <div class="formula">\[ a_n = 1 + (n-1) \cdot 3 = 3n - 2 \]</div>
+            <p><strong>答え：\(a_n = 3n - 2\)</strong></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 和を求める</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>初項から第n項までの和（末項既知）
+            </div>
+            <p>初項5、末項95、項数10の等差数列の和を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>末項がわかっているので \(\displaystyle S_n = \frac{n(a + l)}{2}\) を使う</li>
+                <li>\(a = 5\)、\(l = 95\)、\(n = 10\) を代入</li>
+            </ol>
+            <div class="formula">\[ S_{10} = \frac{10(5 + 95)}{2} = \frac{10 \times 100}{2} = 500 \]</div>
+            <p><strong>答え：500</strong></p>
+        </div>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>初項から第n項までの和（公差既知）
+            </div>
+            <p>初項2、公差3の等差数列の初項から第20項までの和を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>公差がわかっているので \(\displaystyle S_n = \frac{n\{2a + (n-1)d\}}{2}\) を使う</li>
+                <li>\(a = 2\)、\(d = 3\)、\(n = 20\) を代入</li>
+            </ol>
+            <div class="formula">\[ S_{20} = \frac{20\{2 \cdot 2 + (20-1) \cdot 3\}}{2} = \frac{20(4 + 57)}{2} = \frac{20 \times 61}{2} = 610 \]</div>
+            <p><strong>答え：610</strong></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 等差中項</h3>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>等差中項
+            </div>
+            <p>\(x, 12, 3x-4\) がこの順で等差数列をなすとき、\(x\) の値を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>真ん中の12が等差中項 → \(12 = \displaystyle\frac{x + (3x-4)}{2}\)</li>
+                <li>方程式を解く</li>
+            </ol>
+            <div class="formula">\[ 12 = \frac{x + 3x - 4}{2} = \frac{4x - 4}{2} = 2x - 2 \]</div>
+            <div class="formula">\[ 2x = 14 \quad \Rightarrow \quad x = 7 \]</div>
+            <p><strong>答え：\(x = 7\)</strong></p>
+            <p>（検算：\(7, 12, 17\) で公差5の等差数列 ✓）</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 応用問題</h3>
+
+        <div class="example-box" id="ex-6">
+            <div class="example-title">
+                <span class="number-badge">例6</span>1から100までの和
+            </div>
+            <p>1から100までの自然数の和を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(1, 2, 3, \ldots, 100\) は初項1、公差1、末項100、項数100の等差数列</li>
+                <li>末項がわかっているので \(\displaystyle S_n = \frac{n(a + l)}{2}\)</li>
+            </ol>
+            <div class="formula">\[ S_{100} = \frac{100(1 + 100)}{2} = \frac{100 \times 101}{2} = 5050 \]</div>
+            <p><strong>答え：5050</strong></p>
+        </div>
+
+        <div class="example-box" id="ex-7">
+            <div class="example-title">
+                <span class="number-badge">例7</span>和が最大になる項数
+            </div>
+            <p>初項50、公差-3の等差数列の初項から第n項までの和が最大になるnを求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>公差が負 → 数列は減少していく</li>
+                <li>正の項を足している間は和が増え、負の項を足し始めると和は減る</li>
+                <li>\(a_n \geq 0\) となる最大のnを求める
+                    <div class="formula">\[ a_n = 50 + (n-1)(-3) = 53 - 3n \geq 0 \]</div>
+                    <div class="formula">\[ 53 \geq 3n \quad \Rightarrow \quad n \leq \frac{53}{3} = 17.67... \]</div>
+                </li>
+                <li>よって \(n = 17\) まで正（\(a_{17} = 53 - 51 = 2\)）</li>
+            </ol>
+            <p><strong>答え：n = 17 のとき和が最大</strong></p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：公式は「形」で覚える</strong><br>
+            一般項 \(a_n = a + (n-1)d\) は「初項 + (項数 - 1) × 公差」。<br>
+            「第n項は初項からスタートして公差を(n-1)回足す」と覚えましょう。
+        </div>
+        <div class="tip-box">
+            <strong>✏️ コツ2：和の公式は「項数×平均」</strong><br>
+            \(\displaystyle S_n = \frac{n(a + l)}{2}\) は「項数 × (初項と末項の平均)」。<br>
+            等差数列では平均値が真ん中の値になるので、これは「項数 × 平均」という意味です。
+        </div>
+        <div class="tip-box">
+            <strong>✏️ コツ3：2条件があれば連立方程式</strong><br>
+            「\(a_3 = 7\)、\(a_7 = 19\)」のように2つの条件があれば、\(a\) と \(d\) の連立方程式を作って解く。<br>
+            項番号の差を使うと公差が直接求まります。
+        </div>
+        <div class="tip-box">
+            <strong>✏️ コツ4：和の最大は「正の項まで」</strong><br>
+            公差が負の等差数列で和が最大になるのは、項が負になる直前まで足したとき。<br>
+            \(a_n \geq 0\) を解いて、正の項の最後を見つけましょう。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：(n-1) を n と間違える</div>
+            <p><strong>ダメな例：</strong> 一般項を \(a_n = a + nd\) と書く</p>
+            <p><strong>対策：</strong> 第1項で確認！ \(a_1 = a + (1-1)d = a\) なら正しい。\(a + d\) になったら間違い。</p>
+        </div>
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：項数の数え間違い</div>
+            <p><strong>ダメな例：</strong> 「3から15までの奇数」の項数を \(15 - 3 = 12\) と計算</p>
+            <p><strong>対策：</strong> 一般項を \(a_n = 3 + (n-1) \cdot 2 = 2n + 1\) として、\(2n + 1 = 15\) を解くと \(n = 7\)。項数は7個。</p>
+        </div>
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：和の公式を間違える</div>
+            <p><strong>ダメな例：</strong> \(\displaystyle S_n = \frac{n(a + l)}{2}\) で \(l\) に公差を入れる</p>
+            <p><strong>対策：</strong> \(l\) は<strong>末項の値</strong>（最後の項）。公差ではない！公差がわかっているなら \(\displaystyle S_n = \frac{n\{2a + (n-1)d\}}{2}\) を使う。</p>
+        </div>
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：公差の符号を逆にする</div>
+            <p><strong>ダメな例：</strong> \(10, 7, 4, 1, \ldots\) で公差を \(d = 3\) とする</p>
+            <p><strong>対策：</strong> 公差 = (後の項) - (前の項) = \(7 - 10 = -3\)。減っていれば公差は<strong>負</strong>！</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">等差数列とは「隣り合う項の差が一定」と言える</div>
+            <div class="checklist-item">一般項 \(a_n = a + (n-1)d\) を正しく使える</div>
+            <div class="checklist-item">和の公式を末項既知と公差既知で使い分けられる</div>
+            <div class="checklist-item">等差中項は「両端の平均」と理解している</div>
+            <div class="checklist-item">和が最大になる条件を求められる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>初項-2、公差5の等差数列について、</p>
+            <p>(1) 一般項を求めよ。</p>
+            <p>(2) 初項から第15項までの和を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>(1)</strong> \(a_n = -2 + (n-1) \cdot 5 = 5n - 7\)</p>
+                    <p><strong>(2)</strong> \(\displaystyle S_{15} = \frac{15\{2 \cdot (-2) + 14 \cdot 5\}}{2} = \frac{15(-4 + 70)}{2} = \frac{15 \times 66}{2} = 495\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>等差数列で \(a_5 = 13\)、\(a_{10} = 28\) のとき、</p>
+            <p>(1) 初項と公差を求めよ。</p>
+            <p>(2) 初項から第n項までの和が初めて200を超えるのは第何項までか。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>(1)</strong> \(a_5 = a + 4d = 13\) ... ①、\(a_{10} = a + 9d = 28\) ... ②</p>
+                    <p>② - ① より \(5d = 15\)、よって \(d = 3\)</p>
+                    <p>① に代入：\(a + 12 = 13\)、よって \(a = 1\)</p>
+                    <p><strong>答え：初項1、公差3</strong></p>
+                    <p><strong>(2)</strong> \(\displaystyle S_n = \frac{n(2 \cdot 1 + (n-1) \cdot 3)}{2} = \frac{n(3n - 1)}{2} > 200\)</p>
+                    <p>\(3n^2 - n > 400\) より \(3n^2 - n - 400 > 0\)</p>
+                    <p>\(n = 12\) のとき \(S_{12} = \frac{12 \times 35}{2} = 210 > 200\) ✓</p>
+                    <p>\(n = 11\) のとき \(S_{11} = \frac{11 \times 32}{2} = 176 < 200\) ✗</p>
+                    <p><strong>答え：第12項まで</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<section id="section8">
+    <div class="summary">
+        📌 まとめ：等差数列は「公差」がキーワード。一般項は \(a + (n-1)d\)、和は「項数×平均」で一発計算！
+    </div>
+</section>
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「9歳の天才ガウス」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 1から100までを5秒で足した少年</div>
+            <p>1786年、ドイツ。小学校の算数の授業で、先生は生徒たちを静かにさせようと、こんな課題を出しました。</p>
+            <p>「1から100まで全部足しなさい。終わった人は手を挙げて。」</p>
+            <p>先生は「これで30分は静かにしていてくれるだろう」と思っていました。</p>
+            <p>ところが...</p>
+            <p><strong>5秒後、9歳のカール・フリードリヒ・ガウス少年が手を挙げました。</strong></p>
+            <p>「先生、答えは5050です。」</p>
+            <p>信じられない先生が「どうやって計算したんだ？」と聞くと、ガウスはこう説明しました。</p>
+            <div class="formula">\[ 1 + 100 = 101 \]</div>
+            <div class="formula">\[ 2 + 99 = 101 \]</div>
+            <div class="formula">\[ 3 + 98 = 101 \]</div>
+            <p>「こうやってペアを作ると、全部で50組できて、どのペアも101になります。だから答えは \(101 \times 50 = 5050\) です。」</p>
+            <p>これこそ、私たちが学んだ<strong>等差数列の和の公式</strong>そのものです！</p>
+            <div class="formula">\[ S_n = \frac{n(a + l)}{2} = \frac{100 \times (1 + 100)}{2} = 5050 \]</div>
+            <p>ガウスは後に「数学の王」と呼ばれ、数論、統計学、天文学など多くの分野で革命的な発見をしました。ガウス分布（正規分布）も彼の名前から来ています。</p>
+            <p>ちなみに、ガウスの天才ぶりを示す逸話はまだあります。3歳のとき、父親が給料計算を間違えたのを指摘したとか。<strong>算数を習う前に足し算ができていた</strong>らしいです。</p>
+        </div>
+    </div>
+</section>

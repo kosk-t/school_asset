@@ -1,0 +1,507 @@
+---
+layout: material-raw
+title: 条件付き確率と独立試行
+icon: "🔗"
+description: 条件付き確率・乗法定理・独立試行・反復試行の確率計算をマスターする。
+level: 標準
+level_num: 2
+category: data
+school_level: senior
+order: 6
+keywords:
+  - 条件付き確率
+  - 乗法定理
+  - 独立試行
+  - 反復試行
+  - 期待値
+cover_image: /images/noimage.jpg
+cover_description: 条件付き確率と独立試行のイメージ
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: section8
+    title: "まとめ一言"
+  - id: story
+    title: "おまけ：確率パラドックス「誕生日の奇跡」"
+related:
+  - url: /senior/確率の計算_教材.html
+    title: 確率の計算
+    note: 基本的な確率計算の復習に
+    type: prerequisite
+  - url: /senior/組合せ_教材.html
+    title: 組合せ
+    note: nCrを使った計算に
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>「雨が降ったとき、傘を忘れる確率は？」「コインを5回投げて3回表が出る確率は？」こうした「条件がついた確率」や「繰り返しの試行」を扱うのがこのテーマです。</p>
+
+        <p>このページでは、<strong>条件付き確率と独立試行</strong>を学びます：</p>
+
+        <ul>
+            <li><strong>条件付き確率</strong>：「Bが起きたとき」Aが起きる確率</li>
+            <li><strong>乗法定理</strong>：「AかつB」の確率の求め方</li>
+            <li><strong>独立試行</strong>：結果が他に影響しない試行</li>
+            <li><strong>反復試行の確率</strong>：n回中r回成功する確率</li>
+            <li><strong>期待値</strong>：「平均的にどうなるか」を数値化</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🔗 最重要：条件付き確率 \(P(A|B) = \frac{P(A \cap B)}{P(B)}\)（Bが起きたとき、Aが起きる確率）
+        </div>
+
+        <!-- 条件付き確率の図（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="200" viewBox="0 0 700 200">
+                <!-- タイトル -->
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">条件付き確率のイメージ</text>
+
+                <!-- 全事象U -->
+                <rect x="30" y="45" width="320" height="130" fill="#f5f5f5" stroke="#333" stroke-width="2" rx="5"/>
+                <text x="190" y="65" font-size="12" fill="#333" text-anchor="middle">全事象 U</text>
+
+                <!-- 事象A -->
+                <ellipse cx="140" cy="120" rx="70" ry="45" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="110" y="120" font-size="14" fill="#1976d2" text-anchor="middle">A</text>
+
+                <!-- 事象B -->
+                <ellipse cx="220" cy="120" rx="70" ry="45" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
+                <text x="250" y="120" font-size="14" fill="#e91e63" text-anchor="middle">B</text>
+
+                <!-- 重なり（A∩B） -->
+                <ellipse cx="180" cy="120" rx="25" ry="30" fill="#ce93d8" stroke="#9c27b0" stroke-width="2"/>
+                <text x="180" y="125" font-size="10" fill="#9c27b0" text-anchor="middle">A∩B</text>
+
+                <!-- 条件付き確率の説明 -->
+                <text x="520" y="70" font-size="14" fill="#333" text-anchor="middle">Bが起きたとき、Aも起きる確率</text>
+                <text x="520" y="100" font-size="16" font-weight="bold" fill="#9c27b0" text-anchor="middle">P(A|B) =</text>
+                <text x="520" y="130" font-size="16" fill="#9c27b0" text-anchor="middle">A∩Bの確率</text>
+                <line x1="440" y1="140" x2="600" y2="140" stroke="#9c27b0" stroke-width="2"/>
+                <text x="520" y="165" font-size="16" fill="#e91e63" text-anchor="middle">Bの確率</text>
+                <text x="520" y="190" font-size="12" fill="#666" text-anchor="middle">（Bの中でA∩Bの占める割合）</text>
+            </svg>
+            <div class="svg-caption">条件付き確率は「Bを全体として見たときのA∩Bの割合」</div>
+        </div>
+
+        <div class="rule-box" id="rule-conditional">
+            <strong>📌 ルール1：条件付き確率</strong> <a href="#ex-conditional" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{n(A \cap B)}{n(B)} \]
+            </div>
+            <p><strong>\(P(A|B)\)</strong>：「Bが起きたという条件のもとでAが起きる確率」</p>
+            <p><strong>読み方：</strong>「BのもとでのAの確率」「Bが与えられたときのAの確率」</p>
+            <p><strong>→ だから結果は：</strong>Bが起きた場合に限定して、その中でAも起きる割合を計算</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>条件付き確率は「視点の変更」。全事象Uではなく、Bを「新しい全体」として考える。</p>
+            <p>Bの中でA∩Bが占める割合が、条件付き確率になる。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-multiplication">
+            <strong>📌 ルール2：乗法定理</strong> <a href="#ex-multiplication" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ P(A \cap B) = P(B) \cdot P(A|B) = P(A) \cdot P(B|A) \]
+            </div>
+            <p><strong>意味：</strong>「AかつB」の確率 = Bの確率 × BのもとでAが起きる確率</p>
+            <p><strong>✅ メリット：</strong>条件付き確率がわかっているとき、同時確率を計算できる</p>
+        </div>
+
+        <div class="rule-box" id="rule-independent">
+            <strong>📌 ルール3：独立な事象</strong> <a href="#ex-independent" class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ \text{AとBが独立} \Leftrightarrow P(A \cap B) = P(A) \cdot P(B) \]
+            </div>
+            <p><strong>独立</strong>：一方の結果が他方に影響しない</p>
+            <p><strong>独立のとき：</strong>\(P(A|B) = P(A)\)、\(P(B|A) = P(B)\)</p>
+            <p><strong>例：</strong>サイコロ2回の結果は独立。くじを戻さずに引くのは独立でない。</p>
+        </div>
+
+        <!-- 独立と従属の図（SVG） -->
+        <div class="svg-container">
+            <svg width="600" height="140" viewBox="0 0 600 140">
+                <text x="300" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">独立 vs 従属（非独立）</text>
+
+                <!-- 独立 -->
+                <rect x="30" y="35" width="230" height="90" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="5"/>
+                <text x="145" y="55" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">独立</text>
+                <text x="145" y="75" font-size="12" fill="#333" text-anchor="middle">前の結果が後に影響しない</text>
+                <text x="145" y="95" font-size="11" fill="#666" text-anchor="middle">例：コイン2回投げ</text>
+                <text x="145" y="115" font-size="11" fill="#666" text-anchor="middle">P(A∩B) = P(A)·P(B)</text>
+
+                <!-- 従属 -->
+                <rect x="340" y="35" width="230" height="90" fill="#ffebee" stroke="#f44336" stroke-width="2" rx="5"/>
+                <text x="455" y="55" font-size="14" font-weight="bold" fill="#f44336" text-anchor="middle">従属（非独立）</text>
+                <text x="455" y="75" font-size="12" fill="#333" text-anchor="middle">前の結果が後に影響する</text>
+                <text x="455" y="95" font-size="11" fill="#666" text-anchor="middle">例：くじを戻さずに引く</text>
+                <text x="455" y="115" font-size="11" fill="#666" text-anchor="middle">P(A∩B) = P(A)·P(B|A)</text>
+            </svg>
+        </div>
+
+        <div class="rule-box" id="rule-repeated">
+            <strong>📌 ルール4：反復試行の確率</strong> <a href="#ex-repeated" class="example-link">→ 例4</a>
+            <div class="formula">
+                \[ P(\text{n回中r回成功}) = {}_nC_r \cdot p^r \cdot (1-p)^{n-r} \]
+            </div>
+            <p><strong>反復試行</strong>：同じ試行を独立に繰り返す</p>
+            <p><strong>\(p\)</strong>：1回の試行で成功する確率</p>
+            <p><strong>\(_nC_r\)</strong>：n回中どのr回で成功するかの組合せ</p>
+            <p><strong>例：</strong>コインを5回投げて3回表が出る確率</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>「◯◯◯××」のような特定のパターンの確率は \(p^3 \times (1-p)^2\)。</p>
+            <p>でも「3回成功」は「◯◯◯××」「◯◯×◯×」など複数パターンがある。</p>
+            <p>その数が \(_5C_3 = 10\) 通りなので、掛け合わせる。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-expectation">
+            <strong>📌 ルール5：期待値</strong> <a href="#ex-expectation" class="example-link">→ 例5</a>
+            <div class="formula">
+                \[ E(X) = x_1 p_1 + x_2 p_2 + \cdots + x_n p_n = \sum_{i=1}^{n} x_i p_i \]
+            </div>
+            <p><strong>期待値</strong>：確率変数の「平均的な値」</p>
+            <p><strong>\(x_i\)</strong>：起こりうる値、<strong>\(p_i\)</strong>：その確率</p>
+            <p><strong>例：</strong>サイコロの期待値 = \(1 \times \frac{1}{6} + 2 \times \frac{1}{6} + \cdots + 6 \times \frac{1}{6} = 3.5\)</p>
+        </div>
+
+        <div class="rule-box" id="rule-bayes">
+            <strong>📌 ルール6：ベイズの定理（発展）</strong>
+            <div class="formula">
+                \[ P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)} \]
+            </div>
+            <p><strong>意味：</strong>結果Bから原因Aを推測する「逆確率」</p>
+            <p><strong>使いどころ：</strong>「検査が陽性だったとき、本当に病気である確率」など</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>条件付き確率と独立試行の計算を実際にやってみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 条件付き確率</h3>
+
+        <div class="example-box" id="ex-conditional">
+            <div class="example-title">
+                <span class="number-badge">例1</span>表で見る条件付き確率
+            </div>
+            <p>40人のクラスで、数学が好きな生徒は24人、理科が好きな生徒は20人、両方好きな生徒は15人いる。理科が好きな生徒の中で、数学も好きな生徒の割合（確率）を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>A：数学が好き、B：理科が好き とする</li>
+                <li>求めるのは \(P(A|B)\)（Bのもとでのaの確率）</li>
+                <li>\(P(A \cap B) = \frac{15}{40}\)、\(P(B) = \frac{20}{40}\)</li>
+            </ol>
+            <div class="formula">
+                \[ P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{15/40}{20/40} = \frac{15}{20} = \frac{3}{4} \]
+            </div>
+            <p>または、場合の数で直接計算：\(P(A|B) = \frac{n(A \cap B)}{n(B)} = \frac{15}{20} = \frac{3}{4}\)</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 乗法定理</h3>
+
+        <div class="example-box" id="ex-multiplication">
+            <div class="example-title">
+                <span class="number-badge">例2</span>くじを戻さずに引く
+            </div>
+            <p>当たりが3本、はずれが7本の計10本のくじがある。くじを1本引き、戻さずにもう1本引くとき、2本とも当たりである確率を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>A：1本目が当たり、B：2本目が当たり とする</li>
+                <li>1本目が当たりの確率：\(P(A) = \frac{3}{10}\)</li>
+                <li>1本目が当たりだったとき、2本目が当たりの確率：\(P(B|A) = \frac{2}{9}\)（残り9本中2本が当たり）</li>
+                <li>乗法定理を適用</li>
+            </ol>
+            <div class="formula">
+                \[ P(A \cap B) = P(A) \cdot P(B|A) = \frac{3}{10} \times \frac{2}{9} = \frac{6}{90} = \frac{1}{15} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 独立な事象</h3>
+
+        <div class="example-box" id="ex-independent">
+            <div class="example-title">
+                <span class="number-badge">例3</span>サイコロ2回の独立試行
+            </div>
+            <p>サイコロを2回投げるとき、1回目が偶数、2回目が3以上である確率を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>2回の結果は<strong>独立</strong>（1回目の結果が2回目に影響しない）</li>
+                <li>A：1回目が偶数 → \(P(A) = \frac{3}{6} = \frac{1}{2}\)</li>
+                <li>B：2回目が3以上 → \(P(B) = \frac{4}{6} = \frac{2}{3}\)</li>
+                <li>独立なので、単純に掛ける</li>
+            </ol>
+            <div class="formula">
+                \[ P(A \cap B) = P(A) \times P(B) = \frac{1}{2} \times \frac{2}{3} = \frac{1}{3} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 反復試行</h3>
+
+        <div class="example-box" id="ex-repeated">
+            <div class="example-title">
+                <span class="number-badge">例4</span>コインを5回投げて3回表
+            </div>
+            <p>コインを5回投げるとき、ちょうど3回表が出る確率を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>n = 5回、r = 3回成功、p = \(\frac{1}{2}\)</li>
+                <li>反復試行の公式を適用</li>
+            </ol>
+            <div class="formula">
+                \[ P = {}_5C_3 \times \left(\frac{1}{2}\right)^3 \times \left(\frac{1}{2}\right)^2 = 10 \times \frac{1}{8} \times \frac{1}{4} = \frac{10}{32} = \frac{5}{16} \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-repeated2">
+            <div class="example-title">
+                <span class="number-badge">例4b</span>サイコロで6が2回出る
+            </div>
+            <p>サイコロを4回投げるとき、6の目がちょうど2回出る確率を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>n = 4回、r = 2回成功、p = \(\frac{1}{6}\)（6が出る確率）</li>
+                <li>1 - p = \(\frac{5}{6}\)（6以外が出る確率）</li>
+            </ol>
+            <div class="formula">
+                \[ P = {}_4C_2 \times \left(\frac{1}{6}\right)^2 \times \left(\frac{5}{6}\right)^2 = 6 \times \frac{1}{36} \times \frac{25}{36} = \frac{150}{1296} = \frac{25}{216} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 期待値</h3>
+
+        <div class="example-box" id="ex-expectation">
+            <div class="example-title">
+                <span class="number-badge">例5</span>くじの期待値
+            </div>
+            <p>1等1000円が1本、2等200円が3本、はずれ（0円）が6本のくじがある。1回くじを引いたときの賞金の期待値を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>確率変数X（賞金）の取りうる値：1000円、200円、0円</li>
+                <li>それぞれの確率：\(\frac{1}{10}\)、\(\frac{3}{10}\)、\(\frac{6}{10}\)</li>
+                <li>期待値を計算</li>
+            </ol>
+            <div class="formula">
+                \[ E(X) = 1000 \times \frac{1}{10} + 200 \times \frac{3}{10} + 0 \times \frac{6}{10} = 100 + 60 + 0 = 160 \text{円} \]
+            </div>
+            <p><strong>解釈：</strong>このくじを何度も引くと、平均して1回あたり160円もらえる</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ ベイズの定理</h3>
+
+        <div class="example-box" id="ex-bayes">
+            <div class="example-title">
+                <span class="number-badge">例6</span>製造ラインの不良品
+            </div>
+            <p>工場のライン1は全体の60%、ライン2は40%を製造する。ライン1の不良率は2%、ライン2の不良率は5%である。製品が不良品だったとき、それがライン1で作られた確率を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>A：ライン1で製造、B：不良品 とする</li>
+                <li>\(P(A) = 0.6\)、\(P(B|A) = 0.02\)</li>
+                <li>\(P(\overline{A}) = 0.4\)、\(P(B|\overline{A}) = 0.05\)</li>
+                <li>まず \(P(B)\) を計算（全確率の公式）</li>
+            </ol>
+            <div class="formula">
+                \[ P(B) = P(A) \cdot P(B|A) + P(\overline{A}) \cdot P(B|\overline{A}) = 0.6 \times 0.02 + 0.4 \times 0.05 = 0.012 + 0.02 = 0.032 \]
+            </div>
+            <p>ベイズの定理を適用：</p>
+            <div class="formula">
+                \[ P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)} = \frac{0.02 \times 0.6}{0.032} = \frac{0.012}{0.032} = \frac{3}{8} = 0.375 \]
+            </div>
+            <p><strong>答え：</strong>37.5%（不良品がライン1製である確率）</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：「独立」か「従属」かを最初に判断</strong><br>
+            独立（前の結果が後に影響しない）→ 単純に掛け算 P(A)×P(B)<br>
+            従属（影響する）→ 乗法定理 P(A)×P(B|A)
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：条件付き確率は「分母を変える」</strong><br>
+            \(P(A|B)\) は「Bの中でのA∩Bの割合」。<br>
+            全事象ではなく、Bを新しい「全体」として計算する。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：反復試行は「組合せ × 確率のべき乗」</strong><br>
+            n回中r回成功 = \(_nC_r\)（どのr回か）× \(p^r\)（成功r回）× \((1-p)^{n-r}\)（失敗n-r回）
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：期待値は「値×確率の和」</strong><br>
+            各結果の「値」と「確率」を掛けて全部足す。<br>
+            確率の合計が1になっているか確認すると計算ミスを防げる。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：独立と従属を間違える</div>
+            <p><strong>ダメな例：</strong>くじを戻さずに引くとき、P(2本とも当たり) = \(\frac{3}{10} \times \frac{3}{10}\)</p>
+            <p><strong>対策：</strong>戻さない → 従属。2本目は \(\frac{2}{9}\) になる</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：\(P(A|B)\) と \(P(B|A)\) を混同</div>
+            <p><strong>ダメな例：</strong>「病気のとき陽性の確率」と「陽性のとき病気の確率」を同じと思う</p>
+            <p><strong>対策：</strong>条件（分母）が違えば、確率は違う。「〜のとき」が何かを確認</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：反復試行で \(_nC_r\) を忘れる</div>
+            <p><strong>ダメな例：</strong>5回中3回表の確率を \((\frac{1}{2})^3 \times (\frac{1}{2})^2 = \frac{1}{32}\) とする</p>
+            <p><strong>対策：</strong>「◯◯◯××」以外にも「◯◯×◯×」などがある。\(_5C_3 = 10\) 通りを掛ける</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：期待値の計算で確率を確認しない</div>
+            <p><strong>ダメな例：</strong>確率の合計が1にならないのに気づかず計算を進める</p>
+            <p><strong>対策：</strong>確率の和が1か確認。1でなければどこか間違っている</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">条件付き確率 \(P(A|B) = \frac{P(A \cap B)}{P(B)}\) が使える</div>
+            <div class="checklist-item">乗法定理 \(P(A \cap B) = P(A) \cdot P(B|A)\) が使える</div>
+            <div class="checklist-item">独立と従属を正しく判断できる</div>
+            <div class="checklist-item">反復試行の公式 \(_nC_r \cdot p^r \cdot (1-p)^{n-r}\) が使える</div>
+            <div class="checklist-item">期待値 \(E(X) = \sum x_i p_i\) が計算できる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>赤玉4個、白玉6個が入った袋から、1個取り出し、戻さずにもう1個取り出す。2個とも赤玉である確率を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>戻さないので従属。乗法定理を使う。</p>
+                    <p>\(P = \frac{4}{10} \times \frac{3}{9} = \frac{12}{90} = \frac{2}{15}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>コインを6回投げるとき、ちょうど4回表が出る確率を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>反復試行の公式：n=6, r=4, p=1/2</p>
+                    <p>\(P = {}_6C_4 \times \left(\frac{1}{2}\right)^4 \times \left(\frac{1}{2}\right)^2 = 15 \times \frac{1}{16} \times \frac{1}{4} = \frac{15}{64}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>1等500円が2本、2等100円が5本、はずれが3本のくじがある。1回引いたときの賞金の期待値を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(E(X) = 500 \times \frac{2}{10} + 100 \times \frac{5}{10} + 0 \times \frac{3}{10}\)</p>
+                    <p>\(= 100 + 50 + 0 = 150\) 円</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<section id="section8">
+<div class="summary">
+    📌 まとめ：条件付き確率は「視点の変更」、独立なら掛けるだけ、反復試行は組合せ×べき乗！
+</div>
+</section>
+
+<!-- ========== おまけ：確率パラドックス ========== -->
+<section id="story">
+    <h2>おまけ：確率パラドックス「誕生日の奇跡」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 23人で誕生日が一致する確率は？</div>
+
+            <p>ある日のクラスで、先生が質問した。「このクラス40人の中に、同じ誕生日の人がいると思う人、手を挙げて！」</p>
+
+            <p>生徒たちは首をかしげた。「365日もあるのに、40人で一致するわけないでしょ」</p>
+
+            <p>先生はニヤリと笑って言った。「じゃあ実際に調べてみよう」</p>
+
+            <p>結果、なんと<strong>3組</strong>も同じ誕生日のペアがいた！</p>
+
+            <p><strong>実は、確率を計算すると...</strong></p>
+
+            <p>23人いれば、同じ誕生日の人がいる確率は<strong>50%を超える</strong>。40人なら約89%、50人では97%にもなる！</p>
+
+            <p><strong>なぜこんな「意外な」結果になるのか？</strong></p>
+
+            <p>ポイントは「ペアの数」だ。23人いると、誕生日を比べるペアは \({_{23}}C_2 = 253\) 組もある。「誰かと誰かが一致」のチャンスがこれだけあるから、50%を超えるのだ。</p>
+
+            <p><strong>余事象を使って計算しよう</strong></p>
+
+            <p>「全員バラバラ」の確率を求めて、1から引く方が簡単：</p>
+
+            <div class="formula">
+                \[ P(\text{全員バラバラ}) = \frac{365}{365} \times \frac{364}{365} \times \frac{363}{365} \times \cdots \times \frac{343}{365} \]
+            </div>
+
+            <p>これを計算すると約0.493。つまり「誰かが一致」する確率は 1 - 0.493 = 約50.7%！</p>
+
+            <p><strong>サッカーW杯での検証</strong></p>
+
+            <p>2014年ブラジルW杯の32チーム中、なんと<strong>16チーム</strong>で同じ誕生日の選手がいた。各チーム23人なので、理論値50%とほぼ一致！</p>
+
+            <p><strong>教訓</strong></p>
+
+            <p>「365日もあるから大丈夫」という直感は、「比べるペアの数」を見落としている。人間の直感と確率計算の結果は、しばしば大きく食い違う。だから確率は面白いのだ。</p>
+
+            <p>...ちなみに、「自分と同じ誕生日の人がいる」確率は、23人でもたった約6%。「誰かと誰か」と「自分と誰か」では全然違うのだ！</p>
+        </div>
+    </div>
+</section>

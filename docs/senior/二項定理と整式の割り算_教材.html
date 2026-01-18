@@ -1,0 +1,570 @@
+---
+layout: material-raw
+title: 二項定理と整式の割り算
+icon: "📐"
+description: 二項定理でべき乗の展開を一発計算し、パスカルの三角形と二項係数の関係を理解する。整式の割り算で商と余りを正確に求める力を身につける。
+level: 標準
+level_num: 2
+category: numbers
+school_level: senior
+order: 6
+keywords:
+  - 二項定理
+  - 二項係数
+  - パスカルの三角形
+  - 整式の割り算
+  - 組立除法
+cover_image: /images/noimage.jpg
+cover_description: 二項定理の展開式とパスカルの三角形
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「パスカルの三角形は誰のもの？」"
+related:
+  - url: /senior/組合せ_教材.html
+    title: 組合せ
+    note: 二項係数nCrの計算の復習に
+    type: prerequisite
+  - url: /senior/展開と因数分解_高校_教材.html
+    title: 展開と因数分解（高校）
+    note: 3乗公式との関連
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>\((a+b)^{10}\) を展開したら、項がいくつ出てきて、各係数はいくつ？ こんな計算を一瞬で解決するのが<strong>二項定理</strong>です。また、多項式を別の多項式で割る<strong>整式の割り算</strong>は、因数定理や高次方程式を解く上で欠かせない技術です。</p>
+
+        <p>このページでは、<strong>式と証明</strong>の前半を学びます：</p>
+
+        <ul>
+            <li><strong>二項定理</strong>：\((a+b)^n\) の展開公式</li>
+            <li><strong>二項係数</strong>：\(_nC_r\) と展開係数の関係</li>
+            <li><strong>パスカルの三角形</strong>：二項係数の規則性</li>
+            <li><strong>整式の割り算</strong>：商と余りの求め方</li>
+            <li><strong>組立除法</strong>：\((x-a)\) で割るときの簡便法</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            📐 最重要：二項定理 \((a+b)^n = \sum_{r=0}^{n} {}_nC_r \, a^{n-r}b^r\)
+        </div>
+
+        <!-- 二項定理の展開（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="200" viewBox="0 0 700 200">
+                <!-- タイトル -->
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">(a+b)⁴ の展開</text>
+
+                <!-- 展開式 -->
+                <text x="350" y="60" font-size="14" fill="#333" text-anchor="middle">(a+b)⁴ = ₄C₀a⁴ + ₄C₁a³b + ₄C₂a²b² + ₄C₃ab³ + ₄C₄b⁴</text>
+
+                <!-- 係数 -->
+                <text x="350" y="90" font-size="14" fill="#e91e63" font-weight="bold" text-anchor="middle">= 1·a⁴ + 4·a³b + 6·a²b² + 4·ab³ + 1·b⁴</text>
+
+                <!-- パスカルの三角形との対応 -->
+                <text x="100" y="130" font-size="12" fill="#666">係数 1, 4, 6, 4, 1 は</text>
+                <text x="100" y="150" font-size="12" fill="#666">パスカルの三角形の</text>
+                <text x="100" y="170" font-size="12" fill="#666">5段目と一致！</text>
+
+                <!-- パスカルの三角形（小） -->
+                <text x="350" y="130" font-size="14" fill="#1976d2" text-anchor="middle">1</text>
+                <text x="320" y="150" font-size="14" fill="#1976d2" text-anchor="middle">1</text>
+                <text x="380" y="150" font-size="14" fill="#1976d2" text-anchor="middle">1</text>
+                <text x="290" y="170" font-size="14" fill="#1976d2" text-anchor="middle">1</text>
+                <text x="350" y="170" font-size="14" fill="#1976d2" text-anchor="middle">2</text>
+                <text x="410" y="170" font-size="14" fill="#1976d2" text-anchor="middle">1</text>
+                <text x="260" y="190" font-size="14" fill="#1976d2" text-anchor="middle">1</text>
+                <text x="320" y="190" font-size="14" fill="#1976d2" text-anchor="middle">3</text>
+                <text x="380" y="190" font-size="14" fill="#1976d2" text-anchor="middle">3</text>
+                <text x="440" y="190" font-size="14" fill="#1976d2" text-anchor="middle">1</text>
+
+                <!-- 5段目（強調） -->
+                <rect x="495" y="195" width="180" height="25" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="5"/>
+                <text x="510" y="213" font-size="14" fill="#ff9800" font-weight="bold">1  4  6  4  1</text>
+
+                <!-- 矢印 -->
+                <path d="M 470 185 L 490 200" stroke="#ff9800" stroke-width="2"/>
+            </svg>
+            <div class="svg-caption">二項定理の係数はパスカルの三角形に現れる</div>
+        </div>
+
+        <div class="rule-box" id="rule-binomial">
+            <strong>📌 ルール1：二項定理</strong> <a href="#ex-expand" class="example-link">→ 例1</a>
+            <div class="formula">
+                \[ (a+b)^n = \sum_{r=0}^{n} {}_nC_r \, a^{n-r}b^r = {}_nC_0 a^n + {}_nC_1 a^{n-1}b + {}_nC_2 a^{n-2}b^2 + \cdots + {}_nC_n b^n \]
+            </div>
+            <p><strong>読み方：</strong>「シグマ記号 \(\sum\)」は「r=0からnまで足し合わせる」という意味</p>
+            <p><strong>→ だから結果は：</strong> 各項の係数は \({}_nC_r\)、aの指数は \(n-r\)、bの指数は \(r\)</p>
+            <p><strong>✅ メリット：</strong> \((a+b)^{10}\) のような高い累乗も、特定の項の係数を直接計算できる</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>\((a+b)^n = (a+b)(a+b)\cdots(a+b)\)（n個の積）を展開すると、各カッコからaかbを1つずつ選ぶ。</p>
+            <p>\(a^{n-r}b^r\) の項は「n個のカッコからr個のbを選ぶ」場合の数 \({}_nC_r\) 通りだけ出てくる。</p>
+            </details>
+        </div>
+
+        <div class="rule-box" id="rule-general-term">
+            <strong>📌 ルール2：一般項（第r+1項）</strong> <a href="#ex-term" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ (a+b)^n \text{の第} (r+1) \text{項} = {}_nC_r \, a^{n-r}b^r \]
+            </div>
+            <p><strong>注意：</strong>「第r+1項」なのでr=0が第1項。「第5項」を求めるならr=4を代入</p>
+            <p><strong>✅ メリット：</strong> 展開を全部しなくても、特定の項だけピンポイントで計算できる</p>
+        </div>
+
+        <div class="rule-box" id="rule-pascal">
+            <strong>📌 ルール3：パスカルの三角形の性質</strong>
+            <div class="formula">
+                \[ {}_nC_r = {}_{n-1}C_{r-1} + {}_{n-1}C_r \quad \text{（加法公式）} \]
+            </div>
+            <p><strong>意味：</strong>上の2つの数を足すと、その下の数になる</p>
+            <p><strong>その他の性質：</strong></p>
+            <ul>
+                <li>\({}_nC_0 = {}_nC_n = 1\)（両端は常に1）</li>
+                <li>\({}_nC_r = {}_nC_{n-r}\)（左右対称）</li>
+                <li>\({}_nC_0 + {}_nC_1 + \cdots + {}_nC_n = 2^n\)（各行の和）</li>
+            </ul>
+        </div>
+
+        <div class="rule-box" id="rule-division">
+            <strong>📌 ルール4：整式の割り算</strong> <a href="#ex-division" class="example-link">→ 例3</a>
+            <div class="formula">
+                \[ A = BQ + R \quad \text{（被除式 = 除式 × 商 + 余り）} \]
+            </div>
+            <p>Aを整式B（\(B \neq 0\)）で割ると、商Qと余りRが一意に定まる</p>
+            <p><strong>条件：</strong>余りRの次数 \(<\) 除式Bの次数（または R=0）</p>
+            <p><strong>計算方法：</strong>筆算で最高次の項から順に消していく</p>
+        </div>
+
+        <div class="rule-box" id="rule-synthetic">
+            <strong>📌 ルール5：組立除法（\(x-a\) で割るとき）</strong> <a href="#ex-synthetic" class="example-link">→ 例4</a>
+            <div class="formula">
+                \[ P(x) \div (x-a) \text{ の商と余りを簡単に求める方法} \]
+            </div>
+            <p><strong>手順：</strong></p>
+            <ol>
+                <li>被除式の係数を横に並べる（欠けている次数は0を入れる）</li>
+                <li>除数 \(x-a\) の \(a\) を左端に書く</li>
+                <li>最高次の係数をそのまま下ろす</li>
+                <li>下ろした数 × a を次の係数の下に書き、足す</li>
+                <li>以下繰り返し。最後の数が余り</li>
+            </ol>
+            <p><strong>✅ メリット：</strong> 筆算より圧倒的に速い</p>
+        </div>
+
+        <!-- 組立除法の図解（SVG） -->
+        <div class="svg-container">
+            <svg width="600" height="180" viewBox="0 0 600 180">
+                <!-- タイトル -->
+                <text x="300" y="20" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">組立除法：(2x³ + 3x² - 5x + 4) ÷ (x - 2)</text>
+
+                <!-- 組立除法の枠 -->
+                <rect x="100" y="40" width="400" height="100" fill="none" stroke="#333" stroke-width="2"/>
+                <line x1="100" y1="80" x2="500" y2="80" stroke="#333" stroke-width="1"/>
+                <line x1="150" y1="40" x2="150" y2="140" stroke="#333" stroke-width="1"/>
+
+                <!-- 除数 -->
+                <text x="125" y="65" font-size="16" fill="#e91e63" font-weight="bold" text-anchor="middle">2</text>
+
+                <!-- 係数（上段） -->
+                <text x="200" y="65" font-size="16" fill="#333" text-anchor="middle">2</text>
+                <text x="280" y="65" font-size="16" fill="#333" text-anchor="middle">3</text>
+                <text x="360" y="65" font-size="16" fill="#333" text-anchor="middle">-5</text>
+                <text x="440" y="65" font-size="16" fill="#333" text-anchor="middle">4</text>
+
+                <!-- 計算（中段） -->
+                <text x="280" y="100" font-size="14" fill="#1976d2" text-anchor="middle">4</text>
+                <text x="360" y="100" font-size="14" fill="#1976d2" text-anchor="middle">14</text>
+                <text x="440" y="100" font-size="14" fill="#1976d2" text-anchor="middle">18</text>
+
+                <!-- 結果（下段） -->
+                <text x="200" y="130" font-size="16" fill="#4caf50" font-weight="bold" text-anchor="middle">2</text>
+                <text x="280" y="130" font-size="16" fill="#4caf50" font-weight="bold" text-anchor="middle">7</text>
+                <text x="360" y="130" font-size="16" fill="#4caf50" font-weight="bold" text-anchor="middle">9</text>
+                <text x="440" y="130" font-size="16" fill="#ff9800" font-weight="bold" text-anchor="middle">22</text>
+
+                <!-- 矢印と説明 -->
+                <text x="200" y="160" font-size="12" fill="#666" text-anchor="middle">x²</text>
+                <text x="280" y="160" font-size="12" fill="#666" text-anchor="middle">x</text>
+                <text x="360" y="160" font-size="12" fill="#666" text-anchor="middle">定数</text>
+                <text x="440" y="160" font-size="12" fill="#ff9800" font-weight="bold" text-anchor="middle">余り</text>
+            </svg>
+            <div class="svg-caption">商は \(2x^2 + 7x + 9\)、余りは \(22\)</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>二項定理と整式の割り算を使って実際に問題を解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 二項定理による展開</h3>
+
+        <div class="example-box" id="ex-expand">
+            <div class="example-title">
+                <span class="number-badge">例1</span>\((x+2)^5\) を展開する
+            </div>
+            <p>\((x+2)^5\) を展開せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>二項定理を適用：\(a=x, b=2, n=5\)</li>
+                <li>各項の係数 \({}_5C_r\) を計算：1, 5, 10, 10, 5, 1</li>
+                <li>\(2^r\) をかけて各項を求める</li>
+            </ol>
+            <div class="formula">
+                \[ (x+2)^5 = {}_5C_0 x^5 + {}_5C_1 x^4 \cdot 2 + {}_5C_2 x^3 \cdot 2^2 + {}_5C_3 x^2 \cdot 2^3 + {}_5C_4 x \cdot 2^4 + {}_5C_5 \cdot 2^5 \]
+                \[ = x^5 + 10x^4 + 40x^3 + 80x^2 + 80x + 32 \]
+            </div>
+        </div>
+
+        <div class="example-box" id="ex-term">
+            <div class="example-title">
+                <span class="number-badge">例2</span>特定の項の係数を求める
+            </div>
+            <p>\((2x-3)^6\) の展開式における \(x^4\) の係数を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(a=2x, b=-3, n=6\) として一般項を書く</li>
+                <li>\(x^4\) になる条件を見つける → \((2x)^4(-3)^2\) なので \(r=2\)</li>
+                <li>係数を計算</li>
+            </ol>
+            <div class="formula">
+                \[ \text{一般項} = {}_6C_r (2x)^{6-r}(-3)^r \]
+            </div>
+            <p>\(x^4\) の項は \(6-r=4\)、つまり \(r=2\) のとき：</p>
+            <div class="formula">
+                \[ {}_6C_2 (2x)^4(-3)^2 = 15 \times 16x^4 \times 9 = 2160x^4 \]
+            </div>
+            <p><strong>答え：</strong>\(x^4\) の係数は \(\boldsymbol{2160}\)</p>
+        </div>
+
+        <div class="example-box" id="ex-minus">
+            <div class="example-title">
+                <span class="number-badge">例3</span>差の累乗
+            </div>
+            <p>\((a-b)^4\) を展開せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\((a-b)^4 = (a+(-b))^4\) と考える</li>
+                <li>\((-b)^r\) の符号に注意して展開</li>
+            </ol>
+            <div class="formula">
+                \[ (a-b)^4 = a^4 - 4a^3b + 6a^2b^2 - 4ab^3 + b^4 \]
+            </div>
+            <p><strong>ポイント：</strong>係数の符号は + - + - + と交互になる</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 二項係数の性質</h3>
+
+        <div class="example-box" id="ex-sum">
+            <div class="example-title">
+                <span class="number-badge">例4</span>二項係数の和
+            </div>
+            <p>\({}_8C_0 + {}_8C_1 + {}_8C_2 + \cdots + {}_8C_8\) の値を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>二項定理で \(a=1, b=1, n=8\) とおく</li>
+                <li>\((1+1)^8 = 2^8\) を利用</li>
+            </ol>
+            <div class="formula">
+                \[ (1+1)^8 = {}_8C_0 + {}_8C_1 + {}_8C_2 + \cdots + {}_8C_8 = 2^8 = 256 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 整式の割り算</h3>
+
+        <div class="example-box" id="ex-division">
+            <div class="example-title">
+                <span class="number-badge">例5</span>筆算による整式の割り算
+            </div>
+            <p>\((x^3 + 2x^2 - 5x + 3) \div (x^2 - x + 1)\) の商と余りを求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>最高次の項 \(x^3 \div x^2 = x\) が商の最初</li>
+                <li>\(x \times (x^2 - x + 1) = x^3 - x^2 + x\) を引く</li>
+                <li>次は \(3x^2 \div x^2 = 3\) が商の次</li>
+                <li>残った式が余り</li>
+            </ol>
+            <div class="formula">
+                \[ x^3 + 2x^2 - 5x + 3 = (x^2 - x + 1)(x + 3) + (-3x) \]
+            </div>
+            <p><strong>答え：</strong>商 \(x+3\)、余り \(-3x\)</p>
+        </div>
+
+        <div class="example-box" id="ex-synthetic">
+            <div class="example-title">
+                <span class="number-badge">例6</span>組立除法
+            </div>
+            <p>\((x^3 - 4x^2 + 5x - 2) \div (x - 1)\) の商と余りを組立除法で求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(x - 1 = 0\) より \(a = 1\)</li>
+                <li>係数 1, -4, 5, -2 を並べて組立除法を実行</li>
+            </ol>
+            <table class="material-table" style="text-align: center;">
+                <tr>
+                    <td style="border-right: 2px solid #333; background: #fff3e0;"><strong>1</strong></td>
+                    <td>1</td>
+                    <td>-4</td>
+                    <td>5</td>
+                    <td>-2</td>
+                </tr>
+                <tr>
+                    <td style="border-right: 2px solid #333;"></td>
+                    <td></td>
+                    <td style="color: #1976d2;">1</td>
+                    <td style="color: #1976d2;">-3</td>
+                    <td style="color: #1976d2;">2</td>
+                </tr>
+                <tr style="border-top: 2px solid #333;">
+                    <td style="border-right: 2px solid #333;"></td>
+                    <td style="color: #4caf50;"><strong>1</strong></td>
+                    <td style="color: #4caf50;"><strong>-3</strong></td>
+                    <td style="color: #4caf50;"><strong>2</strong></td>
+                    <td style="color: #ff9800;"><strong>0</strong></td>
+                </tr>
+            </table>
+            <p><strong>答え：</strong>商 \(x^2 - 3x + 2\)、余り \(0\)</p>
+            <p>（余りが0なので、\(x-1\) は因数）</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 余りの応用</h3>
+
+        <div class="example-box" id="ex-remainder">
+            <div class="example-title">
+                <span class="number-badge">例7</span>二次式で割った余り
+            </div>
+            <p>\(P(x) = x^4 - 2x^3 + x - 5\) を \((x-1)(x+2)\) で割った余りを求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>二次式で割るので余りは一次式以下 → \(ax+b\) とおく</li>
+                <li>\(P(x) = (x-1)(x+2) \cdot Q(x) + ax + b\)</li>
+                <li>\(x=1\) を代入：\(P(1) = a + b\)</li>
+                <li>\(x=-2\) を代入：\(P(-2) = -2a + b\)</li>
+                <li>連立方程式を解く</li>
+            </ol>
+            <div class="formula">
+                \[ P(1) = 1 - 2 + 1 - 5 = -5 \quad \Rightarrow \quad a + b = -5 \]
+                \[ P(-2) = 16 + 16 - 2 - 5 = 25 \quad \Rightarrow \quad -2a + b = 25 \]
+            </div>
+            <p>連立方程式を解くと \(a = -10, b = 5\)</p>
+            <p><strong>答え：</strong>余りは \(-10x + 5\)</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：パスカルの三角形を暗記</strong><br>
+            n=1〜5くらいまでは暗記しておくと、展開が一瞬で終わる。<br>
+            1行目: 1<br>
+            2行目: 1 1<br>
+            3行目: 1 2 1<br>
+            4行目: 1 3 3 1<br>
+            5行目: 1 4 6 4 1<br>
+            6行目: 1 5 10 10 5 1
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：特定の項だけ求めるなら一般項</strong><br>
+            「\(x^3\) の係数は？」と聞かれたら、全部展開せずに一般項 \({}_nC_r a^{n-r}b^r\) から \(x^3\) になる \(r\) を逆算。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：\((a-b)^n\) は符号が交互</strong><br>
+            \((a+(-b))^n\) と考えると、\((-b)^r\) の符号で項の符号が + - + - ... と交互に変わる。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：組立除法は \(x-a\) 専用</strong><br>
+            除式が \(x-a\) の形なら組立除法が圧倒的に速い。\(x+3\) で割るなら \(a=-3\) を使う。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ5：余りの次数は除式より小さい</strong><br>
+            二次式で割れば余りは一次以下、三次式で割れば二次以下。これを使って文字を置く。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：一般項の「第r+1項」を間違える</div>
+            <p><strong>ダメな例：</strong>「第5項」を求めるのに r=5 を代入</p>
+            <p><strong>対策：</strong>一般項は r=0 が第1項。「第5項」なら r=4 を代入する</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：\((a-b)^n\) で符号を間違える</div>
+            <p><strong>ダメな例：</strong>\((x-2)^3\) を展開して \(x^3 + 6x^2 + 12x + 8\) とする</p>
+            <p><strong>対策：</strong>\((-2)^r\) の符号に注意。奇数乗はマイナス、偶数乗はプラス</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：組立除法で \(x+a\) の符号を間違える</div>
+            <p><strong>ダメな例：</strong>\(x+3\) で割るのに \(a=3\) として計算</p>
+            <p><strong>対策：</strong>\(x+3 = x-(-3)\) なので \(a=-3\) を使う</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：欠けている次数を飛ばす</div>
+            <p><strong>ダメな例：</strong>\(x^3 + 5\) を割るとき、係数を 1, 5 と並べる</p>
+            <p><strong>対策：</strong>欠けている次数（\(x^2, x\)）には 0 を入れて 1, 0, 0, 5 と並べる</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">二項定理 \((a+b)^n = \sum {}_nC_r a^{n-r}b^r\) を使って展開できる</div>
+            <div class="checklist-item">一般項から特定の項の係数を求められる</div>
+            <div class="checklist-item">パスカルの三角形と二項係数の関係がわかる</div>
+            <div class="checklist-item">整式の割り算で商と余りを求められる</div>
+            <div class="checklist-item">組立除法を使って \((x-a)\) で割れる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>\((x+3)^4\) を展開せよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>係数は 1, 4, 6, 4, 1（パスカルの三角形5行目）</p>
+                    <p>\((x+3)^4 = x^4 + 4x^3 \cdot 3 + 6x^2 \cdot 9 + 4x \cdot 27 + 81\)</p>
+                    <p>\(= x^4 + 12x^3 + 54x^2 + 108x + 81\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\((2x-1)^5\) の展開式における \(x^3\) の係数を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>一般項：\({}_5C_r (2x)^{5-r}(-1)^r\)</p>
+                    <p>\(x^3\) になるのは \(5-r=3\)、つまり \(r=2\)</p>
+                    <p>\({}_5C_2 (2x)^3(-1)^2 = 10 \times 8x^3 \times 1 = 80x^3\)</p>
+                    <p><strong>答え：80</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>\((x^3 - 2x^2 + 3x - 4) \div (x - 2)\) の商と余りを組立除法で求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>\(a=2\) として組立除法：</p>
+                    <table style="text-align: center; margin: 10px auto;">
+                        <tr><td style="border-right: 1px solid #333;"><strong>2</strong></td><td>1</td><td>-2</td><td>3</td><td>-4</td></tr>
+                        <tr><td style="border-right: 1px solid #333;"></td><td></td><td>2</td><td>0</td><td>6</td></tr>
+                        <tr style="border-top: 1px solid #333;"><td style="border-right: 1px solid #333;"></td><td>1</td><td>0</td><td>3</td><td>2</td></tr>
+                    </table>
+                    <p><strong>商：\(x^2 + 3\)、余り：\(2\)</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：二項定理で \((a+b)^n\) を一発展開、整式の割り算は筆算か組立除法で商と余りを求める！
+</div>
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「パスカルの三角形は誰のもの？」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 パスカルより500年も前に...</div>
+
+            <p>「パスカルの三角形」と聞くと、フランスの数学者ブレーズ・パスカル（1623-1662）が発見したと思うだろう。確かにパスカルは1653年に『算術三角形論』を書いた。</p>
+
+            <p>しかし、実は<strong>この三角形はパスカルより500年も前に発見されていた</strong>。</p>
+
+            <p><strong>中国では、11世紀（1050年頃）に賈憲（カケン）がすでにこの三角形を使っていた</strong>。さらに1303年、朱世傑が『四元玉鑑』という本でこの三角形を詳しく解説している。中国では「賈憲三角」や「楊輝三角」と呼ばれる。</p>
+
+            <p><strong>インドでは、紀元前2世紀にピンガラがこの配列を知っていた</strong>という説もある。</p>
+
+            <p><strong>ペルシャでは、12世紀にオマル・ハイヤームが二項展開の係数として使っていた</strong>。</p>
+
+            <p>つまり、パスカルは「発見者」ではなく「西洋で体系化した人」なのだ。</p>
+
+            <table class="material-table">
+                <tr>
+                    <th>地域</th>
+                    <th>時代</th>
+                    <th>数学者</th>
+                </tr>
+                <tr>
+                    <td>インド</td>
+                    <td>紀元前2世紀?</td>
+                    <td>ピンガラ</td>
+                </tr>
+                <tr>
+                    <td>中国</td>
+                    <td>11世紀</td>
+                    <td>賈憲、楊輝、朱世傑</td>
+                </tr>
+                <tr>
+                    <td>ペルシャ</td>
+                    <td>12世紀</td>
+                    <td>オマル・ハイヤーム</td>
+                </tr>
+                <tr>
+                    <td>フランス</td>
+                    <td>17世紀</td>
+                    <td>パスカル</td>
+                </tr>
+            </table>
+
+            <p>数学の発見は、世界中で独立に起こることが多い。でも名前は「最初に体系化した人」ではなく「一番有名な人」がつくことが多い。</p>
+
+            <p><strong>教訓：数学に国境はない。そして、歴史の「発見者」は必ずしも最初の発見者ではない。</strong></p>
+
+            <p style="font-size: 0.9em; color: #666; margin-top: 15px;">※詳しくは<a href="https://ja.wikipedia.org/wiki/%E3%83%91%E3%82%B9%E3%82%AB%E3%83%AB%E3%81%AE%E4%B8%89%E8%A7%92%E5%BD%A2" target="_blank" style="color: #1976d2;">パスカルの三角形 - Wikipedia</a>を参照。</p>
+        </div>
+    </div>
+</section>

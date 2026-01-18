@@ -1,0 +1,753 @@
+---
+layout: material-raw
+title: 三角関数：公式の選び方
+icon: "🎯"
+description: 加法定理・倍角公式・半角公式・合成のどれを使うべきか、式の形から瞬時に判断するフローと考え方を身につける。
+level: 発展
+level_num: 3
+category: functions
+school_level: senior
+order: 13
+keywords:
+  - 加法定理
+  - 倍角公式
+  - 半角公式
+  - 三角関数の合成
+  - 公式選択
+cover_image: /images/noimage.jpg
+cover_description: 三角関数の公式選択フローチャート、各公式の特徴と使い分け
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：数学雑学「公式は覚えなくていい？」"
+related:
+  - url: /senior/三角関数の基本_教材.html
+    title: 三角関数の基本
+    note: 弧度法・グラフ・加法定理の基礎
+    type: prerequisite
+  - url: /senior/三角関数の応用_教材.html
+    title: 三角関数の応用
+    note: 合成・方程式・不等式の解法
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>三角関数の問題を解くとき、「加法定理？倍角公式？半角公式？合成？」と迷ったことはありませんか？公式を知っていても、<strong>どれを使うか判断できなければ</strong>問題は解けません。</p>
+
+        <p>このページでは、<strong>三角関数の公式選択の判断力</strong>を身につけます：</p>
+
+        <ul>
+            <li><strong>式の形を見て公式を選ぶ</strong>：「何が見えたらどの公式」というパターン認識</li>
+            <li><strong>判断フローチャート</strong>：問題を見た瞬間に正しい公式を選べるようになる</li>
+            <li><strong>公式の使い分け</strong>：同じ問題でも複数のアプローチがあるとき、最適解を選ぶ</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            🎯 最重要：式の形を見て「何を1つにまとめるか」「何を分解するか」を判断する！
+        </div>
+
+        <!-- 公式選択フローチャート（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="520" viewBox="0 0 700 520">
+                <!-- タイトル -->
+                <text x="350" y="25" font-size="18" font-weight="bold" fill="#1976d2" text-anchor="middle">三角関数の公式選択フローチャート</text>
+
+                <!-- スタート -->
+                <ellipse cx="350" cy="65" rx="80" ry="25" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                <text x="350" y="70" font-size="14" font-weight="bold" fill="#1976d2" text-anchor="middle">問題を見る</text>
+
+                <!-- 矢印 -->
+                <defs>
+                    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+                    </marker>
+                </defs>
+
+                <!-- 分岐1 -->
+                <line x1="350" y1="90" x2="350" y2="115" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+                <rect x="220" y="120" width="260" height="40" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="5"/>
+                <text x="350" y="145" font-size="14" fill="#333" text-anchor="middle">sin θ + cos θ の形？</text>
+
+                <!-- Yes: 合成へ -->
+                <line x1="480" y1="140" x2="560" y2="140" stroke="#4caf50" stroke-width="2"/>
+                <line x1="560" y1="140" x2="560" y2="180" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow)"/>
+                <text x="520" y="135" font-size="12" fill="#4caf50" font-weight="bold">Yes</text>
+                <rect x="490" y="185" width="140" height="50" fill="#e8f5e9" stroke="#4caf50" stroke-width="3" rx="8"/>
+                <text x="560" y="205" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">合成</text>
+                <text x="560" y="225" font-size="12" fill="#333" text-anchor="middle">→ r sin(θ+α)</text>
+
+                <!-- No: 次の分岐へ -->
+                <line x1="350" y1="160" x2="350" y2="185" stroke="#e53935" stroke-width="2" marker-end="url(#arrow)"/>
+                <text x="360" y="178" font-size="12" fill="#e53935" font-weight="bold">No</text>
+
+                <!-- 分岐2 -->
+                <rect x="220" y="190" width="260" height="40" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="5"/>
+                <text x="350" y="215" font-size="14" fill="#333" text-anchor="middle">sin 2θ, cos 2θ, tan 2θ？</text>
+
+                <!-- Yes: 倍角公式へ -->
+                <line x1="480" y1="210" x2="560" y2="210" stroke="#4caf50" stroke-width="2"/>
+                <line x1="560" y1="210" x2="560" y2="245" stroke="#4caf50" stroke-width="2"/>
+                <line x1="560" y1="235" x2="560" y2="260" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow)"/>
+                <text x="520" y="205" font-size="12" fill="#4caf50" font-weight="bold">Yes</text>
+                <rect x="490" y="265" width="140" height="50" fill="#e8f5e9" stroke="#4caf50" stroke-width="3" rx="8"/>
+                <text x="560" y="285" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">倍角公式</text>
+                <text x="560" y="305" font-size="12" fill="#333" text-anchor="middle">2θ→θに変換</text>
+
+                <!-- No: 次の分岐へ -->
+                <line x1="350" y1="230" x2="350" y2="255" stroke="#e53935" stroke-width="2" marker-end="url(#arrow)"/>
+                <text x="360" y="248" font-size="12" fill="#e53935" font-weight="bold">No</text>
+
+                <!-- 分岐3 -->
+                <rect x="220" y="260" width="260" height="40" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="5"/>
+                <text x="350" y="285" font-size="14" fill="#333" text-anchor="middle">sin²θ, cos²θ を計算したい？</text>
+
+                <!-- Yes: 半角公式へ -->
+                <line x1="480" y1="280" x2="560" y2="280" stroke="#4caf50" stroke-width="2"/>
+                <line x1="560" y1="280" x2="560" y2="325" stroke="#4caf50" stroke-width="2"/>
+                <line x1="560" y1="315" x2="560" y2="340" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow)"/>
+                <text x="520" y="275" font-size="12" fill="#4caf50" font-weight="bold">Yes</text>
+                <rect x="490" y="345" width="140" height="50" fill="#e8f5e9" stroke="#4caf50" stroke-width="3" rx="8"/>
+                <text x="560" y="365" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">半角公式</text>
+                <text x="560" y="385" font-size="12" fill="#333" text-anchor="middle">2乗→1乗に変換</text>
+
+                <!-- No: 次の分岐へ -->
+                <line x1="350" y1="300" x2="350" y2="325" stroke="#e53935" stroke-width="2" marker-end="url(#arrow)"/>
+                <text x="360" y="318" font-size="12" fill="#e53935" font-weight="bold">No</text>
+
+                <!-- 分岐4 -->
+                <rect x="220" y="330" width="260" height="40" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="5"/>
+                <text x="350" y="355" font-size="14" fill="#333" text-anchor="middle">sin(α±β), cos(α±β)？</text>
+
+                <!-- Yes: 加法定理へ -->
+                <line x1="480" y1="350" x2="560" y2="350" stroke="#4caf50" stroke-width="2"/>
+                <line x1="560" y1="350" x2="560" y2="395" stroke="#4caf50" stroke-width="2"/>
+                <line x1="560" y1="385" x2="560" y2="410" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow)"/>
+                <text x="520" y="345" font-size="12" fill="#4caf50" font-weight="bold">Yes</text>
+                <rect x="490" y="415" width="140" height="50" fill="#e8f5e9" stroke="#4caf50" stroke-width="3" rx="8"/>
+                <text x="560" y="435" font-size="14" font-weight="bold" fill="#2e7d32" text-anchor="middle">加法定理</text>
+                <text x="560" y="455" font-size="12" fill="#333" text-anchor="middle">α±β を分解</text>
+
+                <!-- No: その他へ -->
+                <line x1="350" y1="370" x2="350" y2="425" stroke="#e53935" stroke-width="2" marker-end="url(#arrow)"/>
+                <text x="360" y="395" font-size="12" fill="#e53935" font-weight="bold">No</text>
+                <rect x="260" y="430" width="180" height="50" fill="#ffebee" stroke="#e53935" stroke-width="2" rx="8"/>
+                <text x="350" y="450" font-size="14" font-weight="bold" fill="#c62828" text-anchor="middle">相互関係・置換</text>
+                <text x="350" y="470" font-size="12" fill="#333" text-anchor="middle">sin²+cos²=1 など</text>
+
+                <!-- 左側：公式一覧 -->
+                <rect x="20" y="120" width="170" height="370" fill="#fafafa" stroke="#ccc" stroke-width="1" rx="5"/>
+                <text x="105" y="145" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">公式早見表</text>
+
+                <!-- 加法定理 -->
+                <text x="30" y="175" font-size="12" fill="#1976d2" font-weight="bold">【加法定理】</text>
+                <text x="30" y="195" font-size="11" fill="#333">sin(α±β)=sinαcosβ±cosαsinβ</text>
+                <text x="30" y="212" font-size="11" fill="#333">cos(α±β)=cosαcosβ∓sinαsinβ</text>
+
+                <!-- 倍角公式 -->
+                <text x="30" y="240" font-size="12" fill="#4caf50" font-weight="bold">【倍角公式】</text>
+                <text x="30" y="260" font-size="11" fill="#333">sin2θ=2sinθcosθ</text>
+                <text x="30" y="277" font-size="11" fill="#333">cos2θ=cos²θ−sin²θ</text>
+                <text x="30" y="294" font-size="11" fill="#333">　　=2cos²θ−1=1−2sin²θ</text>
+
+                <!-- 半角公式 -->
+                <text x="30" y="322" font-size="12" fill="#9c27b0" font-weight="bold">【半角公式】</text>
+                <text x="30" y="342" font-size="11" fill="#333">sin²θ=(1−cos2θ)/2</text>
+                <text x="30" y="359" font-size="11" fill="#333">cos²θ=(1+cos2θ)/2</text>
+
+                <!-- 合成 -->
+                <text x="30" y="387" font-size="12" fill="#ff9800" font-weight="bold">【合成】</text>
+                <text x="30" y="407" font-size="11" fill="#333">asinθ+bcosθ</text>
+                <text x="30" y="424" font-size="11" fill="#333">　=√(a²+b²)sin(θ+α)</text>
+
+                <!-- 相互関係 -->
+                <text x="30" y="452" font-size="12" fill="#e53935" font-weight="bold">【相互関係】</text>
+                <text x="30" y="472" font-size="11" fill="#333">sin²θ+cos²θ=1</text>
+            </svg>
+            <div class="svg-caption">公式選択のフローチャート：式の形を見て判断する</div>
+        </div>
+
+        <div class="rule-box" id="rule-pattern">
+            <strong>📌 判断ルール1：式の形から公式を選ぶ</strong>
+
+            <table class="material-table">
+                <tr>
+                    <th>こんな形が見えたら</th>
+                    <th>使う公式</th>
+                    <th>目的</th>
+                </tr>
+                <tr>
+                    <td>\(a\sin\theta + b\cos\theta\)</td>
+                    <td><strong>合成</strong></td>
+                    <td>2つを1つにまとめる</td>
+                </tr>
+                <tr>
+                    <td>\(\sin 2\theta\)、\(\cos 2\theta\)</td>
+                    <td><strong>倍角公式</strong></td>
+                    <td>2θ → θ に変換</td>
+                </tr>
+                <tr>
+                    <td>\(\sin^2\theta\)、\(\cos^2\theta\)</td>
+                    <td><strong>半角公式</strong></td>
+                    <td>2乗 → 1乗に変換</td>
+                </tr>
+                <tr>
+                    <td>\(\sin(A+B)\)、\(\cos(A-B)\)</td>
+                    <td><strong>加法定理</strong></td>
+                    <td>角を分解する</td>
+                </tr>
+                <tr>
+                    <td>\(\sin\theta\cos\theta\)</td>
+                    <td><strong>倍角公式の逆</strong></td>
+                    <td>\(=\frac{1}{2}\sin 2\theta\)</td>
+                </tr>
+            </table>
+
+            <p><strong>→ だから結果は：</strong> 式の形を見た瞬間に「これは〇〇公式だ」と判断できる！</p>
+        </div>
+
+        <div class="rule-box" id="rule-goal">
+            <strong>📌 判断ルール2：「何を求めるか」で逆算する</strong> <a href="#ex-goal" class="example-link">→ 例1</a>
+
+            <p><strong>ゴールから逆算する思考法：</strong></p>
+            <ol>
+                <li><strong>最大値・最小値を求める</strong> → 合成して \(r\sin(\theta+\alpha)\) の形にする</li>
+                <li><strong>角度を統一したい</strong> → 倍角・半角で角度を揃える</li>
+                <li><strong>積分・微分する</strong> → 半角公式で次数を下げる</li>
+                <li><strong>特定の角度の値を求める</strong> → 加法定理で分解する</li>
+            </ol>
+
+            <p><strong>✅ 重要：</strong> 「今何をしたいのか」を意識すると、正しい公式が見えてくる。</p>
+        </div>
+
+        <div class="rule-box" id="rule-double-angle">
+            <strong>📌 判断ルール3：倍角公式は「3つの顔」を持つ</strong> <a href="#ex-double" class="example-link">→ 例2</a>
+
+            <p>\(\cos 2\theta\) は3通りの表し方がある：</p>
+            <div class="formula">
+                \[ \cos 2\theta = \cos^2\theta - \sin^2\theta = 2\cos^2\theta - 1 = 1 - 2\sin^2\theta \]
+            </div>
+
+            <table class="material-table">
+                <tr>
+                    <th>状況</th>
+                    <th>使う形</th>
+                    <th>理由</th>
+                </tr>
+                <tr>
+                    <td>\(\cos\theta\) だけの式にしたい</td>
+                    <td>\(2\cos^2\theta - 1\)</td>
+                    <td>sinが消える</td>
+                </tr>
+                <tr>
+                    <td>\(\sin\theta\) だけの式にしたい</td>
+                    <td>\(1 - 2\sin^2\theta\)</td>
+                    <td>cosが消える</td>
+                </tr>
+                <tr>
+                    <td>両方残したい・対称的にしたい</td>
+                    <td>\(\cos^2\theta - \sin^2\theta\)</td>
+                    <td>バランスが良い</td>
+                </tr>
+            </table>
+
+            <p><strong>→ だから結果は：</strong> 「どの変数を残したいか」で使う形を選ぶ。</p>
+        </div>
+
+        <div class="rule-box" id="rule-half-angle">
+            <strong>📌 判断ルール4：半角公式は「次数を下げる」</strong> <a href="#ex-half" class="example-link">→ 例3</a>
+
+            <div class="formula">
+                \[ \sin^2\theta = \frac{1 - \cos 2\theta}{2}, \quad \cos^2\theta = \frac{1 + \cos 2\theta}{2} \]
+            </div>
+
+            <p><strong>使いどころ：</strong></p>
+            <ul>
+                <li>\(\sin^4\theta\)、\(\cos^4\theta\) など高次の計算</li>
+                <li>積分で \(\int \sin^2\theta \, d\theta\) を計算するとき</li>
+                <li>\(\sin^2\theta + \cos^2\theta = 1\) では解決しないとき</li>
+            </ul>
+
+            <p><strong>→ だから結果は：</strong> 2乗以上が出てきたら「次数を下げられないか」考える。</p>
+        </div>
+
+        <div class="rule-box" id="rule-synthesis">
+            <strong>📌 判断ルール5：合成は「2つを1つに」</strong> <a href="#ex-synthesis" class="example-link">→ 例4</a>
+
+            <div class="formula">
+                \[ a\sin\theta + b\cos\theta = \sqrt{a^2 + b^2}\sin(\theta + \alpha) \]
+            </div>
+
+            <p><strong>使いどころ：</strong></p>
+            <ul>
+                <li>最大値・最小値を求めるとき（\(-r \leq r\sin(\theta+\alpha) \leq r\)）</li>
+                <li>方程式・不等式を解くとき（1つの三角関数にして単位円で処理）</li>
+                <li>\(a\sin\theta + b\cos\theta = k\) の形の方程式</li>
+            </ul>
+
+            <p><strong>→ だから結果は：</strong> sinとcosの「和・差」が出たら合成を疑う。</p>
+        </div>
+
+        <div class="rule-box" id="rule-product">
+            <strong>📌 判断ルール6：積を和に、和を積に</strong> <a href="#ex-product" class="example-link">→ 例5</a>
+
+            <p><strong>積→和（積和公式）：</strong></p>
+            <div class="formula">
+                \[ \sin\alpha\cos\beta = \frac{1}{2}\{\sin(\alpha+\beta) + \sin(\alpha-\beta)\} \]
+            </div>
+
+            <p><strong>和→積（和積公式）：</strong></p>
+            <div class="formula">
+                \[ \sin A + \sin B = 2\sin\frac{A+B}{2}\cos\frac{A-B}{2} \]
+            </div>
+
+            <p><strong>判断基準：</strong></p>
+            <ul>
+                <li>\(\sin\theta\cos\theta\) のような「積」→ 和に変換して計算しやすく</li>
+                <li>\(\sin A + \sin B\) のような「和」→ 積に変換して因数分解</li>
+            </ul>
+
+            <p><strong>✅ 特に重要：</strong> \(\sin\theta\cos\theta = \frac{1}{2}\sin 2\theta\)（倍角公式の逆）</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>式の形を見て、どの公式を選ぶか判断する練習をしましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ ゴールから逆算して選ぶ</h3>
+
+        <div class="example-box" id="ex-goal">
+            <div class="example-title">
+                <span class="number-badge">例1</span>最大値を求める → 合成
+            </div>
+            <p>\(y = \sin\theta + \cos\theta\) の最大値を求めよ。</p>
+
+            <p><strong>判断：</strong></p>
+            <ul>
+                <li>求めるもの：最大値 → 「1つの三角関数にまとめたい」</li>
+                <li>式の形：\(\sin\theta + \cos\theta\)（sinとcosの和）</li>
+                <li>→ <strong>合成</strong>を使う！</li>
+            </ul>
+
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(a = 1, b = 1\) より \(r = \sqrt{1^2 + 1^2} = \sqrt{2}\)</li>
+                <li>\(\cos\alpha = \frac{1}{\sqrt{2}}, \sin\alpha = \frac{1}{\sqrt{2}}\) より \(\alpha = \frac{\pi}{4}\)</li>
+                <li>\(y = \sqrt{2}\sin\left(\theta + \frac{\pi}{4}\right)\)</li>
+                <li>\(-1 \leq \sin(\theta + \frac{\pi}{4}) \leq 1\) より \(-\sqrt{2} \leq y \leq \sqrt{2}\)</li>
+            </ol>
+
+            <div class="formula">
+                \[ \text{最大値} = \boxed{\sqrt{2}} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 倍角公式の使い分け</h3>
+
+        <div class="example-box" id="ex-double">
+            <div class="example-title">
+                <span class="number-badge">例2</span>角度を統一する → 倍角公式
+            </div>
+            <p>\(\cos 2\theta + 3\cos\theta - 1 = 0\) を解け（\(0 \leq \theta < 2\pi\)）。</p>
+
+            <p><strong>判断：</strong></p>
+            <ul>
+                <li>\(\cos 2\theta\) と \(\cos\theta\) が混在 → 「角度を統一したい」</li>
+                <li>\(\cos\theta\) だけの式にしたい → \(\cos 2\theta = 2\cos^2\theta - 1\) を使う</li>
+            </ul>
+
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(\cos 2\theta = 2\cos^2\theta - 1\) を代入</li>
+                <li>\(2\cos^2\theta - 1 + 3\cos\theta - 1 = 0\)</li>
+                <li>\(2\cos^2\theta + 3\cos\theta - 2 = 0\)</li>
+                <li>\(t = \cos\theta\) と置くと \(2t^2 + 3t - 2 = 0\)</li>
+                <li>\((2t - 1)(t + 2) = 0\) より \(t = \frac{1}{2}\) または \(t = -2\)</li>
+                <li>\(-1 \leq \cos\theta \leq 1\) より \(\cos\theta = \frac{1}{2}\)</li>
+                <li>\(\theta = \frac{\pi}{3}, \frac{5\pi}{3}\)</li>
+            </ol>
+
+            <div class="formula">
+                \[ \theta = \boxed{\frac{\pi}{3}, \frac{5\pi}{3}} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 半角公式で次数を下げる</h3>
+
+        <div class="example-box" id="ex-half">
+            <div class="example-title">
+                <span class="number-badge">例3</span>2乗を処理する → 半角公式
+            </div>
+            <p>\(\sin^2\theta + \sin^2 2\theta\) を簡単にせよ。</p>
+
+            <p><strong>判断：</strong></p>
+            <ul>
+                <li>\(\sin^2\theta\) と \(\sin^2 2\theta\) → 2乗が2つある</li>
+                <li>次数を下げたい → <strong>半角公式</strong>を使う</li>
+            </ul>
+
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(\sin^2\theta = \frac{1 - \cos 2\theta}{2}\)</li>
+                <li>\(\sin^2 2\theta = \frac{1 - \cos 4\theta}{2}\)</li>
+                <li>足し合わせる：\(\frac{1 - \cos 2\theta}{2} + \frac{1 - \cos 4\theta}{2}\)</li>
+                <li>\(= \frac{2 - \cos 2\theta - \cos 4\theta}{2}\)</li>
+                <li>\(= 1 - \frac{1}{2}\cos 2\theta - \frac{1}{2}\cos 4\theta\)</li>
+            </ol>
+
+            <div class="formula">
+                \[ \sin^2\theta + \sin^2 2\theta = \boxed{1 - \frac{1}{2}\cos 2\theta - \frac{1}{2}\cos 4\theta} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 合成を使った方程式</h3>
+
+        <div class="example-box" id="ex-synthesis">
+            <div class="example-title">
+                <span class="number-badge">例4</span>方程式を解く → 合成
+            </div>
+            <p>\(\sqrt{3}\sin\theta - \cos\theta = 1\) を解け（\(0 \leq \theta < 2\pi\)）。</p>
+
+            <p><strong>判断：</strong></p>
+            <ul>
+                <li>\(\sqrt{3}\sin\theta - \cos\theta\)（sinとcosの組み合わせ）</li>
+                <li>方程式を解きたい → 1つにまとめて単位円で処理</li>
+                <li>→ <strong>合成</strong>を使う</li>
+            </ul>
+
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(a = \sqrt{3}, b = -1\) より \(r = \sqrt{3 + 1} = 2\)</li>
+                <li>\(\cos\alpha = \frac{\sqrt{3}}{2}, \sin\alpha = \frac{-1}{2}\) より \(\alpha = -\frac{\pi}{6}\)</li>
+                <li>\(\sqrt{3}\sin\theta - \cos\theta = 2\sin\left(\theta - \frac{\pi}{6}\right)\)</li>
+                <li>\(2\sin\left(\theta - \frac{\pi}{6}\right) = 1\) より \(\sin\left(\theta - \frac{\pi}{6}\right) = \frac{1}{2}\)</li>
+                <li>\(\theta - \frac{\pi}{6} = \frac{\pi}{6}\) または \(\theta - \frac{\pi}{6} = \frac{5\pi}{6}\)</li>
+                <li>\(\theta = \frac{\pi}{3}\) または \(\theta = \pi\)</li>
+            </ol>
+
+            <div class="formula">
+                \[ \theta = \boxed{\frac{\pi}{3}, \pi} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 積を処理する</h3>
+
+        <div class="example-box" id="ex-product">
+            <div class="example-title">
+                <span class="number-badge">例5</span>sinθcosθ → 倍角公式の逆
+            </div>
+            <p>\(y = \sin\theta\cos\theta\) の最大値を求めよ。</p>
+
+            <p><strong>判断：</strong></p>
+            <ul>
+                <li>\(\sin\theta\cos\theta\)（sinとcosの積）</li>
+                <li>これは \(\sin 2\theta = 2\sin\theta\cos\theta\) の逆！</li>
+                <li>→ \(\sin\theta\cos\theta = \frac{1}{2}\sin 2\theta\)</li>
+            </ul>
+
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(y = \sin\theta\cos\theta = \frac{1}{2}\sin 2\theta\)</li>
+                <li>\(-1 \leq \sin 2\theta \leq 1\) より</li>
+                <li>\(-\frac{1}{2} \leq y \leq \frac{1}{2}\)</li>
+            </ol>
+
+            <div class="formula">
+                \[ \text{最大値} = \boxed{\frac{1}{2}} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 加法定理で値を求める</h3>
+
+        <div class="example-box" id="ex-addition">
+            <div class="example-title">
+                <span class="number-badge">例6</span>特定の角度の値 → 加法定理
+            </div>
+            <p>\(\sin 75°\) の値を求めよ。</p>
+
+            <p><strong>判断：</strong></p>
+            <ul>
+                <li>75° は「特別な角」ではない</li>
+                <li>75° = 45° + 30°（特別な角の和）</li>
+                <li>→ <strong>加法定理</strong>で分解！</li>
+            </ul>
+
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(\sin 75° = \sin(45° + 30°)\)</li>
+                <li>\(= \sin 45°\cos 30° + \cos 45°\sin 30°\)</li>
+                <li>\(= \frac{\sqrt{2}}{2} \cdot \frac{\sqrt{3}}{2} + \frac{\sqrt{2}}{2} \cdot \frac{1}{2}\)</li>
+                <li>\(= \frac{\sqrt{6}}{4} + \frac{\sqrt{2}}{4}\)</li>
+            </ol>
+
+            <div class="formula">
+                \[ \sin 75° = \boxed{\frac{\sqrt{6} + \sqrt{2}}{4}} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 複合問題：どの公式を使う？</h3>
+
+        <div class="example-box" id="ex-combined">
+            <div class="example-title">
+                <span class="number-badge">例7</span>複合問題の判断
+            </div>
+            <p>\(y = \sin^2\theta + \sin\theta\cos\theta\) の最大値を求めよ。</p>
+
+            <p><strong>判断のプロセス：</strong></p>
+            <ul>
+                <li>\(\sin^2\theta\) → 半角公式で \(\frac{1 - \cos 2\theta}{2}\)</li>
+                <li>\(\sin\theta\cos\theta\) → 倍角公式の逆で \(\frac{1}{2}\sin 2\theta\)</li>
+                <li>両方とも「2θ」の式になる → 合成できる！</li>
+            </ul>
+
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(\sin^2\theta = \frac{1 - \cos 2\theta}{2}\)</li>
+                <li>\(\sin\theta\cos\theta = \frac{1}{2}\sin 2\theta\)</li>
+                <li>\(y = \frac{1 - \cos 2\theta}{2} + \frac{1}{2}\sin 2\theta = \frac{1}{2} + \frac{1}{2}\sin 2\theta - \frac{1}{2}\cos 2\theta\)</li>
+                <li>\(= \frac{1}{2} + \frac{1}{2}(\sin 2\theta - \cos 2\theta)\)</li>
+                <li>\(\sin 2\theta - \cos 2\theta = \sqrt{2}\sin\left(2\theta - \frac{\pi}{4}\right)\)（合成）</li>
+                <li>\(y = \frac{1}{2} + \frac{\sqrt{2}}{2}\sin\left(2\theta - \frac{\pi}{4}\right)\)</li>
+                <li>最大値は \(\sin\left(2\theta - \frac{\pi}{4}\right) = 1\) のとき</li>
+            </ol>
+
+            <div class="formula">
+                \[ \text{最大値} = \frac{1}{2} + \frac{\sqrt{2}}{2} = \boxed{\frac{1 + \sqrt{2}}{2}} \]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：「統一」を意識する</strong><br>
+            角度がバラバラ（θと2θ）→ 統一する<br>
+            三角関数がバラバラ（sinとcos）→ 統一する<br>
+            「揃える」ことで計算が進む！
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：sinθcosθ は即座に変換</strong><br>
+            \(\sin\theta\cos\theta = \frac{1}{2}\sin 2\theta\) は超頻出！<br>
+            これを見たら反射的に変換する癖をつける。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：2乗が出たら半角公式を疑う</strong><br>
+            \(\sin^2\theta\)、\(\cos^2\theta\) が出てきたら：<br>
+            - まず \(\sin^2\theta + \cos^2\theta = 1\) で消せないか<br>
+            - ダメなら半角公式で次数を下げる
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：最大最小問題は合成が鉄板</strong><br>
+            \(a\sin\theta + b\cos\theta\) の形なら合成！<br>
+            \(r\sin(\theta + \alpha)\) の形にすれば、最大 \(r\)、最小 \(-r\) が即答。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ5：特別な角の和・差を探す</strong><br>
+            15° = 45° - 30°、75° = 45° + 30°、105° = 60° + 45°<br>
+            変な角度が出たら「30°、45°、60°の組み合わせ」を探す。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：倍角公式の形を間違える</div>
+            <p><strong>ダメな例：</strong> \(\cos 2\theta + 3\cos\theta = 0\) で \(\cos 2\theta = 1 - 2\sin^2\theta\) を使う</p>
+            <p><strong>対策：</strong> 「cosだけの式にしたい」なら \(\cos 2\theta = 2\cos^2\theta - 1\) を選ぶ。<br>
+            「どの変数を残したいか」で形を選ぶ！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：合成の符号を間違える</div>
+            <p><strong>ダメな例：</strong> \(\sin\theta - \cos\theta\) を \(\sqrt{2}\sin(\theta + \frac{\pi}{4})\) としてしまう</p>
+            <p><strong>対策：</strong> \(b = -1\) なので \(\sin\alpha = \frac{-1}{\sqrt{2}}\) となり、\(\alpha = -\frac{\pi}{4}\)<br>
+            正しくは \(\sqrt{2}\sin\left(\theta - \frac{\pi}{4}\right)\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：公式を適用する方向を間違える</div>
+            <p><strong>ダメな例：</strong> \(\sin 2\theta\) を展開したいのに、逆に \(2\sin\theta\cos\theta\) を \(\sin 2\theta\) に戻してしまう</p>
+            <p><strong>対策：</strong> 「今何をしたいか」を明確に。<br>
+            - 角度を揃えたい → \(\sin 2\theta\) のまま<br>
+            - \(\theta\) の式にしたい → \(2\sin\theta\cos\theta\) に展開</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：置換後の範囲を忘れる</div>
+            <p><strong>ダメな例：</strong> \(t = \cos\theta\) と置いて \(t = 2\) を解として採用してしまう</p>
+            <p><strong>対策：</strong> \(-1 \leq \cos\theta \leq 1\) なので、この範囲外の解は棄却する。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき5：半角公式と倍角公式を混同</div>
+            <p><strong>ダメな例：</strong> \(\sin^2\theta\) を \(\frac{1 + \cos 2\theta}{2}\) としてしまう（これはcos²）</p>
+            <p><strong>対策：</strong> 覚え方：\(\sin^2\theta = \frac{1 \textcolor{red}{-} \cos 2\theta}{2}\)（マイナス）<br>
+            \(\cos^2\theta = \frac{1 \textcolor{blue}{+} \cos 2\theta}{2}\)（プラス）</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">式の形を見て「どの公式を使うか」即座に判断できたか</div>
+            <div class="checklist-item">倍角公式 \(\cos 2\theta\) の3つの形を使い分けられたか</div>
+            <div class="checklist-item">半角公式で次数を下げる発想ができたか</div>
+            <div class="checklist-item">合成で最大値・最小値を正しく求められたか</div>
+            <div class="checklist-item">\(\sin\theta\cos\theta = \frac{1}{2}\sin 2\theta\) を反射的に使えたか</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>式を見て、どの公式を使うか判断してから解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>\(y = 3\sin\theta + 4\cos\theta\) の最大値と最小値を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong> sinとcosの和 → <strong>合成</strong></p>
+                    <p>\(r = \sqrt{9 + 16} = 5\)</p>
+                    <p>\(y = 5\sin(\theta + \alpha)\) となる</p>
+                    <p>\(-5 \leq y \leq 5\) より</p>
+                    <p><strong>最大値 = 5、最小値 = -5</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\(2\sin^2\theta - 3\sin\theta + 1 = 0\) を解け（\(0 \leq \theta < 2\pi\)）。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong> sinだけの式 → そのまま2次方程式として解く</p>
+                    <p>\(t = \sin\theta\) と置くと \(2t^2 - 3t + 1 = 0\)</p>
+                    <p>\((2t - 1)(t - 1) = 0\) より \(t = \frac{1}{2}\) または \(t = 1\)</p>
+                    <p>\(\sin\theta = \frac{1}{2}\) → \(\theta = \frac{\pi}{6}, \frac{5\pi}{6}\)</p>
+                    <p>\(\sin\theta = 1\) → \(\theta = \frac{\pi}{2}\)</p>
+                    <p><strong>\(\theta = \frac{\pi}{6}, \frac{\pi}{2}, \frac{5\pi}{6}\)</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>\(\cos 15°\) の値を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong> 15° = 45° - 30° → <strong>加法定理</strong></p>
+                    <p>\(\cos 15° = \cos(45° - 30°)\)</p>
+                    <p>\(= \cos 45°\cos 30° + \sin 45°\sin 30°\)</p>
+                    <p>\(= \frac{\sqrt{2}}{2} \cdot \frac{\sqrt{3}}{2} + \frac{\sqrt{2}}{2} \cdot \frac{1}{2}\)</p>
+                    <p><strong>\(\cos 15° = \frac{\sqrt{6} + \sqrt{2}}{4}\)</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習4</strong>
+            <p>\(\cos 2\theta - \sin\theta = 0\) を解け（\(0 \leq \theta < 2\pi\)）。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong> \(\cos 2\theta\) と \(\sin\theta\) が混在 → sinだけにしたい</p>
+                    <p>\(\cos 2\theta = 1 - 2\sin^2\theta\) を使う</p>
+                    <p>\(1 - 2\sin^2\theta - \sin\theta = 0\)</p>
+                    <p>\(2\sin^2\theta + \sin\theta - 1 = 0\)</p>
+                    <p>\((2\sin\theta - 1)(\sin\theta + 1) = 0\)</p>
+                    <p>\(\sin\theta = \frac{1}{2}\) → \(\theta = \frac{\pi}{6}, \frac{5\pi}{6}\)</p>
+                    <p>\(\sin\theta = -1\) → \(\theta = \frac{3\pi}{2}\)</p>
+                    <p><strong>\(\theta = \frac{\pi}{6}, \frac{5\pi}{6}, \frac{3\pi}{2}\)</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：式の形を見て公式を選ぶ！「和→合成」「2乗→半角」「積→倍角の逆」「角度混在→統一」
+</div>
+
+<!-- ========== おまけ：数学雑学「公式は覚えなくていい？」 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「公式は覚えなくていい？」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 公式は「導ける」ほうが強い</div>
+
+            <p>「三角関数の公式、多すぎて覚えられない！」——こんな悲鳴、よく聞きます。実際、加法定理、倍角公式、半角公式、積和公式、和積公式...と数えると20個以上あります。</p>
+
+            <p>でも実は、数学者たちはこれらを<strong>全部覚えていない</strong>ことが多いのです。</p>
+
+            <p>なぜなら、<strong>加法定理さえ知っていれば、他は全部導ける</strong>からです。</p>
+
+            <p>例えば倍角公式。</p>
+            <div class="formula">
+                \[ \sin 2\theta = \sin(\theta + \theta) = \sin\theta\cos\theta + \cos\theta\sin\theta = 2\sin\theta\cos\theta \]
+            </div>
+
+            <p>半角公式も、倍角公式を変形するだけ。</p>
+            <div class="formula">
+                \[ \cos 2\theta = 1 - 2\sin^2\theta \quad \Rightarrow \quad \sin^2\theta = \frac{1 - \cos 2\theta}{2} \]
+            </div>
+
+            <p>つまり、<strong>覚えるべきは「加法定理」と「導き方」だけ</strong>。</p>
+
+            <p style="margin-top: 20px;">とはいえ、入試本番で毎回導くのは時間がもったいない。だから結局は「よく使う公式は暗記、マイナーなものは導ける」というのが現実的な戦略です。</p>
+
+            <p><strong>暗記優先度ランキング：</strong></p>
+            <ol>
+                <li><strong>絶対暗記：</strong> 加法定理（sin, cos）、\(\sin^2\theta + \cos^2\theta = 1\)</li>
+                <li><strong>暗記推奨：</strong> 倍角公式（特に \(\sin 2\theta = 2\sin\theta\cos\theta\)）、合成公式</li>
+                <li><strong>導けばOK：</strong> 半角公式、積和・和積公式</li>
+            </ol>
+
+            <p style="font-style: italic; color: #666; margin-top: 20px;">...ちなみに、数学者のポール・エルデシュは「公式を覚えるのは数学じゃない。公式を作るのが数学だ」と言ったとか。でも入試では、やっぱり覚えておくと便利ですよね。</p>
+        </div>
+    </div>
+</section>

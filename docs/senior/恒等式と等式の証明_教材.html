@@ -1,0 +1,471 @@
+---
+layout: material-raw
+title: 恒等式と等式の証明
+icon: "="
+description: 恒等式の係数比較法・数値代入法、相加相乗平均の不等式、コーシー・シュワルツの不等式を学び、等式や不等式の証明力を身につける。
+level: 標準
+level_num: 2
+category: numbers
+school_level: senior
+order: 6
+keywords:
+  - 恒等式
+  - 係数比較法
+  - 数値代入法
+  - 相加相乗平均
+  - コーシー・シュワルツの不等式
+  - 等式の証明
+cover_image: /images/noimage.jpg
+cover_description: 恒等式と係数比較、相加相乗平均の不等式、コーシー・シュワルツの不等式の関係図
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: section8
+    title: "まとめ一言"
+  - id: story
+    title: "おまけ：数学雑学「相加相乗と古代バビロニア」"
+related:
+  - url: /senior/展開と因数分解_高校_教材.html
+    title: 展開と因数分解（高校）
+    note: 式の展開・因数分解は恒等式の前提
+    type: prerequisite
+  - url: /senior/一次不等式_教材.html
+    title: 一次不等式
+    note: 不等式の基本的な扱いを復習
+    type: related
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>数学では「いつでも成り立つ等式」と「証明すべき等式・不等式」を区別します。恒等式の判定や、有名な不等式を使いこなせると、大学入試で強力な武器になります。</p>
+        <p>このページでは、以下の内容を学びます：</p>
+        <ul>
+            <li><strong>恒等式の判定</strong>：係数比較法と数値代入法で未知の係数を決定</li>
+            <li><strong>等式の証明</strong>：条件付き等式を証明するテクニック</li>
+            <li><strong>相加相乗平均の不等式</strong>：2数の平均から最小値を求める</li>
+            <li><strong>コーシー・シュワルツの不等式</strong>：内積と絶対値の関係を使う強力な不等式</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】恒等式は「すべての \(x\) で成り立つ」→ 係数を比較できる！
+        </div>
+
+        <!-- 恒等式の概念図 -->
+        <div class="svg-container">
+            <svg width="700" height="180" viewBox="0 0 700 180">
+                <!-- 方程式 vs 恒等式 -->
+                <rect x="50" y="30" width="250" height="120" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="10"/>
+                <text x="175" y="60" font-size="16" font-weight="bold" text-anchor="middle" fill="#e65100">方程式</text>
+                <text x="175" y="90" font-size="14" text-anchor="middle" fill="#333">x+3=5</text>
+                <text x="175" y="115" font-size="14" text-anchor="middle" fill="#333">特定のxでのみ成立</text>
+                <text x="175" y="140" font-size="14" text-anchor="middle" fill="#e65100">(x=2のときだけ)</text>
+
+                <rect x="400" y="30" width="250" height="120" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="10"/>
+                <text x="525" y="60" font-size="16" font-weight="bold" text-anchor="middle" fill="#1565c0">恒等式</text>
+                <text x="525" y="90" font-size="14" text-anchor="middle" fill="#333">(x+1)²=x²+2x+1</text>
+                <text x="525" y="115" font-size="14" text-anchor="middle" fill="#333">すべてのxで成立</text>
+                <text x="525" y="140" font-size="14" text-anchor="middle" fill="#1565c0">(どんなxでもOK)</text>
+
+                <!-- 矢印 -->
+                <path d="M 310 90 L 390 90" stroke="#666" stroke-width="2" marker-end="url(#arrow-gray)"/>
+                <text x="350" y="80" font-size="12" text-anchor="middle" fill="#666">vs</text>
+
+                <defs>
+                    <marker id="arrow-gray" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#666"/>
+                    </marker>
+                </defs>
+            </svg>
+            <div class="svg-caption">方程式と恒等式の違い</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 ルール1：係数比較法</strong> <a href="#ex-1" class="example-link">→ 例1</a>
+            <p>恒等式 \(ax^2 + bx + c = a'x^2 + b'x + c'\) がすべての \(x\) で成り立つ</p>
+            <div class="formula">
+                \[ \Leftrightarrow a = a', \quad b = b', \quad c = c' \]
+            </div>
+            <p><strong>→ だから：</strong> 両辺の同じ次数の係数を比較して連立方程式を作る</p>
+            <p><strong>✅ メリット：</strong> どんな恒等式でも確実に解ける</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 ルール2：数値代入法</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <p>恒等式は「すべての \(x\)」で成立 → 都合の良い値を代入してOK</p>
+            <div class="formula">
+                \[ x = 0, 1, -1, 2, \ldots \text{を代入して係数を決定} \]
+            </div>
+            <p><strong>→ だから：</strong> 計算が簡単になる値を選んで代入</p>
+            <p><strong>✅ メリット：</strong> 係数比較より計算が楽なことが多い</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>分数式の部分分数分解では、分母が0になる値を代入すると式が大幅に簡略化されます。</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 ルール3：相加相乗平均の不等式（AM-GM不等式）</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <p>\(a > 0, b > 0\) のとき</p>
+            <div class="formula">
+                \[ \frac{a + b}{2} \geq \sqrt{ab} \]
+            </div>
+            <p>（左辺：相加平均、右辺：相乗平均）</p>
+            <p><strong>→ だから：</strong> 「和が一定なら積は最大」「積が一定なら和は最小」</p>
+            <p><strong>等号成立条件：</strong> \(a = b\) のとき</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>\((\sqrt{a} - \sqrt{b})^2 \geq 0\) を展開すると \(a - 2\sqrt{ab} + b \geq 0\)、整理すると \(\frac{a+b}{2} \geq \sqrt{ab}\)</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 ルール4：コーシー・シュワルツの不等式</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <p>実数 \(a, b, c, d\) に対して</p>
+            <div class="formula">
+                \[ (a^2 + b^2)(c^2 + d^2) \geq (ac + bd)^2 \]
+            </div>
+            <p><strong>→ だから：</strong> 「2乗の和」×「2乗の和」≧「内積」²</p>
+            <p><strong>等号成立条件：</strong> \(\frac{a}{c} = \frac{b}{d}\)（比例関係）のとき</p>
+            <details class="thinking"><summary>💡 考え方を見る</summary>
+            <p>展開すると \(a^2c^2 + a^2d^2 + b^2c^2 + b^2d^2 \geq a^2c^2 + 2abcd + b^2d^2\)、整理すると \((ad - bc)^2 \geq 0\)</p>
+            </details>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 ルール5：等式の証明の基本方針</strong> <a href="#ex-5" class="example-link">→ 例5</a>
+            <p>「A = B」を証明する3つの方法：</p>
+            <ol>
+                <li><strong>A を変形して B を導く</strong>（最も基本的）</li>
+                <li><strong>A - B = 0 を示す</strong>（差をとって0になることを示す）</li>
+                <li><strong>A = C かつ B = C を示す</strong>（共通の式Cに変形）</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>恒等式の係数決定と不等式の証明を、実際の例題で確認しましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 恒等式の係数決定</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>係数比較法
+            </div>
+            <p>\(x^2 + 5x + 6 = a(x+1)^2 + b(x+1) + c\) がすべての \(x\) で成り立つとき、定数 \(a, b, c\) を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>右辺を展開して整理する</li>
+                <li>両辺の係数を比較する</li>
+                <li>連立方程式を解く</li>
+            </ol>
+            <p>右辺を展開：</p>
+            <div class="formula">
+                \[ a(x^2 + 2x + 1) + bx + b + c = ax^2 + (2a+b)x + (a+b+c) \]
+            </div>
+            <p>係数比較：</p>
+            <div class="formula">
+                \[ x^2: a = 1, \quad x: 2a + b = 5, \quad \text{定数}: a + b + c = 6 \]
+            </div>
+            <p>\(a = 1\) を代入：\(b = 3\)、\(c = 2\)</p>
+            <p><strong>答え：\(a = 1, b = 3, c = 2\)</strong></p>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>数値代入法（部分分数分解）
+            </div>
+            <p>\(\displaystyle\frac{1}{x(x+1)} = \frac{a}{x} + \frac{b}{x+1}\) が \(x \neq 0, -1\) で成り立つとき、定数 \(a, b\) を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>両辺に \(x(x+1)\) をかけて分母を払う</li>
+                <li>都合の良い値（分母が0になる値に近い値）を代入</li>
+                <li>\(a, b\) を決定する</li>
+            </ol>
+            <p>分母を払う：</p>
+            <div class="formula">
+                \[ 1 = a(x+1) + bx \]
+            </div>
+            <p>\(x = 0\) を代入：\(1 = a \cdot 1 + b \cdot 0\) より \(a = 1\)</p>
+            <p>\(x = -1\) を代入：\(1 = a \cdot 0 + b \cdot (-1)\) より \(b = -1\)</p>
+            <p><strong>答え：\(a = 1, b = -1\)</strong></p>
+            <p>※ 実際に \(\displaystyle\frac{1}{x} - \frac{1}{x+1} = \frac{1}{x(x+1)}\) を確認できます</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 相加相乗平均の不等式</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>最小値を求める
+            </div>
+            <p>\(x > 0\) のとき、\(x + \displaystyle\frac{4}{x}\) の最小値を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>相加相乗平均の不等式を適用する形を確認</li>
+                <li>\(a = x, b = \frac{4}{x}\) として不等式を適用</li>
+                <li>等号成立条件を確認</li>
+            </ol>
+            <p>相加相乗平均より：</p>
+            <div class="formula">
+                \[ x + \frac{4}{x} \geq 2\sqrt{x \cdot \frac{4}{x}} = 2\sqrt{4} = 4 \]
+            </div>
+            <p>等号成立：\(x = \frac{4}{x}\) つまり \(x^2 = 4\)、\(x > 0\) より \(x = 2\)</p>
+            <p><strong>答え：最小値は \(4\)（\(x = 2\) のとき）</strong></p>
+        </div>
+
+        <div class="example-box" id="ex-3b">
+            <div class="example-title">
+                <span class="number-badge">例3'</span>条件付き最大値
+            </div>
+            <p>\(x > 0, y > 0\) かつ \(x + y = 10\) のとき、\(xy\) の最大値を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>「和が一定なら積は最大」を使う（相加相乗の逆利用）</li>
+                <li>相加相乗平均を変形</li>
+                <li>等号成立条件を確認</li>
+            </ol>
+            <p>相加相乗平均より \(\displaystyle\frac{x + y}{2} \geq \sqrt{xy}\)</p>
+            <p>\(x + y = 10\) を代入：</p>
+            <div class="formula">
+                \[ 5 \geq \sqrt{xy} \quad \Rightarrow \quad xy \leq 25 \]
+            </div>
+            <p>等号成立：\(x = y = 5\) のとき</p>
+            <p><strong>答え：最大値は \(25\)（\(x = y = 5\) のとき）</strong></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ コーシー・シュワルツの不等式</h3>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>コーシー・シュワルツの適用
+            </div>
+            <p>\(a^2 + b^2 = 1\) のとき、\(3a + 4b\) の最大値を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>コーシー・シュワルツを適用する形を作る</li>
+                <li>\((a^2 + b^2)(3^2 + 4^2) \geq (3a + 4b)^2\) を利用</li>
+                <li>等号成立条件を確認</li>
+            </ol>
+            <p>コーシー・シュワルツより：</p>
+            <div class="formula">
+                \[ (a^2 + b^2)(3^2 + 4^2) \geq (3a + 4b)^2 \]
+            </div>
+            <p>\(a^2 + b^2 = 1\) を代入：</p>
+            <div class="formula">
+                \[ 1 \times 25 \geq (3a + 4b)^2 \quad \Rightarrow \quad |3a + 4b| \leq 5 \]
+            </div>
+            <p>等号成立：\(\displaystyle\frac{a}{3} = \frac{b}{4}\) かつ \(a^2 + b^2 = 1\)</p>
+            <p>つまり \(a = \frac{3}{5}, b = \frac{4}{5}\) のとき</p>
+            <p><strong>答え：最大値は \(5\)</strong></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 等式の証明</h3>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>条件付き等式の証明
+            </div>
+            <p>\(a + b + c = 0\) のとき、\(a^3 + b^3 + c^3 = 3abc\) を証明せよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>左辺 - 右辺 = 0 を示す方針</li>
+                <li>因数分解の公式を利用</li>
+                <li>条件 \(a + b + c = 0\) を代入</li>
+            </ol>
+            <p>因数分解の公式：</p>
+            <div class="formula">
+                \[ a^3 + b^3 + c^3 - 3abc = (a + b + c)(a^2 + b^2 + c^2 - ab - bc - ca) \]
+            </div>
+            <p>\(a + b + c = 0\) のとき、右辺 = \(0 \times (\cdots) = 0\)</p>
+            <p>よって \(a^3 + b^3 + c^3 - 3abc = 0\)</p>
+            <p><strong>したがって \(a^3 + b^3 + c^3 = 3abc\)（証明完了）</strong></p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：係数比較と数値代入の使い分け</strong><br>
+            <ul>
+                <li><strong>多項式の恒等式</strong> → 係数比較法が確実</li>
+                <li><strong>分数式の部分分数分解</strong> → 数値代入法が楽</li>
+            </ul>
+            部分分数分解では「分母が0になる値」を代入すると、項が消えて計算が楽になります。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：相加相乗平均は「積が定数」を作る</strong><br>
+            \(x + \frac{k}{x}\) の形なら、積は \(x \cdot \frac{k}{x} = k\) で定数。<br>
+            この形を見つけたら、すぐに相加相乗平均を適用！<br>
+            最小値 = \(2\sqrt{k}\)、等号成立は \(x = \sqrt{k}\)
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：コーシー・シュワルツは「2乗の制約」があるとき</strong><br>
+            条件に \(a^2 + b^2 = 1\) のような「2乗の和」が出たら、コーシー・シュワルツを疑う！<br>
+            求めたい式が \(pa + qb\) の形なら、\((a^2 + b^2)(p^2 + q^2) \geq (pa + qb)^2\) を使う。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：等号成立条件を忘れずに</strong><br>
+            不等式で最大値・最小値を求めるときは、必ず等号成立条件を確認！<br>
+            条件を満たす \(x\) の値が存在するかどうかで、その最大値・最小値が実際に達成されるかが決まります。
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：恒等式と方程式の混同</div>
+            <p><strong>ダメな例：</strong> 「\(x^2 + 2x + 1 = (x+1)^2\) を解け」と言われて \(x\) を求めようとする</p>
+            <p><strong>対策：</strong> これは恒等式（すべての \(x\) で成立）なので、「解」は存在しない。恒等式は「成り立つことを確認する」または「係数を求める」問題。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：相加相乗平均を負の数に適用</div>
+            <p><strong>ダメな例：</strong> \(x < 0\) のとき \(x + \frac{1}{x} \geq 2\sqrt{x \cdot \frac{1}{x}} = 2\)</p>
+            <p><strong>対策：</strong> 相加相乗平均は <strong>\(a > 0, b > 0\) のときのみ成立！</strong><br>
+            \(x < 0\) なら \(-x > 0, -\frac{1}{x} > 0\) として適用するか、別の方法を考える。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：等号成立条件の確認忘れ</div>
+            <p><strong>ダメな例：</strong> 「最小値は2」と答えるが、等号が成立する条件を書かない</p>
+            <p><strong>対策：</strong> 不等式の最大・最小を求めたら、必ず「等号成立は○○のとき」を明記。<br>
+            等号が成立しない場合は「最小値」ではなく「下限」と言う。</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：部分分数分解で係数の数が合わない</div>
+            <p><strong>ダメな例：</strong> \(\displaystyle\frac{1}{x^2(x+1)}\) を \(\frac{a}{x} + \frac{b}{x+1}\) と置く</p>
+            <p><strong>対策：</strong> 分母の重複度に応じて項を増やす。\(x^2\) があれば \(\frac{a}{x} + \frac{b}{x^2}\) の両方が必要！<br>
+            正しくは \(\displaystyle\frac{a}{x} + \frac{b}{x^2} + \frac{c}{x+1}\)</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">恒等式の係数比較法で、同じ次数の係数を正しく比較できる</div>
+            <div class="checklist-item">数値代入法で、計算が楽になる値を選べる</div>
+            <div class="checklist-item">相加相乗平均を \(a > 0, b > 0\) を確認してから適用できる</div>
+            <div class="checklist-item">コーシー・シュワルツの不等式を「2乗の制約」で使える</div>
+            <div class="checklist-item">不等式の最大・最小を求めたとき、等号成立条件を書ける</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>\(\displaystyle\frac{2x+1}{(x-1)(x+2)} = \frac{a}{x-1} + \frac{b}{x+2}\) が \(x \neq 1, -2\) で成り立つとき、定数 \(a, b\) を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>両辺に \((x-1)(x+2)\) をかけて：</p>
+                    <p>\(2x + 1 = a(x+2) + b(x-1)\)</p>
+                    <p>\(x = 1\) を代入：\(3 = 3a\) より \(a = 1\)</p>
+                    <p>\(x = -2\) を代入：\(-3 = -3b\) より \(b = 1\)</p>
+                    <p><strong>答え：\(a = 1, b = 1\)</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>\(x > 0\) のとき、\(2x + \displaystyle\frac{8}{x}\) の最小値とそのときの \(x\) の値を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>相加相乗平均より：</p>
+                    <p>\(2x + \frac{8}{x} \geq 2\sqrt{2x \cdot \frac{8}{x}} = 2\sqrt{16} = 8\)</p>
+                    <p>等号成立：\(2x = \frac{8}{x}\) より \(x^2 = 4\)、\(x > 0\) より \(x = 2\)</p>
+                    <p><strong>答え：最小値は \(8\)（\(x = 2\) のとき）</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>\(x^2 + y^2 = 2\) のとき、\(x + y\) の最大値を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>コーシー・シュワルツより：</p>
+                    <p>\((x^2 + y^2)(1^2 + 1^2) \geq (x \cdot 1 + y \cdot 1)^2\)</p>
+                    <p>\(2 \times 2 \geq (x + y)^2\) より \((x + y)^2 \leq 4\)</p>
+                    <p>よって \(|x + y| \leq 2\)、つまり \(x + y \leq 2\)</p>
+                    <p>等号成立：\(\frac{x}{1} = \frac{y}{1}\) より \(x = y\)、\(x^2 + y^2 = 2\) より \(x = y = 1\)</p>
+                    <p><strong>答え：最大値は \(2\)（\(x = y = 1\) のとき）</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：恒等式は「係数比較」、不等式は「相加相乗とコーシー・シュワルツ」で攻略！
+</div>
+
+<!-- ========== 関連教材 ========== -->
+<!-- Front Matterのrelatedで指定すればレイアウトが自動生成します -->
+
+<!-- ========== おまけ：数学雑学 ========== -->
+<section id="story">
+    <h2>おまけ：数学雑学「相加相乗と古代バビロニア」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">📖 4000年前の粘土板に眠る不等式</div>
+
+            <p>相加相乗平均の不等式 \(\frac{a+b}{2} \geq \sqrt{ab}\) は、高校数学で初めて習う人が多いですが、実はこの不等式の「精神」は古代バビロニア（紀元前2000年頃）まで遡ります。</p>
+
+            <p>バビロニアの数学者たちは、<strong>「長方形の面積が一定なら、正方形に近いほど周の長さが短い」</strong>ことを知っていました。これは相加相乗平均の幾何学的な表現です。</p>
+
+            <div class="formula">
+                \[ \text{面積} = ab \text{ が一定} \Rightarrow \text{周の長さ} = 2(a+b) \text{ は } a = b \text{ で最小} \]
+            </div>
+
+            <p>面白いのは、彼らがこれを「実用的な理由」で発見したこと。古代の土地測量では、<strong>同じ面積の土地を囲むなら、正方形が最も柵の材料が少なくて済む</strong>ことが重要でした。数学の定理が「節約」から生まれたのです。</p>
+
+            <p>ちなみに、この不等式の現代的な証明は、フランスの数学者コーシー（1789-1857）によって一般化されました。コーシー・シュワルツの不等式も、実は相加相乗平均の「親戚」なのです。</p>
+
+            <p>結論：<strong>数学は「ケチな人」のために発展した。</strong>（材料を節約したい古代人が、最適化問題を解いていたのですから！）</p>
+        </div>
+    </div>
+</section>

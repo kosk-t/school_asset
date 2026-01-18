@@ -1,0 +1,518 @@
+---
+layout: material-raw
+title: 円の方程式
+icon: "O"
+description: 円の方程式（標準形・一般形）をマスターし、接線の求め方から2円の位置関係まで、図形と方程式の中核となるスキルを身につける。
+level: 標準
+level_num: 2
+category: geometry
+school_level: senior
+order: 7
+keywords:
+  - 円の方程式
+  - 標準形
+  - 一般形
+  - 接線
+  - 2円の位置関係
+cover_image: /images/noimage.jpg
+cover_description: 座標平面上の円、中心と半径、接線
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "覚えるルール"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：歴史ストーリー「アポロニウスの円」"
+related:
+  - url: /senior/点と直線_教材.html
+    title: 点と直線
+    note: 座標幾何の基礎（内分・外分・距離公式）
+    type: prerequisite
+  - url: /junior/三平方の定理_教材.html
+    title: 三平方の定理
+    note: 円の定義（中心からの距離）の基礎
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>円は古代から最も美しい図形とされ、建築・工学・天文学など様々な分野で使われています。座標平面で円を方程式として扱えるようになると、直線との交点や接線が計算だけで求められるようになります。</p>
+        <p>このページでは、円の方程式の扱い方を学びます：</p>
+        <ul>
+            <li><strong>円の方程式（標準形）</strong>：中心と半径から円の式を作る</li>
+            <li><strong>円の方程式（一般形）</strong>：展開した形から中心と半径を読み取る</li>
+            <li><strong>円と直線の位置関係</strong>：交わる・接する・離れるを判定</li>
+            <li><strong>円の接線</strong>：円上の点・円外の点から接線を求める</li>
+            <li><strong>2円の位置関係</strong>：外接・内接・交わる・離れるを判定</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== 2. 覚えるルール ========== -->
+<section id="section2">
+    <h2>2. 覚えるルール</h2>
+    <div class="section">
+        <div class="important-rule">
+            【最重要】円の方程式（標準形）：中心 \((a, b)\)、半径 \(r\) の円は
+            \[ (x - a)^2 + (y - b)^2 = r^2 \]
+        </div>
+
+        <!-- 標準形の図解（SVG） -->
+        <div class="svg-container">
+            <svg width="400" height="320" viewBox="0 0 400 320">
+                <!-- 座標軸 -->
+                <defs>
+                    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+                    </marker>
+                </defs>
+                <line x1="30" y1="250" x2="380" y2="250" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+                <line x1="50" y1="290" x2="50" y2="30" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+                <text x="375" y="270" font-size="16" fill="#333">x</text>
+                <text x="30" y="40" font-size="16" fill="#333">y</text>
+                <text x="40" y="265" font-size="14" fill="#333">O</text>
+
+                <!-- 円 -->
+                <circle cx="200" cy="150" r="80" fill="none" stroke="#1976d2" stroke-width="3"/>
+
+                <!-- 中心 -->
+                <circle cx="200" cy="150" r="5" fill="#e53935"/>
+                <text x="210" y="145" font-size="14" fill="#e53935">(a, b)</text>
+
+                <!-- 半径 -->
+                <line x1="200" y1="150" x2="260" y2="95" stroke="#4caf50" stroke-width="2"/>
+                <text x="240" y="115" font-size="14" fill="#4caf50">r</text>
+
+                <!-- 円周上の点 -->
+                <circle cx="260" cy="95" r="4" fill="#1976d2"/>
+                <text x="270" y="90" font-size="14" fill="#1976d2">(x, y)</text>
+
+                <!-- 補助線（縦・横） -->
+                <line x1="200" y1="150" x2="200" y2="250" stroke="#999" stroke-width="1" stroke-dasharray="5,5"/>
+                <line x1="200" y1="250" x2="50" y2="250" stroke="#999" stroke-width="1" stroke-dasharray="5,5"/>
+                <text x="195" y="270" font-size="14" fill="#666">a</text>
+
+                <line x1="200" y1="150" x2="50" y2="150" stroke="#999" stroke-width="1" stroke-dasharray="5,5"/>
+                <text x="30" y="155" font-size="14" fill="#666">b</text>
+            </svg>
+            <div class="svg-caption">円の標準形：中心(a, b)から半径rの点の集まり</div>
+        </div>
+
+        <details class="thinking"><summary><strong>考え方を見る</strong></summary>
+        <p>円とは「中心からの距離が一定（= 半径）の点の集まり」です。中心 \((a, b)\) から点 \((x, y)\) までの距離が \(r\) ということは、三平方の定理（距離公式）から：</p>
+        <div class="formula">\[ \sqrt{(x - a)^2 + (y - b)^2} = r \]</div>
+        <p>両辺を2乗すると標準形になります。</p>
+        </details>
+
+        <div class="rule-box">
+            <strong>円の方程式（一般形）</strong> <a href="#ex-2" class="example-link">→ 例2</a>
+            <div class="formula">
+                \[ x^2 + y^2 + lx + my + n = 0 \]
+            </div>
+            <p>標準形を展開した形。平方完成で標準形に戻すと中心と半径がわかる。</p>
+            <p><strong>→ 中心と半径：</strong> \(\left(-\frac{l}{2}, -\frac{m}{2}\right)\)、\(r = \sqrt{\frac{l^2 + m^2}{4} - n}\)</p>
+            <p><strong>注意：</strong> \(\frac{l^2 + m^2}{4} - n > 0\) でないと円にならない。</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>円と直線の位置関係</strong> <a href="#ex-3" class="example-link">→ 例3</a>
+            <p>中心 \((a, b)\) から直線 \(px + qy + r = 0\) への距離 \(d\) を求め、半径 \(R\) と比較：</p>
+            <div class="formula">
+                \[ d = \frac{|pa + qb + r|}{\sqrt{p^2 + q^2}} \]
+            </div>
+            <table class="material-table">
+                <tr><th>条件</th><th>位置関係</th><th>交点の個数</th></tr>
+                <tr><td>\(d < R\)</td><td>2点で交わる</td><td>2個</td></tr>
+                <tr><td>\(d = R\)</td><td>接する</td><td>1個</td></tr>
+                <tr><td>\(d > R\)</td><td>離れている</td><td>0個</td></tr>
+            </table>
+        </div>
+
+        <div class="rule-box">
+            <strong>円の接線（円上の点から）</strong> <a href="#ex-4" class="example-link">→ 例4</a>
+            <p>円 \(x^2 + y^2 = r^2\) 上の点 \((x_1, y_1)\) における接線：</p>
+            <div class="formula">
+                \[ x_1 x + y_1 y = r^2 \]
+            </div>
+            <p><strong>覚え方：</strong> 円の式の \(x^2\) を \(x_1 x\)、\(y^2\) を \(y_1 y\) に置き換える。</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>円の接線（円外の点から）</strong> <a href="#ex-5" class="example-link">→ 例5</a>
+            <p>円外の点 \((x_0, y_0)\) から引いた接線は<strong>2本</strong>ある。</p>
+            <p><strong>解法1：</strong> 接線 \(y - y_0 = m(x - x_0)\) とおき、中心との距離 = 半径で \(m\) を求める。</p>
+            <p><strong>解法2：</strong> 接点を \((x_1, y_1)\) とおき、接線の式と「接点は円上」の条件を連立。</p>
+        </div>
+
+        <div class="rule-box">
+            <strong>2円の位置関係</strong> <a href="#ex-6" class="example-link">→ 例6</a>
+            <p>半径 \(r_1, r_2\)（\(r_1 \geq r_2\) とする）の2円の中心間距離を \(d\) とすると：</p>
+            <table class="material-table">
+                <tr><th>条件</th><th>位置関係</th></tr>
+                <tr><td>\(d > r_1 + r_2\)</td><td>離れている（外部）</td></tr>
+                <tr><td>\(d = r_1 + r_2\)</td><td>外接</td></tr>
+                <tr><td>\(r_1 - r_2 < d < r_1 + r_2\)</td><td>2点で交わる</td></tr>
+                <tr><td>\(d = r_1 - r_2\)</td><td>内接</td></tr>
+                <tr><td>\(d < r_1 - r_2\)</td><td>一方が他方の内部</td></tr>
+            </table>
+        </div>
+
+        <!-- 2円の位置関係の図解 -->
+        <div class="svg-container">
+            <svg width="700" height="180" viewBox="0 0 700 180">
+                <!-- 離れている -->
+                <circle cx="60" cy="90" r="35" fill="none" stroke="#1976d2" stroke-width="2"/>
+                <circle cx="140" cy="90" r="25" fill="none" stroke="#e53935" stroke-width="2"/>
+                <text x="70" y="160" font-size="14" fill="#333">離れている</text>
+
+                <!-- 外接 -->
+                <circle cx="220" cy="90" r="35" fill="none" stroke="#1976d2" stroke-width="2"/>
+                <circle cx="280" cy="90" r="25" fill="none" stroke="#e53935" stroke-width="2"/>
+                <text x="230" y="160" font-size="14" fill="#333">外接</text>
+
+                <!-- 2点で交わる -->
+                <circle cx="360" cy="90" r="40" fill="none" stroke="#1976d2" stroke-width="2"/>
+                <circle cx="400" cy="90" r="30" fill="none" stroke="#e53935" stroke-width="2"/>
+                <text x="350" y="160" font-size="14" fill="#333">2点で交わる</text>
+
+                <!-- 内接 -->
+                <circle cx="500" cy="90" r="45" fill="none" stroke="#1976d2" stroke-width="2"/>
+                <circle cx="520" cy="90" r="25" fill="none" stroke="#e53935" stroke-width="2"/>
+                <text x="490" y="160" font-size="14" fill="#333">内接</text>
+
+                <!-- 一方が内部 -->
+                <circle cx="620" cy="90" r="50" fill="none" stroke="#1976d2" stroke-width="2"/>
+                <circle cx="620" cy="90" r="20" fill="none" stroke="#e53935" stroke-width="2"/>
+                <text x="595" y="160" font-size="14" fill="#333">内部に含む</text>
+            </svg>
+            <div class="svg-caption">2円の位置関係（中心間距離と半径の和・差で決まる）</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>円の方程式と接線・位置関係の問題を実際に解いてみましょう。</p>
+
+        <h3 style="color: #1976d2; margin: 15px 0 10px 0;">▶ 円の方程式を求める</h3>
+
+        <div class="example-box" id="ex-1">
+            <div class="example-title">
+                <span class="number-badge">例1</span>中心と半径から円の方程式（標準形）
+            </div>
+            <p>中心 \((3, -2)\)、半径 \(5\) の円の方程式を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>標準形 \((x - a)^2 + (y - b)^2 = r^2\) に代入</li>
+                <li>\(a = 3\)、\(b = -2\)、\(r = 5\) を代入</li>
+            </ol>
+            <div class="formula">
+                \[ (x - 3)^2 + (y + 2)^2 = 25 \]
+            </div>
+            <p><strong>→ 答え：</strong> \((x - 3)^2 + (y + 2)^2 = 25\)</p>
+        </div>
+
+        <div class="example-box" id="ex-2">
+            <div class="example-title">
+                <span class="number-badge">例2</span>一般形から中心と半径を求める
+            </div>
+            <p>円 \(x^2 + y^2 - 6x + 4y - 3 = 0\) の中心と半径を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(x\) と \(y\) の項をそれぞれ平方完成</li>
+                <li>\(x^2 - 6x = (x - 3)^2 - 9\)</li>
+                <li>\(y^2 + 4y = (y + 2)^2 - 4\)</li>
+                <li>元の式に代入して整理</li>
+            </ol>
+            <div class="formula">
+                \begin{align}
+                (x - 3)^2 - 9 + (y + 2)^2 - 4 - 3 &= 0 \\
+                (x - 3)^2 + (y + 2)^2 &= 16
+                \end{align}
+            </div>
+            <p><strong>→ 答え：</strong> 中心 \((3, -2)\)、半径 \(4\)</p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 円と直線の位置関係</h3>
+
+        <div class="example-box" id="ex-3">
+            <div class="example-title">
+                <span class="number-badge">例3</span>円と直線の位置関係を判定
+            </div>
+            <p>円 \(x^2 + y^2 = 25\) と直線 \(3x + 4y - 15 = 0\) の位置関係を調べよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>円の中心 \((0, 0)\)、半径 \(R = 5\) を確認</li>
+                <li>中心から直線への距離 \(d\) を求める（点と直線の距離公式）</li>
+                <li>\(d\) と \(R\) を比較</li>
+            </ol>
+            <div class="formula">
+                \[ d = \frac{|3 \cdot 0 + 4 \cdot 0 - 15|}{\sqrt{3^2 + 4^2}} = \frac{15}{5} = 3 \]
+            </div>
+            <p>\(d = 3 < R = 5\) なので、<strong>2点で交わる</strong></p>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 接線を求める</h3>
+
+        <div class="example-box" id="ex-4">
+            <div class="example-title">
+                <span class="number-badge">例4</span>円上の点における接線
+            </div>
+            <p>円 \(x^2 + y^2 = 25\) 上の点 \((3, 4)\) における接線の方程式を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>接線公式 \(x_1 x + y_1 y = r^2\) を使う</li>
+                <li>\(x_1 = 3\)、\(y_1 = 4\)、\(r^2 = 25\) を代入</li>
+            </ol>
+            <div class="formula">
+                \[ 3x + 4y = 25 \]
+            </div>
+            <p><strong>→ 答え：</strong> \(3x + 4y = 25\)</p>
+            <details class="thinking"><summary><strong>なぜこの公式が使えるのか</strong></summary>
+            <p>接線は中心と接点を結ぶ線分（半径）に垂直です。中心 \((0, 0)\) から \((3, 4)\) へのベクトルは \((3, 4)\)。これに垂直な直線は \(3(x - 3) + 4(y - 4) = 0\) つまり \(3x + 4y = 25\) となります。</p>
+            </details>
+        </div>
+
+        <div class="example-box" id="ex-5">
+            <div class="example-title">
+                <span class="number-badge">例5</span>円外の点からの接線
+            </div>
+            <p>円 \(x^2 + y^2 = 4\) に点 \((4, 0)\) から引いた接線の方程式を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>接点を \((x_1, y_1)\) とおく（円上なので \(x_1^2 + y_1^2 = 4\)）</li>
+                <li>接線の式 \(x_1 x + y_1 y = 4\) が点 \((4, 0)\) を通る → \(4x_1 = 4\) → \(x_1 = 1\)</li>
+                <li>\(x_1 = 1\) を円の式に代入 → \(1 + y_1^2 = 4\) → \(y_1 = \pm\sqrt{3}\)</li>
+                <li>接点 \((1, \sqrt{3})\) と \((1, -\sqrt{3})\) から接線を求める</li>
+            </ol>
+            <div class="formula">
+                \[ x + \sqrt{3}y = 4 \quad \text{または} \quad x - \sqrt{3}y = 4 \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 2円の位置関係</h3>
+
+        <div class="example-box" id="ex-6">
+            <div class="example-title">
+                <span class="number-badge">例6</span>2円の位置関係を判定
+            </div>
+            <p>円 \(C_1: x^2 + y^2 = 9\) と円 \(C_2: (x - 4)^2 + y^2 = 1\) の位置関係を調べよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>\(C_1\)：中心 \((0, 0)\)、半径 \(r_1 = 3\)</li>
+                <li>\(C_2\)：中心 \((4, 0)\)、半径 \(r_2 = 1\)</li>
+                <li>中心間距離 \(d = \sqrt{(4-0)^2 + (0-0)^2} = 4\)</li>
+                <li>\(r_1 + r_2 = 4\)、\(r_1 - r_2 = 2\) と比較</li>
+            </ol>
+            <p>\(d = 4 = r_1 + r_2\) なので、<strong>外接する</strong></p>
+        </div>
+
+        <div class="example-box" id="ex-7">
+            <div class="example-title">
+                <span class="number-badge">例7</span>3点を通る円の方程式
+            </div>
+            <p>3点 \((0, 0)\)、\((4, 0)\)、\((0, 3)\) を通る円の方程式を求めよ。</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>一般形 \(x^2 + y^2 + lx + my + n = 0\) に3点を代入</li>
+                <li>\((0, 0)\) → \(n = 0\)</li>
+                <li>\((4, 0)\) → \(16 + 4l = 0\) → \(l = -4\)</li>
+                <li>\((0, 3)\) → \(9 + 3m = 0\) → \(m = -3\)</li>
+            </ol>
+            <div class="formula">
+                \[ x^2 + y^2 - 4x - 3y = 0 \]
+            </div>
+            <p>標準形に直すと：\((x - 2)^2 + (y - \frac{3}{2})^2 = \frac{25}{4}\)</p>
+            <p><strong>→ 答え：</strong> 中心 \((2, \frac{3}{2})\)、半径 \(\frac{5}{2}\)</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>コツ1：原点中心の円は計算がシンプル</strong><br>
+            \(x^2 + y^2 = r^2\) の形なら、接線は \(x_1 x + y_1 y = r^2\) とすぐ書ける。中心が原点でない場合は、座標を平行移動して計算すると楽なことがある。
+        </div>
+
+        <div class="tip-box">
+            <strong>コツ2：位置関係は「距離と半径」で考える</strong><br>
+            円と直線、2円の位置関係は、中心からの距離を計算して半径と比較するだけ。連立方程式を解くより速い。
+        </div>
+
+        <div class="tip-box">
+            <strong>コツ3：平方完成は係数の半分の2乗を足し引き</strong><br>
+            \(x^2 + 6x\) → 6の半分は3、\((x + 3)^2 - 9\)。これを使えば一般形から標準形への変換は一瞬。
+        </div>
+
+        <div class="tip-box">
+            <strong>コツ4：接線公式は「\(x^2\) を \(x_1 x\) に置き換え」</strong><br>
+            円 \(x^2 + y^2 = r^2\) → 接線 \(x_1 x + y_1 y = r^2\)<br>
+            円 \((x-a)^2 + (y-b)^2 = r^2\) → 接線 \((x_1-a)(x-a) + (y_1-b)(y-b) = r^2\)
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">つまづき1：半径と半径の2乗を混同</div>
+            <p><strong>ダメな例：</strong> 半径3の円を \((x-1)^2 + (y-2)^2 = 3\) と書く</p>
+            <p><strong>対策：</strong> 右辺は \(r^2\)！半径3なら右辺は \(9\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">つまづき2：一般形から中心を読み間違える</div>
+            <p><strong>ダメな例：</strong> \(x^2 + y^2 - 6x + 4y = 0\) の中心を \((6, 4)\) とする</p>
+            <p><strong>対策：</strong> 中心は \(\left(-\frac{l}{2}, -\frac{m}{2}\right)\)。\(l = -6, m = 4\) なので中心は \((3, -2)\)</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">つまづき3：接線が円の外を通るか確認しない</div>
+            <p><strong>ダメな例：</strong> 円内の点から接線を引こうとする</p>
+            <p><strong>対策：</strong> まず点が円の外にあるか確認。\(x_0^2 + y_0^2 > r^2\) なら円外で接線は2本引ける</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">つまづき4：2円の位置関係で \(r_1 - r_2\) を忘れる</div>
+            <p><strong>ダメな例：</strong> \(d < r_1 + r_2\) だけで「交わる」と判断</p>
+            <p><strong>対策：</strong> \(r_1 - r_2 < d < r_1 + r_2\) のとき交わる。\(d < r_1 - r_2\) だと一方が他方の内部</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">中心と半径から標準形 \((x-a)^2 + (y-b)^2 = r^2\) を書ける</div>
+            <div class="checklist-item">一般形を平方完成して中心と半径を求められる</div>
+            <div class="checklist-item">中心から直線への距離と半径の比較で位置関係を判定できる</div>
+            <div class="checklist-item">円上の点における接線の公式 \(x_1 x + y_1 y = r^2\) を使える</div>
+            <div class="checklist-item">2円の中心間距離と半径の和・差で位置関係を判定できる</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>学んだことを使って、以下の問題を解いてみよう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>円 \(x^2 + y^2 + 2x - 8y + 8 = 0\) の中心と半径を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>平方完成：\((x+1)^2 - 1 + (y-4)^2 - 16 + 8 = 0\)</p>
+                    <p>\((x+1)^2 + (y-4)^2 = 9\)</p>
+                    <p><strong>中心 \((-1, 4)\)、半径 \(3\)</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>円 \(x^2 + y^2 = 10\) 上の点 \((1, 3)\) における接線の方程式を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>接線公式 \(x_1 x + y_1 y = r^2\) を使う</p>
+                    <p>\(1 \cdot x + 3 \cdot y = 10\)</p>
+                    <p><strong>\(x + 3y = 10\)</strong></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>円 \(x^2 + y^2 = 16\) と円 \((x-5)^2 + y^2 = 4\) の位置関係を調べよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p>円1：中心 \((0, 0)\)、半径 \(r_1 = 4\)</p>
+                    <p>円2：中心 \((5, 0)\)、半径 \(r_2 = 2\)</p>
+                    <p>中心間距離 \(d = 5\)</p>
+                    <p>\(r_1 + r_2 = 6\)、\(r_1 - r_2 = 2\)</p>
+                    <p>\(2 < 5 < 6\) なので、<strong>2点で交わる</strong></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    円の方程式は「中心からの距離 = 半径」を式で表したもの。標準形で中心と半径を読み取り、距離公式で位置関係を判定しよう！
+</div>
+
+<!-- ========== 関連教材 ========== -->
+<!-- Front Matterのrelatedで指定すればレイアウトが自動生成します -->
+
+<!-- ========== おまけ：歴史ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：歴史ストーリー「アポロニウスの円」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">アポロニウスの円</div>
+
+            <p>紀元前3世紀、古代ギリシャの数学者アポロニウス（Apollonius of Perga）は「円錐曲線論」という大著を書きました。楕円・放物線・双曲線という名前を付けたのも彼です。</p>
+
+            <p>その中で、彼はこんな問題を考えました：</p>
+
+            <p><strong>「2点 A, B からの距離の比が一定（m : n）となる点の軌跡は？」</strong></p>
+
+            <p>たとえば「A からの距離が B からの距離の2倍」という条件を満たす点はどんな軌跡を描くでしょうか？</p>
+
+            <p>直感的には「A に近づくほど条件を満たしにくそう」と思うかもしれませんが、実際に計算すると...</p>
+
+            <div class="formula">
+                \[ \text{点 } P \text{ が満たす条件: } \frac{PA}{PB} = m : n \]
+            </div>
+
+            <p>なんと、この軌跡は<strong>円</strong>になるのです！これを「アポロニウスの円」といいます。</p>
+
+            <p>現代の座標幾何で確認してみましょう。A = (0, 0)、B = (3, 0)として、PA : PB = 1 : 2 の場合：</p>
+
+            <div class="formula">
+                \begin{align}
+                PA &= 2 \cdot PB \\
+                \sqrt{x^2 + y^2} &= 2\sqrt{(x-3)^2 + y^2}
+                \end{align}
+            </div>
+
+            <p>両辺を2乗して整理すると：</p>
+
+            <div class="formula">
+                \[ (x + 1)^2 + y^2 = 4 \]
+            </div>
+
+            <p>確かに、中心 (-1, 0)、半径 2 の円になります！</p>
+
+            <p>アポロニウスは座標もない時代に、純粋な幾何学だけでこれを証明しました。2300年後の私たちは方程式で数行の計算。便利な時代になったものです。</p>
+
+            <p style="font-style: italic; color: #666;">でも、座標を使わずに証明できたアポロニウスの方がすごいのかも？</p>
+        </div>
+    </div>
+</section>

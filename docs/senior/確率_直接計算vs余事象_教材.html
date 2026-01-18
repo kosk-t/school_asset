@@ -1,0 +1,462 @@
+---
+layout: material-raw
+title: 確率：直接計算 vs 余事象
+icon: "🎯"
+description: 「直接数える」か「余事象を使う」か、瞬時に判断して効率よく確率を求める力を身につける。
+level: 標準
+level_num: 2
+category: data
+school_level: senior
+order: 8
+keywords:
+  - 確率
+  - 余事象
+  - 直接計算
+  - 少なくとも
+  - 判断
+cover_image: /images/noimage.jpg
+cover_description: 直接計算と余事象の判断フローチャート
+battle_game: false
+toc:
+  - id: section1
+    title: "テーマの定義"
+  - id: section2
+    title: "判断フロー"
+  - id: section3
+    title: "例題と解き方"
+  - id: section4
+    title: "簡単にするコツ"
+  - id: section5
+    title: "よくあるつまづき"
+  - id: section6
+    title: "仕上げチェックリスト"
+  - id: section7
+    title: "練習問題"
+  - id: story
+    title: "おまけ：実践ストーリー「誕生日のパラドックス」"
+related:
+  - url: /senior/確率の計算_教材.html
+    title: 確率の計算
+    note: 余事象の公式の復習に
+    type: prerequisite
+  - url: /senior/条件付き確率と独立試行_教材.html
+    title: 条件付き確率と独立試行
+    note: 反復試行の確率の復習に
+    type: prerequisite
+---
+<!-- ========== 1. テーマの定義 ========== -->
+<section id="section1">
+    <h2>1. テーマの定義</h2>
+    <div class="section">
+        <p>確率の問題には「直接数える」方が楽な場合と「余事象を使う」方が楽な場合があります。この判断を間違えると計算量が何倍にもなることも。</p>
+
+        <p>このページでは、<strong>直接計算 vs 余事象</strong>の判断を学びます：</p>
+
+        <ul>
+            <li><strong>直接計算</strong>：条件を満たす場合を直接数える</li>
+            <li><strong>余事象</strong>：1 −（条件を満たさない確率）で求める</li>
+            <li><strong>判断キーワード</strong>：「少なくとも」「〜でない」は余事象のサイン</li>
+        </ul>
+
+        <div class="important-rule">
+            🎯 核心：「少なくとも1つ〜」は余事象！ 1 −「1つも〜ない」が圧倒的に楽
+        </div>
+    </div>
+</section>
+
+<!-- ========== 2. 判断フロー ========== -->
+<section id="section2">
+    <h2>2. 判断フロー</h2>
+    <div class="section">
+        <!-- 判断フローチャート（SVG） -->
+        <div class="svg-container">
+            <svg width="700" height="380" viewBox="0 0 700 380">
+                <text x="350" y="25" font-size="16" font-weight="bold" fill="#1976d2" text-anchor="middle">直接計算 vs 余事象 判断フローチャート</text>
+
+                <!-- スタート -->
+                <ellipse cx="350" cy="60" rx="100" ry="25" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
+                <text x="350" y="65" font-size="14" fill="#333" text-anchor="middle">問題を読む</text>
+
+                <!-- 矢印1 -->
+                <path d="M 350 85 L 350 110" stroke="#333" stroke-width="2" marker-end="url(#arrow6)"/>
+                <defs>
+                    <marker id="arrow6" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+                    </marker>
+                </defs>
+
+                <!-- 判断1 -->
+                <rect x="150" y="115" width="400" height="50" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="5"/>
+                <text x="350" y="145" font-size="14" font-weight="bold" fill="#ff9800" text-anchor="middle">「少なくとも〜」「〜以上」「〜でない」がある？</text>
+
+                <!-- 矢印2（Yes） -->
+                <path d="M 550 140 L 620 140 L 620 220" stroke="#e91e63" stroke-width="2" marker-end="url(#arrow6)"/>
+                <text x="580" y="135" font-size="12" font-weight="bold" fill="#e91e63">Yes</text>
+
+                <!-- 矢印3（No） -->
+                <path d="M 150 140 L 80 140 L 80 180" stroke="#333" stroke-width="2" marker-end="url(#arrow6)"/>
+                <text x="110" y="135" font-size="12" font-weight="bold" fill="#333">No</text>
+
+                <!-- 余事象ボックス -->
+                <rect x="530" y="225" width="150" height="80" fill="#fce4ec" stroke="#e91e63" stroke-width="3" rx="10"/>
+                <text x="605" y="255" font-size="16" font-weight="bold" fill="#e91e63" text-anchor="middle">余事象</text>
+                <text x="605" y="275" font-size="11" fill="#333" text-anchor="middle">1 − P(〜でない)</text>
+                <text x="605" y="293" font-size="10" fill="#666" text-anchor="middle">で計算</text>
+
+                <!-- 判断2 -->
+                <rect x="20" y="185" width="180" height="50" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                <text x="110" y="210" font-size="12" font-weight="bold" fill="#1976d2" text-anchor="middle">場合の数が少ない？</text>
+                <text x="110" y="228" font-size="10" fill="#666" text-anchor="middle">（3通り以下など）</text>
+
+                <!-- 矢印4（Yes） -->
+                <path d="M 20 210 L -20 210 L -20 290 L 30 290" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow6)"/>
+                <text x="-10" y="250" font-size="12" font-weight="bold" fill="#4caf50">Yes</text>
+
+                <!-- 矢印5（No） -->
+                <path d="M 110 235 L 110 280" stroke="#333" stroke-width="2" marker-end="url(#arrow6)"/>
+                <text x="120" y="260" font-size="12" font-weight="bold" fill="#333">No</text>
+
+                <!-- 直接計算ボックス -->
+                <rect x="30" y="285" width="130" height="70" fill="#e8f5e9" stroke="#4caf50" stroke-width="3" rx="10"/>
+                <text x="95" y="315" font-size="14" font-weight="bold" fill="#4caf50" text-anchor="middle">直接計算</text>
+                <text x="95" y="340" font-size="10" fill="#333" text-anchor="middle">場合を列挙</text>
+
+                <!-- 比較ボックス -->
+                <rect x="200" y="285" width="200" height="70" fill="#f5f5f5" stroke="#333" stroke-width="1" rx="5"/>
+                <text x="300" y="310" font-size="11" fill="#333" text-anchor="middle">直接 vs 余事象を比較</text>
+                <text x="300" y="330" font-size="10" fill="#666" text-anchor="middle">場合分けが少ない方を選ぶ</text>
+
+                <!-- 注意 -->
+                <text x="350" y="375" font-size="11" fill="#e91e63" text-anchor="middle">※「少なくとも」があったら、まず余事象を検討！</text>
+            </svg>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 判断のポイント</strong>
+            <table class="material-table">
+                <tr>
+                    <th>余事象を使う（楽）</th>
+                    <th>直接計算する（楽）</th>
+                </tr>
+                <tr>
+                    <td>「少なくとも1つ〜」</td>
+                    <td>「ちょうど1つ〜」</td>
+                </tr>
+                <tr>
+                    <td>「〜でない」「〜以外」</td>
+                    <td>条件を満たす場合が少ない</td>
+                </tr>
+                <tr>
+                    <td>「3回以上当たる」（→1−(0,1,2回)）</td>
+                    <td>「3回だけ当たる」</td>
+                </tr>
+                <tr>
+                    <td>条件を満たす場合が多い</td>
+                    <td>条件を満たさない場合が多い</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="rule-box">
+            <strong>📌 余事象を使うキーワード</strong>
+            <ul>
+                <li><strong>「少なくとも1つ〜」</strong> → 1 −「1つも〜ない」</li>
+                <li><strong>「〜以上」</strong> → 1 −「〜未満」</li>
+                <li><strong>「〜でない」「〜以外」</strong> → 直接的に余事象</li>
+                <li><strong>「同じ〜がない」</strong> → 全部違う = 余事象が楽</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 3. 例題と解き方 ========== -->
+<section id="section3">
+    <h2>3. 例題と解き方</h2>
+    <div class="section">
+        <p>実際の問題で判断してみましょう。</p>
+
+        <h3 style="color: #e91e63; margin: 15px 0 10px 0;">▶ 余事象を使う問題</h3>
+
+        <div class="example-box">
+            <div class="example-title">
+                <span class="number-badge">例1</span>「少なくとも1回」
+            </div>
+            <p>コインを5回投げるとき、<strong>少なくとも1回</strong>表が出る確率を求めよ。</p>
+            <p><strong>判断：</strong>「少なくとも1回」→ 余事象！</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>余事象「1回も表が出ない」= 5回とも裏</li>
+                <li>\(P(\text{5回とも裏}) = \left(\frac{1}{2}\right)^5 = \frac{1}{32}\)</li>
+            </ol>
+            <div class="formula">
+                \[ P(\text{少なくとも1回表}) = 1 - \frac{1}{32} = \frac{31}{32} \]
+            </div>
+            <p><strong>もし直接計算すると：</strong>1回表 + 2回表 + 3回表 + 4回表 + 5回表 を全部計算... 大変！</p>
+        </div>
+
+        <div class="example-box">
+            <div class="example-title">
+                <span class="number-badge">例2</span>「〜でない」
+            </div>
+            <p>サイコロを3回投げるとき、すべての目が<strong>異なる</strong>確率を求めよ。</p>
+            <p><strong>判断：</strong>「すべて異なる」→ 余事象「同じ目がある」は複雑 → 直接計算の方が楽</p>
+            <p><strong>解き方：</strong></p>
+            <ol>
+                <li>1回目：6通り</li>
+                <li>2回目：1回目と違う → 5通り</li>
+                <li>3回目：1,2回目と違う → 4通り</li>
+            </ol>
+            <div class="formula">
+                \[ P = \frac{6 \times 5 \times 4}{6^3} = \frac{120}{216} = \frac{5}{9} \]
+            </div>
+        </div>
+
+        <div class="example-box">
+            <div class="example-title">
+                <span class="number-badge">例3</span>「3回以上」
+            </div>
+            <p>成功率\(\frac{1}{3}\)の試行を5回行うとき、<strong>3回以上</strong>成功する確率を求めよ。</p>
+            <p><strong>判断：</strong>「3回以上」= 3回 or 4回 or 5回。余事象「2回以下」= 0回 + 1回 + 2回。どちらも3つ計算...</p>
+            <p>→ どちらでも同じくらいなので、直接計算でOK</p>
+            <p><strong>解き方（直接計算）：</strong></p>
+            <div class="formula">
+                \begin{align}
+                P &= P(3\text{回}) + P(4\text{回}) + P(5\text{回}) \\
+                &= {}_5C_3 \left(\frac{1}{3}\right)^3 \left(\frac{2}{3}\right)^2 + {}_5C_4 \left(\frac{1}{3}\right)^4 \left(\frac{2}{3}\right)^1 + {}_5C_5 \left(\frac{1}{3}\right)^5 \\
+                &= 10 \cdot \frac{4}{243} + 5 \cdot \frac{2}{243} + 1 \cdot \frac{1}{243} \\
+                &= \frac{40 + 10 + 1}{243} = \frac{51}{243} = \frac{17}{81}
+                \end{align}
+            </div>
+        </div>
+
+        <h3 style="color: #4caf50; margin: 25px 0 10px 0;">▶ 直接計算が楽な問題</h3>
+
+        <div class="example-box">
+            <div class="example-title">
+                <span class="number-badge">例4</span>「ちょうど2回」
+            </div>
+            <p>コインを4回投げるとき、<strong>ちょうど2回</strong>表が出る確率を求めよ。</p>
+            <p><strong>判断：</strong>「ちょうど2回」→ 直接計算！</p>
+            <div class="formula">
+                \[ P = {}_4C_2 \left(\frac{1}{2}\right)^2 \left(\frac{1}{2}\right)^2 = 6 \times \frac{1}{16} = \frac{6}{16} = \frac{3}{8} \]
+            </div>
+        </div>
+
+        <div class="example-box">
+            <div class="example-title">
+                <span class="number-badge">例5</span>場合が少ない
+            </div>
+            <p>サイコロを1回投げて、6が出る確率を求めよ。</p>
+            <p><strong>判断：</strong>明らかに直接計算！</p>
+            <div class="formula">
+                \[ P = \frac{1}{6} \]
+            </div>
+        </div>
+
+        <h3 style="color: #1976d2; margin: 25px 0 10px 0;">▶ 比較して選ぶ問題</h3>
+
+        <div class="example-box">
+            <div class="example-title">
+                <span class="number-badge">例6</span>どちらが楽？
+            </div>
+            <p>10本のくじに当たりが3本ある。3本引くとき、<strong>少なくとも1本</strong>当たる確率を求めよ。</p>
+            <p><strong>判断：</strong>「少なくとも1本」→ 余事象！</p>
+            <p><strong>直接計算の場合：</strong>1本当たり + 2本当たり + 3本当たり = 3パターン計算</p>
+            <p><strong>余事象の場合：</strong>「0本当たり」= 1パターンだけ</p>
+            <p>→ 余事象が楽！</p>
+            <div class="formula">
+                {% raw %}\begin{align}
+                P(\text{0本当たり}) &= \frac{{}_7C_3}{{_{10}C_3}} = \frac{35}{120} = \frac{7}{24} \\
+                P(\text{少なくとも1本当たり}) &= 1 - \frac{7}{24} = \frac{17}{24}
+                \end{align}{% endraw %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 4. 簡単にするコツ ========== -->
+<section id="section4">
+    <h2>4. 簡単にするコツ</h2>
+    <div class="section">
+        <div class="tip-box">
+            <strong>✏️ コツ1：「少なくとも」を見たら余事象</strong><br>
+            「少なくとも1つ〜」は、1 −「1つも〜ない」で一発計算。<br>
+            直接計算すると場合分けが爆発する。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ2：場合分けの数を数える</strong><br>
+            直接計算と余事象、それぞれ何パターン計算するか？<br>
+            少ない方を選ぶ。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ3：「〜以上」は余事象を検討</strong><br>
+            「3回以上」= 3,4,5,... と増えていく → 余事象「2回以下」の方が少ないかも。<br>
+            ただし、半分付近なら同じくらい。
+        </div>
+
+        <div class="tip-box">
+            <strong>✏️ コツ4：独立試行なら余事象が特に楽</strong><br>
+            「少なくとも1回成功」= 1 − (失敗)^n で一発。<br>
+            \(P = 1 - (1-p)^n\)
+        </div>
+    </div>
+</section>
+
+<!-- ========== 5. よくあるつまづき ========== -->
+<section id="section5">
+    <h2>5. よくあるつまづき</h2>
+    <div class="section">
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき1：「少なくとも」を直接計算</div>
+            <p><strong>ダメな例：</strong>「少なくとも1回当たる」で1回+2回+3回+...を計算</p>
+            <p><strong>対策：</strong>1 −「0回」で一発計算！</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき2：余事象の設定ミス</div>
+            <p><strong>ダメな例：</strong>「少なくとも1本当たる」の余事象を「1本だけ当たる」とする</p>
+            <p><strong>対策：</strong>「少なくとも1本」の余事象は「0本」</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき3：1を引き忘れる</div>
+            <p><strong>ダメな例：</strong>余事象を計算して、そのまま答えにする</p>
+            <p><strong>対策：</strong>\(P(\overline{A}) = 1 - P(A)\)。必ず1から引く</p>
+        </div>
+
+        <div class="caution-box">
+            <div class="caution-title">⚠️ つまづき4：常に余事象を使おうとする</div>
+            <p><strong>ダメな例：</strong>「ちょうど2回」で余事象を使う</p>
+            <p><strong>対策：</strong>「ちょうど」は直接計算が楽。余事象だと「0,1,3,4,5回」を計算することに...</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 6. 仕上げチェックリスト ========== -->
+<section id="section6">
+    <h2>6. 仕上げチェックリスト</h2>
+    <div class="section">
+        <div class="checklist">
+            <div class="checklist-item">「少なくとも〜」を見たら余事象を検討できる</div>
+            <div class="checklist-item">余事象の設定（何を「〜でない」とするか）ができる</div>
+            <div class="checklist-item">直接計算と余事象、どちらが楽か比較できる</div>
+            <div class="checklist-item">独立試行で \(1 - (1-p)^n\) が使える</div>
+            <div class="checklist-item">余事象で求めた後、1から引くのを忘れない</div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 7. 練習問題 ========== -->
+<section id="section7">
+    <h2>7. 練習問題</h2>
+    <div class="section">
+        <p>直接計算か余事象か判断して解こう。</p>
+
+        <div class="rule-box" style="background: #f5f5f5;">
+            <strong>練習1</strong>
+            <p>サイコロを4回投げるとき、<strong>少なくとも1回</strong>6が出る確率を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong>「少なくとも1回」→ 余事象！</p>
+                    <p>\(P(\text{4回とも6以外}) = \left(\frac{5}{6}\right)^4 = \frac{625}{1296}\)</p>
+                    <p>\(P(\text{少なくとも1回6}) = 1 - \frac{625}{1296} = \frac{671}{1296}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習2</strong>
+            <p>5人が一列に並ぶとき、AとBが<strong>隣り合わない</strong>確率を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong>「隣り合わない」→ 余事象「隣り合う」が楽</p>
+                    <p>全体：5! = 120通り</p>
+                    <p>隣り合う：ABを1人とみて4! × 2 = 48通り</p>
+                    <p>\(P(\text{隣り合わない}) = 1 - \frac{48}{120} = 1 - \frac{2}{5} = \frac{3}{5}\)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rule-box" style="background: #f5f5f5; margin-top: 15px;">
+            <strong>練習3</strong>
+            <p>赤玉3個、白玉4個の袋から同時に3個取り出すとき、<strong>少なくとも1個</strong>赤玉が含まれる確率を求めよ。</p>
+            <details style="margin-top: 15px;">
+                <summary style="cursor: pointer; color: #4caf50; font-weight: bold;">答えを見る</summary>
+                <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
+                    <p><strong>判断：</strong>「少なくとも1個」→ 余事象！</p>
+                    <p>{% raw %}\(P(\text{赤0個}) = \frac{{}_4C_3}{{}_7C_3} = \frac{4}{35}\){% endraw %}</p>
+                    <p>\(P(\text{少なくとも1個赤}) = 1 - \frac{4}{35} = \frac{31}{35}\)</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ========== まとめ ========== -->
+<div class="summary">
+    📌 まとめ：「少なくとも〜」は余事象！ 1 −「0個/0回」で一発計算！
+</div>
+
+<!-- ========== おまけ：実践ストーリー ========== -->
+<section id="story">
+    <h2>おまけ：実践ストーリー「誕生日のパラドックス」</h2>
+    <div class="section">
+        <div class="story-box">
+            <div class="story-title">🎂 何人いれば誕生日が被る？</div>
+
+            <p>クラスに<strong>23人</strong>いれば、同じ誕生日の人が<strong>50%以上</strong>の確率でいる。</p>
+
+            <p>直感的には「365日もあるのに23人で？」と驚くが、余事象を使うと簡単に計算できる。</p>
+
+            <p><strong>問題：</strong>n人のグループで、少なくとも2人の誕生日が同じ確率</p>
+
+            <p><strong>余事象を使う：</strong></p>
+            <div class="formula">
+                \[ P(\text{少なくとも2人同じ}) = 1 - P(\text{全員違う}) \]
+            </div>
+
+            <p>「全員違う」確率を計算：</p>
+            <div class="formula">
+                \[ P(\text{全員違う}) = \frac{365}{365} \times \frac{364}{365} \times \frac{363}{365} \times \cdots \times \frac{365-n+1}{365} \]
+            </div>
+
+            <p><strong>計算結果：</strong></p>
+            <table class="material-table">
+                <tr>
+                    <th>人数n</th>
+                    <th>誰かが同じ誕生日の確率</th>
+                </tr>
+                <tr>
+                    <td>10人</td>
+                    <td>約12%</td>
+                </tr>
+                <tr>
+                    <td>23人</td>
+                    <td>約50%</td>
+                </tr>
+                <tr>
+                    <td>30人</td>
+                    <td>約70%</td>
+                </tr>
+                <tr>
+                    <td>50人</td>
+                    <td>約97%</td>
+                </tr>
+                <tr>
+                    <td>70人</td>
+                    <td>99.9%以上</td>
+                </tr>
+            </table>
+
+            <p><strong>なぜ23人で50%？</strong></p>
+            <p>ポイントは「ペアの数」。23人いると、ペアは \({_{23}C_2} = 253\) 組もある。</p>
+            <p>253回も「誕生日が同じか？」を確認するから、かなりの確率で当たりが出る。</p>
+
+            <p><strong>教訓：</strong>「少なくとも〜」の問題は、直接数えると複雑。余事象「全員違う」の方がずっと簡単に計算できる！</p>
+        </div>
+    </div>
+</section>
